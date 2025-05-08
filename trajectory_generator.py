@@ -12,6 +12,8 @@ from PIL import Image
 from io import BytesIO
 import requests
 import re
+import uuid
+import pprint
 
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -268,22 +270,27 @@ def generate_trajectory(task_goal, page):
     """
     Given a Playwright page and a task goal (instruction), 
     take a screenshot, get the accessibility tree, and perform the next action.
+    Each run is associated with a UUID and screenshots are saved in a dedicated folder.
     """
-    from datetime import datetime
+    # 1. Generate UUID and create folder
+    run_uuid = str(uuid.uuid4())
+    screenshot_dir = os.path.join("screenshots", run_uuid)
+    os.makedirs(screenshot_dir, exist_ok=True)
+    print(f"Run UUID: {run_uuid} | Screenshots will be saved in: {screenshot_dir}")
 
     task_summarizer = []
+    step_number = 1
     try:
         # Wait for page to be ready (customize selector as needed)
         page.wait_for_selector('[aria-label*="Google Account"]', timeout=300000)
         print("✅ Logged in successfully!")
 
         while True:
-            # Take screenshot
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            screenshot_path = f"./screenshots/step_{timestamp}.png"
+            # 2. Save screenshot as {UUID}-{step_number}.png in the run folder
+            screenshot_path = os.path.join(screenshot_dir, f"{run_uuid}-{step_number}.png")
             page.screenshot(path=screenshot_path)
 
-            # Get accessibility tree
+            # 3. Get accessibility tree
             tree = page.accessibility.snapshot()
             print("Tree:", tree)
             result = chat_ai_accessibility_tree(
@@ -295,6 +302,12 @@ def generate_trajectory(task_goal, page):
 
             if result is None:
                 print("Task completed!")
+                # Save the task_summarizer to a txt file in the UUID folder
+                summary_path = os.path.join(screenshot_dir, f"{run_uuid}_task_summarizer.txt")
+                with open(summary_path, "w", encoding="utf-8") as f:
+                    f.write("Task Summarizer:\n")
+                    f.write(pprint.pformat(task_summarizer, indent=2, width=120))
+                print(f"Task summarizer saved to {summary_path}")
                 break
 
             print(f"🤖 Step: {result['explanation']}")
@@ -328,6 +341,7 @@ def generate_trajectory(task_goal, page):
                 print(f"⚠️ Unknown action: {action}")
 
             page.wait_for_timeout(1000)  # short delay between steps
+            step_number += 1
 
     except Exception as e:
         print(f"❌ Error: {str(e)}")
