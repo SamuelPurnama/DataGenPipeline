@@ -28,9 +28,9 @@ def generate_augmented_instructions(
     system_msg = {
         "role": "system",
         "content": (
-            "You are a precise assistant that converts vague user goals into specific instructions"
+            "You are an assistant that clarifies and simplifies instructions"
             "for a web automation agent. Your output should be clear and executable,"
-            "and contain a high-level plan based only on the visible UI elements existing in the screenshot."
+            "and contain a high-level directions based only on the visible UI elements existing in the screenshot."
         )
     }
 
@@ -39,6 +39,8 @@ def generate_augmented_instructions(
         f"Instructions:\n{instruction_text}\n\n"
         f"Make sure your output is a list of instructions, no other text, no need for quotations, in english."
         f"If includes personal information like name, address, or contact details of a person, replace with generic placeholder"
+        f"If it contains another subject/ group of people, you can replace it with a generic name/s or generate generic contact details for it"
+        f"example: 'email my mom' -> 'send a message to mom@example.com'"
         f"output 1 sentence of instruction per instruction input"
     )}]
 

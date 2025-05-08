@@ -131,7 +131,7 @@ def chat_ai_accessibility_tree_text_only(accessibility_tree=None, previous_steps
                                     Your responsibilities:
                                     1. Check if the task goal has already been completed (i.e., not just filled out, but fully finalized by clicking save/submit). If so, return: null
                                     2. If not, predict the next step the user should take to make progress.
-                                    3. Identify the correct UI element based on the accessibility tree to perform the next predicted step to get closer to the end goal.
+                                    3. Identify the correct UI element based on the accessibility tree to perform the next predicted step on.
                                     4. Return:
                                         - A human-friendly explanation of the next suggested step
                                         - A structured object with the role, name, and action to perform on the matched element

@@ -44,7 +44,7 @@ def main():
 
             print(phase1_augmented_instructions)
 
-            # for instruction in phase1_augmented_instructions:
+            # for instruction in phase1_instructions:
             #     generate_trajectory(instruction, url=URL)
 
             # phase2_instructions = generate_instructions(
