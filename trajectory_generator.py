@@ -15,8 +15,6 @@ import re
 
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-chrome_profile_path = os.getenv("CHROME_PROFILE_PATH")
-chrome_executable_path = os.getenv("CHROME_EXECUTABLE_PATH")
 
 def log_token_usage(resp):
     """Prints a detailed breakdown of token usage from OpenAI response."""
@@ -266,79 +264,70 @@ def chat_ai_accessibility_tree(accessibility_tree=None, previous_steps=None, tas
         print("⚠️ Error: Missing accessibility tree, previous steps, or image path")
 
 
-def generate_trajectory(task_goal, url):
-    with sync_playwright() as p:
-        browser = p.chromium.launch_persistent_context(
-            user_data_dir=chrome_profile_path,
-            executable_path=chrome_executable_path,
-            headless=False,
-            args=["--disable-blink-features=AutomationControlled"]
-        )
-        print(task_goal)
+def generate_trajectory(task_goal, page):
+    """
+    Given a Playwright page and a task goal (instruction), 
+    take a screenshot, get the accessibility tree, and perform the next action.
+    """
+    from datetime import datetime
 
-        page = browser.pages[0] if browser.pages else browser.new_page()
-        page.goto(url)
-        task_summarizer = []
-        try:
-            page.wait_for_selector('[aria-label*="Google Account"]', timeout=300000)
-            print("✅ Logged in successfully!")
+    task_summarizer = []
+    try:
+        # Wait for page to be ready (customize selector as needed)
+        page.wait_for_selector('[aria-label*="Google Account"]', timeout=300000)
+        print("✅ Logged in successfully!")
 
-            while True:
-                # Take screenshot
-                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                screenshot_path = f"./screenshots/step_{timestamp}.png"
-                page.screenshot(path=screenshot_path)
+        while True:
+            # Take screenshot
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            screenshot_path = f"./screenshots/step_{timestamp}.png"
+            page.screenshot(path=screenshot_path)
 
-                # Get accessibility tree
-                tree = page.accessibility.snapshot()
-                print("Tree:", tree)
-                result = chat_ai_accessibility_tree(
-                    accessibility_tree= tree,
-                    previous_steps=task_summarizer,
-                    taskGoal=task_goal,
-                    image_path=screenshot_path
-                )
+            # Get accessibility tree
+            tree = page.accessibility.snapshot()
+            print("Tree:", tree)
+            result = chat_ai_accessibility_tree(
+                accessibility_tree=tree,
+                previous_steps=task_summarizer,
+                taskGoal=task_goal,
+                image_path=screenshot_path
+            )
 
-                if result is None:
-                    print("Task completed!")
-                    break
+            if result is None:
+                print("Task completed!")
+                break
 
-                print(f"🤖 Step: {result['explanation']}")
-                task_summarizer.append(result['action'])
-                role = result['action']['role']
-                name = result['action']['name']
-                action = result['action']['action']
-                if action == "click":
-                    page.get_by_role(role, name=name).click()
-                elif action == "fill":
-                    value = result['action']['value']
-                    page.get_by_role(role, name=name).fill(value)
-                elif action == "check":
-                    page.get_by_role(role, name=name).check()
-                elif action == "uncheck":
-                    page.get_by_role(role, name=name).uncheck()
-                elif action == "hover":
-                    page.get_by_role(role, name=name).hover()
-                elif action == "dblclick":
-                    page.get_by_role(role, name=name).dblclick()
-                elif action == "press":
-                    # Expecting action object to include a key like {"key": "Enter"}
-                    key = result['action'].get("key", "Enter")
-                    page.get_by_role(role, name=name).press(key)
-                elif action == "select":
-                    # Expecting action object to include a value like {"value": "May"}
-                    value = result['action'].get("value", "")
-                    page.get_by_role(role, name=name).select_option(value)
-                elif action == "type":
-                    value = result['action'].get("value", "")
-                    page.get_by_role(role, name=name).type(value)
-                else:
-                    print(f"⚠️ Unknown action: {action}")
+            print(f"🤖 Step: {result['explanation']}")
+            task_summarizer.append(result['action'])
+            role = result['action']['role']
+            name = result['action']['name']
+            action = result['action']['action']
+            if action == "click":
+                page.get_by_role(role, name=name).click()
+            elif action == "fill":
+                value = result['action']['value']
+                page.get_by_role(role, name=name).fill(value)
+            elif action == "check":
+                page.get_by_role(role, name=name).check()
+            elif action == "uncheck":
+                page.get_by_role(role, name=name).uncheck()
+            elif action == "hover":
+                page.get_by_role(role, name=name).hover()
+            elif action == "dblclick":
+                page.get_by_role(role, name=name).dblclick()
+            elif action == "press":
+                key = result['action'].get("key", "Enter")
+                page.get_by_role(role, name=name).press(key)
+            elif action == "select":
+                value = result['action'].get("value", "")
+                page.get_by_role(role, name=name).select_option(value)
+            elif action == "type":
+                value = result['action'].get("value", "")
+                page.get_by_role(role, name=name).type(value)
+            else:
+                print(f"⚠️ Unknown action: {action}")
 
-                page.wait_for_timeout(1000)  # short delay between steps
+            page.wait_for_timeout(1000)  # short delay between steps
 
-        except Exception as e:
-            print(f"❌ Error: {str(e)}")
-        finally:
-            input("🔚 Press Enter to close browser...")
-            browser.close()
+    except Exception as e:
+        print(f"❌ Error: {str(e)}")
