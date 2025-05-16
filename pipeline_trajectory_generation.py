@@ -9,8 +9,8 @@ from config import RESULTS_DIR
 
 # ========== CONFIGURABLE PARAMETERS ==========
 PHASE = 1
-START_IDX = 224
-END_IDX = 225
+START_IDX = 221
+END_IDX = 222
 MAX_RETRIES = 9
 ACTION_TIMEOUT = 30000  # 30 seconds timeout for actions
 # Execution Modes:
@@ -124,6 +124,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                     while retry < MAX_RETRIES and not success:
                         try:
                             print(f"🤖 {description}")
+                            print(f"🔄 Code: {code}")
+                            print(f"🔄 Failed Codes: {failed_codes}")
                             exec(code)
                             execution_history.append({'step': description, 'code': code})
                             task_summarizer.append({'step': description, 'code': code, 'axtree': tree})
@@ -161,6 +163,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                     print("✅ Task completed on retry, summary saved.")
                                     should_continue = False
                                     break
+                                if "updated_goal" in gpt_resp:
+                                    current_goal = gpt_resp["updated_goal"]
                                 description = gpt_resp["description"]
                                 code = gpt_resp["code"]
                             else:

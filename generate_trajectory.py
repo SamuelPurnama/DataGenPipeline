@@ -97,8 +97,8 @@ def chat_ai_playwright_code(accessibility_tree=None, previous_steps=None, taskGo
     """
     # Base system message
     if failed_codes and len(failed_codes) > 0:
-        base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_FAILED
-        print("\n🤖 Using FAILED ATTEMPT prompt")
+            base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_FAILED
+            print("\n🤖 Using FAILED ATTEMPT prompt")
     else:
         # Select prompt based on URL
         if url:
