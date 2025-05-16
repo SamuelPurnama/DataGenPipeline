@@ -343,7 +343,7 @@ Examples of completing partially vague goals:
   ⚠️ *VERY IMPORTANT RULES*:
 1. DO NOT use the same approach that failed in the previous attempts
 2. Try a different selector strategy (e.g., if get_by_role failed, try get_by_label or get_by_text)
-3. Consider waiting for elements to be visible/ready before interacting
+3. Consider waiting for elements to be visible/ready before interacting. Also if stuck in the current state, you can always go back to the intial page state and try other methods.
 4. Add appropriate error handling or checks
 5. If the previous attempts failed due to timing, add appropriate waits
 6. If the previous attempts failed due to incorrect element selection, use a more specific or different selector

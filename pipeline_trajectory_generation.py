@@ -9,8 +9,8 @@ from config import RESULTS_DIR
 
 # ========== CONFIGURABLE PARAMETERS ==========
 PHASE = 1
-START_IDX = 0
-END_IDX = 5
+START_IDX = 224
+END_IDX = 225
 MAX_RETRIES = 9
 ACTION_TIMEOUT = 30000  # 30 seconds timeout for actions
 # Execution Modes:
