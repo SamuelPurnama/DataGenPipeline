@@ -4,6 +4,8 @@ import os
 from PIL import Image
 from typing import List
 import openai
+from text_augmentation_prompt import SYSTEM_MSG_GENERAL, SYSTEM_MSG_MAPS, SYSTEM_MSG_FLIGHTS
+from config import URL
 
 def resize_image_base64(path: str, max_width=512) -> str:
     """Resize image and return base64-encoded PNG."""
@@ -25,30 +27,23 @@ def generate_augmented_instructions(
 
     instruction_text = "\n".join([f"{i+1}. {instr}" for i, instr in enumerate(instructions)])
 
+    # Choose appropriate system message based on URL
+    if 'maps.google.com' in URL.lower():
+        system_msg_content = SYSTEM_MSG_MAPS
+    elif 'flights.google.com' in URL.lower():
+        system_msg_content = SYSTEM_MSG_FLIGHTS
+    else:
+        system_msg_content = SYSTEM_MSG_GENERAL
+    
     system_msg = {
         "role": "system",
-        "content": (
-            f"You are an assistant that rewrites user instructions into clear, explicit, and actionable steps for a web automation agent"
-            f"Your output should be clear and executable, and contain a high-level directions based only on the visible UI elements existing in the screenshot."
-            f"If instruction is vague, explained implicitly, or lack key information for the web agent, please add clarifying keywords or add more details relevant to the page to clarify the instruction "
-            f"For example:"
-            f"For pages maps or flights that involves navigation, transport, or routes, you should include explicit methods or modes and clear location endpoints if implied (e.g., 'by car', 'by walking', 'from Seattle to San Francisco')."
-            f"For pages like maps, calendar, or flights you should add clear timing (e.g., 'right now', 'form May 12 to May 23', 'at 12 pm', etc.)."
-            f"You should also use explicit UI verbs relevant to the page (e.g., 'open', 'search', 'navigate', 'send', 'compose')"
-            f"IMPORTANT: If includes personal information like name, address, or contact details of a person, replace with a realistic placeholder"
-            f"Example: 'email my mom' -> 'send a message to mom@example.com' or 'share my calendar with my friend' -> 'share your calendar with sam@example.com'"
-            f"If instruction includes an animate noun or references to a group of people, replace it with a random generic name/s or generate contact details if needded"
-            f"Example: 'invite my team to a progress check meeting' -> 'send an event invitation to sam@example.com, john@example.com, and jane@example.com'"
-            f"If instruction is too complex, you can just focus on the simple but most important part of the instruction"
-            f"Output 1 sentence of instruction per instruction input"
-        )
+        "content": system_msg_content
     }
 
     user_content = [{"type": "text", "text": (
         "Below is a list of user instructions. Rewrite each one.\n"
         f"Instructions:\n{instruction_text}\n\n"
         f"Make sure your output is a list of instructions, no other text, no need for quotations, in english."
-
     )}]
 
     # 👇 Append image only once and safely

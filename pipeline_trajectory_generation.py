@@ -9,9 +9,9 @@ from config import RESULTS_DIR
 
 # ========== CONFIGURABLE PARAMETERS ==========
 PHASE = 1
-START_IDX = 221
-END_IDX = 222
-MAX_RETRIES = 9
+START_IDX = 955
+END_IDX = 960
+MAX_RETRIES = 3
 ACTION_TIMEOUT = 30000  # 30 seconds timeout for actions
 # Execution Modes:
 # 0 - Automatic Mode: Processes all instructions without manual intervention
@@ -105,8 +105,11 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                             "augmented_instruction": aug,
                             "final_instruction": gpt_resp['summary_instruction'],
                             "url": url,
-                            "task_steps": task_summarizer
+                            "task_steps": task_summarizer,
+                            "success": True
                         }
+                        if "output" in gpt_resp:
+                            summary["output"] = gpt_resp["output"]
                         with open(os.path.join(inst_dir, "task_summarizer.json"), "w", encoding="utf-8") as f:
                             json.dump(summary, f, indent=2, ensure_ascii=False)
                         print("✅ Task completed, summary saved.")
@@ -139,6 +142,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 print("🔄 Retrying GPT for new code...")
                                 page.screenshot(path=screenshot)
                                 tree = page.accessibility.snapshot()
+                                error_log = str(e)
+                                print(f"📝 Error log: {error_log}")
                                 gpt_resp = chat_ai_playwright_code(
                                     accessibility_tree=tree,
                                     previous_steps=execution_history,
@@ -147,7 +152,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                     image_path=screenshot,
                                     failed_codes=failed_codes,
                                     is_deletion_task=is_del,
-                                    url=url
+                                    url=url,
+                                    error_log=error_log
                                 )
                                 if "summary_instruction" in gpt_resp:
                                     summary = {
@@ -156,8 +162,11 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                         "augmented_instruction": aug,
                                         "url": url,
                                         "final_instruction": gpt_resp['summary_instruction'],
-                                        "task_steps": task_summarizer
+                                        "task_steps": task_summarizer,
+                                        "success": True
                                     }
+                                    if "output" in gpt_resp:
+                                        summary["output"] = gpt_resp["output"]
                                     with open(os.path.join(inst_dir, "task_summarizer.json"), "w", encoding="utf-8") as f:
                                         json.dump(summary, f, indent=2, ensure_ascii=False)
                                     print("✅ Task completed on retry, summary saved.")
@@ -168,8 +177,18 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 description = gpt_resp["description"]
                                 code = gpt_resp["code"]
                             else:
-                                print(f"❌ All {MAX_RETRIES} retries failed; skipping instruction.")
-                                shutil.rmtree(inst_dir, ignore_errors=True)
+                                print(f"❌ All {MAX_RETRIES} retries failed; creating failure summary.")
+                                summary = {
+                                    "persona": persona,
+                                    "original_instruction": orig,
+                                    "augmented_instruction": aug,
+                                    "url": url,
+                                    "final_instruction": current_goal,
+                                    "task_steps": task_summarizer,
+                                    "success": False
+                                }
+                                with open(os.path.join(inst_dir, "task_summarizer.json"), "w", encoding="utf-8") as f:
+                                    json.dump(summary, f, indent=2, ensure_ascii=False)
                                 should_continue = False
                                 break
 

@@ -82,7 +82,7 @@ class TaskStep:
 
 task_summarizer = []
 
-def chat_ai_playwright_code(accessibility_tree=None, previous_steps=None, taskGoal=None, taskPlan=None, image_path=None, failed_codes=None, is_deletion_task=False, url=None):
+def chat_ai_playwright_code(accessibility_tree=None, previous_steps=None, taskGoal=None, taskPlan=None, image_path=None, failed_codes=None, is_deletion_task=False, url=None, error_log=None):
     """Get Playwright code directly from GPT to execute the next step.
     
     Args:
@@ -94,6 +94,7 @@ def chat_ai_playwright_code(accessibility_tree=None, previous_steps=None, taskGo
         failed_codes: List of previously failed code attempts
         is_deletion_task: Whether this is a deletion task
         url: The URL of the current page
+        error_log: The error log for the current task
     """
     # Base system message
     if failed_codes and len(failed_codes) > 0:
@@ -145,7 +146,7 @@ def chat_ai_playwright_code(accessibility_tree=None, previous_steps=None, taskGo
                         "content": [
                             {
                                 "type": "text",
-                                "text": f"Task goal: {taskGoal}\nCurrent plan: {taskPlan}\nPrevious steps: {json.dumps(previous_steps, indent=2)}\n\nAccessibility tree: {json.dumps(accessibility_tree, indent=2)}"
+                                "text": f"Task goal: {taskGoal}\nCurrent plan: {taskPlan}\nPrevious steps: {json.dumps(previous_steps, indent=2)}\n\nAccessibility tree: {json.dumps(accessibility_tree, indent=2)}\n\nError log: {error_log if error_log else 'No errors'}"
                             },
                             {
                                 "type": "image_url",

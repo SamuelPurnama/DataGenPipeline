@@ -32,7 +32,7 @@ def generate_instructions(
             f"Imagine you are a {persona} using this website. "
             f"Based on your persona and the image of the current state of the page, generate a list of {num_instructions} distinct instructions that you might give to an assistant for tasks in this website. "
             f"These instructions must be feasible given the current page state and does not involve modifying/deleting content that is not currently present. "
-            f"Vary the complexity of the instructions. "
+            f"Vary the complexity of the instructions."
             f"Return just the list of instructions, no other, no need for quotations, in english."
             f"Example, (but do not include these in your output): "
             f"- Show me the the fastest bus route to the nearest starbucks (google maps)"

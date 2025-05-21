@@ -1,0 +1,553 @@
+{
+  "persona": "A civic-minded resident of the Maryland House of Delegates District 30B, passionate about community engagement",
+  "original_instruction": "Find the quickest driving route from University of Washington to Space Needle",
+  "augmented_instruction": "Search for the quickest driving route from University of Washington to Space Needle.",
+  "final_instruction": "Search for the quickest driving route from University of Washington to Space Needle.",
+  "url": "https://maps.google.com",
+  "task_steps": [
+    {
+      "step": "Click the 'Directions' button to start route planning.",
+      "code": "page.get_by_role('button', name='Directions').click()",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Google Maps",
+        "children": [
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "generic",
+                "name": "Google Maps",
+                "children": [
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "application",
+                    "name": "Map · Use arrow keys to pan the map. · Get details about a place by pressing its corresponding number key."
+                  },
+                  {
+                    "role": "text",
+                    "name": "Search Google Maps"
+                  },
+                  {
+                    "role": "combobox",
+                    "name": "Search Google Maps",
+                    "expanded": true,
+                    "focused": true,
+                    "haspopup": "grid"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Search"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Directions"
+                  },
+                  {
+                    "role": "grid",
+                    "name": "Suggestions",
+                    "children": [
+                      {
+                        "role": "text",
+                        "name": ""
+                      },
+                      {
+                        "role": "text",
+                        "name": "Home"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Set location"
+                      },
+                      {
+                        "role": "text",
+                        "name": ""
+                      },
+                      {
+                        "role": "text",
+                        "name": "Woodland Park Zoo"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Seattle, WA"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Open"
+                      },
+                      {
+                        "role": "text",
+                        "name": " ⋅ Closes 6 PM"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Delete"
+                      },
+                      {
+                        "role": "text",
+                        "name": ""
+                      },
+                      {
+                        "role": "text",
+                        "name": "Green Lake"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Seattle, WA"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Delete"
+                      },
+                      {
+                        "role": "text",
+                        "name": ""
+                      },
+                      {
+                        "role": "text",
+                        "name": "coffee shops"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Delete"
+                      },
+                      {
+                        "role": "text",
+                        "name": ""
+                      },
+                      {
+                        "role": "text",
+                        "name": "University District"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Seattle, WA"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Delete"
+                      },
+                      {
+                        "role": "text",
+                        "name": "More from recent history"
+                      }
+                    ]
+                  },
+                  {
+                    "role": "heading",
+                    "name": "Northeast Seattle",
+                    "level": 1
+                  },
+                  {
+                    "role": "text",
+                    "name": "60°"
+                  },
+                  {
+                    "role": "image",
+                    "name": "Mostly cloudy"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Heavy traffic in this area Slower than usual with delays up to 30 min"
+                  },
+                  {
+                    "role": "generic",
+                    "name": "",
+                    "children": [
+                      {
+                        "role": "button",
+                        "name": "Restaurants"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Hotels"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Things to do"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Museums"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Transit"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Pharmacies"
+                      },
+                      {
+                        "role": "button",
+                        "name": "ATMs"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Next page"
+                      }
+                    ]
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "button",
+                    "name": "Menu"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Saved"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Recents"
+                  },
+                  {
+                    "role": "button",
+                    "name": "27 places Seattle"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Get the app"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Google apps"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Google Account: Samuel Samsudin (kukukud4@gmail.com)"
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "button",
+                    "name": "From your device",
+                    "pressed": false
+                  },
+                  {
+                    "role": "button",
+                    "name": "Zoom in"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Zoom out"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Show Street View coverage"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Show imagery"
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "generic",
+                    "name": "Interactive map"
+                  },
+                  {
+                    "role": "text",
+                    "name": "Layers"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Layers"
+                  },
+                  {
+                    "role": "text",
+                    "name": "Map data ©2025 Google"
+                  },
+                  {
+                    "role": "button",
+                    "name": "United States"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Terms"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Privacy"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Send Product Feedback"
+                  },
+                  {
+                    "role": "button",
+                    "name": "2000 ft"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "step": "Fill in the destination with 'Space Needle' and press Enter to continue searching for the quickest route.",
+      "code": "page.get_by_label('Choose destination, or click on the map...').fill('Space Needle'); page.keyboard.press('Enter')",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Google Maps",
+        "children": [
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "generic",
+                "name": "Google Maps",
+                "children": [
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "application",
+                    "name": "Map · Use arrow keys to pan the map. · Get details about a place by pressing its corresponding number key."
+                  },
+                  {
+                    "role": "radio",
+                    "name": "Best travel modes",
+                    "checked": false
+                  },
+                  {
+                    "role": "radio",
+                    "name": "Driving",
+                    "checked": true
+                  },
+                  {
+                    "role": "radio",
+                    "name": "Transit",
+                    "checked": false
+                  },
+                  {
+                    "role": "radio",
+                    "name": "Walking",
+                    "checked": false
+                  },
+                  {
+                    "role": "radio",
+                    "name": "Cycling",
+                    "checked": false
+                  },
+                  {
+                    "role": "radio",
+                    "name": "Flights",
+                    "checked": false
+                  },
+                  {
+                    "role": "button",
+                    "name": "Close directions"
+                  },
+                  {
+                    "role": "list",
+                    "name": "",
+                    "children": [
+                      {
+                        "role": "combobox",
+                        "name": "",
+                        "haspopup": "grid",
+                        "children": [
+                          {
+                            "role": "textbox",
+                            "name": "Starting point Your location",
+                            "autocomplete": "list",
+                            "value": "Your location"
+                          }
+                        ]
+                      },
+                      {
+                        "role": "button",
+                        "name": "Search"
+                      },
+                      {
+                        "role": "combobox",
+                        "name": "",
+                        "expanded": true,
+                        "haspopup": "grid",
+                        "children": [
+                          {
+                            "role": "textbox",
+                            "name": "Choose destination, or click on the map...",
+                            "focused": true,
+                            "autocomplete": "list"
+                          }
+                        ]
+                      },
+                      {
+                        "role": "button",
+                        "name": "Search"
+                      }
+                    ]
+                  },
+                  {
+                    "role": "button",
+                    "name": "Reverse starting point and destination"
+                  },
+                  {
+                    "role": "generic",
+                    "name": "",
+                    "children": [
+                      {
+                        "role": "generic",
+                        "name": ""
+                      }
+                    ]
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "button",
+                    "name": "Menu"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Saved"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Recents"
+                  },
+                  {
+                    "role": "button",
+                    "name": "27 places Seattle"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Get the app"
+                  },
+                  {
+                    "role": "generic",
+                    "name": "",
+                    "children": [
+                      {
+                        "role": "heading",
+                        "name": "Delays",
+                        "level": 2
+                      },
+                      {
+                        "role": "text",
+                        "name": "Heavy traffic in this area"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Slowdown on I-5 S 30-min delay"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Slowdown on Montlake Blvd NE 8-min delay"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Slowdown on WA-520 W 5-min delay"
+                      }
+                    ]
+                  },
+                  {
+                    "role": "button",
+                    "name": "Collapse side panel"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Google apps"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Google Account: Samuel Samsudin (kukukud4@gmail.com)"
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "button",
+                    "name": "From your device",
+                    "pressed": false
+                  },
+                  {
+                    "role": "button",
+                    "name": "Zoom in"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Zoom out"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Show Street View coverage"
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "generic",
+                    "name": "Interactive map"
+                  },
+                  {
+                    "role": "text",
+                    "name": "Layers"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Layers"
+                  },
+                  {
+                    "role": "text",
+                    "name": "Map data ©2025 Google"
+                  },
+                  {
+                    "role": "button",
+                    "name": "United States"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Terms"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Privacy"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Send Product Feedback"
+                  },
+                  {
+                    "role": "button",
+                    "name": "2000 ft"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "success": true,
+  "output": "The quickest driving route is 18 minutes via NE 40th St and Aurora Ave N."
+}

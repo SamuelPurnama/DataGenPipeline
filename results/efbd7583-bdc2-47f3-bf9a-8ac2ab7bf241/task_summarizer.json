@@ -1,0 +1,2123 @@
+{
+  "persona": "A civic-minded resident of the Maryland House of Delegates District 30B, passionate about community engagement",
+  "original_instruction": "Calculate the walking distance from Volunteer Park Conservatory to the nearest bus stop",
+  "augmented_instruction": "Calculate the walking distance from Volunteer Park Conservatory to the nearest bus stop.",
+  "final_instruction": "Calculate the walking distance from Volunteer Park Conservatory to the nearest bus stop at 10th Ave E & E Galer St.",
+  "url": "https://maps.google.com",
+  "task_steps": [
+    {
+      "step": "Search for 'Volunteer Park Conservatory' in the Google Maps search bar and press Enter",
+      "code": "page.get_by_role('combobox', name='Search Google Maps').fill('Volunteer Park Conservatory'); page.keyboard.press('Enter')",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Google Maps",
+        "children": [
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "generic",
+                "name": "Google Maps",
+                "children": [
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "application",
+                    "name": "Map · Use arrow keys to pan the map. · Get details about a place by pressing its corresponding number key."
+                  },
+                  {
+                    "role": "text",
+                    "name": "Search Google Maps"
+                  },
+                  {
+                    "role": "combobox",
+                    "name": "Search Google Maps",
+                    "expanded": true,
+                    "focused": true,
+                    "haspopup": "grid"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Search"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Directions"
+                  },
+                  {
+                    "role": "grid",
+                    "name": "Suggestions",
+                    "children": [
+                      {
+                        "role": "text",
+                        "name": ""
+                      },
+                      {
+                        "role": "text",
+                        "name": "Home"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Set location"
+                      },
+                      {
+                        "role": "text",
+                        "name": ""
+                      },
+                      {
+                        "role": "text",
+                        "name": "Space Needle"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Space Needle, Broad Street, Seattle, WA"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Open"
+                      },
+                      {
+                        "role": "text",
+                        "name": " ⋅ Closes 9 PM"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Delete"
+                      },
+                      {
+                        "role": "text",
+                        "name": ""
+                      },
+                      {
+                        "role": "text",
+                        "name": "Woodland Park Zoo"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Seattle, WA"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Open"
+                      },
+                      {
+                        "role": "text",
+                        "name": " ⋅ Closes 6 PM"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Delete"
+                      },
+                      {
+                        "role": "text",
+                        "name": ""
+                      },
+                      {
+                        "role": "text",
+                        "name": "Green Lake"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Seattle, WA"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Delete"
+                      },
+                      {
+                        "role": "text",
+                        "name": ""
+                      },
+                      {
+                        "role": "text",
+                        "name": "coffee shops"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Delete"
+                      },
+                      {
+                        "role": "text",
+                        "name": "More from recent history"
+                      }
+                    ]
+                  },
+                  {
+                    "role": "heading",
+                    "name": "Northeast Seattle",
+                    "level": 1
+                  },
+                  {
+                    "role": "text",
+                    "name": "60°"
+                  },
+                  {
+                    "role": "image",
+                    "name": "Mostly cloudy"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Heavy traffic in this area Slower than usual with delays up to 30 min"
+                  },
+                  {
+                    "role": "generic",
+                    "name": "",
+                    "children": [
+                      {
+                        "role": "button",
+                        "name": "Restaurants"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Hotels"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Things to do"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Museums"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Transit"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Pharmacies"
+                      },
+                      {
+                        "role": "button",
+                        "name": "ATMs"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Next page"
+                      }
+                    ]
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "button",
+                    "name": "Menu"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Saved"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Recents"
+                  },
+                  {
+                    "role": "button",
+                    "name": "27 places Seattle"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Get the app"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Google apps"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Google Account: Samuel Samsudin (kukukud4@gmail.com)"
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "button",
+                    "name": "From your device",
+                    "pressed": false
+                  },
+                  {
+                    "role": "button",
+                    "name": "Zoom in"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Zoom out"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Show Street View coverage"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Show imagery"
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "generic",
+                    "name": "Interactive map"
+                  },
+                  {
+                    "role": "text",
+                    "name": "Layers"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Layers"
+                  },
+                  {
+                    "role": "text",
+                    "name": "Map data ©2025 Google"
+                  },
+                  {
+                    "role": "button",
+                    "name": "United States"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Terms"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Privacy"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Send Product Feedback"
+                  },
+                  {
+                    "role": "button",
+                    "name": "2000 ft"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "step": "Click on the 'Nearby' button to search for nearby places from Volunteer Park Conservatory.",
+      "code": "page.get_by_role('button', name='Nearby').click()",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Volunteer Park Conservatory - Google Maps",
+        "children": [
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "generic",
+                "name": "Google Maps",
+                "children": [
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "application",
+                    "name": "Map · Use arrow keys to pan the map. · Get details about a place by pressing its corresponding number key."
+                  },
+                  {
+                    "role": "combobox",
+                    "name": "",
+                    "haspopup": "grid",
+                    "value": "Volunteer Park Conservatory"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Search"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Close"
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "generic",
+                    "name": "",
+                    "children": [
+                      {
+                        "role": "button",
+                        "name": "Restaurants"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Hotels"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Things to do"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Transit"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Parking"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Pharmacies"
+                      },
+                      {
+                        "role": "button",
+                        "name": "ATMs"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Next page"
+                      }
+                    ]
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "button",
+                    "name": "Menu"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Saved"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Recents"
+                  },
+                  {
+                    "role": "button",
+                    "name": "28 places Seattle"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Get the app"
+                  },
+                  {
+                    "role": "generic",
+                    "name": "",
+                    "children": [
+                      {
+                        "role": "button",
+                        "name": "Photo of Volunteer Park Conservatory",
+                        "focused": true
+                      },
+                      {
+                        "role": "button",
+                        "name": "See photos"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Volunteer Park Conservatory",
+                        "level": 1
+                      },
+                      {
+                        "role": "text",
+                        "name": "(1,387)"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Botanical garden"
+                      },
+                      {
+                        "role": "text",
+                        "name": ""
+                      },
+                      {
+                        "role": "tab",
+                        "name": "Overview of Volunteer Park Conservatory",
+                        "selected": true
+                      },
+                      {
+                        "role": "tab",
+                        "name": "Tickets at Volunteer Park Conservatory"
+                      },
+                      {
+                        "role": "tab",
+                        "name": "Reviews for Volunteer Park Conservatory"
+                      },
+                      {
+                        "role": "tab",
+                        "name": "About Volunteer Park Conservatory"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Directions"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Save"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Nearby"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Send to phone"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Share"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Historic Victorian-style greenhouse featuring unique plants, a gift shop & special events."
+                      },
+                      {
+                        "role": "text",
+                        "name": "Sponsored"
+                      },
+                      {
+                        "role": "text",
+                        "name": "·"
+                      },
+                      {
+                        "role": "text",
+                        "name": "By Scavengerhunt.com"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Why this ad?",
+                        "description": "Why this ad?",
+                        "haspopup": "menu"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Seattle Scavenger Hunt Fremonts Funky Scavenger Hunt Fiesta $13  ·  4.9 stars 139 Reviews Free cancellation"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Admission",
+                        "level": 2
+                      },
+                      {
+                        "role": "text",
+                        "name": "About these results"
+                      },
+                      {
+                        "role": "button",
+                        "name": "About these results",
+                        "haspopup": "dialog"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Gives you entry to this place"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Volunteer Park Conservatory Official site $6.00 Additional fees might apply"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Address: 1400 E Galer St, Seattle, WA 98112 "
+                      },
+                      {
+                        "role": "button",
+                        "name": "Copy address"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Located in: Volunteer Park"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Hours Closed ⋅ Opens 10 AM Thu Show open hours for the week"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Website: volunteerparkconservatory.org "
+                      },
+                      {
+                        "role": "link",
+                        "name": "Open website"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Copy website"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Phone: (206) 322-4112 "
+                      },
+                      {
+                        "role": "button",
+                        "name": "Copy phone number"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Call phone number"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Plus code: JMJM+RP Seattle, Washington"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Copy plus code"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Learn more about plus codes"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Your Maps activity"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Add a label"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Suggest an edit"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Updates from customers",
+                        "level": 2
+                      },
+                      {
+                        "role": "button",
+                        "name": "Nursery inside Volunteer Park. Good collection of plants , nice atmosphere. 7 months ago"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Popular times",
+                        "level": 2
+                      },
+                      {
+                        "role": "button",
+                        "name": "Wednesdays  ",
+                        "haspopup": "menu"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Information about Popular Times"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Go to the previous day"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Go to the next day"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Photos & videos",
+                        "level": 2
+                      },
+                      {
+                        "role": "button",
+                        "name": "All"
+                      },
+                      {
+                        "role": "text",
+                        "name": "All"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Latest · 9 days ago"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Latest"
+                      },
+                      {
+                        "role": "text",
+                        "name": "9 days ago"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Videos"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Videos"
+                      },
+                      {
+                        "role": "button",
+                        "name": "South Duck Pond"
+                      },
+                      {
+                        "role": "text",
+                        "name": "South Duck Pond"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Seattle Asian Art Museum"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Seattle Asian Art Museum"
+                      },
+                      {
+                        "role": "button",
+                        "name": "William Henry Seward Statue"
+                      },
+                      {
+                        "role": "text",
+                        "name": "William Henry Seward Statue"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Volunteer Park"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Volunteer Park"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Volunteer Park Reservoir"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Volunteer Park Reservoir"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Black Sun by Isamu Noguchi"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Black Sun by Isamu Noguchi"
+                      },
+                      {
+                        "role": "button",
+                        "name": "By owner"
+                      },
+                      {
+                        "role": "text",
+                        "name": "By owner"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Street View & 360°"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Street View & 360°"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Add photos & videos"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "At this place",
+                        "level": 2
+                      },
+                      {
+                        "role": "button",
+                        "name": "Palm House Gift Shop"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Palm House Gift Shop"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Gift shop"
+                      },
+                      {
+                        "role": "text",
+                        "name": " "
+                      },
+                      {
+                        "role": "text",
+                        "name": " "
+                      },
+                      {
+                        "role": "text",
+                        "name": "Floor 1"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Closed"
+                      },
+                      {
+                        "role": "text",
+                        "name": " ⋅ Opens 10 AM Thu"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Questions and answers",
+                        "level": 2
+                      },
+                      {
+                        "role": "link",
+                        "name": "We are towing a 37 foot fifth wheel. Is there parking for us?",
+                        "children": [
+                          {
+                            "role": "text",
+                            "name": "We are towing a 37 foot fifth wheel. Is there parking for us?"
+                          },
+                          {
+                            "role": "link",
+                            "name": ""
+                          },
+                          {
+                            "role": "text",
+                            "name": "Probably not, unless you're lucky enough to find a long spot along the road through the park."
+                          },
+                          {
+                            "role": "text",
+                            "name": "6 years ago"
+                          },
+                          {
+                            "role": "LineBreak",
+                            "name": "\n"
+                          }
+                        ]
+                      },
+                      {
+                        "role": "button",
+                        "name": "More questions"
+                      },
+                      {
+                        "role": "textbox",
+                        "name": "Ask the community"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Review summary",
+                        "level": 2
+                      },
+                      {
+                        "role": "button",
+                        "name": "More information about the review summary",
+                        "haspopup": "menu"
+                      },
+                      {
+                        "role": "text",
+                        "name": "5"
+                      },
+                      {
+                        "role": "text",
+                        "name": "4"
+                      },
+                      {
+                        "role": "text",
+                        "name": "3"
+                      },
+                      {
+                        "role": "text",
+                        "name": "2"
+                      },
+                      {
+                        "role": "text",
+                        "name": "1"
+                      },
+                      {
+                        "role": "text",
+                        "name": "4.8"
+                      },
+                      {
+                        "role": "button",
+                        "name": "1,387 reviews"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Photo of reviewer who wrote \"Would highly recommend to check out this place if you are in the area.\""
+                      },
+                      {
+                        "role": "button",
+                        "name": "\"Would highly recommend to check out this place if you are in the area.\""
+                      },
+                      {
+                        "role": "link",
+                        "name": "Photo of reviewer who wrote \"All the staff and people encountered were friendly and so enjoyable.\""
+                      },
+                      {
+                        "role": "button",
+                        "name": "\"All the staff and people encountered were friendly and so enjoyable.\""
+                      },
+                      {
+                        "role": "link",
+                        "name": "Photo of reviewer who wrote \"The room with antler air plants hosts a music maker.\""
+                      },
+                      {
+                        "role": "button",
+                        "name": "\"The room with antler air plants hosts a music maker.\""
+                      },
+                      {
+                        "role": "button",
+                        "name": "Write a review"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Reviews",
+                        "level": 2
+                      },
+                      {
+                        "role": "button",
+                        "name": "Search reviews"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Sort reviews"
+                      },
+                      {
+                        "role": "radio",
+                        "name": "All reviews",
+                        "checked": true
+                      },
+                      {
+                        "role": "radio",
+                        "name": "cactus, mentioned in 59 reviews",
+                        "checked": false
+                      },
+                      {
+                        "role": "radio",
+                        "name": "greenhouse, mentioned in 49 reviews",
+                        "checked": false
+                      },
+                      {
+                        "role": "radio",
+                        "name": "gift shop, mentioned in 22 reviews",
+                        "checked": false
+                      },
+                      {
+                        "role": "radio",
+                        "name": "orchids, mentioned in 21 reviews",
+                        "checked": false
+                      },
+                      {
+                        "role": "button",
+                        "name": "View 6 more Topics"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photo of Sindu"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Sindu Local Guide · 467 reviews · 2,194 photos"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Actions for Sindu's review"
+                      },
+                      {
+                        "role": "image",
+                        "name": "4 stars"
+                      },
+                      {
+                        "role": "text",
+                        "name": "a month ago"
+                      },
+                      {
+                        "role": "generic",
+                        "name": "",
+                        "children": [
+                          {
+                            "role": "text",
+                            "name": "I recently visited the conservatory on the first Thursday of April. The conservatory has a bunch of pretty flowers and few cacti. It's was nice to walk around and spend some time here. This is a Victorian-style greenhouse, housing an …"
+                          },
+                          {
+                            "role": "button",
+                            "name": "See more"
+                          }
+                        ]
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photo 1 on Sindu's review"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photo 2 on Sindu's review"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photo 3 on Sindu's review"
+                      },
+                      {
+                        "role": "button",
+                        "name": "+ 26 more photos on Sindu's review"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Like",
+                        "description": "Like",
+                        "pressed": false
+                      },
+                      {
+                        "role": "button",
+                        "name": "Share Sindu's review."
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photo of Haley Brown"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Haley Brown Local Guide · 40 reviews · 245 photos"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Actions for Haley Brown's review"
+                      },
+                      {
+                        "role": "image",
+                        "name": "5 stars"
+                      },
+                      {
+                        "role": "text",
+                        "name": "2 weeks ago"
+                      },
+                      {
+                        "role": "text",
+                        "name": "NEW"
+                      },
+                      {
+                        "role": "generic",
+                        "name": "",
+                        "children": [
+                          {
+                            "role": "text",
+                            "name": "Awesome greenhouse. So many cool plants, some I've never seen, and so many that are very old. Many things were in bloom. I'll definitely come back some time. We went on May 3rd 2025 and there was a plant sale occurring around the back of the greenhouse."
+                          }
+                        ]
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photo 1 on Haley Brown's review"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photo 2 on Haley Brown's review"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Bromeliad flowers"
+                      },
+                      {
+                        "role": "button",
+                        "name": "+ 10 more photos on Haley Brown's review"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Like",
+                        "description": "Like",
+                        "pressed": false
+                      },
+                      {
+                        "role": "button",
+                        "name": "Share Haley Brown's review."
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photo of John Sparks"
+                      },
+                      {
+                        "role": "button",
+                        "name": "John Sparks Local Guide · 90 reviews · 187 photos"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Actions for John Sparks's review"
+                      },
+                      {
+                        "role": "image",
+                        "name": "5 stars"
+                      },
+                      {
+                        "role": "text",
+                        "name": "a week ago"
+                      },
+                      {
+                        "role": "text",
+                        "name": "NEW"
+                      },
+                      {
+                        "role": "generic",
+                        "name": "",
+                        "children": [
+                          {
+                            "role": "text",
+                            "name": "Huge park with lots to do for just about everyone. It has a large British style Art Deko plant conservatory, a Museum of Asian Art, miles of trails amid lawns and flowers, lots of wildlife (ducks, songbirds, rabbits. . . You get the idea! It's definitely worth a visit!"
+                          }
+                        ]
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photo 1 on John Sparks's review"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photo 2 on John Sparks's review"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photo 3 on John Sparks's review"
+                      },
+                      {
+                        "role": "button",
+                        "name": "+ 2 more photos on John Sparks's review"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Like",
+                        "description": "Like",
+                        "pressed": false
+                      },
+                      {
+                        "role": "button",
+                        "name": "Share John Sparks's review."
+                      },
+                      {
+                        "role": "button",
+                        "name": "More reviews (1,384)"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "People also search for",
+                        "level": 2
+                      },
+                      {
+                        "role": "link",
+                        "name": "Volunteer Park · 4.8 stars · 5,266 reviews · City park"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Washington Park Arboretum · 4.8 stars · 7,780 reviews · Botanical garden"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Garden Conservancy Northwest Network · 0.0 stars · Park"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Carl S. English Jr. Botanical Garden · 4.7 stars · 791 reviews · Botanical garden"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Volunteer Park Trust · 0.0 stars · Non-profit organization"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Web results",
+                        "level": 2
+                      },
+                      {
+                        "role": "link",
+                        "name": "About this data"
+                      }
+                    ]
+                  },
+                  {
+                    "role": "button",
+                    "name": "Collapse side panel"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Google apps"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Google Account: Samuel Samsudin (kukukud4@gmail.com)"
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "button",
+                    "name": "From your device",
+                    "pressed": false
+                  },
+                  {
+                    "role": "button",
+                    "name": "Zoom in"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Zoom out"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Show Street View coverage"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Street View"
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "generic",
+                    "name": "Interactive map"
+                  },
+                  {
+                    "role": "text",
+                    "name": "Layers"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Layers"
+                  },
+                  {
+                    "role": "text",
+                    "name": "Map data ©2025 Google"
+                  },
+                  {
+                    "role": "button",
+                    "name": "United States"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Terms"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Privacy"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Send Product Feedback"
+                  },
+                  {
+                    "role": "button",
+                    "name": "200 ft"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "step": "Enter 'bus stops' in the search nearby text box to find the nearest bus stop to Volunteer Park Conservatory.",
+      "code": "page.get_by_role('combobox', name='Search nearby Volunteer Park Conservatory').fill('bus stops'); page.keyboard.press('Enter')",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Volunteer Park Conservatory - Google Maps",
+        "children": [
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "generic",
+                "name": "Google Maps",
+                "children": [
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "application",
+                    "name": "Map · Use arrow keys to pan the map. · Get details about a place by pressing its corresponding number key."
+                  },
+                  {
+                    "role": "text",
+                    "name": "Search nearby Volunteer Park Conservatory"
+                  },
+                  {
+                    "role": "combobox",
+                    "name": "Search nearby Volunteer Park Conservatory",
+                    "expanded": true,
+                    "focused": true,
+                    "haspopup": "grid"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Search"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Cancel search nearby"
+                  },
+                  {
+                    "role": "grid",
+                    "name": "Suggestions"
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "button",
+                    "name": "Menu"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Saved"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Recents"
+                  },
+                  {
+                    "role": "button",
+                    "name": "28 places Seattle"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Get the app"
+                  },
+                  {
+                    "role": "generic",
+                    "name": "",
+                    "children": [
+                      {
+                        "role": "button",
+                        "name": "Photo of Volunteer Park Conservatory"
+                      },
+                      {
+                        "role": "button",
+                        "name": "See photos"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Volunteer Park Conservatory",
+                        "level": 1
+                      },
+                      {
+                        "role": "text",
+                        "name": "(1,387)"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Botanical garden"
+                      },
+                      {
+                        "role": "text",
+                        "name": ""
+                      },
+                      {
+                        "role": "tab",
+                        "name": "Overview of Volunteer Park Conservatory",
+                        "selected": true
+                      },
+                      {
+                        "role": "tab",
+                        "name": "Tickets at Volunteer Park Conservatory"
+                      },
+                      {
+                        "role": "tab",
+                        "name": "Reviews for Volunteer Park Conservatory"
+                      },
+                      {
+                        "role": "tab",
+                        "name": "About Volunteer Park Conservatory"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Directions"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Save"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Nearby",
+                        "pressed": true
+                      },
+                      {
+                        "role": "button",
+                        "name": "Send to phone"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Share"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Historic Victorian-style greenhouse featuring unique plants, a gift shop & special events."
+                      },
+                      {
+                        "role": "text",
+                        "name": "Sponsored"
+                      },
+                      {
+                        "role": "text",
+                        "name": "·"
+                      },
+                      {
+                        "role": "text",
+                        "name": "By Let's Roam"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Why this ad?",
+                        "description": "Why this ad?",
+                        "haspopup": "menu"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Seattle Scavenger Hunt Fremonts Funky Scavenger Hunt Fiesta $13  ·  4.9 stars 139 Reviews Free cancellation"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Admission",
+                        "level": 2
+                      },
+                      {
+                        "role": "text",
+                        "name": "About these results"
+                      },
+                      {
+                        "role": "button",
+                        "name": "About these results",
+                        "haspopup": "dialog"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Gives you entry to this place"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Volunteer Park Conservatory Official site $6.00 Additional fees might apply"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Address: 1400 E Galer St, Seattle, WA 98112 "
+                      },
+                      {
+                        "role": "button",
+                        "name": "Copy address"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Located in: Volunteer Park"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Hours Closed ⋅ Opens 10 AM Thu Show open hours for the week"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Website: volunteerparkconservatory.org "
+                      },
+                      {
+                        "role": "link",
+                        "name": "Open website"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Copy website"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Phone: (206) 322-4112 "
+                      },
+                      {
+                        "role": "button",
+                        "name": "Copy phone number"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Call phone number"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Plus code: JMJM+RP Seattle, Washington"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Copy plus code"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Learn more about plus codes"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Your Maps activity"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Add a label"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Suggest an edit"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Updates from customers",
+                        "level": 2
+                      },
+                      {
+                        "role": "button",
+                        "name": "Nursery inside Volunteer Park. Good collection of plants , nice atmosphere. 7 months ago"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Popular times",
+                        "level": 2
+                      },
+                      {
+                        "role": "button",
+                        "name": "Wednesdays  ",
+                        "haspopup": "menu"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Information about Popular Times"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Go to the previous day"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Go to the next day"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Photos & videos",
+                        "level": 2
+                      },
+                      {
+                        "role": "button",
+                        "name": "All"
+                      },
+                      {
+                        "role": "text",
+                        "name": "All"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Latest · 9 days ago"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Latest"
+                      },
+                      {
+                        "role": "text",
+                        "name": "9 days ago"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Videos"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Videos"
+                      },
+                      {
+                        "role": "button",
+                        "name": "South Duck Pond"
+                      },
+                      {
+                        "role": "text",
+                        "name": "South Duck Pond"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Seattle Asian Art Museum"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Seattle Asian Art Museum"
+                      },
+                      {
+                        "role": "button",
+                        "name": "William Henry Seward Statue"
+                      },
+                      {
+                        "role": "text",
+                        "name": "William Henry Seward Statue"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Volunteer Park"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Volunteer Park"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Volunteer Park Reservoir"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Volunteer Park Reservoir"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Black Sun by Isamu Noguchi"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Black Sun by Isamu Noguchi"
+                      },
+                      {
+                        "role": "button",
+                        "name": "By owner"
+                      },
+                      {
+                        "role": "text",
+                        "name": "By owner"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Street View & 360°"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Street View & 360°"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Add photos & videos"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "At this place",
+                        "level": 2
+                      },
+                      {
+                        "role": "button",
+                        "name": "Palm House Gift Shop"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Palm House Gift Shop"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Gift shop"
+                      },
+                      {
+                        "role": "text",
+                        "name": " "
+                      },
+                      {
+                        "role": "text",
+                        "name": " "
+                      },
+                      {
+                        "role": "text",
+                        "name": "Floor 1"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Closed"
+                      },
+                      {
+                        "role": "text",
+                        "name": " ⋅ Opens 10 AM Thu"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Questions and answers",
+                        "level": 2
+                      },
+                      {
+                        "role": "link",
+                        "name": "We are towing a 37 foot fifth wheel. Is there parking for us?",
+                        "children": [
+                          {
+                            "role": "text",
+                            "name": "We are towing a 37 foot fifth wheel. Is there parking for us?"
+                          },
+                          {
+                            "role": "link",
+                            "name": ""
+                          },
+                          {
+                            "role": "text",
+                            "name": "Probably not, unless you're lucky enough to find a long spot along the road through the park."
+                          },
+                          {
+                            "role": "text",
+                            "name": "6 years ago"
+                          },
+                          {
+                            "role": "LineBreak",
+                            "name": "\n"
+                          }
+                        ]
+                      },
+                      {
+                        "role": "button",
+                        "name": "More questions"
+                      },
+                      {
+                        "role": "textbox",
+                        "name": "Ask the community"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Review summary",
+                        "level": 2
+                      },
+                      {
+                        "role": "button",
+                        "name": "More information about the review summary",
+                        "haspopup": "menu"
+                      },
+                      {
+                        "role": "text",
+                        "name": "5"
+                      },
+                      {
+                        "role": "text",
+                        "name": "4"
+                      },
+                      {
+                        "role": "text",
+                        "name": "3"
+                      },
+                      {
+                        "role": "text",
+                        "name": "2"
+                      },
+                      {
+                        "role": "text",
+                        "name": "1"
+                      },
+                      {
+                        "role": "text",
+                        "name": "4.8"
+                      },
+                      {
+                        "role": "button",
+                        "name": "1,387 reviews"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Photo of reviewer who wrote \"Would highly recommend to check out this place if you are in the area.\""
+                      },
+                      {
+                        "role": "button",
+                        "name": "\"Would highly recommend to check out this place if you are in the area.\""
+                      },
+                      {
+                        "role": "link",
+                        "name": "Photo of reviewer who wrote \"All the staff and people encountered were friendly and so enjoyable.\""
+                      },
+                      {
+                        "role": "button",
+                        "name": "\"All the staff and people encountered were friendly and so enjoyable.\""
+                      },
+                      {
+                        "role": "link",
+                        "name": "Photo of reviewer who wrote \"The room with antler air plants hosts a music maker.\""
+                      },
+                      {
+                        "role": "button",
+                        "name": "\"The room with antler air plants hosts a music maker.\""
+                      },
+                      {
+                        "role": "button",
+                        "name": "Write a review"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Reviews",
+                        "level": 2
+                      },
+                      {
+                        "role": "button",
+                        "name": "Search reviews"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Sort reviews"
+                      },
+                      {
+                        "role": "radio",
+                        "name": "All reviews",
+                        "checked": true
+                      },
+                      {
+                        "role": "radio",
+                        "name": "cactus, mentioned in 59 reviews",
+                        "checked": false
+                      },
+                      {
+                        "role": "radio",
+                        "name": "greenhouse, mentioned in 49 reviews",
+                        "checked": false
+                      },
+                      {
+                        "role": "radio",
+                        "name": "gift shop, mentioned in 22 reviews",
+                        "checked": false
+                      },
+                      {
+                        "role": "radio",
+                        "name": "orchids, mentioned in 21 reviews",
+                        "checked": false
+                      },
+                      {
+                        "role": "button",
+                        "name": "View 6 more Topics"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photo of Sindu"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Sindu Local Guide · 467 reviews · 2,194 photos"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Actions for Sindu's review"
+                      },
+                      {
+                        "role": "image",
+                        "name": "4 stars"
+                      },
+                      {
+                        "role": "text",
+                        "name": "a month ago"
+                      },
+                      {
+                        "role": "generic",
+                        "name": "",
+                        "children": [
+                          {
+                            "role": "text",
+                            "name": "I recently visited the conservatory on the first Thursday of April. The conservatory has a bunch of pretty flowers and few cacti. It's was nice to walk around and spend some time here. This is a Victorian-style greenhouse, housing an …"
+                          },
+                          {
+                            "role": "button",
+                            "name": "See more"
+                          }
+                        ]
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photo 1 on Sindu's review"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photo 2 on Sindu's review"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photo 3 on Sindu's review"
+                      },
+                      {
+                        "role": "button",
+                        "name": "+ 26 more photos on Sindu's review"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Like",
+                        "description": "Like",
+                        "pressed": false
+                      },
+                      {
+                        "role": "button",
+                        "name": "Share Sindu's review."
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photo of Haley Brown"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Haley Brown Local Guide · 40 reviews · 245 photos"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Actions for Haley Brown's review"
+                      },
+                      {
+                        "role": "image",
+                        "name": "5 stars"
+                      },
+                      {
+                        "role": "text",
+                        "name": "2 weeks ago"
+                      },
+                      {
+                        "role": "text",
+                        "name": "NEW"
+                      },
+                      {
+                        "role": "generic",
+                        "name": "",
+                        "children": [
+                          {
+                            "role": "text",
+                            "name": "Awesome greenhouse. So many cool plants, some I've never seen, and so many that are very old. Many things were in bloom. I'll definitely come back some time. We went on May 3rd 2025 and there was a plant sale occurring around the back of the greenhouse."
+                          }
+                        ]
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photo 1 on Haley Brown's review"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photo 2 on Haley Brown's review"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Bromeliad flowers"
+                      },
+                      {
+                        "role": "button",
+                        "name": "+ 10 more photos on Haley Brown's review"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Like",
+                        "description": "Like",
+                        "pressed": false
+                      },
+                      {
+                        "role": "button",
+                        "name": "Share Haley Brown's review."
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photo of John Sparks"
+                      },
+                      {
+                        "role": "button",
+                        "name": "John Sparks Local Guide · 90 reviews · 187 photos"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Actions for John Sparks's review"
+                      },
+                      {
+                        "role": "image",
+                        "name": "5 stars"
+                      },
+                      {
+                        "role": "text",
+                        "name": "a week ago"
+                      },
+                      {
+                        "role": "text",
+                        "name": "NEW"
+                      },
+                      {
+                        "role": "generic",
+                        "name": "",
+                        "children": [
+                          {
+                            "role": "text",
+                            "name": "Huge park with lots to do for just about everyone. It has a large British style Art Deko plant conservatory, a Museum of Asian Art, miles of trails amid lawns and flowers, lots of wildlife (ducks, songbirds, rabbits. . . You get the idea! It's definitely worth a visit!"
+                          }
+                        ]
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photo 1 on John Sparks's review"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photo 2 on John Sparks's review"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photo 3 on John Sparks's review"
+                      },
+                      {
+                        "role": "button",
+                        "name": "+ 2 more photos on John Sparks's review"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Like",
+                        "description": "Like",
+                        "pressed": false
+                      },
+                      {
+                        "role": "button",
+                        "name": "Share John Sparks's review."
+                      },
+                      {
+                        "role": "button",
+                        "name": "More reviews (1,384)"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "People also search for",
+                        "level": 2
+                      },
+                      {
+                        "role": "link",
+                        "name": "Volunteer Park · 4.8 stars · 5,266 reviews · City park"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Washington Park Arboretum · 4.8 stars · 7,780 reviews · Botanical garden"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Garden Conservancy Northwest Network · 0.0 stars · Park"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Carl S. English Jr. Botanical Garden · 4.7 stars · 791 reviews · Botanical garden"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Volunteer Park Trust · 0.0 stars · Non-profit organization"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Web results",
+                        "level": 2
+                      },
+                      {
+                        "role": "link",
+                        "name": "About this data"
+                      }
+                    ]
+                  },
+                  {
+                    "role": "button",
+                    "name": "Collapse side panel"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Google apps"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Google Account: Samuel Samsudin (kukukud4@gmail.com)"
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "generic",
+                    "name": "",
+                    "children": [
+                      {
+                        "role": "button",
+                        "name": "15 min",
+                        "haspopup": "menu"
+                      },
+                      {
+                        "role": "radio",
+                        "name": "Walking",
+                        "checked": true
+                      },
+                      {
+                        "role": "radio",
+                        "name": "Driving",
+                        "checked": false
+                      },
+                      {
+                        "role": "text",
+                        "name": "Zoom out to see walk time"
+                      },
+                      {
+                        "role": "switch",
+                        "name": "Turn off travel time tool",
+                        "checked": true
+                      }
+                    ]
+                  },
+                  {
+                    "role": "button",
+                    "name": "From your device",
+                    "pressed": false
+                  },
+                  {
+                    "role": "button",
+                    "name": "Zoom in"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Zoom out"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Show Street View coverage"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Street View"
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "generic",
+                    "name": "Interactive map"
+                  },
+                  {
+                    "role": "text",
+                    "name": "Layers"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Layers"
+                  },
+                  {
+                    "role": "text",
+                    "name": "Map data ©2025 Google"
+                  },
+                  {
+                    "role": "button",
+                    "name": "United States"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Terms"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Privacy"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Send Product Feedback"
+                  },
+                  {
+                    "role": "button",
+                    "name": "200 ft"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "success": true,
+  "output": "Walking distance is 0.4 miles and takes approximately 8 minutes."
+}

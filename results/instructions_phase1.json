@@ -3437,5 +3437,41 @@
       "Create a new calendar titled \"Delivery Schedules\" under My Calendars.",
       "Schedule a \"Team Meeting\" on May 15th at 3 PM and invite participants."
     ]
+  },
+  {
+    "persona": "A civic-minded resident of the Maryland House of Delegates District 30B, passionate about community engagement",
+    "url": "https://maps.google.com",
+    "instructions": [
+      "Find the quickest driving route from University of Washington to Space Needle",
+      "Search for nearby coffee shops in the Capitol Hill area",
+      "Calculate the walking distance from Volunteer Park Conservatory to the nearest bus stop",
+      "Locate the nearest grocery store to Wallingford and provide directions from Trader Joe's",
+      "Identify public transportation options from Green Lake to Downtown Seattle"
+    ],
+    "augmented_instructions": [
+      "Search for the quickest driving route from University of Washington to Space Needle.",
+      "Search for nearby coffee shops in the Capitol Hill area.",
+      "Calculate the walking distance from Volunteer Park Conservatory to the nearest bus stop.",
+      "Locate the nearest grocery store to Wallingford and provide driving directions from Trader Joe's.",
+      "Identify public transportation options from Green Lake to Downtown Seattle."
+    ]
+  },
+  {
+    "persona": "An expatriate who moved to the UK and has witnessed firsthand the effects of Brexit on their daily life",
+    "url": "https://maps.google.com",
+    "instructions": [
+      "Find directions from University District to the Space Needle using public transport",
+      "Locate and display the nearest grocery stores around Capitol Hill",
+      "Check current traffic conditions on I-5 South",
+      "Save the location of Woodland Park Zoo for future reference",
+      "Identify and list coffee shops near Green Lake"
+    ],
+    "augmented_instructions": [
+      "Search for public transport directions from University District to Space Needle.",
+      "Search for and display nearest grocery stores around Capitol Hill.",
+      "Check traffic conditions on the I-5 South route to seatac airport.",
+      "Save Woodland Park Zoo location.",
+      "List coffee shops near Green Lake."
+    ]
   }
 ]

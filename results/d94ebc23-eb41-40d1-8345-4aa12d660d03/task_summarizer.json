@@ -1,0 +1,967 @@
+{
+  "persona": "An expatriate who moved to the UK and has witnessed firsthand the effects of Brexit on their daily life",
+  "original_instruction": "Identify and list coffee shops near Green Lake",
+  "augmented_instruction": "List coffee shops near Green Lake.",
+  "final_instruction": "List coffee shops near Green Lake.",
+  "url": "https://maps.google.com",
+  "task_steps": [
+    {
+      "step": "Fill the search box with 'Green Lake' and press Enter to find its location.",
+      "code": "page.get_by_role('combobox', name='Search Google Maps').fill('Green Lake'); page.keyboard.press('Enter')",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Google Maps",
+        "children": [
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "generic",
+                "name": "Google Maps",
+                "children": [
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "application",
+                    "name": "Map · Use arrow keys to pan the map. · Get details about a place by pressing its corresponding number key."
+                  },
+                  {
+                    "role": "text",
+                    "name": "Search Google Maps"
+                  },
+                  {
+                    "role": "combobox",
+                    "name": "Search Google Maps",
+                    "expanded": true,
+                    "focused": true,
+                    "haspopup": "grid"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Search"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Directions"
+                  },
+                  {
+                    "role": "grid",
+                    "name": "Suggestions",
+                    "children": [
+                      {
+                        "role": "text",
+                        "name": ""
+                      },
+                      {
+                        "role": "text",
+                        "name": "Home"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Set location"
+                      },
+                      {
+                        "role": "text",
+                        "name": ""
+                      },
+                      {
+                        "role": "text",
+                        "name": "Woodland Park Zoo"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Seattle, WA"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Open"
+                      },
+                      {
+                        "role": "text",
+                        "name": " ⋅ Closes 6 PM"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Delete"
+                      },
+                      {
+                        "role": "text",
+                        "name": ""
+                      },
+                      {
+                        "role": "text",
+                        "name": "University District"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Seattle, WA"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Delete"
+                      },
+                      {
+                        "role": "text",
+                        "name": ""
+                      },
+                      {
+                        "role": "text",
+                        "name": "Space Needle"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Space Needle, Broad Street, Seattle, WA"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Open"
+                      },
+                      {
+                        "role": "text",
+                        "name": " ⋅ Closes 9 PM"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Delete"
+                      },
+                      {
+                        "role": "text",
+                        "name": ""
+                      },
+                      {
+                        "role": "text",
+                        "name": "Interstate 5 Express"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Seattle, WA"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Delete"
+                      },
+                      {
+                        "role": "text",
+                        "name": "More from recent history"
+                      }
+                    ]
+                  },
+                  {
+                    "role": "heading",
+                    "name": "Northeast Seattle",
+                    "level": 1
+                  },
+                  {
+                    "role": "text",
+                    "name": "60°"
+                  },
+                  {
+                    "role": "image",
+                    "name": "Mostly cloudy"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Heavy traffic in this area Slower than usual with delays up to 30 min"
+                  },
+                  {
+                    "role": "generic",
+                    "name": "",
+                    "children": [
+                      {
+                        "role": "button",
+                        "name": "Restaurants"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Hotels"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Things to do"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Museums"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Transit"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Pharmacies"
+                      },
+                      {
+                        "role": "button",
+                        "name": "ATMs"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Next page"
+                      }
+                    ]
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "button",
+                    "name": "Menu"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Saved"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Recents"
+                  },
+                  {
+                    "role": "button",
+                    "name": "26 places Seattle"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Get the app"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Google apps"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Google Account: Samuel Samsudin (kukukud4@gmail.com)"
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "button",
+                    "name": "From your device",
+                    "pressed": false
+                  },
+                  {
+                    "role": "button",
+                    "name": "Zoom in"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Zoom out"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Show Street View coverage"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Show imagery"
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "generic",
+                    "name": "Interactive map"
+                  },
+                  {
+                    "role": "text",
+                    "name": "Layers"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Layers"
+                  },
+                  {
+                    "role": "text",
+                    "name": "Map data ©2025 Google"
+                  },
+                  {
+                    "role": "button",
+                    "name": "United States"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Terms"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Privacy"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Send Product Feedback"
+                  },
+                  {
+                    "role": "button",
+                    "name": "2000 ft"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "step": "Click the 'Nearby' button to search for coffee shops around Green Lake.",
+      "code": "page.get_by_role('button', name='Nearby').click()",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Green Lake - Google Maps",
+        "children": [
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "generic",
+                "name": "Google Maps",
+                "children": [
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "application",
+                    "name": "Map · Use arrow keys to pan the map. · Get details about a place by pressing its corresponding number key."
+                  },
+                  {
+                    "role": "combobox",
+                    "name": "",
+                    "haspopup": "grid",
+                    "value": "Green Lake"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Search"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Close"
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "generic",
+                    "name": "",
+                    "children": [
+                      {
+                        "role": "button",
+                        "name": "Restaurants"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Hotels"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Things to do"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Museums"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Transit"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Pharmacies"
+                      },
+                      {
+                        "role": "button",
+                        "name": "ATMs"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Next page"
+                      }
+                    ]
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "button",
+                    "name": "Menu"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Saved"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Recents"
+                  },
+                  {
+                    "role": "button",
+                    "name": "27 places Seattle"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Get the app"
+                  },
+                  {
+                    "role": "generic",
+                    "name": "",
+                    "children": [
+                      {
+                        "role": "button",
+                        "name": "",
+                        "focused": true
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Green Lake",
+                        "level": 1
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Seattle, WA",
+                        "level": 2
+                      },
+                      {
+                        "role": "link",
+                        "name": "Seattle, WA weather weather"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Mostly cloudy · 59°F"
+                      },
+                      {
+                        "role": "text",
+                        "name": "4:06 PM"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Directions"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Save"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Nearby"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Send to phone"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Share"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Quick facts",
+                        "level": 2
+                      },
+                      {
+                        "role": "generic",
+                        "name": "",
+                        "children": [
+                          {
+                            "role": "text",
+                            "name": "Green Lake is a neighborhood in north central Seattle, Washington. Its centerpiece is the lake and park after which it is named."
+                          },
+                          {
+                            "role": "link",
+                            "name": "Wikipedia"
+                          }
+                        ]
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Hotels",
+                        "level": 2
+                      },
+                      {
+                        "role": "link",
+                        "name": "Travelodge by Wyndham Seattle North of Downtown · $77 · 3.2 stars · 462 reviews · 2-star hotel"
+                      },
+                      {
+                        "role": "link",
+                        "name": "University Inn - A Staypineapple Hotel · $161 · 4.4 stars · 1,052 reviews · 3-star hotel"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Watertown Hotel - A Staypineapple Hotel · $187 · 4.6 stars · 1,112 reviews · 3-star hotel"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Days Inn by Wyndham Seattle North of Downtown · $90 · 3.1 stars · 461 reviews · 2-star hotel"
+                      },
+                      {
+                        "role": "button",
+                        "name": "View more hotels"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Vacation rentals",
+                        "level": 2
+                      },
+                      {
+                        "role": "link",
+                        "name": "Cozy Townhome Steps from Green Lake Park · $304 · Cottage · Sleeps 4"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Cozy retreat short walk to Green Lake with home gym, office, fenced-in yard · $298 · Cottage · Sleeps 8"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Gorgeous Eco-Friendly Home in Green Lake · $373 · Cottage · Sleeps 4"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Trendy Green Lake View Retreat · $374 · House · Sleeps 9"
+                      },
+                      {
+                        "role": "button",
+                        "name": "View more properties"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Photos",
+                        "level": 2
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photos"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Street View"
+                      }
+                    ]
+                  },
+                  {
+                    "role": "button",
+                    "name": "Collapse side panel"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Google apps"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Google Account: Samuel Samsudin (kukukud4@gmail.com)"
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "button",
+                    "name": "From your device",
+                    "pressed": false
+                  },
+                  {
+                    "role": "button",
+                    "name": "Zoom in"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Zoom out"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Show Street View coverage"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Street View"
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "generic",
+                    "name": "Interactive map"
+                  },
+                  {
+                    "role": "text",
+                    "name": "Layers"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Layers"
+                  },
+                  {
+                    "role": "text",
+                    "name": "Map data ©2025 Google"
+                  },
+                  {
+                    "role": "button",
+                    "name": "United States"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Terms"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Privacy"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Send Product Feedback"
+                  },
+                  {
+                    "role": "button",
+                    "name": "2000 ft"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "step": "Enter 'coffee shops' in the 'Search nearby Green Lake' box and press Enter.",
+      "code": "page.get_by_role('combobox', name='Search nearby Green Lake').fill('coffee shops'); page.keyboard.press('Enter')",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Green Lake - Google Maps",
+        "children": [
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "generic",
+                "name": "Google Maps",
+                "children": [
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "application",
+                    "name": "Map · Use arrow keys to pan the map. · Get details about a place by pressing its corresponding number key."
+                  },
+                  {
+                    "role": "text",
+                    "name": "Search nearby Green Lake"
+                  },
+                  {
+                    "role": "combobox",
+                    "name": "Search nearby Green Lake",
+                    "expanded": true,
+                    "focused": true,
+                    "haspopup": "grid"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Search"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Cancel search nearby"
+                  },
+                  {
+                    "role": "grid",
+                    "name": "Suggestions"
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "button",
+                    "name": "Menu"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Saved"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Recents"
+                  },
+                  {
+                    "role": "button",
+                    "name": "27 places Seattle"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Get the app"
+                  },
+                  {
+                    "role": "generic",
+                    "name": "",
+                    "children": [
+                      {
+                        "role": "button",
+                        "name": ""
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Green Lake",
+                        "level": 1
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Seattle, WA",
+                        "level": 2
+                      },
+                      {
+                        "role": "link",
+                        "name": "Seattle, WA weather weather"
+                      },
+                      {
+                        "role": "text",
+                        "name": "Mostly cloudy · 59°F"
+                      },
+                      {
+                        "role": "text",
+                        "name": "4:06 PM"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Directions"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Save"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Nearby",
+                        "pressed": true
+                      },
+                      {
+                        "role": "button",
+                        "name": "Send to phone"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Share"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Quick facts",
+                        "level": 2
+                      },
+                      {
+                        "role": "generic",
+                        "name": "",
+                        "children": [
+                          {
+                            "role": "text",
+                            "name": "Green Lake is a neighborhood in north central Seattle, Washington. Its centerpiece is the lake and park after which it is named."
+                          },
+                          {
+                            "role": "link",
+                            "name": "Wikipedia"
+                          }
+                        ]
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Hotels",
+                        "level": 2
+                      },
+                      {
+                        "role": "link",
+                        "name": "Travelodge by Wyndham Seattle North of Downtown · $77 · 3.2 stars · 462 reviews · 2-star hotel"
+                      },
+                      {
+                        "role": "link",
+                        "name": "University Inn - A Staypineapple Hotel · $161 · 4.4 stars · 1,052 reviews · 3-star hotel"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Watertown Hotel - A Staypineapple Hotel · $187 · 4.6 stars · 1,112 reviews · 3-star hotel"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Days Inn by Wyndham Seattle North of Downtown · $90 · 3.1 stars · 461 reviews · 2-star hotel"
+                      },
+                      {
+                        "role": "button",
+                        "name": "View more hotels"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Vacation rentals",
+                        "level": 2
+                      },
+                      {
+                        "role": "link",
+                        "name": "Cozy Townhome Steps from Green Lake Park · $304 · Cottage · Sleeps 4"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Cozy retreat short walk to Green Lake with home gym, office, fenced-in yard · $298 · Cottage · Sleeps 8"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Gorgeous Eco-Friendly Home in Green Lake · $373 · Cottage · Sleeps 4"
+                      },
+                      {
+                        "role": "link",
+                        "name": "Trendy Green Lake View Retreat · $374 · House · Sleeps 9"
+                      },
+                      {
+                        "role": "button",
+                        "name": "View more properties"
+                      },
+                      {
+                        "role": "heading",
+                        "name": "Photos",
+                        "level": 2
+                      },
+                      {
+                        "role": "button",
+                        "name": "Photos"
+                      },
+                      {
+                        "role": "button",
+                        "name": "Street View"
+                      }
+                    ]
+                  },
+                  {
+                    "role": "button",
+                    "name": "Collapse side panel"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Google apps"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Google Account: Samuel Samsudin (kukukud4@gmail.com)"
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "generic",
+                    "name": "",
+                    "children": [
+                      {
+                        "role": "button",
+                        "name": "15 min",
+                        "haspopup": "menu"
+                      },
+                      {
+                        "role": "radio",
+                        "name": "Walking",
+                        "checked": true
+                      },
+                      {
+                        "role": "radio",
+                        "name": "Driving",
+                        "checked": false
+                      },
+                      {
+                        "role": "text",
+                        "name": "Zoom in to see walk time"
+                      },
+                      {
+                        "role": "switch",
+                        "name": "Turn off travel time tool",
+                        "checked": true
+                      }
+                    ]
+                  },
+                  {
+                    "role": "button",
+                    "name": "From your device",
+                    "pressed": false
+                  },
+                  {
+                    "role": "button",
+                    "name": "Zoom in"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Zoom out"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Show Street View coverage"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Street View"
+                  },
+                  {
+                    "role": "generic",
+                    "name": ""
+                  },
+                  {
+                    "role": "generic",
+                    "name": "Interactive map"
+                  },
+                  {
+                    "role": "text",
+                    "name": "Layers"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Layers"
+                  },
+                  {
+                    "role": "text",
+                    "name": "Map data ©2025 Google"
+                  },
+                  {
+                    "role": "button",
+                    "name": "United States"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Terms"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Privacy"
+                  },
+                  {
+                    "role": "button",
+                    "name": "Send Product Feedback"
+                  },
+                  {
+                    "role": "button",
+                    "name": "2000 ft"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "success": true,
+  "output": "Nearby coffee shops include Distant Worlds Coffeehouse, Grateful Bread, and One Bite Cafe - Seattle."
+}
