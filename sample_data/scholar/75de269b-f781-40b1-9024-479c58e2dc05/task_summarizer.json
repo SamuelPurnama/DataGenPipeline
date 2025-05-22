@@ -1,0 +1,1387 @@
+{
+  "persona": "A struggling young author from Bangladesh in his mid-20s who is passionate about his country's history and the distinguished personalities in it.",
+  "original_instruction": "Find recent papers about distinguished Bengali authors and their contributions to literature",
+  "augmented_instruction": "Search for recent papers on distinguished Bengali authors and their contributions to literature.",
+  "final_instruction": "Search for recent papers on distinguished Bengali authors and their contributions to literature since 2021",
+  "url": "https://scholar.google.com",
+  "task_steps": [
+    {
+      "step": "Enter the search query 'distinguished Bengali authors and their contributions to literature' in the search bar",
+      "code": "page.get_by_role('textbox', name='Search').fill('distinguished Bengali authors and their contributions to literature')",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Google Scholar",
+        "children": [
+          {
+            "role": "button",
+            "name": ""
+          },
+          {
+            "role": "link",
+            "name": "My profile"
+          },
+          {
+            "role": "link",
+            "name": "My library"
+          },
+          {
+            "role": "textbox",
+            "name": "Search",
+            "focused": true
+          },
+          {
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "role": "button",
+            "name": "Samuel",
+            "haspopup": "menu"
+          },
+          {
+            "role": "radio",
+            "name": "Articles",
+            "checked": true
+          },
+          {
+            "role": "text",
+            "name": "Articles"
+          },
+          {
+            "role": "radio",
+            "name": "Case law",
+            "checked": false
+          },
+          {
+            "role": "text",
+            "name": "Case law"
+          },
+          {
+            "role": "text",
+            "name": "Stand on the shoulders of giants"
+          },
+          {
+            "role": "button",
+            "name": "EN"
+          },
+          {
+            "role": "link",
+            "name": "Privacy"
+          },
+          {
+            "role": "link",
+            "name": "Terms"
+          },
+          {
+            "role": "button",
+            "name": "Help",
+            "haspopup": "menu"
+          }
+        ]
+      }
+    },
+    {
+      "step": "Submit the search form by pressing Enter",
+      "code": "page.keyboard.press('Enter')",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Google Scholar",
+        "children": [
+          {
+            "role": "button",
+            "name": ""
+          },
+          {
+            "role": "link",
+            "name": "My profile"
+          },
+          {
+            "role": "link",
+            "name": "My library"
+          },
+          {
+            "role": "textbox",
+            "name": "Search",
+            "focused": true,
+            "value": "distinguished Bengali authors and their contributions to literature"
+          },
+          {
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "role": "button",
+            "name": "Samuel",
+            "haspopup": "menu"
+          },
+          {
+            "role": "radio",
+            "name": "Articles",
+            "checked": true
+          },
+          {
+            "role": "text",
+            "name": "Articles"
+          },
+          {
+            "role": "radio",
+            "name": "Case law",
+            "checked": false
+          },
+          {
+            "role": "text",
+            "name": "Case law"
+          },
+          {
+            "role": "text",
+            "name": "Stand on the shoulders of giants"
+          },
+          {
+            "role": "button",
+            "name": "EN"
+          },
+          {
+            "role": "link",
+            "name": "Privacy"
+          },
+          {
+            "role": "link",
+            "name": "Terms"
+          },
+          {
+            "role": "button",
+            "name": "Help",
+            "haspopup": "menu"
+          }
+        ]
+      }
+    },
+    {
+      "step": "Click on 'Since 2021' to filter the search results for recent papers.",
+      "code": "page.get_by_role('link', name='Since 2021').click()",
+      "axtree": {
+        "role": "WebArea",
+        "name": "distinguished Bengali authors and their contributions... - Google Scholar",
+        "children": [
+          {
+            "role": "button",
+            "name": ""
+          },
+          {
+            "role": "link",
+            "name": "Homepage"
+          },
+          {
+            "role": "textbox",
+            "name": "Search",
+            "value": "distinguished Bengali authors and their contributions to literature"
+          },
+          {
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "role": "button",
+            "name": "Samuel",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": "Articles"
+          },
+          {
+            "role": "text",
+            "name": "About 30,800 results ("
+          },
+          {
+            "role": "text",
+            "name": "0.34"
+          },
+          {
+            "role": "text",
+            "name": " sec)"
+          },
+          {
+            "role": "link",
+            "name": "My profile"
+          },
+          {
+            "role": "link",
+            "name": "My library"
+          },
+          {
+            "role": "link",
+            "name": "Any time"
+          },
+          {
+            "role": "link",
+            "name": "Since 2025"
+          },
+          {
+            "role": "link",
+            "name": "Since 2024"
+          },
+          {
+            "role": "link",
+            "name": "Since 2021"
+          },
+          {
+            "role": "link",
+            "name": "Custom range..."
+          },
+          {
+            "role": "link",
+            "name": "Sort by relevance"
+          },
+          {
+            "role": "link",
+            "name": "Sort by date"
+          },
+          {
+            "role": "link",
+            "name": "Any type"
+          },
+          {
+            "role": "link",
+            "name": "Review articles"
+          },
+          {
+            "role": "checkbox",
+            "name": "include patents",
+            "checked": false
+          },
+          {
+            "role": "checkbox",
+            "name": "include citations",
+            "checked": true
+          },
+          {
+            "role": "link",
+            "name": "Create alert"
+          },
+          {
+            "role": "link",
+            "name": "can bengali literature be postcolonial?"
+          },
+          {
+            "role": "link",
+            "name": "A Majumder"
+          },
+          {
+            "role": "text",
+            "name": " - comparative "
+          },
+          {
+            "role": "text",
+            "name": "literature "
+          },
+          {
+            "role": "text",
+            "name": "studies, 2016 - scholarlypublishingcollective.org"
+          },
+          {
+            "role": "text",
+            "name": "… They have "
+          },
+          {
+            "role": "text",
+            "name": "contributed"
+          },
+          {
+            "role": "text",
+            "name": " to the prominence of “"
+          },
+          {
+            "role": "text",
+            "name": "Bengal"
+          },
+          {
+            "role": "text",
+            "name": "” as a … forging the "
+          },
+          {
+            "role": "text",
+            "name": "literary"
+          },
+          {
+            "role": "text",
+            "name": " language of"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "“totality” that "
+          },
+          {
+            "role": "text",
+            "name": "distinguished"
+          },
+          {
+            "role": "text",
+            "name": " the … Other significant fiction "
+          },
+          {
+            "role": "text",
+            "name": "writers"
+          },
+          {
+            "role": "text",
+            "name": " include the "
+          },
+          {
+            "role": "text",
+            "name": "Bangladeshi"
+          },
+          {
+            "role": "text",
+            "name": " Syed …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 14"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 3 versions"
+          },
+          {
+            "role": "link",
+            "name": "Author identification in bengali literary works"
+          },
+          {
+            "role": "link",
+            "name": "S Das"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "P Mitra"
+          },
+          {
+            "role": "text",
+            "name": " - Pattern Recognition and Machine Intelligence: 4th …, 2011 - Springer"
+          },
+          {
+            "role": "text",
+            "name": "… Test document is attributed to "
+          },
+          {
+            "role": "text",
+            "name": "author"
+          },
+          {
+            "role": "text",
+            "name": " Ai The authorship attribution approaches are"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "distinguished"
+          },
+          {
+            "role": "text",
+            "name": " in mainly two ways according to the extraction of "
+          },
+          {
+            "role": "text",
+            "name": "authors"
+          },
+          {
+            "role": "text",
+            "name": "’ style cumulatively or …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 27"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 6 versions"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] arxiv.org"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "Authorship identification in bengali literature: a comparative analysis"
+          },
+          {
+            "role": "link",
+            "name": "T Chakraborty"
+          },
+          {
+            "role": "text",
+            "name": " - arXiv preprint arXiv:1208.6268, 2012 - arxiv.org"
+          },
+          {
+            "role": "text",
+            "name": "… maximum "
+          },
+          {
+            "role": "text",
+            "name": "distinct"
+          },
+          {
+            "role": "text",
+            "name": " and non-overlapped set of keywords) excluding stop-words in … three"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "authors"
+          },
+          {
+            "role": "text",
+            "name": " in "
+          },
+          {
+            "role": "text",
+            "name": "Bengali"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "literature"
+          },
+          {
+            "role": "text",
+            "name": " based on "
+          },
+          {
+            "role": "text",
+            "name": "their"
+          },
+          {
+            "role": "text",
+            "name": " style of writing (without taking into account the "
+          },
+          {
+            "role": "text",
+            "name": "author"
+          },
+          {
+            "role": "text",
+            "name": "’s …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 24"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 5 versions"
+          },
+          {
+            "role": "button",
+            "name": "More"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] sheldonpollock.org"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "The two histories of literary culture in Bengal"
+          },
+          {
+            "role": "text",
+            "name": "S Kaviraj - "
+          },
+          {
+            "role": "text",
+            "name": "Literary "
+          },
+          {
+            "role": "text",
+            "name": "cultures in history: reconstructions from South …, 2003 - degruyter.com"
+          },
+          {
+            "role": "text",
+            "name": "… "
+          },
+          {
+            "role": "text",
+            "name": "distinct"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "literature"
+          },
+          {
+            "role": "text",
+            "name": ".Even after its linguistic differentiation, … of Sanskrit high "
+          },
+          {
+            "role": "text",
+            "name": "literature"
+          },
+          {
+            "role": "text",
+            "name": ", as "
+          },
+          {
+            "role": "text",
+            "name": "Bangla"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "writers"
+          },
+          {
+            "role": "text",
+            "name": " sometimes tried to … See the "
+          },
+          {
+            "role": "text",
+            "name": "contributions"
+          },
+          {
+            "role": "text",
+            "name": " by Alam and Faruqi, chapters 2 and 14…"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 524"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 10 versions"
+          },
+          {
+            "role": "button",
+            "name": "More"
+          },
+          {
+            "role": "link",
+            "name": "Extracting social network and character categorization from Bengali literature"
+          },
+          {
+            "role": "link",
+            "name": "S Muhuri"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "S Chakraborty"
+          },
+          {
+            "role": "text",
+            "name": "… - IEEE Transactions on …, 2018 - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "… "
+          },
+          {
+            "role": "text",
+            "name": "Literature"
+          },
+          {
+            "role": "text",
+            "name": " network is a type of social network with various "
+          },
+          {
+            "role": "text",
+            "name": "distinct"
+          },
+          {
+            "role": "text",
+            "name": " features. The analysis"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "explores … We propose an edge "
+          },
+          {
+            "role": "text",
+            "name": "contribution"
+          },
+          {
+            "role": "text",
+            "name": "-based centrality and diversity metric of a node to …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 22"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] academia.edu"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "A stylometric analysis on Bengali literature for authorship attribution"
+          },
+          {
+            "role": "text",
+            "name": "MT Hossain, "
+          },
+          {
+            "role": "link",
+            "name": "MM Rahman"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "S Ismail"
+          },
+          {
+            "role": "text",
+            "name": "… - 2017 20th International …, 2017 - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "… "
+          },
+          {
+            "role": "text",
+            "name": "Bangladeshi"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "writers"
+          },
+          {
+            "role": "text",
+            "name": " of current time namely EJ, HM, KA, MZI, NS and TA (Due to Copyright"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "Protection original name of the "
+          },
+          {
+            "role": "text",
+            "name": "writers"
+          },
+          {
+            "role": "text",
+            "name": " … -token ratio might be a "
+          },
+          {
+            "role": "text",
+            "name": "distinguishable"
+          },
+          {
+            "role": "text",
+            "name": " fact while finding …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 23"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 2 versions"
+          },
+          {
+            "role": "link",
+            "name": "Twentieth-Century Bengali"
+          },
+          {
+            "role": "text",
+            "name": "S Chatterjee, H Ferdous - Handbook of Twentieth-Century …, 1996 - "
+          },
+          {
+            "role": "text",
+            "name": "books"
+          },
+          {
+            "role": "text",
+            "name": ".google.com"
+          },
+          {
+            "role": "text",
+            "name": "… -in Prabāsī, a "
+          },
+          {
+            "role": "text",
+            "name": "renowned"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "Bengali"
+          },
+          {
+            "role": "text",
+            "name": " magazine. The antiorthodoxy … "
+          },
+          {
+            "role": "text",
+            "name": "His"
+          },
+          {
+            "role": "text",
+            "name": " greatest "
+          },
+          {
+            "role": "text",
+            "name": "contribution"
+          },
+          {
+            "role": "text",
+            "name": " to"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "Bengali"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "literature"
+          },
+          {
+            "role": "text",
+            "name": " lies in the large … known in the "
+          },
+          {
+            "role": "text",
+            "name": "Bengali"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "literary"
+          },
+          {
+            "role": "text",
+            "name": " circuit as a short story "
+          },
+          {
+            "role": "text",
+            "name": "writer"
+          },
+          {
+            "role": "text",
+            "name": ", as …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 9"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": "[BOOK]"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "The emergence and development of Dobhasi literature in Bengal up to 1855 AD"
+          },
+          {
+            "role": "text",
+            "name": "KMA Mannan - 1964 - search.proquest.com"
+          },
+          {
+            "role": "text",
+            "name": "… of "
+          },
+          {
+            "role": "text",
+            "name": "Bengali"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "literature"
+          },
+          {
+            "role": "text",
+            "name": ". It covers many types of poetic creation and was "
+          },
+          {
+            "role": "text",
+            "name": "contributed"
+          },
+          {
+            "role": "text",
+            "name": " to by a large"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "number of "
+          },
+          {
+            "role": "text",
+            "name": "authors"
+          },
+          {
+            "role": "text",
+            "name": ". … The most "
+          },
+          {
+            "role": "text",
+            "name": "distinguished"
+          },
+          {
+            "role": "text",
+            "name": " of them are Dattlat Kaji and Saiyad Ilaol both of …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 28"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 3 versions"
+          },
+          {
+            "role": "button",
+            "name": "More"
+          },
+          {
+            "role": "link",
+            "name": "Can Bengali Literature Be Postcolonial?"
+          },
+          {
+            "role": "link",
+            "name": "A Majumder"
+          },
+          {
+            "role": "text",
+            "name": " - International Conference on Information Science …, 2023 - Springer"
+          },
+          {
+            "role": "text",
+            "name": "… 2 They have "
+          },
+          {
+            "role": "text",
+            "name": "contributed"
+          },
+          {
+            "role": "text",
+            "name": " to the prominence of “"
+          },
+          {
+            "role": "text",
+            "name": "Bengal"
+          },
+          {
+            "role": "text",
+            "name": "” as a … forging the "
+          },
+          {
+            "role": "text",
+            "name": "literary"
+          },
+          {
+            "role": "text",
+            "name": " language of"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "“totality” that "
+          },
+          {
+            "role": "text",
+            "name": "distinguished"
+          },
+          {
+            "role": "text",
+            "name": " the … Other significant fiction "
+          },
+          {
+            "role": "text",
+            "name": "writers"
+          },
+          {
+            "role": "text",
+            "name": " include the "
+          },
+          {
+            "role": "text",
+            "name": "Bangladeshi"
+          },
+          {
+            "role": "text",
+            "name": " Syed …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 3 versions"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] buet.ac.bd"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "Novel word-to-VEC graph and character interaction models for literary analysis a case study with Bengali literature"
+          },
+          {
+            "role": "link",
+            "name": "NI Tripto"
+          },
+          {
+            "role": "text",
+            "name": " - 2021 - lib.buet.ac.bd"
+          },
+          {
+            "role": "text",
+            "name": "… problems in "
+          },
+          {
+            "role": "text",
+            "name": "Bengali"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "literature"
+          },
+          {
+            "role": "text",
+            "name": ", such as "
+          },
+          {
+            "role": "text",
+            "name": "author"
+          },
+          {
+            "role": "text",
+            "name": " attribution, … of "
+          },
+          {
+            "role": "text",
+            "name": "authors"
+          },
+          {
+            "role": "text",
+            "name": " and identify which"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "features effectively "
+          },
+          {
+            "role": "text",
+            "name": "contribute"
+          },
+          {
+            "role": "text",
+            "name": " to … , we focus on the "
+          },
+          {
+            "role": "text",
+            "name": "literary"
+          },
+          {
+            "role": "text",
+            "name": " analysis of eight "
+          },
+          {
+            "role": "text",
+            "name": "prominent"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "authors"
+          },
+          {
+            "role": "text",
+            "name": " …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "button",
+            "name": "More"
+          },
+          {
+            "role": "text",
+            "name": "1"
+          },
+          {
+            "role": "link",
+            "name": "2"
+          },
+          {
+            "role": "link",
+            "name": "3"
+          },
+          {
+            "role": "link",
+            "name": "4"
+          },
+          {
+            "role": "link",
+            "name": "5"
+          },
+          {
+            "role": "link",
+            "name": "6"
+          },
+          {
+            "role": "link",
+            "name": "7"
+          },
+          {
+            "role": "link",
+            "name": "8"
+          },
+          {
+            "role": "link",
+            "name": "9"
+          },
+          {
+            "role": "link",
+            "name": "10"
+          },
+          {
+            "role": "link",
+            "name": "Next"
+          },
+          {
+            "role": "link",
+            "name": "Privacy"
+          },
+          {
+            "role": "link",
+            "name": "Terms"
+          },
+          {
+            "role": "button",
+            "name": "Help",
+            "haspopup": "menu"
+          }
+        ]
+      }
+    }
+  ],
+  "success": true,
+  "output": "About 17,200 results found, with some highly cited papers"
+}

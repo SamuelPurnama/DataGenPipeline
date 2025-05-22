@@ -1,0 +1,5103 @@
+{
+  "persona": "A retired automotive designer who pioneered advancements in car safety features",
+  "original_instruction": "Find papers on reinforcement learning in autonomous driving using LSTM.",
+  "augmented_instruction": "Search for papers on reinforcement learning in autonomous driving after 2022 that uses LSTM.",
+  "final_instruction": "Search for articles on reinforcement learning in autonomous driving using LSTM published from 2023 onwards and sort by date.",
+  "url": "https://scholar.google.com",
+  "task_steps": [
+    {
+      "step": "Enter the search query 'reinforcement learning in autonomous driving LSTM after 2022' in the search box.",
+      "code": "page.get_by_role('textbox', name='Search').fill('reinforcement learning in autonomous driving LSTM after 2022')",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Google Scholar",
+        "children": [
+          {
+            "role": "button",
+            "name": ""
+          },
+          {
+            "role": "link",
+            "name": "My profile"
+          },
+          {
+            "role": "link",
+            "name": "My library"
+          },
+          {
+            "role": "textbox",
+            "name": "Search",
+            "focused": true
+          },
+          {
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "role": "button",
+            "name": "Samuel",
+            "haspopup": "menu"
+          },
+          {
+            "role": "radio",
+            "name": "Articles",
+            "checked": true
+          },
+          {
+            "role": "text",
+            "name": "Articles"
+          },
+          {
+            "role": "radio",
+            "name": "Case law",
+            "checked": false
+          },
+          {
+            "role": "text",
+            "name": "Case law"
+          },
+          {
+            "role": "text",
+            "name": "Stand on the shoulders of giants"
+          },
+          {
+            "role": "button",
+            "name": "EN"
+          },
+          {
+            "role": "link",
+            "name": "Privacy"
+          },
+          {
+            "role": "link",
+            "name": "Terms"
+          },
+          {
+            "role": "button",
+            "name": "Help",
+            "haspopup": "menu"
+          }
+        ]
+      }
+    },
+    {
+      "step": "Submit the search form by pressing Enter",
+      "code": "page.keyboard.press('Enter')",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Google Scholar",
+        "children": [
+          {
+            "role": "button",
+            "name": ""
+          },
+          {
+            "role": "link",
+            "name": "My profile"
+          },
+          {
+            "role": "link",
+            "name": "My library"
+          },
+          {
+            "role": "textbox",
+            "name": "Search",
+            "focused": true,
+            "value": "reinforcement learning in autonomous driving LSTM after 2022"
+          },
+          {
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "role": "button",
+            "name": "Samuel",
+            "haspopup": "menu"
+          },
+          {
+            "role": "radio",
+            "name": "Articles",
+            "checked": true
+          },
+          {
+            "role": "text",
+            "name": "Articles"
+          },
+          {
+            "role": "radio",
+            "name": "Case law",
+            "checked": false
+          },
+          {
+            "role": "text",
+            "name": "Case law"
+          },
+          {
+            "role": "text",
+            "name": "Stand on the shoulders of giants"
+          },
+          {
+            "role": "button",
+            "name": "EN"
+          },
+          {
+            "role": "link",
+            "name": "Privacy"
+          },
+          {
+            "role": "link",
+            "name": "Terms"
+          },
+          {
+            "role": "button",
+            "name": "Help",
+            "haspopup": "menu"
+          }
+        ]
+      }
+    },
+    {
+      "step": "Filter the search results to only include papers published after 2022.",
+      "code": "page.get_by_text('Custom range...').click()",
+      "axtree": {
+        "role": "WebArea",
+        "name": "reinforcement learning in autonomous driving LSTM after 2022 - Google Scholar",
+        "children": [
+          {
+            "role": "button",
+            "name": ""
+          },
+          {
+            "role": "link",
+            "name": "Homepage"
+          },
+          {
+            "role": "textbox",
+            "name": "Search",
+            "value": "reinforcement learning in autonomous driving LSTM after 2022"
+          },
+          {
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "role": "button",
+            "name": "Samuel",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": "Articles"
+          },
+          {
+            "role": "text",
+            "name": "About 29,500 results ("
+          },
+          {
+            "role": "text",
+            "name": "0.17"
+          },
+          {
+            "role": "text",
+            "name": " sec)"
+          },
+          {
+            "role": "link",
+            "name": "My profile"
+          },
+          {
+            "role": "link",
+            "name": "My library"
+          },
+          {
+            "role": "link",
+            "name": "Any time"
+          },
+          {
+            "role": "link",
+            "name": "Since 2025"
+          },
+          {
+            "role": "link",
+            "name": "Since 2024"
+          },
+          {
+            "role": "link",
+            "name": "Since 2021"
+          },
+          {
+            "role": "link",
+            "name": "Custom range..."
+          },
+          {
+            "role": "link",
+            "name": "Sort by relevance"
+          },
+          {
+            "role": "link",
+            "name": "Sort by date"
+          },
+          {
+            "role": "link",
+            "name": "Any type"
+          },
+          {
+            "role": "link",
+            "name": "Review articles"
+          },
+          {
+            "role": "checkbox",
+            "name": "include patents",
+            "checked": false
+          },
+          {
+            "role": "checkbox",
+            "name": "include citations",
+            "checked": true
+          },
+          {
+            "role": "link",
+            "name": "Create alert"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[HTML] sciencedirect.com"
+              }
+            ]
+          },
+          {
+            "role": "text",
+            "name": "[HTML]"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "A comprehensive survey on the application of deep and reinforcement learning approaches in autonomous driving"
+          },
+          {
+            "role": "link",
+            "name": "BB Elallid"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "N Benamar"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "AS Hafid"
+          },
+          {
+            "role": "text",
+            "name": ", T Rachidi… - Journal of King Saud …, "
+          },
+          {
+            "role": "text",
+            "name": "2022"
+          },
+          {
+            "role": "text",
+            "name": " - Elsevier"
+          },
+          {
+            "role": "text",
+            "name": "… "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " control, social behavior, and communication. Our survey focuses solely on deep"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " and "
+          },
+          {
+            "role": "text",
+            "name": "reinforcement"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " … ), Long Short-Term Memory ("
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": "), and RL, which are the …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 155"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 2 versions"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] arxiv.org"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "Deep reinforcement learning for autonomous driving: A survey"
+          },
+          {
+            "role": "link",
+            "name": "BR Kiran"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "I Sobh"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "V Talpaert"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "P Mannion"
+          },
+          {
+            "role": "text",
+            "name": "… - IEEE transactions on …, 2021 - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "… for conducting "
+          },
+          {
+            "role": "text",
+            "name": "reinforcement"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " for real-world "
+          },
+          {
+            "role": "text",
+            "name": "autonomous"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "driving"
+          },
+          {
+            "role": "text",
+            "name": " are presented and"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "… The featurenet includes an agent "
+          },
+          {
+            "role": "text",
+            "name": "RNN"
+          },
+          {
+            "role": "text",
+            "name": " that outputs the way point, agent box position and …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 2564"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 10 versions"
+          },
+          {
+            "role": "link",
+            "name": "Learning automated driving in complex intersection scenarios based on camera sensors: A deep reinforcement learning approach"
+          },
+          {
+            "role": "text",
+            "name": "G Li, S Lin, "
+          },
+          {
+            "role": "link",
+            "name": "S Li"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "X Qu"
+          },
+          {
+            "role": "text",
+            "name": " - IEEE Sensors Journal, "
+          },
+          {
+            "role": "text",
+            "name": "2022"
+          },
+          {
+            "role": "text",
+            "name": " - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "… has the highest critical scores compared to the other two methods, suggesting that AVs"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "driving"
+          },
+          {
+            "role": "text",
+            "name": " with our proposed T-DCNN-"
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " have the most stable velocity performance. We use ψ …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 27"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 2 versions"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] arxiv.org"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "Event-triggered model predictive control with deep reinforcement learning for autonomous driving"
+          },
+          {
+            "role": "link",
+            "name": "F Dang"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "D Chen"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "J Chen"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "Z Li"
+          },
+          {
+            "role": "text",
+            "name": " - … on intelligent "
+          },
+          {
+            "role": "text",
+            "name": "vehicles"
+          },
+          {
+            "role": "text",
+            "name": ", 2023 - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "… "
+          },
+          {
+            "role": "text",
+            "name": "autonomous"
+          },
+          {
+            "role": "text",
+            "name": " path "
+          },
+          {
+            "role": "text",
+            "name": "following"
+          },
+          {
+            "role": "text",
+            "name": ". In particular, PPOeMPC with "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " and DDQN-eMPC with PER"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "and "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " … path following,” in American Control Conference, Atlanta, GA, June 8–10, "
+          },
+          {
+            "role": "text",
+            "name": "2022"
+          },
+          {
+            "role": "text",
+            "name": ". […"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 41"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 7 versions"
+          },
+          {
+            "role": "link",
+            "name": "Enhanced Adaptation of Reinforcement Learning Algorithms to Actuator Variability in Autonomous Driving: Error Observation and LSTM Prediction"
+          },
+          {
+            "role": "text",
+            "name": "Y Zhou, J Hu, L Cheng, Y Zhang, Y Du… - 2024 8th CAA …, 2024 - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "… In this part, we study the algorithm effect of combining "
+          },
+          {
+            "role": "text",
+            "name": "reinforcement"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " with "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "model. The specific algorithm design is described in Section II. Directly migrating an RL model …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] ieee.org"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "Deep reinforcement learning-based driving strategy for avoidance of chain collisions and its safety efficiency analysis in autonomous vehicles"
+          },
+          {
+            "role": "link",
+            "name": "AJM Muzahid"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "SF Kamarulzaman"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "MA Rahman"
+          },
+          {
+            "role": "text",
+            "name": "… - IEEE …, "
+          },
+          {
+            "role": "text",
+            "name": "2022"
+          },
+          {
+            "role": "text",
+            "name": " - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "… "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " for this experiment for the "
+          },
+          {
+            "role": "text",
+            "name": "following"
+          },
+          {
+            "role": "text",
+            "name": " reasons: 1) In comparison to other RRNs, "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "has … In this study, we define our "
+          },
+          {
+            "role": "text",
+            "name": "autonomous"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "driving"
+          },
+          {
+            "role": "text",
+            "name": " decision-making strategy to avoid …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 28"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 3 versions"
+          },
+          {
+            "role": "link",
+            "name": "A Survey on Recent Advancements in Autonomous Driving Using Deep Reinforcement Learning: Applications, Challenges, and Solutions"
+          },
+          {
+            "role": "link",
+            "name": "R Zhao"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "Y Li"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "Y Fan"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "F Gao"
+          },
+          {
+            "role": "text",
+            "name": "… - IEEE Transactions on …, 2024 - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "Autonomous"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "driving"
+          },
+          {
+            "role": "text",
+            "name": " (AD) endows "
+          },
+          {
+            "role": "text",
+            "name": "vehicles"
+          },
+          {
+            "role": "text",
+            "name": " with the capability to "
+          },
+          {
+            "role": "text",
+            "name": "drive"
+          },
+          {
+            "role": "text",
+            "name": " partly or entirely …"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "Currently, deep "
+          },
+          {
+            "role": "text",
+            "name": "reinforcement"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " (DRL) techniques to derive and validate AD policies have …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 11"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 2 versions"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] researchgate.net"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "Lane change strategies for autonomous vehicles: A deep reinforcement learning approach based on transformer"
+          },
+          {
+            "role": "link",
+            "name": "G Li"
+          },
+          {
+            "role": "text",
+            "name": ", Y Qiu, Y Yang, "
+          },
+          {
+            "role": "link",
+            "name": "Z Li"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "S Li"
+          },
+          {
+            "role": "text",
+            "name": ", W Chu… - … Intelligent "
+          },
+          {
+            "role": "text",
+            "name": "Vehicles"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "text",
+            "name": "2022"
+          },
+          {
+            "role": "text",
+            "name": " - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "… "
+          },
+          {
+            "role": "text",
+            "name": "autonomous"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "vehicles"
+          },
+          {
+            "role": "text",
+            "name": " with heavy attention on collision avoidance systems [4]-[6]. In the"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "following"
+          },
+          {
+            "role": "text",
+            "name": " … The FR increases from 25.78 and 39.51 when using DSCNN and DSCNN "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": ", to …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 84"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 5 versions"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] ieee.org"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "Enhancing Autonomous Driving with Spatial Memory and Attention in Reinforcement Learning"
+          },
+          {
+            "role": "link",
+            "name": "M Gerasyov"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "AV Savchenko"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "I Makarov"
+          },
+          {
+            "role": "text",
+            "name": " - IEEE Access, 2024 - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "… The primary and critical difference is that we do not use an additional "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " to generate …"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "Since"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "2022"
+          },
+          {
+            "role": "text",
+            "name": ", he has been with the Sber AI Lab, where he is currently the Scientific Director. …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 1"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 3 versions"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] hkust-gz.edu.cn"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "Modeling the effects of autonomous vehicles on human driver car-following behaviors using inverse reinforcement learning"
+          },
+          {
+            "role": "link",
+            "name": "X Wen"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "S Jian"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "D He"
+          },
+          {
+            "role": "text",
+            "name": " - IEEE Transactions on Intelligent …, 2023 - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "… "
+          },
+          {
+            "role": "text",
+            "name": "autonomous"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "driving"
+          },
+          {
+            "role": "text",
+            "name": " technology will lead to a transition period during which human-driven"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "vehicles"
+          },
+          {
+            "role": "text",
+            "name": " (HVs) will share the road with "
+          },
+          {
+            "role": "text",
+            "name": "autonomous"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "vehicles"
+          },
+          {
+            "role": "text",
+            "name": " (… that the "
+          },
+          {
+            "role": "text",
+            "name": "RNN"
+          },
+          {
+            "role": "text",
+            "name": " based "
+          },
+          {
+            "role": "text",
+            "name": "car"
+          },
+          {
+            "role": "text",
+            "name": "following"
+          },
+          {
+            "role": "text",
+            "name": " …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 39"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 5 versions"
+          },
+          {
+            "role": "text",
+            "name": "1"
+          },
+          {
+            "role": "link",
+            "name": "2"
+          },
+          {
+            "role": "link",
+            "name": "3"
+          },
+          {
+            "role": "link",
+            "name": "4"
+          },
+          {
+            "role": "link",
+            "name": "5"
+          },
+          {
+            "role": "link",
+            "name": "6"
+          },
+          {
+            "role": "link",
+            "name": "7"
+          },
+          {
+            "role": "link",
+            "name": "8"
+          },
+          {
+            "role": "link",
+            "name": "9"
+          },
+          {
+            "role": "link",
+            "name": "10"
+          },
+          {
+            "role": "link",
+            "name": "Next"
+          },
+          {
+            "role": "link",
+            "name": "Privacy"
+          },
+          {
+            "role": "link",
+            "name": "Terms"
+          },
+          {
+            "role": "button",
+            "name": "Help",
+            "haspopup": "menu"
+          }
+        ]
+      }
+    },
+    {
+      "step": "Select the 'Sort by date' link using the role and name to avoid strict mode violation in previous attempt.",
+      "code": "page.get_by_role('link', name='Sort by date').click()",
+      "axtree": {
+        "role": "WebArea",
+        "name": "reinforcement learning in autonomous driving LSTM after 2022 - Google Scholar",
+        "children": [
+          {
+            "role": "button",
+            "name": ""
+          },
+          {
+            "role": "link",
+            "name": "Homepage"
+          },
+          {
+            "role": "textbox",
+            "name": "Search",
+            "value": "reinforcement learning in autonomous driving LSTM after 2022"
+          },
+          {
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "role": "button",
+            "name": "Samuel",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": "Articles"
+          },
+          {
+            "role": "text",
+            "name": "About 29,500 results ("
+          },
+          {
+            "role": "text",
+            "name": "0.17"
+          },
+          {
+            "role": "text",
+            "name": " sec)"
+          },
+          {
+            "role": "link",
+            "name": "My profile"
+          },
+          {
+            "role": "link",
+            "name": "My library"
+          },
+          {
+            "role": "link",
+            "name": "Any time"
+          },
+          {
+            "role": "link",
+            "name": "Since 2025"
+          },
+          {
+            "role": "link",
+            "name": "Since 2024"
+          },
+          {
+            "role": "link",
+            "name": "Since 2021"
+          },
+          {
+            "role": "link",
+            "name": "Custom range..."
+          },
+          {
+            "role": "textbox",
+            "name": "",
+            "value": "2023"
+          },
+          {
+            "role": "text",
+            "name": " — "
+          },
+          {
+            "role": "textbox",
+            "name": "",
+            "focused": true,
+            "value": "2023"
+          },
+          {
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "role": "link",
+            "name": "Sort by relevance"
+          },
+          {
+            "role": "link",
+            "name": "Sort by date"
+          },
+          {
+            "role": "link",
+            "name": "Any type"
+          },
+          {
+            "role": "link",
+            "name": "Review articles"
+          },
+          {
+            "role": "checkbox",
+            "name": "include patents",
+            "checked": false
+          },
+          {
+            "role": "checkbox",
+            "name": "include citations",
+            "checked": true
+          },
+          {
+            "role": "link",
+            "name": "Create alert"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[HTML] sciencedirect.com"
+              }
+            ]
+          },
+          {
+            "role": "text",
+            "name": "[HTML]"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "A comprehensive survey on the application of deep and reinforcement learning approaches in autonomous driving"
+          },
+          {
+            "role": "link",
+            "name": "BB Elallid"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "N Benamar"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "AS Hafid"
+          },
+          {
+            "role": "text",
+            "name": ", T Rachidi… - Journal of King Saud …, "
+          },
+          {
+            "role": "text",
+            "name": "2022"
+          },
+          {
+            "role": "text",
+            "name": " - Elsevier"
+          },
+          {
+            "role": "text",
+            "name": "… "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " control, social behavior, and communication. Our survey focuses solely on deep"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " and "
+          },
+          {
+            "role": "text",
+            "name": "reinforcement"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " … ), Long Short-Term Memory ("
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": "), and RL, which are the …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 155"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 2 versions"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] arxiv.org"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "Deep reinforcement learning for autonomous driving: A survey"
+          },
+          {
+            "role": "link",
+            "name": "BR Kiran"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "I Sobh"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "V Talpaert"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "P Mannion"
+          },
+          {
+            "role": "text",
+            "name": "… - IEEE transactions on …, 2021 - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "… for conducting "
+          },
+          {
+            "role": "text",
+            "name": "reinforcement"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " for real-world "
+          },
+          {
+            "role": "text",
+            "name": "autonomous"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "driving"
+          },
+          {
+            "role": "text",
+            "name": " are presented and"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "… The featurenet includes an agent "
+          },
+          {
+            "role": "text",
+            "name": "RNN"
+          },
+          {
+            "role": "text",
+            "name": " that outputs the way point, agent box position and …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 2564"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 10 versions"
+          },
+          {
+            "role": "link",
+            "name": "Learning automated driving in complex intersection scenarios based on camera sensors: A deep reinforcement learning approach"
+          },
+          {
+            "role": "text",
+            "name": "G Li, S Lin, "
+          },
+          {
+            "role": "link",
+            "name": "S Li"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "X Qu"
+          },
+          {
+            "role": "text",
+            "name": " - IEEE Sensors Journal, "
+          },
+          {
+            "role": "text",
+            "name": "2022"
+          },
+          {
+            "role": "text",
+            "name": " - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "… has the highest critical scores compared to the other two methods, suggesting that AVs"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "driving"
+          },
+          {
+            "role": "text",
+            "name": " with our proposed T-DCNN-"
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " have the most stable velocity performance. We use ψ …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 27"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 2 versions"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] arxiv.org"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "Event-triggered model predictive control with deep reinforcement learning for autonomous driving"
+          },
+          {
+            "role": "link",
+            "name": "F Dang"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "D Chen"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "J Chen"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "Z Li"
+          },
+          {
+            "role": "text",
+            "name": " - … on intelligent "
+          },
+          {
+            "role": "text",
+            "name": "vehicles"
+          },
+          {
+            "role": "text",
+            "name": ", 2023 - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "… "
+          },
+          {
+            "role": "text",
+            "name": "autonomous"
+          },
+          {
+            "role": "text",
+            "name": " path "
+          },
+          {
+            "role": "text",
+            "name": "following"
+          },
+          {
+            "role": "text",
+            "name": ". In particular, PPOeMPC with "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " and DDQN-eMPC with PER"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "and "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " … path following,” in American Control Conference, Atlanta, GA, June 8–10, "
+          },
+          {
+            "role": "text",
+            "name": "2022"
+          },
+          {
+            "role": "text",
+            "name": ". […"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 41"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 7 versions"
+          },
+          {
+            "role": "link",
+            "name": "Enhanced Adaptation of Reinforcement Learning Algorithms to Actuator Variability in Autonomous Driving: Error Observation and LSTM Prediction"
+          },
+          {
+            "role": "text",
+            "name": "Y Zhou, J Hu, L Cheng, Y Zhang, Y Du… - 2024 8th CAA …, 2024 - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "… In this part, we study the algorithm effect of combining "
+          },
+          {
+            "role": "text",
+            "name": "reinforcement"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " with "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "model. The specific algorithm design is described in Section II. Directly migrating an RL model …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] ieee.org"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "Deep reinforcement learning-based driving strategy for avoidance of chain collisions and its safety efficiency analysis in autonomous vehicles"
+          },
+          {
+            "role": "link",
+            "name": "AJM Muzahid"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "SF Kamarulzaman"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "MA Rahman"
+          },
+          {
+            "role": "text",
+            "name": "… - IEEE …, "
+          },
+          {
+            "role": "text",
+            "name": "2022"
+          },
+          {
+            "role": "text",
+            "name": " - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "… "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " for this experiment for the "
+          },
+          {
+            "role": "text",
+            "name": "following"
+          },
+          {
+            "role": "text",
+            "name": " reasons: 1) In comparison to other RRNs, "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "has … In this study, we define our "
+          },
+          {
+            "role": "text",
+            "name": "autonomous"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "driving"
+          },
+          {
+            "role": "text",
+            "name": " decision-making strategy to avoid …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 28"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 3 versions"
+          },
+          {
+            "role": "link",
+            "name": "A Survey on Recent Advancements in Autonomous Driving Using Deep Reinforcement Learning: Applications, Challenges, and Solutions"
+          },
+          {
+            "role": "link",
+            "name": "R Zhao"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "Y Li"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "Y Fan"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "F Gao"
+          },
+          {
+            "role": "text",
+            "name": "… - IEEE Transactions on …, 2024 - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "Autonomous"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "driving"
+          },
+          {
+            "role": "text",
+            "name": " (AD) endows "
+          },
+          {
+            "role": "text",
+            "name": "vehicles"
+          },
+          {
+            "role": "text",
+            "name": " with the capability to "
+          },
+          {
+            "role": "text",
+            "name": "drive"
+          },
+          {
+            "role": "text",
+            "name": " partly or entirely …"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "Currently, deep "
+          },
+          {
+            "role": "text",
+            "name": "reinforcement"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " (DRL) techniques to derive and validate AD policies have …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 11"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 2 versions"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] researchgate.net"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "Lane change strategies for autonomous vehicles: A deep reinforcement learning approach based on transformer"
+          },
+          {
+            "role": "link",
+            "name": "G Li"
+          },
+          {
+            "role": "text",
+            "name": ", Y Qiu, Y Yang, "
+          },
+          {
+            "role": "link",
+            "name": "Z Li"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "S Li"
+          },
+          {
+            "role": "text",
+            "name": ", W Chu… - … Intelligent "
+          },
+          {
+            "role": "text",
+            "name": "Vehicles"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "text",
+            "name": "2022"
+          },
+          {
+            "role": "text",
+            "name": " - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "… "
+          },
+          {
+            "role": "text",
+            "name": "autonomous"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "vehicles"
+          },
+          {
+            "role": "text",
+            "name": " with heavy attention on collision avoidance systems [4]-[6]. In the"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "following"
+          },
+          {
+            "role": "text",
+            "name": " … The FR increases from 25.78 and 39.51 when using DSCNN and DSCNN "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": ", to …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 84"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 5 versions"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] ieee.org"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "Enhancing Autonomous Driving with Spatial Memory and Attention in Reinforcement Learning"
+          },
+          {
+            "role": "link",
+            "name": "M Gerasyov"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "AV Savchenko"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "I Makarov"
+          },
+          {
+            "role": "text",
+            "name": " - IEEE Access, 2024 - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "… The primary and critical difference is that we do not use an additional "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " to generate …"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "Since"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "2022"
+          },
+          {
+            "role": "text",
+            "name": ", he has been with the Sber AI Lab, where he is currently the Scientific Director. …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 1"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 3 versions"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] hkust-gz.edu.cn"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "Modeling the effects of autonomous vehicles on human driver car-following behaviors using inverse reinforcement learning"
+          },
+          {
+            "role": "link",
+            "name": "X Wen"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "S Jian"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "D He"
+          },
+          {
+            "role": "text",
+            "name": " - IEEE Transactions on Intelligent …, 2023 - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "… "
+          },
+          {
+            "role": "text",
+            "name": "autonomous"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "driving"
+          },
+          {
+            "role": "text",
+            "name": " technology will lead to a transition period during which human-driven"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "vehicles"
+          },
+          {
+            "role": "text",
+            "name": " (HVs) will share the road with "
+          },
+          {
+            "role": "text",
+            "name": "autonomous"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "vehicles"
+          },
+          {
+            "role": "text",
+            "name": " (… that the "
+          },
+          {
+            "role": "text",
+            "name": "RNN"
+          },
+          {
+            "role": "text",
+            "name": " based "
+          },
+          {
+            "role": "text",
+            "name": "car"
+          },
+          {
+            "role": "text",
+            "name": "following"
+          },
+          {
+            "role": "text",
+            "name": " …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 39"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 5 versions"
+          },
+          {
+            "role": "text",
+            "name": "1"
+          },
+          {
+            "role": "link",
+            "name": "2"
+          },
+          {
+            "role": "link",
+            "name": "3"
+          },
+          {
+            "role": "link",
+            "name": "4"
+          },
+          {
+            "role": "link",
+            "name": "5"
+          },
+          {
+            "role": "link",
+            "name": "6"
+          },
+          {
+            "role": "link",
+            "name": "7"
+          },
+          {
+            "role": "link",
+            "name": "8"
+          },
+          {
+            "role": "link",
+            "name": "9"
+          },
+          {
+            "role": "link",
+            "name": "10"
+          },
+          {
+            "role": "link",
+            "name": "Next"
+          },
+          {
+            "role": "link",
+            "name": "Privacy"
+          },
+          {
+            "role": "link",
+            "name": "Terms"
+          },
+          {
+            "role": "button",
+            "name": "Help",
+            "haspopup": "menu"
+          }
+        ]
+      }
+    },
+    {
+      "step": "Adjust the search query to 'reinforcement learning autonomous driving LSTM' and re-run the search.",
+      "code": "page.get_by_role('textbox', name='Search').fill('reinforcement learning autonomous driving LSTM'); page.keyboard.press('Enter')",
+      "axtree": {
+        "role": "WebArea",
+        "name": "\"reinforcement learning\" in autonomous driving LSTM... - Google Scholar",
+        "children": [
+          {
+            "role": "button",
+            "name": ""
+          },
+          {
+            "role": "link",
+            "name": "Homepage"
+          },
+          {
+            "role": "textbox",
+            "name": "Search",
+            "value": "\"reinforcement learning\"  in autonomous driving LSTM after 2022"
+          },
+          {
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "role": "button",
+            "name": "Samuel",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": "Articles"
+          },
+          {
+            "role": "link",
+            "name": "My profile"
+          },
+          {
+            "role": "link",
+            "name": "My library"
+          },
+          {
+            "role": "link",
+            "name": "Any time"
+          },
+          {
+            "role": "link",
+            "name": "Since 2025"
+          },
+          {
+            "role": "link",
+            "name": "Since 2024"
+          },
+          {
+            "role": "link",
+            "name": "Since 2021"
+          },
+          {
+            "role": "link",
+            "name": "Custom range..."
+          },
+          {
+            "role": "link",
+            "name": "Sort by relevance"
+          },
+          {
+            "role": "link",
+            "name": "Sort by date"
+          },
+          {
+            "role": "link",
+            "name": "Any type"
+          },
+          {
+            "role": "link",
+            "name": "Review articles"
+          },
+          {
+            "role": "checkbox",
+            "name": "include patents",
+            "checked": false
+          },
+          {
+            "role": "checkbox",
+            "name": "include citations",
+            "checked": true
+          },
+          {
+            "role": "link",
+            "name": "Create alert"
+          },
+          {
+            "role": "text",
+            "name": "Articles added in the last year, sorted by date"
+          },
+          {
+            "role": "button",
+            "name": "Search abstracts"
+          },
+          {
+            "role": "button",
+            "name": "Search everything"
+          },
+          {
+            "role": "text",
+            "name": "Your search - "
+          },
+          {
+            "role": "text",
+            "name": "\"reinforcement learning\" in autonomous driving LSTM after 2022"
+          },
+          {
+            "role": "text",
+            "name": " - did not match any articles."
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "Suggestions:"
+          },
+          {
+            "role": "text",
+            "name": "Make sure all words are spelled correctly."
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "Try different keywords."
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "Try more general keywords."
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "Try fewer keywords."
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "link",
+            "name": "Try your query on the entire web"
+          },
+          {
+            "role": "link",
+            "name": "Privacy"
+          },
+          {
+            "role": "link",
+            "name": "Terms"
+          },
+          {
+            "role": "button",
+            "name": "Help",
+            "haspopup": "menu"
+          }
+        ]
+      }
+    },
+    {
+      "step": "Open the 'Custom range...' filter to set the publication date range",
+      "code": "page.get_by_text('Custom range...').click()",
+      "axtree": {
+        "role": "WebArea",
+        "name": "reinforcement learning autonomous driving LSTM - Google Scholar",
+        "children": [
+          {
+            "role": "button",
+            "name": ""
+          },
+          {
+            "role": "link",
+            "name": "Homepage"
+          },
+          {
+            "role": "textbox",
+            "name": "Search",
+            "value": "reinforcement learning autonomous driving LSTM"
+          },
+          {
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "role": "button",
+            "name": "Samuel",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": "Articles"
+          },
+          {
+            "role": "text",
+            "name": "About 284 results ("
+          },
+          {
+            "role": "text",
+            "name": "0.10"
+          },
+          {
+            "role": "text",
+            "name": " sec)"
+          },
+          {
+            "role": "link",
+            "name": "My profile"
+          },
+          {
+            "role": "link",
+            "name": "My library"
+          },
+          {
+            "role": "link",
+            "name": "Any time"
+          },
+          {
+            "role": "link",
+            "name": "Since 2025"
+          },
+          {
+            "role": "link",
+            "name": "Since 2024"
+          },
+          {
+            "role": "link",
+            "name": "Since 2021"
+          },
+          {
+            "role": "link",
+            "name": "Custom range..."
+          },
+          {
+            "role": "link",
+            "name": "Sort by relevance"
+          },
+          {
+            "role": "link",
+            "name": "Sort by date"
+          },
+          {
+            "role": "link",
+            "name": "Any type"
+          },
+          {
+            "role": "link",
+            "name": "Review articles"
+          },
+          {
+            "role": "checkbox",
+            "name": "include patents",
+            "checked": false
+          },
+          {
+            "role": "checkbox",
+            "name": "include citations",
+            "checked": true
+          },
+          {
+            "role": "link",
+            "name": "Create alert"
+          },
+          {
+            "role": "text",
+            "name": "Articles added in the last year, sorted by date"
+          },
+          {
+            "role": "button",
+            "name": "Search abstracts"
+          },
+          {
+            "role": "button",
+            "name": "Search everything"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] nepjol.info"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "SmartKYC"
+          },
+          {
+            "role": "text",
+            "name": "N Poudel, S Neupane, S Shrestha, "
+          },
+          {
+            "role": "link",
+            "name": "S Shakya"
+          },
+          {
+            "role": "text",
+            "name": "… - International Journal on …, 2025 - nepjol.info"
+          },
+          {
+            "role": "text",
+            "name": "2 days ago - "
+          },
+          {
+            "role": "text",
+            "name": "… "
+          },
+          {
+            "role": "text",
+            "name": "automated"
+          },
+          {
+            "role": "text",
+            "name": " system to streamline the KYC (Know Your Customer) process using"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "machine"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": ". … The "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " model employed two bidirectional "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " layers with 512 units …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "button",
+            "name": "More"
+          },
+          {
+            "role": "link",
+            "name": "P4-Assisted Slowloris DDoS attack detection in IoT environments by using ML and DL"
+          },
+          {
+            "role": "text",
+            "name": "ED Ramirez-Martinez, "
+          },
+          {
+            "role": "link",
+            "name": "JA Perez-Diaz"
+          },
+          {
+            "role": "text",
+            "name": "… - Computer Networks, 2025 - Elsevier"
+          },
+          {
+            "role": "text",
+            "name": "3 days ago - "
+          },
+          {
+            "role": "text",
+            "name": "… Recent studies have employed Software-Defined Networking (SDN) and"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "machine"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " (ML) to "
+          },
+          {
+            "role": "text",
+            "name": "autonomously"
+          },
+          {
+            "role": "text",
+            "name": " identify slow-rate DDoS attacks. However, because …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "link",
+            "name": "Real Time Sales Forecasting in Omnichannel Retail Using a Hadoop Based Hybrid CNN–LSTM Deep Learning Framework"
+          },
+          {
+            "role": "text",
+            "name": "H Liu, T Qi - Academic Journal of Sociology and Management, 2025 - suaspress.org"
+          },
+          {
+            "role": "text",
+            "name": "5 days ago - "
+          },
+          {
+            "role": "text",
+            "name": "… "
+          },
+          {
+            "role": "text",
+            "name": "Machine"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " optimizes the efficiency of picking and packing in "
+          },
+          {
+            "role": "text",
+            "name": "automated"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "warehouse robot systems. In 2024 International Conference on Computer Engineering, …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "button",
+            "name": "More"
+          },
+          {
+            "role": "link",
+            "name": "A Deep Learning-Based Contactless Driver State Monitoring Radar System for In-Vehicle Physiological Applications"
+          },
+          {
+            "role": "text",
+            "name": "AK Sriranga, Q Lu, "
+          },
+          {
+            "role": "link",
+            "name": "SA Birrell"
+          },
+          {
+            "role": "text",
+            "name": " - IEEE Transactions on Intelligent …, 2025 - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "6 days ago - "
+          },
+          {
+            "role": "text",
+            "name": "… for both traditional and "
+          },
+          {
+            "role": "text",
+            "name": "automated"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "vehicles"
+          },
+          {
+            "role": "text",
+            "name": ", as it can … of "
+          },
+          {
+            "role": "text",
+            "name": "machine"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "(ML) and deep "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " (DL) … FMCW radar with multivariate "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " networks trained using …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "link",
+            "name": "Structure and Position-Aware Graph Modeling for Trajectory Similarity Computation over Road Networks"
+          },
+          {
+            "role": "link",
+            "name": "P Yang"
+          },
+          {
+            "role": "text",
+            "name": ", H Wang, Z Xu, "
+          },
+          {
+            "role": "link",
+            "name": "Z Qian"
+          },
+          {
+            "role": "text",
+            "name": ", Y Wang… - 2025 IEEE 41st …, 2025 - computer.org"
+          },
+          {
+            "role": "text",
+            "name": "8 days ago - "
+          },
+          {
+            "role": "text",
+            "name": "… is the first proposal to "
+          },
+          {
+            "role": "text",
+            "name": "learn"
+          },
+          {
+            "role": "text",
+            "name": " from a broad context of graph topology. Afterwards,"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "SPGMT designs a "
+          },
+          {
+            "role": "text",
+            "name": "self"
+          },
+          {
+            "role": "text",
+            "name": "-attention network and employs an "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " to "
+          },
+          {
+            "role": "text",
+            "name": "learn"
+          },
+          {
+            "role": "text",
+            "name": " the sequential …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] ieee.org"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "Adaptive Beam Steering and Divergence Control for Underwater Optical Wireless Communication Using Reinforcement Learning"
+          },
+          {
+            "role": "text",
+            "name": "T Ishida, "
+          },
+          {
+            "role": "link",
+            "name": "CB Naila"
+          },
+          {
+            "role": "text",
+            "name": ", H Okada - IEEE Photonics Journal, 2025 - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "8 days ago - "
+          },
+          {
+            "role": "text",
+            "name": "… In the following, we show how the proposed "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " prediction method can"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "further … a comparative analysis with other "
+          },
+          {
+            "role": "text",
+            "name": "machine"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " approaches, specifically ANN and …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] ieee.org"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "Reinforcement Learning with Deep Features: A Dynamic Approach for Intrusion Detection in IOT Networks"
+          },
+          {
+            "role": "link",
+            "name": "M Khayat"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "E Barka"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "MA Serhani"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "F Sallabi"
+          },
+          {
+            "role": "text",
+            "name": "… - IEEE …, 2025 - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "9 days ago - "
+          },
+          {
+            "role": "text",
+            "name": "… devices to industrial sensors and "
+          },
+          {
+            "role": "text",
+            "name": "autonomous"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "vehicles"
+          },
+          {
+            "role": "text",
+            "name": "—has increased"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "efficiency, … The "
+          },
+          {
+            "role": "text",
+            "name": "RNN"
+          },
+          {
+            "role": "text",
+            "name": " was implemented as two "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " layers with dropout for regularization, and …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "link",
+            "name": "Intelligent Supply Chain"
+          },
+          {
+            "role": "link",
+            "name": "B Sarkar"
+          },
+          {
+            "role": "text",
+            "name": ", RK Paul - AI for Advanced Manufacturing and Industrial …, 2025 - Springer"
+          },
+          {
+            "role": "text",
+            "name": "13 days ago - "
+          },
+          {
+            "role": "text",
+            "name": "… Models such as "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " networks improve "
+          },
+          {
+            "role": "text",
+            "name": "traffic"
+          },
+          {
+            "role": "text",
+            "name": " forecasting, while "
+          },
+          {
+            "role": "text",
+            "name": "reinforcement"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " optimizes delivery routes and schedules. Predictive analytics enable businesses …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "link",
+            "name": "Hybrid LSTM–Transformer Architecture with Multi-Scale Feature Fusion for High-Accuracy Gold Futures Price Forecasting"
+          },
+          {
+            "role": "text",
+            "name": "Y Zhao, Y Guo, X Wang - Mathematics, 2025 - mdpi.com"
+          },
+          {
+            "role": "text",
+            "name": "13 days ago - "
+          },
+          {
+            "role": "text",
+            "name": "… "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": "–Transformer–XGBoost fusion framework. Firstly, XGBoost-based feature"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "importance ranking identifies six key "
+          },
+          {
+            "role": "text",
+            "name": "drivers"
+          },
+          {
+            "role": "text",
+            "name": " … deep "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " architecture integrates "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " for …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 3 versions"
+          },
+          {
+            "role": "button",
+            "name": "More"
+          },
+          {
+            "role": "link",
+            "name": "Efficient and Eco Lane-Changing Trajectory Planning for Connected and Automated Vehicles: Deep Reinforcement Learning-Based Method"
+          },
+          {
+            "role": "text",
+            "name": "S Jing, Y Feng, F Hui, J Liu, X Zhao… - IEEE Transactions on …, 2025 - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "13 days ago - "
+          },
+          {
+            "role": "text",
+            "name": "… to achieve the stability of "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " process. The remainder … "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " model and"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "reinforcement"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " framework are introduced in Section II. Section III describes the "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": "-…"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "heading",
+            "name": "Related searches",
+            "level": 2
+          },
+          {
+            "role": "link",
+            "name": "machine learning automotive safety"
+          },
+          {
+            "role": "text",
+            "name": "1"
+          },
+          {
+            "role": "link",
+            "name": "2"
+          },
+          {
+            "role": "link",
+            "name": "3"
+          },
+          {
+            "role": "link",
+            "name": "4"
+          },
+          {
+            "role": "link",
+            "name": "5"
+          },
+          {
+            "role": "link",
+            "name": "6"
+          },
+          {
+            "role": "link",
+            "name": "7"
+          },
+          {
+            "role": "link",
+            "name": "8"
+          },
+          {
+            "role": "link",
+            "name": "9"
+          },
+          {
+            "role": "link",
+            "name": "10"
+          },
+          {
+            "role": "link",
+            "name": "Next"
+          },
+          {
+            "role": "link",
+            "name": "Privacy"
+          },
+          {
+            "role": "link",
+            "name": "Terms"
+          },
+          {
+            "role": "button",
+            "name": "Help",
+            "haspopup": "menu"
+          }
+        ]
+      }
+    },
+    {
+      "step": "Set the publication date range to start from 2023 in the 'Custom range...' filter.",
+      "code": "page.get_by_role('textbox').nth(1).fill('2023'); page.get_by_role('textbox').nth(2).fill('2025')",
+      "axtree": {
+        "role": "WebArea",
+        "name": "reinforcement learning autonomous driving LSTM - Google Scholar",
+        "children": [
+          {
+            "role": "button",
+            "name": ""
+          },
+          {
+            "role": "link",
+            "name": "Homepage"
+          },
+          {
+            "role": "textbox",
+            "name": "Search",
+            "value": "reinforcement learning autonomous driving LSTM"
+          },
+          {
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "role": "button",
+            "name": "Samuel",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": "Articles"
+          },
+          {
+            "role": "text",
+            "name": "About 284 results ("
+          },
+          {
+            "role": "text",
+            "name": "0.10"
+          },
+          {
+            "role": "text",
+            "name": " sec)"
+          },
+          {
+            "role": "link",
+            "name": "My profile"
+          },
+          {
+            "role": "link",
+            "name": "My library"
+          },
+          {
+            "role": "link",
+            "name": "Any time"
+          },
+          {
+            "role": "link",
+            "name": "Since 2025"
+          },
+          {
+            "role": "link",
+            "name": "Since 2024"
+          },
+          {
+            "role": "link",
+            "name": "Since 2021"
+          },
+          {
+            "role": "link",
+            "name": "Custom range...",
+            "focused": true
+          },
+          {
+            "role": "textbox",
+            "name": ""
+          },
+          {
+            "role": "text",
+            "name": " — "
+          },
+          {
+            "role": "textbox",
+            "name": ""
+          },
+          {
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "role": "link",
+            "name": "Sort by relevance"
+          },
+          {
+            "role": "link",
+            "name": "Sort by date"
+          },
+          {
+            "role": "link",
+            "name": "Any type"
+          },
+          {
+            "role": "link",
+            "name": "Review articles"
+          },
+          {
+            "role": "checkbox",
+            "name": "include patents",
+            "checked": false
+          },
+          {
+            "role": "checkbox",
+            "name": "include citations",
+            "checked": true
+          },
+          {
+            "role": "link",
+            "name": "Create alert"
+          },
+          {
+            "role": "text",
+            "name": "Articles added in the last year, sorted by date"
+          },
+          {
+            "role": "button",
+            "name": "Search abstracts"
+          },
+          {
+            "role": "button",
+            "name": "Search everything"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] nepjol.info"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "SmartKYC"
+          },
+          {
+            "role": "text",
+            "name": "N Poudel, S Neupane, S Shrestha, "
+          },
+          {
+            "role": "link",
+            "name": "S Shakya"
+          },
+          {
+            "role": "text",
+            "name": "… - International Journal on …, 2025 - nepjol.info"
+          },
+          {
+            "role": "text",
+            "name": "2 days ago - "
+          },
+          {
+            "role": "text",
+            "name": "… "
+          },
+          {
+            "role": "text",
+            "name": "automated"
+          },
+          {
+            "role": "text",
+            "name": " system to streamline the KYC (Know Your Customer) process using"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "machine"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": ". … The "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " model employed two bidirectional "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " layers with 512 units …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "button",
+            "name": "More"
+          },
+          {
+            "role": "link",
+            "name": "P4-Assisted Slowloris DDoS attack detection in IoT environments by using ML and DL"
+          },
+          {
+            "role": "text",
+            "name": "ED Ramirez-Martinez, "
+          },
+          {
+            "role": "link",
+            "name": "JA Perez-Diaz"
+          },
+          {
+            "role": "text",
+            "name": "… - Computer Networks, 2025 - Elsevier"
+          },
+          {
+            "role": "text",
+            "name": "3 days ago - "
+          },
+          {
+            "role": "text",
+            "name": "… Recent studies have employed Software-Defined Networking (SDN) and"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "machine"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " (ML) to "
+          },
+          {
+            "role": "text",
+            "name": "autonomously"
+          },
+          {
+            "role": "text",
+            "name": " identify slow-rate DDoS attacks. However, because …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "link",
+            "name": "Real Time Sales Forecasting in Omnichannel Retail Using a Hadoop Based Hybrid CNN–LSTM Deep Learning Framework"
+          },
+          {
+            "role": "text",
+            "name": "H Liu, T Qi - Academic Journal of Sociology and Management, 2025 - suaspress.org"
+          },
+          {
+            "role": "text",
+            "name": "5 days ago - "
+          },
+          {
+            "role": "text",
+            "name": "… "
+          },
+          {
+            "role": "text",
+            "name": "Machine"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " optimizes the efficiency of picking and packing in "
+          },
+          {
+            "role": "text",
+            "name": "automated"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "warehouse robot systems. In 2024 International Conference on Computer Engineering, …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "button",
+            "name": "More"
+          },
+          {
+            "role": "link",
+            "name": "A Deep Learning-Based Contactless Driver State Monitoring Radar System for In-Vehicle Physiological Applications"
+          },
+          {
+            "role": "text",
+            "name": "AK Sriranga, Q Lu, "
+          },
+          {
+            "role": "link",
+            "name": "SA Birrell"
+          },
+          {
+            "role": "text",
+            "name": " - IEEE Transactions on Intelligent …, 2025 - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "6 days ago - "
+          },
+          {
+            "role": "text",
+            "name": "… for both traditional and "
+          },
+          {
+            "role": "text",
+            "name": "automated"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "vehicles"
+          },
+          {
+            "role": "text",
+            "name": ", as it can … of "
+          },
+          {
+            "role": "text",
+            "name": "machine"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "(ML) and deep "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " (DL) … FMCW radar with multivariate "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " networks trained using …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "link",
+            "name": "Structure and Position-Aware Graph Modeling for Trajectory Similarity Computation over Road Networks"
+          },
+          {
+            "role": "link",
+            "name": "P Yang"
+          },
+          {
+            "role": "text",
+            "name": ", H Wang, Z Xu, "
+          },
+          {
+            "role": "link",
+            "name": "Z Qian"
+          },
+          {
+            "role": "text",
+            "name": ", Y Wang… - 2025 IEEE 41st …, 2025 - computer.org"
+          },
+          {
+            "role": "text",
+            "name": "8 days ago - "
+          },
+          {
+            "role": "text",
+            "name": "… is the first proposal to "
+          },
+          {
+            "role": "text",
+            "name": "learn"
+          },
+          {
+            "role": "text",
+            "name": " from a broad context of graph topology. Afterwards,"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "SPGMT designs a "
+          },
+          {
+            "role": "text",
+            "name": "self"
+          },
+          {
+            "role": "text",
+            "name": "-attention network and employs an "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " to "
+          },
+          {
+            "role": "text",
+            "name": "learn"
+          },
+          {
+            "role": "text",
+            "name": " the sequential …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] ieee.org"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "Adaptive Beam Steering and Divergence Control for Underwater Optical Wireless Communication Using Reinforcement Learning"
+          },
+          {
+            "role": "text",
+            "name": "T Ishida, "
+          },
+          {
+            "role": "link",
+            "name": "CB Naila"
+          },
+          {
+            "role": "text",
+            "name": ", H Okada - IEEE Photonics Journal, 2025 - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "8 days ago - "
+          },
+          {
+            "role": "text",
+            "name": "… In the following, we show how the proposed "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " prediction method can"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "further … a comparative analysis with other "
+          },
+          {
+            "role": "text",
+            "name": "machine"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " approaches, specifically ANN and …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] ieee.org"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "Reinforcement Learning with Deep Features: A Dynamic Approach for Intrusion Detection in IOT Networks"
+          },
+          {
+            "role": "link",
+            "name": "M Khayat"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "E Barka"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "MA Serhani"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "F Sallabi"
+          },
+          {
+            "role": "text",
+            "name": "… - IEEE …, 2025 - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "9 days ago - "
+          },
+          {
+            "role": "text",
+            "name": "… devices to industrial sensors and "
+          },
+          {
+            "role": "text",
+            "name": "autonomous"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "vehicles"
+          },
+          {
+            "role": "text",
+            "name": "—has increased"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "efficiency, … The "
+          },
+          {
+            "role": "text",
+            "name": "RNN"
+          },
+          {
+            "role": "text",
+            "name": " was implemented as two "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " layers with dropout for regularization, and …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "link",
+            "name": "Intelligent Supply Chain"
+          },
+          {
+            "role": "link",
+            "name": "B Sarkar"
+          },
+          {
+            "role": "text",
+            "name": ", RK Paul - AI for Advanced Manufacturing and Industrial …, 2025 - Springer"
+          },
+          {
+            "role": "text",
+            "name": "13 days ago - "
+          },
+          {
+            "role": "text",
+            "name": "… Models such as "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " networks improve "
+          },
+          {
+            "role": "text",
+            "name": "traffic"
+          },
+          {
+            "role": "text",
+            "name": " forecasting, while "
+          },
+          {
+            "role": "text",
+            "name": "reinforcement"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " optimizes delivery routes and schedules. Predictive analytics enable businesses …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "link",
+            "name": "Hybrid LSTM–Transformer Architecture with Multi-Scale Feature Fusion for High-Accuracy Gold Futures Price Forecasting"
+          },
+          {
+            "role": "text",
+            "name": "Y Zhao, Y Guo, X Wang - Mathematics, 2025 - mdpi.com"
+          },
+          {
+            "role": "text",
+            "name": "13 days ago - "
+          },
+          {
+            "role": "text",
+            "name": "… "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": "–Transformer–XGBoost fusion framework. Firstly, XGBoost-based feature"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "importance ranking identifies six key "
+          },
+          {
+            "role": "text",
+            "name": "drivers"
+          },
+          {
+            "role": "text",
+            "name": " … deep "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " architecture integrates "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": " for …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 3 versions"
+          },
+          {
+            "role": "button",
+            "name": "More"
+          },
+          {
+            "role": "link",
+            "name": "Efficient and Eco Lane-Changing Trajectory Planning for Connected and Automated Vehicles: Deep Reinforcement Learning-Based Method"
+          },
+          {
+            "role": "text",
+            "name": "S Jing, Y Feng, F Hui, J Liu, X Zhao… - IEEE Transactions on …, 2025 - ieeexplore.ieee.org"
+          },
+          {
+            "role": "text",
+            "name": "13 days ago - "
+          },
+          {
+            "role": "text",
+            "name": "… to achieve the stability of "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " process. The remainder … "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " model and"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "reinforcement"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "learning"
+          },
+          {
+            "role": "text",
+            "name": " framework are introduced in Section II. Section III describes the "
+          },
+          {
+            "role": "text",
+            "name": "LSTM"
+          },
+          {
+            "role": "text",
+            "name": "-…"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "heading",
+            "name": "Related searches",
+            "level": 2
+          },
+          {
+            "role": "link",
+            "name": "machine learning automotive safety"
+          },
+          {
+            "role": "text",
+            "name": "1"
+          },
+          {
+            "role": "link",
+            "name": "2"
+          },
+          {
+            "role": "link",
+            "name": "3"
+          },
+          {
+            "role": "link",
+            "name": "4"
+          },
+          {
+            "role": "link",
+            "name": "5"
+          },
+          {
+            "role": "link",
+            "name": "6"
+          },
+          {
+            "role": "link",
+            "name": "7"
+          },
+          {
+            "role": "link",
+            "name": "8"
+          },
+          {
+            "role": "link",
+            "name": "9"
+          },
+          {
+            "role": "link",
+            "name": "10"
+          },
+          {
+            "role": "link",
+            "name": "Next"
+          },
+          {
+            "role": "link",
+            "name": "Privacy"
+          },
+          {
+            "role": "link",
+            "name": "Terms"
+          },
+          {
+            "role": "button",
+            "name": "Help",
+            "haspopup": "menu"
+          }
+        ]
+      }
+    }
+  ],
+  "success": true,
+  "output": "Found 284 articles on the topic of reinforcement learning in autonomous driving using LSTM since 2023, sorted by date."
+}

@@ -1,0 +1,1606 @@
+{
+  "persona": "A retired automotive designer who pioneered advancements in car safety features",
+  "original_instruction": "Set an alert for new publications on vehicle aerodynamics",
+  "augmented_instruction": "Set an alert for new publications on \"vehicle aerodynamics.\"",
+  "final_instruction": "Set an alert for new publications on 'vehicle aerodynamics' on Google Scholar.",
+  "url": "https://scholar.google.com",
+  "task_steps": [
+    {
+      "step": "Enter the search query 'vehicle aerodynamics' in the search bar",
+      "code": "page.get_by_role('textbox', name='Search').fill('vehicle aerodynamics')",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Google Scholar",
+        "children": [
+          {
+            "role": "button",
+            "name": ""
+          },
+          {
+            "role": "link",
+            "name": "My profile"
+          },
+          {
+            "role": "link",
+            "name": "My library"
+          },
+          {
+            "role": "textbox",
+            "name": "Search",
+            "focused": true
+          },
+          {
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "role": "button",
+            "name": "Samuel",
+            "haspopup": "menu"
+          },
+          {
+            "role": "radio",
+            "name": "Articles",
+            "checked": true
+          },
+          {
+            "role": "text",
+            "name": "Articles"
+          },
+          {
+            "role": "radio",
+            "name": "Case law",
+            "checked": false
+          },
+          {
+            "role": "text",
+            "name": "Case law"
+          },
+          {
+            "role": "text",
+            "name": "Stand on the shoulders of giants"
+          },
+          {
+            "role": "button",
+            "name": "EN"
+          },
+          {
+            "role": "link",
+            "name": "Privacy"
+          },
+          {
+            "role": "link",
+            "name": "Terms"
+          },
+          {
+            "role": "button",
+            "name": "Help",
+            "haspopup": "menu"
+          }
+        ]
+      }
+    },
+    {
+      "step": "Click the 'Search' button to find articles on 'vehicle aerodynamics'",
+      "code": "page.get_by_role('button', name='Search').click()",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Google Scholar",
+        "children": [
+          {
+            "role": "button",
+            "name": ""
+          },
+          {
+            "role": "link",
+            "name": "My profile"
+          },
+          {
+            "role": "link",
+            "name": "My library"
+          },
+          {
+            "role": "textbox",
+            "name": "Search",
+            "focused": true,
+            "value": "vehicle aerodynamics"
+          },
+          {
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "role": "button",
+            "name": "Samuel",
+            "haspopup": "menu"
+          },
+          {
+            "role": "radio",
+            "name": "Articles",
+            "checked": true
+          },
+          {
+            "role": "text",
+            "name": "Articles"
+          },
+          {
+            "role": "radio",
+            "name": "Case law",
+            "checked": false
+          },
+          {
+            "role": "text",
+            "name": "Case law"
+          },
+          {
+            "role": "text",
+            "name": "Stand on the shoulders of giants"
+          },
+          {
+            "role": "button",
+            "name": "EN"
+          },
+          {
+            "role": "link",
+            "name": "Privacy"
+          },
+          {
+            "role": "link",
+            "name": "Terms"
+          },
+          {
+            "role": "button",
+            "name": "Help",
+            "haspopup": "menu"
+          }
+        ]
+      }
+    },
+    {
+      "step": "Click the 'Create alert' link to set an alert for new publications on 'vehicle aerodynamics'.",
+      "code": "page.get_by_role('link', name='Create alert').click()",
+      "axtree": {
+        "role": "WebArea",
+        "name": "vehicle aerodynamics - Google Scholar",
+        "children": [
+          {
+            "role": "button",
+            "name": ""
+          },
+          {
+            "role": "link",
+            "name": "Homepage"
+          },
+          {
+            "role": "textbox",
+            "name": "Search",
+            "value": "vehicle aerodynamics"
+          },
+          {
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "role": "button",
+            "name": "Samuel",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": "Articles"
+          },
+          {
+            "role": "text",
+            "name": "About 403,000 results ("
+          },
+          {
+            "role": "text",
+            "name": "0.08"
+          },
+          {
+            "role": "text",
+            "name": " sec)"
+          },
+          {
+            "role": "link",
+            "name": "My profile"
+          },
+          {
+            "role": "link",
+            "name": "My library"
+          },
+          {
+            "role": "link",
+            "name": "Any time"
+          },
+          {
+            "role": "link",
+            "name": "Since 2025"
+          },
+          {
+            "role": "link",
+            "name": "Since 2024"
+          },
+          {
+            "role": "link",
+            "name": "Since 2021"
+          },
+          {
+            "role": "link",
+            "name": "Custom range..."
+          },
+          {
+            "role": "link",
+            "name": "Sort by relevance"
+          },
+          {
+            "role": "link",
+            "name": "Sort by date"
+          },
+          {
+            "role": "link",
+            "name": "Any type"
+          },
+          {
+            "role": "link",
+            "name": "Review articles"
+          },
+          {
+            "role": "checkbox",
+            "name": "include patents",
+            "checked": false
+          },
+          {
+            "role": "checkbox",
+            "name": "include citations",
+            "checked": true
+          },
+          {
+            "role": "link",
+            "name": "Create alert"
+          },
+          {
+            "role": "text",
+            "name": "[BOOK]"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Road vehicle aerodynamics"
+          },
+          {
+            "role": "text",
+            "name": "AJ Scibor-Rylski - 1984 - trid.trb.org"
+          },
+          {
+            "role": "text",
+            "name": "… the choice of "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " shape and the consequent effect on "
+          },
+          {
+            "role": "text",
+            "name": "aerodynamic"
+          },
+          {
+            "role": "text",
+            "name": " forces and road … to"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " drag and lift forces on saloon and racing cars and their effects on "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " performance …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 139"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 3 versions"
+          },
+          {
+            "role": "button",
+            "name": "More"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] mit.edu"
+              }
+            ]
+          },
+          {
+            "role": "text",
+            "name": "[BOOK]"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Flight vehicle aerodynamics"
+          },
+          {
+            "role": "text",
+            "name": "M Drela - 2014 - books.google.com"
+          },
+          {
+            "role": "text",
+            "name": "An overview of the physics, concepts, theories, and models underlying the discipline of"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "aerodynamics"
+          },
+          {
+            "role": "text",
+            "name": ". This book offers a general overview of the physics, concepts, theories, and …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 344"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 9 versions"
+          },
+          {
+            "role": "button",
+            "name": "More"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] psu.edu"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "Bluff body flows applicable to vehicle aerodynamics"
+          },
+          {
+            "role": "text",
+            "name": "PW Bearman - 1980 - asmedigitalcollection.asme.org"
+          },
+          {
+            "role": "text",
+            "name": "… aspects of bluff body "
+          },
+          {
+            "role": "text",
+            "name": "aerodynamics"
+          },
+          {
+            "role": "text",
+            "name": " that are relevant to the understanding of "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " flows. …"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "flows and to consider what can be applied from our knowledge of bluff body "
+          },
+          {
+            "role": "text",
+            "name": "aerodynamics"
+          },
+          {
+            "role": "text",
+            "name": ". As …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 109"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 5 versions"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] lboro.ac.uk"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "An experimental study of unsteady vehicle aerodynamics"
+          },
+          {
+            "role": "link",
+            "name": "MA Passmore"
+          },
+          {
+            "role": "text",
+            "name": ", S Richardson… - Proceedings of the …, 2001 - journals.sagepub.com"
+          },
+          {
+            "role": "text",
+            "name": "… level inputs can result in poor "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " refinement, and extreme … to simulate the transient"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "aerodynamic"
+          },
+          {
+            "role": "text",
+            "name": " eVects produced on a car-… and yaw moment and the "
+          },
+          {
+            "role": "text",
+            "name": "aerodynamic"
+          },
+          {
+            "role": "text",
+            "name": " magnification (ų …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 55"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 11 versions"
+          },
+          {
+            "role": "heading",
+            "name": "Related searches",
+            "level": 2
+          },
+          {
+            "role": "link",
+            "name": "road vehicle aerodynamics"
+          },
+          {
+            "role": "link",
+            "name": "vehicle aerodynamics computational fluid dynamics"
+          },
+          {
+            "role": "link",
+            "name": "flight vehicle aerodynamics"
+          },
+          {
+            "role": "link",
+            "name": "unsteady vehicle aerodynamics"
+          },
+          {
+            "role": "link",
+            "name": "ground vehicle aerodynamics"
+          },
+          {
+            "role": "link",
+            "name": "vehicle aerodynamics drag"
+          },
+          {
+            "role": "link",
+            "name": "computational vehicle aerodynamics"
+          },
+          {
+            "role": "link",
+            "name": "launch vehicle aerodynamics"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] academia.edu"
+              }
+            ]
+          },
+          {
+            "role": "text",
+            "name": "[PDF]"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Review of research on vehicles aerodynamic drag reduction methods"
+          },
+          {
+            "role": "link",
+            "name": "MN Sudin"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "MA Abdullah"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "SA Shamsuddin"
+          },
+          {
+            "role": "text",
+            "name": "… - International Journal of …, 2014 - academia.edu"
+          },
+          {
+            "role": "text",
+            "name": "… large part of the "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": "’s fuel consumption and contribute up to 50% of the total "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " fuel"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "… active and passive flow control on the "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "aerodynamic"
+          },
+          {
+            "role": "text",
+            "name": " drag reduction is reported in this …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 137"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 6 versions"
+          },
+          {
+            "role": "button",
+            "name": "More"
+          },
+          {
+            "role": "link",
+            "name": "New horizons of vehicle aerodynamics"
+          },
+          {
+            "role": "text",
+            "name": "C Jessing, D Stoll, T Kuthada… - Proceedings of the …, 2017 - journals.sagepub.com"
+          },
+          {
+            "role": "text",
+            "name": "… "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": ". Furthermore, the aeroacoustic wind noise in on-road wind conditions is investigated"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "during the development of the "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": ". … the field of "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "aerodynamics"
+          },
+          {
+            "role": "text",
+            "name": " and aeroacoustics, …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 21"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 2 versions"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "link",
+                "name": "[PDF] coventry.ac.uk"
+              }
+            ]
+          },
+          {
+            "role": "link",
+            "name": "Mesh optimization for ground vehicle aerodynamics"
+          },
+          {
+            "role": "text",
+            "name": "NE Ahmad, "
+          },
+          {
+            "role": "link",
+            "name": "E Abo-Serie"
+          },
+          {
+            "role": "text",
+            "name": ", "
+          },
+          {
+            "role": "link",
+            "name": "A Gaylard"
+          },
+          {
+            "role": "text",
+            "name": " - CFD letters, 2010 - pureportal.coventry.ac.uk"
+          },
+          {
+            "role": "text",
+            "name": "… for the range of "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " speeds considered. The realizable K-Epsilon (k-ε) turbulence model"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "is used in this study as it is commonly used in external "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "aerodynamics"
+          },
+          {
+            "role": "text",
+            "name": " studies [See 1, …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 104"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 16 versions"
+          },
+          {
+            "role": "button",
+            "name": "More"
+          },
+          {
+            "role": "link",
+            "name": "The influence of rotating wheels on vehicle aerodynamics-numerical and experimental investigations"
+          },
+          {
+            "role": "text",
+            "name": "A Wäschle - 2007 - sae.org"
+          },
+          {
+            "role": "text",
+            "name": "… to the "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "aerodynamics"
+          },
+          {
+            "role": "text",
+            "name": " are deduced. THE INVESTIGATED "
+          },
+          {
+            "role": "text",
+            "name": "VEHICLES"
+          },
+          {
+            "role": "text",
+            "name": " For the investigation"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "of the influence of rotating wheels on the "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "aerodynamics"
+          },
+          {
+            "role": "text",
+            "name": " two "
+          },
+          {
+            "role": "text",
+            "name": "vehicles"
+          },
+          {
+            "role": "text",
+            "name": " are used. …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 136"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 3 versions"
+          },
+          {
+            "role": "text",
+            "name": "[BOOK]"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Road vehicle aerodynamic design-an introduction"
+          },
+          {
+            "role": "text",
+            "name": "RH Barnard - 2001 - trid.trb.org"
+          },
+          {
+            "role": "text",
+            "name": "… "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "aerodynamic"
+          },
+          {
+            "role": "text",
+            "name": " design - an introduction This book provides an introduction to road "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "aerodynamic"
+          },
+          {
+            "role": "text",
+            "name": " … production on road "
+          },
+          {
+            "role": "text",
+            "name": "vehicles"
+          },
+          {
+            "role": "text",
+            "name": " (domestic cars, commercial "
+          },
+          {
+            "role": "text",
+            "name": "vehicles"
+          },
+          {
+            "role": "text",
+            "name": " and track …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 315"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": "[BOOK]"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Aerodynamics of road vehicles"
+          },
+          {
+            "role": "text",
+            "name": "TC Schuetz - 2015 - books.google.com"
+          },
+          {
+            "role": "text",
+            "name": "… of fluid mechanics related to "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "aerodynamics"
+          },
+          {
+            "role": "text",
+            "name": "• Essential … results The "
+          },
+          {
+            "role": "text",
+            "name": "aerodynamics"
+          },
+          {
+            "role": "text",
+            "name": " of"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "passenger cars, commercial "
+          },
+          {
+            "role": "text",
+            "name": "vehicles"
+          },
+          {
+            "role": "text",
+            "name": ", … , measuring and numerical "
+          },
+          {
+            "role": "text",
+            "name": "aerodynamics"
+          },
+          {
+            "role": "text",
+            "name": " methods and …"
+          },
+          {
+            "role": "button",
+            "name": "Save"
+          },
+          {
+            "role": "button",
+            "name": "Cite",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Cited by 125"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "Related articles"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "link",
+            "name": "All 6 versions"
+          },
+          {
+            "role": "button",
+            "name": "More"
+          },
+          {
+            "role": "text",
+            "name": "1"
+          },
+          {
+            "role": "link",
+            "name": "2"
+          },
+          {
+            "role": "link",
+            "name": "3"
+          },
+          {
+            "role": "link",
+            "name": "4"
+          },
+          {
+            "role": "link",
+            "name": "5"
+          },
+          {
+            "role": "link",
+            "name": "6"
+          },
+          {
+            "role": "link",
+            "name": "7"
+          },
+          {
+            "role": "link",
+            "name": "8"
+          },
+          {
+            "role": "link",
+            "name": "9"
+          },
+          {
+            "role": "link",
+            "name": "10"
+          },
+          {
+            "role": "link",
+            "name": "Next"
+          },
+          {
+            "role": "link",
+            "name": "Privacy"
+          },
+          {
+            "role": "link",
+            "name": "Terms"
+          },
+          {
+            "role": "button",
+            "name": "Help",
+            "haspopup": "menu"
+          }
+        ]
+      }
+    },
+    {
+      "step": "Click the 'CREATE ALERT' button to set the alert for new publications on 'vehicle aerodynamics'.",
+      "code": "page.get_by_role('button', name='CREATE ALERT').click()",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Google Scholar - Create alert",
+        "children": [
+          {
+            "role": "button",
+            "name": ""
+          },
+          {
+            "role": "link",
+            "name": "Homepage"
+          },
+          {
+            "role": "button",
+            "name": "Samuel",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": "Alerts"
+          },
+          {
+            "role": "text",
+            "name": "Alert email: "
+          },
+          {
+            "role": "text",
+            "name": "kukukud4@gmail.com"
+          },
+          {
+            "role": "button",
+            "name": "Change email"
+          },
+          {
+            "role": "textbox",
+            "name": "Create an alert about…",
+            "value": "\"vehicle aerodynamics\""
+          },
+          {
+            "role": "checkbox",
+            "name": "Include less relevant results",
+            "checked": false
+          },
+          {
+            "role": "text",
+            "name": "Include less relevant results"
+          },
+          {
+            "role": "button",
+            "name": "CREATE ALERT"
+          },
+          {
+            "role": "heading",
+            "name": "Most relevant results170 results in the last year.",
+            "level": 3
+          },
+          {
+            "role": "link",
+            "name": "On low-frequency pressure fluctuations and their impact on vehicle aerodynamics in a full-scale automotive wind tunnel"
+          },
+          {
+            "role": "text",
+            "name": "H Zhang, F Zhao, SD Huang, Z Geng, S Li - Physics of Fluids, 2025"
+          },
+          {
+            "role": "text",
+            "name": "… wind tunnel pressure fluctuations and test "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "aerodynamics"
+          },
+          {
+            "role": "text",
+            "name": " remain unclear."
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "This study employs high-fidelity numerical simulations to investigate the"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "characteristics of low-frequency pressure fluctuations and their influence on "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " …"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "link",
+            "name": "Revving Up Innovation: Empowering Automotive Industry Through Advanced Manufacturing Technologies for Vehicle Aerodynamics"
+          },
+          {
+            "role": "text",
+            "name": "Z Zhang, A Javaid, M Sajid - 2024 4th International Conference on Digital Futures …, 2024"
+          },
+          {
+            "role": "text",
+            "name": "This study explores the application of advanced manufacturing techniques in the"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "development and testing of "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "aerodynamics"
+          },
+          {
+            "role": "text",
+            "name": ", emphasizing the rapid production"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "and high precision of complicated components. Traditionally, creating prototypes for …"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "button",
+            "name": "See more"
+          },
+          {
+            "role": "checkbox",
+            "name": "Less relevant results",
+            "checked": false
+          },
+          {
+            "role": "text",
+            "name": "Less relevant results"
+          },
+          {
+            "role": "text",
+            "name": "24 results in the last month."
+          },
+          {
+            "role": "link",
+            "name": "Accelerated Discovery of Corrosion Resistance High-Entropy Amorphous Alloys in Liquid Lead-Bismuth Eutectic"
+          },
+          {
+            "role": "text",
+            "name": "LL Zhang, X Wei, M Shahbaz, Z Jiang, T Ma, JB Pang… - Available at SSRN 5238134"
+          },
+          {
+            "role": "text",
+            "name": "High-entropy amorphous alloys (HEAAs) demonstrate significant potential as"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "corrosion protection materials against liquid lead-bismuth eutectic (LBE). We"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "developed an accelerated design strategy that combines a multi-parametric criterion …"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "link",
+            "name": "Modal Analyses of Flow and Aerodynamic Characteristics of an Idealized Ground Vehicle Using Dynamic Mode Decomposition"
+          },
+          {
+            "role": "text",
+            "name": "H Ahani, M Uddin - Vehicles, 2025"
+          },
+          {
+            "role": "text",
+            "name": "… The term τ i j ≡ 2 μ s i j is the viscous stress tensor, and f i represents the external"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "body force per unit volume acting in the i-th direction, such as gravitational or"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "text",
+            "name": "electromagnetic forces, which are negligible in "
+          },
+          {
+            "role": "text",
+            "name": "vehicle"
+          },
+          {
+            "role": "text",
+            "name": " "
+          },
+          {
+            "role": "text",
+            "name": "aerodynamics"
+          },
+          {
+            "role": "text",
+            "name": ". With μ as the …"
+          },
+          {
+            "role": "LineBreak",
+            "name": "\n"
+          },
+          {
+            "role": "button",
+            "name": "See more"
+          },
+          {
+            "role": "link",
+            "name": "Privacy"
+          },
+          {
+            "role": "link",
+            "name": "Terms"
+          },
+          {
+            "role": "button",
+            "name": "Help",
+            "haspopup": "menu"
+          }
+        ]
+      }
+    }
+  ],
+  "success": true,
+  "output": "Alert for 'vehicle aerodynamics' has been successfully created."
+}

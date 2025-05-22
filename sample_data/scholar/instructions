@@ -1,0 +1,164 @@
+[  
+  {
+    "persona": "A retired automotive designer who pioneered advancements in car safety features",
+    "url": "https://scholar.google.com",
+    "instructions": [
+      "Search for articles on advancements in automotive safety features and filter results to show only articles published in the last five years",
+      "Find papers on reinforcement learning in autonomous driving using LSTM.",
+      "Save relevant articles on automotive crash testing to \"My library.\"",
+      "Set an alert for new publications on vehicle aerodynamics",
+      "Export citations of selected articles in APA format"
+    ],
+    "augmented_instructions": [
+      "Search for \"advancements in automotive safety features\" on Google Scholar from the last 5 years.",
+      "Search for papers on reinforcement learning in autonomous driving after 2022 that uses LSTM.",
+      "Save relevant articles on automotive crash testing to \"My library.\"",
+      "Set an alert for new publications on \"vehicle aerodynamics.\"",
+      "Export citations of selected articles in APA format."
+    ]
+  },
+  {
+    "persona": "A struggling young author from Bangladesh in his mid-20s who is passionate about his country's history and the distinguished personalities in it.",
+    "url": "https://scholar.google.com",
+    "instructions": [
+      "Search for articles on the historical impact of the Language Movement in Bangladesh",
+      "Find recent papers about distinguished Bengali authors and their contributions to literature",
+      "Look up case law related to copyright issues in publishing",
+      "Add a specific article on the Liberation War to my library for future reference",
+      "Check for citations of works by Rabindranath Tagore in recent academic publications"
+    ],
+    "augmented_instructions": [
+      "Search for articles about the historical impact of the Language Movement in Bangladesh.",
+      "Search for recent papers on distinguished Bengali authors and their contributions to literature.",
+      "Search for case law related to copyright issues in publishing.",
+      "Search for a specific article on the Liberation War and add it to your library.",
+      "Search for citations of works by Rabindranath Tagore in recent academic publications."
+    ]
+  },
+  {
+    "persona": "An aspiring science fiction author fascinated with advanced materials.",
+    "url": "https://scholar.google.com",
+    "instructions": [
+      "Search for the latest research on advanced materials in science fiction",
+      "Find articles on the use of nanotechnology in futuristic narratives",
+      "Look up case law related to intellectual property rights in sci-fi literature",
+      "Add relevant articles on material science in my library",
+      "Explore the most cited papers on the development of flexible electronics"
+    ],
+    "augmented_instructions": [
+      "Search for \"latest research on advanced materials in science fiction\" on Google Scholar.",
+      "Search for \"use of nanotechnology in futuristic narratives\" on Google Scholar.",
+      "Select \"Case law\" and search for \"intellectual property rights in sci-fi literature\" on Google Scholar.",
+      "Search for \"material science\" on Google Scholar and save relevant articles to your library.",
+      "Search for \"most cited papers on the development of flexible electronics\" on Google Scholar."
+    ]
+  },
+  {
+    "persona": "A college student who spends hours watching Twitch streams and considers the streamer their favorite content creator",
+    "url": "https://scholar.google.com",
+    "instructions": [
+      "Search for recent articles on the impact of streaming platforms on student productivity",
+      "Find scholarly papers related to video game culture and community building",
+      "Look up case law involving intellectual property rights for online content creators",
+      "Search for articles on the psychological effects of watching live streams",
+      "Save articles related to digital media consumption in my library"
+    ],
+    "augmented_instructions": [
+      "Search for articles about the impact of streaming platforms on student productivity.",
+      "Search for scholarly papers on video game culture and community building.",
+      "Look up case law related to intellectual property rights for online content creators.",
+      "Search for articles about the psychological effects of watching live streams.",
+      "Save articles about digital media consumption to your library."
+    ]
+  },
+  {
+    "persona": "An orchestra conductor who introduces students to classical music through vinyl records",
+    "url": "https://scholar.google.com",
+    "instructions": [
+      "Search for scholarly articles on the impact of classical music education on young students",
+      "Find research papers discussing the benefits of vinyl records in teaching music appreciation",
+      "Look up articles comparing digital and analog audio quality in classical music recordings",
+      "Save relevant articles on classical music pedagogy to my library for later reference",
+      "Set up alerts for new research on innovative methods for introducing classical music to students"
+    ],
+    "augmented_instructions": [
+      "Search for \"impact of classical music education on young students\" in Google Scholar.",
+      "Search for \"benefits of vinyl records in teaching music appreciation\" in Google Scholar.",
+      "Search for \"digital vs analog audio quality in classical music recordings\" in Google Scholar.",
+      "Save articles about \"classical music pedagogy\" to your library in Google Scholar.",
+      "Set up alerts for \"innovative methods for introducing classical music to students\" in Google Scholar."
+    ]
+  },
+  {
+    "persona": "A social entrepreneur building a platform for open-source data science education",
+    "url": "https://scholar.google.com",
+    "instructions": [
+      "Search for the most cited papers on open-source data science tools",
+      "Find articles related to machine learning education for beginners",
+      "Look up recent publications on collaborative data science projects",
+      "Save articles discussing the impact of open-source software in education to My Library",
+      "Check for case law involving intellectual property issues in open-source software"
+    ],
+    "augmented_instructions": [
+      "Search for the most cited papers on open-source data science tools in Google Scholar.",
+      "Search for articles related to machine learning education for beginners in Google Scholar.",
+      "Search for recent publications on collaborative data science projects in Google Scholar.",
+      "Search for articles discussing the impact of open-source software in education and save them to My Library in Google Scholar.",
+      "Search for case law involving intellectual property issues in open-source software in Google Scholar."
+    ]
+  },
+  {
+    "persona": "A passionate charity volunteer who absolutely loves reading anything and everything.",
+    "url": "https://scholar.google.com",
+    "instructions": [
+      "Search for the most cited articles on climate change",
+      "Find recent case law related to intellectual property",
+      "Add the top three articles on renewable energy to my library",
+      "Set an alert for new publications on affordable housing solutions",
+      "Look up articles by a specific author on neurological disorders"
+    ],
+    "augmented_instructions": [
+      "Search for the most cited articles on climate change in Google Scholar.",
+      "Select \"Case law\" and search for recent cases related to intellectual property.",
+      "Search for articles on renewable energy and add the top three to your library.",
+      "Set up an alert for new publications on affordable housing solutions.",
+      "Search for articles by a specific author on neurological disorders."
+    ]
+  },
+  {
+    "persona": "a friend who grew up with Red in Little Lake",
+    "url": "https://scholar.google.com",
+    "instructions": [
+      "Search for articles on climate change impact on small lakes",
+      "Find case law related to environmental protection in Little Lake",
+      "Add the latest research on freshwater ecosystems to my library",
+      "Check for any new publications by Dr. Smith on water quality",
+      "Look up the most cited papers in environmental science from"
+    ],
+    "augmented_instructions": [
+      "Search for articles about climate change impact on small lakes.",
+      "Search for case law related to environmental protection in Little Lake.",
+      "Add the latest research on freshwater ecosystems to your library.",
+      "Search for new publications by Dr. Smith on water quality.",
+      "Search for the most cited papers in environmental science."
+    ]
+  },
+  {
+    "persona": "an enthusiastic customer who has been waiting for the release of this item",
+    "url": "https://scholar.google.com",
+    "instructions": [
+      "Search for articles on quantum computing advancements",
+      "Find case law related to intellectual property rights",
+      "Save a search for machine learning in my library",
+      "Show me the most cited papers on artificial intelligence",
+      "Set up alerts for new publications on renewable energy"
+    ],
+    "augmented_instructions": [
+      "Search for \"quantum computing advancements\" in articles.",
+      "Search for \"intellectual property rights\" in case law.",
+      "Save a search for \"machine learning\" to your library.",
+      "Search for the most cited papers on \"artificial intelligence.\"",
+      "Set up alerts for new publications on \"renewable energy.\""
+    ]
+  }
+]

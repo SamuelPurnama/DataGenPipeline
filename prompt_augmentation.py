@@ -34,7 +34,7 @@ def generate_augmented_instructions(
         system_msg_content = SYSTEM_MSG_FLIGHTS
     else:
         system_msg_content = SYSTEM_MSG_GENERAL
-    
+
     system_msg = {
         "role": "system",
         "content": system_msg_content

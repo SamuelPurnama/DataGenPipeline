@@ -9,9 +9,10 @@ from config import RESULTS_DIR
 
 # ========== CONFIGURABLE PARAMETERS ==========
 PHASE = 1
-START_IDX = 955
-END_IDX = 960
-MAX_RETRIES = 3
+START_IDX = 980
+END_IDX = 981
+MAX_RETRIES = 7
+MAX_STEPS = 25  # Maximum number of steps before failing
 ACTION_TIMEOUT = 30000  # 30 seconds timeout for actions
 # Execution Modes:
 # 0 - Automatic Mode: Processes all instructions without manual intervention
@@ -73,7 +74,13 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                 page = browser.new_page()
                 page.set_default_timeout(ACTION_TIMEOUT)
                 page.goto(url)
-                page.wait_for_selector('[aria-label*="Google Account"]', timeout=300000)
+                
+                # Only wait for Google Account if it's not Scholar
+                if 'scholar.google.com' not in url:
+                    page.wait_for_selector('[aria-label*="Google Account"]', timeout=300000)
+                else:
+                    # For Scholar, just wait for the search box
+                    page.wait_for_selector('input[name="q"]', timeout=300000)
 
                 execution_history = []
                 task_summarizer = []
@@ -82,6 +89,24 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
 
                 while should_continue:
                     step_idx = len(task_summarizer)
+
+                    if step_idx >= MAX_STEPS:
+                        print(f"❌ Maximum number of steps ({MAX_STEPS}) exceeded. Creating failure summary.")
+                        summary = {
+                            "persona": persona,
+                            "original_instruction": orig,
+                            "augmented_instruction": aug,
+                            "url": url,
+                            "final_instruction": current_goal,
+                            "task_steps": task_summarizer,
+                            "success": False,
+                            "failure_reason": f"Exceeded maximum steps ({MAX_STEPS})"
+                        }
+                        with open(os.path.join(inst_dir, "task_summarizer.json"), "w", encoding="utf-8") as f:
+                            json.dump(summary, f, indent=2, ensure_ascii=False)
+                        should_continue = False
+                        break
+
                     screenshot = os.path.join(inst_dir, f"step_{step_idx}.png")
                     page.screenshot(path=screenshot)
                     tree = page.accessibility.snapshot()

@@ -16,6 +16,8 @@ from prompts import (
     PLAYWRIGHT_CODE_SYSTEM_MSG_DELETION_CALENDAR,
     PLAYWRIGHT_CODE_SYSTEM_MSG_MAPS,
     PLAYWRIGHT_CODE_SYSTEM_MSG_FLIGHTS,
+    PLAYWRIGHT_CODE_SYSTEM_MSG_SCHOLAR,
+    PLAYWRIGHT_CODE_SYSTEM_MSG_DOCS,
 )
 
 load_dotenv()
@@ -112,6 +114,12 @@ def chat_ai_playwright_code(accessibility_tree=None, previous_steps=None, taskGo
             elif "flights.google.com" in url:
                 base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_FLIGHTS
                 print("\n🤖 Using FLIGHTS prompt")
+            elif "scholar.google.com" in url:
+                base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_SCHOLAR
+                print("\n🤖 Using SCHOLAR prompt")
+            elif "docs.google.com" in url:
+                base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_DOCS
+                print("\n🤖 Using DOCS prompt")
             else:
                 # Default to calendar for backward compatibility
                 base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_CALENDAR
