@@ -27,16 +27,16 @@ os.makedirs(BROWSER_SESSIONS_DIR, exist_ok=True)
 # Fill in your Google accounts and unique user data directories here
 ACCOUNTS = [
     {
-        "email": "jovewinston@gmail.com",
-        "password": "Jove231099",
-        "user_data_dir": "jovewinston",
+        "email": "example1@gmail.com",
+        "password": "password1",
+        "user_data_dir": "example1",
         "start_idx": 0,
         "end_idx": 5
     },
     {
-        "email": "jovewinston1@gmail.com",
-        "password": "davesmith",
-        "user_data_dir": "jovewinston1",
+        "email": "example2@gmail.com",
+        "password": "password2",
+        "user_data_dir": "example2",
         "start_idx": 5,
         "end_idx": 10
     },
