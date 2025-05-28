@@ -1,0 +1,5979 @@
+{
+  "persona": "I am a Swiss political analyst who champions neutrality and is skeptical about involvement in international military alliances.",
+  "original_instruction": "Set a reminder for \"Joint Holiday after Ascension\" on May 30th, one day before",
+  "augmented_instruction": "Set a reminder for \"Joint Holiday after Ascension\" on May 29th.",
+  "final_instruction": "Set a reminder for 'Joint Holiday after Ascension' on May 29, 2025.",
+  "url": "https://calendar.google.com",
+  "task_steps": [
+    {
+      "step": "Click the 'Create' button to start creating a new reminder.",
+      "code": "page.get_by_role('button', name='Create ').click()",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Google Calendar - May 2025",
+        "children": [
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "button",
+                "name": "Skip to main content"
+              },
+              {
+                "role": "button",
+                "name": "Keyboard shortcuts"
+              },
+              {
+                "role": "button",
+                "name": "Accessibility Feedback"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Main drawer",
+            "expanded": true
+          },
+          {
+            "role": "heading",
+            "name": "Calendar",
+            "level": 1
+          },
+          {
+            "role": "button",
+            "name": "Today, Wednesday, May 28"
+          },
+          {
+            "role": "button",
+            "name": "Previous month"
+          },
+          {
+            "role": "button",
+            "name": "Next month"
+          },
+          {
+            "role": "text",
+            "name": "May 2025"
+          },
+          {
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "role": "button",
+            "name": "Support"
+          },
+          {
+            "role": "button",
+            "name": "Settings menu",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "Month",
+            "description": "View switcher menu",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "Switch to Calendar",
+            "description": "Switch to Calendar"
+          },
+          {
+            "role": "button",
+            "name": "Switch to Tasks",
+            "description": "Switch to Tasks"
+          },
+          {
+            "role": "button",
+            "name": "Google apps"
+          },
+          {
+            "role": "button",
+            "name": "Google Account: Jove Winston (jovewinston@gmail.com)"
+          },
+          {
+            "role": "button",
+            "name": "Create ",
+            "haspopup": "menu"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "heading",
+                "name": "Drawer",
+                "level": 1
+              },
+              {
+                "role": "heading",
+                "name": "Navigation calendar",
+                "level": 2
+              },
+              {
+                "role": "text",
+                "name": "May 2025"
+              },
+              {
+                "role": "button",
+                "name": "Previous month"
+              },
+              {
+                "role": "button",
+                "name": "Next month"
+              },
+              {
+                "role": "text",
+                "name": "Sunday"
+              },
+              {
+                "role": "text",
+                "name": "Monday"
+              },
+              {
+                "role": "text",
+                "name": "Tuesday"
+              },
+              {
+                "role": "text",
+                "name": "Wednesday"
+              },
+              {
+                "role": "text",
+                "name": "Thursday"
+              },
+              {
+                "role": "text",
+                "name": "Friday"
+              },
+              {
+                "role": "text",
+                "name": "Saturday"
+              },
+              {
+                "role": "button",
+                "name": "April 27, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 28, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 29, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 30, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "1, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "2, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "3, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "4, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "5, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "6, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "7, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "8, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "9, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "10, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "11, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "12, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "13, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "14, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "15, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "16, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "17, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "18, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "19, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "20, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "21, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "22, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "23, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "24, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "25, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "26, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "27, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "28, Wednesday, today",
+                "pressed": true
+              },
+              {
+                "role": "button",
+                "name": "29, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "30, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "31, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 1, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 2, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 3, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 4, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 5, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 6, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 7, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "generic",
+                "name": "",
+                "children": [
+                  {
+                    "role": "combobox",
+                    "name": "Search for people",
+                    "autocomplete": "list",
+                    "haspopup": "menu"
+                  }
+                ]
+              },
+              {
+                "role": "heading",
+                "name": "Calendar list",
+                "level": 2
+              },
+              {
+                "role": "button",
+                "name": "My calendars",
+                "expanded": true
+              },
+              {
+                "role": "checkbox",
+                "name": "Jove Winston",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Jove Winston"
+              },
+              {
+                "role": "checkbox",
+                "name": "Birthdays",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Birthdays"
+              },
+              {
+                "role": "checkbox",
+                "name": "New Calendar",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "New Calendar"
+              },
+              {
+                "role": "checkbox",
+                "name": "New Calendar Name",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "New Calendar Name"
+              },
+              {
+                "role": "checkbox",
+                "name": "New Event Calendar",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "New Event Calendar"
+              },
+              {
+                "role": "checkbox",
+                "name": "Tasks",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Tasks"
+              },
+              {
+                "role": "button",
+                "name": "Other calendars",
+                "expanded": true
+              },
+              {
+                "role": "button",
+                "name": "Add other calendars",
+                "haspopup": "menu"
+              },
+              {
+                "role": "checkbox",
+                "name": "Holidays in Indonesia",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Holidays in Indonesia"
+              },
+              {
+                "role": "link",
+                "name": "Terms"
+              },
+              {
+                "role": "text",
+                "name": " – "
+              },
+              {
+                "role": "link",
+                "name": "Privacy"
+              }
+            ]
+          },
+          {
+            "role": "main",
+            "name": "",
+            "description": "May 2025, 26 events",
+            "children": [
+              {
+                "role": "heading",
+                "name": " May 2025, 26 events",
+                "level": 1
+              },
+              {
+                "role": "columnheader",
+                "name": "SUNDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "MONDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "TUESDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "WEDNESDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "THURSDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "FRIDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "SATURDAY",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, April 27",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, April 28",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, April 29",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Wednesday, April 30",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Thursday, May 1",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Thursday, May 1",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, International Labor Day, Calendar: Holidays in Indonesia, May 1, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Friday, May 2",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 3",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, May 4",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, May 5",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, May 6",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Wednesday, May 7",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Thursday, May 8",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Friday, May 9",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Friday, May 9",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "3am to 4am, Research the history of mezcal for blog post, Jove Winston, No location, May 9, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 10",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, May 11",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "2 events, Monday, May 12",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "2 events, Monday, May 12",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "2am to 3am, maximal, Jove Winston, No location, May 12, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, Team Bonding, Jove Winston, No location, May 12, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "3 events, Tuesday, May 13",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "3 events, Tuesday, May 13",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, Joint Holiday for Waisak Day, Calendar: Holidays in Indonesia, May 13, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, Boba Event, Jove Winston, No location, May 13, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "task: Joint Holiday for Wesak, Not completed, May 13, 2025, 4pm"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "5 events, Wednesday, May 14",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "5 events, Wednesday, May 14",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "9am to 10am, Meeting with Mom, Jove Winston, No location, May 14, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "11am to 12pm, Meeting with the international law team, Jove Winston, No location, May 14, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "3 more events"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Thursday, May 15",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Thursday, May 15",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, No title, Jove Winston, No location, May 15, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Friday, May 16",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Friday, May 16",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, No title, Jove Winston, No location, May 16, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 17",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, May 18",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, May 19",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, May 20",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Wednesday, May 21",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "3 events, Thursday, May 22",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "3 events, Thursday, May 22",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "task: Review new client intake forms from the Appalachian region, Not completed, May 22, 2025, 9am"
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, Global Legal Standards Workshop, Jove Winston, No location, May 22, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "task: Research the history of mezcal for an upcoming blog post, Not completed, May 22, 2025, 10am"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Friday, May 23",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Friday, May 23",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "7pm to 10pm, Team Meeting, Jove Winston, No location, May 23, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 24",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "2 events, Sunday, May 25",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "2 events, Sunday, May 25",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "4:30pm to 5:30pm, Comedy Night, Jove Winston, No location, May 25, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "4:30pm to 5:30pm, Comedy Night, Jove Winston, No location, May 25, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, May 26",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, May 27",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Wednesday, May 28, today",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Wednesday, May 28, today",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "3 pending tasks"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "3 events, Thursday, May 29",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "3 events, Thursday, May 29",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, Ascension Day of Jesus Christ, Calendar: Holidays in Indonesia, May 29, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "4:30pm to 5:30pm, Comedy Night, Jove Winston, No location, May 29, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "4:30pm to 5:30pm, Comedy Night, Jove Winston, No location, May 29, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "2 events, Friday, May 30",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "2 events, Friday, May 30",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, Joint Holiday after Ascension Day, Calendar: Holidays in Indonesia, May 30, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "7pm to 10pm, Team Meeting, Jove Winston, No location, May 30, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 31",
+                "readonly": true
+              }
+            ]
+          },
+          {
+            "role": "tablist",
+            "name": "",
+            "orientation": "horizontal",
+            "children": [
+              {
+                "role": "tab",
+                "name": "Keep"
+              },
+              {
+                "role": "tab",
+                "name": "Tasks"
+              },
+              {
+                "role": "tab",
+                "name": "Contacts"
+              },
+              {
+                "role": "tab",
+                "name": "Maps"
+              },
+              {
+                "role": "tab",
+                "name": "Get Add-ons"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Hide side panel",
+            "pressed": false
+          }
+        ]
+      }
+    },
+    {
+      "step": "Click the 'Task' option from the dropdown to create a new task.",
+      "code": "page.get_by_role('menuitem', name='Task').click()",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Google Calendar - May 2025",
+        "children": [
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "button",
+                "name": "Skip to main content"
+              },
+              {
+                "role": "button",
+                "name": "Keyboard shortcuts"
+              },
+              {
+                "role": "button",
+                "name": "Accessibility Feedback"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Main drawer",
+            "expanded": true
+          },
+          {
+            "role": "heading",
+            "name": "Calendar",
+            "level": 1
+          },
+          {
+            "role": "button",
+            "name": "Today, Wednesday, May 28"
+          },
+          {
+            "role": "button",
+            "name": "Previous month"
+          },
+          {
+            "role": "button",
+            "name": "Next month"
+          },
+          {
+            "role": "text",
+            "name": "May 2025"
+          },
+          {
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "role": "button",
+            "name": "Support"
+          },
+          {
+            "role": "button",
+            "name": "Settings menu",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "Month",
+            "description": "View switcher menu",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "Switch to Calendar",
+            "description": "Switch to Calendar"
+          },
+          {
+            "role": "button",
+            "name": "Switch to Tasks",
+            "description": "Switch to Tasks"
+          },
+          {
+            "role": "button",
+            "name": "Google apps"
+          },
+          {
+            "role": "button",
+            "name": "Google Account: Jove Winston (jovewinston@gmail.com)"
+          },
+          {
+            "role": "button",
+            "name": "Create ",
+            "expanded": true,
+            "haspopup": "menu"
+          },
+          {
+            "role": "menu",
+            "name": "",
+            "orientation": "vertical",
+            "children": [
+              {
+                "role": "menuitem",
+                "name": "Event",
+                "focused": true
+              },
+              {
+                "role": "menuitem",
+                "name": "Task"
+              },
+              {
+                "role": "menuitem",
+                "name": "Appointment schedule"
+              }
+            ]
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "heading",
+                "name": "Drawer",
+                "level": 1
+              },
+              {
+                "role": "heading",
+                "name": "Navigation calendar",
+                "level": 2
+              },
+              {
+                "role": "text",
+                "name": "May 2025"
+              },
+              {
+                "role": "button",
+                "name": "Previous month"
+              },
+              {
+                "role": "button",
+                "name": "Next month"
+              },
+              {
+                "role": "text",
+                "name": "Sunday"
+              },
+              {
+                "role": "text",
+                "name": "Monday"
+              },
+              {
+                "role": "text",
+                "name": "Tuesday"
+              },
+              {
+                "role": "text",
+                "name": "Wednesday"
+              },
+              {
+                "role": "text",
+                "name": "Thursday"
+              },
+              {
+                "role": "text",
+                "name": "Friday"
+              },
+              {
+                "role": "text",
+                "name": "Saturday"
+              },
+              {
+                "role": "button",
+                "name": "April 27, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 28, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 29, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 30, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "1, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "2, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "3, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "4, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "5, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "6, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "7, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "8, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "9, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "10, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "11, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "12, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "13, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "14, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "15, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "16, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "17, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "18, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "19, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "20, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "21, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "22, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "23, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "24, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "25, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "26, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "27, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "28, Wednesday, today",
+                "pressed": true
+              },
+              {
+                "role": "button",
+                "name": "29, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "30, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "31, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 1, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 2, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 3, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 4, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 5, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 6, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 7, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "generic",
+                "name": "",
+                "children": [
+                  {
+                    "role": "combobox",
+                    "name": "Search for people",
+                    "autocomplete": "list",
+                    "haspopup": "menu"
+                  }
+                ]
+              },
+              {
+                "role": "heading",
+                "name": "Calendar list",
+                "level": 2
+              },
+              {
+                "role": "button",
+                "name": "My calendars",
+                "expanded": true
+              },
+              {
+                "role": "checkbox",
+                "name": "Jove Winston",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Jove Winston"
+              },
+              {
+                "role": "checkbox",
+                "name": "Birthdays",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Birthdays"
+              },
+              {
+                "role": "checkbox",
+                "name": "New Calendar",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "New Calendar"
+              },
+              {
+                "role": "checkbox",
+                "name": "New Calendar Name",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "New Calendar Name"
+              },
+              {
+                "role": "checkbox",
+                "name": "New Event Calendar",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "New Event Calendar"
+              },
+              {
+                "role": "checkbox",
+                "name": "Tasks",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Tasks"
+              },
+              {
+                "role": "button",
+                "name": "Other calendars",
+                "expanded": true
+              },
+              {
+                "role": "button",
+                "name": "Add other calendars",
+                "haspopup": "menu"
+              },
+              {
+                "role": "checkbox",
+                "name": "Holidays in Indonesia",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Holidays in Indonesia"
+              },
+              {
+                "role": "link",
+                "name": "Terms"
+              },
+              {
+                "role": "text",
+                "name": " – "
+              },
+              {
+                "role": "link",
+                "name": "Privacy"
+              }
+            ]
+          },
+          {
+            "role": "main",
+            "name": "",
+            "description": "May 2025, 26 events",
+            "children": [
+              {
+                "role": "heading",
+                "name": " May 2025, 26 events",
+                "level": 1
+              },
+              {
+                "role": "columnheader",
+                "name": "SUNDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "MONDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "TUESDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "WEDNESDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "THURSDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "FRIDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "SATURDAY",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, April 27",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, April 28",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, April 29",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Wednesday, April 30",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Thursday, May 1",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Thursday, May 1",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, International Labor Day, Calendar: Holidays in Indonesia, May 1, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Friday, May 2",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 3",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, May 4",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, May 5",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, May 6",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Wednesday, May 7",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Thursday, May 8",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Friday, May 9",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Friday, May 9",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "3am to 4am, Research the history of mezcal for blog post, Jove Winston, No location, May 9, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 10",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, May 11",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "2 events, Monday, May 12",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "2 events, Monday, May 12",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "2am to 3am, maximal, Jove Winston, No location, May 12, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, Team Bonding, Jove Winston, No location, May 12, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "3 events, Tuesday, May 13",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "3 events, Tuesday, May 13",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, Joint Holiday for Waisak Day, Calendar: Holidays in Indonesia, May 13, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, Boba Event, Jove Winston, No location, May 13, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "task: Joint Holiday for Wesak, Not completed, May 13, 2025, 4pm"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "5 events, Wednesday, May 14",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "5 events, Wednesday, May 14",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "9am to 10am, Meeting with Mom, Jove Winston, No location, May 14, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "11am to 12pm, Meeting with the international law team, Jove Winston, No location, May 14, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "3 more events"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Thursday, May 15",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Thursday, May 15",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, No title, Jove Winston, No location, May 15, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Friday, May 16",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Friday, May 16",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, No title, Jove Winston, No location, May 16, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 17",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, May 18",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, May 19",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, May 20",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Wednesday, May 21",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "3 events, Thursday, May 22",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "3 events, Thursday, May 22",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "task: Review new client intake forms from the Appalachian region, Not completed, May 22, 2025, 9am"
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, Global Legal Standards Workshop, Jove Winston, No location, May 22, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "task: Research the history of mezcal for an upcoming blog post, Not completed, May 22, 2025, 10am"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Friday, May 23",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Friday, May 23",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "7pm to 10pm, Team Meeting, Jove Winston, No location, May 23, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 24",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "2 events, Sunday, May 25",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "2 events, Sunday, May 25",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "4:30pm to 5:30pm, Comedy Night, Jove Winston, No location, May 25, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "4:30pm to 5:30pm, Comedy Night, Jove Winston, No location, May 25, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, May 26",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, May 27",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Wednesday, May 28, today",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Wednesday, May 28, today",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "3 pending tasks"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "3 events, Thursday, May 29",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "3 events, Thursday, May 29",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, Ascension Day of Jesus Christ, Calendar: Holidays in Indonesia, May 29, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "4:30pm to 5:30pm, Comedy Night, Jove Winston, No location, May 29, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "4:30pm to 5:30pm, Comedy Night, Jove Winston, No location, May 29, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "2 events, Friday, May 30",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "2 events, Friday, May 30",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, Joint Holiday after Ascension Day, Calendar: Holidays in Indonesia, May 30, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "7pm to 10pm, Team Meeting, Jove Winston, No location, May 30, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 31",
+                "readonly": true
+              }
+            ]
+          },
+          {
+            "role": "tablist",
+            "name": "",
+            "orientation": "horizontal",
+            "children": [
+              {
+                "role": "tab",
+                "name": "Keep"
+              },
+              {
+                "role": "tab",
+                "name": "Tasks"
+              },
+              {
+                "role": "tab",
+                "name": "Contacts"
+              },
+              {
+                "role": "tab",
+                "name": "Maps"
+              },
+              {
+                "role": "tab",
+                "name": "Get Add-ons"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Hide side panel",
+            "pressed": false
+          },
+          {
+            "role": "text",
+            "name": "Loaded"
+          }
+        ]
+      }
+    },
+    {
+      "step": "Fill in the event title with 'Joint Holiday after Ascension'.",
+      "code": "page.get_by_role('textbox', name='Add title').fill('Joint Holiday after Ascension')",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Google Calendar - May 2025",
+        "children": [
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "button",
+                "name": "Skip to main content"
+              },
+              {
+                "role": "button",
+                "name": "Keyboard shortcuts"
+              },
+              {
+                "role": "button",
+                "name": "Accessibility Feedback"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Main drawer",
+            "expanded": true
+          },
+          {
+            "role": "heading",
+            "name": "Calendar",
+            "level": 1
+          },
+          {
+            "role": "button",
+            "name": "Today, Wednesday, May 28"
+          },
+          {
+            "role": "button",
+            "name": "Previous month"
+          },
+          {
+            "role": "button",
+            "name": "Next month"
+          },
+          {
+            "role": "text",
+            "name": "May 2025"
+          },
+          {
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "role": "button",
+            "name": "Support"
+          },
+          {
+            "role": "button",
+            "name": "Settings menu",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "Month",
+            "description": "View switcher menu",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "Switch to Calendar",
+            "description": "Switch to Calendar"
+          },
+          {
+            "role": "button",
+            "name": "Switch to Tasks",
+            "description": "Switch to Tasks"
+          },
+          {
+            "role": "button",
+            "name": "Google apps"
+          },
+          {
+            "role": "button",
+            "name": "Google Account: Jove Winston (jovewinston@gmail.com)"
+          },
+          {
+            "role": "button",
+            "name": "Create ",
+            "disabled": true,
+            "haspopup": "menu"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "heading",
+                "name": "Drawer",
+                "level": 1
+              },
+              {
+                "role": "heading",
+                "name": "Navigation calendar",
+                "level": 2
+              },
+              {
+                "role": "text",
+                "name": "May 2025"
+              },
+              {
+                "role": "button",
+                "name": "Previous month"
+              },
+              {
+                "role": "button",
+                "name": "Next month"
+              },
+              {
+                "role": "text",
+                "name": "Sunday"
+              },
+              {
+                "role": "text",
+                "name": "Monday"
+              },
+              {
+                "role": "text",
+                "name": "Tuesday"
+              },
+              {
+                "role": "text",
+                "name": "Wednesday"
+              },
+              {
+                "role": "text",
+                "name": "Thursday"
+              },
+              {
+                "role": "text",
+                "name": "Friday"
+              },
+              {
+                "role": "text",
+                "name": "Saturday"
+              },
+              {
+                "role": "button",
+                "name": "April 27, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 28, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 29, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 30, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "1, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "2, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "3, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "4, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "5, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "6, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "7, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "8, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "9, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "10, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "11, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "12, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "13, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "14, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "15, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "16, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "17, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "18, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "19, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "20, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "21, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "22, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "23, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "24, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "25, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "26, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "27, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "28, Wednesday, today",
+                "pressed": true
+              },
+              {
+                "role": "button",
+                "name": "29, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "30, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "31, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 1, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 2, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 3, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 4, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 5, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 6, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 7, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "heading",
+                "name": "Calendar list",
+                "level": 2
+              },
+              {
+                "role": "button",
+                "name": "My calendars",
+                "expanded": true
+              },
+              {
+                "role": "checkbox",
+                "name": "Jove Winston",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Jove Winston"
+              },
+              {
+                "role": "checkbox",
+                "name": "Birthdays",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Birthdays"
+              },
+              {
+                "role": "checkbox",
+                "name": "New Calendar",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "New Calendar"
+              },
+              {
+                "role": "checkbox",
+                "name": "New Calendar Name",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "New Calendar Name"
+              },
+              {
+                "role": "checkbox",
+                "name": "New Event Calendar",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "New Event Calendar"
+              },
+              {
+                "role": "checkbox",
+                "name": "Tasks",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Tasks"
+              },
+              {
+                "role": "button",
+                "name": "Other calendars",
+                "expanded": true
+              },
+              {
+                "role": "button",
+                "name": "Add other calendars",
+                "haspopup": "menu"
+              },
+              {
+                "role": "checkbox",
+                "name": "Holidays in Indonesia",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Holidays in Indonesia"
+              },
+              {
+                "role": "link",
+                "name": "Terms"
+              },
+              {
+                "role": "text",
+                "name": " – "
+              },
+              {
+                "role": "link",
+                "name": "Privacy"
+              }
+            ]
+          },
+          {
+            "role": "main",
+            "name": "",
+            "description": "May 2025, 27 events",
+            "children": [
+              {
+                "role": "heading",
+                "name": " May 2025, 27 events",
+                "level": 1
+              },
+              {
+                "role": "columnheader",
+                "name": "SUNDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "MONDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "TUESDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "WEDNESDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "THURSDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "FRIDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "SATURDAY",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, April 27",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, April 28",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, April 29",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Wednesday, April 30",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Thursday, May 1",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Thursday, May 1",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, International Labor Day, Calendar: Holidays in Indonesia, May 1, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Friday, May 2",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 3",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, May 4",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, May 5",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, May 6",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Wednesday, May 7",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Thursday, May 8",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Friday, May 9",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Friday, May 9",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "3am to 4am, Research the history of mezcal for blog post, Jove Winston, No location, May 9, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 10",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, May 11",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "2 events, Monday, May 12",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "2 events, Monday, May 12",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "2am to 3am, maximal, Jove Winston, No location, May 12, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, Team Bonding, Jove Winston, No location, May 12, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "3 events, Tuesday, May 13",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "3 events, Tuesday, May 13",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, Joint Holiday for Waisak Day, Calendar: Holidays in Indonesia, May 13, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, Boba Event, Jove Winston, No location, May 13, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "task: Joint Holiday for Wesak, Not completed, May 13, 2025, 4pm"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "5 events, Wednesday, May 14",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "5 events, Wednesday, May 14",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "9am to 10am, Meeting with Mom, Jove Winston, No location, May 14, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "11am to 12pm, Meeting with the international law team, Jove Winston, No location, May 14, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "3 more events"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Thursday, May 15",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Thursday, May 15",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, No title, Jove Winston, No location, May 15, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Friday, May 16",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Friday, May 16",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, No title, Jove Winston, No location, May 16, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 17",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, May 18",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, May 19",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, May 20",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Wednesday, May 21",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "3 events, Thursday, May 22",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "3 events, Thursday, May 22",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "task: Review new client intake forms from the Appalachian region, Not completed, May 22, 2025, 9am"
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, Global Legal Standards Workshop, Jove Winston, No location, May 22, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "task: Research the history of mezcal for an upcoming blog post, Not completed, May 22, 2025, 10am"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Friday, May 23",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Friday, May 23",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "7pm to 10pm, Team Meeting, Jove Winston, No location, May 23, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 24",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "2 events, Sunday, May 25",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "2 events, Sunday, May 25",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "4:30pm to 5:30pm, Comedy Night, Jove Winston, No location, May 25, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "4:30pm to 5:30pm, Comedy Night, Jove Winston, No location, May 25, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, May 26",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, May 27",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "2 events, Wednesday, May 28, today",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "2 events, Wednesday, May 28, today",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "task: No title, Not completed, May 28, 2025, 3pm Task is being created."
+                  },
+                  {
+                    "role": "button",
+                    "name": "3 pending tasks"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "3 events, Thursday, May 29",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "3 events, Thursday, May 29",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, Ascension Day of Jesus Christ, Calendar: Holidays in Indonesia, May 29, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "2 more events"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "2 events, Friday, May 30",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "2 events, Friday, May 30",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, Joint Holiday after Ascension Day, Calendar: Holidays in Indonesia, May 30, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "7pm to 10pm, Team Meeting, Jove Winston, No location, May 30, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 31",
+                "readonly": true
+              }
+            ]
+          },
+          {
+            "role": "tablist",
+            "name": "",
+            "orientation": "horizontal",
+            "children": [
+              {
+                "role": "tab",
+                "name": "Keep"
+              },
+              {
+                "role": "tab",
+                "name": "Tasks"
+              },
+              {
+                "role": "tab",
+                "name": "Contacts"
+              },
+              {
+                "role": "tab",
+                "name": "Maps"
+              },
+              {
+                "role": "tab",
+                "name": "Get Add-ons"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Hide side panel",
+            "pressed": false
+          },
+          {
+            "role": "dialog",
+            "name": "Create",
+            "modal": true,
+            "children": [
+              {
+                "role": "heading",
+                "name": "Create",
+                "level": 1
+              },
+              {
+                "role": "button",
+                "name": "Close"
+              },
+              {
+                "role": "textbox",
+                "name": "Add title",
+                "focused": true
+              },
+              {
+                "role": "tab",
+                "name": "Event"
+              },
+              {
+                "role": "tab",
+                "name": "Task",
+                "selected": true
+              },
+              {
+                "role": "tab",
+                "name": "Appointment schedule new"
+              },
+              {
+                "role": "button",
+                "name": " May 28, 2025 3:00pm Does not repeat"
+              },
+              {
+                "role": "textbox",
+                "name": "Add description",
+                "multiline": true
+              },
+              {
+                "role": "combobox",
+                "name": "Task list",
+                "haspopup": "listbox",
+                "value": "My Tasks"
+              },
+              {
+                "role": "button",
+                "name": "Save"
+              }
+            ]
+          },
+          {
+            "role": "text",
+            "name": "Loaded"
+          },
+          {
+            "role": "text",
+            "name": "Tuesday"
+          }
+        ]
+      }
+    },
+    {
+      "step": "Fill in the event date with 'May 29, 2025'.",
+      "code": "page.get_by_role('button', name=' May 28, 2025 3:00pm Does not repeat').click()",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Google Calendar - May 2025",
+        "children": [
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "button",
+                "name": "Skip to main content"
+              },
+              {
+                "role": "button",
+                "name": "Keyboard shortcuts"
+              },
+              {
+                "role": "button",
+                "name": "Accessibility Feedback"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Main drawer",
+            "expanded": true
+          },
+          {
+            "role": "heading",
+            "name": "Calendar",
+            "level": 1
+          },
+          {
+            "role": "button",
+            "name": "Today, Wednesday, May 28"
+          },
+          {
+            "role": "button",
+            "name": "Previous month"
+          },
+          {
+            "role": "button",
+            "name": "Next month"
+          },
+          {
+            "role": "text",
+            "name": "May 2025"
+          },
+          {
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "role": "button",
+            "name": "Support"
+          },
+          {
+            "role": "button",
+            "name": "Settings menu",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "Month",
+            "description": "View switcher menu",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "Switch to Calendar",
+            "description": "Switch to Calendar"
+          },
+          {
+            "role": "button",
+            "name": "Switch to Tasks",
+            "description": "Switch to Tasks"
+          },
+          {
+            "role": "button",
+            "name": "Google apps"
+          },
+          {
+            "role": "button",
+            "name": "Google Account: Jove Winston (jovewinston@gmail.com)"
+          },
+          {
+            "role": "button",
+            "name": "Create ",
+            "disabled": true,
+            "haspopup": "menu"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "heading",
+                "name": "Drawer",
+                "level": 1
+              },
+              {
+                "role": "heading",
+                "name": "Navigation calendar",
+                "level": 2
+              },
+              {
+                "role": "text",
+                "name": "May 2025"
+              },
+              {
+                "role": "button",
+                "name": "Previous month"
+              },
+              {
+                "role": "button",
+                "name": "Next month"
+              },
+              {
+                "role": "text",
+                "name": "Sunday"
+              },
+              {
+                "role": "text",
+                "name": "Monday"
+              },
+              {
+                "role": "text",
+                "name": "Tuesday"
+              },
+              {
+                "role": "text",
+                "name": "Wednesday"
+              },
+              {
+                "role": "text",
+                "name": "Thursday"
+              },
+              {
+                "role": "text",
+                "name": "Friday"
+              },
+              {
+                "role": "text",
+                "name": "Saturday"
+              },
+              {
+                "role": "button",
+                "name": "April 27, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 28, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 29, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 30, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "1, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "2, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "3, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "4, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "5, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "6, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "7, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "8, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "9, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "10, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "11, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "12, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "13, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "14, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "15, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "16, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "17, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "18, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "19, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "20, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "21, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "22, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "23, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "24, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "25, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "26, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "27, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "28, Wednesday, today",
+                "pressed": true
+              },
+              {
+                "role": "button",
+                "name": "29, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "30, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "31, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 1, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 2, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 3, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 4, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 5, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 6, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 7, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "heading",
+                "name": "Calendar list",
+                "level": 2
+              },
+              {
+                "role": "button",
+                "name": "My calendars",
+                "expanded": true
+              },
+              {
+                "role": "checkbox",
+                "name": "Jove Winston",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Jove Winston"
+              },
+              {
+                "role": "checkbox",
+                "name": "Birthdays",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Birthdays"
+              },
+              {
+                "role": "checkbox",
+                "name": "New Calendar",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "New Calendar"
+              },
+              {
+                "role": "checkbox",
+                "name": "New Calendar Name",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "New Calendar Name"
+              },
+              {
+                "role": "checkbox",
+                "name": "New Event Calendar",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "New Event Calendar"
+              },
+              {
+                "role": "checkbox",
+                "name": "Tasks",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Tasks"
+              },
+              {
+                "role": "button",
+                "name": "Other calendars",
+                "expanded": true
+              },
+              {
+                "role": "button",
+                "name": "Add other calendars",
+                "haspopup": "menu"
+              },
+              {
+                "role": "checkbox",
+                "name": "Holidays in Indonesia",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Holidays in Indonesia"
+              },
+              {
+                "role": "link",
+                "name": "Terms"
+              },
+              {
+                "role": "text",
+                "name": " – "
+              },
+              {
+                "role": "link",
+                "name": "Privacy"
+              }
+            ]
+          },
+          {
+            "role": "main",
+            "name": "",
+            "description": "May 2025, 27 events",
+            "children": [
+              {
+                "role": "heading",
+                "name": " May 2025, 27 events",
+                "level": 1
+              },
+              {
+                "role": "columnheader",
+                "name": "SUNDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "MONDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "TUESDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "WEDNESDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "THURSDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "FRIDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "SATURDAY",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, April 27",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, April 28",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, April 29",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Wednesday, April 30",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Thursday, May 1",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Thursday, May 1",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, International Labor Day, Calendar: Holidays in Indonesia, May 1, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Friday, May 2",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 3",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, May 4",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, May 5",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, May 6",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Wednesday, May 7",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Thursday, May 8",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Friday, May 9",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Friday, May 9",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "3am to 4am, Research the history of mezcal for blog post, Jove Winston, No location, May 9, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 10",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, May 11",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "2 events, Monday, May 12",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "2 events, Monday, May 12",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "2am to 3am, maximal, Jove Winston, No location, May 12, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, Team Bonding, Jove Winston, No location, May 12, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "3 events, Tuesday, May 13",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "3 events, Tuesday, May 13",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, Joint Holiday for Waisak Day, Calendar: Holidays in Indonesia, May 13, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, Boba Event, Jove Winston, No location, May 13, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "task: Joint Holiday for Wesak, Not completed, May 13, 2025, 4pm"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "5 events, Wednesday, May 14",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "5 events, Wednesday, May 14",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "9am to 10am, Meeting with Mom, Jove Winston, No location, May 14, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "11am to 12pm, Meeting with the international law team, Jove Winston, No location, May 14, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "3 more events"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Thursday, May 15",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Thursday, May 15",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, No title, Jove Winston, No location, May 15, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Friday, May 16",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Friday, May 16",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, No title, Jove Winston, No location, May 16, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 17",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, May 18",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, May 19",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, May 20",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Wednesday, May 21",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "3 events, Thursday, May 22",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "3 events, Thursday, May 22",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "task: Review new client intake forms from the Appalachian region, Not completed, May 22, 2025, 9am"
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, Global Legal Standards Workshop, Jove Winston, No location, May 22, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "task: Research the history of mezcal for an upcoming blog post, Not completed, May 22, 2025, 10am"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Friday, May 23",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Friday, May 23",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "7pm to 10pm, Team Meeting, Jove Winston, No location, May 23, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 24",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "2 events, Sunday, May 25",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "2 events, Sunday, May 25",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "4:30pm to 5:30pm, Comedy Night, Jove Winston, No location, May 25, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "4:30pm to 5:30pm, Comedy Night, Jove Winston, No location, May 25, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, May 26",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, May 27",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "2 events, Wednesday, May 28, today",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "2 events, Wednesday, May 28, today",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "task: No title, Not completed, May 28, 2025, 3pm Task is being created."
+                  },
+                  {
+                    "role": "button",
+                    "name": "3 pending tasks"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "3 events, Thursday, May 29",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "3 events, Thursday, May 29",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, Ascension Day of Jesus Christ, Calendar: Holidays in Indonesia, May 29, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "2 more events"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "2 events, Friday, May 30",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "2 events, Friday, May 30",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, Joint Holiday after Ascension Day, Calendar: Holidays in Indonesia, May 30, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "7pm to 10pm, Team Meeting, Jove Winston, No location, May 30, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 31",
+                "readonly": true
+              }
+            ]
+          },
+          {
+            "role": "tablist",
+            "name": "",
+            "orientation": "horizontal",
+            "children": [
+              {
+                "role": "tab",
+                "name": "Keep"
+              },
+              {
+                "role": "tab",
+                "name": "Tasks"
+              },
+              {
+                "role": "tab",
+                "name": "Contacts"
+              },
+              {
+                "role": "tab",
+                "name": "Maps"
+              },
+              {
+                "role": "tab",
+                "name": "Get Add-ons"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Hide side panel",
+            "pressed": false
+          },
+          {
+            "role": "dialog",
+            "name": "Create",
+            "modal": true,
+            "children": [
+              {
+                "role": "heading",
+                "name": "Create",
+                "level": 1
+              },
+              {
+                "role": "button",
+                "name": "Close"
+              },
+              {
+                "role": "textbox",
+                "name": "Add title",
+                "focused": true,
+                "value": "Joint Holiday after Ascension"
+              },
+              {
+                "role": "tab",
+                "name": "Event"
+              },
+              {
+                "role": "tab",
+                "name": "Task",
+                "selected": true
+              },
+              {
+                "role": "tab",
+                "name": "Appointment schedule new"
+              },
+              {
+                "role": "button",
+                "name": " May 28, 2025 3:00pm Does not repeat"
+              },
+              {
+                "role": "textbox",
+                "name": "Add description",
+                "multiline": true
+              },
+              {
+                "role": "combobox",
+                "name": "Task list",
+                "haspopup": "listbox",
+                "value": "My Tasks"
+              },
+              {
+                "role": "button",
+                "name": "Save"
+              }
+            ]
+          },
+          {
+            "role": "text",
+            "name": "Loaded"
+          },
+          {
+            "role": "text",
+            "name": "Tuesday"
+          }
+        ]
+      }
+    },
+    {
+      "step": "Update the start date to 'May 29, 2025' for the reminder.",
+      "code": "page.get_by_role('textbox', name='Start date').fill('May 29, 2025')",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Google Calendar - May 2025",
+        "children": [
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "button",
+                "name": "Skip to main content"
+              },
+              {
+                "role": "button",
+                "name": "Keyboard shortcuts"
+              },
+              {
+                "role": "button",
+                "name": "Accessibility Feedback"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Main drawer",
+            "expanded": true
+          },
+          {
+            "role": "heading",
+            "name": "Calendar",
+            "level": 1
+          },
+          {
+            "role": "button",
+            "name": "Today, Wednesday, May 28"
+          },
+          {
+            "role": "button",
+            "name": "Previous month"
+          },
+          {
+            "role": "button",
+            "name": "Next month"
+          },
+          {
+            "role": "text",
+            "name": "May 2025"
+          },
+          {
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "role": "button",
+            "name": "Support"
+          },
+          {
+            "role": "button",
+            "name": "Settings menu",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "Month",
+            "description": "View switcher menu",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "Switch to Calendar",
+            "description": "Switch to Calendar"
+          },
+          {
+            "role": "button",
+            "name": "Switch to Tasks",
+            "description": "Switch to Tasks"
+          },
+          {
+            "role": "button",
+            "name": "Google apps"
+          },
+          {
+            "role": "button",
+            "name": "Google Account: Jove Winston (jovewinston@gmail.com)"
+          },
+          {
+            "role": "button",
+            "name": "Create ",
+            "disabled": true,
+            "haspopup": "menu"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "heading",
+                "name": "Drawer",
+                "level": 1
+              },
+              {
+                "role": "heading",
+                "name": "Navigation calendar",
+                "level": 2
+              },
+              {
+                "role": "text",
+                "name": "May 2025"
+              },
+              {
+                "role": "button",
+                "name": "Previous month"
+              },
+              {
+                "role": "button",
+                "name": "Next month"
+              },
+              {
+                "role": "text",
+                "name": "Sunday"
+              },
+              {
+                "role": "text",
+                "name": "Monday"
+              },
+              {
+                "role": "text",
+                "name": "Tuesday"
+              },
+              {
+                "role": "text",
+                "name": "Wednesday"
+              },
+              {
+                "role": "text",
+                "name": "Thursday"
+              },
+              {
+                "role": "text",
+                "name": "Friday"
+              },
+              {
+                "role": "text",
+                "name": "Saturday"
+              },
+              {
+                "role": "button",
+                "name": "April 27, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 28, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 29, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 30, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "1, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "2, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "3, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "4, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "5, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "6, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "7, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "8, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "9, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "10, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "11, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "12, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "13, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "14, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "15, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "16, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "17, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "18, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "19, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "20, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "21, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "22, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "23, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "24, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "25, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "26, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "27, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "28, Wednesday, today",
+                "pressed": true
+              },
+              {
+                "role": "button",
+                "name": "29, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "30, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "31, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 1, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 2, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 3, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 4, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 5, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 6, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 7, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "heading",
+                "name": "Calendar list",
+                "level": 2
+              },
+              {
+                "role": "button",
+                "name": "My calendars",
+                "expanded": true
+              },
+              {
+                "role": "checkbox",
+                "name": "Jove Winston",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Jove Winston"
+              },
+              {
+                "role": "checkbox",
+                "name": "Birthdays",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Birthdays"
+              },
+              {
+                "role": "checkbox",
+                "name": "New Calendar",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "New Calendar"
+              },
+              {
+                "role": "checkbox",
+                "name": "New Calendar Name",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "New Calendar Name"
+              },
+              {
+                "role": "checkbox",
+                "name": "New Event Calendar",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "New Event Calendar"
+              },
+              {
+                "role": "checkbox",
+                "name": "Tasks",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Tasks"
+              },
+              {
+                "role": "button",
+                "name": "Other calendars",
+                "expanded": true
+              },
+              {
+                "role": "button",
+                "name": "Add other calendars",
+                "haspopup": "menu"
+              },
+              {
+                "role": "checkbox",
+                "name": "Holidays in Indonesia",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Holidays in Indonesia"
+              },
+              {
+                "role": "link",
+                "name": "Terms"
+              },
+              {
+                "role": "text",
+                "name": " – "
+              },
+              {
+                "role": "link",
+                "name": "Privacy"
+              }
+            ]
+          },
+          {
+            "role": "main",
+            "name": "",
+            "description": "May 2025, 27 events",
+            "children": [
+              {
+                "role": "heading",
+                "name": " May 2025, 27 events",
+                "level": 1
+              },
+              {
+                "role": "columnheader",
+                "name": "SUNDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "MONDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "TUESDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "WEDNESDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "THURSDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "FRIDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "SATURDAY",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, April 27",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, April 28",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, April 29",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Wednesday, April 30",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Thursday, May 1",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Thursday, May 1",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, International Labor Day, Calendar: Holidays in Indonesia, May 1, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Friday, May 2",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 3",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, May 4",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, May 5",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, May 6",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Wednesday, May 7",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Thursday, May 8",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Friday, May 9",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Friday, May 9",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "3am to 4am, Research the history of mezcal for blog post, Jove Winston, No location, May 9, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 10",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, May 11",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "2 events, Monday, May 12",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "2 events, Monday, May 12",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "2am to 3am, maximal, Jove Winston, No location, May 12, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, Team Bonding, Jove Winston, No location, May 12, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "3 events, Tuesday, May 13",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "3 events, Tuesday, May 13",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, Joint Holiday for Waisak Day, Calendar: Holidays in Indonesia, May 13, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, Boba Event, Jove Winston, No location, May 13, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "task: Joint Holiday for Wesak, Not completed, May 13, 2025, 4pm"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "5 events, Wednesday, May 14",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "5 events, Wednesday, May 14",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "9am to 10am, Meeting with Mom, Jove Winston, No location, May 14, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "11am to 12pm, Meeting with the international law team, Jove Winston, No location, May 14, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "3 more events"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Thursday, May 15",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Thursday, May 15",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, No title, Jove Winston, No location, May 15, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Friday, May 16",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Friday, May 16",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, No title, Jove Winston, No location, May 16, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 17",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, May 18",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, May 19",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, May 20",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Wednesday, May 21",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "3 events, Thursday, May 22",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "3 events, Thursday, May 22",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "task: Review new client intake forms from the Appalachian region, Not completed, May 22, 2025, 9am"
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, Global Legal Standards Workshop, Jove Winston, No location, May 22, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "task: Research the history of mezcal for an upcoming blog post, Not completed, May 22, 2025, 10am"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Friday, May 23",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Friday, May 23",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "7pm to 10pm, Team Meeting, Jove Winston, No location, May 23, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 24",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "2 events, Sunday, May 25",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "2 events, Sunday, May 25",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "4:30pm to 5:30pm, Comedy Night, Jove Winston, No location, May 25, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "4:30pm to 5:30pm, Comedy Night, Jove Winston, No location, May 25, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, May 26",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, May 27",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "2 events, Wednesday, May 28, today",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "2 events, Wednesday, May 28, today",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "task: Joint Holiday after Ascension, Not completed, May 28, 2025, 3pm Task is being created."
+                  },
+                  {
+                    "role": "button",
+                    "name": "3 pending tasks"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "3 events, Thursday, May 29",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "3 events, Thursday, May 29",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, Ascension Day of Jesus Christ, Calendar: Holidays in Indonesia, May 29, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "2 more events"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "2 events, Friday, May 30",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "2 events, Friday, May 30",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, Joint Holiday after Ascension Day, Calendar: Holidays in Indonesia, May 30, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "7pm to 10pm, Team Meeting, Jove Winston, No location, May 30, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 31",
+                "readonly": true
+              }
+            ]
+          },
+          {
+            "role": "tablist",
+            "name": "",
+            "orientation": "horizontal",
+            "children": [
+              {
+                "role": "tab",
+                "name": "Keep"
+              },
+              {
+                "role": "tab",
+                "name": "Tasks"
+              },
+              {
+                "role": "tab",
+                "name": "Contacts"
+              },
+              {
+                "role": "tab",
+                "name": "Maps"
+              },
+              {
+                "role": "tab",
+                "name": "Get Add-ons"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Hide side panel",
+            "pressed": false
+          },
+          {
+            "role": "dialog",
+            "name": "Create",
+            "modal": true,
+            "children": [
+              {
+                "role": "heading",
+                "name": "Create",
+                "level": 1
+              },
+              {
+                "role": "button",
+                "name": "Close"
+              },
+              {
+                "role": "textbox",
+                "name": "Add title",
+                "value": "Joint Holiday after Ascension"
+              },
+              {
+                "role": "tab",
+                "name": "Event"
+              },
+              {
+                "role": "tab",
+                "name": "Task",
+                "selected": true
+              },
+              {
+                "role": "tab",
+                "name": "Appointment schedule new"
+              },
+              {
+                "role": "textbox",
+                "name": "Start date",
+                "focused": true,
+                "value": "May 28, 2025"
+              },
+              {
+                "role": "combobox",
+                "name": "Start time",
+                "autocomplete": "list",
+                "haspopup": "menu",
+                "value": "3:00pm"
+              },
+              {
+                "role": "checkbox",
+                "name": "All day",
+                "checked": false
+              },
+              {
+                "role": "text",
+                "name": "All day"
+              },
+              {
+                "role": "combobox",
+                "name": "Recurrence",
+                "haspopup": "listbox",
+                "value": "Does not repeat"
+              },
+              {
+                "role": "textbox",
+                "name": "Add description",
+                "multiline": true
+              },
+              {
+                "role": "combobox",
+                "name": "Task list",
+                "haspopup": "listbox",
+                "value": "My Tasks"
+              },
+              {
+                "role": "button",
+                "name": "Save"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "step": "Click the 'Save' button to finalize creating the reminder for 'Joint Holiday after Ascension' on May 29, 2025.",
+      "code": "page.get_by_role('button', name='Save').click()",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Google Calendar - May 2025",
+        "children": [
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "button",
+                "name": "Skip to main content"
+              },
+              {
+                "role": "button",
+                "name": "Keyboard shortcuts"
+              },
+              {
+                "role": "button",
+                "name": "Accessibility Feedback"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Main drawer",
+            "expanded": true
+          },
+          {
+            "role": "heading",
+            "name": "Calendar",
+            "level": 1
+          },
+          {
+            "role": "button",
+            "name": "Today, Wednesday, May 28"
+          },
+          {
+            "role": "button",
+            "name": "Previous month"
+          },
+          {
+            "role": "button",
+            "name": "Next month"
+          },
+          {
+            "role": "text",
+            "name": "May 2025"
+          },
+          {
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "role": "button",
+            "name": "Support"
+          },
+          {
+            "role": "button",
+            "name": "Settings menu",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "Month",
+            "description": "View switcher menu",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "Switch to Calendar",
+            "description": "Switch to Calendar"
+          },
+          {
+            "role": "button",
+            "name": "Switch to Tasks",
+            "description": "Switch to Tasks"
+          },
+          {
+            "role": "button",
+            "name": "Google apps"
+          },
+          {
+            "role": "button",
+            "name": "Google Account: Jove Winston (jovewinston@gmail.com)"
+          },
+          {
+            "role": "button",
+            "name": "Create ",
+            "disabled": true,
+            "haspopup": "menu"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "heading",
+                "name": "Drawer",
+                "level": 1
+              },
+              {
+                "role": "heading",
+                "name": "Navigation calendar",
+                "level": 2
+              },
+              {
+                "role": "text",
+                "name": "May 2025"
+              },
+              {
+                "role": "button",
+                "name": "Previous month"
+              },
+              {
+                "role": "button",
+                "name": "Next month"
+              },
+              {
+                "role": "text",
+                "name": "Sunday"
+              },
+              {
+                "role": "text",
+                "name": "Monday"
+              },
+              {
+                "role": "text",
+                "name": "Tuesday"
+              },
+              {
+                "role": "text",
+                "name": "Wednesday"
+              },
+              {
+                "role": "text",
+                "name": "Thursday"
+              },
+              {
+                "role": "text",
+                "name": "Friday"
+              },
+              {
+                "role": "text",
+                "name": "Saturday"
+              },
+              {
+                "role": "button",
+                "name": "April 27, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 28, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 29, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 30, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "1, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "2, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "3, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "4, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "5, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "6, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "7, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "8, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "9, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "10, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "11, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "12, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "13, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "14, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "15, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "16, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "17, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "18, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "19, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "20, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "21, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "22, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "23, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "24, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "25, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "26, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "27, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "28, Wednesday, today",
+                "pressed": true
+              },
+              {
+                "role": "button",
+                "name": "29, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "30, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "31, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 1, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 2, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 3, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 4, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 5, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 6, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 7, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "heading",
+                "name": "Calendar list",
+                "level": 2
+              },
+              {
+                "role": "button",
+                "name": "My calendars",
+                "expanded": true
+              },
+              {
+                "role": "checkbox",
+                "name": "Jove Winston",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Jove Winston"
+              },
+              {
+                "role": "checkbox",
+                "name": "Birthdays",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Birthdays"
+              },
+              {
+                "role": "checkbox",
+                "name": "New Calendar",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "New Calendar"
+              },
+              {
+                "role": "checkbox",
+                "name": "New Calendar Name",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "New Calendar Name"
+              },
+              {
+                "role": "checkbox",
+                "name": "New Event Calendar",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "New Event Calendar"
+              },
+              {
+                "role": "checkbox",
+                "name": "Tasks",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Tasks"
+              },
+              {
+                "role": "button",
+                "name": "Other calendars",
+                "expanded": true
+              },
+              {
+                "role": "button",
+                "name": "Add other calendars",
+                "haspopup": "menu"
+              },
+              {
+                "role": "checkbox",
+                "name": "Holidays in Indonesia",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Holidays in Indonesia"
+              },
+              {
+                "role": "link",
+                "name": "Terms"
+              },
+              {
+                "role": "text",
+                "name": " – "
+              },
+              {
+                "role": "link",
+                "name": "Privacy"
+              }
+            ]
+          },
+          {
+            "role": "main",
+            "name": "",
+            "description": "May 2025, 27 events",
+            "children": [
+              {
+                "role": "heading",
+                "name": " May 2025, 27 events",
+                "level": 1
+              },
+              {
+                "role": "columnheader",
+                "name": "SUNDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "MONDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "TUESDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "WEDNESDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "THURSDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "FRIDAY",
+                "readonly": true
+              },
+              {
+                "role": "columnheader",
+                "name": "SATURDAY",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, April 27",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, April 28",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, April 29",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Wednesday, April 30",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Thursday, May 1",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Thursday, May 1",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, International Labor Day, Calendar: Holidays in Indonesia, May 1, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Friday, May 2",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 3",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, May 4",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, May 5",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, May 6",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Wednesday, May 7",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Thursday, May 8",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Friday, May 9",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Friday, May 9",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "3am to 4am, Research the history of mezcal for blog post, Jove Winston, No location, May 9, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 10",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, May 11",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "2 events, Monday, May 12",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "2 events, Monday, May 12",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "2am to 3am, maximal, Jove Winston, No location, May 12, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, Team Bonding, Jove Winston, No location, May 12, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "3 events, Tuesday, May 13",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "3 events, Tuesday, May 13",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, Joint Holiday for Waisak Day, Calendar: Holidays in Indonesia, May 13, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, Boba Event, Jove Winston, No location, May 13, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "task: Joint Holiday for Wesak, Not completed, May 13, 2025, 4pm"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "5 events, Wednesday, May 14",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "5 events, Wednesday, May 14",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "9am to 10am, Meeting with Mom, Jove Winston, No location, May 14, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "11am to 12pm, Meeting with the international law team, Jove Winston, No location, May 14, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "3 more events"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Thursday, May 15",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Thursday, May 15",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, No title, Jove Winston, No location, May 15, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Friday, May 16",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Friday, May 16",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, No title, Jove Winston, No location, May 16, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 17",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Sunday, May 18",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, May 19",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, May 20",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Wednesday, May 21",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "3 events, Thursday, May 22",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "3 events, Thursday, May 22",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "task: Review new client intake forms from the Appalachian region, Not completed, May 22, 2025, 9am"
+                  },
+                  {
+                    "role": "button",
+                    "name": "10am to 11am, Global Legal Standards Workshop, Jove Winston, No location, May 22, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "task: Research the history of mezcal for an upcoming blog post, Not completed, May 22, 2025, 10am"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "1 event, Friday, May 23",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 event, Friday, May 23",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "7pm to 10pm, Team Meeting, Jove Winston, No location, May 23, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 24",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "2 events, Sunday, May 25",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "2 events, Sunday, May 25",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "4:30pm to 5:30pm, Comedy Night, Jove Winston, No location, May 25, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "4:30pm to 5:30pm, Comedy Night, Jove Winston, No location, May 25, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, May 26",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, May 27",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "2 events, Wednesday, May 28, today",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "2 events, Wednesday, May 28, today",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "task: Joint Holiday after Ascension, Not completed, May 28, 2025, 3pm Task is being created."
+                  },
+                  {
+                    "role": "button",
+                    "name": "3 pending tasks"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "3 events, Thursday, May 29",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "3 events, Thursday, May 29",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, Ascension Day of Jesus Christ, Calendar: Holidays in Indonesia, May 29, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "2 more events"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "2 events, Friday, May 30",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "2 events, Friday, May 30",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, Joint Holiday after Ascension Day, Calendar: Holidays in Indonesia, May 30, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "7pm to 10pm, Team Meeting, Jove Winston, No location, May 30, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 31",
+                "readonly": true
+              }
+            ]
+          },
+          {
+            "role": "tablist",
+            "name": "",
+            "orientation": "horizontal",
+            "children": [
+              {
+                "role": "tab",
+                "name": "Keep"
+              },
+              {
+                "role": "tab",
+                "name": "Tasks"
+              },
+              {
+                "role": "tab",
+                "name": "Contacts"
+              },
+              {
+                "role": "tab",
+                "name": "Maps"
+              },
+              {
+                "role": "tab",
+                "name": "Get Add-ons"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Hide side panel",
+            "pressed": false
+          },
+          {
+            "role": "dialog",
+            "name": "Create",
+            "modal": true,
+            "children": [
+              {
+                "role": "heading",
+                "name": "Create",
+                "level": 1
+              },
+              {
+                "role": "button",
+                "name": "Close"
+              },
+              {
+                "role": "textbox",
+                "name": "Add title",
+                "value": "Joint Holiday after Ascension"
+              },
+              {
+                "role": "tab",
+                "name": "Event"
+              },
+              {
+                "role": "tab",
+                "name": "Task",
+                "selected": true
+              },
+              {
+                "role": "tab",
+                "name": "Appointment schedule new"
+              },
+              {
+                "role": "textbox",
+                "name": "Start date",
+                "focused": true,
+                "value": "May 29, 2025"
+              },
+              {
+                "role": "text",
+                "name": "May 2025"
+              },
+              {
+                "role": "button",
+                "name": "Previous month"
+              },
+              {
+                "role": "button",
+                "name": "Next month"
+              },
+              {
+                "role": "text",
+                "name": "Sunday"
+              },
+              {
+                "role": "text",
+                "name": "Monday"
+              },
+              {
+                "role": "text",
+                "name": "Tuesday"
+              },
+              {
+                "role": "text",
+                "name": "Wednesday"
+              },
+              {
+                "role": "text",
+                "name": "Thursday"
+              },
+              {
+                "role": "text",
+                "name": "Friday"
+              },
+              {
+                "role": "text",
+                "name": "Saturday"
+              },
+              {
+                "role": "button",
+                "name": "April 27, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 28, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 29, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 30, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "1, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "2, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "3, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "4, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "5, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "6, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "7, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "8, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "9, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "10, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "11, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "12, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "13, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "14, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "15, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "16, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "17, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "18, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "19, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "20, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "21, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "22, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "23, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "24, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "25, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "26, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "27, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "28, Wednesday, today",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "29, Thursday",
+                "pressed": true
+              },
+              {
+                "role": "button",
+                "name": "30, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "31, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 1, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 2, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 3, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 4, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 5, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 6, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 7, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "combobox",
+                "name": "Start time",
+                "autocomplete": "list",
+                "haspopup": "menu",
+                "value": "3:00pm"
+              },
+              {
+                "role": "checkbox",
+                "name": "All day",
+                "checked": false
+              },
+              {
+                "role": "text",
+                "name": "All day"
+              },
+              {
+                "role": "combobox",
+                "name": "Recurrence",
+                "haspopup": "listbox",
+                "value": "Does not repeat"
+              },
+              {
+                "role": "textbox",
+                "name": "Add description",
+                "multiline": true
+              },
+              {
+                "role": "combobox",
+                "name": "Task list",
+                "haspopup": "listbox",
+                "value": "My Tasks"
+              },
+              {
+                "role": "button",
+                "name": "Save"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "success": true,
+  "output": "Reminder created successfully for 'Joint Holiday after Ascension' on May 29, 2025."
+}

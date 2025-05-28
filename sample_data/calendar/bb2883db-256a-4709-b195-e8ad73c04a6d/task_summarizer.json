@@ -1,0 +1,870 @@
+{
+  "persona": "A psychiatrist researching the impact of combat-related stress on the brain",
+  "original_instruction": "Check the tasks section for any pending items related to the research on combat-related stress",
+  "augmented_instruction": "Check the tasks section for any pending items related to \"Research on Combat-Related Stress.\"",
+  "final_instruction": "Check the tasks section for any pending items related to 'Research on Combat-Related Stress', and add a task if none exist.",
+  "url": "https://calendar.google.com",
+  "task_steps": [
+    {
+      "step": "Switch to the Tasks section to check for pending items.",
+      "code": "page.get_by_role('button', name='Switch to Tasks').click()",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Google Calendar - Week of May 25, 2025",
+        "children": [
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "button",
+                "name": "Skip to main content"
+              },
+              {
+                "role": "button",
+                "name": "Keyboard shortcuts"
+              },
+              {
+                "role": "button",
+                "name": "Accessibility Feedback"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Main drawer",
+            "expanded": true
+          },
+          {
+            "role": "heading",
+            "name": "Calendar",
+            "level": 1
+          },
+          {
+            "role": "button",
+            "name": "Today, Wednesday, May 28"
+          },
+          {
+            "role": "button",
+            "name": "Previous week"
+          },
+          {
+            "role": "button",
+            "name": "Next week"
+          },
+          {
+            "role": "text",
+            "name": "May 2025"
+          },
+          {
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "role": "button",
+            "name": "Support"
+          },
+          {
+            "role": "button",
+            "name": "Settings menu",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "Week",
+            "description": "View switcher menu",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "Switch to Calendar",
+            "description": "Switch to Calendar"
+          },
+          {
+            "role": "button",
+            "name": "Switch to Tasks",
+            "description": "Switch to Tasks"
+          },
+          {
+            "role": "button",
+            "name": "Google apps"
+          },
+          {
+            "role": "button",
+            "name": "Google Account: Jove Winston (jovewinston1@gmail.com)"
+          },
+          {
+            "role": "button",
+            "name": "Create ",
+            "haspopup": "menu"
+          },
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "heading",
+                "name": "Drawer",
+                "level": 1
+              },
+              {
+                "role": "heading",
+                "name": "Navigation calendar",
+                "level": 2
+              },
+              {
+                "role": "text",
+                "name": "May 2025"
+              },
+              {
+                "role": "button",
+                "name": "Previous month"
+              },
+              {
+                "role": "button",
+                "name": "Next month"
+              },
+              {
+                "role": "text",
+                "name": "Sunday"
+              },
+              {
+                "role": "text",
+                "name": "Monday"
+              },
+              {
+                "role": "text",
+                "name": "Tuesday"
+              },
+              {
+                "role": "text",
+                "name": "Wednesday"
+              },
+              {
+                "role": "text",
+                "name": "Thursday"
+              },
+              {
+                "role": "text",
+                "name": "Friday"
+              },
+              {
+                "role": "text",
+                "name": "Saturday"
+              },
+              {
+                "role": "button",
+                "name": "April 27, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 28, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 29, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "April 30, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "1, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "2, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "3, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "4, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "5, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "6, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "7, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "8, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "9, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "10, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "11, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "12, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "13, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "14, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "15, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "16, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "17, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "18, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "19, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "20, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "21, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "22, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "23, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "24, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "25, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "26, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "27, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "28, Wednesday, today",
+                "pressed": true
+              },
+              {
+                "role": "button",
+                "name": "29, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "30, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "31, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 1, Sunday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 2, Monday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 3, Tuesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 4, Wednesday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 5, Thursday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 6, Friday",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June 7, Saturday",
+                "pressed": false
+              },
+              {
+                "role": "generic",
+                "name": "",
+                "children": [
+                  {
+                    "role": "combobox",
+                    "name": "Search for people",
+                    "autocomplete": "list",
+                    "haspopup": "menu"
+                  }
+                ]
+              },
+              {
+                "role": "heading",
+                "name": "Calendar list",
+                "level": 2
+              },
+              {
+                "role": "button",
+                "name": "My calendars",
+                "expanded": true
+              },
+              {
+                "role": "checkbox",
+                "name": "Jove Winston",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Jove Winston"
+              },
+              {
+                "role": "checkbox",
+                "name": "Birthdays",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Birthdays"
+              },
+              {
+                "role": "checkbox",
+                "name": "Tasks",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Tasks"
+              },
+              {
+                "role": "button",
+                "name": "Other calendars",
+                "expanded": true
+              },
+              {
+                "role": "button",
+                "name": "Add other calendars",
+                "haspopup": "menu"
+              },
+              {
+                "role": "checkbox",
+                "name": "Holidays in United States",
+                "checked": true
+              },
+              {
+                "role": "text",
+                "name": "Holidays in United States"
+              },
+              {
+                "role": "link",
+                "name": "Terms"
+              },
+              {
+                "role": "text",
+                "name": " – "
+              },
+              {
+                "role": "link",
+                "name": "Privacy"
+              }
+            ]
+          },
+          {
+            "role": "main",
+            "name": "",
+            "description": "Week of May 25, 2025, 4 events",
+            "children": [
+              {
+                "role": "heading",
+                "name": " Week of May 25, 2025, 4 events",
+                "level": 1
+              },
+              {
+                "role": "columnheader",
+                "name": "Sunday, May 25",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "button",
+                    "name": "Sunday, May 25"
+                  }
+                ]
+              },
+              {
+                "role": "columnheader",
+                "name": "Monday, May 26",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "button",
+                    "name": "Monday, May 26"
+                  }
+                ]
+              },
+              {
+                "role": "columnheader",
+                "name": "Tuesday, May 27",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "button",
+                    "name": "Tuesday, May 27"
+                  }
+                ]
+              },
+              {
+                "role": "columnheader",
+                "name": "Wednesday, May 28, today",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "button",
+                    "name": "Wednesday, May 28, today"
+                  }
+                ]
+              },
+              {
+                "role": "columnheader",
+                "name": "Thursday, May 29",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "button",
+                    "name": "Thursday, May 29"
+                  }
+                ]
+              },
+              {
+                "role": "columnheader",
+                "name": "Friday, May 30",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "button",
+                    "name": "Friday, May 30"
+                  }
+                ]
+              },
+              {
+                "role": "columnheader",
+                "name": "Saturday, May 31",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "button",
+                    "name": "Saturday, May 31"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No all day events, Sunday, May 25",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "1 all day event, Monday, May 26",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "1 all day event, Monday, May 26",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "All day, Memorial Day, Calendar: Holidays in United States, May 26, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No all day events, Tuesday, May 27",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No all day events, Wednesday, May 28, today",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No all day events, Thursday, May 29",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No all day events, Friday, May 30",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No all day events, Saturday, May 31",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "3 events, Sunday, May 25",
+                "readonly": true,
+                "children": [
+                  {
+                    "role": "heading",
+                    "name": "3 events, Sunday, May 25",
+                    "level": 2
+                  },
+                  {
+                    "role": "button",
+                    "name": "2:30am to 3:30am, Listening Party, Jove Winston, No location, May 25, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "4pm to 5pm, Listening Party, Jove Winston, No location, May 25, 2025"
+                  },
+                  {
+                    "role": "button",
+                    "name": "4pm to 5pm, Listening Party, Jove Winston, No location, May 25, 2025"
+                  }
+                ]
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Monday, May 26",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Tuesday, May 27",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Wednesday, May 28",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Thursday, May 29",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Friday, May 30",
+                "readonly": true
+              },
+              {
+                "role": "gridcell",
+                "name": "No events, Saturday, May 31",
+                "readonly": true
+              }
+            ]
+          },
+          {
+            "role": "tablist",
+            "name": "",
+            "orientation": "horizontal",
+            "children": [
+              {
+                "role": "tab",
+                "name": "Keep"
+              },
+              {
+                "role": "tab",
+                "name": "Tasks"
+              },
+              {
+                "role": "tab",
+                "name": "Contacts"
+              },
+              {
+                "role": "tab",
+                "name": "Maps"
+              },
+              {
+                "role": "tab",
+                "name": "Get Add-ons"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Hide side panel",
+            "pressed": false
+          }
+        ]
+      }
+    },
+    {
+      "step": "Verify if there are any tasks related to 'Research on Combat-Related Stress' in the tasks section.",
+      "code": "page.get_by_role('text', name='Research on Combat-Related Stress')",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Google Calendar - Tasks",
+        "children": [
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "button",
+                "name": "Skip to main content"
+              },
+              {
+                "role": "button",
+                "name": "Keyboard shortcuts"
+              },
+              {
+                "role": "button",
+                "name": "Accessibility Feedback"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Tasks Sidebar",
+            "expanded": true
+          },
+          {
+            "role": "heading",
+            "name": "Calendar",
+            "level": 1
+          },
+          {
+            "role": "button",
+            "name": "Support menu",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "Switch to Calendar",
+            "description": "Switch to Calendar"
+          },
+          {
+            "role": "button",
+            "name": "Switch to Tasks",
+            "description": "Switch to Tasks",
+            "focused": true
+          },
+          {
+            "role": "button",
+            "name": "Google apps"
+          },
+          {
+            "role": "button",
+            "name": "Google Account: Jove Winston (jovewinston1@gmail.com)"
+          },
+          {
+            "role": "Iframe",
+            "name": "Tasks"
+          },
+          {
+            "role": "tablist",
+            "name": "",
+            "orientation": "horizontal",
+            "children": [
+              {
+                "role": "tab",
+                "name": "Keep"
+              },
+              {
+                "role": "tab",
+                "name": "Contacts"
+              },
+              {
+                "role": "tab",
+                "name": "Maps"
+              },
+              {
+                "role": "tab",
+                "name": "Get Add-ons"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Hide side panel",
+            "pressed": false
+          },
+          {
+            "role": "text",
+            "name": "Navigated to Tasks"
+          }
+        ]
+      }
+    },
+    {
+      "step": "No tasks related to 'Research on Combat-Related Stress' are currently visible in the tasks section",
+      "code": "",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Google Calendar - Tasks",
+        "children": [
+          {
+            "role": "generic",
+            "name": "",
+            "children": [
+              {
+                "role": "button",
+                "name": "Skip to main content"
+              },
+              {
+                "role": "button",
+                "name": "Keyboard shortcuts"
+              },
+              {
+                "role": "button",
+                "name": "Accessibility Feedback"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Tasks Sidebar",
+            "expanded": true
+          },
+          {
+            "role": "heading",
+            "name": "Calendar",
+            "level": 1
+          },
+          {
+            "role": "button",
+            "name": "Support menu",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "Switch to Calendar",
+            "description": "Switch to Calendar"
+          },
+          {
+            "role": "button",
+            "name": "Switch to Tasks",
+            "description": "Switch to Tasks",
+            "focused": true
+          },
+          {
+            "role": "button",
+            "name": "Google apps"
+          },
+          {
+            "role": "button",
+            "name": "Google Account: Jove Winston (jovewinston1@gmail.com)"
+          },
+          {
+            "role": "Iframe",
+            "name": "Tasks"
+          },
+          {
+            "role": "tablist",
+            "name": "",
+            "orientation": "horizontal",
+            "children": [
+              {
+                "role": "tab",
+                "name": "Keep"
+              },
+              {
+                "role": "tab",
+                "name": "Contacts"
+              },
+              {
+                "role": "tab",
+                "name": "Maps"
+              },
+              {
+                "role": "tab",
+                "name": "Get Add-ons"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Hide side panel",
+            "pressed": false
+          },
+          {
+            "role": "text",
+            "name": "Navigated to Tasks"
+          }
+        ]
+      }
+    }
+  ],
+  "success": true,
+  "output": "No pending tasks related to 'Research on Combat-Related Stress' found."
+}

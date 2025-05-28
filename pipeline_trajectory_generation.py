@@ -1,16 +1,16 @@
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, TimeoutError
 import json
 import os
 import uuid
 import shutil
+from typing import Optional, Tuple
+from concurrent.futures import ThreadPoolExecutor
 
 from generate_trajectory import chat_ai_playwright_code
 from config import RESULTS_DIR
 
 # ========== CONFIGURABLE PARAMETERS ==========
 PHASE = 1
-START_IDX = 980
-END_IDX = 981
 MAX_RETRIES = 7
 MAX_STEPS = 25  # Maximum number of steps before failing
 ACTION_TIMEOUT = 30000  # 30 seconds timeout for actions
@@ -19,7 +19,115 @@ ACTION_TIMEOUT = 30000  # 30 seconds timeout for actions
 # 1 - Interactive Mode: Requires Enter press after each instruction for manual review
 MODE = 0
 
-def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_idx):
+# Directory to store all browser sessions
+BROWSER_SESSIONS_DIR = "browser_sessions"
+os.makedirs(BROWSER_SESSIONS_DIR, exist_ok=True)
+
+# ========== ACCOUNTS CONFIGURATION ==========
+# Fill in your Google accounts and unique user data directories here
+ACCOUNTS = [
+    {
+        "email": "jovewinston@gmail.com",
+        "password": "Jove231099",
+        "user_data_dir": "jovewinston",
+        "start_idx": 0,
+        "end_idx": 5
+    },
+    {
+        "email": "jovewinston1@gmail.com",
+        "password": "davesmith",
+        "user_data_dir": "jovewinston1",
+        "start_idx": 5,
+        "end_idx": 10
+    },
+    # Add more accounts as needed
+]
+def is_already_logged_in(page, timeout: int = 5000) -> bool:
+    """
+    Check if the user is already logged into Google.
+    
+    Args:
+        page: Playwright page object
+        timeout: Timeout in milliseconds for the check
+        
+    Returns:
+        bool: True if already logged in, False otherwise
+    """
+    try:
+        # Check for Google Account button or profile picture
+        return page.locator('[aria-label*="Google Account"]').count() > 0 or \
+               page.locator('img[alt*="Google Account"]').count() > 0
+    except Exception:
+        return False
+
+def handle_google_login(page, email: str, password: str, timeout: int = 30000) -> bool:
+    """
+    Handle Google login process automatically.
+    
+    Args:
+        page: Playwright page object
+        email: Google account email
+        password: Google account password
+        timeout: Timeout in milliseconds for each step
+        
+    Returns:
+        bool: True if login was successful, False otherwise
+    """
+    try:
+        # If the "Sign in" button is present (landing page), click it
+        if page.locator('text=Sign in').count() > 0:
+            print("🔵 'Sign in' button detected on landing page. Clicking it...")
+            page.click('text=Sign in')
+            page.wait_for_timeout(1000)  # Wait for the login page to load
+
+        # First check if already logged in
+        if is_already_logged_in(page):
+            print("✅ Already logged in to Google")
+            return True
+
+        # Handle 'Choose an account' screen if present
+        if page.locator('text=Choose an account').count() > 0:
+            print("🔄 'Choose an account' screen detected. Always clicking 'Use another account'.")
+            page.click('text=Use another account')
+            # Wait a moment for the next screen to load
+            page.wait_for_timeout(1000)
+
+        # Wait for the email input field
+        page.wait_for_selector('input[type="email"]', timeout=timeout)
+        page.fill('input[type="email"]', email)
+        page.click('button:has-text("Next")')
+        
+        # Wait for password input
+        page.wait_for_selector('input[type="password"]', timeout=timeout)
+        page.fill('input[type="password"]', password)
+        page.click('button:has-text("Next")')
+        
+        # Wait for either successful login or error
+        try:
+            # Wait for successful login indicators
+            page.wait_for_selector('[aria-label*="Google Account"]', timeout=timeout)
+            return True
+        except TimeoutError:
+            # Check for error messages
+            error_selectors = [
+                'text="Wrong password"',
+                'text="Couldn\'t find your Google Account"',
+                'text="This account doesn\'t exist"'
+            ]
+            for selector in error_selectors:
+                if page.locator(selector).count() > 0:
+                    print(f"❌ Login failed: {page.locator(selector).text_content()}")
+                    return False
+            
+            # If no specific error found but login didn't complete
+            print("❌ Login failed: Unknown error")
+            return False
+            
+    except Exception as e:
+        print(f"❌ Login error: {str(e)}")
+        return False
+
+def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_idx, email: Optional[str] = None, password: Optional[str] = None):
     phase_file = os.path.join(RESULTS_DIR, f"instructions_phase{phase}.json")
     try:
         with open(phase_file, 'r', encoding='utf-8') as f:
@@ -75,12 +183,19 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                 page.set_default_timeout(ACTION_TIMEOUT)
                 page.goto(url)
                 
-                # Only wait for Google Account if it's not Scholar
-                if 'scholar.google.com' not in url:
-                    page.wait_for_selector('[aria-label*="Google Account"]', timeout=300000)
+                # Handle login if credentials are provided
+                if email and password and 'scholar.google.com' not in url:
+                    print("🔑 Checking login status...")
+                    if not handle_google_login(page, email, password):
+                        print("❌ Automatic login failed, please login manually")
+                        page.wait_for_selector('[aria-label*="Google Account"]', timeout=300000)
                 else:
-                    # For Scholar, just wait for the search box
-                    page.wait_for_selector('input[name="q"]', timeout=300000)
+                    # Only wait for Google Account if it's not Scholar
+                    if 'scholar.google.com' not in url:
+                        page.wait_for_selector('[aria-label*="Google Account"]', timeout=300000)
+                    else:
+                        # For Scholar, just wait for the search box
+                        page.wait_for_selector('input[name="q"]', timeout=300000)
 
                 execution_history = []
                 task_summarizer = []
@@ -229,10 +344,31 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
             input("🔚 Press Enter to close browser...")
             browser.close()
 
+def run_for_account(account, chrome_path, phase):
+    user_data_dir = os.path.join(BROWSER_SESSIONS_DIR, account["user_data_dir"])
+    # Only create the directory if it doesn't exist
+    if not os.path.exists(user_data_dir):
+        os.makedirs(user_data_dir, exist_ok=True)
+    generate_trajectory_loop(
+        user_data_dir=user_data_dir,
+        chrome_path=chrome_path,
+        phase=phase,
+        start_idx=account["start_idx"],
+        end_idx=account["end_idx"],
+        email=account["email"],
+        password=account["password"]
+    )
+
 def main():
-    chrome_profile = os.getenv("CHROME_PROFILE_PATH")
     chrome_exec = os.getenv("CHROME_EXECUTABLE_PATH")
-    generate_trajectory_loop(chrome_profile, chrome_exec, PHASE, START_IDX, END_IDX)
+    phase = PHASE
+    with ThreadPoolExecutor(max_workers=len(ACCOUNTS)) as executor:
+        futures = [
+            executor.submit(run_for_account, account, chrome_exec, phase)
+            for account in ACCOUNTS
+        ]
+        for future in futures:
+            future.result()  # Wait for all to finish
 
 if __name__ == "__main__":
     main()

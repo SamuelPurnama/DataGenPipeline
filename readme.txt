@@ -50,16 +50,36 @@ Step 3: Generate Phase 1 Trajectories
 Open pipeline_trajectory_generation.py and configure:
 
 PHASE = 1
-START_IDX = 0           # Starting instruction index
-END_IDX = 5             # Ending instruction index (exclusive)
 MODE = 0                # 0: Automatic execution, 1: Interactive mode
+ACCOUNTS = [
+    {
+        "email": "example1@gmail.com",
+        "password": "",
+        "user_data_dir": "example1",       #just name this with the a representative name, it's 
+                                            for the folder name of where the states
+                                            of the browser will be saved for a particular email
+                                            (such as login state information)
+        "start_idx": 0,                    # Starting instruction index
+        "end_idx": 8                       # Ending instruction index (exclusive)   
+    },
+    {
+        "email": "example2@gmail.com",
+        "password": "",
+        "user_data_dir": "example2",
+        "start_idx": 8,
+        "end_idx": 10
+    },
+    # Add more accounts as needed
+]
 
 Then run:
     python pipeline_trajectory_generation.py
 
 This will:
 - Load instructions_phase1.json
-- Execute each instruction using Playwright
+- Automatically handles Google authentication by creating and maintaining persistent browser sessions in user-specific directories (example1/ or example2/ directories automatically created inside the browser_sessions/ folder). 
+- Once logged in, the session is saved and reused for future runs, eliminating the need for repeated logins.
+- Execute each instruction using Playwright in parallel depending on the number of emails used
 - Save browser trajectories, screenshots, and logs into uniquely named folders (UUID-based) inside results/
 
 Step 4: Generate Phase 2 Instructions
@@ -92,3 +112,5 @@ This pipeline allows you to:
 - Create scalable, persona-grounded natural instructions
 - Generate real executable trajectories through Playwright
 - Iterate and augment your dataset with Phase 1 → Phase 2 logic
+
+

@@ -394,47 +394,94 @@ If the task is completed, return a JSON with a instruction summary:
 }
 ```"""
 
-PLAYWRIGHT_CODE_SYSTEM_MSG_DOCS = """You are an assistant that generates Playwright code to automate Google Docs tasks.
-Your task is to generate executable Playwright code that can perform document management tasks in Google Docs.
+PLAYWRIGHT_CODE_SYSTEM_MSG_DOCS = """You are an assistant that analyzes a web page's accessibility tree and the screenshot of the current page to help complete a user's task.
 
 Your responsibilities:
-1. Generate code to:
-   - Create and edit documents
-   - Format text and content
-   - Insert tables and images
-   - Share and collaborate
-   - Add comments and suggestions
-2. Handle common Docs-specific elements:
-   - Document editor
-   - Formatting toolbar
-   - Insert menu
-   - Share button
-   - Comment sidebar
-3. Use appropriate selectors:
-   - '[aria-label="Formatting"]' for format menu
-   - '[aria-label="Insert"]' for insert menu
-   - '[aria-label="Share"]' for share button
-   - '[aria-label="Comment"]' for comment button
+1. Check if the task goal has already been completed (i.e., the requested text has been fully inserted and formatted as specified — bolded, underlined, paragraph inserted, etc.). If so, return a task summary.
+2. If not, predict the next step the user should take to make progress.
+3. Identify the correct UI element based on the accessibility tree and a screenshot of the current page to perform the next predicted step to get closer to the end goal.
+4. You will receive both a taskGoal (overall goal) and a taskPlan (current specific goal). Use the taskPlan to determine the immediate next action, while keeping the taskGoal in mind for context.
+5. If and only if the current taskPlan is missing required detail (e.g., if the plan is "insert a header" but no text is given), you must clarify or update the plan by inventing plausible details or making reasonable assumptions. For example, if the plan is "add a paragraph," you might update it to "insert a paragraph that summarizes quarterly revenue trends."
+6. You must always return an 'updated_goal' field in your JSON response. If you do not need to change the plan, set 'updated_goal' to the current plan you were given. If you need to clarify or add details, set 'updated_goal' to the new, clarified plan.
+7. Return a JSON object.
 
-Example code patterns:
-- Type text: await page.keyboard.type('Hello World')
-- Format text: await page.click('[aria-label="Formatting"]')
-- Insert table: await page.click('[aria-label="Insert table"]')
-- Share doc: await page.click('[aria-label="Share"]')
+⚠️ *CRITICAL RULE*: You MUST return only ONE single action/code at a time. DO NOT return multiple actions or steps in one response. Each response should be ONE atomic action that can be executed independently.
 
-IMPORTANT:
-- Wait for the editor to be fully loaded
-- Handle document saving states
-- Include error handling for common Docs issues
-- Use appropriate timeouts for document operations
-- Consider collaborative editing scenarios
+You will receive:
+•⁠  Task goal – the user's intended outcome (e.g., "create a calendar event for May 1st at 10PM")
+•⁠  Previous steps – a list of actions the user has already taken. It's okay if the previous steps array is empty.
+•⁠  Accessibility tree – a list of role-name objects describing all visible and interactive elements on the page
+•⁠  Screenshot of the current page
 
-Output format:
+⚠️ *CRITICAL GOOGLE DOC SPECIFIC RULES*:
+
+- When told to type text on a Google Docs document, use:
+  page.keyboard.type("Your text here")
+  This is the standard way to enter document content.
+
+- If the task involves formatting such as bolding, italicizing, underlining, or highlighting:
+  You must first select the relevant text. This is done by simulating Shift + ArrowLeft as many times as needed:
+      for _ in range(len("Text to format")):
+          page.keyboard.down("Shift")
+          page.keyboard.press("ArrowLeft")
+          page.keyboard.up("Shift")
+
+  Then apply the formatting:
+  • Bold: page.keyboard.press("Control+B") (use "Meta+B" on Mac)
+  • Italic: page.keyboard.press("Control+I")
+  • Underline: page.keyboard.press("Control+U")
+
+- To highlight text:
+  • After selecting the text, simulate clicking the toolbar:
+      page.click('div[aria-label="Text color"]')
+      page.click('div[aria-label="Highlight"]')
+      page.click('div[aria-label="Yellow"]')  # or another visible color
+
+- To insert a new paragraph or line, press:
+      page.keyboard.press("Enter")
+
+- If the task asks for formatting but no specific text or style is given, you must update the plan with a plausible default (e.g., "Bold and highlight the text 'Project Proposal'").
+
+- Always verify whether the requested formatting (bold, highlight, etc.) has already been applied using the accessibility tree or screenshot.
+
+- DO NOT guess UI element names. Only interact with elements that are visible in the accessibility tree or screenshot.
+
+- For vague content instructions (e.g., "write a summary"), generate up to one page maximum of text and type it with:
+      page.keyboard.type("Generated content goes here...")
+
+- You may use:
+  • page.keyboard.* for text input and hotkeys
+  • page.click(...) for toolbar interactions
+  • page.get_by_role(...) or page.locator(...) to select UI elements
+  • OR ANYTHING THAT MAKES SENSE AS LONG AS IT IS PLAYWRIGHT CODE
+
+
+⚠️ *IMPORTANT RULE*:
+•⁠  Do NOT guess names. Only use names that appear in the accessibility tree or are visible in the screenshot.
+•⁠  The Image will really help you identify the correct element to interact with and how to interact or fill it. 
+
+Examples of completing partially vague goals (ONLY UPDATE THE GOAL IF YOU CANT MAKE PROGRESS TOWARDS THE GOAL, OR ELSE STICK TO THE CURRENT GOAL):
+•⁠ Goal: "Make this text stand out"
+→ updated_goal: "Bold and highlight the sentence 'Important update: All meetings are postponed until Monday'"
+
+⚠️ *VERY IMPORTANT RULE*: ONLY update the goal if you CANNOT make progress with the current goal. If you can still make progress towards the final goal with the current goal, DO NOT change it. This ensures we maintain focus and avoid unnecessary goal changes.
+
+A COMMON STEP TO CREATE A DOCUMENT IS 'page.get_by_role to click blank document'
+Your response must be a JSON object with this structure:
+```json
 {
-    "description": "Clear description of the action",
-    "code": "Executable Playwright code",
-    "updated_goal": "Updated task goal if needed"
-}"""
+    "description": "A clear, natural language description of what the code will do",
+    "code": "The playwright code to execute" (ONLY RETURN ONE CODE BLOCK),
+    "updated_goal": "The new, clarified plan if you changed it, or the current plan if unchanged"
+}
+```
+If the task is completed, return a JSON with a instruction summary:
+```json
+{
+    "summary_instruction": "An instruction that describes the overall task that was accomplished based on the actions taken so far. It should be phrased as a single, clear instruction you would give to a web assistant to replicate the completed task. For example: 'Schedule a meeting with the head of innovation at the Kigali Tech Hub on May 13th at 10 AM'.",
+    "output": "A short factual answer or result if the task involved identifying specific information (e.g., 'Meeting scheduled for May 13th at 10 AM with John Smith' or 'Event deleted successfully')"
+}
+"""
 
 PLAYWRIGHT_CODE_SYSTEM_MSG_FLIGHTS = """You are an assistant that analyzes a web page's accessibility tree and the screenshot of the current page to help complete a user's task on a flight-booking website (e.g., Google Flights).
 
