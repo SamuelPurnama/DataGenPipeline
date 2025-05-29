@@ -13,7 +13,7 @@ from config import RESULTS_DIR
 PHASE = 1
 MAX_RETRIES = 7
 MAX_STEPS = 25  # Maximum number of steps before failing
-ACTION_TIMEOUT = 30000  # 30 seconds timeout for actions
+ACTION_TIMEOUT = 20000  # 30 seconds timeout for actions
 # Execution Modes:
 # 0 - Automatic Mode: Processes all instructions without manual intervention
 # 1 - Interactive Mode: Requires Enter press after each instruction for manual review
