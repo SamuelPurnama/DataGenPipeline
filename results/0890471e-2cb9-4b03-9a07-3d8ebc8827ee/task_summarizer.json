@@ -1,0 +1,1203 @@
+{
+  "persona": "A digital art enthusiast who specializes in creating financial infographics for artists",
+  "original_instruction": "Find the most affordable round-trip flight from Seattle to New York departing next month",
+  "augmented_instruction": "Search for the most affordable round-trip economy class flights from Seattle to New York City for 1 passenger, departing next month and returning the following week.",
+  "final_instruction": "Search for the most affordable round-trip economy class flights from Seattle to New York City for 1 passenger, departing next month and returning the following week.",
+  "url": "https://flights.google.com",
+  "task_steps": [
+    {
+      "step": "Fill the 'To' field with 'New York City' and press Enter to confirm",
+      "code": "page.get_by_label('Where to?').fill('New York City'); page.keyboard.press('Enter')",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Google Flights - Find Cheap Flight Options & Track Prices",
+        "children": [
+          {
+            "role": "button",
+            "name": "Main menu"
+          },
+          {
+            "role": "link",
+            "name": "Google"
+          },
+          {
+            "role": "button",
+            "name": "Skip to main content"
+          },
+          {
+            "role": "button",
+            "name": "Accessibility feedback",
+            "haspopup": "dialog"
+          },
+          {
+            "role": "link",
+            "name": "Travel"
+          },
+          {
+            "role": "link",
+            "name": "Explore"
+          },
+          {
+            "role": "link",
+            "name": "Flights"
+          },
+          {
+            "role": "link",
+            "name": "Hotels"
+          },
+          {
+            "role": "link",
+            "name": "Vacation rentals"
+          },
+          {
+            "role": "button",
+            "name": "Change appearance",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "Google apps"
+          },
+          {
+            "role": "button",
+            "name": "Google Account: Samuel Samsudin (kukukud4@gmail.com)"
+          },
+          {
+            "role": "text",
+            "name": "Flights"
+          },
+          {
+            "role": "combobox",
+            "name": "Change ticket type. Round trip",
+            "haspopup": "listbox",
+            "value": "Round trip"
+          },
+          {
+            "role": "button",
+            "name": "1 passenger, change number of passengers.",
+            "haspopup": "dialog"
+          },
+          {
+            "role": "combobox",
+            "name": "Change seating class. Economy",
+            "haspopup": "listbox",
+            "value": "Economy"
+          },
+          {
+            "role": "combobox",
+            "name": "Where from?",
+            "autocomplete": "inline",
+            "haspopup": "menu",
+            "value": "Seattle"
+          },
+          {
+            "role": "button",
+            "name": "Swap origin and destination.",
+            "disabled": true
+          },
+          {
+            "role": "combobox",
+            "name": "Where to? ",
+            "focused": true,
+            "autocomplete": "inline",
+            "haspopup": "menu"
+          },
+          {
+            "role": "textbox",
+            "name": "Departure",
+            "description": "Enter a date or use the arrow keys to change the current date."
+          },
+          {
+            "role": "textbox",
+            "name": "Return",
+            "description": "Enter a date or use the arrow keys to change the current date."
+          },
+          {
+            "role": "button",
+            "name": "Explore destinations"
+          },
+          {
+            "role": "heading",
+            "name": "Find and book cheap flights worldwide and track prices",
+            "level": 1
+          },
+          {
+            "role": "heading",
+            "name": "Find cheap flights from Seattle to anywhere",
+            "level": 2
+          },
+          {
+            "role": "button",
+            "name": "More information on suggested flights.",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": "Seattle"
+          },
+          {
+            "role": "button",
+            "name": "Portland"
+          },
+          {
+            "role": "button",
+            "name": "Everett"
+          },
+          {
+            "role": "button",
+            "name": "Bellingham"
+          },
+          {
+            "role": "button",
+            "name": "Explore more destinations from Seattle"
+          },
+          {
+            "role": "button",
+            "name": "Rome 500 US dollars Aug 17 — Aug 26 1 stop·16 hr 55 min"
+          },
+          {
+            "role": "button",
+            "name": "Tokyo 780 US dollars Oct 26 — Nov 4 1 stop·14 hr"
+          },
+          {
+            "role": "button",
+            "name": "Paris 677 US dollars Aug 24 — Sep 2 1 stop·16 hr 30 min"
+          },
+          {
+            "role": "button",
+            "name": "Reykjavík 387 US dollars Sep 22 — Oct 1 Nonstop·7 hr 25 min"
+          },
+          {
+            "role": "heading",
+            "name": "Useful tools to help you find the best deals",
+            "level": 2
+          },
+          {
+            "role": "button",
+            "name": "Find the cheapest days to fly The Date grid and Price graph make it easy to see the best flight deals"
+          },
+          {
+            "role": "button",
+            "name": "See the whole picture with price insights Price history and trend data show you when to book to get the best price on your flight"
+          },
+          {
+            "role": "button",
+            "name": "Track prices for a trip Not ready to book yet? Observe price changes for a route or flight and get notified when prices drop."
+          },
+          {
+            "role": "text",
+            "name": "Insightful tools help you choose your trip dates"
+          },
+          {
+            "role": "text",
+            "name": "If your travel plans are flexible, use the form above to start searching for a specific trip. Then, play around with the "
+          },
+          {
+            "role": "text",
+            "name": "Date grid"
+          },
+          {
+            "role": "text",
+            "name": " and "
+          },
+          {
+            "role": "text",
+            "name": "Price graph"
+          },
+          {
+            "role": "text",
+            "name": " options on the "
+          },
+          {
+            "role": "text",
+            "name": "Search"
+          },
+          {
+            "role": "text",
+            "name": " page to find the cheapest days to get to your destination – and back again for round trips."
+          },
+          {
+            "role": "heading",
+            "name": "Popular destinations from Seattle",
+            "level": 2
+          },
+          {
+            "role": "link",
+            "name": "City image for New York New York"
+          },
+          {
+            "role": "link",
+            "name": "City image for Washington Washington"
+          },
+          {
+            "role": "link",
+            "name": "City image for Chicago Chicago"
+          },
+          {
+            "role": "link",
+            "name": "City image for Boston Boston"
+          },
+          {
+            "role": "link",
+            "name": "City image for Orlando Orlando"
+          },
+          {
+            "role": "link",
+            "name": "City image for Dallas Dallas"
+          },
+          {
+            "role": "link",
+            "name": "City image for Atlanta Atlanta"
+          },
+          {
+            "role": "link",
+            "name": "City image for Nashville Nashville"
+          },
+          {
+            "role": "link",
+            "name": "City image for Tampa Tampa"
+          },
+          {
+            "role": "link",
+            "name": "City image for Las Vegas Las Vegas"
+          },
+          {
+            "role": "link",
+            "name": "City image for Austin Austin"
+          },
+          {
+            "role": "link",
+            "name": "City image for Houston Houston"
+          },
+          {
+            "role": "link",
+            "name": "City image for Phoenix Phoenix"
+          },
+          {
+            "role": "link",
+            "name": "City image for Los Angeles Los Angeles"
+          },
+          {
+            "role": "link",
+            "name": "City image for Miami Miami"
+          },
+          {
+            "role": "link",
+            "name": "City image for San Diego San Diego"
+          },
+          {
+            "role": "link",
+            "name": "City image for Philadelphia Philadelphia"
+          },
+          {
+            "role": "link",
+            "name": "City image for Charlotte Charlotte"
+          },
+          {
+            "role": "link",
+            "name": "City image for Raleigh Raleigh"
+          },
+          {
+            "role": "link",
+            "name": "City image for Portland Portland"
+          },
+          {
+            "role": "heading",
+            "name": "Frequently asked questions",
+            "level": 2
+          },
+          {
+            "role": "text",
+            "name": "How can I find last-minute flight deals?"
+          },
+          {
+            "role": "button",
+            "name": "Show answer How can I find last-minute flight deals?"
+          },
+          {
+            "role": "text",
+            "name": "How can I find cheap flights for a weekend getaway?"
+          },
+          {
+            "role": "button",
+            "name": "Show answer How can I find cheap flights for a weekend getaway?"
+          },
+          {
+            "role": "text",
+            "name": "How can I find flight deals if my travel plans are flexible?"
+          },
+          {
+            "role": "button",
+            "name": "Show answer How can I find flight deals if my travel plans are flexible?"
+          },
+          {
+            "role": "text",
+            "name": "How can I find cheap flights to anywhere?"
+          },
+          {
+            "role": "button",
+            "name": "Show answer How can I find cheap flights to anywhere?"
+          },
+          {
+            "role": "text",
+            "name": "How can I get flight alerts for my trip?"
+          },
+          {
+            "role": "button",
+            "name": "Show answer How can I get flight alerts for my trip?"
+          },
+          {
+            "role": "text",
+            "name": "Find cheap flights on popular routes"
+          },
+          {
+            "role": "link",
+            "name": "Flights from New York to London"
+          },
+          {
+            "role": "link",
+            "name": "Flights from New York to Paris"
+          },
+          {
+            "role": "link",
+            "name": "Flights from London to Paris"
+          },
+          {
+            "role": "link",
+            "name": "Flights from New York to Rome"
+          },
+          {
+            "role": "link",
+            "name": "Flights from Montreal to Paris"
+          },
+          {
+            "role": "link",
+            "name": "Flights from London to Milan"
+          },
+          {
+            "role": "link",
+            "name": "Flights from Toronto to London"
+          },
+          {
+            "role": "link",
+            "name": "Flights from New York to Milan"
+          },
+          {
+            "role": "link",
+            "name": "Flights from London to Dubai"
+          },
+          {
+            "role": "link",
+            "name": "Flights from London to Tokyo"
+          },
+          {
+            "role": "link",
+            "name": "Flights from Madrid to Rome"
+          },
+          {
+            "role": "link",
+            "name": "Flights from London to Delhi"
+          },
+          {
+            "role": "link",
+            "name": "Flights from New York to Los Angeles"
+          },
+          {
+            "role": "link",
+            "name": "Flights from Paris to Marrakech"
+          },
+          {
+            "role": "link",
+            "name": "Flights from Sao Paulo to London"
+          },
+          {
+            "role": "link",
+            "name": "Flights from London to Istanbul"
+          },
+          {
+            "role": "link",
+            "name": "Flights from Paris to Bangkok"
+          },
+          {
+            "role": "link",
+            "name": "Flights from New York to Orlando"
+          },
+          {
+            "role": "link",
+            "name": "Flights from London to Berlin"
+          },
+          {
+            "role": "link",
+            "name": "Flights from Chicago to Paris"
+          },
+          {
+            "role": "link",
+            "name": "Flights from Melbourne to London"
+          },
+          {
+            "role": "button",
+            "name": "Language​·English (United States)"
+          },
+          {
+            "role": "button",
+            "name": "Location​·United States"
+          },
+          {
+            "role": "button",
+            "name": "Currency​·USD"
+          },
+          {
+            "role": "text",
+            "name": "Current language and currency options applied: English (United States) - United States - USD"
+          },
+          {
+            "role": "text",
+            "name": "Displayed currencies may differ from the currencies used to purchase flights. "
+          },
+          {
+            "role": "link",
+            "name": "Learn more about currencies"
+          },
+          {
+            "role": "link",
+            "name": "About Google Travel"
+          },
+          {
+            "role": "link",
+            "name": "Privacy"
+          },
+          {
+            "role": "link",
+            "name": "Terms"
+          },
+          {
+            "role": "link",
+            "name": "Join user studies"
+          },
+          {
+            "role": "link",
+            "name": "Feedback"
+          },
+          {
+            "role": "link",
+            "name": "Help Center"
+          },
+          {
+            "role": "button",
+            "name": "International sites"
+          },
+          {
+            "role": "button",
+            "name": "Explore flights"
+          }
+        ]
+      }
+    },
+    {
+      "step": "Click the button to specify a 1-week trip next month.",
+      "code": "page.get_by_role('button', name='1-week trip in the next 6 months').click()",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Seattle to anywhere | Explore",
+        "children": [
+          {
+            "role": "text",
+            "name": "Loading results"
+          },
+          {
+            "role": "combobox",
+            "name": "Change ticket type. Round trip",
+            "haspopup": "listbox",
+            "value": "Round trip"
+          },
+          {
+            "role": "button",
+            "name": "1 passenger",
+            "haspopup": "dialog"
+          },
+          {
+            "role": "combobox",
+            "name": "Change seating class. Economy",
+            "haspopup": "listbox",
+            "value": "Economy"
+          },
+          {
+            "role": "combobox",
+            "name": "Where from?",
+            "autocomplete": "inline",
+            "haspopup": "menu",
+            "value": "Seattle"
+          },
+          {
+            "role": "combobox",
+            "name": "Where to?",
+            "autocomplete": "inline",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "1-week trip in the next 6 months"
+          },
+          {
+            "role": "button",
+            "name": "All filters, 1 filter selected"
+          },
+          {
+            "role": "button",
+            "name": "Flights only, Travel mode, Selected",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "Clear Travel mode"
+          },
+          {
+            "role": "button",
+            "name": "Stops, Not selected",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "Price, Not selected",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "Airlines, Not selected",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "Duration, Not selected",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "Bags, Not selected",
+            "haspopup": "menu"
+          },
+          {
+            "role": "text",
+            "name": "About these results"
+          },
+          {
+            "role": "button",
+            "name": "About these results",
+            "haspopup": "menu"
+          },
+          {
+            "role": "button",
+            "name": "New York May 29 – Jun 4 Frontier 1 stop · 12 hr 45 min 294 US dollars"
+          },
+          {
+            "role": "button",
+            "name": "Miami Aug 14 – 20 Delta Nonstop · 5 hr 59 min 185 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Miami Aug 14 – 20 Delta Nonstop · 5 hr 59 min 185 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Los Angeles Aug 9 – 16 Frontier Nonstop · 2 hr 52 min 119 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Los Angeles Aug 9 – 16 Frontier Nonstop · 2 hr 52 min 119 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Las Vegas Jun 9 – 16 Spirit Nonstop · 2 hr 31 min 118 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Las Vegas Jun 9 – 16 Spirit Nonstop · 2 hr 31 min 118 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "San Francisco Jun 26 – Jul 5 Alaska Nonstop · 2 hr 18 min 131 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "San Francisco Jun 26 – Jul 5 Alaska Nonstop · 2 hr 18 min 131 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Orlando Aug 18 – 25 Delta 1 stop · 7 hr 38 min 225 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Orlando Aug 18 – 25 Delta 1 stop · 7 hr 38 min 225 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Washington, D.C. Jul 14 – 21 Delta 1 stop · 7 hr 42 min 243 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Washington, D.C. Jul 14 – 21 Delta 1 stop · 7 hr 42 min 243 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "San Diego Jun 9 – 17 Alaska and Spirit 1 stop · 4 hr 33 min 146 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "San Diego Jun 9 – 17 Alaska and Spirit 1 stop · 4 hr 33 min 146 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Boston Sep 6 – 13 Alaska Nonstop · 5 hr 26 min 237 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Boston Sep 6 – 13 Alaska Nonstop · 5 hr 26 min 237 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Denver Jul 19 – 26 Frontier Nonstop · 2 hr 49 min 169 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Denver Jul 19 – 26 Frontier Nonstop · 2 hr 49 min 169 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Atlanta Aug 30 – Sep 6 Alaska and Spirit 1 stop · 4 hr 52 min 243 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Atlanta Aug 30 – Sep 6 Alaska and Spirit 1 stop · 4 hr 52 min 243 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Chicago Aug 16 – 23 Alaska Nonstop · 4 hr 169 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Chicago Aug 16 – 23 Alaska Nonstop · 4 hr 169 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "New Orleans Jun 13 – 21 United 1 stop · 8 hr 58 min 273 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "New Orleans Jun 13 – 21 United 1 stop · 8 hr 58 min 273 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Fort Lauderdale Aug 14 – 20 Delta Nonstop · 5 hr 59 min 185 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Fort Lauderdale Aug 14 – 20 Delta Nonstop · 5 hr 59 min 185 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Austin Oct 18 – 25 Alaska and Spirit 1 stop · 4 hr 6 min 208 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Austin Oct 18 – 25 Alaska and Spirit 1 stop · 4 hr 6 min 208 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Toronto Oct 19 – 28 Alaska and Delta 1 stop · 4 hr 42 min 308 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Toronto Oct 19 – 28 Alaska and Delta 1 stop · 4 hr 42 min 308 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Portland Aug 14 – 20 Alaska Nonstop · 52 min 147 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Portland Aug 14 – 20 Alaska Nonstop · 52 min 147 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Philadelphia Aug 28 – Sep 6 Frontier and Spirit 1 stop · 8 hr 50 min 250 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Philadelphia Aug 28 – Sep 6 Frontier and Spirit 1 stop · 8 hr 50 min 250 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Nashville Aug 16 – 23 Alaska Nonstop · 4 hr 22 min 237 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Nashville Aug 16 – 23 Alaska Nonstop · 4 hr 22 min 237 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Montreal Sep 5 – 13 WestJet 1 stop · 7 hr 51 min 437 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Montreal Sep 5 – 13 WestJet 1 stop · 7 hr 51 min 437 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Houston Jun 2 – 10 Frontier and Spirit 1 stop · 13 hr 11 min 229 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Houston Jun 2 – 10 Frontier and Spirit 1 stop · 13 hr 11 min 229 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Charleston Jul 12 – 18 United 1 stop · 7 hr 54 min 195 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Charleston Jul 12 – 18 United 1 stop · 7 hr 54 min 195 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Dallas Jun 13 – 20 Frontier Nonstop · 3 hr 50 min 179 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Dallas Jun 13 – 20 Frontier Nonstop · 3 hr 50 min 179 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "San Antonio Aug 31 – Sep 6 Spirit and United 1 stop · 5 hr 41 min 223 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "San Antonio Aug 31 – Sep 6 Spirit and United 1 stop · 5 hr 41 min 223 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Phoenix Jun 28 – Jul 5 Frontier Nonstop · 3 hr 115 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Phoenix Jun 28 – Jul 5 Frontier Nonstop · 3 hr 115 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Québec City Jun 6 – 12 Air Canada and United 1 stop · 9 hr 25 min 265 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Québec City Jun 6 – 12 Air Canada and United 1 stop · 9 hr 25 min 265 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Tampa Aug 25 – Sep 2 Delta Nonstop · 5 hr 35 min 215 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Tampa Aug 25 – Sep 2 Delta Nonstop · 5 hr 35 min 215 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Savannah Sep 12 – 19 JetBlue 1 stop · 8 hr 35 min 311 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Savannah Sep 12 – 19 JetBlue 1 stop · 8 hr 35 min 311 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "St. Louis Sep 6 – 15 American 1 stop · 6 hr 23 min 189 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "St. Louis Sep 6 – 15 American 1 stop · 6 hr 23 min 189 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Palm Springs Sep 22 – 30 United 1 stop · 5 hr 7 min 172 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Palm Springs Sep 22 – 30 United 1 stop · 5 hr 7 min 172 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Asheville Jul 4 – 12 American 2 stops · 8 hr 19 min 370 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Asheville Jul 4 – 12 American 2 stops · 8 hr 19 min 370 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Baltimore Jul 14 – 21 Delta 1 stop · 7 hr 42 min 243 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Baltimore Jul 14 – 21 Delta 1 stop · 7 hr 42 min 243 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Santa Barbara Aug 14 – 20 United 1 stop · 4 hr 25 min 177 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Santa Barbara Aug 14 – 20 United 1 stop · 4 hr 25 min 177 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Salt Lake City Jun 13 – 20 Frontier Nonstop · 2 hr 5 min 166 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Salt Lake City Jun 13 – 20 Frontier Nonstop · 2 hr 5 min 166 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Pittsburgh Oct 27 – Nov 4 United 1 stop · 6 hr 24 min 216 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Pittsburgh Oct 27 – Nov 4 United 1 stop · 6 hr 24 min 216 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Ottawa Jun 12 – 18 WestJet 2 stops · 12 hr 35 min 432 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Ottawa Jun 12 – 18 WestJet 2 stops · 12 hr 35 min 432 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Key West Aug 23 – 30 Delta 1 stop · 10 hr 11 min 389 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Key West Aug 23 – 30 Delta 1 stop · 10 hr 11 min 389 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Detroit Jun 14 – 21 Frontier 1 stop · 7 hr 31 min 252 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Detroit Jun 14 – 21 Frontier 1 stop · 7 hr 31 min 252 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Minneapolis Jun 12 – 20 Sun Country Airlines Nonstop · 3 hr 14 min 183 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Minneapolis Jun 12 – 20 Sun Country Airlines Nonstop · 3 hr 14 min 183 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "Charlotte Jul 7 – 16 Delta and United 1 stop · 8 hr 2 min 308 US dollars",
+            "children": [
+              {
+                "role": "button",
+                "name": "Charlotte Jul 7 – 16 Delta and United 1 stop · 8 hr 2 min 308 US dollars"
+              }
+            ]
+          },
+          {
+            "role": "button",
+            "name": "​English (United States)"
+          },
+          {
+            "role": "button",
+            "name": "​USD"
+          },
+          {
+            "role": "button",
+            "name": "Keyboard shortcuts",
+            "description": "Keyboard shortcuts"
+          },
+          {
+            "role": "region",
+            "name": "Map",
+            "description": "Left arrow Move left. Right arrow Move right. Up arrow Move up. Down arrow Move down. + Zoom in. - Zoom out. Home Jump left by 75%. End Jump right by 75%. Page Up Jump up by 75%. Page Down Jump down by 75%.",
+            "roledescription": "map"
+          },
+          {
+            "role": "button",
+            "name": "New York 294 US dollars"
+          },
+          {
+            "role": "button",
+            "name": "Miami 185 US dollars"
+          },
+          {
+            "role": "button",
+            "name": "Los Angeles 119 US dollars"
+          },
+          {
+            "role": "text",
+            "name": "San Francisco"
+          },
+          {
+            "role": "text",
+            "name": "Atlanta"
+          },
+          {
+            "role": "text",
+            "name": "Chicago"
+          },
+          {
+            "role": "text",
+            "name": "New Orleans"
+          },
+          {
+            "role": "button",
+            "name": "Austin 208 US dollars"
+          },
+          {
+            "role": "button",
+            "name": "Portland 147 US dollars"
+          },
+          {
+            "role": "text",
+            "name": "Montreal"
+          },
+          {
+            "role": "text",
+            "name": "St. Louis"
+          },
+          {
+            "role": "text",
+            "name": "Salt Lake City"
+          },
+          {
+            "role": "button",
+            "name": "Minneapolis 183 US dollars"
+          },
+          {
+            "role": "text",
+            "name": "Victoria"
+          },
+          {
+            "role": "text",
+            "name": "Bozeman"
+          },
+          {
+            "role": "text",
+            "name": "Mazatlan"
+          },
+          {
+            "role": "text",
+            "name": "Grand Forks"
+          },
+          {
+            "role": "text",
+            "name": "Timmins"
+          },
+          {
+            "role": "button",
+            "name": "Map camera controls",
+            "description": "Map camera controls"
+          },
+          {
+            "role": "button",
+            "name": "Zoom in",
+            "description": "Zoom in"
+          },
+          {
+            "role": "button",
+            "name": "Zoom out",
+            "description": "Zoom out"
+          },
+          {
+            "role": "button",
+            "name": "Keyboard shortcuts"
+          },
+          {
+            "role": "text",
+            "name": "Map data ©2025 Google, INEGI"
+          },
+          {
+            "role": "link",
+            "name": "Terms"
+          },
+          {
+            "role": "button",
+            "name": "View smaller map"
+          },
+          {
+            "role": "text",
+            "name": "Explore"
+          }
+        ]
+      }
+    },
+    {
+      "step": "Click the 'Done' button to confirm the flexible dates selection.",
+      "code": "page.get_by_role('button', name='Done').click()",
+      "axtree": {
+        "role": "WebArea",
+        "name": "Seattle to anywhere | Explore",
+        "children": [
+          {
+            "role": "dialog",
+            "name": "",
+            "modal": true,
+            "children": [
+              {
+                "role": "tab",
+                "name": "Specific dates"
+              },
+              {
+                "role": "tab",
+                "name": "Flexible dates",
+                "focused": true,
+                "selected": true
+              },
+              {
+                "role": "text",
+                "name": "1-week trip in the next 6 months"
+              },
+              {
+                "role": "button",
+                "name": "Next 6 months",
+                "pressed": true
+              },
+              {
+                "role": "button",
+                "name": "May",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "June",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "July",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "August",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "September",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "October",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "Weekend",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "1 week",
+                "pressed": true
+              },
+              {
+                "role": "button",
+                "name": "2 weeks",
+                "pressed": false
+              },
+              {
+                "role": "button",
+                "name": "Done"
+              },
+              {
+                "role": "button",
+                "name": "Reset"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "success": true,
+  "output": "Found a flight to New York from May 29 to June 4 with 1 stop for $294."
+}

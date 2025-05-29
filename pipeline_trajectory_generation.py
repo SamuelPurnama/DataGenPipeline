@@ -7,7 +7,8 @@ from typing import Optional, Tuple
 from concurrent.futures import ThreadPoolExecutor
 
 from generate_trajectory import chat_ai_playwright_code
-from config import RESULTS_DIR
+from config import RESULTS_DIR, ACCOUNTS
+from google_auth import ensure_google_login
 
 # ========== CONFIGURABLE PARAMETERS ==========
 PHASE = 1
@@ -23,25 +24,6 @@ MODE = 0
 BROWSER_SESSIONS_DIR = "browser_sessions"
 os.makedirs(BROWSER_SESSIONS_DIR, exist_ok=True)
 
-# ========== ACCOUNTS CONFIGURATION ==========
-# Fill in your Google accounts and unique user data directories here
-ACCOUNTS = [
-    {
-        "email": "example1@gmail.com",
-        "password": "password1",
-        "user_data_dir": "example1",
-        "start_idx": 0,
-        "end_idx": 5
-    },
-    {
-        "email": "example2@gmail.com",
-        "password": "password2",
-        "user_data_dir": "example2",
-        "start_idx": 5,
-        "end_idx": 10
-    },
-    # Add more accounts as needed
-]
 def is_already_logged_in(page, timeout: int = 5000) -> bool:
     """
     Check if the user is already logged into Google.
@@ -183,19 +165,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                 page.set_default_timeout(ACTION_TIMEOUT)
                 page.goto(url)
                 
-                # Handle login if credentials are provided
-                if email and password and 'scholar.google.com' not in url:
-                    print("🔑 Checking login status...")
-                    if not handle_google_login(page, email, password):
-                        print("❌ Automatic login failed, please login manually")
-                        page.wait_for_selector('[aria-label*="Google Account"]', timeout=300000)
-                else:
-                    # Only wait for Google Account if it's not Scholar
-                    if 'scholar.google.com' not in url:
-                        page.wait_for_selector('[aria-label*="Google Account"]', timeout=300000)
-                    else:
-                        # For Scholar, just wait for the search box
-                        page.wait_for_selector('input[name="q"]', timeout=300000)
+                # Handle login using the new module
+                ensure_google_login(page, email, password, url)
 
                 execution_history = []
                 task_summarizer = []

@@ -52,3 +52,4 @@ dist/
 *.jsonl
 
 screenshots/
+browser_sessions/
