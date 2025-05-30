@@ -1,2 +1,38 @@
 [
+  {
+    "persona": "A local business owner who wants to support the instructor's mission by hosting self-defense workshops in her store",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Add a new event for a self-defense workshop on May 15th at 3pm",
+      "Delete the \"2pm Virtual Workshop\" entry on May 20th",
+      "Change the time of the \"6am Gym Sessions\" on May 21st to 8am",
+      "Add a note to the \"3pm Discussion Group\" on May 29th mentioning the self-defense workshop details",
+      "Remove the \"9am Consultation\" event on May 25th"
+    ],
+    "augmented_instructions": [
+      "Create a new event titled \"Self-Defense Workshop\" on May 15th at 3pm.",
+      "Delete the event titled \"2pm Virtual Workshop\" on May 20th.",
+      "Change the time of the event titled \"6am Gym Sessions\" on May 21st to 8am.",
+      "Add a note to the event titled \"3pm Discussion Group\" on May 29th with details about the self-defense workshop.",
+      "Remove the event titled \"9am Consultation\" on May 25th."
+    ]
+  },
+  {
+    "persona": "a climate activist who is also a fan of comic art.",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Add a new event on May 5th called \"Climate Art Workshop\" from 10am to 1pm",
+      "Delete the \"6am Gym Sessions\" event on May 21st",
+      "Change the \"2pm Virtual Workshop\" on May 20th to \"Eco-Friendly Art Session.\"",
+      "Move the \"3pm Discussion Group\" on May 29th to May 28th at the same time",
+      "Add a reminder on May 22nd for \"Prepare materials for Climate Art Workshop.\""
+    ],
+    "augmented_instructions": [
+      "Create a new event on May 5th named \"Climate Art Workshop\" from 10am to 1pm.",
+      "Remove the \"6am Gym Sessions\" event on May 21st.",
+      "Update the \"2pm Virtual Workshop\" on May 20th to \"Eco-Friendly Art Session.\"",
+      "Reschedule the \"3pm Discussion Group\" on May 29th to May 28th at the same time.",
+      "Set a reminder on May 22nd for \"Prepare materials for Climate Art Workshop.\""
+    ]
+  }
 ]

@@ -14,10 +14,10 @@ ACCOUNTS = [
         "end_idx": 5
     },
     {
-        "email": "samueljovarenp@gmail.com",
+        "email": "testeracc649@gmail.com",
         "password": "samJP535",
-        "user_data_dir": "sam2",
-        "start_idx": 5,
-        "end_idx": 10
+        "user_data_dir": "sam3",
+        "start_idx": 10,
+        "end_idx": 15
     },
 ]
