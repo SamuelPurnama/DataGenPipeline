@@ -19,6 +19,6 @@ ACCOUNTS = [
         "user_data_dir": "example2",
         "start_idx": 5,
         "end_idx": 10
-    },
-    # Add more accounts as needed
+    }, 
+    #Add more accounts as needed
 ]

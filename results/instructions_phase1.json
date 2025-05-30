@@ -1,2 +1,20 @@
 [
+    {
+        "persona": "A speech therapist who specializes in alternative therapies and supports the mother's advocacy",
+        "url": "https://calendar.google.com",
+        "instructions": [
+          "Schedule a virtual workshop on alternative speech therapy techniques for May 20th at 2PM",
+          "Add a reminder for Mother's Day advocacy event on May 11th, focusing on supporting mothers in rural Kenya",
+          "Create a calendar event for a consultation with the speech therapy team in La Paz, Bolivia on May 25th at 9AM",
+          "Set up a recurring weekly meeting for a discussion group on traditional healing methods in speech therapy, starting May 19th at 3PM",
+          "Organize a webinar on May 28th at 11AM about integrating indigenous communication practices in therapy, targeting professionals in Ulaanbaatar, Mongolia"
+        ],
+        "augmented_instructions": [
+          "Set up a recurring weekly meeting titled \"Discussion Group on Traditional Healing Methods in Speech Therapy\" starting May 19th at 3PM.",
+          "Set up a recurring weekly meeting every Friday titled \"UW Football\" starting this Friday at 9AM",
+          "Create a calendar event titled \"Consultation with Speech Therapy Team\" in La Paz, Bolivia on May 25th at 9AM.",
+          "Set up a recurring weekly meeting titled \"Discussion Group on Traditional Healing Methods in Speech Therapy\" starting May 19th at 3PM.",
+          "Organize a webinar titled \"Integrating Indigenous Communication Practices in Therapy\" on May 28th at 11AM, targeting professionals in Ulaanbaatar, Mongolia."
+        ]
+      }
 ]
