@@ -445,6 +445,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         )
                         with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
                             json.dump(metadata, f, indent=2, ensure_ascii=False)
+                        # Generate HTML after metadata is created
+                        generate_trajectory_html(dirs, metadata)
                         should_continue = False
                         break
 
@@ -481,6 +483,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         )
                         with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
                             json.dump(metadata, f, indent=2, ensure_ascii=False)
+                        # Generate HTML after metadata is created
+                        generate_trajectory_html(dirs, metadata)
                         print("✅ Task completed, metadata saved.")
                         break
 
@@ -554,6 +558,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                     )
                                     with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
                                         json.dump(metadata, f, indent=2, ensure_ascii=False)
+                                    # Generate HTML after metadata is created
+                                    generate_trajectory_html(dirs, metadata)
                                     print("✅ Task completed on retry, metadata saved.")
                                     should_continue = False
                                     break
@@ -571,6 +577,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 )
                                 with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
                                     json.dump(metadata, f, indent=2, ensure_ascii=False)
+                                # Generate HTML after metadata is created
+                                generate_trajectory_html(dirs, metadata)
                                 should_continue = False
                                 break
 
@@ -616,6 +624,248 @@ def main():
         ]
         for future in futures:
             future.result()  # Wait for all to finish
+
+def generate_trajectory_html(dirs: Dict[str, str], metadata: Dict[str, Any]) -> None:
+    """Generate an HTML visualization of the trajectory."""
+    trajectory_path = os.path.join(dirs['root'], 'trajectory.json')
+    html_path = os.path.join(dirs['root'], 'trajectory.html')
+    
+    try:
+        with open(trajectory_path, 'r', encoding='utf-8') as f:
+            trajectory = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        print("❌ Error loading trajectory.json")
+        return
+
+    # Start building HTML
+    html_content = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualization of Trajectory</title>
+    <style>
+        body {{
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }}
+        .container {{
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }}
+        h1, h2 {{
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }}
+        .metadata {{
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }}
+        .metadata-item {{
+            margin: 10px 0;
+        }}
+        .metadata-label {{
+            font-weight: bold;
+            color: #555;
+        }}
+        .step {{
+            border: 1px solid #ddd;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: white;
+        }}
+        .step-header {{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }}
+        .step-number {{
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2196F3;
+        }}
+        .step-content {{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }}
+        .screenshot {{
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }}
+        .action-details {{
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+        }}
+        .element-properties {{
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }}
+        .property {{
+            margin: 5px 0;
+        }}
+        .property-label {{
+            font-weight: bold;
+            color: #555;
+        }}
+        .bbox {{
+            background-color: #e3f2fd;
+            padding: 5px;
+            border-radius: 3px;
+        }}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Visualization of Trajectory</h1>
+        
+        <div class="metadata">
+            <h2>Metadata</h2>
+            <div class="metadata-item">
+                <span class="metadata-label">Episode Name:</span> {metadata['eps_name']}
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">Start URL:</span> {metadata['start_url']}
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">Phase:</span> {metadata['phase']}
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">Browser Context:</span>
+                <ul>
+                    <li>OS: {metadata['browser_context']['os']}</li>
+                    <li>Viewport: {metadata['browser_context']['viewport']}</li>
+                    <li>Cookies Enabled: {metadata['browser_context']['cookies_enabled']}</li>
+                </ul>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">Task:</span>
+                <ul>
+                    <li>Type: {metadata['task']['task_type']}</li>
+                    <li>Persona: {metadata['task']['persona']}</li>
+                    <li>Instructions:
+                        <ul>
+                            <li>Level 1: {metadata['task']['instruction']['level1']}</li>
+                            <li>Level 2: {metadata['task']['instruction']['level2']}</li>
+                            <li>Level 3: {metadata['task']['instruction']['level3']}</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">Execution:</span>
+                <ul>
+                    <li>Success: {metadata['success']}</li>
+                    <li>Total Steps: {metadata['total_steps']}</li>
+                    <li>Runtime: {metadata['runtime_sec']:.2f} seconds</li>
+                    <li>Total Tokens: {metadata['total_tokens']}</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Trajectory Steps</h2>
+"""
+
+    # Add each step to the HTML
+    for step_num, step_data in trajectory.items():
+        screenshot_path = os.path.join('images', step_data['screenshot'])
+        action = step_data['action']
+        action_output = action.get('action_output', {})
+        
+        html_content += f"""
+        <div class="step">
+            <div class="step-header">
+                <span class="step-number">Step {step_num}</span>
+                <span class="action-type">{action['action_type'].upper()}</span>
+            </div>
+            <div class="step-content">
+                <div>
+                    <img src="{screenshot_path}" alt="Step {step_num} Screenshot" class="screenshot">
+                </div>
+                <div class="action-details">
+                    <div class="property">
+                        <span class="property-label">Action Code:</span><br>
+                        <code>{action['action_code']}</code>
+                    </div>
+                    <div class="property">
+                        <span class="property-label">Description:</span><br>
+                        {action['action_description']}
+                    </div>
+                    <div class="element-properties">
+                        <h3>Element Properties</h3>
+"""
+        
+        if action_output:
+            if 'bbox' in action_output:
+                html_content += f"""
+                        <div class="property">
+                            <span class="property-label">Bounding Box:</span>
+                            <div class="bbox">
+                                x: {action_output['bbox']['x']}, 
+                                y: {action_output['bbox']['y']}, 
+                                width: {action_output['bbox']['width']}, 
+                                height: {action_output['bbox']['height']}
+                            </div>
+                        </div>"""
+            
+            for prop in ['class', 'id', 'type', 'ariaLabel', 'role', 'value']:
+                if prop in action_output and action_output[prop]:
+                    html_content += f"""
+                        <div class="property">
+                            <span class="property-label">{prop}:</span> {action_output[prop]}
+                        </div>"""
+            
+            if 'text' in action_output:
+                html_content += f"""
+                        <div class="property">
+                            <span class="property-label">Text:</span> {action_output['text']}
+                        </div>"""
+            
+            if 'key' in action_output:
+                html_content += f"""
+                        <div class="property">
+                            <span class="property-label">Key Pressed:</span> {action_output['key']}
+                        </div>"""
+            
+            if 'timestamp' in action_output:
+                html_content += f"""
+                        <div class="property">
+                            <span class="property-label">Timestamp:</span> {action_output['timestamp']}
+                        </div>"""
+
+        html_content += """
+                    </div>
+                </div>
+            </div>
+        </div>"""
+
+    # Close HTML
+    html_content += """
+    </div>
+</body>
+</html>"""
+
+    # Write HTML file
+    with open(html_path, 'w', encoding='utf-8') as f:
+        f.write(html_content)
+
 
 if __name__ == "__main__":
     main()
