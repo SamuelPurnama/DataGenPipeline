@@ -37,14 +37,234 @@ def create_episode_directory(base_dir: str, eps_name: str) -> Dict[str, str]:
         os.makedirs(dir_path, exist_ok=True)
     return dirs
 
+def create_trajectory_file(dirs: Dict[str, str]) -> None:
+    """Create an empty trajectory.json file with initial structure."""
+    trajectory_path = os.path.join(dirs['root'], 'trajectory.json')
+    with open(trajectory_path, 'w', encoding='utf-8') as f:
+        json.dump({}, f, indent=2, ensure_ascii=False)
+
+def get_element_properties(page, locator_code):
+    """Get detailed properties of an element using Playwright locator."""
+    try:
+        # Handle different locator types
+        if "get_by_role" in locator_code:
+            # Extract role and name from get_by_role('role', name='name')
+            role = locator_code.split("get_by_role('")[1].split("'")[0]
+            name = locator_code.split("name='")[1].split("'")[0] if "name='" in locator_code else None
+            element = page.get_by_role(role, name=name)
+        elif "get_by_label" in locator_code:
+            label = locator_code.split("get_by_label('")[1].split("'")[0]
+            element = page.get_by_label(label)
+        elif "get_by_placeholder" in locator_code:
+            placeholder = locator_code.split("get_by_placeholder('")[1].split("'")[0]
+            element = page.get_by_placeholder(placeholder)
+        elif "get_by_text" in locator_code:
+            text = locator_code.split("get_by_text('")[1].split("'")[0]
+            element = page.get_by_text(text)
+        else:
+            # Fallback to locator
+            element = page.locator(locator_code)
+
+        if element:
+            bbox = element.bounding_box()
+            return {
+                "bbox": bbox,
+                "class": element.get_attribute("class"),
+                "id": element.get_attribute("id"),
+                "type": element.evaluate("el => el.tagName.toLowerCase()"),
+                "ariaLabel": element.get_attribute("aria-label"),
+                "role": element.get_attribute("role"),
+                "value": element.get_attribute("value"),
+                "timestamp": int(time.time() * 1000)
+            }
+    except Exception as e:
+        print(f"⚠️ Error getting element properties: {e}")
+        print(f"Locator code: {locator_code}")
+    return None
+
+def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtree: str, action_code: str, action_description: str, page) -> None:
+    """Update trajectory.json with a new step."""
+    trajectory_path = os.path.join(dirs['root'], 'trajectory.json')
+    try:
+        with open(trajectory_path, 'r', encoding='utf-8') as f:
+            trajectory = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        trajectory = {}
+    
+    # Extract action type and locator from the code
+    action_type = None
+    locator_code = None
+    action_output = None
+    
+    # Parse the action code to determine type and get element properties
+    if "page.goto" in action_code:
+        action_type = "goto"
+        url = action_code.split("page.goto(")[1].split(")")[0].strip('"\'')
+        action_output = {"url": url, "timestamp": int(time.time() * 1000)}
+    elif ".click()" in action_code:
+        action_type = "click"
+        locator_code = action_code.split(".click()")[0]
+        # Get the last clicked element
+        action_output = page.evaluate("""() => {
+            const lastClicked = document.activeElement;
+            if (!lastClicked) return null;
+            const rect = lastClicked.getBoundingClientRect();
+            return {
+                bbox: {
+                    x: rect.x,
+                    y: rect.y,
+                    width: rect.width,
+                    height: rect.height
+                },
+                class: lastClicked.className,
+                id: lastClicked.id,
+                type: lastClicked.tagName.toLowerCase(),
+                ariaLabel: lastClicked.getAttribute('aria-label'),
+                role: lastClicked.getAttribute('role'),
+                value: lastClicked.value,
+                timestamp: Date.now()
+            };
+        }""")
+    elif ".fill(" in action_code:
+        action_type = "type"
+        parts = action_code.split(".fill(")
+        locator_code = parts[0]
+        text = parts[1].split(")")[0].strip('"\'')
+        # Get the last focused input element
+        action_output = page.evaluate("""() => {
+            const lastFocused = document.activeElement;
+            if (!lastFocused) return null;
+            const rect = lastFocused.getBoundingClientRect();
+            return {
+                bbox: {
+                    x: rect.x,
+                    y: rect.y,
+                    width: rect.width,
+                    height: rect.height
+                },
+                class: lastFocused.className,
+                id: lastFocused.id,
+                type: lastFocused.tagName.toLowerCase(),
+                ariaLabel: lastFocused.getAttribute('aria-label'),
+                role: lastFocused.getAttribute('role'),
+                value: lastFocused.value,
+                text: lastFocused.value,
+                timestamp: Date.now()
+            };
+        }""")
+    elif ".dblclick()" in action_code:
+        action_type = "dblclick"
+        locator_code = action_code.split(".dblclick()")[0]
+        # Get the last double-clicked element
+        action_output = page.evaluate("""() => {
+            const lastClicked = document.activeElement;
+            if (!lastClicked) return null;
+            const rect = lastClicked.getBoundingClientRect();
+            return {
+                bbox: {
+                    x: rect.x,
+                    y: rect.y,
+                    width: rect.width,
+                    height: rect.height
+                },
+                class: lastClicked.className,
+                id: lastClicked.id,
+                type: lastClicked.tagName.toLowerCase(),
+                ariaLabel: lastClicked.getAttribute('aria-label'),
+                role: lastClicked.getAttribute('role'),
+                value: lastClicked.value,
+                timestamp: Date.now()
+            };
+        }""")
+    elif "page.scroll" in action_code:
+        action_type = "scroll"
+        action_output = {"timestamp": int(time.time() * 1000)}
+    elif ".paste(" in action_code:
+        action_type = "paste"
+        locator_code = action_code.split(".paste(")[0]
+        # Get the last focused element
+        action_output = page.evaluate("""() => {
+            const lastFocused = document.activeElement;
+            if (!lastFocused) return null;
+            const rect = lastFocused.getBoundingClientRect();
+            return {
+                bbox: {
+                    x: rect.x,
+                    y: rect.y,
+                    width: rect.width,
+                    height: rect.height
+                },
+                class: lastFocused.className,
+                id: lastFocused.id,
+                type: lastFocused.tagName.toLowerCase(),
+                ariaLabel: lastFocused.getAttribute('aria-label'),
+                role: lastFocused.getAttribute('role'),
+                value: lastFocused.value,
+                timestamp: Date.now()
+            };
+        }""")
+    elif "page.keyboard.press" in action_code:
+        action_type = "keypress"
+        key = action_code.split("page.keyboard.press(")[1].split(")")[0].strip('"\'')
+        # Get the last focused element
+        action_output = page.evaluate("""() => {
+            const lastFocused = document.activeElement;
+            if (!lastFocused) return null;
+            const rect = lastFocused.getBoundingClientRect();
+            return {
+                bbox: {
+                    x: rect.x,
+                    y: rect.y,
+                    width: rect.width,
+                    height: rect.height
+                },
+                class: lastFocused.className,
+                id: lastFocused.id,
+                type: lastFocused.tagName.toLowerCase(),
+                ariaLabel: lastFocused.getAttribute('aria-label'),
+                role: lastFocused.getAttribute('role'),
+                value: lastFocused.value,
+                key: arguments[0],
+                timestamp: Date.now()
+            };
+        }""", key)
+    
+    # Add new step
+    trajectory[str(step_idx + 1)] = {
+        "screenshot": os.path.basename(screenshot),
+        "axtree": os.path.basename(axtree),
+        "action": {
+            "action_code": action_code,
+            "action_description": action_description,
+            "action_type": action_type,
+            "action_output": action_output
+        }
+    }
+    
+    with open(trajectory_path, 'w', encoding='utf-8') as f:
+        json.dump(trajectory, f, indent=2, ensure_ascii=False)
+
 def create_metadata(persona: str, url: str, orig_instruction: str, aug_instruction: str, 
                    final_instruction: Optional[str], steps: list, success: bool, total_steps: int,
-                   runtime: float, total_tokens: int) -> Dict[str, Any]:
+                   runtime: float, total_tokens: int, page) -> Dict[str, Any]:
     """Create metadata dictionary."""
+    # Get viewport size
+    viewport = page.viewport_size
+    viewport_str = f"{viewport['width']}x{viewport['height']}" if viewport else "unknown"
+    
+    # Get browser context info
+    context = page.context
+    cookies_enabled = context.cookies() is not None
+    
     return {
         "eps_name": f"calendar_{uuid.uuid4()}",
         "start_url": url,
         "phase": PHASE,
+        "browser_context": {
+            "os": os.uname().sysname.lower(),  # Get OS name
+            "viewport": viewport_str,
+            "cookies_enabled": cookies_enabled
+        },
         "task": {
             "task_type": "calendar",  # or determine from instruction
             "persona": persona,
@@ -189,6 +409,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                 aug = item['augmented_instruction']
                 eps_name = f"calendar_{uuid.uuid4()}"
                 dirs = create_episode_directory(RESULTS_DIR, eps_name)
+                create_trajectory_file(dirs)  # Create empty trajectory.json
 
                 print(f"\n🔄 Instruction {idx + 1}/{total}")
                 print(f"👤 {persona}")
@@ -220,7 +441,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         metadata = create_metadata(
                             persona, url, orig, aug, None,  # Pass None for final_instruction
                             [step['step'] for step in task_summarizer],
-                            False, step_idx, runtime, total_tokens
+                            False, step_idx, runtime, total_tokens, page
                         )
                         with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
                             json.dump(metadata, f, indent=2, ensure_ascii=False)
@@ -256,7 +477,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         metadata = create_metadata(
                             persona, url, orig, aug, gpt_resp['summary_instruction'],
                             [step['step'] for step in task_summarizer],
-                            True, step_idx, runtime, total_tokens
+                            True, step_idx, runtime, total_tokens, page
                         )
                         with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
                             json.dump(metadata, f, indent=2, ensure_ascii=False)
@@ -284,6 +505,16 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                             # Save axtree to file only after successful execution
                             with open(os.path.join(dirs['axtree'], f"{step_idx:04d}.json"), 'w', encoding='utf-8') as f:
                                 json.dump(tree, f, indent=2, ensure_ascii=False)
+                            # Update trajectory.json with the successful step
+                            update_trajectory(
+                                dirs=dirs,
+                                step_idx=step_idx,
+                                screenshot=screenshot,
+                                axtree=os.path.join(dirs['axtree'], f"{step_idx:04d}.json"),
+                                action_code=code,
+                                action_description=description,
+                                page=page
+                            )
                             success = True
                         except Exception as e:
                             retry += 1
@@ -319,7 +550,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                     metadata = create_metadata(
                                         persona, url, orig, aug, gpt_resp['summary_instruction'],
                                         [step['step'] for step in task_summarizer],
-                                        True, step_idx, runtime, total_tokens
+                                        True, step_idx, runtime, total_tokens, page
                                     )
                                     with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
                                         json.dump(metadata, f, indent=2, ensure_ascii=False)
@@ -336,7 +567,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 metadata = create_metadata(
                                     persona, url, orig, aug, None,  # Pass None for final_instruction
                                     [step['step'] for step in task_summarizer],
-                                    False, step_idx, runtime, total_tokens
+                                    False, step_idx, runtime, total_tokens, page
                                 )
                                 with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
                                     json.dump(metadata, f, indent=2, ensure_ascii=False)
