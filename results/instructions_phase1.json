@@ -1,5 +1,4 @@
 [
-<<<<<<< HEAD
   {
     "persona": "A storyteller passionate about legendary horse breeds and regional history",
     "url": "https://calendar.google.com",
@@ -25,14 +24,14 @@
       "Add a calendar event for a book club meeting about \"The Maltese Falcon\" on May 21st at 5PM",
       "Set a reminder to research the influence of Agatha Christie on Japanese mystery novels, due by May 25th",
       "Create a new calendar for \"Detective Fiction Workshops\" and add a session on May 28th at 3PM",
-      "Schedule a virtual tour of the Arthur Conan Doyle Centre in Edinburgh on May 30th at 2PM",
+      "Schedule a virtual tour of the Arthur Conan Doyle Centre in Edinburgh tomorrow",
       "Add a task to read \"The Mystery of the Yellow Room\" by Gaston Leroux by the end of May"
     ],
     "augmented_instructions": [
       "Create an event titled \"Book Club Meeting: The Maltese Falcon\" on May 21st at 5PM.",
       "Set a reminder to research the influence of Agatha Christie on Japanese mystery novels by May 25th.",
       "Create a new calendar named \"Detective Fiction Workshops\" and add an event for a session on May 28th at 3PM.",
-      "Schedule an event for a virtual tour of the Arthur Conan Doyle Centre in Edinburgh on May 30th at 2PM.",
+      "Schedule an event for a virtual tour of the Arthur Conan Doyle Centre in Edinburgh tomorrow at 2PM.",
       "Add a task to read \"The Mystery of the Yellow Room\" by Gaston Leroux by May 31st."
     ]
   },
@@ -42,7 +41,7 @@
     "instructions": [
       "Schedule a virtual workshop on alternative speech therapy techniques for May 20th at 2PM",
       "Add a reminder for Mother's Day advocacy event on May 11th, focusing on supporting mothers in rural Kenya",
-      "Create a calendar event for a consultation with the speech therapy team in La Paz, Bolivia on May 25th at 9AM",
+      "Create a calendar event for a consultation with the speech therapy team in La Paz, Bolivia next Monday at 9AM",
       "Set up a recurring weekly meeting for a discussion group on traditional healing methods in speech therapy, starting May 19th at 3PM",
       "Organize a webinar on May 28th at 11AM about integrating indigenous communication practices in therapy, targeting professionals in Ulaanbaatar, Mongolia"
     ],
@@ -3438,40 +3437,5 @@
       "Create a new calendar titled \"Delivery Schedules\" under My Calendars.",
       "Schedule a \"Team Meeting\" on May 15th at 3 PM and invite participants."
     ]
-  },
-  {
-    "persona": "A digital art enthusiast who specializes in creating financial infographics for artists",
-    "url": "https://flights.google.com",
-    "instructions": [
-      "Find the most affordable round-trip flight from Seattle to New York departing next month",
-      "Compare the flight durations for trips from Seattle to Los Angeles",
-      "Search for flights from Seattle to San Francisco with a flexible departure date",
-      "Identify the earliest available flight from Seattle to Chicago",
-      "Check for nonstop flights from Seattle to Miami and list the airlines offering them"
-    ],
-    "augmented_instructions": [
-      "Search for the most affordable round-trip economy class flights from Seattle to New York City for 1 passenger, departing next month and returning the following week.",
-      "Compare flight durations for round-trip economy class flights from Seattle to Los Angeles for 1 passenger, departing next week and returning the following week.",
-      "Search for economy class flights from Seattle to San Francisco for 1 passenger with a flexible departure date next week and returning the following week.",
-      "Identify the earliest available round-trip economy class flight from Seattle to Chicago for 1 passenger, departing next week and returning the following week.",
-      "Check for nonstop round-trip economy class flights from Seattle to Miami for 1 passenger, departing next week and returning the following week, and list the airlines offering them."
-    ]
-  },
-  {
-    "persona": "A middle-aged individual with pre-existing conditions, seeking medical treatment for COVID-19",
-    "url": "https://flights.google.com",
-    "instructions": [
-      "Search for flights from Seattle to New York for the upcoming weekend",
-      "Find the cheapest flight from Seattle to Los Angeles and book it",
-      "Explore flight options from Seattle to Miami departing next month",
-      "Check for any direct flights from Seattle to San Francisco and compare prices",
-      "Look for flights from Seattle to Chicago with flexible dates and list the top three options"
-    ],
-    "augmented_instructions": [
-      "Search for economy class round-trip flights from Seattle to New York City for 1 passenger, departing next Friday and returning the following Monday.",
-      "Search for the cheapest one-way economy class flight from Seattle to Los Angeles for 1 passenger, departing next week, and book it.",
-      "Search for economy class round-trip flights from Seattle to Miami for 1 passenger, departing on the first Monday of next month and returning two weeks later.",
-      "Search for direct economy class round-trip flights from Seattle to San Francisco for 1 passenger, departing next week and returning the following week, and compare prices.",
-      "Search for flexible date economy class round-trip flights from Seattle to Chicago for 1 passenger and list the top three options."
-    ]
   }
+]

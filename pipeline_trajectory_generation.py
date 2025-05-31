@@ -3,7 +3,8 @@ import json
 import os
 import uuid
 import shutil
-from typing import Optional, Tuple
+import time
+from typing import Optional, Tuple, Dict, Any
 from concurrent.futures import ThreadPoolExecutor
 
 from generate_trajectory import chat_ai_playwright_code
@@ -23,6 +24,42 @@ MODE = 0
 # Directory to store all browser sessions
 BROWSER_SESSIONS_DIR = "browser_sessions"
 os.makedirs(BROWSER_SESSIONS_DIR, exist_ok=True)
+
+def create_episode_directory(base_dir: str, eps_name: str) -> Dict[str, str]:
+    """Create directory structure for an episode."""
+    eps_dir = os.path.join(base_dir, eps_name)
+    dirs = {
+        'root': eps_dir,
+        'axtree': os.path.join(eps_dir, 'axtree'),
+        'images': os.path.join(eps_dir, 'images')
+    }
+    for dir_path in dirs.values():
+        os.makedirs(dir_path, exist_ok=True)
+    return dirs
+
+def create_metadata(persona: str, url: str, orig_instruction: str, aug_instruction: str, 
+                   final_instruction: Optional[str], steps: list, success: bool, total_steps: int,
+                   runtime: float, total_tokens: int) -> Dict[str, Any]:
+    """Create metadata dictionary."""
+    return {
+        "eps_name": f"calendar_{uuid.uuid4()}",
+        "start_url": url,
+        "phase": PHASE,
+        "task": {
+            "task_type": "calendar",  # or determine from instruction
+            "persona": persona,
+            "instruction": {
+                "level1": orig_instruction,
+                "level2": aug_instruction,
+                "level3": final_instruction if final_instruction else aug_instruction  # Fallback to aug_instruction if final_instruction is None
+            },
+            "steps": steps
+        },
+        "success": success,
+        "total_steps": total_steps,
+        "runtime_sec": runtime,
+        "total_tokens": total_tokens
+    }
 
 def is_already_logged_in(page, timeout: int = 5000) -> bool:
     """
@@ -150,16 +187,15 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                 url = item['url']
                 orig = item['original_instruction']
                 aug = item['augmented_instruction']
-                run_uuid = str(uuid.uuid4())
-                inst_dir = os.path.join(RESULTS_DIR, run_uuid)
-                os.makedirs(inst_dir, exist_ok=True)
+                eps_name = f"calendar_{uuid.uuid4()}"
+                dirs = create_episode_directory(RESULTS_DIR, eps_name)
 
                 print(f"\n🔄 Instruction {idx + 1}/{total}")
                 print(f"👤 {persona}")
                 print(f"🌐 {url}")
                 print(f"📝 Orig: {orig}")
                 print(f"🔄 Aug: {aug}")
-                print(f"UUID: {run_uuid}")
+                print(f"UUID: {eps_name}")
 
                 page = browser.new_page()
                 page.set_default_timeout(ACTION_TIMEOUT)
@@ -172,30 +208,31 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                 task_summarizer = []
                 current_goal = aug
                 should_continue = True
+                start_time = time.time()
+                total_tokens = 0  # Initialize token counter
 
                 while should_continue:
                     step_idx = len(task_summarizer)
 
                     if step_idx >= MAX_STEPS:
-                        print(f"❌ Maximum number of steps ({MAX_STEPS}) exceeded. Creating failure summary.")
-                        summary = {
-                            "persona": persona,
-                            "original_instruction": orig,
-                            "augmented_instruction": aug,
-                            "url": url,
-                            "final_instruction": current_goal,
-                            "task_steps": task_summarizer,
-                            "success": False,
-                            "failure_reason": f"Exceeded maximum steps ({MAX_STEPS})"
-                        }
-                        with open(os.path.join(inst_dir, "task_summarizer.json"), "w", encoding="utf-8") as f:
-                            json.dump(summary, f, indent=2, ensure_ascii=False)
+                        print(f"❌ Maximum number of steps ({MAX_STEPS}) exceeded.")
+                        runtime = time.time() - start_time
+                        metadata = create_metadata(
+                            persona, url, orig, aug, None,  # Pass None for final_instruction
+                            [step['step'] for step in task_summarizer],
+                            False, step_idx, runtime, total_tokens
+                        )
+                        with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
+                            json.dump(metadata, f, indent=2, ensure_ascii=False)
                         should_continue = False
                         break
 
-                    screenshot = os.path.join(inst_dir, f"step_{step_idx}.png")
+                    screenshot = os.path.join(dirs['images'], f"{step_idx:04d}.png")
+                    axtree_file = os.path.join(dirs['axtree'], f"{step_idx:04d}.json")
                     page.screenshot(path=screenshot)
                     tree = page.accessibility.snapshot()
+                    with open(axtree_file, 'w', encoding='utf-8') as f:
+                        json.dump(tree, f, indent=2, ensure_ascii=False)
                     is_del = 'delete' in current_goal.lower()
 
                     gpt_resp = chat_ai_playwright_code(
@@ -209,21 +246,21 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         url=url
                     )
 
+                    # Update total tokens from GPT response
+                    if gpt_resp and "total_tokens" in gpt_resp:
+                        total_tokens += gpt_resp["total_tokens"]
+                        print(f"📊 Current total tokens: {total_tokens}")
+
                     if "summary_instruction" in gpt_resp:
-                        summary = {
-                            "persona": persona,
-                            "original_instruction": orig,
-                            "augmented_instruction": aug,
-                            "final_instruction": gpt_resp['summary_instruction'],
-                            "url": url,
-                            "task_steps": task_summarizer,
-                            "success": True
-                        }
-                        if "output" in gpt_resp:
-                            summary["output"] = gpt_resp["output"]
-                        with open(os.path.join(inst_dir, "task_summarizer.json"), "w", encoding="utf-8") as f:
-                            json.dump(summary, f, indent=2, ensure_ascii=False)
-                        print("✅ Task completed, summary saved.")
+                        runtime = time.time() - start_time
+                        metadata = create_metadata(
+                            persona, url, orig, aug, gpt_resp['summary_instruction'],
+                            [step['step'] for step in task_summarizer],
+                            True, step_idx, runtime, total_tokens
+                        )
+                        with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
+                            json.dump(metadata, f, indent=2, ensure_ascii=False)
+                        print("✅ Task completed, metadata saved.")
                         break
 
                     if "updated_goal" in gpt_resp:
@@ -241,8 +278,12 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                             print(f"🔄 Code: {code}")
                             print(f"🔄 Failed Codes: {failed_codes}")
                             exec(code)
+                            # Only save files and document steps if the execution was successful
                             execution_history.append({'step': description, 'code': code})
                             task_summarizer.append({'step': description, 'code': code, 'axtree': tree})
+                            # Save axtree to file only after successful execution
+                            with open(os.path.join(dirs['axtree'], f"{step_idx:04d}.json"), 'w', encoding='utf-8') as f:
+                                json.dump(tree, f, indent=2, ensure_ascii=False)
                             success = True
                         except Exception as e:
                             retry += 1
@@ -253,6 +294,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 print("🔄 Retrying GPT for new code...")
                                 page.screenshot(path=screenshot)
                                 tree = page.accessibility.snapshot()
+                                with open(axtree_file, 'w', encoding='utf-8') as f:
+                                    json.dump(tree, f, indent=2, ensure_ascii=False)
                                 error_log = str(e)
                                 print(f"📝 Error log: {error_log}")
                                 gpt_resp = chat_ai_playwright_code(
@@ -266,21 +309,21 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                     url=url,
                                     error_log=error_log
                                 )
+                                # Update total tokens from retry response
+                                if gpt_resp and "total_tokens" in gpt_resp:
+                                    total_tokens += gpt_resp["total_tokens"]
+                                    print(f"📊 Current total tokens: {total_tokens}")
+
                                 if "summary_instruction" in gpt_resp:
-                                    summary = {
-                                        "persona": persona,
-                                        "original_instruction": orig,
-                                        "augmented_instruction": aug,
-                                        "url": url,
-                                        "final_instruction": gpt_resp['summary_instruction'],
-                                        "task_steps": task_summarizer,
-                                        "success": True
-                                    }
-                                    if "output" in gpt_resp:
-                                        summary["output"] = gpt_resp["output"]
-                                    with open(os.path.join(inst_dir, "task_summarizer.json"), "w", encoding="utf-8") as f:
-                                        json.dump(summary, f, indent=2, ensure_ascii=False)
-                                    print("✅ Task completed on retry, summary saved.")
+                                    runtime = time.time() - start_time
+                                    metadata = create_metadata(
+                                        persona, url, orig, aug, gpt_resp['summary_instruction'],
+                                        [step['step'] for step in task_summarizer],
+                                        True, step_idx, runtime, total_tokens
+                                    )
+                                    with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
+                                        json.dump(metadata, f, indent=2, ensure_ascii=False)
+                                    print("✅ Task completed on retry, metadata saved.")
                                     should_continue = False
                                     break
                                 if "updated_goal" in gpt_resp:
@@ -288,24 +331,26 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 description = gpt_resp["description"]
                                 code = gpt_resp["code"]
                             else:
-                                print(f"❌ All {MAX_RETRIES} retries failed; creating failure summary.")
-                                summary = {
-                                    "persona": persona,
-                                    "original_instruction": orig,
-                                    "augmented_instruction": aug,
-                                    "url": url,
-                                    "final_instruction": current_goal,
-                                    "task_steps": task_summarizer,
-                                    "success": False
-                                }
-                                with open(os.path.join(inst_dir, "task_summarizer.json"), "w", encoding="utf-8") as f:
-                                    json.dump(summary, f, indent=2, ensure_ascii=False)
+                                print(f"❌ All {MAX_RETRIES} retries failed.")
+                                runtime = time.time() - start_time
+                                metadata = create_metadata(
+                                    persona, url, orig, aug, None,  # Pass None for final_instruction
+                                    [step['step'] for step in task_summarizer],
+                                    False, step_idx, runtime, total_tokens
+                                )
+                                with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
+                                    json.dump(metadata, f, indent=2, ensure_ascii=False)
                                 should_continue = False
                                 break
 
                     if success:
                         page.wait_for_timeout(2000)
                     else:
+                        # If the step failed, remove both screenshot and axtree files
+                        if os.path.exists(screenshot):
+                            os.remove(screenshot)
+                        if os.path.exists(axtree_file):
+                            os.remove(axtree_file)
                         break
 
                 page.close()
