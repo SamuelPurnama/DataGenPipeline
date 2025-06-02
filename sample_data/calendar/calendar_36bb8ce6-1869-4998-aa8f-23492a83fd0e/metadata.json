@@ -1,0 +1,32 @@
+{
+  "eps_name": "calendar_bc2b1c49-4e1a-41f4-a75d-a68ec694e730",
+  "start_url": "https://calendar.google.com",
+  "phase": 1,
+  "browser_context": {
+    "os": "darwin",
+    "viewport": "1280x720",
+    "cookies_enabled": true
+  },
+  "task": {
+    "task_type": "calendar",
+    "persona": "An old-school political strategist who's skeptical about millennials' influence in government affairs",
+    "instruction": {
+      "level1": "Add a calendar event for a strategy meeting on May 20th at 2 PM",
+      "level2": "Create an event on May 20th at 2 PM titled \"Strategy Meeting.\"",
+      "level3": "Create an event titled 'Strategy Meeting' on May 20th at 2 PM."
+    },
+    "steps": [
+      "Click the 'Create' button to start creating a new event.",
+      "Select the 'Event' option from the menu to start creating a new event.",
+      "Fill in the event title with 'Strategy Meeting'.",
+      "Click to open the date and time settings for the event.",
+      "Change the event start date to 'Monday, May 20'.",
+      "Fill in the start time for the event with '2:00 PM'.",
+      "Click the 'Save' button to finalize the event creation"
+    ]
+  },
+  "success": true,
+  "total_steps": 7,
+  "runtime_sec": 38.82450294494629,
+  "total_tokens": 49054
+}

@@ -1,0 +1,173 @@
+{
+  "1": {
+    "screenshot": "0000.png",
+    "axtree": "0000.json",
+    "action": {
+      "action_code": "page.get_by_role('button', name='Create \\ue5c5').click()",
+      "action_description": "Click the Create button to start creating a new event",
+      "action_type": "click",
+      "action_output": {
+        "bbox": {
+          "x": 16,
+          "y": 76,
+          "width": 136.171875,
+          "height": 56
+        },
+        "class": "T57Ued-BIzmGd T57Ued-BIzmGd-OWXEXe-X9G3K T2watc aAW7Jd APIQad",
+        "id": "",
+        "type": "button",
+        "ariaLabel": null,
+        "role": null,
+        "value": "",
+        "timestamp": 1748818360903
+      }
+    }
+  },
+  "2": {
+    "screenshot": "0001.png",
+    "axtree": "0001.json",
+    "action": {
+      "action_code": "page.get_by_role('menuitem', name='Event').click()",
+      "action_description": "Select 'Event' from the Create button menu to proceed with creating a new event.",
+      "action_type": "click",
+      "action_output": {
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "class": "DO879e EIlDfe IouYkf",
+        "id": "",
+        "type": "body",
+        "ariaLabel": null,
+        "role": null,
+        "value": null,
+        "timestamp": 1748818365963
+      }
+    }
+  },
+  "3": {
+    "screenshot": "0002.png",
+    "axtree": "0002.json",
+    "action": {
+      "action_code": "page.get_by_role('textbox', name='Add title').fill('Research Session on the Marwari Horse Breed')",
+      "action_description": "Fill in the event title with 'Research Session on the Marwari Horse Breed'",
+      "action_type": "type",
+      "action_output": {
+        "bbox": {
+          "x": 471,
+          "y": 168.5,
+          "width": 364,
+          "height": 24
+        },
+        "class": "Fgl6fe-fmcmS-wGMbrd",
+        "id": "c276",
+        "type": "input",
+        "ariaLabel": "Add title",
+        "role": null,
+        "value": "Research Session on the Marwari Horse Breed",
+        "text": "Research Session on the Marwari Horse Breed",
+        "timestamp": 1748818371124
+      }
+    }
+  },
+  "4": {
+    "screenshot": "0003.png",
+    "axtree": "0003.json",
+    "action": {
+      "action_code": "page.get_by_role('button', name='Sunday, June 1 4:00pm to 5:00pm Time zone·Does not repeat').click()",
+      "action_description": "Click the date and time button to edit the event details.",
+      "action_type": "click",
+      "action_output": {
+        "bbox": {
+          "x": 463,
+          "y": 266.5,
+          "width": 372,
+          "height": 52
+        },
+        "class": "nUt0vb qx9Fae YkAcPc",
+        "id": "",
+        "type": "button",
+        "ariaLabel": null,
+        "role": null,
+        "value": "",
+        "timestamp": 1748818377346
+      }
+    }
+  },
+  "5": {
+    "screenshot": "0004.png",
+    "axtree": "0004.json",
+    "action": {
+      "action_code": "page.get_by_role('textbox', name='Start date').fill('Friday, May 16')",
+      "action_description": "Fill in the start date with 'Friday, May 16'",
+      "action_type": "type",
+      "action_output": {
+        "bbox": {
+          "x": 487,
+          "y": 238,
+          "width": 92,
+          "height": 24
+        },
+        "class": "Fgl6fe-fmcmS-wGMbrd",
+        "id": "c278",
+        "type": "input",
+        "ariaLabel": "Start date",
+        "role": null,
+        "value": "Friday, May 16",
+        "text": "Friday, May 16",
+        "timestamp": 1748818382818
+      }
+    }
+  },
+  "6": {
+    "screenshot": "0005.png",
+    "axtree": "0005.json",
+    "action": {
+      "action_code": "page.get_by_role('combobox', name='Start time').fill('4:00 PM')",
+      "action_description": "Fill in the start time for the event with '4:00 PM'.",
+      "action_type": "type",
+      "action_output": {
+        "bbox": {
+          "x": 673,
+          "y": 238,
+          "width": 51,
+          "height": 24
+        },
+        "class": "Fgl6fe-fmcmS-wGMbrd",
+        "id": "c281",
+        "type": "input",
+        "ariaLabel": "Start time",
+        "role": "combobox",
+        "value": "4:00 PM",
+        "text": "4:00 PM",
+        "timestamp": 1748818389977
+      }
+    }
+  },
+  "7": {
+    "screenshot": "0006.png",
+    "axtree": "0006.json",
+    "action": {
+      "action_code": "page.get_by_role('button', name='Save').click()",
+      "action_description": "Click the 'Save' button to finalize creating the event.",
+      "action_type": "click",
+      "action_output": {
+        "bbox": {
+          "x": 1086.953125,
+          "y": 320.671875,
+          "width": 129.0390625,
+          "height": 22
+        },
+        "class": "KF4T6b smECzc jKgTF QGRmIf",
+        "id": "",
+        "type": "div",
+        "ariaLabel": null,
+        "role": "button",
+        "value": null,
+        "timestamp": 1748818651112
+      }
+    }
+  }
+}

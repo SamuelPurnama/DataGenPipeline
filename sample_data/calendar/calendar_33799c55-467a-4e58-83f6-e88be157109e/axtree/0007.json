@@ -1,0 +1,912 @@
+{
+  "role": "WebArea",
+  "name": "Google Calendar - Week of May 18, 2025",
+  "children": [
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "button",
+          "name": "Skip to main content"
+        },
+        {
+          "role": "button",
+          "name": "Keyboard shortcuts"
+        },
+        {
+          "role": "button",
+          "name": "Accessibility Feedback"
+        }
+      ]
+    },
+    {
+      "role": "button",
+      "name": "Main drawer",
+      "expanded": true
+    },
+    {
+      "role": "heading",
+      "name": "Calendar",
+      "level": 1
+    },
+    {
+      "role": "button",
+      "name": "Today, Sunday, June 1"
+    },
+    {
+      "role": "button",
+      "name": "Previous week"
+    },
+    {
+      "role": "button",
+      "name": "Next week"
+    },
+    {
+      "role": "text",
+      "name": "May 2025"
+    },
+    {
+      "role": "button",
+      "name": "Search"
+    },
+    {
+      "role": "button",
+      "name": "Support"
+    },
+    {
+      "role": "button",
+      "name": "Settings menu",
+      "haspopup": "menu"
+    },
+    {
+      "role": "button",
+      "name": "Week",
+      "description": "View switcher menu",
+      "haspopup": "menu"
+    },
+    {
+      "role": "button",
+      "name": "Switch to Calendar",
+      "description": "Switch to Calendar"
+    },
+    {
+      "role": "button",
+      "name": "Switch to Tasks",
+      "description": "Switch to Tasks"
+    },
+    {
+      "role": "button",
+      "name": "Google apps"
+    },
+    {
+      "role": "button",
+      "name": "Google Account: Cormick Dale (dalecormick1@gmail.com)"
+    },
+    {
+      "role": "button",
+      "name": "Create ",
+      "disabled": true,
+      "haspopup": "menu"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "heading",
+          "name": "Drawer",
+          "level": 1
+        },
+        {
+          "role": "heading",
+          "name": "Navigation calendar",
+          "level": 2
+        },
+        {
+          "role": "text",
+          "name": "May 2025"
+        },
+        {
+          "role": "button",
+          "name": "Previous month"
+        },
+        {
+          "role": "button",
+          "name": "Next month"
+        },
+        {
+          "role": "text",
+          "name": "Sunday"
+        },
+        {
+          "role": "text",
+          "name": "Monday"
+        },
+        {
+          "role": "text",
+          "name": "Tuesday"
+        },
+        {
+          "role": "text",
+          "name": "Wednesday"
+        },
+        {
+          "role": "text",
+          "name": "Thursday"
+        },
+        {
+          "role": "text",
+          "name": "Friday"
+        },
+        {
+          "role": "text",
+          "name": "Saturday"
+        },
+        {
+          "role": "button",
+          "name": "April 27, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "April 28, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "April 29, Tuesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "April 30, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "1, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "2, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "3, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "4, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "5, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "6, Tuesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "7, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "8, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "9, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "10, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "11, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "12, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "13, Tuesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "14, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "15, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "16, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "17, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "18, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "19, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "20, Tuesday",
+          "pressed": true
+        },
+        {
+          "role": "button",
+          "name": "21, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "22, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "23, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "24, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "25, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "26, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "27, Tuesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "28, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "29, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "30, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "31, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "June 1, Sunday, today",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "June 2, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "June 3, Tuesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "June 4, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "June 5, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "June 6, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "June 7, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "heading",
+          "name": "Calendar list",
+          "level": 2
+        },
+        {
+          "role": "button",
+          "name": "My calendars",
+          "expanded": true
+        },
+        {
+          "role": "checkbox",
+          "name": "Cormick Dale",
+          "checked": true
+        },
+        {
+          "role": "text",
+          "name": "Cormick Dale"
+        },
+        {
+          "role": "checkbox",
+          "name": "Birthdays",
+          "checked": true
+        },
+        {
+          "role": "text",
+          "name": "Birthdays"
+        },
+        {
+          "role": "checkbox",
+          "name": "Tasks",
+          "checked": true
+        },
+        {
+          "role": "text",
+          "name": "Tasks"
+        },
+        {
+          "role": "button",
+          "name": "Other calendars",
+          "expanded": true
+        },
+        {
+          "role": "button",
+          "name": "Add other calendars",
+          "haspopup": "menu"
+        },
+        {
+          "role": "checkbox",
+          "name": "Holidays in United States",
+          "checked": true
+        },
+        {
+          "role": "text",
+          "name": "Holidays in United States"
+        },
+        {
+          "role": "link",
+          "name": "Terms"
+        },
+        {
+          "role": "text",
+          "name": " – "
+        },
+        {
+          "role": "link",
+          "name": "Privacy"
+        }
+      ]
+    },
+    {
+      "role": "main",
+      "name": "",
+      "description": "Week of May 18, 2025, 1 event",
+      "children": [
+        {
+          "role": "heading",
+          "name": " Week of May 18, 2025, 1 event",
+          "level": 1
+        },
+        {
+          "role": "columnheader",
+          "name": "Sunday, May 18",
+          "readonly": true,
+          "children": [
+            {
+              "role": "button",
+              "name": "Sunday, May 18"
+            }
+          ]
+        },
+        {
+          "role": "columnheader",
+          "name": "Monday, May 19",
+          "readonly": true,
+          "children": [
+            {
+              "role": "button",
+              "name": "Monday, May 19"
+            }
+          ]
+        },
+        {
+          "role": "columnheader",
+          "name": "Tuesday, May 20",
+          "readonly": true,
+          "children": [
+            {
+              "role": "button",
+              "name": "Tuesday, May 20"
+            }
+          ]
+        },
+        {
+          "role": "columnheader",
+          "name": "Wednesday, May 21",
+          "readonly": true,
+          "children": [
+            {
+              "role": "button",
+              "name": "Wednesday, May 21"
+            }
+          ]
+        },
+        {
+          "role": "columnheader",
+          "name": "Thursday, May 22",
+          "readonly": true,
+          "children": [
+            {
+              "role": "button",
+              "name": "Thursday, May 22"
+            }
+          ]
+        },
+        {
+          "role": "columnheader",
+          "name": "Friday, May 23",
+          "readonly": true,
+          "children": [
+            {
+              "role": "button",
+              "name": "Friday, May 23"
+            }
+          ]
+        },
+        {
+          "role": "columnheader",
+          "name": "Saturday, May 24",
+          "readonly": true,
+          "children": [
+            {
+              "role": "button",
+              "name": "Saturday, May 24"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Sunday, May 18",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Monday, May 19",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "1 event, Tuesday, May 20",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "1 event, Tuesday, May 20",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "4pm to 5pm, Discussion on Pending Property Damage Claims, Cormick Dale, Accepted, No location, May 20, 2025 Event is being created."
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Wednesday, May 21",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Thursday, May 22",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Friday, May 23",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Saturday, May 24",
+          "readonly": true
+        }
+      ]
+    },
+    {
+      "role": "tablist",
+      "name": "",
+      "orientation": "horizontal",
+      "children": [
+        {
+          "role": "tab",
+          "name": "Keep"
+        },
+        {
+          "role": "tab",
+          "name": "Tasks"
+        },
+        {
+          "role": "tab",
+          "name": "Contacts"
+        },
+        {
+          "role": "tab",
+          "name": "Maps"
+        },
+        {
+          "role": "tab",
+          "name": "Get Add-ons"
+        }
+      ]
+    },
+    {
+      "role": "button",
+      "name": "Hide side panel",
+      "pressed": false
+    },
+    {
+      "role": "dialog",
+      "name": "Create",
+      "modal": true,
+      "children": [
+        {
+          "role": "heading",
+          "name": "Create",
+          "level": 1
+        },
+        {
+          "role": "button",
+          "name": "Close"
+        },
+        {
+          "role": "textbox",
+          "name": "Add title",
+          "value": "Discussion on Pending Property Damage Claims"
+        },
+        {
+          "role": "tab",
+          "name": "Event",
+          "selected": true
+        },
+        {
+          "role": "tab",
+          "name": "Task"
+        },
+        {
+          "role": "tab",
+          "name": "Appointment schedule new"
+        },
+        {
+          "role": "textbox",
+          "name": "Start date",
+          "value": "Tuesday, May 20"
+        },
+        {
+          "role": "combobox",
+          "name": "Start time",
+          "autocomplete": "list",
+          "haspopup": "menu",
+          "value": "4:00pm"
+        },
+        {
+          "role": "text",
+          "name": "–"
+        },
+        {
+          "role": "combobox",
+          "name": "End time",
+          "expanded": true,
+          "focused": true,
+          "autocomplete": "list",
+          "haspopup": "menu",
+          "value": "5:00 PM"
+        },
+        {
+          "role": "listbox",
+          "name": "End time",
+          "orientation": "vertical",
+          "children": [
+            {
+              "role": "option",
+              "name": "4:00pm (0 mins)"
+            },
+            {
+              "role": "option",
+              "name": "4:15pm (15 mins)"
+            },
+            {
+              "role": "option",
+              "name": "4:30pm (30 mins)"
+            },
+            {
+              "role": "option",
+              "name": "4:45pm (45 mins)"
+            },
+            {
+              "role": "option",
+              "name": "5:00pm (1 hr)",
+              "selected": true
+            },
+            {
+              "role": "option",
+              "name": "5:30pm (1.5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "6:00pm (2 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "6:30pm (2.5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "7:00pm (3 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "7:30pm (3.5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "8:00pm (4 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "8:30pm (4.5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "9:00pm (5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "9:30pm (5.5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "10:00pm (6 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "10:30pm (6.5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "11:00pm (7 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "11:30pm (7.5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "12:00am (8 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "12:30am (8.5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "1:00am (9 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "1:30am (9.5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "2:00am (10 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "2:30am (10.5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "3:00am (11 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "3:30am (11.5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "4:00am (12 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "4:30am (12.5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "5:00am (13 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "5:30am (13.5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "6:00am (14 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "6:30am (14.5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "7:00am (15 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "7:30am (15.5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "8:00am (16 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "8:30am (16.5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "9:00am (17 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "9:30am (17.5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "10:00am (18 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "10:30am (18.5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "11:00am (19 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "11:30am (19.5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "12:00pm (20 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "12:30pm (20.5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "1:00pm (21 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "1:30pm (21.5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "2:00pm (22 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "2:30pm (22.5 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "3:00pm (23 hrs)"
+            },
+            {
+              "role": "option",
+              "name": "3:30pm (23.5 hrs)"
+            }
+          ]
+        },
+        {
+          "role": "checkbox",
+          "name": "All day",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "All day"
+        },
+        {
+          "role": "button",
+          "name": "Time zone"
+        },
+        {
+          "role": "combobox",
+          "name": "Recurrence",
+          "haspopup": "listbox",
+          "value": "Does not repeat"
+        },
+        {
+          "role": "button",
+          "name": "Add guests"
+        },
+        {
+          "role": "button",
+          "name": "Add Google Meet video conferencing"
+        },
+        {
+          "role": "button",
+          "name": "Add location"
+        },
+        {
+          "role": "button",
+          "name": "Add description or a Google Drive attachment"
+        },
+        {
+          "role": "button",
+          "name": "Cormick Dale Busy·Default visibility·Notify 30 minutes before"
+        },
+        {
+          "role": "button",
+          "name": "More options"
+        },
+        {
+          "role": "button",
+          "name": "Save"
+        },
+        {
+          "role": "button",
+          "name": "Dock to sidebar"
+        }
+      ]
+    }
+  ]
+}

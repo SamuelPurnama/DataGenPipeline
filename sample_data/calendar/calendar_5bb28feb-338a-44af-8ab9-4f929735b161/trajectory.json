@@ -1,0 +1,198 @@
+{
+  "1": {
+    "screenshot": "0000.png",
+    "axtree": "0000.json",
+    "action": {
+      "action_code": "page.get_by_role('button', name='Create ').click()",
+      "action_description": "Click the Create button to start creating a new event",
+      "action_type": "click",
+      "action_output": {
+        "bbox": {
+          "x": 16,
+          "y": 76,
+          "width": 136.171875,
+          "height": 56
+        },
+        "class": "T57Ued-BIzmGd T57Ued-BIzmGd-OWXEXe-X9G3K T2watc aAW7Jd APIQad",
+        "id": "",
+        "type": "button",
+        "ariaLabel": null,
+        "role": null,
+        "value": "",
+        "timestamp": 1748818357898
+      }
+    }
+  },
+  "2": {
+    "screenshot": "0001.png",
+    "axtree": "0001.json",
+    "action": {
+      "action_code": "page.get_by_role('menuitem', name='Event').click()",
+      "action_description": "Select 'Event' from the menu to initiate creating a new event.",
+      "action_type": "click",
+      "action_output": {
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "class": "DO879e EIlDfe IouYkf",
+        "id": "",
+        "type": "body",
+        "ariaLabel": null,
+        "role": null,
+        "value": null,
+        "timestamp": 1748818363417
+      }
+    }
+  },
+  "3": {
+    "screenshot": "0002.png",
+    "axtree": "0002.json",
+    "action": {
+      "action_code": "page.get_by_role('textbox', name='Add title').fill('Depiction of Crossbows in 14th-Century Persian Manuscripts')",
+      "action_description": "Fill in the event title with 'Depiction of Crossbows in 14th-Century Persian Manuscripts'.",
+      "action_type": "type",
+      "action_output": {
+        "bbox": {
+          "x": 514,
+          "y": 168.5,
+          "width": 364,
+          "height": 24
+        },
+        "class": "Fgl6fe-fmcmS-wGMbrd",
+        "id": "c87",
+        "type": "input",
+        "ariaLabel": "Add title",
+        "role": null,
+        "value": "Depiction of Crossbows in 14th-Century Persian Manuscripts",
+        "text": "Depiction of Crossbows in 14th-Century Persian Manuscripts",
+        "timestamp": 1748818368704
+      }
+    }
+  },
+  "4": {
+    "screenshot": "0003.png",
+    "axtree": "0003.json",
+    "action": {
+      "action_code": "page.get_by_role('button', name='Sunday, June 1 4:00pm to 5:00pm Time zone·Does not repeat').click()",
+      "action_description": "Click the date field to change the event date to May 18th.",
+      "action_type": "click",
+      "action_output": {
+        "bbox": {
+          "x": 506,
+          "y": 266.5,
+          "width": 372,
+          "height": 52
+        },
+        "class": "nUt0vb qx9Fae YkAcPc",
+        "id": "",
+        "type": "button",
+        "ariaLabel": null,
+        "role": null,
+        "value": "",
+        "timestamp": 1748818374178
+      }
+    }
+  },
+  "5": {
+    "screenshot": "0004.png",
+    "axtree": "0004.json",
+    "action": {
+      "action_code": "page.get_by_role('textbox', name='Start date').fill('Sunday, May 18')",
+      "action_description": "Fill in the start date with 'Sunday, May 18'",
+      "action_type": "type",
+      "action_output": {
+        "bbox": {
+          "x": 530,
+          "y": 238,
+          "width": 92,
+          "height": 24
+        },
+        "class": "Fgl6fe-fmcmS-wGMbrd",
+        "id": "c89",
+        "type": "input",
+        "ariaLabel": "Start date",
+        "role": null,
+        "value": "Sunday, May 18",
+        "text": "Sunday, May 18",
+        "timestamp": 1748818379292
+      }
+    }
+  },
+  "6": {
+    "screenshot": "0005.png",
+    "axtree": "0005.json",
+    "action": {
+      "action_code": "page.get_by_role('combobox', name='Start time').fill('10:00 AM')",
+      "action_description": "Fill in the start time with '10:00 AM'.",
+      "action_type": "type",
+      "action_output": {
+        "bbox": {
+          "x": 709,
+          "y": 238,
+          "width": 51,
+          "height": 24
+        },
+        "class": "Fgl6fe-fmcmS-wGMbrd",
+        "id": "c92",
+        "type": "input",
+        "ariaLabel": "Start time",
+        "role": "combobox",
+        "value": "10:00 AM",
+        "text": "10:00 AM",
+        "timestamp": 1748818384413
+      }
+    }
+  },
+  "7": {
+    "screenshot": "0006.png",
+    "axtree": "0006.json",
+    "action": {
+      "action_code": "page.get_by_role('combobox', name='End time').fill('11:00 AM')",
+      "action_description": "Fill in the end time with '11:00 AM'.",
+      "action_type": "type",
+      "action_output": {
+        "bbox": {
+          "x": 947.6875,
+          "y": 238,
+          "width": 52,
+          "height": 24
+        },
+        "class": "Fgl6fe-fmcmS-wGMbrd",
+        "id": "c95",
+        "type": "input",
+        "ariaLabel": "End time",
+        "role": "combobox",
+        "value": "11:00am11:00 AM",
+        "text": "11:00am11:00 AM",
+        "timestamp": 1748818390258
+      }
+    }
+  },
+  "8": {
+    "screenshot": "0007.png",
+    "axtree": "0007.json",
+    "action": {
+      "action_code": "page.get_by_role('button', name='Save').click()",
+      "action_description": "Click the 'Save' button to finalize the creation of the event.",
+      "action_type": "click",
+      "action_output": {
+        "bbox": {
+          "x": 810.3671875,
+          "y": 419.5,
+          "width": 83.6328125,
+          "height": 40
+        },
+        "class": "mUIrbf-LgbsSe mUIrbf-LgbsSe-OWXEXe-dgl2Hf mUIrbf-kSE8rc-FoKg4d-sLO9V-YoZ4jf",
+        "id": "",
+        "type": "button",
+        "ariaLabel": null,
+        "role": null,
+        "value": "",
+        "timestamp": 1748818651118
+      }
+    }
+  }
+}

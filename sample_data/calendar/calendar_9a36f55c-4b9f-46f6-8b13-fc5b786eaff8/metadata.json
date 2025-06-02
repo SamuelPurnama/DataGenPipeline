@@ -1,0 +1,32 @@
+{
+  "eps_name": "calendar_9402657b-b140-4b9a-bcac-1c4345c57ce6",
+  "start_url": "https://calendar.google.com",
+  "phase": 1,
+  "browser_context": {
+    "os": "darwin",
+    "viewport": "1280x720",
+    "cookies_enabled": true
+  },
+  "task": {
+    "task_type": "calendar",
+    "persona": "Soy un administrador de bases de datos con experiencia, especializado en MySQL y optimización de rendimiento.",
+    "instruction": {
+      "level1": "Schedule a database optimization meeting with the team on May 20th at 2 PM",
+      "level2": "Create an event titled \"Database Optimization Meeting\" on May 20th at 2 PM.",
+      "level3": "Create an event titled 'Database Optimization Meeting' on May 20th at 2 PM."
+    },
+    "steps": [
+      "Click the Create button to start creating a new event",
+      "Click on the 'Event' menu item to create a new calendar event.",
+      "Fill in the event title with 'Database Optimization Meeting'.",
+      "Click 'Sunday, June 1 4:00pm to 5:00pm Time zone · Does not repeat' to open the date and time picker.",
+      "Fill in the start date with 'Tuesday, May 20'.",
+      "Fill in the start time with '2:00 PM'.",
+      "Click the Save button to finalize creating the event."
+    ]
+  },
+  "success": true,
+  "total_steps": 7,
+  "runtime_sec": 289.1506519317627,
+  "total_tokens": 49081
+}

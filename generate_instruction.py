@@ -22,6 +22,7 @@ def generate_instructions(
     phase: int,
     num_instructions: int,
     screenshot_path: str = None,
+    axtree: str = None,
     model: str = "gpt-4o"
 ) -> List[str]:
     client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -32,7 +33,7 @@ def generate_instructions(
             f"Imagine you are a {persona} using this website. "
             f"Based on your persona and the image of the current state of the page, generate a list of {num_instructions} distinct instructions that you might give to an assistant for tasks in this website. "
             f"These instructions must be feasible given the current page state and does not involve modifying/deleting content that is not currently present. "
-            f"Vary the complexity of the instructions"
+            f"Vary the complexity of the instructions, you may include instructions other than scheduling: change settings, create calendar, share, etc."
             f"Return just the list of instructions, no other, no need for quotations, in english."
             f"Example, (but do not include these in your output): "
             f"- Show me the the fastest bus route to the nearest starbucks (google maps)"
@@ -46,6 +47,7 @@ def generate_instructions(
             f"previously, you have asked an assistant to perform some tasks on this website. As you can probably see in the screenshot, the website have some existing elements/content in them. "
             f"Based on your persona and the image of the current state of the page, generate a list of {num_instructions} distinct instructions that you might give to an assistant for tasks in this website. "
             f"These instructions must be feasible given the current page state, try to involve modifying/deleting elements that are currently present, use realistic natural human phrasing, and vary in complexity."
+            f"Here is the accessibility tree of the current page state to help you understand what elements are available:\n\n{axtree}\n\n"
             f"return just the list of instructions, no other, no need for quotations, in english, dont make the instructions too complex."
         )
 

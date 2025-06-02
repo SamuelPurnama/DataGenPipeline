@@ -1,0 +1,173 @@
+{
+  "1": {
+    "screenshot": "0000.png",
+    "axtree": "0000.json",
+    "action": {
+      "action_code": "page.get_by_role('button', name='Create \\ue5c5').click()",
+      "action_description": "Click the 'Create' button to start creating a new event.",
+      "action_type": "click",
+      "action_output": {
+        "bbox": {
+          "x": 16,
+          "y": 76,
+          "width": 136.171875,
+          "height": 56
+        },
+        "class": "T57Ued-BIzmGd T57Ued-BIzmGd-OWXEXe-X9G3K T2watc aAW7Jd APIQad",
+        "id": "",
+        "type": "button",
+        "ariaLabel": null,
+        "role": null,
+        "value": "",
+        "timestamp": 1748818358248
+      }
+    }
+  },
+  "2": {
+    "screenshot": "0001.png",
+    "axtree": "0001.json",
+    "action": {
+      "action_code": "page.get_by_role('menuitem', name='Event').click()",
+      "action_description": "Select the 'Event' option from the menu to start creating a new event.",
+      "action_type": "click",
+      "action_output": {
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "class": "DO879e CcsDpe EIlDfe IouYkf",
+        "id": "",
+        "type": "body",
+        "ariaLabel": null,
+        "role": null,
+        "value": null,
+        "timestamp": 1748818362620
+      }
+    }
+  },
+  "3": {
+    "screenshot": "0002.png",
+    "axtree": "0002.json",
+    "action": {
+      "action_code": "page.get_by_role('textbox', name='Add title').fill('Strategy Meeting')",
+      "action_description": "Fill in the event title with 'Strategy Meeting'.",
+      "action_type": "type",
+      "action_output": {
+        "bbox": {
+          "x": 514,
+          "y": 168.5,
+          "width": 364,
+          "height": 24
+        },
+        "class": "Fgl6fe-fmcmS-wGMbrd",
+        "id": "c87",
+        "type": "input",
+        "ariaLabel": "Add title",
+        "role": null,
+        "value": "Strategy Meeting",
+        "text": "Strategy Meeting",
+        "timestamp": 1748818368194
+      }
+    }
+  },
+  "4": {
+    "screenshot": "0003.png",
+    "axtree": "0003.json",
+    "action": {
+      "action_code": "page.get_by_role('button', name=' Sunday, June 1 4:00pm to 5:00pm Time zone·Does not repeat').click()",
+      "action_description": "Click to open the date and time settings for the event.",
+      "action_type": "click",
+      "action_output": {
+        "bbox": {
+          "x": 506,
+          "y": 266.5,
+          "width": 372,
+          "height": 52
+        },
+        "class": "nUt0vb qx9Fae YkAcPc",
+        "id": "",
+        "type": "button",
+        "ariaLabel": null,
+        "role": null,
+        "value": "",
+        "timestamp": 1748818373347
+      }
+    }
+  },
+  "5": {
+    "screenshot": "0004.png",
+    "axtree": "0004.json",
+    "action": {
+      "action_code": "page.get_by_role('textbox', name='Start date').fill('Monday, May 20')",
+      "action_description": "Change the event start date to 'Monday, May 20'.",
+      "action_type": "type",
+      "action_output": {
+        "bbox": {
+          "x": 530,
+          "y": 238,
+          "width": 92,
+          "height": 24
+        },
+        "class": "Fgl6fe-fmcmS-wGMbrd",
+        "id": "c89",
+        "type": "input",
+        "ariaLabel": "Start date",
+        "role": null,
+        "value": "Monday, May 20",
+        "text": "Monday, May 20",
+        "timestamp": 1748818378572
+      }
+    }
+  },
+  "6": {
+    "screenshot": "0005.png",
+    "axtree": "0005.json",
+    "action": {
+      "action_code": "page.get_by_role('combobox', name='Start time').fill('2:00 PM')",
+      "action_description": "Fill in the start time for the event with '2:00 PM'.",
+      "action_type": "type",
+      "action_output": {
+        "bbox": {
+          "x": 736,
+          "y": 238,
+          "width": 51,
+          "height": 24
+        },
+        "class": "Fgl6fe-fmcmS-wGMbrd",
+        "id": "c92",
+        "type": "input",
+        "ariaLabel": "Start time",
+        "role": "combobox",
+        "value": "2:00 PM",
+        "text": "2:00 PM",
+        "timestamp": 1748818384392
+      }
+    }
+  },
+  "7": {
+    "screenshot": "0006.png",
+    "axtree": "0006.json",
+    "action": {
+      "action_code": "page.get_by_role('button', name='Save').click()",
+      "action_description": "Click the 'Save' button to finalize the event creation",
+      "action_type": "click",
+      "action_output": {
+        "bbox": {
+          "x": 16,
+          "y": 76,
+          "width": 136.171875,
+          "height": 56
+        },
+        "class": "T57Ued-BIzmGd T57Ued-BIzmGd-OWXEXe-X9G3K T2watc aAW7Jd APIQad",
+        "id": "",
+        "type": "button",
+        "ariaLabel": null,
+        "role": null,
+        "value": "",
+        "timestamp": 1748818389541
+      }
+    }
+  }
+}

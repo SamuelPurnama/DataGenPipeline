@@ -1,0 +1,33 @@
+{
+  "eps_name": "calendar_445f4d89-0d45-4a0b-bc31-2c884a7c56b7",
+  "start_url": "https://calendar.google.com",
+  "phase": 1,
+  "browser_context": {
+    "os": "darwin",
+    "viewport": "1280x720",
+    "cookies_enabled": true
+  },
+  "task": {
+    "task_type": "calendar",
+    "persona": "An art historian studying the depictions of weapons in medieval artwork",
+    "instruction": {
+      "level1": "Schedule a research meeting on May 18th to discuss the depiction of crossbows in 14th-century Persian manuscripts",
+      "level2": "Schedule a meeting on May 18th titled \"Depiction of Crossbows in 14th-Century Persian Manuscripts.\"",
+      "level3": "Schedule a meeting titled 'Depiction of Crossbows in 14th-Century Persian Manuscripts' on May 18th from 10:00 AM to 11:00 AM."
+    },
+    "steps": [
+      "Click the Create button to start creating a new event",
+      "Select 'Event' from the menu to initiate creating a new event.",
+      "Fill in the event title with 'Depiction of Crossbows in 14th-Century Persian Manuscripts'.",
+      "Click the date field to change the event date to May 18th.",
+      "Fill in the start date with 'Sunday, May 18'",
+      "Fill in the start time with '10:00 AM'.",
+      "Fill in the end time with '11:00 AM'.",
+      "Click the 'Save' button to finalize the creation of the event."
+    ]
+  },
+  "success": true,
+  "total_steps": 8,
+  "runtime_sec": 300.6457688808441,
+  "total_tokens": 56222
+}

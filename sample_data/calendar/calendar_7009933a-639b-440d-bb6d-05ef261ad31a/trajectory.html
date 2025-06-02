@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualization of Trajectory</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .metadata {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .metadata-item {
+            margin: 10px 0;
+        }
+        .metadata-label {
+            font-weight: bold;
+            color: #555;
+        }
+        .step {
+            border: 1px solid #ddd;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: white;
+        }
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .step-number {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2196F3;
+        }
+        .step-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .screenshot {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .action-details {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .element-properties {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .property {
+            margin: 5px 0;
+        }
+        .property-label {
+            font-weight: bold;
+            color: #555;
+        }
+        .bbox {
+            background-color: #e3f2fd;
+            padding: 5px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Visualization of Trajectory</h1>
+        
+        <div class="metadata">
+            <h2>Metadata</h2>
+            <div class="metadata-item">
+                <span class="metadata-label">Episode Name:</span> calendar_d82201f3-186f-4518-93b3-be04d373181d
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">Start URL:</span> https://calendar.google.com
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">Phase:</span> 1
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">Browser Context:</span>
+                <ul>
+                    <li>OS: darwin</li>
+                    <li>Viewport: 1280x720</li>
+                    <li>Cookies Enabled: True</li>
+                </ul>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">Task:</span>
+                <ul>
+                    <li>Type: calendar</li>
+                    <li>Persona: A younger tennis player with quick reflexes working their way up through the ranks</li>
+                    <li>Instructions:
+                        <ul>
+                            <li>Level 1: Create an event on May 20th for a tennis practice session at 3 PM</li>
+                            <li>Level 2: Create an event on May 20th at 3 PM for a tennis practice session.</li>
+                            <li>Level 3: Create an event titled 'Tennis Practice Session' on May 20th, 2026, at 3 PM.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="metadata-item">
+                <span class="metadata-label">Execution:</span>
+                <ul>
+                    <li>Success: True</li>
+                    <li>Total Steps: 7</li>
+                    <li>Runtime: 40.12 seconds</li>
+                    <li>Total Tokens: 49087</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Trajectory Steps</h2>
+
+        <div class="step">
+            <div class="step-header">
+                <span class="step-number">Step 1</span>
+                <span class="action-type">CLICK</span>
+            </div>
+            <div class="step-content">
+                <div>
+                    <img src="images/0000.png" alt="Step 1 Screenshot" class="screenshot">
+                </div>
+                <div class="action-details">
+                    <div class="property">
+                        <span class="property-label">Action Code:</span><br>
+                        <code>page.get_by_role('button', name='Create ').click()</code>
+                    </div>
+                    <div class="property">
+                        <span class="property-label">Description:</span><br>
+                        Click the Create button to start creating a new event.
+                    </div>
+                    <div class="element-properties">
+                        <h3>Element Properties</h3>
+
+                        <div class="property">
+                            <span class="property-label">Bounding Box:</span>
+                            <div class="bbox">
+                                x: 16, 
+                                y: 76, 
+                                width: 136.171875, 
+                                height: 56
+                            </div>
+                        </div>
+                        <div class="property">
+                            <span class="property-label">class:</span> T57Ued-BIzmGd T57Ued-BIzmGd-OWXEXe-X9G3K T2watc aAW7Jd APIQad
+                        </div>
+                        <div class="property">
+                            <span class="property-label">type:</span> button
+                        </div>
+                        <div class="property">
+                            <span class="property-label">Timestamp:</span> 1748818357112
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-header">
+                <span class="step-number">Step 2</span>
+                <span class="action-type">CLICK</span>
+            </div>
+            <div class="step-content">
+                <div>
+                    <img src="images/0001.png" alt="Step 2 Screenshot" class="screenshot">
+                </div>
+                <div class="action-details">
+                    <div class="property">
+                        <span class="property-label">Action Code:</span><br>
+                        <code>page.get_by_role('menuitem', name='Event').click()</code>
+                    </div>
+                    <div class="property">
+                        <span class="property-label">Description:</span><br>
+                        Select 'Event' from the menu to start creating a new event.
+                    </div>
+                    <div class="element-properties">
+                        <h3>Element Properties</h3>
+
+                        <div class="property">
+                            <span class="property-label">Bounding Box:</span>
+                            <div class="bbox">
+                                x: 16, 
+                                y: 144, 
+                                width: 175.234375, 
+                                height: 40
+                            </div>
+                        </div>
+                        <div class="property">
+                            <span class="property-label">class:</span> W7g1Rb-rymPhb-ibnC6b W7g1Rb-rymPhb-ibnC6b-OWXEXe-hXIJHe W7g1Rb-rymPhb-ibnC6b-OWXEXe-SfQLQb-Woal0c-RWgCYc
+                        </div>
+                        <div class="property">
+                            <span class="property-label">type:</span> li
+                        </div>
+                        <div class="property">
+                            <span class="property-label">role:</span> menuitem
+                        </div>
+                        <div class="property">
+                            <span class="property-label">Timestamp:</span> 1748818361774
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-header">
+                <span class="step-number">Step 3</span>
+                <span class="action-type">TYPE</span>
+            </div>
+            <div class="step-content">
+                <div>
+                    <img src="images/0002.png" alt="Step 3 Screenshot" class="screenshot">
+                </div>
+                <div class="action-details">
+                    <div class="property">
+                        <span class="property-label">Action Code:</span><br>
+                        <code>page.get_by_role('textbox', name='Add title').fill('Tennis Practice Session')</code>
+                    </div>
+                    <div class="property">
+                        <span class="property-label">Description:</span><br>
+                        Fill in the event title with 'Tennis Practice Session'
+                    </div>
+                    <div class="element-properties">
+                        <h3>Element Properties</h3>
+
+                        <div class="property">
+                            <span class="property-label">Bounding Box:</span>
+                            <div class="bbox">
+                                x: 514, 
+                                y: 168.5, 
+                                width: 364, 
+                                height: 24
+                            </div>
+                        </div>
+                        <div class="property">
+                            <span class="property-label">class:</span> Fgl6fe-fmcmS-wGMbrd
+                        </div>
+                        <div class="property">
+                            <span class="property-label">id:</span> c96
+                        </div>
+                        <div class="property">
+                            <span class="property-label">type:</span> input
+                        </div>
+                        <div class="property">
+                            <span class="property-label">ariaLabel:</span> Add title
+                        </div>
+                        <div class="property">
+                            <span class="property-label">value:</span> Tennis Practice Session
+                        </div>
+                        <div class="property">
+                            <span class="property-label">Text:</span> Tennis Practice Session
+                        </div>
+                        <div class="property">
+                            <span class="property-label">Timestamp:</span> 1748818367409
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-header">
+                <span class="step-number">Step 4</span>
+                <span class="action-type">CLICK</span>
+            </div>
+            <div class="step-content">
+                <div>
+                    <img src="images/0003.png" alt="Step 4 Screenshot" class="screenshot">
+                </div>
+                <div class="action-details">
+                    <div class="property">
+                        <span class="property-label">Action Code:</span><br>
+                        <code>page.get_by_role('button', name='Sunday, June 1 4:00pm to 5:00pm Time zone·Does not repeat').click()</code>
+                    </div>
+                    <div class="property">
+                        <span class="property-label">Description:</span><br>
+                        Open the date and time editor to change the event date and time.
+                    </div>
+                    <div class="element-properties">
+                        <h3>Element Properties</h3>
+
+                        <div class="property">
+                            <span class="property-label">Bounding Box:</span>
+                            <div class="bbox">
+                                x: 506, 
+                                y: 266.5, 
+                                width: 372, 
+                                height: 52
+                            </div>
+                        </div>
+                        <div class="property">
+                            <span class="property-label">class:</span> nUt0vb qx9Fae YkAcPc
+                        </div>
+                        <div class="property">
+                            <span class="property-label">type:</span> button
+                        </div>
+                        <div class="property">
+                            <span class="property-label">Timestamp:</span> 1748818373426
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-header">
+                <span class="step-number">Step 5</span>
+                <span class="action-type">TYPE</span>
+            </div>
+            <div class="step-content">
+                <div>
+                    <img src="images/0004.png" alt="Step 5 Screenshot" class="screenshot">
+                </div>
+                <div class="action-details">
+                    <div class="property">
+                        <span class="property-label">Action Code:</span><br>
+                        <code>page.get_by_role('textbox', name='Start date').fill('Tuesday, May 20')</code>
+                    </div>
+                    <div class="property">
+                        <span class="property-label">Description:</span><br>
+                        Fill in the start date with 'Tuesday, May 20'
+                    </div>
+                    <div class="element-properties">
+                        <h3>Element Properties</h3>
+
+                        <div class="property">
+                            <span class="property-label">Bounding Box:</span>
+                            <div class="bbox">
+                                x: 530, 
+                                y: 238, 
+                                width: 92, 
+                                height: 24
+                            </div>
+                        </div>
+                        <div class="property">
+                            <span class="property-label">class:</span> Fgl6fe-fmcmS-wGMbrd
+                        </div>
+                        <div class="property">
+                            <span class="property-label">id:</span> c98
+                        </div>
+                        <div class="property">
+                            <span class="property-label">type:</span> input
+                        </div>
+                        <div class="property">
+                            <span class="property-label">ariaLabel:</span> Start date
+                        </div>
+                        <div class="property">
+                            <span class="property-label">value:</span> Tuesday, May 20
+                        </div>
+                        <div class="property">
+                            <span class="property-label">Text:</span> Tuesday, May 20
+                        </div>
+                        <div class="property">
+                            <span class="property-label">Timestamp:</span> 1748818377428
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-header">
+                <span class="step-number">Step 6</span>
+                <span class="action-type">TYPE</span>
+            </div>
+            <div class="step-content">
+                <div>
+                    <img src="images/0005.png" alt="Step 6 Screenshot" class="screenshot">
+                </div>
+                <div class="action-details">
+                    <div class="property">
+                        <span class="property-label">Action Code:</span><br>
+                        <code>page.get_by_role('combobox', name='Start time').fill('3:00 PM')</code>
+                    </div>
+                    <div class="property">
+                        <span class="property-label">Description:</span><br>
+                        Fill in the start time with '3:00 PM' for the event.
+                    </div>
+                    <div class="element-properties">
+                        <h3>Element Properties</h3>
+
+                        <div class="property">
+                            <span class="property-label">Bounding Box:</span>
+                            <div class="bbox">
+                                x: 736, 
+                                y: 238, 
+                                width: 51, 
+                                height: 24
+                            </div>
+                        </div>
+                        <div class="property">
+                            <span class="property-label">class:</span> Fgl6fe-fmcmS-wGMbrd
+                        </div>
+                        <div class="property">
+                            <span class="property-label">id:</span> c101
+                        </div>
+                        <div class="property">
+                            <span class="property-label">type:</span> input
+                        </div>
+                        <div class="property">
+                            <span class="property-label">ariaLabel:</span> Start time
+                        </div>
+                        <div class="property">
+                            <span class="property-label">role:</span> combobox
+                        </div>
+                        <div class="property">
+                            <span class="property-label">value:</span> 3:00 PM
+                        </div>
+                        <div class="property">
+                            <span class="property-label">Text:</span> 3:00 PM
+                        </div>
+                        <div class="property">
+                            <span class="property-label">Timestamp:</span> 1748818383161
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-header">
+                <span class="step-number">Step 7</span>
+                <span class="action-type">CLICK</span>
+            </div>
+            <div class="step-content">
+                <div>
+                    <img src="images/0006.png" alt="Step 7 Screenshot" class="screenshot">
+                </div>
+                <div class="action-details">
+                    <div class="property">
+                        <span class="property-label">Action Code:</span><br>
+                        <code>page.get_by_role('button', name='Save').click()</code>
+                    </div>
+                    <div class="property">
+                        <span class="property-label">Description:</span><br>
+                        Click the Save button to finalize the event creation.
+                    </div>
+                    <div class="element-properties">
+                        <h3>Element Properties</h3>
+
+                        <div class="property">
+                            <span class="property-label">Bounding Box:</span>
+                            <div class="bbox">
+                                x: 16, 
+                                y: 76, 
+                                width: 136.171875, 
+                                height: 56
+                            </div>
+                        </div>
+                        <div class="property">
+                            <span class="property-label">class:</span> T57Ued-BIzmGd T57Ued-BIzmGd-OWXEXe-X9G3K T2watc aAW7Jd APIQad
+                        </div>
+                        <div class="property">
+                            <span class="property-label">type:</span> button
+                        </div>
+                        <div class="property">
+                            <span class="property-label">Timestamp:</span> 1748818389878
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

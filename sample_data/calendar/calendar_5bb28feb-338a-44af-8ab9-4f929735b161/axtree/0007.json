@@ -1,0 +1,720 @@
+{
+  "role": "WebArea",
+  "name": "Google Calendar - Week of May 17, 2026",
+  "children": [
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "button",
+          "name": "Skip to main content"
+        },
+        {
+          "role": "button",
+          "name": "Keyboard shortcuts"
+        },
+        {
+          "role": "button",
+          "name": "Accessibility Feedback"
+        }
+      ]
+    },
+    {
+      "role": "button",
+      "name": "Main drawer",
+      "expanded": true
+    },
+    {
+      "role": "heading",
+      "name": "Calendar",
+      "level": 1
+    },
+    {
+      "role": "button",
+      "name": "Today, Sunday, June 1"
+    },
+    {
+      "role": "button",
+      "name": "Previous week"
+    },
+    {
+      "role": "button",
+      "name": "Next week"
+    },
+    {
+      "role": "text",
+      "name": "May 2026"
+    },
+    {
+      "role": "button",
+      "name": "Search"
+    },
+    {
+      "role": "button",
+      "name": "Support"
+    },
+    {
+      "role": "button",
+      "name": "Settings menu",
+      "haspopup": "menu"
+    },
+    {
+      "role": "button",
+      "name": "Week",
+      "description": "View switcher menu",
+      "haspopup": "menu"
+    },
+    {
+      "role": "button",
+      "name": "Switch to Calendar",
+      "description": "Switch to Calendar"
+    },
+    {
+      "role": "button",
+      "name": "Switch to Tasks",
+      "description": "Switch to Tasks"
+    },
+    {
+      "role": "button",
+      "name": "Google apps"
+    },
+    {
+      "role": "button",
+      "name": "Google Account: Daikin Tanuw (daikintanuw@gmail.com)"
+    },
+    {
+      "role": "button",
+      "name": "Create ",
+      "disabled": true,
+      "haspopup": "menu"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "heading",
+          "name": "Drawer",
+          "level": 1
+        },
+        {
+          "role": "heading",
+          "name": "Navigation calendar",
+          "level": 2
+        },
+        {
+          "role": "text",
+          "name": "May 2026"
+        },
+        {
+          "role": "button",
+          "name": "Previous month"
+        },
+        {
+          "role": "button",
+          "name": "Next month"
+        },
+        {
+          "role": "text",
+          "name": "Sunday"
+        },
+        {
+          "role": "text",
+          "name": "Monday"
+        },
+        {
+          "role": "text",
+          "name": "Tuesday"
+        },
+        {
+          "role": "text",
+          "name": "Wednesday"
+        },
+        {
+          "role": "text",
+          "name": "Thursday"
+        },
+        {
+          "role": "text",
+          "name": "Friday"
+        },
+        {
+          "role": "text",
+          "name": "Saturday"
+        },
+        {
+          "role": "button",
+          "name": "April 26, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "April 27, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "April 28, Tuesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "April 29, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "April 30, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "1, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "2, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "3, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "4, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "5, Tuesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "6, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "7, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "8, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "9, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "10, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "11, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "12, Tuesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "13, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "14, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "15, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "16, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "17, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "18, Monday",
+          "pressed": true
+        },
+        {
+          "role": "button",
+          "name": "19, Tuesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "20, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "21, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "22, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "23, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "24, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "25, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "26, Tuesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "27, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "28, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "29, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "30, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "31, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "June 1, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "June 2, Tuesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "June 3, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "June 4, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "June 5, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "June 6, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "heading",
+          "name": "Calendar list",
+          "level": 2
+        },
+        {
+          "role": "button",
+          "name": "My calendars",
+          "expanded": true
+        },
+        {
+          "role": "checkbox",
+          "name": "Daikin Tanuw",
+          "checked": true
+        },
+        {
+          "role": "text",
+          "name": "Daikin Tanuw"
+        },
+        {
+          "role": "checkbox",
+          "name": "Birthdays",
+          "checked": true
+        },
+        {
+          "role": "text",
+          "name": "Birthdays"
+        },
+        {
+          "role": "checkbox",
+          "name": "Tasks",
+          "checked": true
+        },
+        {
+          "role": "text",
+          "name": "Tasks"
+        },
+        {
+          "role": "button",
+          "name": "Other calendars",
+          "expanded": true
+        },
+        {
+          "role": "button",
+          "name": "Add other calendars",
+          "haspopup": "menu"
+        },
+        {
+          "role": "checkbox",
+          "name": "Holidays in United States",
+          "checked": true
+        },
+        {
+          "role": "text",
+          "name": "Holidays in United States"
+        },
+        {
+          "role": "link",
+          "name": "Terms"
+        },
+        {
+          "role": "text",
+          "name": " – "
+        },
+        {
+          "role": "link",
+          "name": "Privacy"
+        }
+      ]
+    },
+    {
+      "role": "main",
+      "name": "",
+      "description": "Week of May 17, 2026, 2 events",
+      "children": [
+        {
+          "role": "heading",
+          "name": " Week of May 17, 2026, 2 events",
+          "level": 1
+        },
+        {
+          "role": "columnheader",
+          "name": "Sunday, May 17",
+          "readonly": true,
+          "children": [
+            {
+              "role": "button",
+              "name": "Sunday, May 17"
+            }
+          ]
+        },
+        {
+          "role": "columnheader",
+          "name": "Monday, May 18",
+          "readonly": true,
+          "children": [
+            {
+              "role": "button",
+              "name": "Monday, May 18"
+            }
+          ]
+        },
+        {
+          "role": "columnheader",
+          "name": "Tuesday, May 19",
+          "readonly": true,
+          "children": [
+            {
+              "role": "button",
+              "name": "Tuesday, May 19"
+            }
+          ]
+        },
+        {
+          "role": "columnheader",
+          "name": "Wednesday, May 20",
+          "readonly": true,
+          "children": [
+            {
+              "role": "button",
+              "name": "Wednesday, May 20"
+            }
+          ]
+        },
+        {
+          "role": "columnheader",
+          "name": "Thursday, May 21",
+          "readonly": true,
+          "children": [
+            {
+              "role": "button",
+              "name": "Thursday, May 21"
+            }
+          ]
+        },
+        {
+          "role": "columnheader",
+          "name": "Friday, May 22",
+          "readonly": true,
+          "children": [
+            {
+              "role": "button",
+              "name": "Friday, May 22"
+            }
+          ]
+        },
+        {
+          "role": "columnheader",
+          "name": "Saturday, May 23",
+          "readonly": true,
+          "children": [
+            {
+              "role": "button",
+              "name": "Saturday, May 23"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Sunday, May 17",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "1 event, Monday, May 18",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "1 event, Monday, May 18",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "10am to 11am, Depiction of Crossbows in 14th-Century Persian Manuscripts, Daikin Tanuw, Accepted, No location, May 18, 2026 Event is being created."
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Tuesday, May 19",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "1 event, Wednesday, May 20",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "1 event, Wednesday, May 20",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "3pm to 4pm, Code Review Meeting for Python Meetup, Daikin Tanuw, No location, May 20, 2026"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Thursday, May 21",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Friday, May 22",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Saturday, May 23",
+          "readonly": true
+        }
+      ]
+    },
+    {
+      "role": "tablist",
+      "name": "",
+      "orientation": "horizontal",
+      "children": [
+        {
+          "role": "tab",
+          "name": "Keep"
+        },
+        {
+          "role": "tab",
+          "name": "Tasks"
+        },
+        {
+          "role": "tab",
+          "name": "Contacts"
+        },
+        {
+          "role": "tab",
+          "name": "Maps"
+        },
+        {
+          "role": "tab",
+          "name": "Get Add-ons"
+        }
+      ]
+    },
+    {
+      "role": "button",
+      "name": "Hide side panel",
+      "pressed": false
+    },
+    {
+      "role": "dialog",
+      "name": "Create",
+      "modal": true,
+      "children": [
+        {
+          "role": "heading",
+          "name": "Create",
+          "level": 1
+        },
+        {
+          "role": "button",
+          "name": "Close"
+        },
+        {
+          "role": "textbox",
+          "name": "Add title",
+          "value": "Depiction of Crossbows in 14th-Century Persian Manuscripts"
+        },
+        {
+          "role": "tab",
+          "name": "Event",
+          "selected": true
+        },
+        {
+          "role": "tab",
+          "name": "Task"
+        },
+        {
+          "role": "tab",
+          "name": "Appointment schedule new"
+        },
+        {
+          "role": "textbox",
+          "name": "Start date",
+          "value": "Monday, May 18, 2026"
+        },
+        {
+          "role": "combobox",
+          "name": "Start time",
+          "autocomplete": "list",
+          "haspopup": "menu",
+          "value": "10:00am"
+        },
+        {
+          "role": "text",
+          "name": "–"
+        },
+        {
+          "role": "combobox",
+          "name": "End time",
+          "description": "Invalid time",
+          "focused": true,
+          "autocomplete": "list",
+          "haspopup": "menu",
+          "invalid": "true",
+          "value": "11:00am11:00 AM"
+        },
+        {
+          "role": "checkbox",
+          "name": "All day",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "All day"
+        },
+        {
+          "role": "button",
+          "name": "Time zone"
+        },
+        {
+          "role": "combobox",
+          "name": "Recurrence",
+          "haspopup": "listbox",
+          "value": "Does not repeat"
+        },
+        {
+          "role": "button",
+          "name": "Add guests"
+        },
+        {
+          "role": "button",
+          "name": "Add Google Meet video conferencing"
+        },
+        {
+          "role": "button",
+          "name": "Add location"
+        },
+        {
+          "role": "button",
+          "name": "Add description or a Google Drive attachment"
+        },
+        {
+          "role": "button",
+          "name": "Daikin Tanuw Busy·Default visibility·Notify 30 minutes before"
+        },
+        {
+          "role": "button",
+          "name": "More options"
+        },
+        {
+          "role": "button",
+          "name": "Save"
+        },
+        {
+          "role": "button",
+          "name": "Dock to sidebar"
+        }
+      ]
+    },
+    {
+      "role": "text",
+      "name": "Invalid time"
+    }
+  ]
+}

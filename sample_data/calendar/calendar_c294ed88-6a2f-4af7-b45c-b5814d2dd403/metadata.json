@@ -1,0 +1,32 @@
+{
+  "eps_name": "calendar_49a26693-575f-4e6d-8af6-77d7cea73f76",
+  "start_url": "https://calendar.google.com",
+  "phase": 1,
+  "browser_context": {
+    "os": "darwin",
+    "viewport": "1280x720",
+    "cookies_enabled": true
+  },
+  "task": {
+    "task_type": "calendar",
+    "persona": "A speech therapist who specializes in alternative therapies and supports the mother's advocacy",
+    "instruction": {
+      "level1": "Schedule a virtual workshop on alternative speech therapy techniques for May 20th at 2PM",
+      "level2": "Create a calendar event titled \"Virtual Workshop on Alternative Speech Therapy Techniques\" for May 20th at 2PM.",
+      "level3": "Create a calendar event titled \"Virtual Workshop on Alternative Speech Therapy Techniques\" for May 20th at 2PM."
+    },
+    "steps": [
+      "Click the Create button to start creating a new event",
+      "Select 'Event' from the Create menu to start creating a new calendar event.",
+      "Fill in the event title with 'Virtual Workshop on Alternative Speech Therapy Techniques'.",
+      "Click on the date/time button to change the event date and time.",
+      "Fill in the start date with 'Tuesday, May 20'",
+      "Fill in the start time with '2:00 PM'.",
+      "Fill in the end time with '3:00 PM' to finalize the event duration."
+    ]
+  },
+  "success": false,
+  "total_steps": 7,
+  "runtime_sec": 458.6173758506775,
+  "total_tokens": 79294
+}

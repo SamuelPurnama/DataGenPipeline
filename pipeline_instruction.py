@@ -83,10 +83,16 @@ def generate_instructions_for_account(account, persona, num_instructions):
         # Take screenshot
         screenshot_path = SCREENSHOT_PATH
         page.screenshot(path=screenshot_path)
+        
+        # Get accessibility tree for phase 2
+        axtree = None
+        if PHASE == 2:
+            axtree = page.accessibility.snapshot()
             
         # Generate instructions and augment them
         instructions = generate_instructions(
-            persona, PHASE, num_instructions=num_instructions, screenshot_path=screenshot_path
+            persona, PHASE, num_instructions=num_instructions, 
+            screenshot_path=screenshot_path, axtree=axtree
         )
 
         print(f"Generated {len(instructions)} instructions for account {account['email']}")

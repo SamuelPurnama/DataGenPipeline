@@ -12,7 +12,7 @@ from config import RESULTS_DIR, ACCOUNTS
 from google_auth import ensure_google_login
 
 # ========== CONFIGURABLE PARAMETERS ==========
-PHASE = 1
+PHASE = 2
 MAX_RETRIES = 7
 MAX_STEPS = 25  # Maximum number of steps before failing
 ACTION_TIMEOUT = 20000  # 30 seconds timeout for actions
@@ -596,7 +596,6 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                 if MODE == 1:
                     input("🔚 Press Enter to continue...")
         finally:
-            input("🔚 Press Enter to close browser...")
             browser.close()
 
 def run_for_account(account, chrome_path, phase):

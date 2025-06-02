@@ -1,38 +1,282 @@
 [
   {
-    "persona": "A local business owner who wants to support the instructor's mission by hosting self-defense workshops in her store",
+    "persona": "我是一位热爱篮球的台湾退休教师，对本土篮球运动充满热情。",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Add a new event for a self-defense workshop on May 15th at 3pm",
-      "Delete the \"2pm Virtual Workshop\" entry on May 20th",
-      "Change the time of the \"6am Gym Sessions\" on May 21st to 8am",
-      "Add a note to the \"3pm Discussion Group\" on May 29th mentioning the self-defense workshop details",
-      "Remove the \"9am Consultation\" event on May 25th"
+      "Add a new event for a basketball game on June 10th at 7pm",
+      "Delete the “Weekly Team Sync” event on June 2nd",
+      "Move the “Éire Óg, Ennis Match” event to June 16th",
+      "Change the “Product Launch Meeting” time on June 15th to 4pm",
+      "Hide the “Holidays in United States” calendar",
+      "Switch the view to week mode for a detailed look at June 2nd",
+      "Add a reminder for a basketball workshop on June 19th",
+      "Turn off notifications for the “Detective Fiction Workshops” calendar",
+      "Search for people to invite to the basketball game on June 10th",
+      "Expand the “Other calendars” section to see more options"
     ],
     "augmented_instructions": [
-      "Create a new event titled \"Self-Defense Workshop\" on May 15th at 3pm.",
-      "Delete the event titled \"2pm Virtual Workshop\" on May 20th.",
-      "Change the time of the event titled \"6am Gym Sessions\" on May 21st to 8am.",
-      "Add a note to the event titled \"3pm Discussion Group\" on May 29th with details about the self-defense workshop.",
-      "Remove the event titled \"9am Consultation\" on May 25th."
+      "Create an event titled \"Basketball Game\" on June 10th at 7pm.",
+      "Remove the event titled \"Weekly Team Sync\" on June 2nd.",
+      "Reschedule the event \"Éire Óg, Ennis Match\" to June 16th.",
+      "Update the time for \"Product Launch Meeting\" on June 15th to 4pm.",
+      "Disable the visibility of the \"Holidays in United States\" calendar.",
+      "Change the calendar view to week mode for June 2nd.",
+      "Set a reminder for a \"Basketball Workshop\" on June 19th.",
+      "Disable notifications for the \"Detective Fiction Workshops\" calendar.",
+      "Search for contacts to invite to the \"Basketball Game\" on June 10th.",
+      "Open the \"Other calendars\" section to view additional options."
     ]
   },
   {
-    "persona": "a climate activist who is also a fan of comic art.",
+    "persona": "A biotechnologist who believes genetically modifying crops can solve world hunger",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Add a new event on May 5th called \"Climate Art Workshop\" from 10am to 1pm",
-      "Delete the \"6am Gym Sessions\" event on May 21st",
-      "Change the \"2pm Virtual Workshop\" on May 20th to \"Eco-Friendly Art Session.\"",
-      "Move the \"3pm Discussion Group\" on May 29th to May 28th at the same time",
-      "Add a reminder on May 22nd for \"Prepare materials for Climate Art Workshop.\""
+      "Add a new event on June 6 for a conference call about crop modification at 11am",
+      "Delete the \"Birdwatching Club Meeting\" event on June",
+      "Change the time of the \"Weekly Strategy Meeting\" on June 9 to 10am",
+      "Uncheck the \"Holidays in United States\" calendar to hide holidays",
+      "Add a new calendar named \"Biotech Conferences.\"",
+      "Update the \"Influencer Collaboration\" event on June 5 to include a location",
+      "Set a reminder for the \"Meeting with Crossing Guards\" on June 10, one day before the event",
+      "Switch the view to the \"Week\" mode for a detailed look at the schedule",
+      "Add a note to the \"Wildlife Photography Workshop\" event on June 10 about discussing GM crops",
+      "Remove the \"Calligraphy Practice Sessions\" from the calendar list"
     ],
     "augmented_instructions": [
-      "Create a new event on May 5th named \"Climate Art Workshop\" from 10am to 1pm.",
-      "Remove the \"6am Gym Sessions\" event on May 21st.",
-      "Update the \"2pm Virtual Workshop\" on May 20th to \"Eco-Friendly Art Session.\"",
-      "Reschedule the \"3pm Discussion Group\" on May 29th to May 28th at the same time.",
-      "Set a reminder on May 22nd for \"Prepare materials for Climate Art Workshop.\""
+      "Create a new event on June 6 at 11am titled \"Conference Call about Crop Modification.\"",
+      "Delete the \"Birdwatching Club Meeting\" event in June.",
+      "Change the \"Weekly Strategy Meeting\" on June 9 to 10am.",
+      "Uncheck the \"Holidays in United States\" calendar to hide holidays.",
+      "Add a new calendar named \"Biotech Conferences.\"",
+      "Update the \"Influencer Collaboration\" event on June 5 to include a location.",
+      "Set a reminder for the \"Meeting with Crossing Guards\" on June 10, one day before the event.",
+      "Switch the calendar view to \"Week\" mode.",
+      "Add a note to the \"Wildlife Photography Workshop\" event on June 10 about discussing GM crops.",
+      "Remove the \"Calligraphy Practice Sessions\" from the calendar list."
+    ]
+  },
+  {
+    "persona": "A concerned mother who seeks advice on feeding her children a GMO-free diet",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Click on \"Create\" to add a new event for a farmers market visit",
+      "Navigate to June 7th and delete the \"Plant Watering\" event",
+      "Move the \"Gardening Workshop\" event from June 10th to June 11th",
+      "Uncheck the \"Holidays in United States\" calendar to hide those events",
+      "Click on \"Search\" and look for events related to organic food workshops",
+      "Hide the side panel to make more space for viewing the calendar",
+      "Use the \"Next month\" button to see upcoming events for July",
+      "Click on \"Tasks\" to switch from Calendar view to Tasks view",
+      "Check the \"Gardening Activities\" calendar if it's currently unchecked",
+      "Open the \"Settings menu\" to adjust calendar notification preferences"
+    ],
+    "augmented_instructions": [
+      "Click on \"Create\" to add a new event for a farmers market visit.",
+      "Navigate to June 7th, select \"Plant Watering,\" and delete the event.",
+      "Drag the \"Gardening Workshop\" event from June 10th to June 11th.",
+      "Uncheck \"Holidays in United States\" in the calendar list to hide those events.",
+      "Click on the magnifying glass icon and search for events related to organic food workshops.",
+      "Click the arrow icon to hide the side panel for more calendar space.",
+      "Click the \"Next\" arrow to view events for July.",
+      "Click on \"Tasks\" to switch from Calendar view to Tasks view.",
+      "Check the box next to \"Gardening Activities\" if it's unchecked.",
+      "Click the gear icon to open \"Settings\" and adjust calendar notification preferences."
+    ]
+  },
+  {
+    "persona": "A dedicated lumberyard foreman with extensive knowledge of different types of wood and their applications",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Switch to the week view using the view switcher menu",
+      "Add a new event for June 5, 2025, at 3:00 PM titled \"Wood Inventory Check\"",
+      "Delete the event \"Check for new country music releases\" on June 1,",
+      "Move the \"Band Rehearsal\" event from June 9, 2025, to June 8,",
+      "Mark the task \"Buy a new trombone slide\" as completed for today",
+      "Hide the \"Holidays in United States\" calendar from the sidebar",
+      "Search for the event \"Detective Fiction Workshop\" using the search button",
+      "Expand the settings menu and adjust notification settings for events",
+      "Add a calendar for \"Lumber Deliveries\" under \"Other calendars\"",
+      "Navigate to the next month using the \"Next month\" button"
+    ],
+    "augmented_instructions": [
+      "Select \"Week\" from the view switcher menu.",
+      "Create a new event on June 5, 2025, at 3:00 PM titled \"Wood Inventory Check.\"",
+      "Remove the event \"Check for new country music releases\" on June 1.",
+      "Change the date of the \"Band Rehearsal\" event from June 9, 2025, to June 8.",
+      "Mark the task \"Buy a new trombone slide\" as completed for today.",
+      "Hide the \"Holidays in United States\" calendar from the sidebar.",
+      "Use the search button to find the event \"Detective Fiction Workshop.\"",
+      "Open the settings menu and adjust notification settings for events.",
+      "Add a calendar named \"Lumber Deliveries\" under \"Other calendars.\"",
+      "Click the \"Next month\" button to navigate to the next month."
+    ]
+  },
+  {
+    "persona": "A history enthusiast who constantly engages in debates about the impact of military actions on national identity",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Change the view to week mode by clicking the \"Month\" button and selecting \"Week\"",
+      "Add a new event on June 3rd at 10 am titled \"History Debate Preparation\"",
+      "Delete the \"Math Competition\" event on June 9th",
+      "Move the \"Visit to the National Gallery of Zimbabwe\" event from June 25th to June 24th",
+      "Uncheck the \"Holidays in United States\" calendar to hide those events",
+      "Expand the \"Other calendars\" section and add a new calendar",
+      "Change the color of the \"Crime Comedy Movie Releases\" calendar for better visibility",
+      "Add a recurring event every Friday at 6 pm titled \"Military History Discussion\"",
+      "Rename the \"Hunting Trips\" calendar to \"Outdoor Activities\"",
+      "Check the \"Tasks\" tab on the right panel to see the list of pending tasks"
+    ],
+    "augmented_instructions": [
+      "Click the \"Month\" button and select \"Week\" to change the view to week mode.",
+      "Add a new event on June 3rd at 10 am titled \"History Debate Preparation.\"",
+      "Delete the \"Math Competition\" event on June 9th.",
+      "Move the \"Visit to the National Gallery of Zimbabwe\" event from June 25th to June 24th.",
+      "Uncheck the \"Holidays in United States\" calendar to hide those events.",
+      "Expand the \"Other calendars\" section and add a new calendar.",
+      "Change the color of the \"Crime Comedy Movie Releases\" calendar for better visibility.",
+      "Add a recurring event every Friday at 6 pm titled \"Military History Discussion.\"",
+      "Rename the \"Hunting Trips\" calendar to \"Outdoor Activities.\"",
+      "Check the \"Tasks\" tab on the right panel to see the list of pending tasks."
+    ]
+  },
+  {
+    "persona": "A journalist and blogger who curates a list of reliable online resources for journalism research",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Change the calendar view to \"Week\" mode",
+      "Add a new event on June 15 titled \"Team Meeting\" from 2pm to 3pm",
+      "Delete the \"Bike Ride Meet-Up\" event on June",
+      "Move the \"Cryptocurrency Webinar\" on June 10 to June 11 at the same time",
+      "Uncheck the \"Holidays in United States\" calendar to hide it from view",
+      "Add a new calendar named \"Editorial Meetings.\"",
+      "Shift the \"Check Cryptocurrency Market Trends\" event on June 9 to start at 10am",
+      "Check and expand the \"Other calendars\" section to see available options",
+      "Provide feedback using the \"Accessibility Feedback\" button",
+      "Hide the side panel to maximize the calendar view"
+    ],
+    "augmented_instructions": [
+      "Switch to \"Week\" view in the calendar.",
+      "Create a new event titled \"Team Meeting\" on June 15 from 2pm to 3pm.",
+      "Remove the \"Bike Ride Meet-Up\" event in June.",
+      "Reschedule the \"Cryptocurrency Webinar\" from June 10 to June 11 at the same time.",
+      "Uncheck the \"Holidays in United States\" calendar to hide it.",
+      "Add a new calendar named \"Editorial Meetings.\"",
+      "Change the start time of \"Check Cryptocurrency Market Trends\" on June 9 to 10am.",
+      "Expand the \"Other calendars\" section to view options.",
+      "Click the \"Accessibility Feedback\" button to provide feedback.",
+      "Hide the side panel to maximize the calendar view."
+    ]
+  },
+  {
+    "persona": "A newspaper columnist who argues that eBooks are threatening the traditional print industry",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Move the \"Reading Hour\" event on June 1st to June 3rd",
+      "Delete the \"Joke Writing Session\" event on June 10th",
+      "Change the \"Independence Day\" event on July 4th to start at 10am instead of all day",
+      "Add a new event called \"Book Club Meeting\" on June 15th at 5pm",
+      "Uncheck the \"Birthdays\" calendar to hide those events",
+      "Switch the view from \"Month\" to \"Week\" to focus on upcoming events",
+      "Expand the \"Other calendars\" section to see more options",
+      "Add a new calendar named \"eBooks Discussions\"",
+      "Move the \"Father’s Day\" event on June 15th to June 16th",
+      "Hide the side panel for a cleaner view of the calendar"
+    ],
+    "augmented_instructions": [
+      "Move the \"Reading Hour\" event from June 1st to June 3rd.",
+      "Delete the \"Joke Writing Session\" event on June 10th.",
+      "Change the \"Independence Day\" event on July 4th to start at 10am.",
+      "Add a new event called \"Book Club Meeting\" on June 15th at 5pm.",
+      "Uncheck the \"Birthdays\" calendar to hide those events.",
+      "Switch the view from \"Month\" to \"Week.\"",
+      "Expand the \"Other calendars\" section.",
+      "Add a new calendar named \"eBooks Discussions.\"",
+      "Move the \"Father’s Day\" event from June 15th to June 16th.",
+      "Hide the side panel for a cleaner view."
+    ]
+  },
+  {
+    "persona": "A compassionate and knowledgeable feline veterinarian who ensures the health and well-being of the Ragdoll cats",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Remove the \"Graffiti Workshop\" event from Sunday, June",
+      "Change the \"Weekly Team Meeting\" time on Monday, June 2, to 11am - 12pm",
+      "Add a new event for \"Veterinary Conference\" on Wednesday, June 4, at 2pm",
+      "Delete the \"Weekly Maintenance Checks\" from Friday, June",
+      "Move the \"Graffiti Workshop\" event from Saturday, June 7, to Sunday, June",
+      "Uncheck the \"Research Deadlines\" calendar to hide its events",
+      "Add a reminder for \"Order Cat Supplies\" on Tuesday, June",
+      "Switch the view to \"Month\" using the view switcher menu",
+      "Add a new calendar under \"Other calendars\" for \"Ragdoll Events.\"",
+      "Use the search function to find all events related to \"Weekly Maintenance.\""
+    ],
+    "augmented_instructions": [
+      "Delete the \"Graffiti Workshop\" event on Sunday, June.",
+      "Change the \"Weekly Team Meeting\" time on Monday, June 2, to 11am - 12pm.",
+      "Add a new event for \"Veterinary Conference\" on Wednesday, June 4, at 2pm.",
+      "Delete the \"Weekly Maintenance Checks\" event on Friday, June.",
+      "Move the \"Graffiti Workshop\" event from Saturday, June 7, to Sunday, June.",
+      "Uncheck the \"Research Deadlines\" calendar to hide its events.",
+      "Add a reminder for \"Order Cat Supplies\" on Tuesday, June.",
+      "Switch the view to \"Month\" using the view switcher menu.",
+      "Add a new calendar under \"Other calendars\" for \"Ragdoll Events.\"",
+      "Use the search function to find all events related to \"Weekly Maintenance.\""
+    ]
+  },
+  {
+    "persona": "A technology consultant who ensures the business owner's IT infrastructure meets the security requirements of the bank's platform",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Move the \"Weekly Team Check-ins\" event from June 2 to June",
+      "Delete the \"AI Telemetry Workshop\" event on June",
+      "Change the view to \"Week\" instead of \"Month.\"",
+      "Uncheck the \"Holidays in United States\" calendar to hide those events",
+      "Add a new event on June 10 titled \"Project Deadline Meeting\" at 3pm",
+      "Switch to the \"Tasks\" tab on the side panel",
+      "Remove the \"Therapy Sessions\" calendar from the list",
+      "Navigate to the \"Settings menu\" and open the settings panel",
+      "Mark the task \"Prepare materials for environmental impact presentation\" as completed",
+      "Hide the side panel for a cleaner view of the calendar"
+    ],
+    "augmented_instructions": [
+      "- Move the \"Weekly Team Check-ins\" event from June 2 to June 9.",
+      "- Delete the \"AI Telemetry Workshop\" event on June 3.",
+      "- Change the view to \"Week.\"",
+      "- Uncheck the \"Holidays in United States\" calendar.",
+      "- Add a new event on June 10 titled \"Project Deadline Meeting\" at 3pm.",
+      "- Switch to the \"Tasks\" tab on the side panel.",
+      "- Remove the \"Therapy Sessions\" calendar from the list.",
+      "- Navigate to the \"Settings menu\" and open the settings panel.",
+      "- Mark the task \"Prepare materials for environmental impact presentation\" as completed.",
+      "- Hide the side panel for a cleaner view of the calendar."
+    ]
+  },
+  {
+    "persona": "A Lebanese women's basketball fan who keeps track of the achievements and performances of national players.",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Add a new event for a basketball game on June 15th",
+      "Delete the \"Boxing Documentary Review\" event on June 27th",
+      "Move the \"Team Meeting\" on June 10th to June 9th",
+      "Change the calendar view to \"Week\" instead of \"Month.\"",
+      "Hide the \"Holidays in United States\" calendar from the view",
+      "Create a recurring event every Wednesday for \"Basketball Practice.\"",
+      "Uncheck the \"Tasks\" calendar to hide it from the view",
+      "Move the \"Transport Committee Weekly Review\" on June 18th to 9am",
+      "Add a location to the \"Weekly Team Meeting\" on June 4th",
+      "Use the \"Search for people\" feature to find and add a new contact"
+    ],
+    "augmented_instructions": [
+      "Create an event for a basketball game on June 15th.",
+      "Remove the event \"Boxing Documentary Review\" on June 27th.",
+      "Reschedule the \"Team Meeting\" from June 10th to June 9th.",
+      "Switch the calendar view to \"Week.\"",
+      "Hide the \"Holidays in United States\" calendar.",
+      "Set a recurring event every Wednesday for \"Basketball Practice.\"",
+      "Uncheck the \"Tasks\" calendar to hide it.",
+      "Change the time of \"Transport Committee Weekly Review\" on June 18th to 9am.",
+      "Add a location to the \"Weekly Team Meeting\" on June 4th.",
+      "Use \"Search for people\" to find and add a new contact."
     ]
   }
 ]

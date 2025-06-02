@@ -174,11 +174,14 @@ def chat_ai_playwright_code(accessibility_tree=None, previous_steps=None, taskGo
                 print("✅ Task completed!")
                 return None
             
-            # Add token usage to the response
+            # Add token usage and system message to the response
             if hasattr(response, "usage"):
                 gpt_response["total_tokens"] = response.usage.total_tokens
                 gpt_response["prompt_tokens"] = response.usage.prompt_tokens
                 gpt_response["completion_tokens"] = response.usage.completion_tokens
+            
+            # Add the system message to the response
+            gpt_response["system_message"] = base_system_message
                 
             return gpt_response
             
