@@ -1,0 +1,27 @@
+{
+  "goal": "Add a recurring event titled \"Éire Óg, Ennis Strategy Meetings\" every Tuesday at 7 PM.",
+  "eps_name": "calendar_a333bb90-a615-453b-bb94-921342dfc115",
+  "task": {
+    "task_type": "calendar",
+    "steps": [
+      "Click the Create button to start creating a new event",
+      "Click the 'Event' option in the menu to start creating a new event.",
+      "Fill in the event title with 'Éire Óg, Ennis Strategy Meetings'.",
+      "Click 'Tuesday, June 3 6:00pm to 7:00pm Time zone·Does not repeat' to edit the date and time settings.",
+      "Open the recurrence dropdown to set the event as recurring.",
+      "Select 'Weekly on Tuesday' from the recurrence options to set the event as recurring.",
+      "Click on the 'Start time' combobox to open the time selection menu, avoiding the strict mode violation error by using the combobox role.",
+      "Select '7:00 PM' from the Start time options to update the event time.",
+      "Click the Save button to finalize the creation of the recurring event."
+    ],
+    "instruction": {
+      "high_level": "Add a recurring event for Éire Óg, Ennis strategy meetings every Tuesday at 7 PM",
+      "mid_level": "Add a recurring event titled \"Éire Óg, Ennis Strategy Meetings\" every Tuesday at 7 PM.",
+      "low_level": "Add a recurring event titled 'Éire Óg, Ennis Strategy Meetings' every Tuesday at 7 PM."
+    }
+  },
+  "success": true,
+  "total_steps": 9,
+  "runtime_sec": 69.14612293243408,
+  "total_tokens": 86649
+}

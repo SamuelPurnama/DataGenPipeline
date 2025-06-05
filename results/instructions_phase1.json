@@ -3,14 +3,14 @@
     "persona": "A rival startup with a competing blockchain-based financial product, vying for the same market share",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Create a calendar event for a product launch meeting on June 15th at 3 PM",
+      "Create a calendar event for a team lunch meeting on June 15th at 3 PM",
       "Add a reminder for the Juneteenth holiday on June 19th to send out a promotional email",
       "Schedule a weekly team sync every Monday at 10 AM for the month of June",
       "Search for team members to invite to a marketing strategy session on June 12th",
       "Add a task to review the marketing campaign performance at the end of June"
     ],
     "augmented_instructions": [
-      "Create an event titled \"Product Launch Meeting\" on June 15th at 3 PM.",
+      "Set a reminder for 'Father's Day' on June 15, 2025, at 9 AM in Google Calendar.",
       "Add a reminder on June 19th to send out a promotional email for Juneteenth.",
       "Schedule a recurring event titled \"Weekly Team Sync\" every Monday at 10 AM in June.",
       "Search for contacts to invite to a \"Marketing Strategy Session\" on June 12th.",

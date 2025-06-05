@@ -1,0 +1,25 @@
+{
+  "goal": "Create an event on June 10th at 10 AM titled \"Visit to Bangkok National Museum.\"",
+  "eps_name": "calendar_8faf628e-6131-4e77-be10-fc46ea445a44",
+  "task": {
+    "task_type": "calendar",
+    "steps": [
+      "Click the Create button to start creating a new event",
+      "Select 'Event' from the menu to proceed with creating a new event.",
+      "Fill in the event title with 'Visit to Bangkok National Museum'",
+      "Open the date and time picker to adjust the event details.",
+      "Fill in the Start date with 'Tuesday, June 10'",
+      "Fill in the Start time with '10:00 AM'.",
+      "Click the 'Save' button to finalize the event creation."
+    ],
+    "instruction": {
+      "high_level": "Create a calendar event for a visit to the Bangkok National Museum on June 10th at 10 AM",
+      "mid_level": "Create an event on June 10th at 10 AM titled \"Visit to Bangkok National Museum.\"",
+      "low_level": "Create an event titled 'Visit to Bangkok National Museum' on June 10th, 2025 at 10 AM."
+    }
+  },
+  "success": true,
+  "total_steps": 7,
+  "runtime_sec": 41.11848497390747,
+  "total_tokens": 66858
+}

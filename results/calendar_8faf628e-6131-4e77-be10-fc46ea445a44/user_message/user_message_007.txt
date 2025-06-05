@@ -1,0 +1,1406 @@
+Goal: Create an event titled 'Visit to Bangkok National Museum' on June 10th at 10 AM
+
+Previous Actions:
+  1. Click the Create button to start creating a new event | Code: page.get_by_role('button', name='Create ').click()
+  2. Select 'Event' from the menu to proceed with creating a new event. | Code: page.get_by_role('menuitem', name='Event').click()
+  3. Fill in the event title with 'Visit to Bangkok National Museum' | Code: page.get_by_role('textbox', name='Add title').fill('Visit to Bangkok National Museum')
+  4. Open the date and time picker to adjust the event details. | Code: page.get_by_role('button', name='Tuesday, June 3 6:00pm to 7:00pm Time zone·Does not repeat').click()
+  5. Fill in the Start date with 'Tuesday, June 10' | Code: page.get_by_role('textbox', name='Start date').fill('Tuesday, June 10')
+  6. Fill in the Start time with '10:00 AM'. | Code: page.get_by_role('combobox', name='Start time').fill('10:00 AM')
+  7. Click the 'Save' button to finalize the event creation. | Code: page.get_by_role('button', name='Save').click()
+
+Current Page: Google Calendar - June 2025 (https://calendar.google.com/calendar/u/0/r)
+
+AX Tree:
+{
+  "role": "WebArea",
+  "name": "Google Calendar - June 2025",
+  "children": [
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "button",
+          "name": "Skip to main content"
+        },
+        {
+          "role": "button",
+          "name": "Keyboard shortcuts"
+        },
+        {
+          "role": "button",
+          "name": "Accessibility Feedback"
+        }
+      ]
+    },
+    {
+      "role": "button",
+      "name": "Main drawer",
+      "expanded": true
+    },
+    {
+      "role": "heading",
+      "name": "Calendar",
+      "level": 1
+    },
+    {
+      "role": "button",
+      "name": "Today, Tuesday, June 3"
+    },
+    {
+      "role": "button",
+      "name": "Previous month"
+    },
+    {
+      "role": "button",
+      "name": "Next month"
+    },
+    {
+      "role": "text",
+      "name": "June 2025"
+    },
+    {
+      "role": "button",
+      "name": "Search"
+    },
+    {
+      "role": "button",
+      "name": "Support"
+    },
+    {
+      "role": "button",
+      "name": "Settings menu",
+      "haspopup": "menu"
+    },
+    {
+      "role": "button",
+      "name": "Month",
+      "description": "View switcher menu",
+      "haspopup": "menu"
+    },
+    {
+      "role": "button",
+      "name": "Switch to Calendar",
+      "description": "Switch to Calendar"
+    },
+    {
+      "role": "button",
+      "name": "Switch to Tasks",
+      "description": "Switch to Tasks"
+    },
+    {
+      "role": "button",
+      "name": "Google apps"
+    },
+    {
+      "role": "button",
+      "name": "Google Account: tester482 (testeracc482@gmail.com)"
+    },
+    {
+      "role": "button",
+      "name": "Create ",
+      "disabled": true,
+      "haspopup": "menu"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "heading",
+          "name": "Drawer",
+          "level": 1
+        },
+        {
+          "role": "heading",
+          "name": "Navigation calendar",
+          "level": 2
+        },
+        {
+          "role": "text",
+          "name": "June 2025"
+        },
+        {
+          "role": "button",
+          "name": "Previous month"
+        },
+        {
+          "role": "button",
+          "name": "Next month"
+        },
+        {
+          "role": "text",
+          "name": "Sunday"
+        },
+        {
+          "role": "text",
+          "name": "Monday"
+        },
+        {
+          "role": "text",
+          "name": "Tuesday"
+        },
+        {
+          "role": "text",
+          "name": "Wednesday"
+        },
+        {
+          "role": "text",
+          "name": "Thursday"
+        },
+        {
+          "role": "text",
+          "name": "Friday"
+        },
+        {
+          "role": "text",
+          "name": "Saturday"
+        },
+        {
+          "role": "button",
+          "name": "1, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "2, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "3, Tuesday, today",
+          "pressed": true
+        },
+        {
+          "role": "button",
+          "name": "4, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "5, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "6, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "7, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "8, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "9, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "10, Tuesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "11, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "12, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "13, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "14, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "15, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "16, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "17, Tuesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "18, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "19, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "20, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "21, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "22, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "23, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "24, Tuesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "25, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "26, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "27, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "28, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "29, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "30, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "July 1, Tuesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "July 2, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "July 3, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "July 4, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "July 5, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "July 6, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "July 7, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "July 8, Tuesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "July 9, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "July 10, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "July 11, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "July 12, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "heading",
+          "name": "Calendar list",
+          "level": 2
+        },
+        {
+          "role": "button",
+          "name": "My calendars",
+          "expanded": true
+        },
+        {
+          "role": "checkbox",
+          "name": "tester482",
+          "checked": true
+        },
+        {
+          "role": "text",
+          "name": "tester482"
+        },
+        {
+          "role": "checkbox",
+          "name": "Birthdays",
+          "checked": true
+        },
+        {
+          "role": "text",
+          "name": "Birthdays"
+        },
+        {
+          "role": "checkbox",
+          "name": "Detective Fiction Workshops",
+          "checked": true
+        },
+        {
+          "role": "text",
+          "name": "Detective Fiction Workshops"
+        },
+        {
+          "role": "checkbox",
+          "name": "Math Competition Dates and Deadlines",
+          "checked": true
+        },
+        {
+          "role": "text",
+          "name": "Math Competition Dates and Deadlines"
+        },
+        {
+          "role": "checkbox",
+          "name": "Tasks",
+          "checked": true
+        },
+        {
+          "role": "text",
+          "name": "Tasks"
+        },
+        {
+          "role": "button",
+          "name": "Other calendars",
+          "expanded": true
+        },
+        {
+          "role": "button",
+          "name": "Add other calendars",
+          "haspopup": "menu"
+        },
+        {
+          "role": "checkbox",
+          "name": "Holidays in United States",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Holidays in United States"
+        },
+        {
+          "role": "link",
+          "name": "Terms"
+        },
+        {
+          "role": "text",
+          "name": " – "
+        },
+        {
+          "role": "link",
+          "name": "Privacy"
+        }
+      ]
+    },
+    {
+      "role": "main",
+      "name": "",
+      "description": "June 2025, 40 events",
+      "children": [
+        {
+          "role": "heading",
+          "name": " June 2025, 40 events",
+          "level": 1
+        },
+        {
+          "role": "columnheader",
+          "name": "SUNDAY",
+          "readonly": true
+        },
+        {
+          "role": "columnheader",
+          "name": "MONDAY",
+          "readonly": true
+        },
+        {
+          "role": "columnheader",
+          "name": "TUESDAY",
+          "readonly": true
+        },
+        {
+          "role": "columnheader",
+          "name": "WEDNESDAY",
+          "readonly": true
+        },
+        {
+          "role": "columnheader",
+          "name": "THURSDAY",
+          "readonly": true
+        },
+        {
+          "role": "columnheader",
+          "name": "FRIDAY",
+          "readonly": true
+        },
+        {
+          "role": "columnheader",
+          "name": "SATURDAY",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Sunday, June 1",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "3 events, Monday, June 2",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "3 events, Monday, June 2",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "task: Send promotional email for Juneteenth, Not completed, June 2, 2025, 9am"
+            },
+            {
+              "role": "button",
+              "name": "10am to 11am, Weekly Team Sync, tester482, No location, June 2, 2025"
+            },
+            {
+              "role": "button",
+              "name": "10am to 11am, Weekly Team Sync, tester482, No location, June 2, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "2 events, Tuesday, June 3, today",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "2 events, Tuesday, June 3, today",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "3 pending tasks"
+            },
+            {
+              "role": "button",
+              "name": "7pm to 8pm, Éire Óg, Ennis Strategy Meetings, tester482, No location, June 3, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Wednesday, June 4",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Thursday, June 5",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Friday, June 6",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Saturday, June 7",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Sunday, June 8",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "2 events, Monday, June 9",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "2 events, Monday, June 9",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "10am to 11am, Weekly Team Sync, tester482, No location, June 9, 2025"
+            },
+            {
+              "role": "button",
+              "name": "10am to 11am, Weekly Team Sync, tester482, No location, June 9, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "4 events, Tuesday, June 10",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "4 events, Tuesday, June 10",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "6pm to 7pm, Visit to Bangkok National Museum, tester482, Accepted, No location, June 10, 2025 Event is being created."
+            },
+            {
+              "role": "button",
+              "name": "3pm to 4pm, Gardening Workshop, tester482, No location, June 10, 2025"
+            },
+            {
+              "role": "button",
+              "name": "2 more events"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Wednesday, June 11",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Thursday, June 12",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Friday, June 13",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Saturday, June 14",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "15 events, Sunday, June 15",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "15 events, Sunday, June 15",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "9am to 10am, Father's Day, tester482, No location, June 15, 2025"
+            },
+            {
+              "role": "button",
+              "name": "9am to 10am, Father's Day, tester482, No location, June 15, 2025"
+            },
+            {
+              "role": "button",
+              "name": "13 more events"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "3 events, Monday, June 16",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "3 events, Monday, June 16",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "10am to 11am, Weekly Team Sync, tester482, No location, June 16, 2025"
+            },
+            {
+              "role": "button",
+              "name": "10am to 11am, Weekly Team Sync, tester482, No location, June 16, 2025"
+            },
+            {
+              "role": "button",
+              "name": "3pm to 4pm, Éire Óg, Ennis Match, tester482, No location, June 16, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "1 event, Tuesday, June 17",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "1 event, Tuesday, June 17",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "7pm to 8pm, Éire Óg, Ennis Strategy Meetings, tester482, No location, June 17, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Wednesday, June 18",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "4 events, Thursday, June 19",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "4 events, Thursday, June 19",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "task: Send promotional email for Juneteenth, Not completed, June 19, 2025, 1:30am"
+            },
+            {
+              "role": "button",
+              "name": "task: Send promotional email for Juneteenth, Not completed, June 19, 2025, 3am"
+            },
+            {
+              "role": "button",
+              "name": "2 more events"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Friday, June 20",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Saturday, June 21",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Sunday, June 22",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "2 events, Monday, June 23",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "2 events, Monday, June 23",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "10am to 11am, Weekly Team Sync, tester482, No location, June 23, 2025"
+            },
+            {
+              "role": "button",
+              "name": "10am to 11am, Weekly Team Sync, tester482, No location, June 23, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "1 event, Tuesday, June 24",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "1 event, Tuesday, June 24",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "7pm to 8pm, Éire Óg, Ennis Strategy Meetings, tester482, No location, June 24, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Wednesday, June 25",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Thursday, June 26",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Friday, June 27",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Saturday, June 28",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Sunday, June 29",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "2 events, Monday, June 30",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "2 events, Monday, June 30",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "10am to 11am, Weekly Team Sync, tester482, No location, June 30, 2025"
+            },
+            {
+              "role": "button",
+              "name": "10am to 11am, Weekly Team Sync, tester482, No location, June 30, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "1 event, Tuesday, July 1",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "1 event, Tuesday, July 1",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "7pm to 8pm, Éire Óg, Ennis Strategy Meetings, tester482, No location, July 1, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Wednesday, July 2",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Thursday, July 3",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Friday, July 4",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Saturday, July 5",
+          "readonly": true
+        }
+      ]
+    },
+    {
+      "role": "tablist",
+      "name": "",
+      "orientation": "horizontal",
+      "children": [
+        {
+          "role": "tab",
+          "name": "Keep"
+        },
+        {
+          "role": "tab",
+          "name": "Tasks"
+        },
+        {
+          "role": "tab",
+          "name": "Contacts"
+        },
+        {
+          "role": "tab",
+          "name": "Maps"
+        },
+        {
+          "role": "tab",
+          "name": "Get Add-ons"
+        }
+      ]
+    },
+    {
+      "role": "button",
+      "name": "Hide side panel",
+      "pressed": false
+    },
+    {
+      "role": "dialog",
+      "name": "Create",
+      "modal": true,
+      "children": [
+        {
+          "role": "heading",
+          "name": "Create",
+          "level": 1
+        },
+        {
+          "role": "button",
+          "name": "Close"
+        },
+        {
+          "role": "textbox",
+          "name": "Add title",
+          "value": "Visit to Bangkok National Museum"
+        },
+        {
+          "role": "tab",
+          "name": "Event",
+          "selected": true
+        },
+        {
+          "role": "tab",
+          "name": "Task"
+        },
+        {
+          "role": "tab",
+          "name": "Appointment schedule new"
+        },
+        {
+          "role": "textbox",
+          "name": "Start date",
+          "value": "Tuesday, June 10"
+        },
+        {
+          "role": "combobox",
+          "name": "Start time",
+          "expanded": true,
+          "focused": true,
+          "autocomplete": "list",
+          "haspopup": "menu",
+          "value": "10:00 AM"
+        },
+        {
+          "role": "listbox",
+          "name": "Start time",
+          "orientation": "vertical",
+          "children": [
+            {
+              "role": "option",
+              "name": "12:00am"
+            },
+            {
+              "role": "option",
+              "name": "12:15am"
+            },
+            {
+              "role": "option",
+              "name": "12:30am"
+            },
+            {
+              "role": "option",
+              "name": "12:45am"
+            },
+            {
+              "role": "option",
+              "name": "1:00am"
+            },
+            {
+              "role": "option",
+              "name": "1:15am"
+            },
+            {
+              "role": "option",
+              "name": "1:30am"
+            },
+            {
+              "role": "option",
+              "name": "1:45am"
+            },
+            {
+              "role": "option",
+              "name": "2:00am"
+            },
+            {
+              "role": "option",
+              "name": "2:15am"
+            },
+            {
+              "role": "option",
+              "name": "2:30am"
+            },
+            {
+              "role": "option",
+              "name": "2:45am"
+            },
+            {
+              "role": "option",
+              "name": "3:00am"
+            },
+            {
+              "role": "option",
+              "name": "3:15am"
+            },
+            {
+              "role": "option",
+              "name": "3:30am"
+            },
+            {
+              "role": "option",
+              "name": "3:45am"
+            },
+            {
+              "role": "option",
+              "name": "4:00am"
+            },
+            {
+              "role": "option",
+              "name": "4:15am"
+            },
+            {
+              "role": "option",
+              "name": "4:30am"
+            },
+            {
+              "role": "option",
+              "name": "4:45am"
+            },
+            {
+              "role": "option",
+              "name": "5:00am"
+            },
+            {
+              "role": "option",
+              "name": "5:15am"
+            },
+            {
+              "role": "option",
+              "name": "5:30am"
+            },
+            {
+              "role": "option",
+              "name": "5:45am"
+            },
+            {
+              "role": "option",
+              "name": "6:00am"
+            },
+            {
+              "role": "option",
+              "name": "6:15am"
+            },
+            {
+              "role": "option",
+              "name": "6:30am"
+            },
+            {
+              "role": "option",
+              "name": "6:45am"
+            },
+            {
+              "role": "option",
+              "name": "7:00am"
+            },
+            {
+              "role": "option",
+              "name": "7:15am"
+            },
+            {
+              "role": "option",
+              "name": "7:30am"
+            },
+            {
+              "role": "option",
+              "name": "7:45am"
+            },
+            {
+              "role": "option",
+              "name": "8:00am"
+            },
+            {
+              "role": "option",
+              "name": "8:15am"
+            },
+            {
+              "role": "option",
+              "name": "8:30am"
+            },
+            {
+              "role": "option",
+              "name": "8:45am"
+            },
+            {
+              "role": "option",
+              "name": "9:00am"
+            },
+            {
+              "role": "option",
+              "name": "9:15am"
+            },
+            {
+              "role": "option",
+              "name": "9:30am"
+            },
+            {
+              "role": "option",
+              "name": "9:45am"
+            },
+            {
+              "role": "option",
+              "name": "10:00am",
+              "selected": true
+            },
+            {
+              "role": "option",
+              "name": "10:15am"
+            },
+            {
+              "role": "option",
+              "name": "10:30am"
+            },
+            {
+              "role": "option",
+              "name": "10:45am"
+            },
+            {
+              "role": "option",
+              "name": "11:00am"
+            },
+            {
+              "role": "option",
+              "name": "11:15am"
+            },
+            {
+              "role": "option",
+              "name": "11:30am"
+            },
+            {
+              "role": "option",
+              "name": "11:45am"
+            },
+            {
+              "role": "option",
+              "name": "12:00pm"
+            },
+            {
+              "role": "option",
+              "name": "12:15pm"
+            },
+            {
+              "role": "option",
+              "name": "12:30pm"
+            },
+            {
+              "role": "option",
+              "name": "12:45pm"
+            },
+            {
+              "role": "option",
+              "name": "1:00pm"
+            },
+            {
+              "role": "option",
+              "name": "1:15pm"
+            },
+            {
+              "role": "option",
+              "name": "1:30pm"
+            },
+            {
+              "role": "option",
+              "name": "1:45pm"
+            },
+            {
+              "role": "option",
+              "name": "2:00pm"
+            },
+            {
+              "role": "option",
+              "name": "2:15pm"
+            },
+            {
+              "role": "option",
+              "name": "2:30pm"
+            },
+            {
+              "role": "option",
+              "name": "2:45pm"
+            },
+            {
+              "role": "option",
+              "name": "3:00pm"
+            },
+            {
+              "role": "option",
+              "name": "3:15pm"
+            },
+            {
+              "role": "option",
+              "name": "3:30pm"
+            },
+            {
+              "role": "option",
+              "name": "3:45pm"
+            },
+            {
+              "role": "option",
+              "name": "4:00pm"
+            },
+            {
+              "role": "option",
+              "name": "4:15pm"
+            },
+            {
+              "role": "option",
+              "name": "4:30pm"
+            },
+            {
+              "role": "option",
+              "name": "4:45pm"
+            },
+            {
+              "role": "option",
+              "name": "5:00pm"
+            },
+            {
+              "role": "option",
+              "name": "5:15pm"
+            },
+            {
+              "role": "option",
+              "name": "5:30pm"
+            },
+            {
+              "role": "option",
+              "name": "5:45pm"
+            },
+            {
+              "role": "option",
+              "name": "6:00pm"
+            },
+            {
+              "role": "option",
+              "name": "6:15pm"
+            },
+            {
+              "role": "option",
+              "name": "6:30pm"
+            },
+            {
+              "role": "option",
+              "name": "6:45pm"
+            },
+            {
+              "role": "option",
+              "name": "7:00pm"
+            },
+            {
+              "role": "option",
+              "name": "7:15pm"
+            },
+            {
+              "role": "option",
+              "name": "7:30pm"
+            },
+            {
+              "role": "option",
+              "name": "7:45pm"
+            },
+            {
+              "role": "option",
+              "name": "8:00pm"
+            },
+            {
+              "role": "option",
+              "name": "8:15pm"
+            },
+            {
+              "role": "option",
+              "name": "8:30pm"
+            },
+            {
+              "role": "option",
+              "name": "8:45pm"
+            },
+            {
+              "role": "option",
+              "name": "9:00pm"
+            },
+            {
+              "role": "option",
+              "name": "9:15pm"
+            },
+            {
+              "role": "option",
+              "name": "9:30pm"
+            },
+            {
+              "role": "option",
+              "name": "9:45pm"
+            },
+            {
+              "role": "option",
+              "name": "10:00pm"
+            },
+            {
+              "role": "option",
+              "name": "10:15pm"
+            },
+            {
+              "role": "option",
+              "name": "10:30pm"
+            },
+            {
+              "role": "option",
+              "name": "10:45pm"
+            },
+            {
+              "role": "option",
+              "name": "11:00pm"
+            },
+            {
+              "role": "option",
+              "name": "11:15pm"
+            },
+            {
+              "role": "option",
+              "name": "11:30pm"
+            },
+            {
+              "role": "option",
+              "name": "11:45pm"
+            }
+          ]
+        },
+        {
+          "role": "text",
+          "name": "–"
+        },
+        {
+          "role": "combobox",
+          "name": "End time",
+          "autocomplete": "list",
+          "haspopup": "menu",
+          "value": "7:00pm"
+        },
+        {
+          "role": "checkbox",
+          "name": "All day",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "All day"
+        },
+        {
+          "role": "button",
+          "name": "Time zone"
+        },
+        {
+          "role": "combobox",
+          "name": "Recurrence",
+          "haspopup": "listbox",
+          "value": "Does not repeat"
+        },
+        {
+          "role": "button",
+          "name": "Add guests"
+        },
+        {
+          "role": "button",
+          "name": "Add Google Meet video conferencing"
+        },
+        {
+          "role": "button",
+          "name": "Add location"
+        },
+        {
+          "role": "button",
+          "name": "Add description or a Google Drive attachment"
+        },
+        {
+          "role": "button",
+          "name": "tester482 Busy·Default visibility·Notify 30 minutes before"
+        },
+        {
+          "role": "button",
+          "name": "More options"
+        },
+        {
+          "role": "button",
+          "name": "Save"
+        },
+        {
+          "role": "button",
+          "name": "Dock to sidebar"
+        }
+      ]
+    }
+  ]
+}
+
+Error Codes:
+  None

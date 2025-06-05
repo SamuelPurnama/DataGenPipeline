@@ -1,3 +1,4 @@
+import json
 from playwright.sync_api import sync_playwright, TimeoutError
 import json
 import os
@@ -6,13 +7,15 @@ import shutil
 import time
 from typing import Optional, Tuple, Dict, Any
 from concurrent.futures import ThreadPoolExecutor
+import html
+import re
 
 from generate_trajectory import chat_ai_playwright_code
 from config import RESULTS_DIR, ACCOUNTS
 from google_auth import ensure_google_login
 
 # ========== CONFIGURABLE PARAMETERS ==========
-PHASE = 2
+PHASE = 1
 MAX_RETRIES = 7
 MAX_STEPS = 25  # Maximum number of steps before failing
 ACTION_TIMEOUT = 20000  # 30 seconds timeout for actions
@@ -31,7 +34,8 @@ def create_episode_directory(base_dir: str, eps_name: str) -> Dict[str, str]:
     dirs = {
         'root': eps_dir,
         'axtree': os.path.join(eps_dir, 'axtree'),
-        'images': os.path.join(eps_dir, 'images')
+        'images': os.path.join(eps_dir, 'images'),
+        'user_message': os.path.join(eps_dir, 'user_message')
     }
     for dir_path in dirs.values():
         os.makedirs(dir_path, exist_ok=True)
@@ -82,7 +86,7 @@ def get_element_properties(page, locator_code):
         print(f"Locator code: {locator_code}")
     return None
 
-def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtree: str, action_code: str, action_description: str, page) -> None:
+def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtree: str, action_code: str, action_description: str, page, user_message_file: str = None, llm_output=None) -> None:
     """Update trajectory.json with a new step."""
     trajectory_path = os.path.join(dirs['root'], 'trajectory.json')
     try:
@@ -90,6 +94,13 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
             trajectory = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         trajectory = {}
+    
+    # Get current page information
+    current_url = page.url
+    page_title = page.title()
+    open_pages = page.context.pages
+    open_pages_titles = [p.title() for p in open_pages]
+    open_pages_urls = [p.url for p in open_pages]
     
     # Extract action type and locator from the code
     action_type = None
@@ -100,12 +111,18 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
     if "page.goto" in action_code:
         action_type = "goto"
         url = action_code.split("page.goto(")[1].split(")")[0].strip('"\'')
-        action_output = {"url": url, "timestamp": int(time.time() * 1000)}
+        action_output = {
+            "thought": "I need to navigate to the specified URL.",
+            "action": {
+                "url": url
+            },
+            "action_name": "goto"
+        }
     elif ".click()" in action_code:
         action_type = "click"
         locator_code = action_code.split(".click()")[0]
         # Get the last clicked element
-        action_output = page.evaluate("""() => {
+        element_info = page.evaluate("""() => {
             const lastClicked = document.activeElement;
             if (!lastClicked) return null;
             const rect = lastClicked.getBoundingClientRect();
@@ -121,17 +138,56 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
                 type: lastClicked.tagName.toLowerCase(),
                 ariaLabel: lastClicked.getAttribute('aria-label'),
                 role: lastClicked.getAttribute('role'),
-                value: lastClicked.value,
-                timestamp: Date.now()
+                value: lastClicked.value
             };
         }""")
+        if element_info:
+            # Extract role and name from Playwright code if possible
+            role, name = extract_role_and_name_from_code(action_code)
+            if not role:
+                role = element_info.get('role', '')
+            if not name:
+                name = element_info.get('value', '')
+            # Try to get a meaningful name for the button from Playwright code first
+            button_name = extract_button_name_from_code(action_code)
+            if not button_name:
+                button_name = name or element_info.get('ariaLabel') or element_info.get('id') or ''
+            if button_name:
+                thought = f'I need to click the "{button_name}" button.'
+            else:
+                thought = 'I need to click a button.'
+            action_output = {
+                "thought": thought,
+                "action": {
+                    "bid": "",
+                    "button": "left",
+                    "click_type": "single",
+                    "bbox": [
+                        element_info['bbox']['x'],
+                        element_info['bbox']['y'],
+                        element_info['bbox']['width'],
+                        element_info['bbox']['height']
+                    ],
+                    "class": element_info.get('class', ''),
+                    "id": element_info.get('id', ''),
+                    "type": element_info.get('type', ''),
+                    "ariaLabel": element_info.get('ariaLabel', ''),
+                    "role": element_info.get('role', ''),
+                    "value": element_info.get('value', ''),
+                    "node_properties": {
+                        "role": role,
+                        "value": name
+                    }
+                },
+                "action_name": "click"
+            }
     elif ".fill(" in action_code:
         action_type = "type"
         parts = action_code.split(".fill(")
         locator_code = parts[0]
         text = parts[1].split(")")[0].strip('"\'')
         # Get the last focused input element
-        action_output = page.evaluate("""() => {
+        element_info = page.evaluate("""() => {
             const lastFocused = document.activeElement;
             if (!lastFocused) return null;
             const rect = lastFocused.getBoundingClientRect();
@@ -147,16 +203,22 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
                 type: lastFocused.tagName.toLowerCase(),
                 ariaLabel: lastFocused.getAttribute('aria-label'),
                 role: lastFocused.getAttribute('role'),
-                value: lastFocused.value,
-                text: lastFocused.value,
-                timestamp: Date.now()
+                value: lastFocused.value
             };
         }""")
+        if element_info:
+            action_output = {
+                "thought": f"I need to type '{text}' into the input field.",
+                "action": {
+                    "text": text
+                },
+                "action_name": "keyboard_type"
+            }
     elif ".dblclick()" in action_code:
         action_type = "dblclick"
         locator_code = action_code.split(".dblclick()")[0]
         # Get the last double-clicked element
-        action_output = page.evaluate("""() => {
+        element_info = page.evaluate("""() => {
             const lastClicked = document.activeElement;
             if (!lastClicked) return null;
             const rect = lastClicked.getBoundingClientRect();
@@ -172,18 +234,41 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
                 type: lastClicked.tagName.toLowerCase(),
                 ariaLabel: lastClicked.getAttribute('aria-label'),
                 role: lastClicked.getAttribute('role'),
-                value: lastClicked.value,
-                timestamp: Date.now()
+                value: lastClicked.value
             };
         }""")
+        if element_info:
+            action_output = {
+                "thought": f"I need to double-click on the {element_info.get('role', 'element')} with value '{element_info.get('value', '')}'.",
+                "action": {
+                    "bid": "",
+                    "button": "left",
+                    "click_type": "double",
+                    "bbox": [
+                        element_info['bbox']['x'],
+                        element_info['bbox']['y'],
+                        element_info['bbox']['width'],
+                        element_info['bbox']['height']
+                    ],
+                    "node_properties": {
+                        "role": element_info.get('role', ''),
+                        "value": element_info.get('value', '')
+                    }
+                },
+                "action_name": "dblclick"
+            }
     elif "page.scroll" in action_code:
         action_type = "scroll"
-        action_output = {"timestamp": int(time.time() * 1000)}
+        action_output = {
+            "thought": "I need to scroll the page to view more content.",
+            "action": {},
+            "action_name": "scroll"
+        }
     elif ".paste(" in action_code:
         action_type = "paste"
         locator_code = action_code.split(".paste(")[0]
         # Get the last focused element
-        action_output = page.evaluate("""() => {
+        element_info = page.evaluate("""() => {
             const lastFocused = document.activeElement;
             if (!lastFocused) return null;
             const rect = lastFocused.getBoundingClientRect();
@@ -199,15 +284,32 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
                 type: lastFocused.tagName.toLowerCase(),
                 ariaLabel: lastFocused.getAttribute('aria-label'),
                 role: lastFocused.getAttribute('role'),
-                value: lastFocused.value,
-                timestamp: Date.now()
+                value: lastFocused.value
             };
         }""")
+        if element_info:
+            action_output = {
+                "thought": f"I need to paste content into the {element_info.get('role', 'element')} with value '{element_info.get('value', '')}'.",
+                "action": {
+                    "bid": "",
+                    "bbox": [
+                        element_info['bbox']['x'],
+                        element_info['bbox']['y'],
+                        element_info['bbox']['width'],
+                        element_info['bbox']['height']
+                    ],
+                    "node_properties": {
+                        "role": element_info.get('role', ''),
+                        "value": element_info.get('value', '')
+                    }
+                },
+                "action_name": "paste"
+            }
     elif "page.keyboard.press" in action_code:
         action_type = "keypress"
         key = action_code.split("page.keyboard.press(")[1].split(")")[0].strip('"\'')
         # Get the last focused element
-        action_output = page.evaluate("""() => {
+        element_info = page.evaluate("""() => {
             const lastFocused = document.activeElement;
             if (!lastFocused) return null;
             const rect = lastFocused.getBoundingClientRect();
@@ -223,22 +325,78 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
                 type: lastFocused.tagName.toLowerCase(),
                 ariaLabel: lastFocused.getAttribute('aria-label'),
                 role: lastFocused.getAttribute('role'),
-                value: lastFocused.value,
-                key: arguments[0],
-                timestamp: Date.now()
+                value: lastFocused.value
             };
-        }""", key)
+        }""")
+        if element_info:
+            action_output = {
+                "thought": f"I need to press the '{key}' key.",
+                "action": {
+                    "key": key,
+                    "bid": "",
+                    "bbox": [
+                        element_info['bbox']['x'],
+                        element_info['bbox']['y'],
+                        element_info['bbox']['width'],
+                        element_info['bbox']['height']
+                    ],
+                    "node_properties": {
+                        "role": element_info.get('role', ''),
+                        "value": element_info.get('value', '')
+                    }
+                },
+                "action_name": "keypress"
+            }
+    
+    # Generate high-level action_str for the step
+    action_str = None
+    if "page.goto" in action_code:
+        url = action_code.split("page.goto(")[1].split(")")[0].strip('"\'')
+        action_str = f"goto(url='{url}')"
+    elif ".click()" in action_code:
+        bid = ""
+        button = "left"
+        if action_output and "action" in action_output:
+            bid = action_output["action"].get("bid", "")
+            button = action_output["action"].get("button", "left")
+        if bid or button:
+            action_str = f"click(bid='{bid}', button='{button}')"
+        else:
+            action_str = "click(...)"
+    elif ".fill(" in action_code:
+        text = action_code.split(".fill(")[1].split(")")[0].strip('"\'')
+        action_str = f"keyboard_type(text='{text}')"
+    elif ".dblclick()" in action_code:
+        action_str = "dblclick(...)"
+    elif "page.scroll" in action_code:
+        action_str = "scroll(...)"
+    elif ".paste(" in action_code:
+        action_str = "paste(...)"
+    elif "page.keyboard.press" in action_code:
+        key = action_code.split("page.keyboard.press(")[1].split(")")[0].strip('"\'')
+        action_str = f"keyboard_press(key='{key}')"
+    else:
+        action_str = action_code
     
     # Add new step
     trajectory[str(step_idx + 1)] = {
         "screenshot": os.path.basename(screenshot),
         "axtree": os.path.basename(axtree),
+        "user_message": os.path.join('user_message', os.path.basename(user_message_file)) if user_message_file else None,
+        "other_obs": {
+            "page_index": 0,
+            "url": current_url,
+            "open_pages_titles": open_pages_titles,
+            "open_pages_urls": open_pages_urls
+        },
         "action": {
-            "action_code": action_code,
+            "action_str": action_str,
+            "playwright_code": action_code,
             "action_description": action_description,
-            "action_type": action_type,
             "action_output": action_output
-        }
+        },
+        "error": None,
+        "action_timestamp": time.time()
     }
     
     with open(trajectory_path, 'w', encoding='utf-8') as f:
@@ -246,7 +404,7 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
 
 def create_metadata(persona: str, url: str, orig_instruction: str, aug_instruction: str, 
                    final_instruction: Optional[str], steps: list, success: bool, total_steps: int,
-                   runtime: float, total_tokens: int, page) -> Dict[str, Any]:
+                   runtime: float, total_tokens: int, page, eps_name: str) -> Dict[str, Any]:
     """Create metadata dictionary."""
     # Get viewport size
     viewport = page.viewport_size
@@ -257,23 +415,16 @@ def create_metadata(persona: str, url: str, orig_instruction: str, aug_instructi
     cookies_enabled = context.cookies() is not None
     
     return {
-        "eps_name": f"calendar_{uuid.uuid4()}",
-        "start_url": url,
-        "phase": PHASE,
-        "browser_context": {
-            "os": os.uname().sysname.lower(),  # Get OS name
-            "viewport": viewport_str,
-            "cookies_enabled": cookies_enabled
-        },
+        "goal": aug_instruction,
+        "eps_name": eps_name,
         "task": {
-            "task_type": "calendar",  # or determine from instruction
-            "persona": persona,
+            "task_type": "calendar",
+            "steps": steps,
             "instruction": {
-                "level1": orig_instruction,
-                "level2": aug_instruction,
-                "level3": final_instruction if final_instruction else aug_instruction  # Fallback to aug_instruction if final_instruction is None
-            },
-            "steps": steps
+                "high_level": orig_instruction,
+                "mid_level": aug_instruction,
+                "low_level": final_instruction if final_instruction else aug_instruction
+            }
         },
         "success": success,
         "total_steps": total_steps,
@@ -366,6 +517,30 @@ def handle_google_login(page, email: str, password: str, timeout: int = 30000) -
         print(f"❌ Login error: {str(e)}")
         return False
 
+def write_user_message(user_message_file: str, goal: str, execution_history: list, page, tree, failed_codes: list = None):
+    """Write a user message file with goal, previous actions, current page, ax tree, and error codes."""
+    user_message_content = []
+    user_message_content.append(f"Goal: {goal}\n")
+    user_message_content.append("Previous Actions:")
+    if execution_history:
+        for i, act in enumerate(execution_history, 1):
+            user_message_content.append(f"  {i}. {act['step']} | Code: {act['code']}")
+    else:
+        user_message_content.append("  None")
+    user_message_content.append("")
+    user_message_content.append(f"Current Page: {page.title()} ({page.url})\n")
+    user_message_content.append("AX Tree:")
+    user_message_content.append(json.dumps(tree, indent=2, ensure_ascii=False))
+    user_message_content.append("")
+    user_message_content.append("Error Codes:")
+    if failed_codes:
+        for err in failed_codes:
+            user_message_content.append(f"  {err}")
+    else:
+        user_message_content.append("  None")
+    with open(user_message_file, 'w', encoding='utf-8') as f:
+        f.write('\n'.join(user_message_content))
+
 def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_idx, email: Optional[str] = None, password: Optional[str] = None):
     phase_file = os.path.join(RESULTS_DIR, f"instructions_phase{phase}.json")
     try:
@@ -441,7 +616,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         metadata = create_metadata(
                             persona, url, orig, aug, None,  # Pass None for final_instruction
                             [step['step'] for step in task_summarizer],
-                            False, step_idx, runtime, total_tokens, page
+                            False, step_idx, runtime, total_tokens, page, eps_name
                         )
                         with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
                             json.dump(metadata, f, indent=2, ensure_ascii=False)
@@ -450,8 +625,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         should_continue = False
                         break
 
-                    screenshot = os.path.join(dirs['images'], f"{step_idx:04d}.png")
-                    axtree_file = os.path.join(dirs['axtree'], f"{step_idx:04d}.json")
+                    screenshot = os.path.join(dirs['images'], f"screenshot_{step_idx+1:03d}.png")
+                    axtree_file = os.path.join(dirs['axtree'], f"axtree_{step_idx+1:03d}.txt")
                     page.screenshot(path=screenshot)
                     tree = page.accessibility.snapshot()
                     with open(axtree_file, 'w', encoding='utf-8') as f:
@@ -474,12 +649,12 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         total_tokens += gpt_resp["total_tokens"]
                         print(f"📊 Current total tokens: {total_tokens}")
 
-                    if "summary_instruction" in gpt_resp:
+                    if gpt_resp and "summary_instruction" in gpt_resp:
                         runtime = time.time() - start_time
                         metadata = create_metadata(
                             persona, url, orig, aug, gpt_resp['summary_instruction'],
                             [step['step'] for step in task_summarizer],
-                            True, step_idx, runtime, total_tokens, page
+                            True, step_idx, runtime, total_tokens, page, eps_name
                         )
                         with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
                             json.dump(metadata, f, indent=2, ensure_ascii=False)
@@ -488,13 +663,13 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         print("✅ Task completed, metadata saved.")
                         break
 
-                    if "updated_goal" in gpt_resp:
+                    if gpt_resp and "updated_goal" in gpt_resp:
                         current_goal = gpt_resp["updated_goal"]
 
                     failed_codes = []
                     retry = 0
-                    description = gpt_resp["description"]
-                    code = gpt_resp["code"]
+                    description = gpt_resp["description"] if gpt_resp else ""
+                    code = gpt_resp["code"] if gpt_resp else ""
                     success = False
 
                     while retry < MAX_RETRIES and not success:
@@ -507,17 +682,19 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                             execution_history.append({'step': description, 'code': code})
                             task_summarizer.append({'step': description, 'code': code, 'axtree': tree})
                             # Save axtree to file only after successful execution
-                            with open(os.path.join(dirs['axtree'], f"{step_idx:04d}.json"), 'w', encoding='utf-8') as f:
+                            with open(axtree_file, 'w', encoding='utf-8') as f:
                                 json.dump(tree, f, indent=2, ensure_ascii=False)
                             # Update trajectory.json with the successful step
                             update_trajectory(
                                 dirs=dirs,
                                 step_idx=step_idx,
                                 screenshot=screenshot,
-                                axtree=os.path.join(dirs['axtree'], f"{step_idx:04d}.json"),
+                                axtree=axtree_file,
                                 action_code=code,
                                 action_description=description,
-                                page=page
+                                page=page,
+                                user_message_file=os.path.join(dirs['user_message'], f"user_message_{step_idx+1:03d}.txt"),
+                                llm_output=gpt_resp
                             )
                             success = True
                         except Exception as e:
@@ -549,12 +726,12 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                     total_tokens += gpt_resp["total_tokens"]
                                     print(f"📊 Current total tokens: {total_tokens}")
 
-                                if "summary_instruction" in gpt_resp:
+                                if gpt_resp and "summary_instruction" in gpt_resp:
                                     runtime = time.time() - start_time
                                     metadata = create_metadata(
                                         persona, url, orig, aug, gpt_resp['summary_instruction'],
                                         [step['step'] for step in task_summarizer],
-                                        True, step_idx, runtime, total_tokens, page
+                                        True, step_idx, runtime, total_tokens, page, eps_name
                                     )
                                     with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
                                         json.dump(metadata, f, indent=2, ensure_ascii=False)
@@ -563,17 +740,17 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                     print("✅ Task completed on retry, metadata saved.")
                                     should_continue = False
                                     break
-                                if "updated_goal" in gpt_resp:
+                                if gpt_resp and "updated_goal" in gpt_resp:
                                     current_goal = gpt_resp["updated_goal"]
-                                description = gpt_resp["description"]
-                                code = gpt_resp["code"]
+                                description = gpt_resp["description"] if gpt_resp else ""
+                                code = gpt_resp["code"] if gpt_resp else ""
                             else:
                                 print(f"❌ All {MAX_RETRIES} retries failed.")
                                 runtime = time.time() - start_time
                                 metadata = create_metadata(
                                     persona, url, orig, aug, None,  # Pass None for final_instruction
                                     [step['step'] for step in task_summarizer],
-                                    False, step_idx, runtime, total_tokens, page
+                                    False, step_idx, runtime, total_tokens, page, eps_name
                                 )
                                 with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
                                     json.dump(metadata, f, indent=2, ensure_ascii=False)
@@ -591,6 +768,17 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         if os.path.exists(axtree_file):
                             os.remove(axtree_file)
                         break
+
+                    # Prepare user message content
+                    user_message_file = os.path.join(dirs['user_message'], f"user_message_{step_idx+1:03d}.txt")
+                    write_user_message(
+                        user_message_file=user_message_file,
+                        goal=current_goal,
+                        execution_history=execution_history,
+                        page=page,
+                        tree=tree,
+                        failed_codes=failed_codes if 'failed_codes' in locals() else None
+                    )
 
                 page.close()
                 if MODE == 1:
@@ -636,235 +824,146 @@ def generate_trajectory_html(dirs: Dict[str, str], metadata: Dict[str, Any]) -> 
         print("❌ Error loading trajectory.json")
         return
 
-    # Start building HTML
+    # Instruction Table
+    instructions = metadata['task']['instruction']
+    steps = metadata['task']['steps']
     html_content = f"""<!DOCTYPE html>
-<html lang="en">
+<html lang=\"en\">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
     <title>Visualization of Trajectory</title>
     <style>
-        body {{
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }}
-        .container {{
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }}
-        h1, h2 {{
-            color: #333;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-        }}
-        .metadata {{
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }}
-        .metadata-item {{
-            margin: 10px 0;
-        }}
-        .metadata-label {{
-            font-weight: bold;
-            color: #555;
-        }}
-        .step {{
-            border: 1px solid #ddd;
-            margin: 20px 0;
-            padding: 15px;
-            border-radius: 5px;
-            background-color: white;
-        }}
-        .step-header {{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }}
-        .step-number {{
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #2196F3;
-        }}
-        .step-content {{
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }}
-        .screenshot {{
-            max-width: 100%;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }}
-        .action-details {{
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-radius: 5px;
-        }}
-        .element-properties {{
-            margin-top: 10px;
-            padding: 10px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }}
-        .property {{
-            margin: 5px 0;
-        }}
-        .property-label {{
-            font-weight: bold;
-            color: #555;
-        }}
-        .bbox {{
-            background-color: #e3f2fd;
-            padding: 5px;
-            border-radius: 3px;
-        }}
+        body {{ font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background-color: #f5f5f5; }}
+        .container {{ max-width: 1200px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }}
+        h1, h2 {{ color: #333; border-bottom: 2px solid #eee; padding-bottom: 10px; }}
+        .step {{ border: 1px solid #ddd; margin: 20px 0; padding: 15px; border-radius: 5px; background-color: white; }}
+        .step-header {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }}
+        .step-number {{ font-size: 1.2em; font-weight: bold; color: #2196F3; }}
+        .step-content {{ display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }}
+        .screenshot {{ max-width: 100%; border: 1px solid #ddd; border-radius: 4px; }}
+        .collapsible {{ background-color: #eee; color: #444; cursor: pointer; padding: 10px; width: 100%; border: none; text-align: left; outline: none; font-size: 1em; margin-top: 5px; }}
+        .active, .collapsible:hover {{ background-color: #ccc; }}
+        .content {{ padding: 0 18px; display: none; overflow: auto; background-color: #f9f9f9; border-radius: 0 0 5px 5px; }}
+        pre {{ white-space: pre-wrap; word-break: break-word; }}
+        table.instruction-table {{ width: 100%; border-collapse: collapse; margin-bottom: 20px; }}
+        table.instruction-table th, table.instruction-table td {{ border: 1px solid #ddd; padding: 8px; }}
+        table.instruction-table th {{ background: #f0f0f0; text-align: left; }}
+        .steps-list {{ margin: 0; padding-left: 20px; }}
+        .steps-list li {{ margin-bottom: 4px; }}
+        .step-details-label {{ font-weight: bold; margin-top: 10px; }}
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Visualization of Trajectory</h1>
-        
-        <div class="metadata">
-            <h2>Metadata</h2>
-            <div class="metadata-item">
-                <span class="metadata-label">Episode Name:</span> {metadata['eps_name']}
-            </div>
-            <div class="metadata-item">
-                <span class="metadata-label">Start URL:</span> {metadata['start_url']}
-            </div>
-            <div class="metadata-item">
-                <span class="metadata-label">Phase:</span> {metadata['phase']}
-            </div>
-            <div class="metadata-item">
-                <span class="metadata-label">Browser Context:</span>
-                <ul>
-                    <li>OS: {metadata['browser_context']['os']}</li>
-                    <li>Viewport: {metadata['browser_context']['viewport']}</li>
-                    <li>Cookies Enabled: {metadata['browser_context']['cookies_enabled']}</li>
-                </ul>
-            </div>
-            <div class="metadata-item">
-                <span class="metadata-label">Task:</span>
-                <ul>
-                    <li>Type: {metadata['task']['task_type']}</li>
-                    <li>Persona: {metadata['task']['persona']}</li>
-                    <li>Instructions:
-                        <ul>
-                            <li>Level 1: {metadata['task']['instruction']['level1']}</li>
-                            <li>Level 2: {metadata['task']['instruction']['level2']}</li>
-                            <li>Level 3: {metadata['task']['instruction']['level3']}</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div class="metadata-item">
-                <span class="metadata-label">Execution:</span>
-                <ul>
-                    <li>Success: {metadata['success']}</li>
-                    <li>Total Steps: {metadata['total_steps']}</li>
-                    <li>Runtime: {metadata['runtime_sec']:.2f} seconds</li>
-                    <li>Total Tokens: {metadata['total_tokens']}</li>
-                </ul>
-            </div>
-        </div>
-
+    <div class=\"container\">
+        <h1>{metadata['eps_name']} ({metadata['task'].get('task_type','')})</h1>
+        <h2>Instructions</h2>
+        <table class=\"instruction-table\">
+            <tr><th>level</th><th>instruction</th></tr>
+            <tr><td><em>high_level</em></td><td>{html.escape(instructions.get('high_level',''))}</td></tr>
+            <tr><td><em>mid_level</em></td><td>{html.escape(instructions.get('mid_level',''))}</td></tr>
+            <tr><td><em>low_level</em></td><td>{html.escape(instructions.get('low_level',''))}</td></tr>
+            <tr><td><em>steps</em></td><td><ul class=\"steps-list\">{''.join(f'<li>{html.escape(str(s))}</li>' for s in steps)}</ul></td></tr>
+        </table>
         <h2>Trajectory Steps</h2>
 """
 
-    # Add each step to the HTML
     for step_num, step_data in trajectory.items():
         screenshot_path = os.path.join('images', step_data['screenshot'])
+        user_message_path = step_data.get('user_message')
+        user_message_content = ""
+        if user_message_path:
+            user_message_full_path = os.path.join(dirs['root'], user_message_path)
+            try:
+                with open(user_message_full_path, 'r', encoding='utf-8') as umf:
+                    user_message_content = html.escape(umf.read())
+            except Exception:
+                user_message_content = "[Could not load user message]"
+        else:
+            user_message_content = "[No user message]"
         action = step_data['action']
         action_output = action.get('action_output', {})
-        
+        thought = html.escape(action_output.get('thought', ''))
+        action_str = html.escape(action.get('action_str', ''))
+        action_description = html.escape(action.get('action_description', ''))
+        # System message: use a field if available, else placeholder
+        system_message = step_data.get('system_message', 'System message for this step (placeholder)')
+        # Element output: pretty print action_output['action'] if available
+        element_output = ''
+        if 'action' in action_output:
+            element_output = json.dumps(action_output['action'], indent=2, ensure_ascii=False)
+            element_output = html.escape(element_output)
+        else:
+            element_output = '[No element output]'
+        # LLM output: show Playwright code for this step
+        playwright_code = action.get('playwright_code', '')
+        llm_output_str = html.escape(playwright_code) if playwright_code else 'No Playwright code for this step.'
+
         html_content += f"""
-        <div class="step">
-            <div class="step-header">
-                <span class="step-number">Step {step_num}</span>
-                <span class="action-type">{action['action_type'].upper()}</span>
+        <div class=\"step\">
+            <div class=\"step-header\">
+                <span class=\"step-number\">Step {step_num}</span>
             </div>
-            <div class="step-content">
+            <div class=\"step-content\">
                 <div>
-                    <img src="{screenshot_path}" alt="Step {step_num} Screenshot" class="screenshot">
+                    <img src=\"{screenshot_path}\" alt=\"Step {step_num} Screenshot\" class=\"screenshot\">
                 </div>
-                <div class="action-details">
-                    <div class="property">
-                        <span class="property-label">Action Code:</span><br>
-                        <code>{action['action_code']}</code>
-                    </div>
-                    <div class="property">
-                        <span class="property-label">Description:</span><br>
-                        {action['action_description']}
-                    </div>
-                    <div class="element-properties">
-                        <h3>Element Properties</h3>
-"""
-        
-        if action_output:
-            if 'bbox' in action_output:
-                html_content += f"""
-                        <div class="property">
-                            <span class="property-label">Bounding Box:</span>
-                            <div class="bbox">
-                                x: {action_output['bbox']['x']}, 
-                                y: {action_output['bbox']['y']}, 
-                                width: {action_output['bbox']['width']}, 
-                                height: {action_output['bbox']['height']}
-                            </div>
-                        </div>"""
-            
-            for prop in ['class', 'id', 'type', 'ariaLabel', 'role', 'value']:
-                if prop in action_output and action_output[prop]:
-                    html_content += f"""
-                        <div class="property">
-                            <span class="property-label">{prop}:</span> {action_output[prop]}
-                        </div>"""
-            
-            if 'text' in action_output:
-                html_content += f"""
-                        <div class="property">
-                            <span class="property-label">Text:</span> {action_output['text']}
-                        </div>"""
-            
-            if 'key' in action_output:
-                html_content += f"""
-                        <div class="property">
-                            <span class="property-label">Key Pressed:</span> {action_output['key']}
-                        </div>"""
-            
-            if 'timestamp' in action_output:
-                html_content += f"""
-                        <div class="property">
-                            <span class="property-label">Timestamp:</span> {action_output['timestamp']}
-                        </div>"""
-
-        html_content += """
-                    </div>
+                <div>
+                    <div class=\"step-details-label\">Thought</div>
+                    <div>{thought}</div>
+                    <div class=\"step-details-label\">Action</div>
+                    <div>{action_str}</div>
+                    <div class=\"step-details-label\">Action Description</div>
+                    <div>{action_description}</div>
+                    <button class=\"collapsible\">System Message</button>
+                    <div class=\"content\"><pre>{system_message}</pre></div>
+                    <button class=\"collapsible\">User Message</button>
+                    <div class=\"content\"><pre>{user_message_content}</pre></div>
+                    <button class=\"collapsible\">Element Output</button>
+                    <div class=\"content\"><pre>{element_output}</pre></div>
+                    <button class=\"collapsible\">LLM Output</button>
+                    <div class=\"content\"><pre>{llm_output_str}</pre></div>
                 </div>
             </div>
-        </div>"""
+        </div>
+        """
 
-    # Close HTML
     html_content += """
     </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var coll = document.getElementsByClassName('collapsible');
+      for (var i = 0; i < coll.length; i++) {
+        coll[i].addEventListener('click', function() {
+          this.classList.toggle('active');
+          var content = this.nextElementSibling;
+          if (content.style.display === 'block') {
+            content.style.display = 'none';
+          } else {
+            content.style.display = 'block';
+          }
+        });
+      }
+    });
+    </script>
 </body>
 </html>"""
 
-    # Write HTML file
     with open(html_path, 'w', encoding='utf-8') as f:
         f.write(html_content)
 
+def extract_button_name_from_code(action_code):
+    match = re.search(r"name=['\"]([^'\"]+)['\"]", action_code)
+    if match:
+        return match.group(1)
+    return None
+
+def extract_role_and_name_from_code(action_code):
+    role_match = re.search(r"get_by_role\(['\"]([^'\"]+)['\"]", action_code)
+    name_match = re.search(r"name=['\"]([^'\"]+)['\"]", action_code)
+    role = role_match.group(1) if role_match else None
+    name = name_match.group(1) if name_match else None
+    return role, name
 
 if __name__ == "__main__":
     main()
