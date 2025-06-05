@@ -75,15 +75,17 @@ Your response must be a JSON object with this structure:
 {
     "description": "A clear, natural language description of what the code will do",
     "code": "The playwright code to execute" (ONLY RETURN ONE CODE BLOCK),
-    "updated_goal": "The new, clarified plan if you changed it, or the current plan if unchanged"
+    "updated_goal": "The new, clarified plan if you changed it, or the current plan if unchanged",
+    "thought": "Your reasoning for choosing this action, and what you want to acomplish by doing this action"
 }
 ```
 Your response must be a JSON object with this structure:
 ```json
 {
     "description": "Click the Create button to start creating a new event",
-    "code": "page.get_by_role('button').filter(has_text='Create').click()"
-    "updated_goal": "Create a new event titled 'Mystery Event' at May 20th from 10 AM to 11 AM"
+    "code": "page.get_by_role('button').filter(has_text='Create').click()",
+    "updated_goal": "Create a new event titled 'Mystery Event' at May 20th from 10 AM to 11 AM",
+    "thought": "I need to click the Create button to start creating a new event"
 }
 ```
 For example:
@@ -91,14 +93,15 @@ For example:
 {
     "description": "Fill in the event time with '9:00 PM'",
     "code": "page.get_by_label('Time').fill('9:00 PM')",
-    "updated_goal": "Schedule a meeting titled 'Team Sync' at 9:00 PM"
+    "updated_goal": "Schedule a meeting titled 'Team Sync' at 9:00 PM",
+    "thought": "I need to fill in the time for the event to schedule the meeting"
 }
 ```
 If the task is completed, return a JSON with a instruction summary:
 ```json
 {
     "summary_instruction": "An instruction that describes the overall task that was accomplished based on the actions taken so far. It should be phrased as a single, clear instruction you would give to a web assistant to replicate the completed task. For example: 'Schedule a meeting with the head of innovation at the Kigali Tech Hub on May 13th at 10 AM'.",
-    "output": "A short factual answer or result if the task involved identifying specific information (e.g., 'Meeting scheduled for May 13th at 10 AM with John Smith' or 'Event deleted successfully')"
+    "output": "A short factual answer or result if the task involved identifying specific information (e.g., 'Meeting scheduled for May 13th at 10 AM with John Smith' or 'Event deleted successfully')",
 }
 ```"""
 
@@ -142,7 +145,8 @@ Your response must be a JSON object with this structure:
 {
     "description": "A clear, natural language description of what the code will do",
     "code": "The playwright code to execute" (ONLY RETURN ONE CODE BLOCK),
-    "updated_goal": "The new, clarified plan if you changed it, or the current plan if unchanged"
+    "updated_goal": "The new, clarified plan if you changed it, or the current plan if unchanged",
+    "thought": "Your reasoning for choosing this action and what you want to acomplish by doing this action"
 }
 ```
 
@@ -151,14 +155,15 @@ For example:
 {
     "description": "Select the event named 'Physics Party' and click Delete",
     "code": "page.get_by_text('Physics Party').click();,
-    "updated_goal": "Delete the event called 'Physics Party'"
+    "updated_goal": "Delete the event called 'Physics Party'",
+    "thought": "I need to find and click on the 'Physics Party' event to select it"
 }
 ```
 If the task is completed, return a JSON with a instruction summary:
 ```json
 {
     "summary_instruction": "An instruction that describes the overall task that was accomplished based on the actions taken so far. It should be phrased as a single, clear instruction you would give to a web assistant to replicate the completed task. For example: 'Delete the event called 'Team Meeting' on May 13th at 10 AM'.",
-    "output": "A short factual answer or result if the task involved identifying specific information (e.g., 'Event 'Team Meeting' has been deleted' or 'No matching events found')"
+    "output": "A short factual answer or result if the task involved identifying specific information (e.g., 'Event 'Team Meeting' has been deleted' or 'No matching events found')",
 }
 ```"""
 
@@ -221,7 +226,8 @@ Your response must be a JSON object with this structure:
 {
     "description": "A clear, natural language description of what the code will do",
     "code": "The playwright code to execute" (ONLY RETURN ONE CODE BLOCK),
-    "updated_goal": "The new, clarified plan if you changed it, or the current plan if unchanged"
+    "updated_goal": "The new, clarified plan if you changed it, or the current plan if unchanged",
+    "thought": "Your reasoning for choosing this action"
 }
 ```
 
@@ -230,7 +236,8 @@ For example:
 {
     "description": "Fill in the event time with '9:00 PM'",
     "code": "page.get_by_label('Time').fill('9:00 PM')",
-    "updated_goal": "Schedule a meeting at 9:00 PM"
+    "updated_goal": "Schedule a meeting at 9:00 PM",
+    "thought": "I need to set the meeting time to 9:00 PM"
 }
 ```
 
@@ -238,7 +245,7 @@ If the task is completed, return a JSON with a instruction summary:
 ```json
 {
     "summary_instruction": "An instruction that describes the overall task that was accomplished based on the actions taken so far. It should be phrased as a single, clear instruction you would give to a web assistant to replicate the completed task. For example: 'Schedule a meeting with the head of innovation at the Kigali Tech Hub on May 13th at 10 AM'.",
-    "output": "A short factual answer or result if the task involved identifying specific information (e.g., 'Meeting scheduled successfully' or 'Error: Could not find the specified contact')"
+    "output": "A short factual answer or result if the task involved identifying specific information (e.g., 'Meeting scheduled successfully' or 'Error: Could not find the specified contact')",
 }
 ```"""
 
@@ -311,7 +318,8 @@ Your response must be a JSON object with this structure:
 {
     "description": "A clear, natural language description of what the code will do",
     "code": "The Playwright code to execute",
-    "updated_goal": "The new, clarified plan if updated, or the original plan if unchanged"
+    "updated_goal": "The new, clarified plan if updated, or the original plan if unchanged",
+    "thought": "Your reasoning for choosing this action"
 }
 ```
 For example:
@@ -319,7 +327,8 @@ For example:
 {
     "description": "Fill in destination with 'Gas Works Park' and press Enter to begin navigation",
     "code": "page.get_by_label('Choose destination').fill('Gas Works Park'); page.keyboard.press('Enter')",
-    "updated_goal": "Show walking directions from Fremont to Gas Works Park"
+    "updated_goal": "Show walking directions from Fremont to Gas Works Park",
+    "thought": "I need to enter Gas Works Park as the destination and confirm to start navigation"
 }
 ```
 or
@@ -327,14 +336,15 @@ or
 {
     "description": "Press Enter to submit the destination and search for routes",
     "code": "page.get_by_label('Choose destination').press('Enter')",
-    "updated_goal": "Show the direction from Pike Place Market to the nearest best buy with car"
+    "updated_goal": "Show the direction from Pike Place Market to the nearest best buy with car",
+    "thought": "I need to confirm the destination to start searching for routes"
 }
 ```
 If the task is completed, return a JSON with a instruction summary:
 ```json
 {
     "summary_instruction": "An instruction that describes the overall task completed based on the actions taken so far. Example: 'Find cycling directions from Magnuson Park to Ballard Locks.'",
-    "output": "A short factual answer or result if the task involved identifying map conditions or listings (e.g., 'Traffic is currently heavy on I-5 through downtown Seattle.' or 'Nearby results include Lazy Cow Bakery and Lighthouse Roasters.')"
+    "output": "A short factual answer or result if the task involved identifying map conditions or listings (e.g., 'Traffic is currently heavy on I-5 through downtown Seattle.' or 'Nearby results include Lazy Cow Bakery and Lighthouse Roasters.')",
 }
 ```"""
 
@@ -389,14 +399,16 @@ Your return must be a **JSON object** with:
 {
   "description": "A natural language summary of the action to take",
   "code": "The Playwright code that performs the action",
-  "updated_goal": "The clarified task plan"
+  "updated_goal": "The clarified task plan",
+  "thought": "Your reasoning for choosing this action"
 }
 For example:
 ```json
 {
   "description": "Enter the search query 'urban planning policy Jakarta' in the search bar",
   "code": "page.get_by_placeholder('Search').fill('urban planning policy Jakarta')",
-  "updated_goal": "Search for articles about urban planning policy in Jakarta"
+  "updated_goal": "Search for articles about urban planning policy in Jakarta",
+  "thought": "I need to enter the search query to find relevant articles about urban planning in Jakarta"
 }
 ```
 or
@@ -404,13 +416,15 @@ or
 {
   "description": "Submit the search form by pressing Enter",
   "code": "page.keyboard.press('Enter')",
+  "updated_goal": "Search for articles about urban planning policy in Jakarta",
+  "thought": "I need to submit the search to get the results"
 }
 ```
 If the task is completed, return a JSON with a instruction summary:
 ```json
 {
     "summary_instruction": "An instruction that describes the overall task that was accomplished based on the actions taken so far. It should be phrased as a single, clear instruction you would give to a web assistant to replicate the completed task. For example: 'Search for articles about urban planning in Jakarta published since 2020'.",
-    "output": "A short factual answer or result if the task involved identifying specific information (e.g., 'Found 127 articles about urban planning in Jakarta, with 5 highly cited papers' or 'No results found for the specified criteria')"
+    "output": "A short factual answer or result if the task involved identifying specific information (e.g., 'Found 127 articles about urban planning in Jakarta, with 5 highly cited papers' or 'No results found for the specified criteria')",
 }
 ```"""
 
@@ -492,16 +506,17 @@ Your response must be a JSON object with this structure:
 {
     "description": "A clear, natural language description of what the code will do",
     "code": "The playwright code to execute" (ONLY RETURN ONE CODE BLOCK),
-    "updated_goal": "The new, clarified plan if you changed it, or the current plan if unchanged"
+    "updated_goal": "The new, clarified plan if you changed it, or the current plan if unchanged",
+    "thought": "Your reasoning for choosing this action"
 }
 ```
 If the task is completed, return a JSON with a instruction summary:
 ```json
 {
     "summary_instruction": "An instruction that describes the overall task that was accomplished based on the actions taken so far. It should be phrased as a single, clear instruction you would give to a web assistant to replicate the completed task. For example: 'Schedule a meeting with the head of innovation at the Kigali Tech Hub on May 13th at 10 AM'.",
-    "output": "A short factual answer or result if the task involved identifying specific information (e.g., 'Meeting scheduled for May 13th at 10 AM with John Smith' or 'Event deleted successfully')"
+    "output": "A short factual answer or result if the task involved identifying specific information (e.g., 'Meeting scheduled for May 13th at 10 AM with John Smith' or 'Event deleted successfully')",
 }
-"""
+```"""
 
 PLAYWRIGHT_CODE_SYSTEM_MSG_FLIGHTS = """You are an assistant that analyzes a web page's accessibility tree and the screenshot of the current page to help complete a user's task on a flight-booking website (e.g., Google Flights).
 
@@ -546,30 +561,34 @@ Examples of clarifying vague goals:
 Your response must be a JSON object with this structure:
 ```json
 {
-    "description": "Fill the 'To' field with 'New York' and press Enter to confirm",
-    "code": "page.get_by_label('To').fill('New York');,
-    "updated_goal": "Search for one-way flights from Seattle to New York on May 10th"
+    "description": "A clear, natural language description of what the code will do",
+    "code": "The playwright code to execute" (ONLY RETURN ONE CODE BLOCK),
+    "updated_goal": "The new, clarified plan if you changed it, or the current plan if unchanged",
+    "thought": "Your reasoning for choosing this action"
 }
 ```
 For example:
 ```json
 {
     "description": "Click the Create button to start creating a new event",
-    "code": "page.get_by_role('button').filter(has_text='Create').click()"
-    "updated_goal": "Create a new event titled 'Mystery Event' at May 20th from 10 AM to 11 AM"
+    "code": "page.get_by_role('button').filter(has_text='Create').click()",
+    "updated_goal": "Create a new event titled 'Mystery Event' at May 20th from 10 AM to 11 AM",
+    "thought": "I need to click the Create button to start creating a new event"
 }
 ```
 or
 ```json
 {
     "description": "Fill in the event title with 'Team Meeting'",
-    "code": "page.get_by_label('Event title').fill('Team Meeting')"
+    "code": "page.get_by_label('Event title').fill('Team Meeting')",
+    "updated_goal": "Create a new event titled 'Team Meeting' at May 20th from 10 AM to 11 AM",
+    "thought": "I need to fill in the event title with 'Team Meeting' to set the name of the event"
 }
 ```
 If the task is completed, return a JSON with a instruction summary:
 ```json
 {
     "summary_instruction": "An instruction that describes the overall task that was accomplished based on the actions taken so far. It should be phrased as a single, clear instruction you would give to a web assistant to replicate the completed task. For example: 'Find one-way flights from Seattle to New York on May 10th'.",
-    "output": "A short factual answer or result if the task involved identifying specific information (e.g., 'Found a round-trip flight ticket from Seattle to New York on June 10th until June 17th, starting at $242 with United Airlines')"
+    "output": "A short factual answer or result if the task involved identifying specific information (e.g., 'Found a round-trip flight ticket from Seattle to New York on June 10th until June 17th, starting at $242 with United Airlines')",
 }
 ```"""

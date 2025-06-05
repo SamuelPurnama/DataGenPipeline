@@ -15,7 +15,7 @@ from config import RESULTS_DIR, ACCOUNTS
 from google_auth import ensure_google_login
 
 # ========== CONFIGURABLE PARAMETERS ==========
-PHASE = 1
+PHASE = 2
 MAX_RETRIES = 7
 MAX_STEPS = 25  # Maximum number of steps before failing
 ACTION_TIMEOUT = 20000  # 30 seconds timeout for actions
@@ -107,12 +107,15 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
     locator_code = None
     action_output = None
     
+    # Get thought from LLM output, fallback to derived thought if not available
+    thought = llm_output.get('thought', '') if llm_output else ''
+    
     # Parse the action code to determine type and get element properties
     if "page.goto" in action_code:
         action_type = "goto"
         url = action_code.split("page.goto(")[1].split(")")[0].strip('"\'')
         action_output = {
-            "thought": "I need to navigate to the specified URL.",
+            "thought": thought,
             "action": {
                 "url": url
             },
@@ -121,7 +124,6 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
     elif ".click()" in action_code:
         action_type = "click"
         locator_code = action_code.split(".click()")[0]
-        # Get the last clicked element
         element_info = page.evaluate("""() => {
             const lastClicked = document.activeElement;
             if (!lastClicked) return null;
@@ -208,7 +210,7 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
         }""")
         if element_info:
             action_output = {
-                "thought": f"I need to type '{text}' into the input field.",
+                "thought": thought,
                 "action": {
                     "text": text
                 },
@@ -217,7 +219,6 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
     elif ".dblclick()" in action_code:
         action_type = "dblclick"
         locator_code = action_code.split(".dblclick()")[0]
-        # Get the last double-clicked element
         element_info = page.evaluate("""() => {
             const lastClicked = document.activeElement;
             if (!lastClicked) return null;
@@ -239,7 +240,7 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
         }""")
         if element_info:
             action_output = {
-                "thought": f"I need to double-click on the {element_info.get('role', 'element')} with value '{element_info.get('value', '')}'.",
+                "thought": thought,
                 "action": {
                     "bid": "",
                     "button": "left",
@@ -260,14 +261,13 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
     elif "page.scroll" in action_code:
         action_type = "scroll"
         action_output = {
-            "thought": "I need to scroll the page to view more content.",
+            "thought": thought,
             "action": {},
             "action_name": "scroll"
         }
     elif ".paste(" in action_code:
         action_type = "paste"
         locator_code = action_code.split(".paste(")[0]
-        # Get the last focused element
         element_info = page.evaluate("""() => {
             const lastFocused = document.activeElement;
             if (!lastFocused) return null;
@@ -289,7 +289,7 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
         }""")
         if element_info:
             action_output = {
-                "thought": f"I need to paste content into the {element_info.get('role', 'element')} with value '{element_info.get('value', '')}'.",
+                "thought": thought,
                 "action": {
                     "bid": "",
                     "bbox": [
@@ -308,7 +308,6 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
     elif "page.keyboard.press" in action_code:
         action_type = "keypress"
         key = action_code.split("page.keyboard.press(")[1].split(")")[0].strip('"\'')
-        # Get the last focused element
         element_info = page.evaluate("""() => {
             const lastFocused = document.activeElement;
             if (!lastFocused) return null;
@@ -330,7 +329,7 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
         }""")
         if element_info:
             action_output = {
-                "thought": f"I need to press the '{key}' key.",
+                "thought": thought,
                 "action": {
                     "key": key,
                     "bid": "",
@@ -415,7 +414,7 @@ def create_metadata(persona: str, url: str, orig_instruction: str, aug_instructi
     cookies_enabled = context.cookies() is not None
     
     return {
-        "goal": aug_instruction,
+        "goal": orig_instruction,
         "eps_name": eps_name,
         "task": {
             "task_type": "calendar",
@@ -426,10 +425,17 @@ def create_metadata(persona: str, url: str, orig_instruction: str, aug_instructi
                 "low_level": final_instruction if final_instruction else aug_instruction
             }
         },
+        "start_url": url,
+        "browser_context": {
+            "os": os.uname().sysname.lower(),  # Get OS name
+            "viewport": viewport_str,
+            "cookies_enabled": cookies_enabled
+        },
         "success": success,
         "total_steps": total_steps,
         "runtime_sec": runtime,
-        "total_tokens": total_tokens
+        "total_tokens": total_tokens,
+        "phase": PHASE
     }
 
 def is_already_logged_in(page, timeout: int = 5000) -> bool:
@@ -577,6 +583,10 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
             args=["--disable-blink-features=AutomationControlled"]
         )
         try:
+            # Create page once at the start
+            page = browser.new_page()
+            page.set_default_timeout(ACTION_TIMEOUT)
+            
             for idx, item in enumerate(all_instructions[start_idx:end_idx], start=start_idx):
                 persona = item['persona']
                 url = item['url']
@@ -593,8 +603,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                 print(f"🔄 Aug: {aug}")
                 print(f"UUID: {eps_name}")
 
-                page = browser.new_page()
-                page.set_default_timeout(ACTION_TIMEOUT)
+                # Navigate to URL for this instruction
                 page.goto(url)
                 
                 # Handle login using the new module
@@ -627,10 +636,58 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
 
                     screenshot = os.path.join(dirs['images'], f"screenshot_{step_idx+1:03d}.png")
                     axtree_file = os.path.join(dirs['axtree'], f"axtree_{step_idx+1:03d}.txt")
-                    page.screenshot(path=screenshot)
-                    tree = page.accessibility.snapshot()
-                    with open(axtree_file, 'w', encoding='utf-8') as f:
-                        json.dump(tree, f, indent=2, ensure_ascii=False)
+                    try:
+                        page.screenshot(path=screenshot)
+                        tree = page.accessibility.snapshot()
+                        with open(axtree_file, 'w', encoding='utf-8') as f:
+                            json.dump(tree, f, indent=2, ensure_ascii=False)
+                    except Exception as e:
+                        if "TargetClosedError" in str(e):
+                            print("❌ Page was closed unexpectedly. Attempting to recover...")
+                            # Try to create a new page
+                            try:
+                                page = browser.new_page()
+                                page.set_default_timeout(ACTION_TIMEOUT)
+                                page.goto(url)
+                                # Handle login again
+                                ensure_google_login(page, email, password, url)
+                                # Retry the screenshot and tree capture
+                                page.screenshot(path=screenshot)
+                                tree = page.accessibility.snapshot()
+                                with open(axtree_file, 'w', encoding='utf-8') as f:
+                                    json.dump(tree, f, indent=2, ensure_ascii=False)
+                            except Exception as recovery_error:
+                                print(f"❌ Recovery failed: {str(recovery_error)}")
+                                runtime = time.time() - start_time
+                                metadata = create_metadata(
+                                    persona, url, orig, aug, None,
+                                    [step['step'] for step in task_summarizer],
+                                    False, step_idx, runtime, total_tokens, page, eps_name
+                                )
+                                # Add GPT response output to metadata if available
+                                if gpt_resp and "output" in gpt_resp:
+                                    metadata["gpt_output"] = gpt_resp["output"]
+                                with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
+                                    json.dump(metadata, f, indent=2, ensure_ascii=False)
+                                generate_trajectory_html(dirs, metadata)
+                                should_continue = False
+                                break
+                        else:
+                            print(f"❌ Error capturing page state: {str(e)}")
+                            runtime = time.time() - start_time
+                            metadata = create_metadata(
+                                persona, url, orig, aug, None,
+                                [step['step'] for step in task_summarizer],
+                                False, step_idx, runtime, total_tokens, page, eps_name
+                            )
+                            # Add GPT response output to metadata if available
+                            if gpt_resp and "output" in gpt_resp:
+                                metadata["gpt_output"] = gpt_resp["output"]
+                            with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
+                                json.dump(metadata, f, indent=2, ensure_ascii=False)
+                            generate_trajectory_html(dirs, metadata)
+                            should_continue = False
+                            break
                     is_del = 'delete' in current_goal.lower()
 
                     gpt_resp = chat_ai_playwright_code(
@@ -644,12 +701,28 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         url=url
                     )
 
+                    # Handle case where GPT response is None
+                    if gpt_resp is None:
+                        print("❌ GPT returned no response")
+                        runtime = time.time() - start_time
+                        metadata = create_metadata(
+                            persona, url, orig, aug, None,  # Pass None for final_instruction
+                            [step['step'] for step in task_summarizer],
+                            False, step_idx, runtime, total_tokens, page, eps_name
+                        )
+                        with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
+                            json.dump(metadata, f, indent=2, ensure_ascii=False)
+                        # Generate HTML after metadata is created
+                        generate_trajectory_html(dirs, metadata)
+                        should_continue = False
+                        break
+
                     # Update total tokens from GPT response
-                    if gpt_resp and "total_tokens" in gpt_resp:
+                    if "total_tokens" in gpt_resp:
                         total_tokens += gpt_resp["total_tokens"]
                         print(f"📊 Current total tokens: {total_tokens}")
 
-                    if gpt_resp and "summary_instruction" in gpt_resp:
+                    if "summary_instruction" in gpt_resp:
                         runtime = time.time() - start_time
                         metadata = create_metadata(
                             persona, url, orig, aug, gpt_resp['summary_instruction'],
@@ -663,7 +736,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         print("✅ Task completed, metadata saved.")
                         break
 
-                    if gpt_resp and "updated_goal" in gpt_resp:
+                    if "updated_goal" in gpt_resp:
                         current_goal = gpt_resp["updated_goal"]
 
                     failed_codes = []
@@ -758,7 +831,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 generate_trajectory_html(dirs, metadata)
                                 should_continue = False
                                 break
-
+                                        
                     if success:
                         page.wait_for_timeout(2000)
                     else:
@@ -780,10 +853,13 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         failed_codes=failed_codes if 'failed_codes' in locals() else None
                     )
 
-                page.close()
-                if MODE == 1:
-                    input("🔚 Press Enter to continue...")
+                # Don't close the page here, just continue to next instruction
+                
         finally:
+            # Close page and browser at the very end
+            if MODE == 1:
+                    input("🔚 Press Enter to continue...")
+            page.close()
             browser.close()
 
 def run_for_account(account, chrome_path, phase):

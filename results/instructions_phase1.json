@@ -1,362 +1,740 @@
 [
   {
-    "persona": "A rival startup with a competing blockchain-based financial product, vying for the same market share",
+    "persona": "A reporter interviewing the persona to write an article about their illustrious career",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Create a calendar event for a team lunch meeting on June 15th at 3 PM",
-      "Add a reminder for the Juneteenth holiday on June 19th to send out a promotional email",
-      "Schedule a weekly team sync every Monday at 10 AM for the month of June",
-      "Search for team members to invite to a marketing strategy session on June 12th",
-      "Add a task to review the marketing campaign performance at the end of June"
+      "Add an event for a team meeting on June 10th at 3 PM",
+      "Share the calendar with a colleague named Alex",
+      "Set a reminder for Father's Day on June 15th at 9 AM",
+      "Create a recurring event for a weekly project update every Wednesday at 11 AM",
+      "Check for conflicts with existing events on June 19th"
     ],
     "augmented_instructions": [
-      "Set a reminder for 'Father's Day' on June 15, 2025, at 9 AM in Google Calendar.",
-      "Add a reminder on June 19th to send out a promotional email for Juneteenth.",
-      "Schedule a recurring event titled \"Weekly Team Sync\" every Monday at 10 AM in June.",
-      "Search for contacts to invite to a \"Marketing Strategy Session\" on June 12th.",
-      "Add a task to review the marketing campaign performance on June 30th."
+      "Create an event titled \"Team Meeting\" on June 10th at 3 PM.",
+      "Share your calendar with alex@example.com.",
+      "Set a reminder for Father's Day on June 15th at 9 AM.",
+      "Create a recurring event titled \"Weekly Project Update\" every Wednesday at 11 AM.",
+      "Check for conflicts with events on June 19th."
     ]
   },
   {
-    "persona": "A die-hard fan of Éire Óg, Ennis football team.",
+    "persona": "An older astrophysicist who provides a different perspective on the intersection of quantum gravity and cosmology",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Create an event for Éire Óg, Ennis match on June 15th at 3 PM",
-      "Set a reminder for the Éire Óg, Ennis training session on June 10th at 6 PM",
-      "Share the June 25th Éire Óg, Ennis fan meeting with my email group",
-      "Add a recurring event for Éire Óg, Ennis strategy meetings every Tuesday at 7 PM",
-      "Check for any calendar conflicts on June 20th for the Éire Óg, Ennis fan event"
+      "Add a meeting on June 10th at 3 PM to discuss quantum gravity with the research team",
+      "Create a recurring event every Wednesday at 2 PM for a cosmology lecture series",
+      "Set a reminder on June 14th for preparing the presentation on quantum gravity",
+      "Share the calendar with my graduate students to coordinate upcoming events",
+      "Check for any conflicts with other calendars on June 19th before scheduling a workshop"
     ],
     "augmented_instructions": [
-      "Create an event titled \"Éire Óg, Ennis Match\" on June 15th at 3 PM.",
-      "Set a reminder for \"Éire Óg, Ennis Training Session\" on June 10th at 6 PM.",
-      "Share the event \"Éire Óg, Ennis Fan Meeting\" on June 25th with your email group.",
-      "Add a recurring event titled \"Éire Óg, Ennis Strategy Meetings\" every Tuesday at 7 PM.",
-      "Check for any calendar conflicts on June 20th for the \"Éire Óg, Ennis Fan Event.\""
+      "Schedule a meeting on June 10th at 3 PM with the research team to discuss quantum gravity.",
+      "Create a recurring event every Wednesday at 2 PM for a cosmology lecture series.",
+      "Add a reminder on June 14th to prepare the presentation on quantum gravity.",
+      "Share your calendar with your graduate students to coordinate upcoming events.",
+      "Check for conflicts with other calendars on June 19th before scheduling a workshop."
     ]
   },
   {
-    "persona": "A local council member who recognizes the importance of the crossing guard's role in ensuring the well-being of the neighborhood's children",
+    "persona": "A marketing specialist who is passionate about creating authentic LGBTQ+ inclusive advertising campaigns",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Add an event on June 10th for a meeting with crossing guards at 3 PM",
-      "Create a reminder on June 1st to review crossing guard performance",
-      "Set up a recurring weekly meeting every Wednesday at 10 AM for safety updates",
-      "Share the calendar with the local school principal to coordinate community events",
-      "Add a task to draft a proposal for increasing crossing guard funding by June 15th"
+      "Create a calendar event for an LGBTQ+ inclusive advertising brainstorming session on June 10th at 3 PM",
+      "Set a reminder for Flag Day on June 14th to post a related campaign update on social media",
+      "Schedule a meeting with the creative team on June 19th at 11 AM to discuss Juneteenth campaign ideas",
+      "Add a recurring event every Monday in June for a weekly check-in on campaign progress at 10 AM",
+      "Share the calendar with the marketing team to ensure everyone is aligned on upcoming events and deadlines"
     ],
     "augmented_instructions": [
-      "Schedule an event on June 10th at 3 PM titled \"Meeting with Crossing Guards.\"",
-      "Create a reminder for June 1st to review crossing guard performance.",
-      "Set up a recurring weekly meeting every Wednesday at 10 AM for safety updates.",
-      "Share your calendar with principal@example.com to coordinate community events.",
-      "Add a task due by June 15th to draft a proposal for increasing crossing guard funding."
+      "Create a calendar event titled \"LGBTQ+ Inclusive Advertising Brainstorming Session\" on June 10th at 3 PM.",
+      "Set a reminder on June 14th for Flag Day to post a related campaign update on social media.",
+      "Schedule a meeting with the creative team on June 19th at 11 AM to discuss Juneteenth campaign ideas.",
+      "Add a recurring event every Monday in June for a weekly check-in on campaign progress at 10 AM.",
+      "Share the calendar with the marketing team to ensure alignment on upcoming events and deadlines."
     ]
   },
   {
-    "persona": "a middle-aged woman who lives in Texas and loves wildlife photography.",
+    "persona": "a senior software engineer with deep expertise in object-oriented design principles, specifically the Observer pattern.",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Add a calendar event for a wildlife photography workshop on June 10th at 3 PM",
-      "Set a reminder for Father's Day on June 15th, 2025, at 9 AM",
-      "Create a recurring event for a birdwatching club meeting every Wednesday at 5 PM",
-      "Check if there are any conflicts with existing events on June 22nd",
-      "Share the calendar with a friend who also loves wildlife photography"
+      "Create a new event titled \"Team Meeting\" on June 10th at 2 PM",
+      "Set a reminder for \"Father's Day\" on June 15th two days in advance",
+      "Share the calendar with a colleague",
+      "Add a recurring weekly meeting every Friday at 10 AM starting June 6th",
+      "Search for events containing the keyword \"conference\" in June"
     ],
     "augmented_instructions": [
-      "Create a calendar event titled \"Wildlife Photography Workshop\" on June 10th at 3 PM.",
-      "Set a reminder for Father's Day on June 15th, 2025, at 9 AM.",
-      "Schedule a recurring event for \"Birdwatching Club Meeting\" every Wednesday at 5 PM.",
-      "Check for conflicts with existing events on June 22nd.",
-      "Share your calendar with a friend at friend@example.com."
+      "Create an event titled \"Team Meeting\" on June 10th at 2 PM.",
+      "Set a reminder for \"Father's Day\" on June 13th.",
+      "Share the calendar with colleague@example.com.",
+      "Add a recurring weekly meeting every Friday at 10 AM starting June 6th.",
+      "Search for events with the keyword \"conference\" in June."
     ]
   },
   {
-    "persona": "A recent transplant to the neighborhood who joins them on their strolls and shares stories about their own gardening experiences",
+    "persona": "A seasoned stand-up comedian who's a bit of a curmudgeon and has a taste for the classics in comedy.",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Create a new event for a gardening workshop on June 10th at 3PM",
-      "Add a reminder for Father's Day on June 15th",
-      "Check if there are any events scheduled on June 21st",
-      "Create a recurring event for weekly plant watering every Saturday at 9AM",
-      "Share the calendar with a neighbor by using the \"Search for people\" feature"
+      "Create an event on June 15th titled \"Comedy Writing Session\" from 2 PM to 4 PM",
+      "Add a reminder for Father's Day on June 15th, one day before",
+      "Share my calendar with \"tester482\" and give them viewing permission",
+      "Set up a recurring event for \"Weekly Joke Review\" every Friday at 3 PM",
+      "Check if there are any conflicts with existing events on June 19th for scheduling a meeting"
     ],
     "augmented_instructions": [
-      "Create a new event titled \"Gardening Workshop\" on June 10th at 3 PM.",
-      "Add a reminder for Father's Day on June 15th.",
-      "Check the calendar for any events scheduled on June 21st.",
-      "Create a recurring event titled \"Plant Watering\" every Saturday at 9 AM.",
-      "Share the calendar with a neighbor using the \"Search for people\" feature."
+      "Create an event titled \"Comedy Writing Session\" on June 15th from 2 PM to 4 PM.",
+      "Add a reminder for Father's Day on June 14th.",
+      "Share your calendar with tester482@example.com and give viewing permission.",
+      "Set up a recurring event titled \"Weekly Joke Review\" every Friday at 3 PM.",
+      "Check for conflicts with existing events on June 19th."
     ]
   },
   {
-    "persona": "a travel blogger from France who's planning to explore the museums of Bangkok.",
+    "persona": "A sassy, straight-talking, elderly book club leader who also champions women's rights.",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Create a calendar event for a visit to the Bangkok National Museum on June 10th at 10 AM",
-      "Set a reminder for June 8th to pack for the Bangkok museum trip",
-      "Add a note to the June 12th date for researching local Thai cuisine near the museums",
-      "Share the June 15th museum itinerary with my travel partner",
-      "Schedule a follow-up meeting on June 22nd to discuss the blog post draft about Bangkok museums"
+      "Create a recurring event every Thursday at 3 PM for the book club meeting",
+      "Add a reminder for Juneteenth celebrations on June 19th, one week in advance",
+      "Schedule a Women's Rights discussion panel on June 8th at 2 PM",
+      "Share the calendar with the book club members to keep everyone in the loop",
+      "Set a notification for Flag Day on June 14th to plan a themed reading session"
     ],
     "augmented_instructions": [
-      "Create an event on June 10th at 10 AM titled \"Visit to Bangkok National Museum.\"",
-      "Set a reminder on June 8th to \"Pack for Bangkok museum trip.\"",
-      "Add a note on June 12th for \"Researching local Thai cuisine near the museums.\"",
-      "Share the June 15th museum itinerary with travelpartner@example.com.",
-      "Schedule a follow-up meeting on June 22nd titled \"Discuss blog post draft about Bangkok museums.\""
+      "Create a recurring event every Thursday at 3 PM titled \"Book Club Meeting\"",
+      "Add a reminder for \"Juneteenth Celebrations\" on June 19th, one week in advance",
+      "Schedule an event titled \"Women's Rights Discussion Panel\" on June 8th at 2 PM",
+      "Share your calendar with bookclub@example.com, members@example.com, and readers@example.com",
+      "Set a notification for \"Flag Day\" on June 14th to plan a themed reading session"
     ]
   },
   {
-    "persona": "A fresh graduate in biostatistics eager to learn the tricks of the trade and make a mark in the field",
+    "persona": "A renowned Russian political scientist with extensive knowledge of the Soviet regime",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Create an event on June 12th for a biostatistics seminar from 2 PM to 4 PM",
-      "Add a reminder on June 15th for Father's Day gift shopping at 10 AM",
-      "Set up a recurring weekly meeting every Tuesday at 11 AM for the Detective Fiction Workshop",
-      "Check if there are any overlapping events on June 19th",
-      "Add a task to review the Math Competition Dates calendar by June 10th"
+      "Create a calendar event for a lecture on Soviet history on June 10th at 3 PM",
+      "Add a reminder for Flag Day on June 14th with a note to prepare a presentation",
+      "Schedule a recurring meeting every Monday at 10 AM to discuss Russian political theories",
+      "Find and add the public holidays in Russia to the calendar",
+      "Set up a notification for Juneteenth on June 19th to remind me to write an article"
     ],
     "augmented_instructions": [
-      "Create an event on June 12th from 2 PM to 4 PM titled \"Biostatistics Seminar\".",
-      "Add a reminder for June 15th at 10 AM titled \"Father's Day Gift Shopping\".",
-      "Set up a recurring weekly meeting every Tuesday at 11 AM titled \"Detective Fiction Workshop\".",
-      "Check for overlapping events on June 19th.",
-      "Add a task to review the Math Competition Dates calendar by June 10th."
+      "Create an event titled \"Lecture on Soviet History\" on June 10th at 3 PM.",
+      "Add a reminder for \"Flag Day\" on June 14th with a note to prepare a presentation.",
+      "Schedule a recurring meeting every Monday at 10 AM titled \"Discussion on Russian Political Theories.\"",
+      "Add public holidays in Russia to the calendar.",
+      "Set a notification for \"Juneteenth\" on June 19th to remind you to write an article."
     ]
   },
   {
-    "persona": "An ambitious trombone player in the same band, always striving to be the spotlight performer",
+    "persona": "An English professor who analyzes the representation of STEM in contemporary literature",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Create an event on June 15th titled \"Trombone Solo Practice\" from 3 PM to 5 PM",
-      "Set a reminder for June 14th to buy a new trombone slide",
-      "Add a recurring event every Saturday titled \"Band Rehearsal\" from 10 AM to 12 PM",
-      "Share the calendar with the email address of our band director",
-      "Set a notification for June 19th to remind me to practice for the Independence Day parade"
+      "Add an event on June 10th titled \"STEM Literature Seminar\" from 3 PM to 5 PM",
+      "Set a reminder for June 14th to prepare notes for the \"Flag Day Discussion.\"",
+      "Create a recurring event every Monday in June for \"Weekly Research Meeting\" at 10 AM",
+      "Add a calendar for \"Contemporary Literature Deadlines\" and share it with the team",
+      "Schedule a notification for June 19th to review the analysis on STEM themes in literature"
     ],
     "augmented_instructions": [
-      "Create an event titled \"Trombone Solo Practice\" on June 15th from 3 PM to 5 PM.",
-      "Set a reminder on June 14th to buy a new trombone slide.",
-      "Add a recurring event titled \"Band Rehearsal\" every Saturday from 10 AM to 12 PM.",
-      "Share the calendar with banddirector@example.com.",
-      "Set a notification on June 19th to remind you to practice for the Independence Day parade."
+      "Create an event on June 10th from 3 PM to 5 PM named \"STEM Literature Seminar.\"",
+      "Set a reminder on June 14th to prepare notes for \"Flag Day Discussion.\"",
+      "Schedule a recurring event every Monday in June at 10 AM titled \"Weekly Research Meeting.\"",
+      "Add a calendar named \"Contemporary Literature Deadlines\" and share it with the team.",
+      "Set a notification on June 19th to review the analysis on STEM themes in literature."
     ]
   },
   {
-    "persona": "A renowned scientist who inspires the lawyer's child to pursue a career in biomedical research",
+    "persona": "a fun-loving on-screen actor who is a big fan of Mohamed Waheed",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Add a calendar event for a research meeting on June 10th at 2 PM",
-      "Set a reminder to review pending tasks on June 2nd",
-      "Create a recurring event for the Math Competition every Friday at 4 PM",
-      "Share the calendar with a colleague for collaboration on June events",
-      "Add a note to the June 15th event to prepare a presentation on biomedical innovations"
+      "Create a calendar event for a movie night with friends on June 15th at 7PM",
+      "Add a reminder to buy a gift for Father's Day on June 14th",
+      "Schedule a lunch meeting with my agent on June 5th at 12PM",
+      "Set up a recurring weekly rehearsal every Tuesday at 3PM",
+      "Add a note to check for new scripts on June 10th"
     ],
     "augmented_instructions": [
-      "Create a calendar event titled \"Research Meeting\" on June 10th at 2 PM.",
-      "Set a reminder for \"Review Pending Tasks\" on June 2nd.",
-      "Schedule a recurring event titled \"Math Competition\" every Friday at 4 PM.",
-      "Share your calendar with a colleague at colleague@example.com for June events.",
-      "Add a note to the June 15th event: \"Prepare a presentation on biomedical innovations.\""
+      "Create an event titled \"Movie Night with Friends\" on June 15th at 7 PM.",
+      "Add a reminder titled \"Buy Father's Day Gift\" for June 14th.",
+      "Schedule a meeting titled \"Lunch with Agent\" on June 5th at 12 PM.",
+      "Set up a recurring event titled \"Weekly Rehearsal\" every Tuesday at 3 PM.",
+      "Add a note titled \"Check for New Scripts\" on June 10th."
     ]
   },
   {
-    "persona": "A legal mediator with expertise in negotiating labor disputes for public service unions",
+    "persona": "an elderly Jewish immigrant from the former Soviet Union who is a regular attendee of a Hesed center.",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Create a calendar event for a labor negotiation meeting on June 10th at 2 PM",
-      "Share the \"Detective Fiction Workshop\" calendar with all team members",
-      "Set a reminder for the Juneteenth holiday on June 19th",
-      "Change the calendar view to week instead of month",
-      "Add a task to review the Math Competition Dates and Materials on June 5th"
+      "Add a new event to visit the Hesed center on June 10th at 3 PM",
+      "Set a reminder for Father's Day on June 15th at 9 AM",
+      "Share my calendar with my family member's email",
+      "Create a recurring weekly event for a group meeting every Tuesday at 4 PM",
+      "Check if there are any events scheduled for June 20th"
     ],
     "augmented_instructions": [
-      "Create an event on June 10th at 2 PM titled \"Labor Negotiation Meeting\".",
-      "Share the \"Detective Fiction Workshop\" calendar with all team members.",
-      "Set a reminder for June 19th titled \"Juneteenth Holiday\".",
-      "Change the calendar view to week.",
-      "Add a task titled \"Review Math Competition Dates and Materials\" for June 5th."
+      "Create an event titled \"Visit Hesed Center\" on June 10th at 3 PM.",
+      "Add a reminder for Father's Day on June 15th at 9 AM.",
+      "Share your calendar with familymember@example.com.",
+      "Schedule a recurring weekly event for a group meeting every Tuesday at 4 PM.",
+      "Check for any scheduled events on June 20th."
     ]
   },
   {
-    "persona": "A dedicated cryptocurrency researcher who wants to provide precise information to novices in the field.",
+    "persona": "An assembly line supervisor who believes in worker's rights but has to balance company expectations",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Add a calendar event for a cryptocurrency webinar on June 10th, 2025 at 3 PM",
-      "Share the \"Detective Fiction Workshop\" calendar with a colleague named Alex",
-      "Set up a reminder to check cryptocurrency market trends every Monday at 9 AM starting June",
-      "Create a new calendar named \"Cryptocurrency Research\" and color-code it for easy identification",
-      "Schedule a recurring meeting for a research team on Wednesdays at 2 PM throughout June"
+      "Add a reminder for the team meeting on June 10th at 2 PM",
+      "Schedule a lunch break on June 5th from 12 PM to 1 PM",
+      "Create a calendar entry for a union meeting on June 15th at 3 PM",
+      "Set a recurring weekly check-in every Thursday at 9 AM",
+      "Add a task to review employee suggestions on June 20th"
     ],
     "augmented_instructions": [
-      "Create an event titled \"Cryptocurrency Webinar\" on June 10th, 2025 at 3 PM.",
-      "Share the \"Detective Fiction Workshop\" calendar with alex@example.com.",
-      "Set a weekly reminder for \"Check Cryptocurrency Market Trends\" every Monday at 9 AM starting June.",
-      "Create a new calendar named \"Cryptocurrency Research\" and assign a unique color for easy identification.",
-      "Schedule a recurring meeting titled \"Research Team Meeting\" every Wednesday at 2 PM throughout June."
+      "Create an event for a team meeting on June 10th at 2 PM.",
+      "Schedule a lunch break on June 5th from 12 PM to 1 PM.",
+      "Add a calendar entry for a union meeting on June 15th at 3 PM.",
+      "Set a recurring event for a weekly check-in every Thursday at 9 AM.",
+      "Add a task to review employee suggestions on June 20th."
     ]
   },
   {
-    "persona": "An experienced software developer who provides guidance and support to aspiring programmers learning R Markdown and LaTeX",
+    "persona": "A copyright library investigator balancing the complexities of law enforcement and information management",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Create a calendar event for the Detective Fiction Workshop on June 10th at 3PM",
-      "Share the Math Competition Dates calendar with a collaborator via email",
-      "Set a reminder for Father's Day on June 15th",
-      "Change the view mode to weekly for better task management",
-      "Add a new calendar named \"R Markdown Tutorials\" for upcoming sessions"
+      "Create a calendar event for a copyright law seminar on June 8th at 2 PM",
+      "Set a reminder to follow up on the copyright registration status on June 15th",
+      "Add a recurring task every Monday to review new copyright applications",
+      "Share the calendar with the legal team for collaborative scheduling",
+      "Search for availability of team members for a meeting on June 22nd"
     ],
     "augmented_instructions": [
-      "Create an event titled \"Detective Fiction Workshop\" on June 10th at 3 PM.",
-      "Share the \"Math Competition Dates\" calendar with a collaborator via email.",
-      "Set a reminder for Father's Day on June 15th.",
-      "Change the calendar view to weekly mode.",
-      "Add a new calendar named \"R Markdown Tutorials\"."
+      "Create an event titled \"Copyright Law Seminar\" on June 8th at 2 PM.",
+      "Set a reminder for June 15th to follow up on the copyright registration status.",
+      "Add a recurring task every Monday to review new copyright applications.",
+      "Share your calendar with legal-team@example.com for collaborative scheduling.",
+      "Search for team members' availability for a meeting on June 22nd."
     ]
   },
   {
-    "persona": "An established council member who views community involvement as unnecessary and prefers centralized decision making",
+    "persona": "A professor of medical ethics, exploring the ethical implications of the surgeon's groundbreaking techniques",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Create a new calendar event on June 10th for a council meeting at 3 PM",
-      "Share the \"Math Competition Dates and Deadlines\" calendar with the finance department",
-      "Change the calendar view to \"Week\" to review the upcoming week's events",
-      "Add a reminder for \"Independence Day\" on June 4th at 9 AM",
-      "Disable notifications for the \"Birthdays\" calendar"
+      "Schedule a meeting on June 10th at 2 PM to discuss the ethical implications of new surgical techniques",
+      "Add a reminder on June 5th to review the latest research papers on medical ethics",
+      "Create a recurring event every Tuesday at 3 PM for a team discussion on ongoing ethical case studies",
+      "Set a notification for June 6th to prepare for a guest lecture on medical ethics",
+      "Share the calendar with a new assistant to coordinate future events related to medical ethics"
     ],
     "augmented_instructions": [
-      "Create an event on June 10th at 3 PM titled \"Council Meeting.\"",
-      "Share the \"Math Competition Dates and Deadlines\" calendar with finance@example.com.",
-      "Change the calendar view to \"Week.\"",
-      "Add a reminder for \"Independence Day\" on June 4th at 9 AM.",
-      "Disable notifications for the \"Birthdays\" calendar."
+      "Schedule a meeting on June 10th, 2025 at 2 PM to discuss the ethical implications of new surgical techniques.",
+      "Add a reminder on June 5th, 2025 to review the latest research papers on medical ethics.",
+      "Create a recurring event every Tuesday at 3 PM for a team discussion on ongoing ethical case studies.",
+      "Set a notification for June 6th, 2025 to prepare for a guest lecture on medical ethics.",
+      "Share your calendar with assistant@example.com to coordinate future events related to medical ethics."
     ]
   },
   {
-    "persona": "A stand-up comedian who finds inspiration in the kindergartener's positive outlook on life",
+    "persona": "A Pakistani economics student interested in local industry development",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Create a calendar event titled \"Joke Writing Session\" on June 10th from 3 PM to 5 PM",
-      "Share the \"Detective Fiction Workshop\" calendar with my writing partner",
-      "Set a reminder for \"Father’s Day\" on June 15th at 9 AM",
-      "Add a new calendar named \"Comedy Shows Schedule.\"",
-      "Change the default event duration to 30 minutes in the settings"
+      "Create an event on June 10th for a meeting with the local industry development board at 3 PM",
+      "Add a reminder on June 5th to prepare a presentation on economic strategies for local industries",
+      "Schedule a recurring weekly meeting every Wednesday at 2 PM for the economics study group",
+      "Set a notification for June 7th to research the latest trends in Pakistani industry development",
+      "Add a task to review local industry reports by June 15th"
     ],
     "augmented_instructions": [
-      "Create an event titled \"Joke Writing Session\" on June 10th from 3 PM to 5 PM.",
-      "Share the \"Detective Fiction Workshop\" calendar with your writing partner at partner@example.com.",
-      "Set a reminder for \"Father’s Day\" on June 15th at 9 AM.",
-      "Add a new calendar named \"Comedy Shows Schedule.\"",
-      "Change the default event duration to 30 minutes in the settings."
+      "Create an event on June 10th, 2025, at 3 PM for a meeting with the local industry development board.",
+      "Add a reminder on June 5th, 2025, to prepare a presentation on economic strategies for local industries.",
+      "Schedule a recurring weekly meeting every Wednesday at 2 PM for the economics study group.",
+      "Set a notification on June 7th, 2025, to research the latest trends in Pakistani industry development.",
+      "Add a task to review local industry reports by June 15th, 2025."
     ]
   },
   {
-    "persona": "A nutritionist who provides guidance on maintaining a healthy diet while traveling",
+    "persona": "A child psychologist researching the impact of humor therapy on children with anxiety disorders",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Add a calendar event for a nutrition workshop on June 10th at 3 PM",
-      "Set a reminder to prepare a healthy travel snack pack on June 14th at 8 AM",
-      "Schedule a meeting with the local health food store manager on June 16th at 11 AM",
-      "Create a task to research healthy dining options for the upcoming trip by June 5th",
-      "Block off time for a virtual consultation with a client on June 21st at 2 PM"
+      "Create a calendar event for a humor therapy session on June 10th at 2 PM",
+      "Set a reminder for the team meeting on June 5th to discuss research findings",
+      "Add a recurring event for weekly data analysis meetings every Tuesday at 11 AM",
+      "Share the calendar with the research assistant to coordinate appointments",
+      "Schedule a follow-up meeting on June 20th to review the progress of the study"
     ],
     "augmented_instructions": [
-      "Create an event titled \"Nutrition Workshop\" on June 10th at 3 PM.",
-      "Set a reminder for \"Prepare Healthy Travel Snack Pack\" on June 14th at 8 AM.",
-      "Schedule a meeting with the \"Local Health Food Store Manager\" on June 16th at 11 AM.",
-      "Add a task to \"Research Healthy Dining Options for Upcoming Trip\" by June 5th.",
-      "Block off time for a \"Virtual Consultation with Client\" on June 21st at 2 PM."
+      "Create an event titled \"Humor Therapy Session\" on June 10th at 2 PM.",
+      "Set a reminder for the \"Team Meeting\" on June 5th to discuss research findings.",
+      "Add a recurring event titled \"Weekly Data Analysis Meeting\" every Tuesday at 11 AM.",
+      "Share your calendar with assistant@example.com to coordinate appointments.",
+      "Schedule an event titled \"Follow-Up Meeting\" on June 20th to review study progress."
     ]
   },
   {
-    "persona": "A fellow web developer specializing in customizing property management software for real estate agencies",
+    "persona": "A visual artist who expresses their own interpretation of childhood memories through their art",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Create a new calendar event for a property viewing on June 10th at 3 PM",
-      "Share the calendar with the property management team",
-      "Set a reminder for the team meeting on June 15th at 10 AM",
-      "Add a recurring event for weekly maintenance checks every Friday at 9 AM",
-      "Change the calendar view to week to better organize upcoming tasks"
+      "Add an event on June 10th for a virtual gallery tour at 3 PM",
+      "Schedule a reminder on June 5th to finalize the childhood memories art piece",
+      "Create a recurring weekly event every Wednesday for art brainstorming sessions",
+      "Set an all-day event on June 15th titled \"Art Submission Deadline.\"",
+      "Share the June 20th calendar with collaborators for feedback on the project"
     ],
     "augmented_instructions": [
-      "Create a new calendar event titled \"Property Viewing\" on June 10th at 3 PM.",
-      "Share your calendar with the property management team at team@example.com.",
-      "Set a reminder for the \"Team Meeting\" on June 15th at 10 AM.",
-      "Add a recurring event titled \"Weekly Maintenance Checks\" every Friday at 9 AM.",
-      "Change the calendar view to \"Week\" mode."
+      "Add an event on June 10th at 3 PM titled \"Virtual Gallery Tour.\"",
+      "Schedule a reminder on June 5th to finalize the \"Childhood Memories\" art piece.",
+      "Create a recurring event every Wednesday for \"Art Brainstorming Sessions.\"",
+      "Set an all-day event on June 15th titled \"Art Submission Deadline.\"",
+      "Share the June 20th calendar with collaborators for project feedback."
     ]
   },
   {
-    "persona": "A mathematics professor whose calculations and algorithms are essential for AI telemetry",
+    "persona": "A history professor from Bahir Dar University",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Create a calendar event for \"AI Telemetry Team Meeting\" on June 10th from 2 PM to 3 PM",
-      "Add a reminder for \"Submit AI Algorithm Paper\" on June 20th at 9 AM",
-      "Share the \"Math Competition Dates and Deadlines\" calendar with the AI research team",
-      "Set a recurring weekly event for \"AI Telemetry Workshop\" every Wednesday from 1 PM to 3 PM",
-      "Change the calendar view to \"Week\" to better plan daily tasks"
+      "Schedule a faculty meeting on June 10th at 3 PM",
+      "Add a reminder for the history conference on June 15th",
+      "Set up a recurring event for weekly lectures on Wednesdays at 2 PM",
+      "Check for any overlapping events on June 5th",
+      "Share the calendar with the assistant for collaboration"
     ],
     "augmented_instructions": [
-      "Create an event titled \"AI Telemetry Team Meeting\" on June 10th from 2 PM to 3 PM.",
-      "Set a reminder for \"Submit AI Algorithm Paper\" on June 20th at 9 AM.",
-      "Share the \"Math Competition Dates and Deadlines\" calendar with the AI research team.",
-      "Schedule a recurring event for \"AI Telemetry Workshop\" every Wednesday from 1 PM to 3 PM.",
-      "Change the calendar view to \"Week\"."
+      "Create an event titled \"Faculty Meeting\" on June 10th at 3 PM.",
+      "Add a reminder for the \"History Conference\" on June 15th.",
+      "Set up a recurring event titled \"Weekly Lectures\" on Wednesdays at 2 PM.",
+      "Check for overlapping events on June 5th.",
+      "Share your calendar with assistant@example.com for collaboration."
     ]
   },
   {
-    "persona": "An environmental activist who views any form of dam construction as harmful to natural ecosystems and local communities.",
+    "persona": "A fairy tale lover who is keen on extracting moral lessons.",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Schedule a meeting on June 10th to discuss strategies for opposing new dam projects",
-      "Add a reminder on June 15th for a community outreach event about river conservation",
-      "Create an all-day event on June 22nd to organize a protest against a proposed dam",
-      "Set a notification on June 5th to prepare materials for an environmental impact presentation",
-      "Add a recurring monthly meeting to plan local clean-up initiatives for affected river areas"
+      "Create an event titled \"Fairy Tale Reading\" on June 10th at 3 PM",
+      "Add a reminder for \"Storytelling Workshop\" on June 15th",
+      "Share the calendar with a friend who loves fairy tales",
+      "Set a recurring event every Saturday for \"Fairy Tale Writing Practice.\"",
+      "Add a note to the June 5th event: \"Bring a magical book.\""
     ],
     "augmented_instructions": [
-      "Schedule a meeting on June 10th, 2025 to discuss strategies for opposing new dam projects.",
-      "Add a reminder on June 15th, 2025 for a community outreach event about river conservation.",
-      "Create an all-day event on June 22nd, 2025 to organize a protest against a proposed dam.",
-      "Set a notification on June 5th, 2025 to prepare materials for an environmental impact presentation.",
-      "Add a recurring monthly meeting to plan local clean-up initiatives for affected river areas."
+      "Create an event titled \"Fairy Tale Reading\" on June 10th, 2025 at 3 PM.",
+      "Add a reminder for \"Storytelling Workshop\" on June 15th, 2025.",
+      "Share the calendar with a friend at friend@example.com.",
+      "Set a recurring event every Saturday for \"Fairy Tale Writing Practice.\"",
+      "Add a note to the June 5th, 2025 event: \"Bring a magical book.\""
     ]
   },
   {
-    "persona": "A patient and open-minded individual who checks facts and corrects grammar for a wide range of authors",
+    "persona": "I am a passionate local sports commentator for a Uruguayan radio station who loves to discuss the ups and downs of Uruguayan football.",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Create a new calendar event for \"Team Meeting\" on June 10th at 3 PM",
-      "Share the \"Math Competition Dates\" calendar with [email@example.com]",
-      "Set a reminder for \"Detective Fiction Workshop\" on June 12th, one day before",
-      "Change the view to \"Week\" to get a detailed look at the upcoming events",
-      "Add a national holiday calendar for Canada to the \"Other calendars\" section"
+      "Create a calendar event for the local football match on June 10th at 3 PM",
+      "Add a reminder for the sports commentary meeting on June 15th at 10 AM",
+      "Schedule an alert for the Uruguayan league final on June 25th, two hours before kickoff",
+      "Add a recurring event for weekly team discussions every Monday at 9 AM",
+      "Check if there are any overlapping events on June 20th"
     ],
     "augmented_instructions": [
-      "Create a new event titled \"Team Meeting\" on June 10th at 3 PM.",
-      "Share the calendar \"Math Competition Dates\" with email@example.com.",
-      "Set a reminder for \"Detective Fiction Workshop\" on June 11th.",
-      "Change the calendar view to \"Week.\"",
-      "Add the Canadian national holiday calendar to \"Other calendars.\""
+      "Create an event on June 10th at 3 PM titled \"Local Football Match.\"",
+      "Set a reminder on June 15th at 10 AM for \"Sports Commentary Meeting.\"",
+      "Schedule an alert for June 25th, two hours before the \"Uruguayan League Final\" kickoff.",
+      "Add a recurring event every Monday at 9 AM titled \"Weekly Team Discussions.\"",
+      "Check for overlapping events on June 20th."
     ]
   },
   {
-    "persona": "A cat behaviorist providing advice on how to create a healthy environment for cats",
+    "persona": "I am a fashion critic who is always on the lookout for groundbreaking and unconventional designs in the fashion industry.",
     "url": "https://calendar.google.com",
     "instructions": [
-      "Create a calendar event for a cat grooming session on June 15th at 3 PM",
-      "Add a reminder for a vet appointment on June 5th at 10 AM",
-      "Schedule a recurring weekly event for cat playtime every Saturday at 4 PM",
-      "Add a note on June 21st to order more cat food",
-      "Set a reminder for June 30th to clean the cat's litter box"
+      "Schedule a fashion show event on June 15th at 7 PM",
+      "Add a reminder to follow up with the designer on June 10th",
+      "Share the calendar with my assistant for collaboration on June events",
+      "Set a recurring meeting every Wednesday at 3 PM for trend analysis",
+      "Block out June 20th for a fashion conference, marking it as 'busy'"
     ],
     "augmented_instructions": [
-      "Create an event on June 15th at 3 PM titled \"Cat Grooming Session.\"",
-      "Add a reminder on June 5th at 10 AM for \"Vet Appointment.\"",
-      "Schedule a recurring event every Saturday at 4 PM titled \"Cat Playtime.\"",
-      "Add a note on June 21st to \"Order More Cat Food.\"",
-      "Set a reminder on June 30th to \"Clean the Cat's Litter Box.\""
+      "Create an event titled \"Fashion Show\" on June 15th at 7 PM.",
+      "Set a reminder for June 10th to follow up with the designer.",
+      "Share your calendar with assistant@example.com for collaboration on June events.",
+      "Schedule a recurring meeting every Wednesday at 3 PM for trend analysis.",
+      "Block June 20th for a fashion conference and mark it as \"busy.\""
+    ]
+  },
+  {
+    "persona": "A student reporter assigned to cover high school basketball games, providing neutral and unbiased coverage",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Create an event for the high school basketball game on June 10th at 3 PM",
+      "Set a reminder for the basketball game article deadline on June 11th at 9 AM",
+      "Share the calendar with the sports editor to coordinate coverage",
+      "Add a recurring event for weekly team meetings every Monday at 10 AM",
+      "Enable notifications for upcoming basketball games scheduled in June"
+    ],
+    "augmented_instructions": [
+      "Create an event titled \"High School Basketball Game\" on June 10th at 3 PM.",
+      "Set a reminder for the \"Basketball Game Article Deadline\" on June 11th at 9 AM.",
+      "Share your calendar with sportseditor@example.com to coordinate coverage.",
+      "Add a recurring event titled \"Weekly Team Meeting\" every Monday at 10 AM.",
+      "Enable notifications for all basketball games scheduled in June."
+    ]
+  },
+  {
+    "persona": "A seasoned UX/UI design director who uses data-driven research to make design choices",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Create a calendar event for a design review meeting on June 10th at 2 PM",
+      "Set a reminder for the monthly team meeting scheduled for June 15th at 10 AM",
+      "Add a recurring task to review user feedback every Friday at 3 PM",
+      "Share my calendar with the new UX intern for collaboration",
+      "Switch the calendar view to week mode to plan upcoming design sprints"
+    ],
+    "augmented_instructions": [
+      "Create an event titled \"Design Review Meeting\" on June 10th at 2 PM.",
+      "Set a reminder for the \"Monthly Team Meeting\" on June 15th at 10 AM.",
+      "Add a recurring task titled \"Review User Feedback\" every Friday at 3 PM.",
+      "Share your calendar with a placeholder@example.com for collaboration.",
+      "Switch the calendar view to \"Week\" mode."
+    ]
+  },
+  {
+    "persona": "A local business owner who regularly sponsors prizes for the library's reading programs",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Create an event on June 15th for a meeting with the library board at 3 PM",
+      "Add a reminder on June 10th to prepare the prize packages for the reading program",
+      "Schedule a recurring event every Monday for a staff meeting at 9 AM",
+      "Set up a notification for June 5th to check the library's reading program progress",
+      "Share the calendar with the events labeled \"tester482\" with the library's email"
+    ],
+    "augmented_instructions": [
+      "Create an event on June 15th at 3 PM titled \"Meeting with the Library Board.\"",
+      "Add a reminder on June 10th to \"Prepare Prize Packages for Reading Program.\"",
+      "Schedule a recurring event every Monday at 9 AM titled \"Staff Meeting.\"",
+      "Set up a notification on June 5th to \"Check Library's Reading Program Progress.\"",
+      "Share the \"tester482\" calendar with library@example.com."
+    ]
+  },
+  {
+    "persona": "A peer who recently discovered a passion for yoga and invites them to join beginner-friendly classes",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Create a recurring event for yoga classes every Tuesday at 6 PM starting June 10th",
+      "Set a reminder on June 5th to prepare yoga gear for the upcoming class",
+      "Add a calendar event for a yoga workshop on June 15th from 10 AM to 1 PM",
+      "Share the calendar with my friend to coordinate yoga class schedules",
+      "Search for yoga-related events in June and add them to the calendar"
+    ],
+    "augmented_instructions": [
+      "Create a recurring event titled \"Yoga Class\" every Tuesday at 6 PM starting June 10th.",
+      "Set a reminder for June 5th to prepare yoga gear for the upcoming class.",
+      "Add a calendar event titled \"Yoga Workshop\" on June 15th from 10 AM to 1 PM.",
+      "Share your calendar with friend@example.com to coordinate yoga class schedules.",
+      "Search for yoga-related events in June and add them to your calendar."
+    ]
+  },
+  {
+    "persona": "A high school student dealing with the divorce of their parents and seeking emotional stability",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Add an event for a family meeting on June 10th at 5PM",
+      "Set a reminder for a therapy session every Wednesday at 3PM",
+      "Create a recurring event for a weekly call with Dad every Sunday at 7PM",
+      "Schedule a study session for math on June 15th from 2PM to 4PM",
+      "Add a birthday reminder for a friend on June 20th"
+    ],
+    "augmented_instructions": [
+      "Add an event titled \"Family Meeting\" on June 10th, 2025, at 5 PM.",
+      "Set a recurring reminder for a \"Therapy Session\" every Wednesday at 3 PM.",
+      "Create a recurring event titled \"Weekly Call with Dad\" every Sunday at 7 PM.",
+      "Schedule an event titled \"Math Study Session\" on June 15th, 2025, from 2 PM to 4 PM.",
+      "Add a birthday reminder for a friend on June 20th, 2025."
+    ]
+  },
+  {
+    "persona": "A native of Adrigole and an avid follower of local Gaelic football.",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Add a reminder for the Gaelic football match on June 12th at 7 PM",
+      "Create a recurring event for team training every Wednesday at 6 PM",
+      "Schedule a meeting with the team captain on June 8th at 3 PM",
+      "Set a notification for the next month's fixtures release on June 30th",
+      "Add the Adrigole Gaelic football club's birthdays calendar to my list"
+    ],
+    "augmented_instructions": [
+      "Add a calendar event for June 12th at 7 PM titled \"Gaelic football match.\"",
+      "Create a recurring calendar event every Wednesday at 6 PM titled \"Team training.\"",
+      "Schedule a calendar event for June 8th at 3 PM titled \"Meeting with team captain.\"",
+      "Set a calendar notification for June 30th titled \"Next month's fixtures release.\"",
+      "Add the \"Adrigole Gaelic football club's birthdays\" calendar to your list."
+    ]
+  },
+  {
+    "persona": "A talented vocalist who adds powerful and catchy lyrics to their hard dance tracks",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Create a calendar event for a studio session on June 10th at 3 PM",
+      "Set a reminder for a vocal practice session every Wednesday at 6 PM",
+      "Add a collaborator's birthday on June 15th to the calendar",
+      "Schedule a release party event for June 20th at 8 PM",
+      "Add a task to finalize lyrics for the new track by June 5th"
+    ],
+    "augmented_instructions": [
+      "Create a calendar event titled \"Studio Session\" on June 10th at 3 PM.",
+      "Set a recurring reminder for \"Vocal Practice Session\" every Wednesday at 6 PM.",
+      "Add \"Collaborator's Birthday\" on June 15th to the calendar.",
+      "Schedule an event titled \"Release Party\" for June 20th at 8 PM.",
+      "Add a task titled \"Finalize Lyrics for New Track\" with a deadline of June 5th."
+    ]
+  },
+  {
+    "persona": "An Indian woman married for 35 years who believes in traditional values.",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Add a family gathering event on June 15th at 6 PM",
+      "Set a reminder for my husband's birthday on June 10th",
+      "Check if there are any events scheduled for June 25th",
+      "Create a recurring event for weekly yoga class every Monday at 7 AM",
+      "Share the calendar with my daughter"
+    ],
+    "augmented_instructions": [
+      "Create an event titled \"Family Gathering\" on June 15th at 6 PM.",
+      "Set a reminder for \"Husband's Birthday\" on June 10th.",
+      "Check the calendar for events on June 25th.",
+      "Create a recurring event for \"Yoga Class\" every Monday at 7 AM.",
+      "Share your calendar with daughter@example.com."
+    ]
+  },
+  {
+    "persona": "A criminology professor who enjoys discussing the differing nature of traditional and cybercrimes over coffee",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Create an event for a lecture on cybercrime on June 10th at 2 PM",
+      "Set a reminder for the upcoming conference on traditional crimes on June 20th",
+      "Share the calendar with my research assistant for collaboration",
+      "Schedule a recurring meeting every Monday at 3 PM for a criminology study group",
+      "Add a note to the June 15th event with the topic \"Impact of Technology on Crime Rates\""
+    ],
+    "augmented_instructions": [
+      "Create an event titled \"Lecture on Cybercrime\" on June 10th, 2025, at 2 PM.",
+      "Set a reminder for the conference on traditional crimes on June 20th, 2025.",
+      "Share your calendar with assistant@example.com for collaboration.",
+      "Schedule a recurring meeting every Monday at 3 PM for the Criminology Study Group.",
+      "Add a note to the June 15th, 2025, event with the topic \"Impact of Technology on Crime Rates.\""
+    ]
+  },
+  {
+    "persona": "A history teacher who loves to link historical trivial to core events of history",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Create an event on June 5th for a lecture on the Industrial Revolution at 2 PM",
+      "Set a reminder for June 15th to prepare a presentation on World War II",
+      "Add a recurring event every Monday for a history study group at 4 PM",
+      "Schedule a meeting with the history department on June 12th at 10 AM",
+      "Create a task list for researching historical trivia related to the Civil War"
+    ],
+    "augmented_instructions": [
+      "Create an event on June 5th, 2025, for a lecture on the Industrial Revolution at 2 PM.",
+      "Set a reminder on June 15th, 2025, to prepare a presentation on World War II.",
+      "Add a recurring event every Monday for a history study group at 4 PM.",
+      "Schedule a meeting with the history department on June 12th, 2025, at 10 AM.",
+      "Create a task list for researching historical trivia related to the Civil War."
+    ]
+  },
+  {
+    "persona": "A supplier of sustainable materials and products specifically tailored for startups",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Schedule a product launch event on June 15th at 2PM for our new sustainable materials line",
+      "Set a reminder on June 10th to review the inventory of eco-friendly products",
+      "Add a meeting on June 5th at 10AM with the marketing team to discuss outreach strategies for startups",
+      "Create a recurring weekly check-in every Monday at 9AM to track progress on sustainability goals",
+      "Add a task to finalize the brochure for sustainable products by June 20th"
+    ],
+    "augmented_instructions": [
+      "Create an event on June 15th at 2PM titled \"Product Launch for Sustainable Materials Line\".",
+      "Set a reminder for June 10th to review the inventory of eco-friendly products.",
+      "Add a meeting on June 5th at 10AM with the marketing team to discuss outreach strategies for startups.",
+      "Schedule a recurring event every Monday at 9AM for a weekly check-in on sustainability goals.",
+      "Add a task to finalize the brochure for sustainable products by June 20th."
+    ]
+  },
+  {
+    "persona": "A young soldier currently serving in the military and seeking guidance on PTSD recovery",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Create a recurring weekly therapy session on Tuesdays at 3 PM starting June 10,",
+      "Set a reminder for a PTSD support group meeting on June 15, 2025, at 5 PM",
+      "Add a calendar event for a self-care day on June 20, 2025, from 9 AM to 5 PM",
+      "Schedule a call with a mental health counselor on June 25, 2025, at 2 PM",
+      "Mark June 30, 2025, as a rest day with a note on relaxation techniques"
+    ],
+    "augmented_instructions": [
+      "Create a recurring weekly event titled \"Therapy Session\" every Tuesday at 3 PM starting June 10, 2025.",
+      "Set a reminder for \"PTSD Support Group Meeting\" on June 15, 2025, at 5 PM.",
+      "Add a calendar event titled \"Self-Care Day\" on June 20, 2025, from 9 AM to 5 PM.",
+      "Schedule an event titled \"Call with Mental Health Counselor\" on June 25, 2025, at 2 PM.",
+      "Mark June 30, 2025, as an all-day event titled \"Rest Day\" with a note on relaxation techniques."
+    ]
+  },
+  {
+    "persona": "a novice Dota 2 player",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Create a calendar event for a Dota 2 match on June 10th at 7PM",
+      "Set a reminder for June 5th to practice Dota 2 strategies",
+      "Add a new calendar for tracking Dota 2 tournaments",
+      "Share the calendar with a friend for coordinating Dota 2 game nights",
+      "Check the calendar for any upcoming Dota 2 related events in June"
+    ],
+    "augmented_instructions": [
+      "Create an event on June 10th, 2025, at 7 PM for a Dota 2 match.",
+      "Set a reminder for June 5th, 2025, to practice Dota 2 strategies.",
+      "Add a new calendar named \"Dota 2 Tournaments.\"",
+      "Share the \"Dota 2 Tournaments\" calendar with a friend@example.com.",
+      "Check the calendar for any events related to Dota 2 in June 2025."
+    ]
+  },
+  {
+    "persona": "A CEO of a multinational company interested in understanding the impact of wage inequality on their industry",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Schedule a meeting on June 10th at 3 PM to discuss wage inequality impacts with the executive team",
+      "Set a reminder for June 15th to review the latest industry report on wage disparities",
+      "Add a task to compile data on wage inequality trends by June 20th",
+      "Create an event on June 25th for a webinar on reducing wage gaps in multinational companies",
+      "Send invites for a roundtable discussion on June 30th about strategies to address wage inequality"
+    ],
+    "augmented_instructions": [
+      "Create a calendar event on June 10th at 3 PM titled \"Discuss Wage Inequality Impacts with Executive Team.\"",
+      "Set a reminder on June 15th to review the latest industry report on wage disparities.",
+      "Add a task titled \"Compile Data on Wage Inequality Trends\" with a deadline of June 20th.",
+      "Create a calendar event on June 25th for a webinar titled \"Reducing Wage Gaps in Multinational Companies.\"",
+      "Send calendar invites for a roundtable discussion on June 30th about strategies to address wage inequality."
+    ]
+  },
+  {
+    "persona": "A city-dweller beginning to explore the world of trail running, seeking guidance and inspiration",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Create an event for a trail running session on June 10th at 7 AM",
+      "Set a reminder for June 4th to pack my trail running gear",
+      "Add a recurring event for a weekly run every Saturday at 8 AM starting June 7th",
+      "Share my calendar with a friend to coordinate trail runs",
+      "Add \"Trail Running Meetup\" to my calendar on June 15th at 6 PM"
+    ],
+    "augmented_instructions": [
+      "Create an event titled \"Trail Running Session\" on June 10th at 7 AM.",
+      "Set a reminder for June 4th to pack trail running gear.",
+      "Add a recurring event titled \"Weekly Run\" every Saturday at 8 AM starting June 7th.",
+      "Share your calendar with a friend at friend@example.com to coordinate trail runs.",
+      "Add an event titled \"Trail Running Meetup\" to your calendar on June 15th at 6 PM."
+    ]
+  },
+  {
+    "persona": "An organized and efficient professional who anticipates the mogul's needs and ensures smooth operations",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Create a meeting event for June 10th at 3 PM with the marketing team",
+      "Set a reminder for June 5th to review quarterly reports",
+      "Add a recurring event every Monday at 9 AM for a team stand-up meeting",
+      "Share the calendar with the new team member, ensuring they have viewing access",
+      "Check for any conflicts on June 18th and report back"
+    ],
+    "augmented_instructions": [
+      "Create an event on June 10th at 3 PM titled \"Meeting with Marketing Team\".",
+      "Set a reminder for June 5th to review the quarterly reports.",
+      "Add a recurring event every Monday at 9 AM titled \"Team Stand-up Meeting\".",
+      "Share your calendar with the new team member at placeholder@example.com with viewing access.",
+      "Check for conflicts on June 18th and report any findings."
+    ]
+  },
+  {
+    "persona": "A travel agent who understands the pressures and demands of the events industry and provides a supportive ear",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Create a new event for a conference call on June 15th at 3PM",
+      "Add a task for organizing travel logistics for the event on June 10th",
+      "Share the calendar with a colleague to coordinate event schedules",
+      "Set a reminder for June 5th to finalize the guest list for the event",
+      "Add a recurring meeting every Monday at 10AM for team updates"
+    ],
+    "augmented_instructions": [
+      "Create a new event titled \"Conference Call\" on June 15th at 3 PM.",
+      "Add a task titled \"Organize Travel Logistics\" for June 10th.",
+      "Share your calendar with colleague@example.com for event coordination.",
+      "Set a reminder for June 5th to finalize the guest list.",
+      "Add a recurring meeting titled \"Team Updates\" every Monday at 10 AM."
+    ]
+  },
+  {
+    "persona": "A data scientist who utilizes cutting-edge computational techniques to analyze psychological data",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Schedule a meeting for June 10th, 2025, at 3 PM with the psychology research team",
+      "Add a reminder on June 5th, 2025, to review the latest psychological data analysis",
+      "Create a recurring event every Monday at 10 AM for project status updates",
+      "Share the calendar with a colleague named Alex for collaboration on data projects",
+      "Set a notification for 15 minutes before all events in June"
+    ],
+    "augmented_instructions": [
+      "Schedule a meeting on June 10th, 2025, at 3 PM with the psychology research team.",
+      "Add a reminder on June 5th, 2025, to review the latest psychological data analysis.",
+      "Create a recurring event every Monday at 10 AM for project status updates.",
+      "Share your calendar with alex@example.com for collaboration on data projects.",
+      "Set a notification for 15 minutes before all events in June."
+    ]
+  },
+  {
+    "persona": "a 45-year-old woman who dislikes geek culture",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Create a calendar event for a doctor's appointment on June 10th at 3 PM",
+      "Set a reminder for my friend's birthday on June 20th",
+      "Add a task to remind me to water the plants every Saturday in June",
+      "Schedule a meeting with my book club on June 15th at 7 PM",
+      "Find and display any events related to holidays in June"
+    ],
+    "augmented_instructions": [
+      "Create an event titled \"Doctor's Appointment\" on June 10th at 3 PM.",
+      "Set a reminder titled \"Friend's Birthday\" on June 20th.",
+      "Add a task titled \"Water the Plants\" to repeat every Saturday in June.",
+      "Schedule an event titled \"Book Club Meeting\" on June 15th at 7 PM.",
+      "Search for and display events related to holidays in June."
+    ]
+  },
+  {
+    "persona": "A group of content creators and aspiring entrepreneurs who collaborate on online marketing strategies and share industry insights",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Add a new event titled \"Marketing Strategy Session\" on June 12th at 2 PM",
+      "Share the calendar with the user \"tester482\" for collaboration on upcoming projects",
+      "Set a reminder for the \"Quantum Gravity\" event on June 10th, one hour before it starts",
+      "Create a recurring event every Monday at 10 AM titled \"Content Planning Meeting.\"",
+      "Export the calendar for June 2025 as a PDF for offline access"
+    ],
+    "augmented_instructions": [
+      "Create a new event titled \"Marketing Strategy Session\" on June 12th at 2 PM.",
+      "Share your calendar with tester482@example.com for collaboration on upcoming projects.",
+      "Set a reminder for the \"Quantum Gravity\" event on June 10th, one hour before it starts.",
+      "Create a recurring event every Monday at 10 AM titled \"Content Planning Meeting.\"",
+      "Export the calendar for June 2025 as a PDF."
+    ]
+  },
+  {
+    "persona": "A professor of applied mathematics who has published several papers on delay differential equations",
+    "url": "https://calendar.google.com",
+    "instructions": [
+      "Add a calendar event titled \"Submit Paper on Delay Differential Equations\" on June 15th at 2 PM",
+      "Schedule a reminder for the \"Quantum Gravity\" meeting on June 10th, 15 minutes before it starts",
+      "Create a recurring event for \"Weekly Project Meeting\" every Wednesday at 11 AM for the next two months",
+      "Share the calendar with a new collaborator using their email address",
+      "Add a note to the June 11th \"Weekly Project\" event with the agenda \"Discuss new findings on delay differential equations\""
+    ],
+    "augmented_instructions": [
+      "Create an event titled \"Submit Paper on Delay Differential Equations\" on June 15th at 2 PM.",
+      "Set a reminder for the \"Quantum Gravity\" meeting on June 10th, 15 minutes before it starts.",
+      "Schedule a recurring event for \"Weekly Project Meeting\" every Wednesday at 11 AM for the next two months.",
+      "Share the calendar with a new collaborator using their email address placeholder@example.com.",
+      "Add a note to the June 11th \"Weekly Project\" event with the agenda \"Discuss new findings on delay differential equations.\""
     ]
   }
 ]
