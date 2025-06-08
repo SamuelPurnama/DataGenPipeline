@@ -36,20 +36,6 @@ def log_token_usage(resp):
     else:
         print("⚠️ Token usage info not available from API response.")
 
-def resize_image_url(url: str, max_width=512) -> str:
-    """Download image from URL, resize it, and return base64 string."""
-    response = requests.get(url)
-    img = Image.open(BytesIO(response.content))
-    
-    if img.width > max_width:
-        aspect_ratio = img.height / img.width
-        new_height = int(max_width * aspect_ratio)
-        img = img.resize((max_width, new_height), Image.LANCZOS)
-    
-    buffer = BytesIO()
-    img.save(buffer, format="PNG", optimize=True)
-    return base64.b64encode(buffer.getvalue()).decode("utf-8")
-
 
 def clean_code_response(raw_content):
     """Clean the raw response and return the parsed JSON object."""

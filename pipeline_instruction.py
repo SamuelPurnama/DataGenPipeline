@@ -26,7 +26,7 @@ from config import (
 chrome_executable_path = os.getenv("CHROME_EXECUTABLE_PATH")
 PERSONAHUB_DATA_PATH = "persona.jsonl"  # Path to PersonaHub data file
 SCREENSHOT_PATH = "screenshot.png"
-PHASE = 2
+PHASE = 1
 
 # Directory to store all browser sessions
 BROWSER_SESSIONS_DIR = "browser_sessions"
@@ -78,7 +78,7 @@ def generate_instructions_for_account(account, persona, num_instructions):
         page.goto(URL)
         
         # Ensure we're logged in before proceeding
-        ensure_google_login(page, account["email"], account["password"], URL)
+        # ensure_google_login(page, account["email"], account["password"], URL)
             
         # Take screenshot
         screenshot_path = SCREENSHOT_PATH

@@ -15,7 +15,7 @@ from config import RESULTS_DIR, ACCOUNTS
 from google_auth import ensure_google_login
 
 # ========== CONFIGURABLE PARAMETERS ==========
-PHASE = 2
+PHASE = 1
 MAX_RETRIES = 7
 MAX_STEPS = 25  # Maximum number of steps before failing
 ACTION_TIMEOUT = 20000  # 30 seconds timeout for actions
@@ -607,7 +607,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                 page.goto(url)
                 
                 # Handle login using the new module
-                ensure_google_login(page, email, password, url)
+                # ensure_google_login(page, email, password, url)
 
                 execution_history = []
                 task_summarizer = []
@@ -627,6 +627,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                             [step['step'] for step in task_summarizer],
                             False, step_idx, runtime, total_tokens, page, eps_name
                         )
+                        if gpt_resp and "output" in gpt_resp:
+                            metadata["gpt_output"] = gpt_resp["output"]
                         with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
                             json.dump(metadata, f, indent=2, ensure_ascii=False)
                         # Generate HTML after metadata is created
@@ -710,6 +712,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                             [step['step'] for step in task_summarizer],
                             False, step_idx, runtime, total_tokens, page, eps_name
                         )
+                        if gpt_resp and "output" in gpt_resp:
+                            metadata["gpt_output"] = gpt_resp["output"]
                         with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
                             json.dump(metadata, f, indent=2, ensure_ascii=False)
                         # Generate HTML after metadata is created
@@ -729,6 +733,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                             [step['step'] for step in task_summarizer],
                             True, step_idx, runtime, total_tokens, page, eps_name
                         )
+                        if gpt_resp and "output" in gpt_resp:
+                            metadata["gpt_output"] = gpt_resp["output"]
                         with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
                             json.dump(metadata, f, indent=2, ensure_ascii=False)
                         # Generate HTML after metadata is created
@@ -784,7 +790,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 error_log = str(e)
                                 print(f"📝 Error log: {error_log}")
                                 gpt_resp = chat_ai_playwright_code(
-                                    accessibility_tree=tree,
+                                        accessibility_tree=tree,
                                     previous_steps=execution_history,
                                     taskGoal=aug,
                                     taskPlan=current_goal,
@@ -806,6 +812,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                         [step['step'] for step in task_summarizer],
                                         True, step_idx, runtime, total_tokens, page, eps_name
                                     )
+                                    if gpt_resp and "output" in gpt_resp:
+                                        metadata["gpt_output"] = gpt_resp["output"]
                                     with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
                                         json.dump(metadata, f, indent=2, ensure_ascii=False)
                                     # Generate HTML after metadata is created
@@ -825,6 +833,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                     [step['step'] for step in task_summarizer],
                                     False, step_idx, runtime, total_tokens, page, eps_name
                                 )
+                                if gpt_resp and "output" in gpt_resp:
+                                    metadata["gpt_output"] = gpt_resp["output"]
                                 with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
                                     json.dump(metadata, f, indent=2, ensure_ascii=False)
                                 # Generate HTML after metadata is created
@@ -840,7 +850,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                             os.remove(screenshot)
                         if os.path.exists(axtree_file):
                             os.remove(axtree_file)
-                        break
+                            break
 
                     # Prepare user message content
                     user_message_file = os.path.join(dirs['user_message'], f"user_message_{step_idx+1:03d}.txt")
