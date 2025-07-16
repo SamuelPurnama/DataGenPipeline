@@ -2,7 +2,7 @@ PERSONAS_PER_ACCOUNT = 1  # Number of personas each account will process
 PHASE1_NUM_INSTRUCTIONS = 5  # Instructions per persona for phase 1 (initial state)
 PHASE2_NUM_INSTRUCTIONS = 20 # Instructions per persona for phase 2 (modified state)
 RESULTS_DIR = "results"
-URL = "https://maps.google.com"
+URL = "https://scholar.google.com"
 
 # Google Accounts Configuration
 ACCOUNTS = [
@@ -10,8 +10,8 @@ ACCOUNTS = [
         "email": "kukukud4@gmail.com",
         "password": "samJP535",
         "user_data_dir": "sam2",
-        "start_idx": 0,
-        "end_idx": 1
+        "start_idx": 1,
+        "end_idx": 2
     },
     # {
     #     "email": "testeracc482@gmail.com",

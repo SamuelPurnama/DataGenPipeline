@@ -1,0 +1,72 @@
+{
+  "role": "WebArea",
+  "name": "Google Scholar",
+  "children": [
+    {
+      "role": "button",
+      "name": ""
+    },
+    {
+      "role": "link",
+      "name": "My profile"
+    },
+    {
+      "role": "link",
+      "name": "My library"
+    },
+    {
+      "role": "textbox",
+      "name": "Search",
+      "focused": true,
+      "value": "comparing immigrant narratives across cultures"
+    },
+    {
+      "role": "button",
+      "name": "Search"
+    },
+    {
+      "role": "button",
+      "name": "Samuel",
+      "haspopup": "menu"
+    },
+    {
+      "role": "radio",
+      "name": "Articles",
+      "checked": true
+    },
+    {
+      "role": "text",
+      "name": "Articles"
+    },
+    {
+      "role": "radio",
+      "name": "Case law",
+      "checked": false
+    },
+    {
+      "role": "text",
+      "name": "Case law"
+    },
+    {
+      "role": "text",
+      "name": "Stand on the shoulders of giants"
+    },
+    {
+      "role": "button",
+      "name": "EN"
+    },
+    {
+      "role": "link",
+      "name": "Privacy"
+    },
+    {
+      "role": "link",
+      "name": "Terms"
+    },
+    {
+      "role": "button",
+      "name": "Help",
+      "haspopup": "menu"
+    }
+  ]
+}

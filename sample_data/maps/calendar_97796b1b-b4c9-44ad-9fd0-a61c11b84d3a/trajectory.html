@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualization of Trajectory</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background-color: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h1, h2 { color: #333; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .step { border: 1px solid #ddd; margin: 20px 0; padding: 15px; border-radius: 5px; background-color: white; }
+        .step-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .step-number { font-size: 1.2em; font-weight: bold; color: #2196F3; }
+        .step-content { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .screenshot { max-width: 100%; border: 1px solid #ddd; border-radius: 4px; }
+        .collapsible { background-color: #eee; color: #444; cursor: pointer; padding: 10px; width: 100%; border: none; text-align: left; outline: none; font-size: 1em; margin-top: 5px; }
+        .active, .collapsible:hover { background-color: #ccc; }
+        .content { padding: 0 18px; display: none; overflow: auto; background-color: #f9f9f9; border-radius: 0 0 5px 5px; }
+        pre { white-space: pre-wrap; word-break: break-word; }
+        table.instruction-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        table.instruction-table th, table.instruction-table td { border: 1px solid #ddd; padding: 8px; }
+        table.instruction-table th { background: #f0f0f0; text-align: left; }
+        .steps-list { margin: 0; padding-left: 20px; }
+        .steps-list li { margin-bottom: 4px; }
+        .step-details-label { font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>calendar_97796b1b-b4c9-44ad-9fd0-a61c11b84d3a (calendar)</h1>
+        <h2>Instructions</h2>
+        <table class="instruction-table">
+            <tr><th>level</th><th>instruction</th></tr>
+            <tr><td><em>high_level</em></td><td>Search for coffee shops near the University District</td></tr>
+            <tr><td><em>mid_level</em></td><td>Find for coffee shops near the University District</td></tr>
+            <tr><td><em>low_level</em></td><td>Search for coffee shops near the University District.</td></tr>
+            <tr><td><em>steps</em></td><td><ul class="steps-list"><li>Search for coffee shops near the University District.</li></ul></td></tr>
+        </table>
+        <h2>Trajectory Steps</h2>
+
+        <div class="step">
+            <div class="step-header">
+                <span class="step-number">Step 1</span>
+            </div>
+            <div class="step-content">
+                <div>
+                    <img src="images/screenshot_001.png" alt="Step 1 Screenshot" class="screenshot">
+                </div>
+                <div>
+                    <div class="step-details-label">Thought</div>
+                    <div>I need to search for coffee shops around the University District by filling the search box and confirming with Enter.</div>
+                    <div class="step-details-label">Action</div>
+                    <div>keyboard_type(text=&#x27;coffee shops near University District&#x27;)</div>
+                    <div class="step-details-label">Action Description</div>
+                    <div>Search for coffee shops near the University District.</div>
+                    <button class="collapsible">System Message</button>
+                    <div class="content"><pre>System message for this step (placeholder)</pre></div>
+                    <button class="collapsible">User Message</button>
+                    <div class="content"><pre>Goal: Find coffee shops near the University District
+
+Previous Actions:
+  1. Search for coffee shops near the University District. | Code: page.get_by_role(&#x27;combobox&#x27;, name=&#x27;Search Google Maps&#x27;).fill(&#x27;coffee shops near University District&#x27;); page.keyboard.press(&#x27;Enter&#x27;)
+
+Current Page: coffee shops near University District - Google Maps (https://www.google.com/maps/search/coffee+shops+near+University+District/@47.6507084,-122.3208426,13z?entry=ttu&amp;g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D)
+
+AX Tree:
+{
+  &quot;role&quot;: &quot;WebArea&quot;,
+  &quot;name&quot;: &quot;Google Maps&quot;,
+  &quot;children&quot;: [
+    {
+      &quot;role&quot;: &quot;generic&quot;,
+      &quot;name&quot;: &quot;&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;role&quot;: &quot;generic&quot;,
+          &quot;name&quot;: &quot;Google Maps&quot;,
+          &quot;children&quot;: [
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;
+            },
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;
+            },
+            {
+              &quot;role&quot;: &quot;application&quot;,
+              &quot;name&quot;: &quot;Map · Use arrow keys to pan the map. · Get details about a place by pressing its corresponding number key.&quot;
+            },
+            {
+              &quot;role&quot;: &quot;text&quot;,
+              &quot;name&quot;: &quot;Search Google Maps&quot;
+            },
+            {
+              &quot;role&quot;: &quot;combobox&quot;,
+              &quot;name&quot;: &quot;Search Google Maps&quot;,
+              &quot;focused&quot;: true,
+              &quot;haspopup&quot;: &quot;grid&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Search&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Directions&quot;
+            },
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Menu&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Saved&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Recents&quot;,
+              &quot;disabled&quot;: true
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Get the app&quot;
+            },
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+Error Codes:
+  None</pre></div>
+                    <button class="collapsible">Element Output</button>
+                    <div class="content"><pre>{
+  &quot;text&quot;: &quot;coffee shops near University District&quot;
+}</pre></div>
+                    <button class="collapsible">LLM Output</button>
+                    <div class="content"><pre>page.get_by_role(&#x27;combobox&#x27;, name=&#x27;Search Google Maps&#x27;).fill(&#x27;coffee shops near University District&#x27;); page.keyboard.press(&#x27;Enter&#x27;)</pre></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var coll = document.getElementsByClassName('collapsible');
+      for (var i = 0; i < coll.length; i++) {
+        coll[i].addEventListener('click', function() {
+          this.classList.toggle('active');
+          var content = this.nextElementSibling;
+          if (content.style.display === 'block') {
+            content.style.display = 'none';
+          } else {
+            content.style.display = 'block';
+          }
+        });
+      }
+    });
+    </script>
+</body>
+</html>

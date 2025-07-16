@@ -1,0 +1,227 @@
+{
+  "role": "WebArea",
+  "name": "Google Maps",
+  "children": [
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "generic",
+          "name": "Google Maps",
+          "children": [
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "application",
+              "name": "Map · Use arrow keys to pan the map. · Get details about a place by pressing its corresponding number key."
+            },
+            {
+              "role": "radio",
+              "name": "Best travel modes",
+              "checked": false
+            },
+            {
+              "role": "radio",
+              "name": "Driving",
+              "checked": false
+            },
+            {
+              "role": "radio",
+              "name": "Transit",
+              "checked": true
+            },
+            {
+              "role": "radio",
+              "name": "Walking",
+              "checked": false
+            },
+            {
+              "role": "radio",
+              "name": "Cycling",
+              "checked": false
+            },
+            {
+              "role": "radio",
+              "name": "Flights",
+              "checked": false
+            },
+            {
+              "role": "button",
+              "name": "Close directions"
+            },
+            {
+              "role": "list",
+              "name": "",
+              "children": [
+                {
+                  "role": "combobox",
+                  "name": "",
+                  "haspopup": "grid",
+                  "children": [
+                    {
+                      "role": "textbox",
+                      "name": "Starting point Seattle Children's Hospital",
+                      "autocomplete": "list",
+                      "value": "Seattle Children's Hospital"
+                    }
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "Search"
+                },
+                {
+                  "role": "combobox",
+                  "name": "",
+                  "expanded": true,
+                  "haspopup": "grid",
+                  "children": [
+                    {
+                      "role": "textbox",
+                      "name": "Choose destination, or click on the map...",
+                      "focused": true,
+                      "autocomplete": "list"
+                    }
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "Search"
+                }
+              ]
+            },
+            {
+              "role": "button",
+              "name": "Reverse starting point and destination"
+            },
+            {
+              "role": "generic",
+              "name": "",
+              "children": [
+                {
+                  "role": "generic",
+                  "name": ""
+                }
+              ]
+            },
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "button",
+              "name": "Menu"
+            },
+            {
+              "role": "button",
+              "name": "Saved"
+            },
+            {
+              "role": "button",
+              "name": "Recents"
+            },
+            {
+              "role": "button",
+              "name": "28 places Seattle"
+            },
+            {
+              "role": "button",
+              "name": "Get the app"
+            },
+            {
+              "role": "generic",
+              "name": "",
+              "children": [
+                {
+                  "role": "button",
+                  "name": "Departure options",
+                  "haspopup": "menu"
+                }
+              ]
+            },
+            {
+              "role": "button",
+              "name": "Collapse side panel"
+            },
+            {
+              "role": "button",
+              "name": "Google apps"
+            },
+            {
+              "role": "button",
+              "name": "Google Account: Samuel Samsudin (kukukud4@gmail.com)"
+            },
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "button",
+              "name": "Show Your Location",
+              "pressed": false
+            },
+            {
+              "role": "button",
+              "name": "Zoom in"
+            },
+            {
+              "role": "button",
+              "name": "Zoom out"
+            },
+            {
+              "role": "button",
+              "name": "Browse Street View images"
+            },
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "generic",
+              "name": "Interactive map"
+            },
+            {
+              "role": "text",
+              "name": "Layers"
+            },
+            {
+              "role": "button",
+              "name": "Layers"
+            },
+            {
+              "role": "text",
+              "name": "Map data ©2025 Google"
+            },
+            {
+              "role": "button",
+              "name": "United States"
+            },
+            {
+              "role": "button",
+              "name": "Terms"
+            },
+            {
+              "role": "button",
+              "name": "Privacy"
+            },
+            {
+              "role": "button",
+              "name": "Send Product Feedback"
+            },
+            {
+              "role": "button",
+              "name": "1 mi"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+Goal: Save relevant articles on quantum physics to my library
+
+Previous Actions:
+  1. Enter the search query 'quantum physics' in the search bar | Code: page.get_by_role('textbox', name='Search').fill('quantum physics')
+  2. Submit the search query for 'quantum physics' by clicking the search button | Code: page.get_by_role('button', name='Search').click()
+
+Current Page: quantum physics - Google Scholar (https://scholar.google.com/scholar?hl=en&as_sdt=0%2C48&q=quantum+physics&btnG=)
+
+AX Tree:
+{
+  "role": "WebArea",
+  "name": "Google Scholar",
+  "children": [
+    {
+      "role": "button",
+      "name": ""
+    },
+    {
+      "role": "link",
+      "name": "My profile"
+    },
+    {
+      "role": "link",
+      "name": "My library"
+    },
+    {
+      "role": "textbox",
+      "name": "Search",
+      "focused": true,
+      "value": "quantum physics"
+    },
+    {
+      "role": "button",
+      "name": "Search"
+    },
+    {
+      "role": "button",
+      "name": "Samuel",
+      "haspopup": "menu"
+    },
+    {
+      "role": "radio",
+      "name": "Articles",
+      "checked": true
+    },
+    {
+      "role": "text",
+      "name": "Articles"
+    },
+    {
+      "role": "radio",
+      "name": "Case law",
+      "checked": false
+    },
+    {
+      "role": "text",
+      "name": "Case law"
+    },
+    {
+      "role": "text",
+      "name": "Stand on the shoulders of giants"
+    },
+    {
+      "role": "button",
+      "name": "EN"
+    },
+    {
+      "role": "link",
+      "name": "Privacy"
+    },
+    {
+      "role": "link",
+      "name": "Terms"
+    },
+    {
+      "role": "button",
+      "name": "Help",
+      "haspopup": "menu"
+    }
+  ]
+}
+
+Error Codes:
+  None

@@ -1,0 +1,304 @@
+{
+  "role": "WebArea",
+  "name": "Google Scholar - Create alert",
+  "children": [
+    {
+      "role": "button",
+      "name": ""
+    },
+    {
+      "role": "link",
+      "name": "Homepage"
+    },
+    {
+      "role": "button",
+      "name": "Samuel",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": "Alerts"
+    },
+    {
+      "role": "text",
+      "name": "Alert email: "
+    },
+    {
+      "role": "text",
+      "name": "kukukud4@gmail.com"
+    },
+    {
+      "role": "button",
+      "name": "Change email"
+    },
+    {
+      "role": "textbox",
+      "name": "Create an alert about…",
+      "value": "\"multicultural literature\""
+    },
+    {
+      "role": "checkbox",
+      "name": "Include less relevant results",
+      "checked": false
+    },
+    {
+      "role": "text",
+      "name": "Include less relevant results"
+    },
+    {
+      "role": "button",
+      "name": "CREATE ALERT"
+    },
+    {
+      "role": "heading",
+      "name": "Most relevant results186 results in the last year.",
+      "level": 3
+    },
+    {
+      "role": "link",
+      "name": "Impact of multicultural literature on intercultural communicative competence development in English language education: A systematic review"
+    },
+    {
+      "role": "text",
+      "name": "X Aifang, NK Ahmad, SN Abd Rahman - International Journal of Learning, Teaching …, 2024"
+    },
+    {
+      "role": "text",
+      "name": "… This systematic literature review investigates the impact of integrating"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": " (ML) on the development of intercultural … effective"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "integration of "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": ". Future research directions were also discussed …"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "link",
+      "name": "A Critical Pedagogy Analysis of Literature Teachers' Perspectives on The Integration of Multicultural Literature in Higher Education"
+    },
+    {
+      "role": "text",
+      "name": "J De Jesus-Reyes - Revue de Traduction et Langues Volume, 2024"
+    },
+    {
+      "role": "text",
+      "name": "… in successfully integrating "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": " into educational settings. These"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "findings provide nuanced insights into the complexities of integrating "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": " in higher education, contributing to educational theory, policy development …"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "button",
+      "name": "See more"
+    },
+    {
+      "role": "checkbox",
+      "name": "Less relevant results",
+      "checked": false
+    },
+    {
+      "role": "text",
+      "name": "Less relevant results"
+    },
+    {
+      "role": "text",
+      "name": "41 results in the last month."
+    },
+    {
+      "role": "link",
+      "name": "The Politics of Multicultural Integration in the United States"
+    },
+    {
+      "role": "text",
+      "name": "J Spinner‐Halev - Nations and Nationalism, 2025"
+    },
+    {
+      "role": "text",
+      "name": "… I first define and defend multicultural integration, which I view as an important"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "strand in the "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": ", though perhaps not defined exactly as I do here."
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "Multicultural integration accepts the vast social science research that argues that …"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "link",
+      "name": "THE EVOLUTION OF CONTEMPORARY BRITISH FICTION"
+    },
+    {
+      "role": "text",
+      "name": "FM Sadikovna - Modern American Journal of Social Sciences and …, 2025"
+    },
+    {
+      "role": "text",
+      "name": "… Sidorova identifies several key trends marking the late twentieth century,"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "including "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": ", the emergence of new Scottish literature, neoVictorian"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "prose, and “chick lit” (literature written by women for women). According to Sidorova …"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "button",
+      "name": "See more"
+    },
+    {
+      "role": "link",
+      "name": "Privacy"
+    },
+    {
+      "role": "link",
+      "name": "Terms"
+    },
+    {
+      "role": "button",
+      "name": "Help",
+      "haspopup": "menu"
+    }
+  ]
+}

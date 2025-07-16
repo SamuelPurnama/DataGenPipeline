@@ -1,0 +1,1182 @@
+{
+  "role": "WebArea",
+  "name": "multicultural literature - Google Scholar",
+  "children": [
+    {
+      "role": "button",
+      "name": ""
+    },
+    {
+      "role": "link",
+      "name": "Homepage"
+    },
+    {
+      "role": "textbox",
+      "name": "Search",
+      "value": "multicultural literature"
+    },
+    {
+      "role": "button",
+      "name": "Search"
+    },
+    {
+      "role": "button",
+      "name": "Samuel",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": "Articles"
+    },
+    {
+      "role": "text",
+      "name": "About 1,770,000 results ("
+    },
+    {
+      "role": "text",
+      "name": "0.08"
+    },
+    {
+      "role": "text",
+      "name": " sec)"
+    },
+    {
+      "role": "link",
+      "name": "My profile"
+    },
+    {
+      "role": "link",
+      "name": "My library"
+    },
+    {
+      "role": "link",
+      "name": "Any time"
+    },
+    {
+      "role": "link",
+      "name": "Since 2025"
+    },
+    {
+      "role": "link",
+      "name": "Since 2024"
+    },
+    {
+      "role": "link",
+      "name": "Since 2021"
+    },
+    {
+      "role": "link",
+      "name": "Custom range..."
+    },
+    {
+      "role": "link",
+      "name": "Sort by relevance"
+    },
+    {
+      "role": "link",
+      "name": "Sort by date"
+    },
+    {
+      "role": "link",
+      "name": "Any type"
+    },
+    {
+      "role": "link",
+      "name": "Review articles"
+    },
+    {
+      "role": "checkbox",
+      "name": "include patents",
+      "checked": false
+    },
+    {
+      "role": "checkbox",
+      "name": "include citations",
+      "checked": true
+    },
+    {
+      "role": "link",
+      "name": "Create alert"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] ed.gov"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Heightening awareness about the importance of using multicultural literature."
+    },
+    {
+      "role": "link",
+      "name": "SA Colby"
+    },
+    {
+      "role": "text",
+      "name": ", AF Lyon - "
+    },
+    {
+      "role": "text",
+      "name": "Multicultural "
+    },
+    {
+      "role": "text",
+      "name": "Education, 2004 - ERIC"
+    },
+    {
+      "role": "text",
+      "name": "… of the use of "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": " in the classroom. … ing the importance of using "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "in the classroom that portrays a … students’ responses about using "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": " in the …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 226"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 4 versions"
+    },
+    {
+      "role": "button",
+      "name": "More"
+    },
+    {
+      "role": "text",
+      "name": "[BOOK]"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Multicultural literature for children and young adults: Reflections on critical issues"
+    },
+    {
+      "role": "text",
+      "name": "M Cai - 2002 - books.google.com"
+    },
+    {
+      "role": "text",
+      "name": "… "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": "? If yes, how do we define it? And who can create true "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": "? … How do we evaluate and select "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": " for use with children? What …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 421"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 2 versions"
+    },
+    {
+      "role": "button",
+      "name": "More"
+    },
+    {
+      "role": "link",
+      "name": "Multicultural literature and discussion as mirror and window?"
+    },
+    {
+      "role": "text",
+      "name": "J Glazier, JA Seo - Journal of adolescent & adult literacy, 2005 - Wiley Online Library"
+    },
+    {
+      "role": "text",
+      "name": "… Thus, while we vigorously applaud the use of "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": " in the classroom setting"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "as both a way to encourage students who are most often voiceless in schools to find voice …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 282"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 7 versions"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] academia.edu"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Multicultural literature as a classroom tool"
+    },
+    {
+      "role": "link",
+      "name": "SL Osorio"
+    },
+    {
+      "role": "text",
+      "name": " - "
+    },
+    {
+      "role": "text",
+      "name": "Multicultural "
+    },
+    {
+      "role": "text",
+      "name": "Perspectives, 2018 - Taylor & Francis"
+    },
+    {
+      "role": "text",
+      "name": "… that while having "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": " in the classroom is extremely important, it is just"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "as important what you do with the "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": ". I will share how "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": " should be …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 78"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 5 versions"
+    },
+    {
+      "role": "heading",
+      "name": "Related searches",
+      "level": 2
+    },
+    {
+      "role": "link",
+      "name": "multicultural literature classroom"
+    },
+    {
+      "role": "link",
+      "name": "multicultural literature elementary school"
+    },
+    {
+      "role": "link",
+      "name": "multicultural literature teachers"
+    },
+    {
+      "role": "link",
+      "name": "multicultural literature curriculum"
+    },
+    {
+      "role": "link",
+      "name": "multicultural literature reading"
+    },
+    {
+      "role": "link",
+      "name": "multicultural literature cultural awareness"
+    },
+    {
+      "role": "link",
+      "name": "multicultural literature children and young"
+    },
+    {
+      "role": "link",
+      "name": "children's multicultural literature"
+    },
+    {
+      "role": "link",
+      "name": "It's not on the list: An exploration of teachers' perspectives on using multicultural literature"
+    },
+    {
+      "role": "text",
+      "name": "BJ Stallworth, L Gibbons… - Journal of adolescent & …, 2006 - Wiley Online Library"
+    },
+    {
+      "role": "text",
+      "name": "… the need for teachers to contextualize "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": " as we have always done with"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "traditional "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": ". That is, the integration of "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": " into the curriculum will not …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 281"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 6 versions"
+    },
+    {
+      "role": "link",
+      "name": "Multicultural literature and young adolescents: A kaleidoscope of opportunity"
+    },
+    {
+      "role": "link",
+      "name": "SM Landt"
+    },
+    {
+      "role": "text",
+      "name": " - Journal of Adolescent & Adult Literacy, 2006 - Wiley Online Library"
+    },
+    {
+      "role": "text",
+      "name": "… This study reveals the necessity of integrating "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": " into the classroom. …"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "If "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": " were an integral part of education, preservice teachers would not be …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 192"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 7 versions"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] academia.edu"
+        }
+      ]
+    },
+    {
+      "role": "text",
+      "name": "[PDF]"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Multicultural readings of multicultural literature and the promotion of social awareness"
+    },
+    {
+      "role": "link",
+      "name": "E Morrell"
+    },
+    {
+      "role": "text",
+      "name": ", "
+    },
+    {
+      "role": "link",
+      "name": "J Morrell"
+    },
+    {
+      "role": "text",
+      "name": " - New England Reading Association Journal, 2012 - academia.edu"
+    },
+    {
+      "role": "text",
+      "name": "… the case for centering "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": " in English language arts … We call this idea"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " readings. Finally, we offer … spaces for "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " readings of "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": ". …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 79"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 3 versions"
+    },
+    {
+      "role": "link",
+      "name": "Multicultural literature education: A story of failure?"
+    },
+    {
+      "role": "text",
+      "name": "Y Goo - Society, 2018 - Springer"
+    },
+    {
+      "role": "text",
+      "name": "… "
+    },
+    {
+      "role": "text",
+      "name": "Multicultural"
+    },
+    {
+      "role": "text",
+      "name": " educators believe that children absorb values … help to establish a harmonious"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " society (eg, the beliefs … the methods of "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": " education. Although …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 27"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 4 versions"
+    },
+    {
+      "role": "link",
+      "name": "Teaching multicultural literature in the reading curriculum"
+    },
+    {
+      "role": "text",
+      "name": "DE Norton - The reading teacher, 1990 - JSTOR"
+    },
+    {
+      "role": "text",
+      "name": "… quence of study of "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " liter ature appropriate for use with upper elementary and …"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "in children's "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": " courses. After providing a rationale for the use of "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": ", I …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 185"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 5 versions"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] academia.edu"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Guiding principles for teaching multicultural literature"
+    },
+    {
+      "role": "link",
+      "name": "BY Louie"
+    },
+    {
+      "role": "text",
+      "name": " - The Reading Teacher, 2006 - Wiley Online Library"
+    },
+    {
+      "role": "text",
+      "name": "… This article offers specific guidelines for teaching "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": " … "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": ", limited review is available on instructional guidelines for teaching "
+    },
+    {
+      "role": "text",
+      "name": "multicultural"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "literature"
+    },
+    {
+      "role": "text",
+      "name": ". …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 145"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 8 versions"
+    },
+    {
+      "role": "text",
+      "name": "1"
+    },
+    {
+      "role": "link",
+      "name": "2"
+    },
+    {
+      "role": "link",
+      "name": "3"
+    },
+    {
+      "role": "link",
+      "name": "4"
+    },
+    {
+      "role": "link",
+      "name": "5"
+    },
+    {
+      "role": "link",
+      "name": "6"
+    },
+    {
+      "role": "link",
+      "name": "7"
+    },
+    {
+      "role": "link",
+      "name": "8"
+    },
+    {
+      "role": "link",
+      "name": "9"
+    },
+    {
+      "role": "link",
+      "name": "10"
+    },
+    {
+      "role": "link",
+      "name": "Next"
+    },
+    {
+      "role": "link",
+      "name": "Privacy"
+    },
+    {
+      "role": "link",
+      "name": "Terms"
+    },
+    {
+      "role": "button",
+      "name": "Help",
+      "haspopup": "menu"
+    }
+  ]
+}

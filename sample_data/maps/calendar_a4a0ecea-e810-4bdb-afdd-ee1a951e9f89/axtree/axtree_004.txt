@@ -1,0 +1,370 @@
+{
+  "role": "WebArea",
+  "name": "Seattle Children's Hospital to Volunteer Park Conservatory - Google Maps",
+  "children": [
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "generic",
+          "name": "Google Maps",
+          "children": [
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "application",
+              "name": "Map · Use arrow keys to pan the map. · Get details about a place by pressing its corresponding number key."
+            },
+            {
+              "role": "radio",
+              "name": "Best travel modes",
+              "checked": false
+            },
+            {
+              "role": "radio",
+              "name": "Driving 16 min",
+              "checked": false
+            },
+            {
+              "role": "radio",
+              "name": "Transit 49 min",
+              "checked": true
+            },
+            {
+              "role": "radio",
+              "name": "Walking 1h 26m",
+              "checked": false
+            },
+            {
+              "role": "radio",
+              "name": "Cycling 40 min",
+              "checked": false
+            },
+            {
+              "role": "radio",
+              "name": "Flights not available",
+              "disabled": true,
+              "checked": false
+            },
+            {
+              "role": "button",
+              "name": "Close directions"
+            },
+            {
+              "role": "list",
+              "name": "",
+              "children": [
+                {
+                  "role": "combobox",
+                  "name": "",
+                  "haspopup": "grid",
+                  "children": [
+                    {
+                      "role": "textbox",
+                      "name": "Starting point Seattle Children's Hospital",
+                      "autocomplete": "list",
+                      "value": "Seattle Children's Hospital"
+                    }
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "Search"
+                },
+                {
+                  "role": "combobox",
+                  "name": "",
+                  "haspopup": "grid",
+                  "children": [
+                    {
+                      "role": "textbox",
+                      "name": "Destination Volunteer Park Conservatory, 1400 E Galer St, Seattle, WA 98112",
+                      "autocomplete": "list",
+                      "value": "Volunteer Park Conservatory, 1400 E Galer St, Seattle, WA 98112"
+                    }
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "Search"
+                }
+              ]
+            },
+            {
+              "role": "button",
+              "name": "Reverse starting point and destination"
+            },
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "button",
+              "name": "Menu"
+            },
+            {
+              "role": "button",
+              "name": "Saved"
+            },
+            {
+              "role": "button",
+              "name": "Recents"
+            },
+            {
+              "role": "button",
+              "name": "Volunteer Park Conservatory 49 min"
+            },
+            {
+              "role": "button",
+              "name": "28 places Seattle"
+            },
+            {
+              "role": "button",
+              "name": "Get the app"
+            },
+            {
+              "role": "generic",
+              "name": "",
+              "children": [
+                {
+                  "role": "button",
+                  "name": "Transit directions with multiple destinations are not supported."
+                },
+                {
+                  "role": "button",
+                  "name": "Departure options",
+                  "focused": true,
+                  "haspopup": "menu"
+                },
+                {
+                  "role": "button",
+                  "name": "Options"
+                },
+                {
+                  "role": "button",
+                  "name": "Send directions to your phone"
+                },
+                {
+                  "role": "button",
+                  "name": "Copy link"
+                },
+                {
+                  "role": "link",
+                  "name": "Transit 49 min 7:08 PM—7:57 PM Walk , then Bus 75 , then Bus 49 , then Walk 7:11 PM from Sand Point Way NE & NE 50th St Walking 12 minevery 20 min Details",
+                  "children": [
+                    {
+                      "role": "text",
+                      "name": ""
+                    },
+                    {
+                      "role": "text",
+                      "name": "49 min"
+                    },
+                    {
+                      "role": "heading",
+                      "name": "7:08 PM—7:57 PM",
+                      "level": 1
+                    },
+                    {
+                      "role": "image",
+                      "name": "Walk"
+                    },
+                    {
+                      "role": "text",
+                      "name": ""
+                    },
+                    {
+                      "role": "image",
+                      "name": "Bus"
+                    },
+                    {
+                      "role": "text",
+                      "name": "75"
+                    },
+                    {
+                      "role": "text",
+                      "name": ""
+                    },
+                    {
+                      "role": "image",
+                      "name": "Bus"
+                    },
+                    {
+                      "role": "text",
+                      "name": "49"
+                    },
+                    {
+                      "role": "text",
+                      "name": ""
+                    },
+                    {
+                      "role": "image",
+                      "name": "Walk"
+                    },
+                    {
+                      "role": "text",
+                      "name": "7:11 PM"
+                    },
+                    {
+                      "role": "text",
+                      "name": " from "
+                    },
+                    {
+                      "role": "text",
+                      "name": "Sand Point Way NE & NE 50th St"
+                    },
+                    {
+                      "role": "text",
+                      "name": ""
+                    },
+                    {
+                      "role": "text",
+                      "name": "12 min"
+                    },
+                    {
+                      "role": "text",
+                      "name": "every 20 min"
+                    },
+                    {
+                      "role": "button",
+                      "name": "Details"
+                    }
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "Transit 57 min 7:00 PM—7:57 PM Walk , then Bus 67 , then Bus 49 , then Walk"
+                },
+                {
+                  "role": "button",
+                  "name": "Transit 50 min 7:08 PM—7:58 PM Walk , then Bus 75 , then Walk , then Bus 43 , then Bus 10 , then Walk"
+                },
+                {
+                  "role": "button",
+                  "name": "Transit 38 min 7:39 PM—8:17 PM Walk , then Bus 31 , or 32 , then Bus 49 , then Walk"
+                },
+                {
+                  "role": "button",
+                  "name": "Transit 1 hr 3 min 6:58 PM—8:01 PM Walk , then Bus 75 , then Bus 70 , then Walk"
+                },
+                {
+                  "role": "button",
+                  "name": "Transit 38 min 9:38 PM—10:16 PM Walk , then Bus 32 , or 31 , then Bus 49 , then Walk"
+                },
+                {
+                  "role": "heading",
+                  "name": "Explore nearby Volunteer Park Conservatory",
+                  "level": 2
+                },
+                {
+                  "role": "button",
+                  "name": "Restaurants"
+                },
+                {
+                  "role": "button",
+                  "name": "Hotels"
+                },
+                {
+                  "role": "button",
+                  "name": "Bars"
+                },
+                {
+                  "role": "button",
+                  "name": "Coffee"
+                },
+                {
+                  "role": "button",
+                  "name": "More"
+                }
+              ]
+            },
+            {
+              "role": "button",
+              "name": "Collapse side panel"
+            },
+            {
+              "role": "button",
+              "name": "Google apps"
+            },
+            {
+              "role": "button",
+              "name": "Google Account: Samuel Samsudin (kukukud4@gmail.com)"
+            },
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "button",
+              "name": "Show Your Location",
+              "pressed": false
+            },
+            {
+              "role": "button",
+              "name": "Zoom in"
+            },
+            {
+              "role": "button",
+              "name": "Zoom out"
+            },
+            {
+              "role": "button",
+              "name": "Browse Street View images"
+            },
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "generic",
+              "name": "Interactive map"
+            },
+            {
+              "role": "text",
+              "name": "Layers"
+            },
+            {
+              "role": "button",
+              "name": "Layers"
+            },
+            {
+              "role": "text",
+              "name": "Map data ©2025 Google"
+            },
+            {
+              "role": "button",
+              "name": "United States"
+            },
+            {
+              "role": "button",
+              "name": "Terms"
+            },
+            {
+              "role": "button",
+              "name": "Privacy"
+            },
+            {
+              "role": "button",
+              "name": "Send Product Feedback"
+            },
+            {
+              "role": "button",
+              "name": "2000 ft"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

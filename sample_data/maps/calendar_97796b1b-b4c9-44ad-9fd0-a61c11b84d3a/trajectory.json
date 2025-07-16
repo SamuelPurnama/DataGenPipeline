@@ -1,0 +1,33 @@
+{
+  "1": {
+    "screenshot": "screenshot_001.png",
+    "axtree": "axtree_001.txt",
+    "user_message": "user_message/user_message_001.txt",
+    "other_obs": {
+      "page_index": 0,
+      "url": "https://www.google.com/maps/@47.6507084,-122.3208426,13z?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D",
+      "open_pages_titles": [
+        "",
+        "coffee shops near University District - Google Maps"
+      ],
+      "open_pages_urls": [
+        "about:blank",
+        "https://www.google.com/maps/@47.6507084,-122.3208426,13z?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D"
+      ]
+    },
+    "action": {
+      "action_str": "keyboard_type(text='coffee shops near University District')",
+      "playwright_code": "page.get_by_role('combobox', name='Search Google Maps').fill('coffee shops near University District'); page.keyboard.press('Enter')",
+      "action_description": "Search for coffee shops near the University District.",
+      "action_output": {
+        "thought": "I need to search for coffee shops around the University District by filling the search box and confirming with Enter.",
+        "action": {
+          "text": "coffee shops near University District"
+        },
+        "action_name": "keyboard_type"
+      }
+    },
+    "error": null,
+    "action_timestamp": 1749433382.28035
+  }
+}

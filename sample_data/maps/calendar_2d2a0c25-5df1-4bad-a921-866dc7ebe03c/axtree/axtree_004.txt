@@ -1,0 +1,333 @@
+{
+  "role": "WebArea",
+  "name": "Seattle, WA 98103 to Seattle–Tacoma International Airport - Google Maps",
+  "children": [
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "generic",
+          "name": "Google Maps",
+          "children": [
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "application",
+              "name": "Map · Use arrow keys to pan the map. · Get details about a place by pressing its corresponding number key."
+            },
+            {
+              "role": "radio",
+              "name": "Best travel modes",
+              "checked": false
+            },
+            {
+              "role": "radio",
+              "name": "Driving 22 min",
+              "checked": true
+            },
+            {
+              "role": "radio",
+              "name": "Transit 1h 20m",
+              "checked": false
+            },
+            {
+              "role": "radio",
+              "name": "Walking 7 hr",
+              "checked": false
+            },
+            {
+              "role": "radio",
+              "name": "Cycling 1h 53m",
+              "checked": false
+            },
+            {
+              "role": "radio",
+              "name": "Flights not available",
+              "disabled": true,
+              "checked": false
+            },
+            {
+              "role": "button",
+              "name": "Close directions"
+            },
+            {
+              "role": "list",
+              "name": "",
+              "children": [
+                {
+                  "role": "combobox",
+                  "name": "",
+                  "haspopup": "grid",
+                  "children": [
+                    {
+                      "role": "textbox",
+                      "name": "Starting point Seattle, WA 98103",
+                      "autocomplete": "list",
+                      "value": "Seattle, WA 98103"
+                    }
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "Search"
+                },
+                {
+                  "role": "combobox",
+                  "name": "",
+                  "haspopup": "grid",
+                  "children": [
+                    {
+                      "role": "textbox",
+                      "name": "Destination Seattle–Tacoma International Airport",
+                      "autocomplete": "list",
+                      "value": "Seattle–Tacoma International Airport"
+                    }
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "Search"
+                }
+              ]
+            },
+            {
+              "role": "button",
+              "name": "Reverse starting point and destination"
+            },
+            {
+              "role": "button",
+              "name": "Add destination"
+            },
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "generic",
+              "name": "",
+              "children": [
+                {
+                  "role": "button",
+                  "name": "Add stops along route"
+                },
+                {
+                  "role": "button",
+                  "name": "Add gas stations along route"
+                },
+                {
+                  "role": "button",
+                  "name": "Add electric vehicle charging stations along route"
+                },
+                {
+                  "role": "button",
+                  "name": "Add hotels along route"
+                }
+              ]
+            },
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "button",
+              "name": "Menu"
+            },
+            {
+              "role": "button",
+              "name": "Saved"
+            },
+            {
+              "role": "button",
+              "name": "Recents"
+            },
+            {
+              "role": "button",
+              "name": "Seattle–Tacoma Int'l Airport 22 min"
+            },
+            {
+              "role": "button",
+              "name": "29 places Seattle"
+            },
+            {
+              "role": "button",
+              "name": "Get the app"
+            },
+            {
+              "role": "generic",
+              "name": "",
+              "children": [
+                {
+                  "role": "button",
+                  "name": "Departure options",
+                  "haspopup": "menu"
+                },
+                {
+                  "role": "button",
+                  "name": "Options",
+                  "focused": true
+                },
+                {
+                  "role": "button",
+                  "name": "Send directions to your phone"
+                },
+                {
+                  "role": "button",
+                  "name": "Copy link"
+                },
+                {
+                  "role": "link",
+                  "name": "Driving 22 min 16.0 miles via Hwy 99 and WA-509 S Fastest route, the usual traffic Warning This route has tolls. Details",
+                  "children": [
+                    {
+                      "role": "text",
+                      "name": ""
+                    },
+                    {
+                      "role": "text",
+                      "name": "22 min"
+                    },
+                    {
+                      "role": "text",
+                      "name": "16.0 miles"
+                    },
+                    {
+                      "role": "heading",
+                      "name": "via Hwy 99 and WA-509 S",
+                      "level": 1
+                    },
+                    {
+                      "role": "text",
+                      "name": "Fastest route, the usual traffic"
+                    },
+                    {
+                      "role": "text",
+                      "name": ""
+                    },
+                    {
+                      "role": "heading",
+                      "name": "This route has tolls.",
+                      "level": 6
+                    },
+                    {
+                      "role": "button",
+                      "name": "Details"
+                    }
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "Driving 27 min 17.8 miles via I-5 S Some traffic, as usual"
+                },
+                {
+                  "role": "heading",
+                  "name": "Explore nearby Seattle–Tacoma Int'l Airport",
+                  "level": 2
+                },
+                {
+                  "role": "button",
+                  "name": "Restaurants"
+                },
+                {
+                  "role": "button",
+                  "name": "Hotels"
+                },
+                {
+                  "role": "button",
+                  "name": "Gas stations"
+                },
+                {
+                  "role": "button",
+                  "name": "Parking Lots"
+                },
+                {
+                  "role": "button",
+                  "name": "More"
+                }
+              ]
+            },
+            {
+              "role": "button",
+              "name": "Collapse side panel"
+            },
+            {
+              "role": "button",
+              "name": "Google apps"
+            },
+            {
+              "role": "button",
+              "name": "Google Account: Samuel Samsudin (kukukud4@gmail.com)"
+            },
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "button",
+              "name": "Show Your Location",
+              "pressed": false
+            },
+            {
+              "role": "button",
+              "name": "Zoom in"
+            },
+            {
+              "role": "button",
+              "name": "Zoom out"
+            },
+            {
+              "role": "button",
+              "name": "Browse Street View images"
+            },
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "generic",
+              "name": "Interactive map"
+            },
+            {
+              "role": "text",
+              "name": "Layers"
+            },
+            {
+              "role": "button",
+              "name": "Layers"
+            },
+            {
+              "role": "text",
+              "name": "Map data ©2025 Google"
+            },
+            {
+              "role": "button",
+              "name": "United States"
+            },
+            {
+              "role": "button",
+              "name": "Terms"
+            },
+            {
+              "role": "button",
+              "name": "Privacy"
+            },
+            {
+              "role": "button",
+              "name": "Send Product Feedback"
+            },
+            {
+              "role": "button",
+              "name": "2 mi"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

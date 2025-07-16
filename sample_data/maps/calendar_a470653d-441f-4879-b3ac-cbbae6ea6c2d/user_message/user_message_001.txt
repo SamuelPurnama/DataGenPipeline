@@ -1,0 +1,84 @@
+Goal: Search for the University of Washington to find nearby grocery stores
+
+Previous Actions:
+  1. Enter 'University of Washington' in the search box and press Enter | Code: page.get_by_role('combobox', name='Search Google Maps').fill('University of Washington'); page.keyboard.press('Enter')
+
+Current Page: University of Washington - Google Maps (https://www.google.com/maps/place/University+of+Washington/@47.6507084,-122.3208426,13z/data=!4m6!3m5!1s0x549014929d8535eb:0x6b742c7901b82ba3!8m2!3d47.6567171!4d-122.3066182!16s%2Fg%2F1tdkxdnn?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D)
+
+AX Tree:
+{
+  "role": "WebArea",
+  "name": "Google Maps",
+  "children": [
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "generic",
+          "name": "Google Maps",
+          "children": [
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "application",
+              "name": "Map · Use arrow keys to pan the map. · Get details about a place by pressing its corresponding number key."
+            },
+            {
+              "role": "text",
+              "name": "Search Google Maps"
+            },
+            {
+              "role": "combobox",
+              "name": "Search Google Maps",
+              "focused": true,
+              "haspopup": "grid"
+            },
+            {
+              "role": "button",
+              "name": "Search"
+            },
+            {
+              "role": "button",
+              "name": "Directions"
+            },
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "button",
+              "name": "Menu"
+            },
+            {
+              "role": "button",
+              "name": "Saved"
+            },
+            {
+              "role": "button",
+              "name": "Recents",
+              "disabled": true
+            },
+            {
+              "role": "button",
+              "name": "Get the app"
+            },
+            {
+              "role": "generic",
+              "name": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+Error Codes:
+  None

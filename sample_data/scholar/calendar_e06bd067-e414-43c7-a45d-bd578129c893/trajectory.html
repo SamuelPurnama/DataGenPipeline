@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualization of Trajectory</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background-color: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h1, h2 { color: #333; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .step { border: 1px solid #ddd; margin: 20px 0; padding: 15px; border-radius: 5px; background-color: white; }
+        .step-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .step-number { font-size: 1.2em; font-weight: bold; color: #2196F3; }
+        .step-content { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .screenshot { max-width: 100%; border: 1px solid #ddd; border-radius: 4px; }
+        .collapsible { background-color: #eee; color: #444; cursor: pointer; padding: 10px; width: 100%; border: none; text-align: left; outline: none; font-size: 1em; margin-top: 5px; }
+        .active, .collapsible:hover { background-color: #ccc; }
+        .content { padding: 0 18px; display: none; overflow: auto; background-color: #f9f9f9; border-radius: 0 0 5px 5px; }
+        pre { white-space: pre-wrap; word-break: break-word; }
+        table.instruction-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        table.instruction-table th, table.instruction-table td { border: 1px solid #ddd; padding: 8px; }
+        table.instruction-table th { background: #f0f0f0; text-align: left; }
+        .steps-list { margin: 0; padding-left: 20px; }
+        .steps-list li { margin-bottom: 4px; }
+        .step-details-label { font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>calendar_e06bd067-e414-43c7-a45d-bd578129c893 (calendar)</h1>
+        <h2>Instructions</h2>
+        <table class="instruction-table">
+            <tr><th>level</th><th>instruction</th></tr>
+            <tr><td><em>high_level</em></td><td>Find articles comparing immigrant narratives across different cultures</td></tr>
+            <tr><td><em>mid_level</em></td><td>Find articles comparing immigrant narratives across cultures.</td></tr>
+            <tr><td><em>low_level</em></td><td>Search for articles comparing immigrant narratives across cultures</td></tr>
+            <tr><td><em>steps</em></td><td><ul class="steps-list"><li>Enter the search query &#x27;comparing immigrant narratives across cultures&#x27; in the search bar</li><li>Submit the search form by pressing the Search button</li></ul></td></tr>
+        </table>
+        <h2>Trajectory Steps</h2>
+
+        <div class="step">
+            <div class="step-header">
+                <span class="step-number">Step 1</span>
+            </div>
+            <div class="step-content">
+                <div>
+                    <img src="images/screenshot_001.png" alt="Step 1 Screenshot" class="screenshot">
+                </div>
+                <div>
+                    <div class="step-details-label">Thought</div>
+                    <div>Entering the search query will allow us to find relevant articles on the specified topic.</div>
+                    <div class="step-details-label">Action</div>
+                    <div>keyboard_type(text=&#x27;comparing immigrant narratives across cultures&#x27;)</div>
+                    <div class="step-details-label">Action Description</div>
+                    <div>Enter the search query &#x27;comparing immigrant narratives across cultures&#x27; in the search bar</div>
+                    <button class="collapsible">System Message</button>
+                    <div class="content"><pre>System message for this step (placeholder)</pre></div>
+                    <button class="collapsible">User Message</button>
+                    <div class="content"><pre>Goal: Find articles comparing immigrant narratives across cultures
+
+Previous Actions:
+  1. Enter the search query &#x27;comparing immigrant narratives across cultures&#x27; in the search bar | Code: page.get_by_role(&#x27;textbox&#x27;, name=&#x27;Search&#x27;).fill(&#x27;comparing immigrant narratives across cultures&#x27;)
+
+Current Page: Google Scholar (https://scholar.google.com/)
+
+AX Tree:
+{
+  &quot;role&quot;: &quot;WebArea&quot;,
+  &quot;name&quot;: &quot;Google Scholar&quot;,
+  &quot;children&quot;: [
+    {
+      &quot;role&quot;: &quot;button&quot;,
+      &quot;name&quot;: &quot;&quot;
+    },
+    {
+      &quot;role&quot;: &quot;link&quot;,
+      &quot;name&quot;: &quot;My profile&quot;
+    },
+    {
+      &quot;role&quot;: &quot;link&quot;,
+      &quot;name&quot;: &quot;My library&quot;
+    },
+    {
+      &quot;role&quot;: &quot;textbox&quot;,
+      &quot;name&quot;: &quot;Search&quot;,
+      &quot;focused&quot;: true
+    },
+    {
+      &quot;role&quot;: &quot;button&quot;,
+      &quot;name&quot;: &quot;Search&quot;
+    },
+    {
+      &quot;role&quot;: &quot;button&quot;,
+      &quot;name&quot;: &quot;Samuel&quot;,
+      &quot;haspopup&quot;: &quot;menu&quot;
+    },
+    {
+      &quot;role&quot;: &quot;radio&quot;,
+      &quot;name&quot;: &quot;Articles&quot;,
+      &quot;checked&quot;: true
+    },
+    {
+      &quot;role&quot;: &quot;text&quot;,
+      &quot;name&quot;: &quot;Articles&quot;
+    },
+    {
+      &quot;role&quot;: &quot;radio&quot;,
+      &quot;name&quot;: &quot;Case law&quot;,
+      &quot;checked&quot;: false
+    },
+    {
+      &quot;role&quot;: &quot;text&quot;,
+      &quot;name&quot;: &quot;Case law&quot;
+    },
+    {
+      &quot;role&quot;: &quot;text&quot;,
+      &quot;name&quot;: &quot;Stand on the shoulders of giants&quot;
+    },
+    {
+      &quot;role&quot;: &quot;button&quot;,
+      &quot;name&quot;: &quot;EN&quot;
+    },
+    {
+      &quot;role&quot;: &quot;link&quot;,
+      &quot;name&quot;: &quot;Privacy&quot;
+    },
+    {
+      &quot;role&quot;: &quot;link&quot;,
+      &quot;name&quot;: &quot;Terms&quot;
+    },
+    {
+      &quot;role&quot;: &quot;button&quot;,
+      &quot;name&quot;: &quot;Help&quot;,
+      &quot;haspopup&quot;: &quot;menu&quot;
+    }
+  ]
+}
+
+Error Codes:
+  None</pre></div>
+                    <button class="collapsible">Element Output</button>
+                    <div class="content"><pre>{
+  &quot;text&quot;: &quot;comparing immigrant narratives across cultures&quot;
+}</pre></div>
+                    <button class="collapsible">LLM Output</button>
+                    <div class="content"><pre>page.get_by_role(&#x27;textbox&#x27;, name=&#x27;Search&#x27;).fill(&#x27;comparing immigrant narratives across cultures&#x27;)</pre></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="step">
+            <div class="step-header">
+                <span class="step-number">Step 2</span>
+            </div>
+            <div class="step-content">
+                <div>
+                    <img src="images/screenshot_002.png" alt="Step 2 Screenshot" class="screenshot">
+                </div>
+                <div>
+                    <div class="step-details-label">Thought</div>
+                    <div>I need to click the &quot;Search&quot; button.</div>
+                    <div class="step-details-label">Action</div>
+                    <div>click(bid=&#x27;&#x27;, button=&#x27;left&#x27;)</div>
+                    <div class="step-details-label">Action Description</div>
+                    <div>Submit the search form by pressing the Search button</div>
+                    <button class="collapsible">System Message</button>
+                    <div class="content"><pre>System message for this step (placeholder)</pre></div>
+                    <button class="collapsible">User Message</button>
+                    <div class="content"><pre>Goal: Find articles comparing immigrant narratives across cultures
+
+Previous Actions:
+  1. Enter the search query &#x27;comparing immigrant narratives across cultures&#x27; in the search bar | Code: page.get_by_role(&#x27;textbox&#x27;, name=&#x27;Search&#x27;).fill(&#x27;comparing immigrant narratives across cultures&#x27;)
+  2. Submit the search form by pressing the Search button | Code: page.get_by_role(&#x27;button&#x27;, name=&#x27;Search&#x27;).click()
+
+Current Page: comparing immigrant narratives across cultures - Google Scholar (https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C48&amp;q=comparing+immigrant+narratives+across+cultures&amp;btnG=)
+
+AX Tree:
+{
+  &quot;role&quot;: &quot;WebArea&quot;,
+  &quot;name&quot;: &quot;Google Scholar&quot;,
+  &quot;children&quot;: [
+    {
+      &quot;role&quot;: &quot;button&quot;,
+      &quot;name&quot;: &quot;&quot;
+    },
+    {
+      &quot;role&quot;: &quot;link&quot;,
+      &quot;name&quot;: &quot;My profile&quot;
+    },
+    {
+      &quot;role&quot;: &quot;link&quot;,
+      &quot;name&quot;: &quot;My library&quot;
+    },
+    {
+      &quot;role&quot;: &quot;textbox&quot;,
+      &quot;name&quot;: &quot;Search&quot;,
+      &quot;focused&quot;: true,
+      &quot;value&quot;: &quot;comparing immigrant narratives across cultures&quot;
+    },
+    {
+      &quot;role&quot;: &quot;button&quot;,
+      &quot;name&quot;: &quot;Search&quot;
+    },
+    {
+      &quot;role&quot;: &quot;button&quot;,
+      &quot;name&quot;: &quot;Samuel&quot;,
+      &quot;haspopup&quot;: &quot;menu&quot;
+    },
+    {
+      &quot;role&quot;: &quot;radio&quot;,
+      &quot;name&quot;: &quot;Articles&quot;,
+      &quot;checked&quot;: true
+    },
+    {
+      &quot;role&quot;: &quot;text&quot;,
+      &quot;name&quot;: &quot;Articles&quot;
+    },
+    {
+      &quot;role&quot;: &quot;radio&quot;,
+      &quot;name&quot;: &quot;Case law&quot;,
+      &quot;checked&quot;: false
+    },
+    {
+      &quot;role&quot;: &quot;text&quot;,
+      &quot;name&quot;: &quot;Case law&quot;
+    },
+    {
+      &quot;role&quot;: &quot;text&quot;,
+      &quot;name&quot;: &quot;Stand on the shoulders of giants&quot;
+    },
+    {
+      &quot;role&quot;: &quot;button&quot;,
+      &quot;name&quot;: &quot;EN&quot;
+    },
+    {
+      &quot;role&quot;: &quot;link&quot;,
+      &quot;name&quot;: &quot;Privacy&quot;
+    },
+    {
+      &quot;role&quot;: &quot;link&quot;,
+      &quot;name&quot;: &quot;Terms&quot;
+    },
+    {
+      &quot;role&quot;: &quot;button&quot;,
+      &quot;name&quot;: &quot;Help&quot;,
+      &quot;haspopup&quot;: &quot;menu&quot;
+    }
+  ]
+}
+
+Error Codes:
+  None</pre></div>
+                    <button class="collapsible">Element Output</button>
+                    <div class="content"><pre>{
+  &quot;bid&quot;: &quot;&quot;,
+  &quot;button&quot;: &quot;left&quot;,
+  &quot;click_type&quot;: &quot;single&quot;,
+  &quot;bbox&quot;: [
+    0,
+    0,
+    1280,
+    720
+  ],
+  &quot;class&quot;: &quot;&quot;,
+  &quot;id&quot;: &quot;&quot;,
+  &quot;type&quot;: &quot;body&quot;,
+  &quot;ariaLabel&quot;: null,
+  &quot;role&quot;: null,
+  &quot;value&quot;: null,
+  &quot;node_properties&quot;: {
+    &quot;role&quot;: &quot;button&quot;,
+    &quot;value&quot;: &quot;Search&quot;
+  }
+}</pre></div>
+                    <button class="collapsible">LLM Output</button>
+                    <div class="content"><pre>page.get_by_role(&#x27;button&#x27;, name=&#x27;Search&#x27;).click()</pre></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var coll = document.getElementsByClassName('collapsible');
+      for (var i = 0; i < coll.length; i++) {
+        coll[i].addEventListener('click', function() {
+          this.classList.toggle('active');
+          var content = this.nextElementSibling;
+          if (content.style.display === 'block') {
+            content.style.display = 'none';
+          } else {
+            content.style.display = 'block';
+          }
+        });
+      }
+    });
+    </script>
+</body>
+</html>

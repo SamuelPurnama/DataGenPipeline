@@ -295,7 +295,7 @@ You are NOT limited to just using `page.get_by_role(...)`. You MAY use:
    2. Click the "Nearby" button and enter the search term like "coffee shops".
    (e.g. task: "Find a grocery store in Chinatown" -> Steps: "Search for Chinatown", "Click Nearby", "Enter 'grocery stores'")
 - If the instruction involves checking traffic or road conditions (e.g., "What is traffic like on I-5?"):
-   1. Check the navigation route between two locations that goes through the road, 
+   1. Check the navigation route between two locations that goes through the road, (e.g. from my current location to seatac Airport)
    2. Select car as the mode of transport and see the condition of the traffic, 
 - When entering text into a search bar or setting a field like a title or input, DO NOT copy the entire instruction. Summarize and extract only the relevant keywords or intent.  
   For example, for the instruction:  

@@ -1,0 +1,29 @@
+{
+  "goal": "Calculate the walking distance from Gas Works Park to the Center for Urban Horticulture",
+  "eps_name": "calendar_191dcc18-3c4e-4749-bf79-7325d06e0ae9",
+  "task": {
+    "task_type": "calendar",
+    "steps": [
+      "Click the 'Directions' button to start setting up the route.",
+      "Fill in the starting point with 'Gas Works Park' and press Enter to continue setting up the route.",
+      "Fill in the destination with 'Center for Urban Horticulture' and press Enter to continue setting up the route."
+    ],
+    "instruction": {
+      "high_level": "Calculate the walking distance from Gas Works Park to the Center for Urban Horticulture",
+      "mid_level": "Calculate walking distance from Gas Works Park to the Center for Urban Horticulture",
+      "low_level": "Calculate walking distance from Gas Works Park to the Center for Urban Horticulture."
+    }
+  },
+  "start_url": "https://maps.google.com",
+  "browser_context": {
+    "os": "darwin",
+    "viewport": "1280x720",
+    "cookies_enabled": true
+  },
+  "success": true,
+  "total_steps": 3,
+  "runtime_sec": 27.710633993148804,
+  "total_tokens": 12497,
+  "phase": 1,
+  "gpt_output": "The walking distance from Gas Works Park to the Center for Urban Horticulture is approximately 56 minutes."
+}

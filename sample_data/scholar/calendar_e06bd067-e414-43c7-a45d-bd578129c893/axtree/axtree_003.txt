@@ -1,0 +1,1258 @@
+{
+  "role": "WebArea",
+  "name": "comparing immigrant narratives across cultures - Google Scholar",
+  "children": [
+    {
+      "role": "button",
+      "name": ""
+    },
+    {
+      "role": "link",
+      "name": "Homepage"
+    },
+    {
+      "role": "textbox",
+      "name": "Search",
+      "value": "comparing immigrant narratives across cultures"
+    },
+    {
+      "role": "button",
+      "name": "Search"
+    },
+    {
+      "role": "button",
+      "name": "Samuel",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": "Articles"
+    },
+    {
+      "role": "text",
+      "name": "About 161,000 results ("
+    },
+    {
+      "role": "text",
+      "name": "0.39"
+    },
+    {
+      "role": "text",
+      "name": " sec)"
+    },
+    {
+      "role": "link",
+      "name": "My profile"
+    },
+    {
+      "role": "link",
+      "name": "My library"
+    },
+    {
+      "role": "link",
+      "name": "Any time"
+    },
+    {
+      "role": "link",
+      "name": "Since 2025"
+    },
+    {
+      "role": "link",
+      "name": "Since 2024"
+    },
+    {
+      "role": "link",
+      "name": "Since 2021"
+    },
+    {
+      "role": "link",
+      "name": "Custom range..."
+    },
+    {
+      "role": "link",
+      "name": "Sort by relevance"
+    },
+    {
+      "role": "link",
+      "name": "Sort by date"
+    },
+    {
+      "role": "link",
+      "name": "Any type"
+    },
+    {
+      "role": "link",
+      "name": "Review articles"
+    },
+    {
+      "role": "checkbox",
+      "name": "include patents",
+      "checked": false
+    },
+    {
+      "role": "checkbox",
+      "name": "include citations",
+      "checked": true
+    },
+    {
+      "role": "link",
+      "name": "Create alert"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] academia.edu"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Comparing immigrant integration in North America and Western Europe: How much do the grand narratives tell us?"
+    },
+    {
+      "role": "link",
+      "name": "R Alba"
+    },
+    {
+      "role": "text",
+      "name": ", "
+    },
+    {
+      "role": "link",
+      "name": "N Foner"
+    },
+    {
+      "role": "text",
+      "name": " - International migration review, 2014 - Wiley Online Library"
+    },
+    {
+      "role": "text",
+      "name": "… -income gap "
+    },
+    {
+      "role": "text",
+      "name": "between"
+    },
+    {
+      "role": "text",
+      "name": " native families and low-status "
+    },
+    {
+      "role": "text",
+      "name": "immigrant"
+    },
+    {
+      "role": "text",
+      "name": " families (for our purposes"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "here: Hispanics in the US, non-EU "
+    },
+    {
+      "role": "text",
+      "name": "immigrants"
+    },
+    {
+      "role": "text",
+      "name": " in Europe; Canada is not in the "
+    },
+    {
+      "role": "text",
+      "name": "comparison"
+    },
+    {
+      "role": "text",
+      "name": ") is …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 213"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 11 versions"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] joeledmartinez.com"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Narratives shape cognitive representations of immigrants and immigration-policy preferences"
+    },
+    {
+      "role": "link",
+      "name": "JE Martinez"
+    },
+    {
+      "role": "text",
+      "name": ", LA Feldman, "
+    },
+    {
+      "role": "link",
+      "name": "MJ Feldman"
+    },
+    {
+      "role": "text",
+      "name": "… - Psychological …, 2021 - journals.sagepub.com"
+    },
+    {
+      "role": "text",
+      "name": "… more overall and were less influenced by "
+    },
+    {
+      "role": "text",
+      "name": "narratives"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "compared"
+    },
+    {
+      "role": "text",
+      "name": " with individuals with lower"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "system-justification scores. However, one of our more notable findings was that the criminal …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 39"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 11 versions"
+    },
+    {
+      "role": "link",
+      "name": "Including the female immigrant story: A comparative look at narrative strategies."
+    },
+    {
+      "role": "text",
+      "name": "TP Seiler - Canadian Ethnic Studies, 1996 - search.ebscohost.com"
+    },
+    {
+      "role": "text",
+      "name": "… Assuming that the story of "
+    },
+    {
+      "role": "text",
+      "name": "immigration"
+    },
+    {
+      "role": "text",
+      "name": " is at the centre of Euro-North American "
+    },
+    {
+      "role": "text",
+      "name": "culture"
+    },
+    {
+      "role": "text",
+      "name": ", this"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "article examines how this story has been rendered in fiction: what "
+    },
+    {
+      "role": "text",
+      "name": "narrative"
+    },
+    {
+      "role": "text",
+      "name": " patterns have …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 13"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 3 versions"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] researchgate.net"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Between trauma and redemption: Story form differences in immigrant narratives of successful and nonsuccessful immigration"
+    },
+    {
+      "role": "link",
+      "name": "M Benish-Weisman"
+    },
+    {
+      "role": "text",
+      "name": " - Journal "
+    },
+    {
+      "role": "text",
+      "name": "of Cross"
+    },
+    {
+      "role": "text",
+      "name": "-"
+    },
+    {
+      "role": "text",
+      "name": "Cultural "
+    },
+    {
+      "role": "text",
+      "name": "Psychology, 2009 - journals.sagepub.com"
+    },
+    {
+      "role": "text",
+      "name": "… Thus, we can "
+    },
+    {
+      "role": "text",
+      "name": "compare"
+    },
+    {
+      "role": "text",
+      "name": " the "
+    },
+    {
+      "role": "text",
+      "name": "immigration"
+    },
+    {
+      "role": "text",
+      "name": " process to the triumph of conquering a mountain"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "peak: Aching muscles and tired limbs make the landscape more glorious. As much as the …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 57"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 4 versions"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] utexas.edu"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Black immigrants in the United States and the\" cultural narratives\" of ethnicity"
+    },
+    {
+      "role": "link",
+      "name": "J Pierre"
+    },
+    {
+      "role": "text",
+      "name": " - Identities: Global studies in "
+    },
+    {
+      "role": "text",
+      "name": "culture "
+    },
+    {
+      "role": "text",
+      "name": "and power, 2004 - Taylor & Francis"
+    },
+    {
+      "role": "text",
+      "name": "… Waters, in turn, stresses that Black "
+    },
+    {
+      "role": "text",
+      "name": "immigrants"
+    },
+    {
+      "role": "text",
+      "name": " have "
+    },
+    {
+      "role": "text",
+      "name": "cultural"
+    },
+    {
+      "role": "text",
+      "name": " attributes that allow … "
+    },
+    {
+      "role": "text",
+      "name": "narratives"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "of Black "
+    },
+    {
+      "role": "text",
+      "name": "immigrant"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "cultural"
+    },
+    {
+      "role": "text",
+      "name": " distinctiveness (as "
+    },
+    {
+      "role": "text",
+      "name": "compared"
+    },
+    {
+      "role": "text",
+      "name": " to United States-born Black "
+    },
+    {
+      "role": "text",
+      "name": "cultural"
+    },
+    {
+      "role": "text",
+      "name": " …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 264"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 3 versions"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] academia.edu"
+        }
+      ]
+    },
+    {
+      "role": "text",
+      "name": "[PDF]"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Changing stories: The evolving narratives of immigrant children"
+    },
+    {
+      "role": "link",
+      "name": "ILG Todorova"
+    },
+    {
+      "role": "text",
+      "name": ", "
+    },
+    {
+      "role": "link",
+      "name": "C Suárez-Orozco"
+    },
+    {
+      "role": "text",
+      "name": "… - Cognitie, Creier …, 2008 - academia.edu"
+    },
+    {
+      "role": "text",
+      "name": "… In the following pages we present our "
+    },
+    {
+      "role": "text",
+      "name": "comparative"
+    },
+    {
+      "role": "text",
+      "name": " and longitudinal findings relevant to"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "the "
+    },
+    {
+      "role": "text",
+      "name": "immigration"
+    },
+    {
+      "role": "text",
+      "name": " experiences of the children in the LISA study. We discuss the findings, …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 37"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 7 versions"
+    },
+    {
+      "role": "button",
+      "name": "More"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] sagepub.com"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Comparative ethnographic narrative analysis method: comparing culture in narratives"
+    },
+    {
+      "role": "link",
+      "name": "D Saint Arnault"
+    },
+    {
+      "role": "text",
+      "name": ", "
+    },
+    {
+      "role": "link",
+      "name": "L Sinko"
+    },
+    {
+      "role": "text",
+      "name": " - Global qualitative nursing research, 2021 - journals.sagepub.com"
+    },
+    {
+      "role": "text",
+      "name": "… Analysis Method (CENAM) to analyze the role of "
+    },
+    {
+      "role": "text",
+      "name": "culture"
+    },
+    {
+      "role": "text",
+      "name": " in "
+    },
+    {
+      "role": "text",
+      "name": "narrative"
+    },
+    {
+      "role": "text",
+      "name": " explicitly and … to"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "compare"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "culture"
+    },
+    {
+      "role": "text",
+      "name": " in "
+    },
+    {
+      "role": "text",
+      "name": "narratives"
+    },
+    {
+      "role": "text",
+      "name": " because they contain information about the interactions "
+    },
+    {
+      "role": "text",
+      "name": "among"
+    },
+    {
+      "role": "text",
+      "name": " …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 27"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 6 versions"
+    },
+    {
+      "role": "link",
+      "name": "Forging the future between two different worlds: Recent Chinese immigrant adolescents tell their cross-cultural experiences"
+    },
+    {
+      "role": "text",
+      "name": "J Li - Journal "
+    },
+    {
+      "role": "text",
+      "name": "of "
+    },
+    {
+      "role": "text",
+      "name": "Adolescent Research, 2009 - journals.sagepub.com"
+    },
+    {
+      "role": "text",
+      "name": "… "
+    },
+    {
+      "role": "text",
+      "name": "immigrant"
+    },
+    {
+      "role": "text",
+      "name": " youth in semistructured interviews and "
+    },
+    {
+      "role": "text",
+      "name": "narrative"
+    },
+    {
+      "role": "text",
+      "name": " essays. Forging the future "
+    },
+    {
+      "role": "text",
+      "name": "between"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "two "
+    },
+    {
+      "role": "text",
+      "name": "different"
+    },
+    {
+      "role": "text",
+      "name": " … He said everyone is "
+    },
+    {
+      "role": "text",
+      "name": "different"
+    },
+    {
+      "role": "text",
+      "name": " so I should not "
+    },
+    {
+      "role": "text",
+      "name": "compare"
+    },
+    {
+      "role": "text",
+      "name": " him with others. I was …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 108"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 3 versions"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] uio.no"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Metaphors of culture: Identity construction in migrants' narrative discourse"
+    },
+    {
+      "role": "link",
+      "name": "A Golden"
+    },
+    {
+      "role": "text",
+      "name": ", "
+    },
+    {
+      "role": "link",
+      "name": "E Lanza"
+    },
+    {
+      "role": "text",
+      "name": " - Intercultural pragmatics, 2013 - degruyter.com"
+    },
+    {
+      "role": "text",
+      "name": "… Work on the conceptualization of "
+    },
+    {
+      "role": "text",
+      "name": "cultural"
+    },
+    {
+      "role": "text",
+      "name": " groups and "
+    },
+    {
+      "role": "text",
+      "name": "cultural"
+    },
+    {
+      "role": "text",
+      "name": " differences contributes to an"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "understanding of "
+    },
+    {
+      "role": "text",
+      "name": "cultures"
+    },
+    {
+      "role": "text",
+      "name": " that enables "
+    },
+    {
+      "role": "text",
+      "name": "comparison"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "across"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "cultures"
+    },
+    {
+      "role": "text",
+      "name": ", particularly for purposes of …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 59"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 4 versions"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] unimib.it"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "A comparative analysis of migration narratives in traditional and social media"
+    },
+    {
+      "role": "link",
+      "name": "M Maneri"
+    },
+    {
+      "role": "text",
+      "name": " - Bridges, 2023 - boa.unimib.it"
+    },
+    {
+      "role": "text",
+      "name": "… Also, "
+    },
+    {
+      "role": "text",
+      "name": "culture"
+    },
+    {
+      "role": "text",
+      "name": " never featured as a dimension for defining an issue, even if we are all familiar"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "with statements and "
+    },
+    {
+      "role": "text",
+      "name": "narratives"
+    },
+    {
+      "role": "text",
+      "name": " about "
+    },
+    {
+      "role": "text",
+      "name": "cultural"
+    },
+    {
+      "role": "text",
+      "name": " incompatibility, lack of integration, or, less …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 8"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "button",
+      "name": "More"
+    },
+    {
+      "role": "heading",
+      "name": "Related searches",
+      "level": 2
+    },
+    {
+      "role": "link",
+      "name": "trauma and redemption immigrant narratives"
+    },
+    {
+      "role": "link",
+      "name": "migrant narratives politics and poetics"
+    },
+    {
+      "role": "link",
+      "name": "chinese immigrant families cross-cultural schooling experiences"
+    },
+    {
+      "role": "link",
+      "name": "black immigrants cultural narratives"
+    },
+    {
+      "role": "link",
+      "name": "immigrant youth in cultural transition"
+    },
+    {
+      "role": "link",
+      "name": "immigrant integration grand narratives"
+    },
+    {
+      "role": "link",
+      "name": "migrant nation australian culture"
+    },
+    {
+      "role": "link",
+      "name": "personal narrative immigrant experiences"
+    },
+    {
+      "role": "link",
+      "name": "evolving narratives immigrant children"
+    },
+    {
+      "role": "link",
+      "name": "narrative practice migrant identities"
+    },
+    {
+      "role": "link",
+      "name": "caribbean migrants narrative self representation"
+    },
+    {
+      "role": "link",
+      "name": "united states cultural narratives"
+    },
+    {
+      "role": "link",
+      "name": "immigrant experience yiddish literature in america"
+    },
+    {
+      "role": "link",
+      "name": "multicultural literature cultural awareness"
+    },
+    {
+      "role": "text",
+      "name": "1"
+    },
+    {
+      "role": "link",
+      "name": "2"
+    },
+    {
+      "role": "link",
+      "name": "3"
+    },
+    {
+      "role": "link",
+      "name": "4"
+    },
+    {
+      "role": "link",
+      "name": "5"
+    },
+    {
+      "role": "link",
+      "name": "6"
+    },
+    {
+      "role": "link",
+      "name": "7"
+    },
+    {
+      "role": "link",
+      "name": "8"
+    },
+    {
+      "role": "link",
+      "name": "9"
+    },
+    {
+      "role": "link",
+      "name": "10"
+    },
+    {
+      "role": "link",
+      "name": "Next"
+    },
+    {
+      "role": "link",
+      "name": "Privacy"
+    },
+    {
+      "role": "link",
+      "name": "Terms"
+    },
+    {
+      "role": "button",
+      "name": "Help",
+      "haspopup": "menu"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "1": {
+    "screenshot": "screenshot_001.png",
+    "axtree": "axtree_001.txt",
+    "user_message": "user_message/user_message_001.txt",
+    "other_obs": {
+      "page_index": 0,
+      "url": "https://www.google.com/maps/@47.6507084,-122.3208426,13z?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D",
+      "open_pages_titles": [
+        "",
+        "Google Maps"
+      ],
+      "open_pages_urls": [
+        "about:blank",
+        "https://www.google.com/maps/@47.6507084,-122.3208426,13z?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D"
+      ]
+    },
+    "action": {
+      "action_str": "click(bid='', button='left')",
+      "playwright_code": "page.get_by_role('button', name='Directions').click()",
+      "action_description": "Click the 'Directions' button to start setting up the route.",
+      "action_output": {
+        "thought": "I need to click the \"Directions\" button.",
+        "action": {
+          "bid": "",
+          "button": "left",
+          "click_type": "single",
+          "bbox": [
+            144,
+            84,
+            230,
+            24
+          ],
+          "class": "tactile-searchbox-input",
+          "id": "",
+          "type": "input",
+          "ariaLabel": "Choose starting point, or click on the map...",
+          "role": null,
+          "value": "",
+          "node_properties": {
+            "role": "button",
+            "value": "Directions"
+          }
+        },
+        "action_name": "click"
+      }
+    },
+    "error": null,
+    "action_timestamp": 1749433310.711904
+  },
+  "2": {
+    "screenshot": "screenshot_002.png",
+    "axtree": "axtree_002.txt",
+    "user_message": "user_message/user_message_002.txt",
+    "other_obs": {
+      "page_index": 0,
+      "url": "https://www.google.com/maps/dir///@47.6507084,-122.3208426,13z/data=!4m2!4m1!3e3?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D",
+      "open_pages_titles": [
+        "",
+        "Google Maps"
+      ],
+      "open_pages_urls": [
+        "about:blank",
+        "https://www.google.com/maps/dir///@47.6507084,-122.3208426,13z/data=!4m2!4m1!3e3?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D"
+      ]
+    },
+    "action": {
+      "action_str": "keyboard_type(text='Gas Works Park')",
+      "playwright_code": "page.get_by_role('textbox', name='Choose starting point, or click on the map...').fill('Gas Works Park'); page.keyboard.press('Enter')",
+      "action_description": "Fill in the starting point with 'Gas Works Park' and press Enter to continue setting up the route.",
+      "action_output": {
+        "thought": "I need to enter 'Gas Works Park' as the starting point to proceed with setting up the walking route.",
+        "action": {
+          "text": "Gas Works Park"
+        },
+        "action_name": "keyboard_type"
+      }
+    },
+    "error": null,
+    "action_timestamp": 1749433316.513679
+  },
+  "3": {
+    "screenshot": "screenshot_003.png",
+    "axtree": "axtree_003.txt",
+    "user_message": "user_message/user_message_003.txt",
+    "other_obs": {
+      "page_index": 0,
+      "url": "https://www.google.com/maps/dir/Gas+Works+Park,+2101+N+Northlake+Way,+Seattle,+WA+98103//@47.6456013,-122.4167539,12z/data=!3m1!4b1!4m9!4m8!1m5!1m1!1s0x54901502b25bb07f:0x1e6e55abec496196!2m2!1d-122.3343532!2d47.6456308!1m0!3e3?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D",
+      "open_pages_titles": [
+        "",
+        "Google Maps"
+      ],
+      "open_pages_urls": [
+        "about:blank",
+        "https://www.google.com/maps/dir/Gas+Works+Park,+2101+N+Northlake+Way,+Seattle,+WA+98103//@47.6456013,-122.4167539,12z/data=!3m1!4b1!4m9!4m8!1m5!1m1!1s0x54901502b25bb07f:0x1e6e55abec496196!2m2!1d-122.3343532!2d47.6456308!1m0!3e3?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D"
+      ]
+    },
+    "action": {
+      "action_str": "keyboard_type(text='Center for Urban Horticulture')",
+      "playwright_code": "page.get_by_role('textbox', name='Choose destination, or click on the map...').fill('Center for Urban Horticulture'); page.keyboard.press('Enter')",
+      "action_description": "Fill in the destination with 'Center for Urban Horticulture' and press Enter to continue setting up the route.",
+      "action_output": {
+        "thought": "I need to set 'Center for Urban Horticulture' as the destination and confirm to calculate the walking distance.",
+        "action": {
+          "text": "Center for Urban Horticulture"
+        },
+        "action_name": "keyboard_type"
+      }
+    },
+    "error": null,
+    "action_timestamp": 1749433329.957397
+  }
+}

@@ -1,0 +1,1138 @@
+{
+  "role": "WebArea",
+  "name": "immigrant experience in poetry - Google Scholar",
+  "children": [
+    {
+      "role": "button",
+      "name": ""
+    },
+    {
+      "role": "link",
+      "name": "Homepage"
+    },
+    {
+      "role": "textbox",
+      "name": "Search",
+      "value": "immigrant experience in poetry"
+    },
+    {
+      "role": "button",
+      "name": "Search"
+    },
+    {
+      "role": "button",
+      "name": "Samuel",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": "Articles"
+    },
+    {
+      "role": "text",
+      "name": "About 350,000 results ("
+    },
+    {
+      "role": "text",
+      "name": "0.11"
+    },
+    {
+      "role": "text",
+      "name": " sec)"
+    },
+    {
+      "role": "link",
+      "name": "My profile"
+    },
+    {
+      "role": "link",
+      "name": "My library"
+    },
+    {
+      "role": "link",
+      "name": "Any time"
+    },
+    {
+      "role": "link",
+      "name": "Since 2025"
+    },
+    {
+      "role": "link",
+      "name": "Since 2024"
+    },
+    {
+      "role": "link",
+      "name": "Since 2021"
+    },
+    {
+      "role": "link",
+      "name": "Custom range..."
+    },
+    {
+      "role": "link",
+      "name": "Sort by relevance"
+    },
+    {
+      "role": "link",
+      "name": "Sort by date"
+    },
+    {
+      "role": "link",
+      "name": "Any type"
+    },
+    {
+      "role": "link",
+      "name": "Review articles"
+    },
+    {
+      "role": "checkbox",
+      "name": "include patents",
+      "checked": false
+    },
+    {
+      "role": "checkbox",
+      "name": "include citations",
+      "checked": true
+    },
+    {
+      "role": "link",
+      "name": "Create alert"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] mcgill.ca"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Found poetry–Finding home: A qualitative study of homeless immigrant women"
+    },
+    {
+      "role": "text",
+      "name": "SD Sjollema, S Hordyk, CA Walsh… - Journal of "
+    },
+    {
+      "role": "text",
+      "name": "Poetry"
+    },
+    {
+      "role": "text",
+      "name": " …, 2012 - Taylor & Francis"
+    },
+    {
+      "role": "text",
+      "name": "… use of found "
+    },
+    {
+      "role": "text",
+      "name": "poetry"
+    },
+    {
+      "role": "text",
+      "name": " as a tool in qualitative research to examine the "
+    },
+    {
+      "role": "text",
+      "name": "experience"
+    },
+    {
+      "role": "text",
+      "name": " of precarious"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "… of the found "
+    },
+    {
+      "role": "text",
+      "name": "poem"
+    },
+    {
+      "role": "text",
+      "name": " technique with two found "
+    },
+    {
+      "role": "text",
+      "name": "poems"
+    },
+    {
+      "role": "text",
+      "name": " used as data representation. The found …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 72"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 13 versions"
+    },
+    {
+      "role": "link",
+      "name": "Poetry, memory, and identity: The experience of building Asian immigrant community"
+    },
+    {
+      "role": "text",
+      "name": "B Zhang - Journal of "
+    },
+    {
+      "role": "text",
+      "name": "Poetry "
+    },
+    {
+      "role": "text",
+      "name": "Therapy, 2016 - Taylor & Francis"
+    },
+    {
+      "role": "text",
+      "name": "… Asian "
+    },
+    {
+      "role": "text",
+      "name": "immigrant"
+    },
+    {
+      "role": "text",
+      "name": " poets constantly refresh their … Asian "
+    },
+    {
+      "role": "text",
+      "name": "immigrant"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "poetry"
+    },
+    {
+      "role": "text",
+      "name": ", we can find numerous"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "explorations into various sites of memory which have special meanings to Asian "
+    },
+    {
+      "role": "text",
+      "name": "immigrant"
+    },
+    {
+      "role": "text",
+      "name": " …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 5"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 3 versions"
+    },
+    {
+      "role": "text",
+      "name": "[BOOK]"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Ink knows no borders: Poems of the immigrant and refugee experience"
+    },
+    {
+      "role": "text",
+      "name": "P Vecchione, A Raymond - 2019 - books.google.com"
+    },
+    {
+      "role": "text",
+      "name": "… I did not "
+    },
+    {
+      "role": "text",
+      "name": "experience"
+    },
+    {
+      "role": "text",
+      "name": " the privilege Lena Khalaf Tuffaha describes in her "
+    },
+    {
+      "role": "text",
+      "name": "poem"
+    },
+    {
+      "role": "text",
+      "name": " \""
+    },
+    {
+      "role": "text",
+      "name": "Immigrant"
+    },
+    {
+      "role": "text",
+      "name": "\" of"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "… I will soon "
+    },
+    {
+      "role": "text",
+      "name": "experience"
+    },
+    {
+      "role": "text",
+      "name": " that, however. I passed my visa interview and am currently waiting for …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 12"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "button",
+      "name": "More"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] erudit.org"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "“Our Culture is a Product of Active Word” A Poetic Inquiry into Immigrants' Experiences with Writing in a Host Language"
+    },
+    {
+      "role": "link",
+      "name": "A Kalan"
+    },
+    {
+      "role": "text",
+      "name": " - Art/Research International, 2024 - erudit.org"
+    },
+    {
+      "role": "text",
+      "name": "… from a "
+    },
+    {
+      "role": "text",
+      "name": "poetic"
+    },
+    {
+      "role": "text",
+      "name": " inquiry project … "
+    },
+    {
+      "role": "text",
+      "name": "immigrant"
+    },
+    {
+      "role": "text",
+      "name": " students’ experiences with writing in English as"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "an additional language. In this article, I share the resultant "
+    },
+    {
+      "role": "text",
+      "name": "poems"
+    },
+    {
+      "role": "text",
+      "name": " as the findings of this "
+    },
+    {
+      "role": "text",
+      "name": "poetic"
+    },
+    {
+      "role": "text",
+      "name": " …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 2"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 2 versions"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] usfca.edu"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Finding and Making Home: Poems and Reflections of Undergraduate Children of Immigrants"
+    },
+    {
+      "role": "text",
+      "name": "G Perez - 2018 - repository.usfca.edu"
+    },
+    {
+      "role": "text",
+      "name": "… "
+    },
+    {
+      "role": "text",
+      "name": "poems"
+    },
+    {
+      "role": "text",
+      "name": " and can all be found in Appendix A: Prompt "
+    },
+    {
+      "role": "text",
+      "name": "Poems"
+    },
+    {
+      "role": "text",
+      "name": ". Some participants also wrote"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "more than one "
+    },
+    {
+      "role": "text",
+      "name": "poem"
+    },
+    {
+      "role": "text",
+      "name": "; those additional "
+    },
+    {
+      "role": "text",
+      "name": "poems"
+    },
+    {
+      "role": "text",
+      "name": " … in Appendix B: Additional "
+    },
+    {
+      "role": "text",
+      "name": "Poems"
+    },
+    {
+      "role": "text",
+      "name": ". Due to the …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 3 versions"
+    },
+    {
+      "role": "button",
+      "name": "More"
+    },
+    {
+      "role": "link",
+      "name": "Charting the Past and Present: Iranian Immigrant and Ethnic Experience through Poetry"
+    },
+    {
+      "role": "text",
+      "name": "PM Karim - MELUS, 2008 - JSTOR"
+    },
+    {
+      "role": "text",
+      "name": "… Iranians take "
+    },
+    {
+      "role": "text",
+      "name": "poetry"
+    },
+    {
+      "role": "text",
+      "name": " quite seriously?a habit that tends to lend a certain "
+    },
+    {
+      "role": "text",
+      "name": "poetic"
+    },
+    {
+      "role": "text",
+      "name": " diction to our"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "… his magnificent volume on the subject, then Persian "
+    },
+    {
+      "role": "text",
+      "name": "poetry"
+    },
+    {
+      "role": "text",
+      "name": " is the pulse of Iranian culture, the …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 9"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 6 versions"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] southatlanticmla.org"
+        }
+      ]
+    },
+    {
+      "role": "text",
+      "name": "[PDF]"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Writing the immigrant experience, writing as immigrant power"
+    },
+    {
+      "role": "text",
+      "name": "R González - South Atlantic Review, 2017 - southatlanticmla.org"
+    },
+    {
+      "role": "text",
+      "name": "… that Judith’s words are connecting to new generations of readers and dreamers and"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "immigrant"
+    },
+    {
+      "role": "text",
+      "name": " kids who want to see their journeys mirrored in the stories and "
+    },
+    {
+      "role": "text",
+      "name": "poems"
+    },
+    {
+      "role": "text",
+      "name": " they encounter. …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 1"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 2 versions"
+    },
+    {
+      "role": "button",
+      "name": "More"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] cuny.edu"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Poetic representation of immigrant Bengali women from Queens, New York: A qualitative exploration of narrative in relation to physical and cultural migration"
+    },
+    {
+      "role": "text",
+      "name": "TJ Islam - 2019 - academicworks.cuny.edu"
+    },
+    {
+      "role": "text",
+      "name": "… Through "
+    },
+    {
+      "role": "text",
+      "name": "poetic"
+    },
+    {
+      "role": "text",
+      "name": " inquiry, this project seeks to explore and honor the narrative of diasporic"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "immigrant"
+    },
+    {
+      "role": "text",
+      "name": " Bengali women and their descendants. I investigate research-"
+    },
+    {
+      "role": "text",
+      "name": "poetry"
+    },
+    {
+      "role": "text",
+      "name": " as a …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 1"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "button",
+      "name": "More"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] scholaris.ca"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Becoming an intersubjective self, teacher knowing through Chinese women immigrants' knotting of language, poetry, and culture"
+    },
+    {
+      "role": "text",
+      "name": "X Li - 1998 - utoronto.scholaris.ca"
+    },
+    {
+      "role": "text",
+      "name": "… "
+    },
+    {
+      "role": "text",
+      "name": "immigrants"
+    },
+    {
+      "role": "text",
+      "name": " who participated in this shidy. My thanks go to Dr. Liu, who contributeci her woman"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "immigrant's"
+    },
+    {
+      "role": "text",
+      "name": " story … This chapter is about how we six new "
+    },
+    {
+      "role": "text",
+      "name": "immigrant"
+    },
+    {
+      "role": "text",
+      "name": " womm live our lives in …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 22"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 5 versions"
+    },
+    {
+      "role": "button",
+      "name": "More"
+    },
+    {
+      "role": "text",
+      "name": "[BOOK]"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Representing the Immigrant Experience: Morris Rosenfeld and the Emergence of Yiddish Literature in America"
+    },
+    {
+      "role": "text",
+      "name": "M Miller - 2007 - books.google.com"
+    },
+    {
+      "role": "text",
+      "name": "… "
+    },
+    {
+      "role": "text",
+      "name": "poems"
+    },
+    {
+      "role": "text",
+      "name": ", Rosenfeld developed a poetics of pessimism and depression. His voice is the sad"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "voice of the "
+    },
+    {
+      "role": "text",
+      "name": "immigrant"
+    },
+    {
+      "role": "text",
+      "name": " … of Rosenfeld's "
+    },
+    {
+      "role": "text",
+      "name": "poetry"
+    },
+    {
+      "role": "text",
+      "name": " lies in mirroring the "
+    },
+    {
+      "role": "text",
+      "name": "immigrant"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "experience"
+    },
+    {
+      "role": "text",
+      "name": " and …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 20"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 4 versions"
+    },
+    {
+      "role": "button",
+      "name": "More"
+    },
+    {
+      "role": "heading",
+      "name": "Related searches",
+      "level": 2
+    },
+    {
+      "role": "link",
+      "name": "voices of the immigrant experience"
+    },
+    {
+      "role": "link",
+      "name": "immigrant experience yiddish literature in america"
+    },
+    {
+      "role": "link",
+      "name": "immigrant and refugee experience"
+    },
+    {
+      "role": "link",
+      "name": "ethnic experience iranian immigrant"
+    },
+    {
+      "role": "link",
+      "name": "shared experiences immigrant stories"
+    },
+    {
+      "role": "link",
+      "name": "immigrant experience morris rosenfeld"
+    },
+    {
+      "role": "link",
+      "name": "immigrant students poetic voice"
+    },
+    {
+      "role": "link",
+      "name": "immigrant experience in literature"
+    },
+    {
+      "role": "link",
+      "name": "migrant experience in poetry"
+    },
+    {
+      "role": "link",
+      "name": "immigrant experience in contemporary poetry"
+    },
+    {
+      "role": "link",
+      "name": "immigrant experience in fiction"
+    },
+    {
+      "role": "link",
+      "name": "immigrant experience in novel"
+    },
+    {
+      "role": "link",
+      "name": "diaspora in poetry"
+    },
+    {
+      "role": "link",
+      "name": "immigrant representation in poetry"
+    },
+    {
+      "role": "text",
+      "name": "1"
+    },
+    {
+      "role": "link",
+      "name": "2"
+    },
+    {
+      "role": "link",
+      "name": "3"
+    },
+    {
+      "role": "link",
+      "name": "4"
+    },
+    {
+      "role": "link",
+      "name": "5"
+    },
+    {
+      "role": "link",
+      "name": "6"
+    },
+    {
+      "role": "link",
+      "name": "7"
+    },
+    {
+      "role": "link",
+      "name": "8"
+    },
+    {
+      "role": "link",
+      "name": "9"
+    },
+    {
+      "role": "link",
+      "name": "10"
+    },
+    {
+      "role": "link",
+      "name": "Next"
+    },
+    {
+      "role": "link",
+      "name": "Privacy"
+    },
+    {
+      "role": "link",
+      "name": "Terms"
+    },
+    {
+      "role": "button",
+      "name": "Help",
+      "haspopup": "menu"
+    }
+  ]
+}

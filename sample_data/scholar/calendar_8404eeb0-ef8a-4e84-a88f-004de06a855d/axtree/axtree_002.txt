@@ -1,0 +1,93 @@
+{
+  "role": "WebArea",
+  "name": "Google Scholar",
+  "children": [
+    {
+      "role": "button",
+      "name": ""
+    },
+    {
+      "role": "link",
+      "name": "My profile"
+    },
+    {
+      "role": "link",
+      "name": "My library"
+    },
+    {
+      "role": "textbox",
+      "name": "Search"
+    },
+    {
+      "role": "button",
+      "name": "Search"
+    },
+    {
+      "role": "button",
+      "name": "Samuel",
+      "haspopup": "menu"
+    },
+    {
+      "role": "radio",
+      "name": "Articles",
+      "checked": false
+    },
+    {
+      "role": "text",
+      "name": "Articles"
+    },
+    {
+      "role": "radio",
+      "name": "Case law",
+      "focused": true,
+      "checked": true
+    },
+    {
+      "role": "text",
+      "name": "Case law"
+    },
+    {
+      "role": "radio",
+      "name": "Federal courts",
+      "checked": false
+    },
+    {
+      "role": "text",
+      "name": "Federal courts"
+    },
+    {
+      "role": "radio",
+      "name": "Washington courts",
+      "checked": false
+    },
+    {
+      "role": "text",
+      "name": "Washington courts"
+    },
+    {
+      "role": "link",
+      "name": "Select courts..."
+    },
+    {
+      "role": "text",
+      "name": "Stand on the shoulders of giants"
+    },
+    {
+      "role": "button",
+      "name": "EN"
+    },
+    {
+      "role": "link",
+      "name": "Privacy"
+    },
+    {
+      "role": "link",
+      "name": "Terms"
+    },
+    {
+      "role": "button",
+      "name": "Help",
+      "haspopup": "menu"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "role": "WebArea",
+  "name": "Google Scholar - Alerts",
+  "children": [
+    {
+      "role": "button",
+      "name": ""
+    },
+    {
+      "role": "link",
+      "name": "Homepage"
+    },
+    {
+      "role": "button",
+      "name": "Samuel",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": "Alert created."
+    },
+    {
+      "role": "text",
+      "name": "Alerts"
+    },
+    {
+      "role": "text",
+      "name": "Alerts for kukukud4@gmail.com"
+    },
+    {
+      "role": "text",
+      "name": "\"multicultural literature\" - new results"
+    },
+    {
+      "role": "text",
+      "name": "Most relevant results"
+    },
+    {
+      "role": "button",
+      "name": "CANCEL"
+    },
+    {
+      "role": "text",
+      "name": "\"vehicle aerodynamics\" - new results"
+    },
+    {
+      "role": "text",
+      "name": "Most relevant results"
+    },
+    {
+      "role": "button",
+      "name": "CANCEL"
+    },
+    {
+      "role": "button",
+      "name": "CREATE ALERT"
+    },
+    {
+      "role": "link",
+      "name": "Privacy"
+    },
+    {
+      "role": "link",
+      "name": "Terms"
+    },
+    {
+      "role": "button",
+      "name": "Help",
+      "haspopup": "menu"
+    }
+  ]
+}

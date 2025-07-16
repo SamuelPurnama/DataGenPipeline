@@ -1,0 +1,28 @@
+{
+  "goal": "Search for scholarly articles on the immigrant experience in poetry",
+  "eps_name": "calendar_2956c457-6c89-4aaf-a0ad-0a5abf32a3c4",
+  "task": {
+    "task_type": "calendar",
+    "steps": [
+      "Enter the search query 'immigrant experience in poetry' in the search bar",
+      "Submit the search form by clicking the search button"
+    ],
+    "instruction": {
+      "high_level": "Search for scholarly articles on the immigrant experience in poetry",
+      "mid_level": "Search for articles on the immigrant experience in poetry.",
+      "low_level": "Search for articles about the immigrant experience in poetry."
+    }
+  },
+  "start_url": "https://scholar.google.com",
+  "browser_context": {
+    "os": "darwin",
+    "viewport": "1280x720",
+    "cookies_enabled": true
+  },
+  "success": true,
+  "total_steps": 2,
+  "runtime_sec": 12.455879211425781,
+  "total_tokens": 11614,
+  "phase": 1,
+  "gpt_output": "Found about 350,000 results on the immigrant experience in poetry."
+}

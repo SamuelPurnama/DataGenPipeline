@@ -1,0 +1,29 @@
+{
+  "goal": "What is traffic like on I-5 on the way to the SeaTac Airport",
+  "eps_name": "calendar_2d2a0c25-5df1-4bad-a921-866dc7ebe03c",
+  "task": {
+    "task_type": "calendar",
+    "steps": [
+      "Click on the 'Directions' button to start setting the route.",
+      "Fill in the destination with 'SeaTac Airport' and press Enter to continue setting the route.",
+      "Set the starting point for the route by filling in the current location in the starting point textbox and press Enter."
+    ],
+    "instruction": {
+      "high_level": "What is traffic like on I-5 on the way to the SeaTac Airport",
+      "mid_level": "Determine trafic condition on the I-5 when navigating to  SeaTac Airport",
+      "low_level": "Determine the traffic condition on I-5 when navigating to SeaTac Airport."
+    }
+  },
+  "start_url": "https://maps.google.com",
+  "browser_context": {
+    "os": "darwin",
+    "viewport": "1280x720",
+    "cookies_enabled": true
+  },
+  "success": true,
+  "total_steps": 3,
+  "runtime_sec": 23.91585898399353,
+  "total_tokens": 15234,
+  "phase": 1,
+  "gpt_output": "Traffic on I-5 is marked as 'some traffic, as usual' for a 27-minute route."
+}

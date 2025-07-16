@@ -1,0 +1,27 @@
+{
+  "goal": "Search for coffee shops near the University District",
+  "eps_name": "calendar_97796b1b-b4c9-44ad-9fd0-a61c11b84d3a",
+  "task": {
+    "task_type": "calendar",
+    "steps": [
+      "Search for coffee shops near the University District."
+    ],
+    "instruction": {
+      "high_level": "Search for coffee shops near the University District",
+      "mid_level": "Find for coffee shops near the University District",
+      "low_level": "Search for coffee shops near the University District."
+    }
+  },
+  "start_url": "https://maps.google.com",
+  "browser_context": {
+    "os": "darwin",
+    "viewport": "1280x720",
+    "cookies_enabled": true
+  },
+  "success": true,
+  "total_steps": 1,
+  "runtime_sec": 9.489145040512085,
+  "total_tokens": 7097,
+  "phase": 1,
+  "gpt_output": "Nearby results include Scorpio Cafe, Lune Cafe - U District, Cafe on the Ave, Mr West Cafe Bar, SEAFAB CAFE, and OH! Bear Cafe & TeaHouse."
+}

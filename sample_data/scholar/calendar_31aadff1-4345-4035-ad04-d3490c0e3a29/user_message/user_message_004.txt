@@ -1,0 +1,1261 @@
+Goal: Save the first relevant article on quantum physics to my library
+
+Previous Actions:
+  1. Enter the search query 'quantum physics' in the search bar | Code: page.get_by_role('textbox', name='Search').fill('quantum physics')
+  2. Submit the search query for 'quantum physics' by clicking the search button | Code: page.get_by_role('button', name='Search').click()
+  3. Click the 'Save' button for the first listed article using a more specific locator strategy. | Code: page.locator('.gs_or_sav').first.click()
+  4. Click the 'Done' button in the 'Saved to My library' dialog | Code: page.get_by_role('button', name='Done').click()
+
+Current Page: quantum physics - Google Scholar (https://scholar.google.com/scholar?hl=en&as_sdt=0%2C48&q=quantum+physics&btnG=)
+
+AX Tree:
+{
+  "role": "WebArea",
+  "name": "quantum physics - Google Scholar",
+  "children": [
+    {
+      "role": "dialog",
+      "name": "Saved to My library",
+      "focused": true,
+      "children": [
+        {
+          "role": "button",
+          "name": "Cancel"
+        },
+        {
+          "role": "heading",
+          "name": "Saved to My library",
+          "level": 2
+        },
+        {
+          "role": "text",
+          "name": "Label as:"
+        },
+        {
+          "role": "checkbox",
+          "name": "Reading list",
+          "checked": false
+        },
+        {
+          "role": "link",
+          "name": "Learn more"
+        },
+        {
+          "role": "link",
+          "name": "Create new"
+        },
+        {
+          "role": "button",
+          "name": "Done"
+        },
+        {
+          "role": "button",
+          "name": "Remove article"
+        }
+      ]
+    },
+    {
+      "role": "button",
+      "name": ""
+    },
+    {
+      "role": "link",
+      "name": "Homepage"
+    },
+    {
+      "role": "textbox",
+      "name": "Search",
+      "value": "quantum physics"
+    },
+    {
+      "role": "button",
+      "name": "Search"
+    },
+    {
+      "role": "button",
+      "name": "Samuel",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": "Articles"
+    },
+    {
+      "role": "text",
+      "name": "About 3,200,000 results ("
+    },
+    {
+      "role": "text",
+      "name": "0.08"
+    },
+    {
+      "role": "text",
+      "name": " sec)"
+    },
+    {
+      "role": "link",
+      "name": "My profile"
+    },
+    {
+      "role": "link",
+      "name": "My library"
+    },
+    {
+      "role": "link",
+      "name": "Any time"
+    },
+    {
+      "role": "link",
+      "name": "Since 2025"
+    },
+    {
+      "role": "link",
+      "name": "Since 2024"
+    },
+    {
+      "role": "link",
+      "name": "Since 2021"
+    },
+    {
+      "role": "link",
+      "name": "Custom range..."
+    },
+    {
+      "role": "link",
+      "name": "Sort by relevance"
+    },
+    {
+      "role": "link",
+      "name": "Sort by date"
+    },
+    {
+      "role": "link",
+      "name": "Any type"
+    },
+    {
+      "role": "link",
+      "name": "Review articles"
+    },
+    {
+      "role": "checkbox",
+      "name": "include patents",
+      "checked": false
+    },
+    {
+      "role": "checkbox",
+      "name": "include citations",
+      "checked": true
+    },
+    {
+      "role": "link",
+      "name": "Create alert"
+    },
+    {
+      "role": "text",
+      "name": "[BOOK]"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Quantum physics"
+    },
+    {
+      "role": "text",
+      "name": "M Le Bellac - 2011 - books.google.com"
+    },
+    {
+      "role": "text",
+      "name": "Quantum"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "physics"
+    },
+    {
+      "role": "text",
+      "name": " allows us to understand the nature of the … In "
+    },
+    {
+      "role": "text",
+      "name": "Quantum"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "Physics"
+    },
+    {
+      "role": "text",
+      "name": ", Le Bellac"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "provides a thoroughly … Bellac teaches the fundamentals of "
+    },
+    {
+      "role": "text",
+      "name": "quantum"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "physics"
+    },
+    {
+      "role": "text",
+      "name": " using an original …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 260"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 5 versions"
+    },
+    {
+      "role": "button",
+      "name": "More"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] stanford.edu"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Experiment and the foundations of quantum physics"
+    },
+    {
+      "role": "link",
+      "name": "A Zeilinger"
+    },
+    {
+      "role": "text",
+      "name": " - Reviews of Modern "
+    },
+    {
+      "role": "text",
+      "name": "Physics"
+    },
+    {
+      "role": "text",
+      "name": ", 1999 - APS"
+    },
+    {
+      "role": "text",
+      "name": "… I will discuss a number of fundamental concepts in "
+    },
+    {
+      "role": "text",
+      "name": "quantum"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "physics"
+    },
+    {
+      "role": "text",
+      "name": " with direct reference"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "to experiments. For the sake of the consistency of the discussion and because I know them …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 791"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 23 versions"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] researchgate.net"
+        }
+      ]
+    },
+    {
+      "role": "text",
+      "name": "[BOOK]"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Quantum physics"
+    },
+    {
+      "role": "text",
+      "name": "S Gasiorowicz - 2003 - books.google.com"
+    },
+    {
+      "role": "text",
+      "name": "… the Old "
+    },
+    {
+      "role": "text",
+      "name": "Quantum"
+    },
+    {
+      "role": "text",
+      "name": " Theory. This material appears in every textbook on modern "
+    },
+    {
+      "role": "text",
+      "name": "physics"
+    },
+    {
+      "role": "text",
+      "name": " in one"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "… the creation of "
+    },
+    {
+      "role": "text",
+      "name": "quantum"
+    },
+    {
+      "role": "text",
+      "name": " mechanics, and it highlights the differences between classical and …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 1449"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 9 versions"
+    },
+    {
+      "role": "button",
+      "name": "More"
+    },
+    {
+      "role": "text",
+      "name": "[BOOK]"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "An introduction to quantum physics"
+    },
+    {
+      "role": "text",
+      "name": "AP French - 2018 - taylorfrancis.com"
+    },
+    {
+      "role": "text",
+      "name": "… "
+    },
+    {
+      "role": "text",
+      "name": "Quantum"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "physics"
+    },
+    {
+      "role": "text",
+      "name": " concerns the behavior of the smallest things we know. These smallest …"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "Learning aids for "
+    },
+    {
+      "role": "text",
+      "name": "quantum"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "physics"
+    },
+    {
+      "role": "text",
+      "name": " The fundamental ideas of "
+    },
+    {
+      "role": "text",
+      "name": "quantum"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "physics"
+    },
+    {
+      "role": "text",
+      "name": " are simple but …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 457"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 8 versions"
+    },
+    {
+      "role": "button",
+      "name": "More"
+    },
+    {
+      "role": "heading",
+      "name": "Related searches",
+      "level": 2
+    },
+    {
+      "role": "link",
+      "name": "quantum physics consciousness"
+    },
+    {
+      "role": "link",
+      "name": "classical quantum physics"
+    },
+    {
+      "role": "link",
+      "name": "law of attraction quantum physics"
+    },
+    {
+      "role": "link",
+      "name": "quantum physics relativity"
+    },
+    {
+      "role": "link",
+      "name": "quantum physics spirituality"
+    },
+    {
+      "role": "link",
+      "name": "quantum physics foundations"
+    },
+    {
+      "role": "link",
+      "name": "quantum physics one dimension"
+    },
+    {
+      "role": "link",
+      "name": "quantum physics observer"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] tandfonline.com"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Quantum physics meets biology"
+    },
+    {
+      "role": "link",
+      "name": "M Arndt"
+    },
+    {
+      "role": "text",
+      "name": ", "
+    },
+    {
+      "role": "link",
+      "name": "T Juffmann"
+    },
+    {
+      "role": "text",
+      "name": ", "
+    },
+    {
+      "role": "link",
+      "name": "V Vedral"
+    },
+    {
+      "role": "text",
+      "name": " - HFSP journal, 2009 - Taylor & Francis"
+    },
+    {
+      "role": "text",
+      "name": "… reductionist sense: "
+    },
+    {
+      "role": "text",
+      "name": "quantum"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "physics"
+    },
+    {
+      "role": "text",
+      "name": " and electrodynamics shape … of matter: all this is "
+    },
+    {
+      "role": "text",
+      "name": "quantum"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "physics"
+    },
+    {
+      "role": "text",
+      "name": " and a natural basis for life … Is there a transition between "
+    },
+    {
+      "role": "text",
+      "name": "quantum"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "physics"
+    },
+    {
+      "role": "text",
+      "name": " and our …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 291"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 17 versions"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] ignaciodarnaude.com"
+        }
+      ]
+    },
+    {
+      "role": "text",
+      "name": "[BOOK]"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Quantum physics without quantum philosophy"
+    },
+    {
+      "role": "text",
+      "name": "D Dürr, S Goldstein, "
+    },
+    {
+      "role": "link",
+      "name": "N Zanghì"
+    },
+    {
+      "role": "text",
+      "name": " - 2012 - books.google.com"
+    },
+    {
+      "role": "text",
+      "name": "It has often been claimed that without drastic conceptual innovations a genuine explanation"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "of "
+    },
+    {
+      "role": "text",
+      "name": "quantum"
+    },
+    {
+      "role": "text",
+      "name": " interference effects and "
+    },
+    {
+      "role": "text",
+      "name": "quantum"
+    },
+    {
+      "role": "text",
+      "name": " randomness is impossible. This book concerns …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 383"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 11 versions"
+    },
+    {
+      "role": "button",
+      "name": "More"
+    },
+    {
+      "role": "text",
+      "name": "[BOOK]"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Operational quantum physics"
+    },
+    {
+      "role": "link",
+      "name": "P Busch"
+    },
+    {
+      "role": "text",
+      "name": ", "
+    },
+    {
+      "role": "link",
+      "name": "M Grabowski"
+    },
+    {
+      "role": "text",
+      "name": ", PJ Lahti - 1997 - books.google.com"
+    },
+    {
+      "role": "text",
+      "name": "… theory come into sight and invite "
+    },
+    {
+      "role": "text",
+      "name": "quantum"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "physicists"
+    },
+    {
+      "role": "text",
+      "name": " to enter a promising area of research."
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "We believe that the richness and power of the "
+    },
+    {
+      "role": "text",
+      "name": "quantum"
+    },
+    {
+      "role": "text",
+      "name": " language developed and reviewed in …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 1176"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 9 versions"
+    },
+    {
+      "role": "button",
+      "name": "More"
+    },
+    {
+      "role": "link",
+      "name": "Conceptual foundations of quantum physics: an overview from modern perspectives"
+    },
+    {
+      "role": "link",
+      "name": "D Home"
+    },
+    {
+      "role": "text",
+      "name": " - 2013 - books.google.com"
+    },
+    {
+      "role": "text",
+      "name": "… w(r,t) obeys the fundamental equation of "
+    },
+    {
+      "role": "text",
+      "name": "quantum"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "physics"
+    },
+    {
+      "role": "text",
+      "name": ". Hence the need for an appropriate"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "interpretation becomes more acute in the case of "
+    },
+    {
+      "role": "text",
+      "name": "quantum"
+    },
+    {
+      "role": "text",
+      "name": " mechanics. The Schrödinger …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 245"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 10 versions"
+    },
+    {
+      "role": "button",
+      "name": "More"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] gecacademy.cn"
+        }
+      ]
+    },
+    {
+      "role": "text",
+      "name": "[BOOK]"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "The philosophy of quantum physics"
+    },
+    {
+      "role": "text",
+      "name": "C Friebe, M Kuhlmann, H Lyre, "
+    },
+    {
+      "role": "link",
+      "name": "PM Näger"
+    },
+    {
+      "role": "text",
+      "name": ", O Passon… - 2018 - Springer"
+    },
+    {
+      "role": "text",
+      "name": "… to the philosophy of "
+    },
+    {
+      "role": "text",
+      "name": "quantum"
+    },
+    {
+      "role": "text",
+      "name": " theory for advanced students of philosophy with an interest"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "in "
+    },
+    {
+      "role": "text",
+      "name": "physics"
+    },
+    {
+      "role": "text",
+      "name": ". At the same time, this book confronts students and practitioners of "
+    },
+    {
+      "role": "text",
+      "name": "physics"
+    },
+    {
+      "role": "text",
+      "name": " with the …"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 121"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 13 versions"
+    },
+    {
+      "role": "button",
+      "name": "More"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "link",
+          "name": "[PDF] kottakkalfarookcollege.edu.in"
+        }
+      ]
+    },
+    {
+      "role": "text",
+      "name": "[BOOK]"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Quantum physics"
+    },
+    {
+      "role": "text",
+      "name": "F Scheck - 2007 - Springer"
+    },
+    {
+      "role": "text",
+      "name": "This book is divided into two parts: Part I deals with nonrelativistic "
+    },
+    {
+      "role": "text",
+      "name": "quantum"
+    },
+    {
+      "role": "text",
+      "name": " mechanics, from"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n"
+    },
+    {
+      "role": "text",
+      "name": "bound states of a single particle (harmonic oscillator, hydrogen atom) to fermionic many-…"
+    },
+    {
+      "role": "button",
+      "name": "Save"
+    },
+    {
+      "role": "button",
+      "name": "Cite",
+      "haspopup": "menu"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Cited by 80"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "Related articles"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "link",
+      "name": "All 15 versions"
+    },
+    {
+      "role": "button",
+      "name": "More"
+    },
+    {
+      "role": "text",
+      "name": "1"
+    },
+    {
+      "role": "link",
+      "name": "2"
+    },
+    {
+      "role": "link",
+      "name": "3"
+    },
+    {
+      "role": "link",
+      "name": "4"
+    },
+    {
+      "role": "link",
+      "name": "5"
+    },
+    {
+      "role": "link",
+      "name": "6"
+    },
+    {
+      "role": "link",
+      "name": "7"
+    },
+    {
+      "role": "link",
+      "name": "8"
+    },
+    {
+      "role": "link",
+      "name": "9"
+    },
+    {
+      "role": "link",
+      "name": "10"
+    },
+    {
+      "role": "link",
+      "name": "Next"
+    },
+    {
+      "role": "link",
+      "name": "Privacy"
+    },
+    {
+      "role": "link",
+      "name": "Terms"
+    },
+    {
+      "role": "button",
+      "name": "Help",
+      "haspopup": "menu"
+    }
+  ]
+}
+
+Error Codes:
+  None

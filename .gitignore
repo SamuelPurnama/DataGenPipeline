@@ -53,3 +53,6 @@ dist/
 
 screenshots/
 browser_sessions/
+
+# Results and generated data
+results/

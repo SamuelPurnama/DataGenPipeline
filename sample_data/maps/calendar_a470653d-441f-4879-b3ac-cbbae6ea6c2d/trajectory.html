@@ -1,0 +1,1984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualization of Trajectory</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background-color: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h1, h2 { color: #333; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .step { border: 1px solid #ddd; margin: 20px 0; padding: 15px; border-radius: 5px; background-color: white; }
+        .step-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .step-number { font-size: 1.2em; font-weight: bold; color: #2196F3; }
+        .step-content { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .screenshot { max-width: 100%; border: 1px solid #ddd; border-radius: 4px; }
+        .collapsible { background-color: #eee; color: #444; cursor: pointer; padding: 10px; width: 100%; border: none; text-align: left; outline: none; font-size: 1em; margin-top: 5px; }
+        .active, .collapsible:hover { background-color: #ccc; }
+        .content { padding: 0 18px; display: none; overflow: auto; background-color: #f9f9f9; border-radius: 0 0 5px 5px; }
+        pre { white-space: pre-wrap; word-break: break-word; }
+        table.instruction-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        table.instruction-table th, table.instruction-table td { border: 1px solid #ddd; padding: 8px; }
+        table.instruction-table th { background: #f0f0f0; text-align: left; }
+        .steps-list { margin: 0; padding-left: 20px; }
+        .steps-list li { margin-bottom: 4px; }
+        .step-details-label { font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>calendar_a470653d-441f-4879-b3ac-cbbae6ea6c2d (calendar)</h1>
+        <h2>Instructions</h2>
+        <table class="instruction-table">
+            <tr><th>level</th><th>instruction</th></tr>
+            <tr><td><em>high_level</em></td><td>Find the nearest grocery store to the University of Washington</td></tr>
+            <tr><td><em>mid_level</em></td><td>Find the nearest grocery store to the University of Washington</td></tr>
+            <tr><td><em>low_level</em></td><td>Find the nearest grocery store to the University of Washington</td></tr>
+            <tr><td><em>steps</em></td><td><ul class="steps-list"><li>Enter &#x27;University of Washington&#x27; in the search box and press Enter</li><li>Click the &#x27;Nearby&#x27; button to search for grocery stores near the University of Washington</li><li>Enter &#x27;grocery stores&#x27; in the &#x27;Search nearby University of Washington&#x27; field and press Enter to find nearby grocery stores.</li></ul></td></tr>
+        </table>
+        <h2>Trajectory Steps</h2>
+
+        <div class="step">
+            <div class="step-header">
+                <span class="step-number">Step 1</span>
+            </div>
+            <div class="step-content">
+                <div>
+                    <img src="images/screenshot_001.png" alt="Step 1 Screenshot" class="screenshot">
+                </div>
+                <div>
+                    <div class="step-details-label">Thought</div>
+                    <div>First, I need to locate the University of Washington to find the nearest grocery stores.</div>
+                    <div class="step-details-label">Action</div>
+                    <div>keyboard_type(text=&#x27;University of Washington&#x27;)</div>
+                    <div class="step-details-label">Action Description</div>
+                    <div>Enter &#x27;University of Washington&#x27; in the search box and press Enter</div>
+                    <button class="collapsible">System Message</button>
+                    <div class="content"><pre>System message for this step (placeholder)</pre></div>
+                    <button class="collapsible">User Message</button>
+                    <div class="content"><pre>Goal: Search for the University of Washington to find nearby grocery stores
+
+Previous Actions:
+  1. Enter &#x27;University of Washington&#x27; in the search box and press Enter | Code: page.get_by_role(&#x27;combobox&#x27;, name=&#x27;Search Google Maps&#x27;).fill(&#x27;University of Washington&#x27;); page.keyboard.press(&#x27;Enter&#x27;)
+
+Current Page: University of Washington - Google Maps (https://www.google.com/maps/place/University+of+Washington/@47.6507084,-122.3208426,13z/data=!4m6!3m5!1s0x549014929d8535eb:0x6b742c7901b82ba3!8m2!3d47.6567171!4d-122.3066182!16s%2Fg%2F1tdkxdnn?entry=ttu&amp;g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D)
+
+AX Tree:
+{
+  &quot;role&quot;: &quot;WebArea&quot;,
+  &quot;name&quot;: &quot;Google Maps&quot;,
+  &quot;children&quot;: [
+    {
+      &quot;role&quot;: &quot;generic&quot;,
+      &quot;name&quot;: &quot;&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;role&quot;: &quot;generic&quot;,
+          &quot;name&quot;: &quot;Google Maps&quot;,
+          &quot;children&quot;: [
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;
+            },
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;
+            },
+            {
+              &quot;role&quot;: &quot;application&quot;,
+              &quot;name&quot;: &quot;Map · Use arrow keys to pan the map. · Get details about a place by pressing its corresponding number key.&quot;
+            },
+            {
+              &quot;role&quot;: &quot;text&quot;,
+              &quot;name&quot;: &quot;Search Google Maps&quot;
+            },
+            {
+              &quot;role&quot;: &quot;combobox&quot;,
+              &quot;name&quot;: &quot;Search Google Maps&quot;,
+              &quot;focused&quot;: true,
+              &quot;haspopup&quot;: &quot;grid&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Search&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Directions&quot;
+            },
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Menu&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Saved&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Recents&quot;,
+              &quot;disabled&quot;: true
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Get the app&quot;
+            },
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+Error Codes:
+  None</pre></div>
+                    <button class="collapsible">Element Output</button>
+                    <div class="content"><pre>{
+  &quot;text&quot;: &quot;University of Washington&quot;
+}</pre></div>
+                    <button class="collapsible">LLM Output</button>
+                    <div class="content"><pre>page.get_by_role(&#x27;combobox&#x27;, name=&#x27;Search Google Maps&#x27;).fill(&#x27;University of Washington&#x27;); page.keyboard.press(&#x27;Enter&#x27;)</pre></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="step">
+            <div class="step-header">
+                <span class="step-number">Step 2</span>
+            </div>
+            <div class="step-content">
+                <div>
+                    <img src="images/screenshot_002.png" alt="Step 2 Screenshot" class="screenshot">
+                </div>
+                <div>
+                    <div class="step-details-label">Thought</div>
+                    <div>I need to click the &quot;Nearby&quot; button.</div>
+                    <div class="step-details-label">Action</div>
+                    <div>click(bid=&#x27;&#x27;, button=&#x27;left&#x27;)</div>
+                    <div class="step-details-label">Action Description</div>
+                    <div>Click the &#x27;Nearby&#x27; button to search for grocery stores near the University of Washington</div>
+                    <button class="collapsible">System Message</button>
+                    <div class="content"><pre>System message for this step (placeholder)</pre></div>
+                    <button class="collapsible">User Message</button>
+                    <div class="content"><pre>Goal: Find the nearest grocery store to the University of Washington
+
+Previous Actions:
+  1. Enter &#x27;University of Washington&#x27; in the search box and press Enter | Code: page.get_by_role(&#x27;combobox&#x27;, name=&#x27;Search Google Maps&#x27;).fill(&#x27;University of Washington&#x27;); page.keyboard.press(&#x27;Enter&#x27;)
+  2. Click the &#x27;Nearby&#x27; button to search for grocery stores near the University of Washington | Code: page.get_by_role(&#x27;button&#x27;, name=&#x27;Nearby&#x27;).click()
+
+Current Page: University of Washington - Google Maps (https://www.google.com/maps/place/University+of+Washington/@47.6567171,-122.3091931,17z/data=!4m6!3m5!1s0x549014929d8535eb:0x6b742c7901b82ba3!8m2!3d47.6567171!4d-122.3066182!16s%2Fg%2F1tdkxdnn?entry=ttu&amp;g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D)
+
+AX Tree:
+{
+  &quot;role&quot;: &quot;WebArea&quot;,
+  &quot;name&quot;: &quot;University of Washington - Google Maps&quot;,
+  &quot;children&quot;: [
+    {
+      &quot;role&quot;: &quot;generic&quot;,
+      &quot;name&quot;: &quot;&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;role&quot;: &quot;generic&quot;,
+          &quot;name&quot;: &quot;Google Maps&quot;,
+          &quot;children&quot;: [
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;
+            },
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;
+            },
+            {
+              &quot;role&quot;: &quot;application&quot;,
+              &quot;name&quot;: &quot;Map · Use arrow keys to pan the map. · Get details about a place by pressing its corresponding number key.&quot;
+            },
+            {
+              &quot;role&quot;: &quot;combobox&quot;,
+              &quot;name&quot;: &quot;&quot;,
+              &quot;haspopup&quot;: &quot;grid&quot;,
+              &quot;value&quot;: &quot;University of Washington&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Search&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Close&quot;
+            },
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;
+            },
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;,
+              &quot;children&quot;: [
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Restaurants&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Hotels&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Things to do&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Transit&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Parking&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Pharmacies&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;ATMs&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Next page&quot;
+                }
+              ]
+            },
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Menu&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Saved&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Recents&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;28 places Seattle&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Get the app&quot;
+            },
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;,
+              &quot;children&quot;: [
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo of University of Washington&quot;,
+                  &quot;focused&quot;: true
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;See photos&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;heading&quot;,
+                  &quot;name&quot;: &quot;University of Washington&quot;,
+                  &quot;level&quot;: 1
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;(1,808)&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Public university&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;tab&quot;,
+                  &quot;name&quot;: &quot;Overview of University of Washington&quot;,
+                  &quot;selected&quot;: true
+                },
+                {
+                  &quot;role&quot;: &quot;tab&quot;,
+                  &quot;name&quot;: &quot;Reviews for University of Washington&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;tab&quot;,
+                  &quot;name&quot;: &quot;About University of Washington&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Directions&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Save&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Nearby&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Send to phone&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Share&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;This 1861 research school in Downtown Seattle is known for medicine, engineering &amp; business.&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Address: 1410 NE Campus Pkwy, Seattle, WA 98195 &quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Copy address&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;Website: washington.edu &quot;
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;Open website&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Copy website&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Phone: (206) 543-2100 &quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Copy phone number&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;Call phone number&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Plus code: MM4V+M9 Seattle, Washington&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Copy plus code&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Learn more about plus codes&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Your Maps activity&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Add a label&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Suggest an edit&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;heading&quot;,
+                  &quot;name&quot;: &quot;Add missing information&quot;,
+                  &quot;level&quot;: 2
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;More info&quot;,
+                  &quot;haspopup&quot;: &quot;menu&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Add hours&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;heading&quot;,
+                  &quot;name&quot;: &quot;Updates from customers&quot;,
+                  &quot;level&quot;: 2
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Cherry Blossom 💮 University of Washington 🏫 2 years ago&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;heading&quot;,
+                  &quot;name&quot;: &quot;Photos &amp; videos&quot;,
+                  &quot;level&quot;: 2
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;All&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;All&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Latest · 13 days ago&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Latest&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;13 days ago&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Videos&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Videos&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;By owner&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;By owner&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Street View &amp; 360°&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Street View &amp; 360°&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Add photos &amp; videos&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;heading&quot;,
+                  &quot;name&quot;: &quot;Directory&quot;,
+                  &quot;level&quot;: 2
+                },
+                {
+                  &quot;role&quot;: &quot;textbox&quot;,
+                  &quot;name&quot;: &quot;Search for places&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Food &amp; Drink 13&quot;,
+                  &quot;pressed&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Shopping 6&quot;,
+                  &quot;pressed&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Recreations 17&quot;,
+                  &quot;pressed&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Services 20&quot;,
+                  &quot;pressed&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;+4&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Husky Stadium&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Husky Stadium&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Stadium&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Open 24 hours&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;The Quad - University of Washington&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;The Quad - University of Washington&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;University&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Open 24 hours&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Agua Verde Cafe&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Agua Verde Cafe&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot; &quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;$$&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Restaurant&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot; &quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot; &quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Floor 1&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Open&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot; ⋅ Closes 9 PM&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Husky Union Building&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Husky Union Building&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Student union&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot; &quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot; &quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Floor 1&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Closed&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot; ⋅ Opens 7 AM Mon&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;View all&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;heading&quot;,
+                  &quot;name&quot;: &quot;Review summary&quot;,
+                  &quot;level&quot;: 2
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;More information about the review summary&quot;,
+                  &quot;haspopup&quot;: &quot;menu&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;5&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;4&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;3&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;2&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;1&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;4.6&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;1,808 reviews&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;Photo of reviewer who wrote \&quot;Great place to have children.... people are very friendly, they work with you\&quot;&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;\&quot;Great place to have children.... people are very friendly, they work with you\&quot;&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;Photo of reviewer who wrote \&quot;Nice doctor office, staff was helpful and the office was clean and bright.\&quot;&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;\&quot;Nice doctor office, staff was helpful and the office was clean and bright.\&quot;&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;Photo of reviewer who wrote \&quot;The internet here is freaking trash\&quot;&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;\&quot;The internet here is freaking trash&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Write a review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;heading&quot;,
+                  &quot;name&quot;: &quot;Reviews&quot;,
+                  &quot;level&quot;: 2
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Search reviews&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Sort reviews&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;radio&quot;,
+                  &quot;name&quot;: &quot;All reviews&quot;,
+                  &quot;checked&quot;: true
+                },
+                {
+                  &quot;role&quot;: &quot;radio&quot;,
+                  &quot;name&quot;: &quot;cherry blossoms, mentioned in 63 reviews&quot;,
+                  &quot;checked&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;radio&quot;,
+                  &quot;name&quot;: &quot;UW, mentioned in 57 reviews&quot;,
+                  &quot;checked&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;radio&quot;,
+                  &quot;name&quot;: &quot;beautiful, mentioned in 46 reviews&quot;,
+                  &quot;checked&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;radio&quot;,
+                  &quot;name&quot;: &quot;walk, mentioned in 33 reviews&quot;,
+                  &quot;checked&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;View 6 more Topics&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo of Levon Alyanakian (Levon&#x27;s Travel&#x27;s)&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Levon Alyanakian (Levon&#x27;s Travel&#x27;s) Local Guide · 417 reviews · 1,149 photos&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Actions for Levon Alyanakian (Levon&#x27;s Travel&#x27;s)&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;image&quot;,
+                  &quot;name&quot;: &quot;5 stars&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;2 years ago&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;generic&quot;,
+                  &quot;name&quot;: &quot;&quot;,
+                  &quot;children&quot;: [
+                    {
+                      &quot;role&quot;: &quot;text&quot;,
+                      &quot;name&quot;: &quot;The University boasts an impressive (and large) campus. The buildings are well maintained, and the campus is very clean and pleasant. There are many communal areas, and plenty of different study spaces. Overall great learning environment.&quot;
+                    }
+                  ]
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo 1 on Levon Alyanakian (Levon&#x27;s Travel&#x27;s)&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo 2 on Levon Alyanakian (Levon&#x27;s Travel&#x27;s)&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo 3 on Levon Alyanakian (Levon&#x27;s Travel&#x27;s)&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;+ 30 more photos on Levon Alyanakian (Levon&#x27;s Travel&#x27;s)&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;2 likes&quot;,
+                  &quot;description&quot;: &quot;2 likes&quot;,
+                  &quot;pressed&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Share Levon Alyanakian (Levon&#x27;s Travel&#x27;s)&#x27;s review.&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo of Danny Tram&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Danny Tram Local Guide · 618 reviews · 15,247 photos&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Actions for Danny Tram&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;image&quot;,
+                  &quot;name&quot;: &quot;5 stars&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;2 years ago&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;generic&quot;,
+                  &quot;name&quot;: &quot;&quot;,
+                  &quot;children&quot;: [
+                    {
+                      &quot;role&quot;: &quot;text&quot;,
+                      &quot;name&quot;: &quot;What can I say about this beautiful and fantastic university? Perfect\nYou have to walk across the campus to see how beautiful, green, ancient, and engaging the uni campus offers students, faculty, and staff. There are many …&quot;
+                    },
+                    {
+                      &quot;role&quot;: &quot;button&quot;,
+                      &quot;name&quot;: &quot;See more&quot;
+                    }
+                  ]
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo 1 on Danny Tram&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo 2 on Danny Tram&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo 3 on Danny Tram&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;+ 47 more photos on Danny Tram&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;12 likes&quot;,
+                  &quot;description&quot;: &quot;12 likes&quot;,
+                  &quot;pressed&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Share Danny Tram&#x27;s review.&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo of Bret Warren&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Bret Warren Local Guide · 166 reviews · 5,117 photos&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Actions for Bret Warren&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;image&quot;,
+                  &quot;name&quot;: &quot;5 stars&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;2 years ago&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;generic&quot;,
+                  &quot;name&quot;: &quot;&quot;,
+                  &quot;children&quot;: [
+                    {
+                      &quot;role&quot;: &quot;text&quot;,
+                      &quot;name&quot;: &quot;Beautiful, well-kept campus. The cherry blossoms are spectacular. There is a lot of interesting architecture. We enjoyed the museum as well.&quot;
+                    }
+                  ]
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo 1 on Bret Warren&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo 2 on Bret Warren&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo 3 on Bret Warren&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;+ 47 more photos on Bret Warren&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;2 likes&quot;,
+                  &quot;description&quot;: &quot;2 likes&quot;,
+                  &quot;pressed&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Share Bret Warren&#x27;s review.&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;More reviews (1,805)&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;heading&quot;,
+                  &quot;name&quot;: &quot;People also search for&quot;,
+                  &quot;level&quot;: 2
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;University of Washington Bothell · 4.2 stars · 183 reviews · Public university&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;UW Atmospheric department · 0.0 stars · Academic department&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;University of Washington College of Arts &amp; Sciences · 5.0 stars · 6 reviews · University&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;University of Washington School of Medicine · 2.8 stars · 55 reviews · Medical school&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;University of Washington Tacoma · 4.4 stars · 169 reviews · Public university&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;heading&quot;,
+                  &quot;name&quot;: &quot;Web results&quot;,
+                  &quot;level&quot;: 2
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;About this data&quot;
+                }
+              ]
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Collapse side panel&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Google apps&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Google Account: Samuel Samsudin (kukukud4@gmail.com)&quot;
+            },
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Show Your Location&quot;,
+              &quot;pressed&quot;: false
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Zoom in&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Zoom out&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Browse Street View images&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Street View&quot;
+            },
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;
+            },
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;Interactive map&quot;
+            },
+            {
+              &quot;role&quot;: &quot;text&quot;,
+              &quot;name&quot;: &quot;Layers&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Layers&quot;
+            },
+            {
+              &quot;role&quot;: &quot;text&quot;,
+              &quot;name&quot;: &quot;Map data ©2025 Google&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;United States&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Terms&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Privacy&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Send Product Feedback&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;200 ft&quot;
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+Error Codes:
+  None</pre></div>
+                    <button class="collapsible">Element Output</button>
+                    <div class="content"><pre>{
+  &quot;bid&quot;: &quot;&quot;,
+  &quot;button&quot;: &quot;left&quot;,
+  &quot;click_type&quot;: &quot;single&quot;,
+  &quot;bbox&quot;: [
+    112,
+    23,
+    208,
+    24
+  ],
+  &quot;class&quot;: &quot;fontBodyMedium searchboxinput xiQnY &quot;,
+  &quot;id&quot;: &quot;searchboxinput&quot;,
+  &quot;type&quot;: &quot;input&quot;,
+  &quot;ariaLabel&quot;: null,
+  &quot;role&quot;: &quot;combobox&quot;,
+  &quot;value&quot;: &quot;&quot;,
+  &quot;node_properties&quot;: {
+    &quot;role&quot;: &quot;button&quot;,
+    &quot;value&quot;: &quot;Nearby&quot;
+  }
+}</pre></div>
+                    <button class="collapsible">LLM Output</button>
+                    <div class="content"><pre>page.get_by_role(&#x27;button&#x27;, name=&#x27;Nearby&#x27;).click()</pre></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="step">
+            <div class="step-header">
+                <span class="step-number">Step 3</span>
+            </div>
+            <div class="step-content">
+                <div>
+                    <img src="images/screenshot_003.png" alt="Step 3 Screenshot" class="screenshot">
+                </div>
+                <div>
+                    <div class="step-details-label">Thought</div>
+                    <div>I need to search for grocery stores near the University of Washington using the nearby search feature.</div>
+                    <div class="step-details-label">Action</div>
+                    <div>keyboard_type(text=&#x27;grocery stores&#x27;)</div>
+                    <div class="step-details-label">Action Description</div>
+                    <div>Enter &#x27;grocery stores&#x27; in the &#x27;Search nearby University of Washington&#x27; field and press Enter to find nearby grocery stores.</div>
+                    <button class="collapsible">System Message</button>
+                    <div class="content"><pre>System message for this step (placeholder)</pre></div>
+                    <button class="collapsible">User Message</button>
+                    <div class="content"><pre>Goal: Find the nearest grocery store to the University of Washington
+
+Previous Actions:
+  1. Enter &#x27;University of Washington&#x27; in the search box and press Enter | Code: page.get_by_role(&#x27;combobox&#x27;, name=&#x27;Search Google Maps&#x27;).fill(&#x27;University of Washington&#x27;); page.keyboard.press(&#x27;Enter&#x27;)
+  2. Click the &#x27;Nearby&#x27; button to search for grocery stores near the University of Washington | Code: page.get_by_role(&#x27;button&#x27;, name=&#x27;Nearby&#x27;).click()
+  3. Enter &#x27;grocery stores&#x27; in the &#x27;Search nearby University of Washington&#x27; field and press Enter to find nearby grocery stores. | Code: page.get_by_role(&#x27;combobox&#x27;, name=&#x27;Search nearby University of Washington&#x27;).fill(&#x27;grocery stores&#x27;); page.keyboard.press(&#x27;Enter&#x27;)
+
+Current Page: grocery stores - Google Maps (https://www.google.com/maps/search/grocery+stores/@47.6567171,-122.3091931,17z/data=!4m7!2m6!3m5!2sUniversity+of+Washington,+1410+NE+Campus+Pkwy,+Seattle,+WA+98195!3s0x549014929d8535eb:0x6b742c7901b82ba3!4m2!1d-122.3066182!2d47.6567171?entry=ttu&amp;g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D)
+
+AX Tree:
+{
+  &quot;role&quot;: &quot;WebArea&quot;,
+  &quot;name&quot;: &quot;University of Washington - Google Maps&quot;,
+  &quot;children&quot;: [
+    {
+      &quot;role&quot;: &quot;generic&quot;,
+      &quot;name&quot;: &quot;&quot;,
+      &quot;children&quot;: [
+        {
+          &quot;role&quot;: &quot;generic&quot;,
+          &quot;name&quot;: &quot;Google Maps&quot;,
+          &quot;children&quot;: [
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;
+            },
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;
+            },
+            {
+              &quot;role&quot;: &quot;application&quot;,
+              &quot;name&quot;: &quot;Map · Use arrow keys to pan the map. · Get details about a place by pressing its corresponding number key.&quot;
+            },
+            {
+              &quot;role&quot;: &quot;text&quot;,
+              &quot;name&quot;: &quot;Search nearby University of Washington&quot;
+            },
+            {
+              &quot;role&quot;: &quot;combobox&quot;,
+              &quot;name&quot;: &quot;Search nearby University of Washington&quot;,
+              &quot;expanded&quot;: true,
+              &quot;focused&quot;: true,
+              &quot;haspopup&quot;: &quot;grid&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Search&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Cancel search nearby&quot;
+            },
+            {
+              &quot;role&quot;: &quot;grid&quot;,
+              &quot;name&quot;: &quot;Suggestions&quot;
+            },
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Menu&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Saved&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Recents&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;28 places Seattle&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Get the app&quot;
+            },
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;,
+              &quot;children&quot;: [
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo of University of Washington&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;See photos&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;heading&quot;,
+                  &quot;name&quot;: &quot;University of Washington&quot;,
+                  &quot;level&quot;: 1
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;(1,808)&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Public university&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;tab&quot;,
+                  &quot;name&quot;: &quot;Overview of University of Washington&quot;,
+                  &quot;selected&quot;: true
+                },
+                {
+                  &quot;role&quot;: &quot;tab&quot;,
+                  &quot;name&quot;: &quot;Reviews for University of Washington&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;tab&quot;,
+                  &quot;name&quot;: &quot;About University of Washington&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Directions&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Save&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Nearby&quot;,
+                  &quot;pressed&quot;: true
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Send to phone&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Share&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;This 1861 research school in Downtown Seattle is known for medicine, engineering &amp; business.&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Sponsored&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;·&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;By Viator&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Why this ad?&quot;,
+                  &quot;description&quot;: &quot;Why this ad?&quot;,
+                  &quot;haspopup&quot;: &quot;menu&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;Boeing Factory Tour with Private Group Transport from Seattle $1,507  ·  4.5 stars 13 Reviews Private tour&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Address: 1410 NE Campus Pkwy, Seattle, WA 98195 &quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Copy address&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;Website: washington.edu &quot;
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;Open website&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Copy website&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Phone: (206) 543-2100 &quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Copy phone number&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;Call phone number&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Plus code: MM4V+M9 Seattle, Washington&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Copy plus code&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Learn more about plus codes&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Your Maps activity&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Add a label&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Suggest an edit&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;heading&quot;,
+                  &quot;name&quot;: &quot;Add missing information&quot;,
+                  &quot;level&quot;: 2
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;More info&quot;,
+                  &quot;haspopup&quot;: &quot;menu&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Add hours&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;heading&quot;,
+                  &quot;name&quot;: &quot;Updates from customers&quot;,
+                  &quot;level&quot;: 2
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Cherry Blossom 💮 University of Washington 🏫 2 years ago&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;heading&quot;,
+                  &quot;name&quot;: &quot;Photos &amp; videos&quot;,
+                  &quot;level&quot;: 2
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;All&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;All&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Latest · 13 days ago&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Latest&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;13 days ago&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Videos&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Videos&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;By owner&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;By owner&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Street View &amp; 360°&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Street View &amp; 360°&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Add photos &amp; videos&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;heading&quot;,
+                  &quot;name&quot;: &quot;Directory&quot;,
+                  &quot;level&quot;: 2
+                },
+                {
+                  &quot;role&quot;: &quot;textbox&quot;,
+                  &quot;name&quot;: &quot;Search for places&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Food &amp; Drink 13&quot;,
+                  &quot;pressed&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Shopping 6&quot;,
+                  &quot;pressed&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Recreations 17&quot;,
+                  &quot;pressed&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Services 20&quot;,
+                  &quot;pressed&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;+4&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Husky Stadium&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Husky Stadium&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Stadium&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Open 24 hours&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;The Quad - University of Washington&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;The Quad - University of Washington&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;University&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Open 24 hours&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Agua Verde Cafe&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Agua Verde Cafe&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot; &quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;$$&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Restaurant&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot; &quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot; &quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Floor 1&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Open&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot; ⋅ Closes 9 PM&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Husky Union Building&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Husky Union Building&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Student union&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot; &quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot; &quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Floor 1&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;Closed&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot; ⋅ Opens 7 AM Mon&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;View all&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;heading&quot;,
+                  &quot;name&quot;: &quot;Review summary&quot;,
+                  &quot;level&quot;: 2
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;More information about the review summary&quot;,
+                  &quot;haspopup&quot;: &quot;menu&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;5&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;4&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;3&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;2&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;1&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;4.6&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;1,808 reviews&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;Photo of reviewer who wrote \&quot;Great place to have children.... people are very friendly, they work with you\&quot;&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;\&quot;Great place to have children.... people are very friendly, they work with you\&quot;&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;Photo of reviewer who wrote \&quot;Nice doctor office, staff was helpful and the office was clean and bright.\&quot;&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;\&quot;Nice doctor office, staff was helpful and the office was clean and bright.\&quot;&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;Photo of reviewer who wrote \&quot;The internet here is freaking trash\&quot;&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;\&quot;The internet here is freaking trash&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Write a review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;heading&quot;,
+                  &quot;name&quot;: &quot;Reviews&quot;,
+                  &quot;level&quot;: 2
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Search reviews&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Sort reviews&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;radio&quot;,
+                  &quot;name&quot;: &quot;All reviews&quot;,
+                  &quot;checked&quot;: true
+                },
+                {
+                  &quot;role&quot;: &quot;radio&quot;,
+                  &quot;name&quot;: &quot;cherry blossoms, mentioned in 63 reviews&quot;,
+                  &quot;checked&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;radio&quot;,
+                  &quot;name&quot;: &quot;UW, mentioned in 57 reviews&quot;,
+                  &quot;checked&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;radio&quot;,
+                  &quot;name&quot;: &quot;beautiful, mentioned in 46 reviews&quot;,
+                  &quot;checked&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;radio&quot;,
+                  &quot;name&quot;: &quot;walk, mentioned in 33 reviews&quot;,
+                  &quot;checked&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;View 6 more Topics&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo of Levon Alyanakian (Levon&#x27;s Travel&#x27;s)&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Levon Alyanakian (Levon&#x27;s Travel&#x27;s) Local Guide · 417 reviews · 1,149 photos&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Actions for Levon Alyanakian (Levon&#x27;s Travel&#x27;s)&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;image&quot;,
+                  &quot;name&quot;: &quot;5 stars&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;2 years ago&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;generic&quot;,
+                  &quot;name&quot;: &quot;&quot;,
+                  &quot;children&quot;: [
+                    {
+                      &quot;role&quot;: &quot;text&quot;,
+                      &quot;name&quot;: &quot;The University boasts an impressive (and large) campus. The buildings are well maintained, and the campus is very clean and pleasant. There are many communal areas, and plenty of different study spaces. Overall great learning environment.&quot;
+                    }
+                  ]
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo 1 on Levon Alyanakian (Levon&#x27;s Travel&#x27;s)&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo 2 on Levon Alyanakian (Levon&#x27;s Travel&#x27;s)&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo 3 on Levon Alyanakian (Levon&#x27;s Travel&#x27;s)&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;+ 30 more photos on Levon Alyanakian (Levon&#x27;s Travel&#x27;s)&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;2 likes&quot;,
+                  &quot;description&quot;: &quot;2 likes&quot;,
+                  &quot;pressed&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Share Levon Alyanakian (Levon&#x27;s Travel&#x27;s)&#x27;s review.&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo of Danny Tram&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Danny Tram Local Guide · 618 reviews · 15,247 photos&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Actions for Danny Tram&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;image&quot;,
+                  &quot;name&quot;: &quot;5 stars&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;2 years ago&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;generic&quot;,
+                  &quot;name&quot;: &quot;&quot;,
+                  &quot;children&quot;: [
+                    {
+                      &quot;role&quot;: &quot;text&quot;,
+                      &quot;name&quot;: &quot;What can I say about this beautiful and fantastic university? Perfect\nYou have to walk across the campus to see how beautiful, green, ancient, and engaging the uni campus offers students, faculty, and staff. There are many …&quot;
+                    },
+                    {
+                      &quot;role&quot;: &quot;button&quot;,
+                      &quot;name&quot;: &quot;See more&quot;
+                    }
+                  ]
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo 1 on Danny Tram&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo 2 on Danny Tram&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo 3 on Danny Tram&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;+ 47 more photos on Danny Tram&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;12 likes&quot;,
+                  &quot;description&quot;: &quot;12 likes&quot;,
+                  &quot;pressed&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Share Danny Tram&#x27;s review.&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo of Bret Warren&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Bret Warren Local Guide · 166 reviews · 5,117 photos&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Actions for Bret Warren&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;image&quot;,
+                  &quot;name&quot;: &quot;5 stars&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;2 years ago&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;generic&quot;,
+                  &quot;name&quot;: &quot;&quot;,
+                  &quot;children&quot;: [
+                    {
+                      &quot;role&quot;: &quot;text&quot;,
+                      &quot;name&quot;: &quot;Beautiful, well-kept campus. The cherry blossoms are spectacular. There is a lot of interesting architecture. We enjoyed the museum as well.&quot;
+                    }
+                  ]
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo 1 on Bret Warren&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo 2 on Bret Warren&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Photo 3 on Bret Warren&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;+ 47 more photos on Bret Warren&#x27;s review&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;2 likes&quot;,
+                  &quot;description&quot;: &quot;2 likes&quot;,
+                  &quot;pressed&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;Share Bret Warren&#x27;s review.&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;More reviews (1,805)&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;heading&quot;,
+                  &quot;name&quot;: &quot;People also search for&quot;,
+                  &quot;level&quot;: 2
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;University of Washington Bothell · 4.2 stars · 183 reviews · Public university&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;UW Atmospheric department · 0.0 stars · Academic department&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;University of Washington College of Arts &amp; Sciences · 5.0 stars · 6 reviews · University&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;University of Washington School of Medicine · 2.8 stars · 55 reviews · Medical school&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;University of Washington Tacoma · 4.4 stars · 169 reviews · Public university&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;heading&quot;,
+                  &quot;name&quot;: &quot;Web results&quot;,
+                  &quot;level&quot;: 2
+                },
+                {
+                  &quot;role&quot;: &quot;link&quot;,
+                  &quot;name&quot;: &quot;About this data&quot;
+                }
+              ]
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Collapse side panel&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Google apps&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Google Account: Samuel Samsudin (kukukud4@gmail.com)&quot;
+            },
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;
+            },
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;,
+              &quot;children&quot;: [
+                {
+                  &quot;role&quot;: &quot;button&quot;,
+                  &quot;name&quot;: &quot;15 min&quot;,
+                  &quot;disabled&quot;: true,
+                  &quot;haspopup&quot;: &quot;menu&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;radio&quot;,
+                  &quot;name&quot;: &quot;Walking&quot;,
+                  &quot;checked&quot;: true
+                },
+                {
+                  &quot;role&quot;: &quot;radio&quot;,
+                  &quot;name&quot;: &quot;Driving&quot;,
+                  &quot;checked&quot;: false
+                },
+                {
+                  &quot;role&quot;: &quot;text&quot;,
+                  &quot;name&quot;: &quot;No travel time for walking. Select driving&quot;
+                },
+                {
+                  &quot;role&quot;: &quot;switch&quot;,
+                  &quot;name&quot;: &quot;Turn off travel time tool&quot;,
+                  &quot;checked&quot;: true
+                }
+              ]
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Show Your Location&quot;,
+              &quot;pressed&quot;: false
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Zoom in&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Zoom out&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Browse Street View images&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Street View&quot;
+            },
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;&quot;
+            },
+            {
+              &quot;role&quot;: &quot;generic&quot;,
+              &quot;name&quot;: &quot;Interactive map&quot;
+            },
+            {
+              &quot;role&quot;: &quot;text&quot;,
+              &quot;name&quot;: &quot;Layers&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Layers&quot;
+            },
+            {
+              &quot;role&quot;: &quot;text&quot;,
+              &quot;name&quot;: &quot;Map data ©2025 Google&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;United States&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Terms&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Privacy&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;Send Product Feedback&quot;
+            },
+            {
+              &quot;role&quot;: &quot;button&quot;,
+              &quot;name&quot;: &quot;200 ft&quot;
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+Error Codes:
+  None</pre></div>
+                    <button class="collapsible">Element Output</button>
+                    <div class="content"><pre>{
+  &quot;text&quot;: &quot;grocery stores&quot;
+}</pre></div>
+                    <button class="collapsible">LLM Output</button>
+                    <div class="content"><pre>page.get_by_role(&#x27;combobox&#x27;, name=&#x27;Search nearby University of Washington&#x27;).fill(&#x27;grocery stores&#x27;); page.keyboard.press(&#x27;Enter&#x27;)</pre></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var coll = document.getElementsByClassName('collapsible');
+      for (var i = 0; i < coll.length; i++) {
+        coll[i].addEventListener('click', function() {
+          this.classList.toggle('active');
+          var content = this.nextElementSibling;
+          if (content.style.display === 'block') {
+            content.style.display = 'none';
+          } else {
+            content.style.display = 'block';
+          }
+        });
+      }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,579 @@
+{
+  "role": "WebArea",
+  "name": "coffee shops near University District - Google Maps",
+  "children": [
+    {
+      "role": "generic",
+      "name": "",
+      "focused": true,
+      "children": [
+        {
+          "role": "generic",
+          "name": "Google Maps",
+          "children": [
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "application",
+              "name": "Map · Use arrow keys to pan the map. · Get details about a place by pressing its corresponding number key."
+            },
+            {
+              "role": "combobox",
+              "name": "",
+              "haspopup": "grid",
+              "value": "coffee shops near University District"
+            },
+            {
+              "role": "button",
+              "name": "Search"
+            },
+            {
+              "role": "button",
+              "name": "Close"
+            },
+            {
+              "role": "button",
+              "name": "Search this area"
+            },
+            {
+              "role": "generic",
+              "name": "",
+              "children": [
+                {
+                  "role": "button",
+                  "name": "Price",
+                  "haspopup": "menu"
+                },
+                {
+                  "role": "button",
+                  "name": "Rating",
+                  "haspopup": "menu"
+                },
+                {
+                  "role": "button",
+                  "name": "Hours",
+                  "haspopup": "dialog"
+                },
+                {
+                  "role": "button",
+                  "name": "All filters"
+                }
+              ]
+            },
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "button",
+              "name": "Menu"
+            },
+            {
+              "role": "button",
+              "name": "Saved"
+            },
+            {
+              "role": "button",
+              "name": "Recents"
+            },
+            {
+              "role": "button",
+              "name": "28 places Seattle"
+            },
+            {
+              "role": "button",
+              "name": "Get the app"
+            },
+            {
+              "role": "generic",
+              "name": "",
+              "children": [
+                {
+                  "role": "generic",
+                  "name": "",
+                  "children": [
+                    {
+                      "role": "feed",
+                      "name": "Results for coffee shops near University District",
+                      "children": [
+                        {
+                          "role": "heading",
+                          "name": "Results",
+                          "level": 1
+                        },
+                        {
+                          "role": "button",
+                          "name": "Learn more about legal disclosure regarding public reviews on Google Maps"
+                        },
+                        {
+                          "role": "button",
+                          "name": "Share"
+                        },
+                        {
+                          "role": "link",
+                          "name": "Scorpio Cafe"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Scorpio Cafe"
+                        },
+                        {
+                          "role": "text",
+                          "name": " "
+                        },
+                        {
+                          "role": "text",
+                          "name": "$10–20"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Coffee shop"
+                        },
+                        {
+                          "role": "text",
+                          "name": " "
+                        },
+                        {
+                          "role": "text",
+                          "name": ""
+                        },
+                        {
+                          "role": "text",
+                          "name": " "
+                        },
+                        {
+                          "role": "text",
+                          "name": "4754 University Wy NE"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Open"
+                        },
+                        {
+                          "role": "text",
+                          "name": " ⋅ Closes 8 PM"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Dine-in"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Curbside pickup"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Delivery"
+                        },
+                        {
+                          "role": "link",
+                          "name": "ORDER ONLINE"
+                        },
+                        {
+                          "role": "link",
+                          "name": "Lune Cafe - U District"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Lune Cafe - U District"
+                        },
+                        {
+                          "role": "text",
+                          "name": " "
+                        },
+                        {
+                          "role": "text",
+                          "name": "$10–20"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Coffee shop"
+                        },
+                        {
+                          "role": "text",
+                          "name": " "
+                        },
+                        {
+                          "role": "text",
+                          "name": ""
+                        },
+                        {
+                          "role": "text",
+                          "name": " "
+                        },
+                        {
+                          "role": "text",
+                          "name": "5000 University Wy NE Suite E"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Open"
+                        },
+                        {
+                          "role": "text",
+                          "name": " ⋅ Closes 11 PM"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Dine-in"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Takeout"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Delivery"
+                        },
+                        {
+                          "role": "link",
+                          "name": "ORDER ONLINE"
+                        },
+                        {
+                          "role": "link",
+                          "name": "Cafe on the Ave"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Cafe on the Ave"
+                        },
+                        {
+                          "role": "text",
+                          "name": " "
+                        },
+                        {
+                          "role": "text",
+                          "name": "$10–20"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Cafe"
+                        },
+                        {
+                          "role": "text",
+                          "name": " "
+                        },
+                        {
+                          "role": "text",
+                          "name": ""
+                        },
+                        {
+                          "role": "text",
+                          "name": " "
+                        },
+                        {
+                          "role": "text",
+                          "name": "4201 University Wy NE"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Coffeehouse with a full menu & free WiFi"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Open"
+                        },
+                        {
+                          "role": "text",
+                          "name": " ⋅ Closes 11:30 PM"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Dine-in"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Takeout"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Delivery"
+                        },
+                        {
+                          "role": "link",
+                          "name": "ORDER ONLINE"
+                        },
+                        {
+                          "role": "link",
+                          "name": "CHECK WAIT TIME"
+                        },
+                        {
+                          "role": "link",
+                          "name": "Mr West Cafe Bar"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Mr West Cafe Bar"
+                        },
+                        {
+                          "role": "text",
+                          "name": " "
+                        },
+                        {
+                          "role": "text",
+                          "name": "$10–20"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Cafe"
+                        },
+                        {
+                          "role": "text",
+                          "name": " "
+                        },
+                        {
+                          "role": "text",
+                          "name": ""
+                        },
+                        {
+                          "role": "text",
+                          "name": " "
+                        },
+                        {
+                          "role": "text",
+                          "name": "2685 NE Village Ln"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Ultramodern coffee shop & wine bar"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Open"
+                        },
+                        {
+                          "role": "text",
+                          "name": " ⋅ Closes 8 PM"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Dine-in"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Curbside pickup"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Delivery"
+                        },
+                        {
+                          "role": "link",
+                          "name": "ORDER ONLINE"
+                        },
+                        {
+                          "role": "link",
+                          "name": "SEAFAB CAFE"
+                        },
+                        {
+                          "role": "text",
+                          "name": "SEAFAB CAFE"
+                        },
+                        {
+                          "role": "text",
+                          "name": " "
+                        },
+                        {
+                          "role": "text",
+                          "name": "$1–10"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Coffee shop"
+                        },
+                        {
+                          "role": "text",
+                          "name": " "
+                        },
+                        {
+                          "role": "text",
+                          "name": ""
+                        },
+                        {
+                          "role": "text",
+                          "name": " "
+                        },
+                        {
+                          "role": "text",
+                          "name": "1001 NE Boat St"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Closed"
+                        },
+                        {
+                          "role": "text",
+                          "name": " ⋅ Opens 7 AM Mon"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Dine-in"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Curbside pickup"
+                        },
+                        {
+                          "role": "text",
+                          "name": "No delivery"
+                        },
+                        {
+                          "role": "link",
+                          "name": "OH! Bear Cafe & TeaHouse"
+                        },
+                        {
+                          "role": "text",
+                          "name": "OH! Bear Cafe & TeaHouse"
+                        },
+                        {
+                          "role": "text",
+                          "name": " "
+                        },
+                        {
+                          "role": "text",
+                          "name": "$1–10"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Cafe"
+                        },
+                        {
+                          "role": "text",
+                          "name": " "
+                        },
+                        {
+                          "role": "text",
+                          "name": ""
+                        },
+                        {
+                          "role": "text",
+                          "name": " "
+                        },
+                        {
+                          "role": "text",
+                          "name": "4708 11th Ave NE"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Hip bakery & tapioca teahouse"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Closed"
+                        },
+                        {
+                          "role": "text",
+                          "name": " ⋅ Opens 11 AM Mon"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Dine-in"
+                        },
+                        {
+                          "role": "text",
+                          "name": "Takeout"
+                        },
+                        {
+                          "role": "text",
+                          "name": "No-contact delivery"
+                        },
+                        {
+                          "role": "link",
+                          "name": "ORDER ONLINE"
+                        }
+                      ]
+                    },
+                    {
+                      "role": "checkbox",
+                      "name": "Update results when map moves",
+                      "checked": false
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "role": "button",
+              "name": "Collapse side panel"
+            },
+            {
+              "role": "button",
+              "name": "Google apps"
+            },
+            {
+              "role": "button",
+              "name": "Google Account: Samuel Samsudin (kukukud4@gmail.com)"
+            },
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "button",
+              "name": "Show Your Location",
+              "pressed": false
+            },
+            {
+              "role": "button",
+              "name": "Zoom in"
+            },
+            {
+              "role": "button",
+              "name": "Zoom out"
+            },
+            {
+              "role": "button",
+              "name": "Browse Street View images"
+            },
+            {
+              "role": "generic",
+              "name": ""
+            },
+            {
+              "role": "generic",
+              "name": "Interactive map"
+            },
+            {
+              "role": "text",
+              "name": "Layers"
+            },
+            {
+              "role": "button",
+              "name": "Layers"
+            },
+            {
+              "role": "text",
+              "name": "Map data ©2025 Google"
+            },
+            {
+              "role": "button",
+              "name": "United States"
+            },
+            {
+              "role": "button",
+              "name": "Terms"
+            },
+            {
+              "role": "button",
+              "name": "Privacy"
+            },
+            {
+              "role": "button",
+              "name": "Send Product Feedback"
+            },
+            {
+              "role": "button",
+              "name": "1000 ft"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

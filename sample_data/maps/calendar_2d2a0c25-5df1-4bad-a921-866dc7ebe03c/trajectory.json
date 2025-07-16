@@ -1,0 +1,113 @@
+{
+  "1": {
+    "screenshot": "screenshot_001.png",
+    "axtree": "axtree_001.txt",
+    "user_message": "user_message/user_message_001.txt",
+    "other_obs": {
+      "page_index": 0,
+      "url": "https://www.google.com/maps",
+      "open_pages_titles": [
+        "",
+        "Google Maps"
+      ],
+      "open_pages_urls": [
+        "about:blank",
+        "https://www.google.com/maps"
+      ]
+    },
+    "action": {
+      "action_str": "click(bid='', button='left')",
+      "playwright_code": "page.get_by_role('button', name='Directions').click()",
+      "action_description": "Click on the 'Directions' button to start setting the route.",
+      "action_output": {
+        "thought": "I need to click the \"Directions\" button.",
+        "action": {
+          "bid": "",
+          "button": "left",
+          "click_type": "single",
+          "bbox": [
+            144,
+            84,
+            230,
+            24
+          ],
+          "class": "tactile-searchbox-input",
+          "id": "",
+          "type": "input",
+          "ariaLabel": "Choose starting point, or click on the map...",
+          "role": null,
+          "value": "",
+          "node_properties": {
+            "role": "button",
+            "value": "Directions"
+          }
+        },
+        "action_name": "click"
+      }
+    },
+    "error": null,
+    "action_timestamp": 1749433357.236213
+  },
+  "2": {
+    "screenshot": "screenshot_002.png",
+    "axtree": "axtree_002.txt",
+    "user_message": "user_message/user_message_002.txt",
+    "other_obs": {
+      "page_index": 0,
+      "url": "https://www.google.com/maps/dir///@47.6507084,-122.3208426,13z/data=!4m2!4m1!3e3?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D",
+      "open_pages_titles": [
+        "",
+        "Google Maps"
+      ],
+      "open_pages_urls": [
+        "about:blank",
+        "https://www.google.com/maps/dir///@47.6507084,-122.3208426,13z/data=!4m2!4m1!3e3?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D"
+      ]
+    },
+    "action": {
+      "action_str": "keyboard_type(text='SeaTac Airport')",
+      "playwright_code": "page.get_by_label('Choose destination...').fill('SeaTac Airport'); page.keyboard.press('Enter')",
+      "action_description": "Fill in the destination with 'SeaTac Airport' and press Enter to continue setting the route.",
+      "action_output": {
+        "thought": "I need to fill in SeaTac Airport as the destination to continue setting the route and check traffic conditions.",
+        "action": {
+          "text": "SeaTac Airport"
+        },
+        "action_name": "keyboard_type"
+      }
+    },
+    "error": null,
+    "action_timestamp": 1749433362.742443
+  },
+  "3": {
+    "screenshot": "screenshot_003.png",
+    "axtree": "axtree_003.txt",
+    "user_message": "user_message/user_message_003.txt",
+    "other_obs": {
+      "page_index": 0,
+      "url": "https://www.google.com/maps/dir//Seattle%E2%80%93Tacoma+Int'l+Airport,+17801+International+Blvd,+SeaTac,+WA+98158/@47.4483357,-122.3909933,12z/data=!3m1!5s0x54905ca9f2977ba5:0x7535cebe68fa6286!4m9!4m8!1m0!1m5!1m1!1s0x5490435542eafefd:0x99d3d9c4c7dc37b7!2m2!1d-122.3085926!2d47.4483652!3e0?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D",
+      "open_pages_titles": [
+        "",
+        "Google Maps"
+      ],
+      "open_pages_urls": [
+        "about:blank",
+        "https://www.google.com/maps/dir//Seattle%E2%80%93Tacoma+Int'l+Airport,+17801+International+Blvd,+SeaTac,+WA+98158/@47.4483357,-122.3909933,12z/data=!3m1!5s0x54905ca9f2977ba5:0x7535cebe68fa6286!4m9!4m8!1m0!1m5!1m1!1s0x5490435542eafefd:0x99d3d9c4c7dc37b7!2m2!1d-122.3085926!2d47.4483652!3e0?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D"
+      ]
+    },
+    "action": {
+      "action_str": "keyboard_type(text='Your location')",
+      "playwright_code": "page.get_by_role('textbox', name='Choose starting point, or click on the map...').fill('Your location'); page.keyboard.press('Enter')",
+      "action_description": "Set the starting point for the route by filling in the current location in the starting point textbox and press Enter.",
+      "action_output": {
+        "thought": "I need to fill the starting point with 'Your location' to generate the driving directions from the current location to SeaTac Airport.",
+        "action": {
+          "text": "Your location"
+        },
+        "action_name": "keyboard_type"
+      }
+    },
+    "error": null,
+    "action_timestamp": 1749433372.69503
+  }
+}

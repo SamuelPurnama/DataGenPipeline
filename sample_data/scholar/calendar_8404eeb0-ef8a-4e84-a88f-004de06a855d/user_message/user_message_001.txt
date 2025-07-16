@@ -1,0 +1,82 @@
+Goal: Look up case law related to freedom of expression for poets.
+
+Previous Actions:
+  1. Select the 'Case law' option for the search. | Code: page.get_by_role('radio', name='Case law').check()
+
+Current Page: Google Scholar (https://scholar.google.com/)
+
+AX Tree:
+{
+  "role": "WebArea",
+  "name": "Google Scholar",
+  "children": [
+    {
+      "role": "button",
+      "name": ""
+    },
+    {
+      "role": "link",
+      "name": "My profile"
+    },
+    {
+      "role": "link",
+      "name": "My library"
+    },
+    {
+      "role": "textbox",
+      "name": "Search",
+      "focused": true
+    },
+    {
+      "role": "button",
+      "name": "Search"
+    },
+    {
+      "role": "button",
+      "name": "Samuel",
+      "haspopup": "menu"
+    },
+    {
+      "role": "radio",
+      "name": "Articles",
+      "checked": true
+    },
+    {
+      "role": "text",
+      "name": "Articles"
+    },
+    {
+      "role": "radio",
+      "name": "Case law",
+      "checked": false
+    },
+    {
+      "role": "text",
+      "name": "Case law"
+    },
+    {
+      "role": "text",
+      "name": "Stand on the shoulders of giants"
+    },
+    {
+      "role": "button",
+      "name": "EN"
+    },
+    {
+      "role": "link",
+      "name": "Privacy"
+    },
+    {
+      "role": "link",
+      "name": "Terms"
+    },
+    {
+      "role": "button",
+      "name": "Help",
+      "haspopup": "menu"
+    }
+  ]
+}
+
+Error Codes:
+  None
