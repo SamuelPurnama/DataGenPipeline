@@ -9,10 +9,24 @@ from typing import Optional, Tuple, Dict, Any
 from concurrent.futures import ThreadPoolExecutor
 import html
 import re
+import asyncio
+from datetime import datetime
+from dotenv import load_dotenv
 
 from generate_trajectory import chat_ai_playwright_code
 from config import RESULTS_DIR, ACCOUNTS
 from google_auth import ensure_google_login
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Graphiti imports for trajectory context
+try:
+    from graphiti_core.graphiti import Graphiti
+    GRAPHITI_AVAILABLE = True
+except ImportError:
+    print("⚠️ Graphiti not available. Trajectory context will be disabled.")
+    GRAPHITI_AVAILABLE = False
 
 # ========== CONFIGURABLE PARAMETERS ==========
 PHASE = 1
@@ -24,9 +38,88 @@ ACTION_TIMEOUT = 20000  # 30 seconds timeout for actions
 # 1 - Interactive Mode: Requires Enter press after each instruction for manual review
 MODE = 0
 
+# Graphiti configuration
+GRAPHITI_URI = os.getenv("NEO4J_URI")  # Use same env vars as ingest_trajectory.py
+GRAPHITI_USER = os.getenv("NEO4J_USERNAME")
+GRAPHITI_PASSWORD = os.getenv("NEO4J_PASSWORD")
+GRAPHITI_GROUP_ID = "web_trajectories"  # Match the group_id used in ingest_trajectory.py
+MAX_CONTEXT_LENGTH = int(os.getenv("MAX_CONTEXT_LENGTH", "2000"))  # Maximum context length in characters
+
 # Directory to store all browser sessions
 BROWSER_SESSIONS_DIR = "browser_sessions"
 os.makedirs(BROWSER_SESSIONS_DIR, exist_ok=True)
+
+async def fetch_trajectory_nodes(
+    instruction: str,
+    max_results: int = 3,
+    max_context_length: int = 3000
+) -> str:
+    """
+    Fetch relevant past trajectory nodes from Graphiti and extract steps/codes for LLM context.
+    Only returns nodes with label 'Trajectory'.
+    """
+    if not GRAPHITI_AVAILABLE:
+        return ""
+    try:
+        # Get API key from environment
+        api_key = os.getenv("OPENAI_API_KEY")
+        if not api_key:
+            print("⚠️ OPENAI_API_KEY not set. Skipping trajectory node context.")
+            return ""
+        from graphiti_core.embedder.openai import OpenAIEmbedder, OpenAIEmbedderConfig
+        from graphiti_core.driver.neo4j_driver import Neo4jDriver
+        embedder_config = OpenAIEmbedderConfig(
+            api_key=api_key,
+            embedding_model="text-embedding-3-small"
+        )
+        embedder = OpenAIEmbedder(config=embedder_config)
+        neo4j_driver = Neo4jDriver(
+            uri=GRAPHITI_URI,
+            user=GRAPHITI_USER,
+            password=GRAPHITI_PASSWORD
+        )
+        graphiti = Graphiti(
+            graph_driver=neo4j_driver,
+            embedder=embedder
+        )
+        # Use search_ to get full SearchResults
+        results = await graphiti.search_(
+            query=instruction,
+            group_ids=[GRAPHITI_GROUP_ID],
+        )
+        
+        # Filter for nodes with label 'Trajectory'
+        trajectory_nodes = [
+            node for node in results.nodes
+            if getattr(node, "labels", None) and "Trajectory" in node.labels
+        ]
+        nodes = trajectory_nodes[:max_results]
+        context_parts = ["=== RELEVANT PAST TRAJECTORY NODES ==="]
+        for i, node in enumerate(nodes, 1):
+            steps = getattr(node, "steps", None)
+            codes = getattr(node, "code_executed", None)
+            # Check attributes dict if not found as top-level
+            if steps is None and hasattr(node, "attributes"):
+                steps = node.attributes.get("steps")
+            if codes is None and hasattr(node, "attributes"):
+                codes = node.attributes.get("code_executed")
+            goal = getattr(node, "name", None)
+            context_parts.append(f"--- Past Node {i} ---")
+            context_parts.append(f"Instruction: {goal}")
+            context_parts.append(f"Steps: {steps}")
+            context_parts.append(f"Codes: {codes}")
+            context_parts.append("")
+        context_parts.append("=== END PAST TRAJECTORY NODES ===")
+        full_context = "\n".join(context_parts)
+        if len(full_context) > max_context_length:
+            print(f"⚠️ Context length ({len(full_context)}) exceeds limit ({max_context_length}). Truncating...")
+            full_context = full_context[:max_context_length] + "\n... [CONTEXT TRUNCATED]"
+        return full_context
+    except Exception as e:
+        print(f"❌ Error fetching trajectory node context: {e}")
+        return ""
+
+
 
 def create_episode_directory(base_dir: str, eps_name: str) -> Dict[str, str]:
     """Create directory structure for an episode."""
@@ -547,7 +640,7 @@ def write_user_message(user_message_file: str, goal: str, execution_history: lis
     with open(user_message_file, 'w', encoding='utf-8') as f:
         f.write('\n'.join(user_message_content))
 
-def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_idx, email: Optional[str] = None, password: Optional[str] = None):
+async def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_idx, email: Optional[str] = None, password: Optional[str] = None):
     phase_file = os.path.join(RESULTS_DIR, f"instructions_phase{phase}.json")
     try:
         with open(phase_file, 'r', encoding='utf-8') as f:
@@ -602,6 +695,18 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                 print(f"📝 Orig: {orig}")
                 print(f"🔄 Aug: {aug}")
                 print(f"UUID: {eps_name}")
+
+                # Fetch relevant past trajectories for context
+                print("🔍 Fetching relevant past trajectories...")
+                trajectory_context = await fetch_trajectory_nodes(aug, max_results=3, max_context_length=MAX_CONTEXT_LENGTH)
+                if trajectory_context:
+                    print("✅ Found relevant past trajectories")
+                    print("📄 Full trajectory context:")
+                    print("=" * 50)
+                    print(trajectory_context)
+                    print("=" * 50)
+                else:
+                    print("ℹ️ No relevant past trajectories found")
 
                 # Navigate to URL for this instruction
                 page.goto(url)
@@ -692,6 +797,11 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                             break
                     is_del = 'delete' in current_goal.lower()
 
+                    # Prepare context with past trajectories
+                    enhanced_context = ""
+                    if trajectory_context:
+                        enhanced_context = f"\n\n{trajectory_context}\n\n"
+                    
                     gpt_resp = chat_ai_playwright_code(
                         accessibility_tree=tree,
                         previous_steps=execution_history,
@@ -700,7 +810,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         image_path=screenshot,
                         failed_codes=[],
                         is_deletion_task=is_del,
-                        url=url
+                        url=url,
+                        trajectory_context=enhanced_context
                     )
 
                     # Handle case where GPT response is None
@@ -798,7 +909,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                     failed_codes=failed_codes,
                                     is_deletion_task=is_del,
                                     url=url,
-                                    error_log=error_log
+                                    error_log=error_log,
+                                    trajectory_context=enhanced_context
                                 )
                                 # Update total tokens from retry response
                                 if gpt_resp and "total_tokens" in gpt_resp:
@@ -872,12 +984,12 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
             page.close()
             browser.close()
 
-def run_for_account(account, chrome_path, phase):
+async def run_for_account(account, chrome_path, phase):
     user_data_dir = os.path.join(BROWSER_SESSIONS_DIR, account["user_data_dir"])
     # Only create the directory if it doesn't exist
     if not os.path.exists(user_data_dir):
         os.makedirs(user_data_dir, exist_ok=True)
-    generate_trajectory_loop(
+    await generate_trajectory_loop(
         user_data_dir=user_data_dir,
         chrome_path=chrome_path,
         phase=phase,
@@ -887,16 +999,16 @@ def run_for_account(account, chrome_path, phase):
         password=account["password"]
     )
 
-def main():
+async def main():
     chrome_exec = os.getenv("CHROME_EXECUTABLE_PATH")
     phase = PHASE
-    with ThreadPoolExecutor(max_workers=len(ACCOUNTS)) as executor:
-        futures = [
-            executor.submit(run_for_account, account, chrome_exec, phase)
-            for account in ACCOUNTS
-        ]
-        for future in futures:
-            future.result()  # Wait for all to finish
+    
+    # Run accounts sequentially
+    for account in ACCOUNTS:
+        await run_for_account(account, chrome_exec, phase)
+
+if __name__ == "__main__":
+    asyncio.run(main())
 
 def generate_trajectory_html(dirs: Dict[str, str], metadata: Dict[str, Any]) -> None:
     """Generate an HTML visualization of the trajectory."""

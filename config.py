@@ -1,8 +1,8 @@
 PERSONAS_PER_ACCOUNT = 1  # Number of personas each account will process
-PHASE1_NUM_INSTRUCTIONS = 5  # Instructions per persona for phase 1 (initial state)
+PHASE1_NUM_INSTRUCTIONS = 1  # Instructions per persona for phase 1 (initial state)
 PHASE2_NUM_INSTRUCTIONS = 20 # Instructions per persona for phase 2 (modified state)
 RESULTS_DIR = "results"
-URL = "https://scholar.google.com"
+URL = "https://calendar.google.com"
 
 # Google Accounts Configuration
 ACCOUNTS = [

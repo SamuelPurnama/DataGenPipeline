@@ -70,7 +70,7 @@ class TaskStep:
 
 task_summarizer = []
 
-def chat_ai_playwright_code(accessibility_tree=None, previous_steps=None, taskGoal=None, taskPlan=None, image_path=None, failed_codes=None, is_deletion_task=False, url=None, error_log=None):
+def chat_ai_playwright_code(accessibility_tree=None, previous_steps=None, taskGoal=None, taskPlan=None, image_path=None, failed_codes=None, is_deletion_task=False, url=None, error_log=None, trajectory_context=""):
     """Get Playwright code directly from GPT to execute the next step.
     
     Args:
@@ -140,7 +140,7 @@ def chat_ai_playwright_code(accessibility_tree=None, previous_steps=None, taskGo
                         "content": [
                             {
                                 "type": "text",
-                                "text": f"Task goal: {taskGoal}\nCurrent plan: {taskPlan}\nPrevious steps: {json.dumps(previous_steps, indent=2)}\n\nAccessibility tree: {json.dumps(accessibility_tree, indent=2)}\n\nError log: {error_log if error_log else 'No errors'}"
+                                "text": f"Task goal: {taskGoal}\nCurrent plan: {taskPlan}\nPrevious steps: {json.dumps(previous_steps, indent=2)}{trajectory_context}\n\nAccessibility tree: {json.dumps(accessibility_tree, indent=2)}\n\nError log: {error_log if error_log else 'No errors'}"
                             },
                             {
                                 "type": "image_url",
