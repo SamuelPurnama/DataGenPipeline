@@ -48,10 +48,11 @@ def generate_instructions(
             f"Based on your persona and the image of the current state of the page, generate a list of {num_instructions} distinct instructions that you might give to an assistant for tasks in this website. "
             f"These instructions must be feasible given the current page state, try to involve modifying/deleting elements that are currently present, and use realistic natural human phrasing."
             f"Make sure to use natural language when writing the instructions."
-            f"You can get creative with the instructions, vary the complexity!"
+            f"You can get creative with the instructions, vary the complexity."
             f"IMPORTANT NOTE: These instructions will be done in order, so do not delete an event in the first instruction, and then write an instruction to modify the same event right after."
             f"Try to not modify or delete the same events more than once."
-            f"When targeting a specific event to modify or delete use a SPECIFIC DATE, do not just give the month"
+            f"When targeting a specific event to modify or delete use a SPECIFIC DATE and the name, do not just give the month"
+            f"If you are adding/changing details of an event, make sure to give what you are changing it to."
             f"Here is the accessibility tree of the current page state to help you understand what elements are available:\n\n{axtree}\n\n"
             f"return just the list of instructions, no other, no need for quotations, in english, dont make the instructions too complex."
         )
