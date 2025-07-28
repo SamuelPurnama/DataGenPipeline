@@ -4,7 +4,7 @@ import os
 from PIL import Image
 from typing import List
 import openai
-from text_augmentation_prompt import SYSTEM_MSG_GENERAL, SYSTEM_MSG_MAPS, SYSTEM_MSG_FLIGHTS
+from prompts.augmentation_prompt import SYSTEM_MSG_GENERAL, SYSTEM_MSG_MAPS, SYSTEM_MSG_FLIGHTS
 from config import URL
 
 def resize_image_base64(path: str, max_width=512) -> str:

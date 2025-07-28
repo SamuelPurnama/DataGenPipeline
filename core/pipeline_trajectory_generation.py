@@ -2,6 +2,7 @@ import json
 from playwright.sync_api import sync_playwright, TimeoutError
 import json
 import os
+import sys
 import uuid
 import shutil
 import time
@@ -13,9 +14,12 @@ import asyncio
 from datetime import datetime
 from dotenv import load_dotenv
 
-from generate_trajectory import chat_ai_playwright_code
-from config import RESULTS_DIR, ACCOUNTS
-from google_auth import ensure_google_login
+# Add parent directory to path for imports
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from utils.generate_trajectory import chat_ai_playwright_code
+from config import RESULTS_DIR, ACCOUNTS, BROWSER_SESSIONS_DIR
+from utils.google_auth import ensure_google_login
 
 # Load environment variables from .env file
 load_dotenv()
@@ -46,7 +50,6 @@ GRAPHITI_GROUP_ID = "web_trajectories"  # Match the group_id used in ingest_traj
 MAX_CONTEXT_LENGTH = int(os.getenv("MAX_CONTEXT_LENGTH", "2000"))  # Maximum context length in characters
 
 # Directory to store all browser sessions
-BROWSER_SESSIONS_DIR = "browser_sessions"
 os.makedirs(BROWSER_SESSIONS_DIR, exist_ok=True)
 
 async def fetch_trajectory_nodes(

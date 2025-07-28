@@ -23,7 +23,7 @@ from graphiti_core.nodes import EpisodeType
 from dotenv import load_dotenv
 
 # Import our custom entity types
-from trajectory_entity_types import WEB_TRAJECTORY_ENTITY_TYPES
+from graphRAG.trajectory_entity_types import WEB_TRAJECTORY_ENTITY_TYPES
 
 # Load environment variables
 load_dotenv()
@@ -37,7 +37,10 @@ ENTITY_TYPES = WEB_TRAJECTORY_ENTITY_TYPES
 class TrajectoryParser:
     """Parser for extracting and processing web trajectory data"""
     
-    def __init__(self, results_path: str = "results"):
+    def __init__(self, results_path: str = None):
+        if results_path is None:
+            from config import RESULTS_DIR
+            results_path = RESULTS_DIR
         self.results_path = Path(results_path)
     
     def parse_trajectory_json(self, trajectory_path: Path) -> Tuple[List[str], List[str], str]:
@@ -302,7 +305,7 @@ TRAJECTORY_ID: {trajectory_folder.name}
 
 async def preview_trajectories():
     """Preview trajectory data without ingesting"""
-    parser = TrajectoryParser("results")
+    parser = TrajectoryParser("data/results")
     
     print("👀 Previewing trajectory data...")
     
@@ -327,7 +330,7 @@ async def preview_trajectories():
 
 async def ingest_sample_trajectories(count: int = 5):
     """Ingest a sample of trajectories for testing"""
-    parser = TrajectoryParser("results")
+    parser = TrajectoryParser("data/results")
     
     print(f"🧪 Starting sample trajectory ingestion ({count} trajectories)...")
     
@@ -339,7 +342,7 @@ async def ingest_sample_trajectories(count: int = 5):
 
 async def ingest_all_trajectories():
     """Ingest all trajectories automatically"""
-    parser = TrajectoryParser("results")
+    parser = TrajectoryParser()
     
     print("🚀 Starting automated trajectory ingestion...")
     

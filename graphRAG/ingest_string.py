@@ -6,7 +6,7 @@ from graphiti_core.nodes import EpisodeType
 from graphiti_core.llm_client import OpenAIClient, LLMConfig
 from graphiti_core.embedder import OpenAIEmbedder, OpenAIEmbedderConfig
 from graphiti_core.driver.neo4j_driver import Neo4jDriver
-from trajectory_entity_types import get_entity_types
+from graphRAG.trajectory_entity_types import get_entity_types
 
 load_dotenv()
 

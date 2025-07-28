@@ -1,16 +1,20 @@
 import random
 import os
+import sys
 from dotenv import load_dotenv
 load_dotenv()
+
+# Add parent directory to path for imports
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import json
 from datasets import load_dataset
 from tqdm import tqdm
-from generate_instruction import generate_instructions
-from prompt_augmentation import generate_augmented_instructions
+from utils.generate_instruction import generate_instructions
+from utils.prompt_augmentation import generate_augmented_instructions
 import openai
 from playwright.sync_api import sync_playwright
-from google_auth import ensure_google_login
+from utils.google_auth import ensure_google_login
 from concurrent.futures import ThreadPoolExecutor
 
 # ========== CONFIGURABLE PARAMETERS ==========
@@ -20,16 +24,16 @@ from config import (
     RESULTS_DIR,
     URL,
     ACCOUNTS,
-    PERSONAS_PER_ACCOUNT
+    PERSONAS_PER_ACCOUNT,
+    BROWSER_SESSIONS_DIR
 )
 
 chrome_executable_path = os.getenv("CHROME_EXECUTABLE_PATH")
 PERSONAHUB_DATA_PATH = "persona.jsonl"  # Path to PersonaHub data file
 SCREENSHOT_PATH = "screenshot.png"
-PHASE = 2
+PHASE = 1
 
 # Directory to store all browser sessions
-BROWSER_SESSIONS_DIR = "browser_sessions"
 os.makedirs(BROWSER_SESSIONS_DIR, exist_ok=True)
 
 def write_documentation(persona, url, instructions, augmented_instructions, results_dir=RESULTS_DIR, filename=f"instructions_phase{PHASE}.json"):

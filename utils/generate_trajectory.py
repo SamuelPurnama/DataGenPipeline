@@ -10,7 +10,7 @@ from PIL import Image
 from io import BytesIO
 import requests
 
-from prompts import (
+from prompts.generation_prompt import (
     PLAYWRIGHT_CODE_SYSTEM_MSG_FAILED,
     PLAYWRIGHT_CODE_SYSTEM_MSG_CALENDAR,
     PLAYWRIGHT_CODE_SYSTEM_MSG_DELETION_CALENDAR,

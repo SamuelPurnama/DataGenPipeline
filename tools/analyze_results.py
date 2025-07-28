@@ -2,9 +2,9 @@ import os
 import json
 from typing import Dict, List, Tuple, Set
 from datetime import datetime
+from config import RESULTS_DIR
 
-# Get the absolute path to the results directory
-RESULTS_DIR = os.path.abspath("results")  # Directory containing all the generated data
+# Cost configuration
 COST_PER_1K_TOKENS = 0.003
 
 def analyze_results() -> Tuple[Dict, List[Dict]]:
