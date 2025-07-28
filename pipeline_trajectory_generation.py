@@ -29,7 +29,7 @@ except ImportError:
     GRAPHITI_AVAILABLE = False
 
 # ========== CONFIGURABLE PARAMETERS ==========
-PHASE = 1
+PHASE = 2
 MAX_RETRIES = 7
 MAX_STEPS = 25  # Maximum number of steps before failing
 ACTION_TIMEOUT = 20000  # 30 seconds timeout for actions
@@ -859,7 +859,7 @@ async def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx,
                     failed_codes = []
                     retry = 0
                     description = gpt_resp["description"] if gpt_resp else ""
-                    code = gpt_resp["code"] if gpt_resp else ""
+                    code = gpt_resp.get("code", "") if gpt_resp else ""
                     success = False
 
                     while retry < MAX_RETRIES and not success:
@@ -936,7 +936,7 @@ async def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx,
                                 if gpt_resp and "updated_goal" in gpt_resp:
                                     current_goal = gpt_resp["updated_goal"]
                                 description = gpt_resp["description"] if gpt_resp else ""
-                                code = gpt_resp["code"] if gpt_resp else ""
+                                code = gpt_resp.get("code", "") if gpt_resp else ""
                             else:
                                 print(f"❌ All {MAX_RETRIES} retries failed.")
                                 runtime = time.time() - start_time
@@ -1081,14 +1081,15 @@ def generate_trajectory_html(dirs: Dict[str, str], metadata: Dict[str, Any]) -> 
             user_message_content = "[No user message]"
         action = step_data['action']
         action_output = action.get('action_output', {})
-        thought = html.escape(action_output.get('thought', ''))
+        # Fix: check if action_output is a dict before calling .get()
+        thought = html.escape(action_output.get('thought', '')) if isinstance(action_output, dict) else ''
         action_str = html.escape(action.get('action_str', ''))
         action_description = html.escape(action.get('action_description', ''))
         # System message: use a field if available, else placeholder
         system_message = step_data.get('system_message', 'System message for this step (placeholder)')
         # Element output: pretty print action_output['action'] if available
         element_output = ''
-        if 'action' in action_output:
+        if isinstance(action_output, dict) and 'action' in action_output:
             element_output = json.dumps(action_output['action'], indent=2, ensure_ascii=False)
             element_output = html.escape(element_output)
         else:

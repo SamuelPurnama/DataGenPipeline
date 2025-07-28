@@ -11,10 +11,13 @@ from PIL import Image
 from io import BytesIO
 
 # OpenAI configuration
+import os
+import dotenv
+dotenv.load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Maximum number of trajectories to verify (set to None for all)
-MAX_TRAJECTORIES = 50
+MAX_TRAJECTORIES = 1000
 
 def log_token_usage(resp):
     """Prints a detailed breakdown of token usage from OpenAI response."""
@@ -184,14 +187,68 @@ def verify_all_trajectories():
             trajectory = load_trajectory(trajectory_path)
             metadata = load_metadata(metadata_path)
             
+            # Check if trajectory has any steps
+            if not trajectory:
+                print(f"   ⚠️ Trajectory is empty - no steps recorded")
+                results.append({
+                    'trajectory': calendar_dir,
+                    'task': metadata['task']['instruction']['high_level'],
+                    'verification': {
+                        'status': 0,
+                        'analysis': 'Trajectory is empty - no steps recorded',
+                        'tokens_used': 0
+                    }
+                })
+                continue
+            
             # Get the last step number
-            last_step_num = max(int(step) for step in trajectory.keys())
+            try:
+                last_step_num = max(int(step) for step in trajectory.keys())
+            except ValueError:
+                print(f"   ⚠️ No valid step numbers found in trajectory")
+                results.append({
+                    'trajectory': calendar_dir,
+                    'task': metadata['task']['instruction']['high_level'],
+                    'verification': {
+                        'status': 0,
+                        'analysis': 'No valid step numbers found in trajectory',
+                        'tokens_used': 0
+                    }
+                })
+                continue
             
             # Get the last step screenshot
             last_step_screenshot = os.path.join(dir_path, 'images', f'screenshot_{last_step_num:03d}.png')
             
             # Get the final screenshot
             final_screenshot = os.path.join(dir_path, 'images', f'screenshot_{last_step_num + 1:03d}.png')
+            
+            # Check if screenshot files exist
+            if not os.path.exists(last_step_screenshot):
+                print(f"   ⚠️ Last step screenshot not found: {last_step_screenshot}")
+                results.append({
+                    'trajectory': calendar_dir,
+                    'task': metadata['task']['instruction']['high_level'],
+                    'verification': {
+                        'status': 0,
+                        'analysis': f'Last step screenshot not found: screenshot_{last_step_num:03d}.png',
+                        'tokens_used': 0
+                    }
+                })
+                continue
+                
+            if not os.path.exists(final_screenshot):
+                print(f"   ⚠️ Final screenshot not found: {final_screenshot}")
+                results.append({
+                    'trajectory': calendar_dir,
+                    'task': metadata['task']['instruction']['high_level'],
+                    'verification': {
+                        'status': 0,
+                        'analysis': f'Final screenshot not found: screenshot_{last_step_num + 1:03d}.png',
+                        'tokens_used': 0
+                    }
+                })
+                continue
             
             # Get all executed codes
             executed_codes = [step['action']['playwright_code'] for step in trajectory.values()]
@@ -232,6 +289,7 @@ def verify_all_trajectories():
 def create_status_folders():
     """Create folders for different verification statuses."""
     status_folders = {
+        0: os.path.join(RESULTS_DIR, 'status_0_error'),
         1: os.path.join(RESULTS_DIR, 'status_1_perfect'),
         2: os.path.join(RESULTS_DIR, 'status_2_inefficient'),
         3: os.path.join(RESULTS_DIR, 'status_3_wrong_output'),
@@ -313,8 +371,8 @@ def organize_trajectories():
         print(f"   Task: {task}")
         print(f"   Status: {status}")
         
-        if status in [1, 2, 3, 4]:
-            if status in [2, 3, 4]:
+        if status in [0, 1, 2, 3, 4]:
+            if status in [0, 2, 3, 4]:
                 print(f"   Analysis: {result['verification']['analysis']}")
             if move_trajectory_to_status_folder(trajectory_name, status, status_folders):
                 moved_count += 1
@@ -323,11 +381,11 @@ def organize_trajectories():
     
     # Print summary
     print(f"\n📊 Organization Summary:")
+    print(f"🚫 Status 0 (Error): {stats[0]} trajectories")
     print(f"✅ Status 1 (Perfect): {stats[1]} trajectories")
     print(f"⚠️ Status 2 (Inefficient): {stats[2]} trajectories")
     print(f"❌ Status 3 (Wrong Output): {stats[3]} trajectories")
     print(f"💥 Status 4 (Complete Failure): {stats[4]} trajectories")
-    print(f"🚫 Status 0 (Error): {stats[0]} trajectories")
     print(f"📦 Total moved: {moved_count} trajectories")
     
     # Save organization report
@@ -335,6 +393,7 @@ def organize_trajectories():
         'organization_stats': stats,
         'moved_trajectories': moved_count,
         'status_folders': {
+            'status_0_error': status_folders[0],
             'status_1_perfect': status_folders[1],
             'status_2_inefficient': status_folders[2],
             'status_3_wrong_output': status_folders[3],
