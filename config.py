@@ -11,81 +11,81 @@ URL = "https://calendar.google.com"
 
 # Google Accounts Configuration
 ACCOUNTS = [
-    # {
-    #     "email": "kukukud4@gmail.com",
-    #     "password": "samJP535",
-    #     "user_data_dir": "sam2",
-    #     "start_idx": 1,
-    #     "end_idx": 2
-    # },
     {
-        "email": "testeracc482@gmail.com",
-        "password": "Lalala123",
-        "user_data_dir": "test1",
+        "email": "kukukud4@gmail.com",
+        "password": "samJP535",
+        "user_data_dir": "sam2",
         "start_idx": 0,
-        "end_idx": 30
+        "end_idx": 1
     },
-    {
-        "email": "testeracc649@gmail.com",
-        "password": "Lalala123",
-        "user_data_dir": "test2",
-        "start_idx": 30,
-        "end_idx": 60
-    },
-    {
-        "email": "samuelperry9973@gmail.com",
-        "password": "Lalala123",
-        "user_data_dir": "test3",
-        "start_idx": 60,
-        "end_idx": 90
-    },
-    {
-        "email": "diamondjove@gmail.com",
-        "password": "Lalala123",
-        "user_data_dir": "test4",
-        "start_idx": 90,
-        "end_idx": 120
-    },
-    {
-        "email": "daikintanuw@gmail.com",
-        "password": "Lalala123",
-        "user_data_dir": "test5",
-        "start_idx": 120,
-        "end_idx": 150
-    },
-    {
-        "email": "daikintanuwijaya@gmail.com",
-        "password": "Lalala123",
-        "user_data_dir": "test6",
-        "start_idx": 150,
-        "end_idx": 180
-    },
-    {
-        "email": "dalecormick1@gmail.com",
-        "password": "Lalala123",
-        "user_data_dir": "test7",
-        "start_idx": 180,
-        "end_idx": 210
-    },
-    {
-        "email": "suprismth@gmail.com",
-        "password": "Lalala123",
-        "user_data_dir": "test8",
-        "start_idx": 210,
-        "end_idx": 240
-    },
-    {
-        "email": "kintilbirdie@gmail.com",
-        "password": "Lalala123",
-        "user_data_dir": "test9",
-        "start_idx": 240,
-        "end_idx": 270
-    },
-    {
-        "email": "asephartenstein@gmail.com",
-        "password": "Lalala123",
-        "user_data_dir": "test10",
-        "start_idx": 270,
-        "end_idx": 300
-    }
+    # {
+    #     "email": "testeracc482@gmail.com",
+    #     "password": "Lalala123",
+    #     "user_data_dir": "test1",
+    #     "start_idx": 0,
+    #     "end_idx": 30
+    # },
+    # {
+    #     "email": "testeracc649@gmail.com",
+    #     "password": "Lalala123",
+    #     "user_data_dir": "test2",
+    #     "start_idx": 30,
+    #     "end_idx": 60
+    # },
+    # {
+    #     "email": "samuelperry9973@gmail.com",
+    #     "password": "Lalala123",
+    #     "user_data_dir": "test3",
+    #     "start_idx": 60,
+    #     "end_idx": 90
+    # },
+    # {
+    #     "email": "diamondjove@gmail.com",
+    #     "password": "Lalala123",
+    #     "user_data_dir": "test4",
+    #     "start_idx": 90,
+    #     "end_idx": 120
+    # },
+    # {
+    #     "email": "daikintanuw@gmail.com",
+    #     "password": "Lalala123",
+    #     "user_data_dir": "test5",
+    #     "start_idx": 120,
+    #     "end_idx": 150
+    # },
+    # {
+    #     "email": "daikintanuwijaya@gmail.com",
+    #     "password": "Lalala123",
+    #     "user_data_dir": "test6",
+    #     "start_idx": 150,
+    #     "end_idx": 180
+    # },
+    # {
+    #     "email": "dalecormick1@gmail.com",
+    #     "password": "Lalala123",
+    #     "user_data_dir": "test7",
+    #     "start_idx": 180,
+    #     "end_idx": 210
+    # },
+    # {
+    #     "email": "suprismth@gmail.com",
+    #     "password": "Lalala123",
+    #     "user_data_dir": "test8",
+    #     "start_idx": 210,
+    #     "end_idx": 240
+    # },
+    # {
+    #     "email": "kintilbirdie@gmail.com",
+    #     "password": "Lalala123",
+    #     "user_data_dir": "test9",
+    #     "start_idx": 240,
+    #     "end_idx": 270
+    # },
+    # {
+    #     "email": "asephartenstein@gmail.com",
+    #     "password": "Lalala123",
+    #     "user_data_dir": "test10",
+    #     "start_idx": 270,
+    #     "end_idx": 300
+    # }
 ]

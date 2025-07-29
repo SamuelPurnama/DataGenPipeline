@@ -102,7 +102,7 @@ Required variables in `.env`:
 ```env
 # OpenAI Configuration
 OPENAI_API_KEY=your_openai_api_key_here
-OPENAI_MODEL=gpt-4o
+OPENAI_MODEL=gpt-4.1
 
 # Neo4j Database (for Graphiti)
 NEO4J_URI=bolt://localhost:7687

@@ -1,6 +1,5 @@
 import json
 from playwright.sync_api import sync_playwright, TimeoutError
-import json
 import os
 import sys
 import uuid
@@ -10,7 +9,6 @@ from typing import Optional, Tuple, Dict, Any
 from concurrent.futures import ThreadPoolExecutor
 import html
 import re
-import asyncio
 from datetime import datetime
 from dotenv import load_dotenv
 
@@ -24,16 +22,11 @@ from utils.google_auth import ensure_google_login
 # Load environment variables from .env file
 load_dotenv()
 
-# Graphiti imports for trajectory context
-try:
-    from graphiti_core.graphiti import Graphiti
-    GRAPHITI_AVAILABLE = True
-except ImportError:
-    print("⚠️ Graphiti not available. Trajectory context will be disabled.")
-    GRAPHITI_AVAILABLE = False
+# Knowledge base client for trajectory context
+from utils.knowledge_base_client import get_trajectory_context
 
 # ========== CONFIGURABLE PARAMETERS ==========
-PHASE = 2
+PHASE = 1
 MAX_RETRIES = 7
 MAX_STEPS = 25  # Maximum number of steps before failing
 ACTION_TIMEOUT = 20000  # 30 seconds timeout for actions
@@ -42,87 +35,41 @@ ACTION_TIMEOUT = 20000  # 30 seconds timeout for actions
 # 1 - Interactive Mode: Requires Enter press after each instruction for manual review
 MODE = 0
 
-# Graphiti configuration
-GRAPHITI_URI = os.getenv("NEO4J_URI")  # Use same env vars as ingest_trajectory.py
-GRAPHITI_USER = os.getenv("NEO4J_USERNAME")
-GRAPHITI_PASSWORD = os.getenv("NEO4J_PASSWORD")
-GRAPHITI_GROUP_ID = "web_trajectories"  # Match the group_id used in ingest_trajectory.py
+# Knowledge base configuration
 MAX_CONTEXT_LENGTH = int(os.getenv("MAX_CONTEXT_LENGTH", "2000"))  # Maximum context length in characters
+KNOWLEDGE_BASE_TYPE = os.getenv("KNOWLEDGE_BASE_TYPE", "graphrag")  # Type of knowledge base to use
 
 # Directory to store all browser sessions
 os.makedirs(BROWSER_SESSIONS_DIR, exist_ok=True)
 
-async def fetch_trajectory_nodes(
+def extract_button_name_from_code(action_code):
+    match = re.search(r"name=['\"]([^'\"]+)['\"]", action_code)
+    if match:
+        return match.group(1)
+    return None
+
+def extract_role_and_name_from_code(action_code):
+    role_match = re.search(r"get_by_role\(['\"]([^'\"]+)['\"]", action_code)
+    name_match = re.search(r"name=['\"]([^'\"]+)['\"]", action_code)
+    role = role_match.group(1) if role_match else None
+    name = name_match.group(1) if name_match else None
+    return role, name
+
+def fetch_trajectory_nodes(
     instruction: str,
     max_results: int = 3,
     max_context_length: int = 3000
 ) -> str:
     """
-    Fetch relevant past trajectory nodes from Graphiti and extract steps/codes for LLM context.
-    Only returns nodes with label 'Trajectory'.
+    Fetch relevant past trajectory nodes from vector database and extract steps/codes for LLM context.
+    Uses modular vector database client that supports multiple database types.
     """
-    if not GRAPHITI_AVAILABLE:
-        return ""
-    try:
-        # Get API key from environment
-        api_key = os.getenv("OPENAI_API_KEY")
-        if not api_key:
-            print("⚠️ OPENAI_API_KEY not set. Skipping trajectory node context.")
-            return ""
-        from graphiti_core.embedder.openai import OpenAIEmbedder, OpenAIEmbedderConfig
-        from graphiti_core.driver.neo4j_driver import Neo4jDriver
-        embedder_config = OpenAIEmbedderConfig(
-            api_key=api_key,
-            embedding_model="text-embedding-3-small"
-        )
-        embedder = OpenAIEmbedder(config=embedder_config)
-        neo4j_driver = Neo4jDriver(
-            uri=GRAPHITI_URI,
-            user=GRAPHITI_USER,
-            password=GRAPHITI_PASSWORD
-        )
-        graphiti = Graphiti(
-            graph_driver=neo4j_driver,
-            embedder=embedder
-        )
-        # Use search_ to get full SearchResults
-        results = await graphiti.search_(
-            query=instruction,
-            group_ids=[GRAPHITI_GROUP_ID],
-        )
-        
-        # Filter for nodes with label 'Trajectory'
-        trajectory_nodes = [
-            node for node in results.nodes
-            if getattr(node, "labels", None) and "Trajectory" in node.labels
-        ]
-        nodes = trajectory_nodes[:max_results]
-        context_parts = ["=== RELEVANT PAST TRAJECTORY NODES ==="]
-        for i, node in enumerate(nodes, 1):
-            steps = getattr(node, "steps", None)
-            codes = getattr(node, "code_executed", None)
-            # Check attributes dict if not found as top-level
-            if steps is None and hasattr(node, "attributes"):
-                steps = node.attributes.get("steps")
-            if codes is None and hasattr(node, "attributes"):
-                codes = node.attributes.get("code_executed")
-            goal = getattr(node, "name", None)
-            context_parts.append(f"--- Past Node {i} ---")
-            context_parts.append(f"Instruction: {goal}")
-            context_parts.append(f"Steps: {steps}")
-            context_parts.append(f"Codes: {codes}")
-            context_parts.append("")
-        context_parts.append("=== END PAST TRAJECTORY NODES ===")
-        full_context = "\n".join(context_parts)
-        if len(full_context) > max_context_length:
-            print(f"⚠️ Context length ({len(full_context)}) exceeds limit ({max_context_length}). Truncating...")
-            full_context = full_context[:max_context_length] + "\n... [CONTEXT TRUNCATED]"
-        return full_context
-    except Exception as e:
-        print(f"❌ Error fetching trajectory node context: {e}")
-        return ""
-
-
+    return get_trajectory_context(
+        query=instruction,
+        max_results=max_results,
+        max_context_length=max_context_length,
+        kb_type=KNOWLEDGE_BASE_TYPE
+    )
 
 def create_episode_directory(base_dir: str, eps_name: str) -> Dict[str, str]:
     """Create directory structure for an episode."""
@@ -643,7 +590,7 @@ def write_user_message(user_message_file: str, goal: str, execution_history: lis
     with open(user_message_file, 'w', encoding='utf-8') as f:
         f.write('\n'.join(user_message_content))
 
-async def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_idx, email: Optional[str] = None, password: Optional[str] = None):
+def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_idx, email: Optional[str] = None, password: Optional[str] = None, search_context: bool = True):
     phase_file = os.path.join(RESULTS_DIR, f"instructions_phase{phase}.json")
     try:
         with open(phase_file, 'r', encoding='utf-8') as f:
@@ -699,17 +646,21 @@ async def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx,
                 print(f"🔄 Aug: {aug}")
                 print(f"UUID: {eps_name}")
 
-                # Fetch relevant past trajectories for context
-                print("🔍 Fetching relevant past trajectories...")
-                trajectory_context = await fetch_trajectory_nodes(aug, max_results=3, max_context_length=MAX_CONTEXT_LENGTH)
-                if trajectory_context:
-                    print("✅ Found relevant past trajectories")
-                    print("📄 Full trajectory context:")
-                    print("=" * 50)
-                    print(trajectory_context)
-                    print("=" * 50)
+                # Fetch relevant past trajectories for context (if enabled)
+                trajectory_context = ""
+                if search_context:
+                    print("🔍 Fetching relevant past trajectories...")
+                    trajectory_context = fetch_trajectory_nodes(aug, max_results=3, max_context_length=MAX_CONTEXT_LENGTH)
+                    if trajectory_context:
+                        print("✅ Found relevant past trajectories")
+                        print("📄 Full trajectory context:")
+                        print("=" * 50)
+                        print(trajectory_context)
+                        print("=" * 50)
+                    else:
+                        print("ℹ️ No relevant past trajectories found")
                 else:
-                    print("ℹ️ No relevant past trajectories found")
+                    print("🚫 Trajectory context search disabled")
 
                 # Navigate to URL for this instruction
                 page.goto(url)
@@ -870,7 +821,15 @@ async def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx,
                             print(f"🤖 {description}")
                             print(f"🔄 Code: {code}")
                             print(f"🔄 Failed Codes: {failed_codes}")
-                            exec(code)
+                            
+                            # Execute the Playwright code directly
+                            if "page." in code:
+                                # Execute Playwright code directly (sync version)
+                                exec(code)
+                            else:
+                                # For non-Playwright code, execute normally
+                                exec(code)
+                            
                             # Only save files and document steps if the execution was successful
                             execution_history.append({'step': description, 'code': code})
                             task_summarizer.append({'step': description, 'code': code, 'axtree': tree})
@@ -987,31 +946,29 @@ async def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx,
             page.close()
             browser.close()
 
-async def run_for_account(account, chrome_path, phase):
+def run_for_account(account, chrome_path, phase, search_context: bool = True):
     user_data_dir = os.path.join(BROWSER_SESSIONS_DIR, account["user_data_dir"])
     # Only create the directory if it doesn't exist
     if not os.path.exists(user_data_dir):
         os.makedirs(user_data_dir, exist_ok=True)
-    await generate_trajectory_loop(
+    generate_trajectory_loop(
         user_data_dir=user_data_dir,
         chrome_path=chrome_path,
         phase=phase,
         start_idx=account["start_idx"],
         end_idx=account["end_idx"],
         email=account["email"],
-        password=account["password"]
+        password=account["password"],
+        search_context=search_context
     )
 
-async def main():
+def main():
     chrome_exec = os.getenv("CHROME_EXECUTABLE_PATH")
     phase = PHASE
     
     # Run accounts sequentially
     for account in ACCOUNTS:
-        await run_for_account(account, chrome_exec, phase)
-
-if __name__ == "__main__":
-    asyncio.run(main())
+        run_for_account(account, chrome_exec, phase, search_context=True)
 
 def generate_trajectory_html(dirs: Dict[str, str], metadata: Dict[str, Any]) -> None:
     """Generate an HTML visualization of the trajectory."""
@@ -1029,10 +986,10 @@ def generate_trajectory_html(dirs: Dict[str, str], metadata: Dict[str, Any]) -> 
     instructions = metadata['task']['instruction']
     steps = metadata['task']['steps']
     html_content = f"""<!DOCTYPE html>
-<html lang=\"en\">
+<html lang="en">
 <head>
-    <meta charset=\"UTF-8\">
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualization of Trajectory</title>
     <style>
         body {{ font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background-color: #f5f5f5; }}
@@ -1056,15 +1013,15 @@ def generate_trajectory_html(dirs: Dict[str, str], metadata: Dict[str, Any]) -> 
     </style>
 </head>
 <body>
-    <div class=\"container\">
+    <div class="container">
         <h1>{metadata['eps_name']} ({metadata['task'].get('task_type','')})</h1>
         <h2>Instructions</h2>
-        <table class=\"instruction-table\">
+        <table class="instruction-table">
             <tr><th>level</th><th>instruction</th></tr>
             <tr><td><em>high_level</em></td><td>{html.escape(instructions.get('high_level',''))}</td></tr>
             <tr><td><em>mid_level</em></td><td>{html.escape(instructions.get('mid_level',''))}</td></tr>
             <tr><td><em>low_level</em></td><td>{html.escape(instructions.get('low_level',''))}</td></tr>
-            <tr><td><em>steps</em></td><td><ul class=\"steps-list\">{''.join(f'<li>{html.escape(str(s))}</li>' for s in steps)}</ul></td></tr>
+            <tr><td><em>steps</em></td><td><ul class="steps-list">{''.join(f'<li>{html.escape(str(s))}</li>' for s in steps)}</ul></td></tr>
         </table>
         <h2>Trajectory Steps</h2>
 """
@@ -1102,29 +1059,29 @@ def generate_trajectory_html(dirs: Dict[str, str], metadata: Dict[str, Any]) -> 
         llm_output_str = html.escape(playwright_code) if playwright_code else 'No Playwright code for this step.'
 
         html_content += f"""
-        <div class=\"step\">
-            <div class=\"step-header\">
-                <span class=\"step-number\">Step {step_num}</span>
+        <div class="step">
+            <div class="step-header">
+                <span class="step-number">Step {step_num}</span>
             </div>
-            <div class=\"step-content\">
+            <div class="step-content">
                 <div>
-                    <img src=\"{screenshot_path}\" alt=\"Step {step_num} Screenshot\" class=\"screenshot\">
+                    <img src="{screenshot_path}" alt="Step {step_num} Screenshot" class="screenshot">
                 </div>
                 <div>
-                    <div class=\"step-details-label\">Thought</div>
+                    <div class="step-details-label">Thought</div>
                     <div>{thought}</div>
-                    <div class=\"step-details-label\">Action</div>
+                    <div class="step-details-label">Action</div>
                     <div>{action_str}</div>
-                    <div class=\"step-details-label\">Action Description</div>
+                    <div class="step-details-label">Action Description</div>
                     <div>{action_description}</div>
-                    <button class=\"collapsible\">System Message</button>
-                    <div class=\"content\"><pre>{system_message}</pre></div>
-                    <button class=\"collapsible\">User Message</button>
-                    <div class=\"content\"><pre>{user_message_content}</pre></div>
-                    <button class=\"collapsible\">Element Output</button>
-                    <div class=\"content\"><pre>{element_output}</pre></div>
-                    <button class=\"collapsible\">LLM Output</button>
-                    <div class=\"content\"><pre>{llm_output_str}</pre></div>
+                    <button class="collapsible">System Message</button>
+                    <div class="content"><pre>{system_message}</pre></div>
+                    <button class="collapsible">User Message</button>
+                    <div class="content"><pre>{user_message_content}</pre></div>
+                    <button class="collapsible">Element Output</button>
+                    <div class="content"><pre>{element_output}</pre></div>
+                    <button class="collapsible">LLM Output</button>
+                    <div class="content"><pre>{llm_output_str}</pre></div>
                 </div>
             </div>
         </div>
@@ -1154,18 +1111,5 @@ def generate_trajectory_html(dirs: Dict[str, str], metadata: Dict[str, Any]) -> 
     with open(html_path, 'w', encoding='utf-8') as f:
         f.write(html_content)
 
-def extract_button_name_from_code(action_code):
-    match = re.search(r"name=['\"]([^'\"]+)['\"]", action_code)
-    if match:
-        return match.group(1)
-    return None
-
-def extract_role_and_name_from_code(action_code):
-    role_match = re.search(r"get_by_role\(['\"]([^'\"]+)['\"]", action_code)
-    name_match = re.search(r"name=['\"]([^'\"]+)['\"]", action_code)
-    role = role_match.group(1) if role_match else None
-    name = name_match.group(1) if name_match else None
-    return role, name
-
 if __name__ == "__main__":
-    main()
+    main() 

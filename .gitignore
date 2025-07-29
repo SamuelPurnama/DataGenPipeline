@@ -52,7 +52,9 @@ dist/
 *.jsonl
 
 screenshots/
-browser_sessions/
+data/browser_sessions/
+data/results/
 
-# Results and generated data
+# Results and generated data (legacy paths)
 results/
+browser_sessions/
