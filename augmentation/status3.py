@@ -83,7 +83,7 @@ def augment_instructions(
         {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{final_img_b64}"}},
     ]
     response = client.chat.completions.create(
-        model="gpt-4o",
+        model="gpt-4.1",
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_content}

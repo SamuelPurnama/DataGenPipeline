@@ -21,7 +21,7 @@ def resize_image_base64(path: str, max_width=512) -> str:
 def generate_augmented_instructions(
     instructions: List[str],
     screenshot_path: str = None,
-    model: str = "gpt-4o"
+    model: str = "gpt-4.1"
 ) -> List[str]:
     client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 

@@ -1,5 +1,5 @@
-PERSONAS_PER_ACCOUNT = 1  # Number of personas each account will process
-PHASE1_NUM_INSTRUCTIONS = 1  # Instructions per persona for phase 1 (initial state)
+PERSONAS_PER_ACCOUNT = 4  # Number of personas each account will process
+PHASE1_NUM_INSTRUCTIONS = 5  # Instructions per persona for phase 1 (initial state)
 PHASE2_NUM_INSTRUCTIONS = 20 # Instructions per persona for phase 2 (modified state)
 
 # Centralized path configuration
@@ -7,7 +7,7 @@ RESULTS_DIR = "data/results"
 BROWSER_SESSIONS_DIR = "data/browser_sessions"
 SAMPLE_DATA_DIR = "data/sample_data"
 
-URL = "https://calendar.google.com"
+URL = "https://docs.google.com"
 
 # Google Accounts Configuration
 ACCOUNTS = [

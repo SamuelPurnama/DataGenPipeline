@@ -129,7 +129,7 @@ def chat_ai_playwright_code(accessibility_tree=None, previous_steps=None, taskGo
                 resized_image = base64.b64encode(buffer.getvalue()).decode("utf-8")
 
             response = client.chat.completions.create(
-                model="gpt-4o",
+                model="gpt-4.1",
                 messages=[
                     {
                         "role": "system",

@@ -23,7 +23,7 @@ def generate_instructions(
     num_instructions: int,
     screenshot_path: str = None,
     axtree: str = None,
-    model: str = "gpt-4o"
+    model: str = "gpt-4.1"
 ) -> List[str]:
     client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 

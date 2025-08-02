@@ -70,7 +70,7 @@ def verify_task_completion(
             
         # Prepare the messages for GPT
         response = client.chat.completions.create(
-            model="gpt-4o",  # Use vision model
+            model="gpt-4.1",  # Use vision model
             messages=[
                 {
                     "role": "system",

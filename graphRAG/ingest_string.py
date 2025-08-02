@@ -43,7 +43,7 @@ class TokenTracker:
         print(f"🔢 Total tokens used: {self.total_tokens}")
         
         # Calculate approximate cost (rough estimates)
-        # GPT-4o pricing: ~$2.50/1M input, ~$10/1M output tokens
+        # gpt-4.1 pricing: ~$2.50/1M input, ~$10/1M output tokens
         input_cost = (self.prompt_tokens / 1_000_000) * 2.50
         output_cost = (self.completion_tokens / 1_000_000) * 10.00
         total_cost = input_cost + output_cost
@@ -79,7 +79,7 @@ class TrackedOpenAIClient(OpenAIClient):
 async def main():
     # OpenAI Configuration
     api_key = os.getenv('OPENAI_API_KEY')
-    model = os.getenv('OPENAI_MODEL', 'gpt-4o')
+    model = os.getenv('OPENAI_MODEL', 'gpt-4.1')
     base_url = os.getenv('OPENAI_API_BASE', '')
 
     # Neo4j Configuration
