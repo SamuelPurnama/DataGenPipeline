@@ -51,10 +51,13 @@ dist/
 *.csv
 *.jsonl
 
-screenshots/
-data/browser_sessions/
-data/results/
-
 # Results and generated data (legacy paths)
 results/
+data/browser_sessions/
+data/results/
+data/interaction_logs/
+screenshots/
+
+# Browser sessions and recorder sessions
 browser_sessions/
+recorder_sessions/

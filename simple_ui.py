@@ -290,7 +290,7 @@ class SimpleUI:
             <strong>How it works:</strong><br>
             • Click "Start Recording" to run <code>python recorderSystem.py --url [your-url]</code><br>
             • Browser will open and start recording<br>
-            • All logs, screenshots, and data saved to <code>interaction_logs/</code><br>
+            • All logs, screenshots, and data saved to <code>data/interaction_logs/</code><br>
             • Press Ctrl+C in terminal or click "Stop Recording" to stop
         </div>
         
@@ -681,7 +681,7 @@ class SimpleUI:
             from datetime import datetime
             
             # Find the most recent interaction_logs session
-            interaction_logs_dir = Path("interaction_logs")
+            interaction_logs_dir = Path("data/interaction_logs")
             if not interaction_logs_dir.exists():
                 print("⚠️ No interaction_logs directory found")
                 return
@@ -754,7 +754,7 @@ class SimpleUI:
             from pathlib import Path
             
             # Find the most recent interaction_logs session
-            interaction_logs_dir = Path("interaction_logs")
+            interaction_logs_dir = Path("data/interaction_logs")
             if not interaction_logs_dir.exists():
                 return web.json_response({
                     'success': False,
@@ -828,7 +828,7 @@ class SimpleUI:
             from datetime import datetime
             
             # Find all interaction_logs sessions
-            interaction_logs_dir = Path("interaction_logs")
+            interaction_logs_dir = Path("data/interaction_logs")
             if not interaction_logs_dir.exists():
                 return web.json_response({
                     'success': True,
@@ -950,7 +950,7 @@ class SimpleUI:
             session_name = request.match_info['session_name']
             
             # Find the session directory
-            interaction_logs_dir = Path("interaction_logs")
+            interaction_logs_dir = Path("data/interaction_logs")
             session_dir = interaction_logs_dir / session_name
             
             if not session_dir.exists():
@@ -991,7 +991,7 @@ class SimpleUI:
             session_name = request.match_info['session_name']
             
             # Find the session directory
-            interaction_logs_dir = Path("interaction_logs")
+            interaction_logs_dir = Path("data/interaction_logs")
             session_dir = interaction_logs_dir / session_name
             html_file = session_dir / 'trajectory_report.html'
             
@@ -1017,7 +1017,7 @@ class SimpleUI:
             step_num = request.match_info['step_num']
             
             # Find the screenshot file
-            interaction_logs_dir = Path("interaction_logs")
+            interaction_logs_dir = Path("data/interaction_logs")
             session_dir = interaction_logs_dir / session_name
             screenshot_file = session_dir / "images" / f"screenshot_{step_num.zfill(3)}.png"
             
