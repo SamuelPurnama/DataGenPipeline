@@ -262,7 +262,6 @@ class SimpleUI:
             max-height: 50vh;
             overflow-y: auto;
         }
-<<<<<<< HEAD
         
         /* Note Taking Styles */
         .note-section {
@@ -434,8 +433,6 @@ class SimpleUI:
             50% { opacity: 0.5; }
             100% { opacity: 1; }
         }
-=======
->>>>>>> 0428ef5094672442bfecded5455e7b84caaeea58
     </style>
 </head>
 <body>
@@ -460,7 +457,6 @@ class SimpleUI:
             <span id="statusText">Ready to start recording</span>
         </div>
         
-<<<<<<< HEAD
         <!-- Note Taking Section -->
         <div id="noteSection" class="note-section" style="display: none;">
             <h3>📝 Add Notes <span id="liveIndicator" class="live-indicator">🔴 LIVE</span></h3>
@@ -478,18 +474,12 @@ class SimpleUI:
             <div id="noteStatus" class="note-status"></div>
         </div>
         
-=======
->>>>>>> 0428ef5094672442bfecded5455e7b84caaeea58
         <div class="info">
             <strong>How it works:</strong><br>
             • Click "Start Recording" to run <code>python recorderSystem.py --url [your-url]</code><br>
             • Browser will open and start recording<br>
-<<<<<<< HEAD
-            • All logs, screenshots, and data saved to <code>interaction_logs/</code><br>
-            • <strong>Live Notes:</strong> Add notes during recording - step dropdown updates in real-time!<br>
-=======
             • All logs, screenshots, and data saved to <code>data/interaction_logs/</code><br>
->>>>>>> 0428ef5094672442bfecded5455e7b84caaeea58
+            • <strong>Live Notes:</strong> Add notes during recording - step dropdown updates in real-time!<br>
             • Press Ctrl+C in terminal or click "Stop Recording" to stop
         </div>
         
@@ -504,11 +494,8 @@ class SimpleUI:
             <div id="sessionDetails"></div>
             <button type="button" class="button delete" id="deleteBtn" onclick="deleteSession()" style="display: none;">🗑️ Delete Session</button>
             <button type="button" class="button view" id="viewTrajectoryBtn" onclick="viewTrajectory()" style="display: none;">📄 View Trajectory</button>
-<<<<<<< HEAD
             <button type="button" class="button add-notes" id="addNotesBtn" onclick="showAddNotesModal()" style="display: none;">📝 Add Notes</button>
             <div id="sessionNotesDisplay" class="notes-display" style="display: none;"></div>
-=======
->>>>>>> 0428ef5094672442bfecded5455e7b84caaeea58
         </div>
         
         <!-- Trajectory Modal -->
@@ -523,7 +510,6 @@ class SimpleUI:
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
         
         <!-- Add Notes Modal -->
         <div id="addNotesModal" class="modal" style="display: none;">
@@ -549,8 +535,6 @@ class SimpleUI:
                 </div>
             </div>
         </div>
-=======
->>>>>>> 0428ef5094672442bfecded5455e7b84caaeea58
     </div>
     
     <script>
@@ -577,11 +561,7 @@ class SimpleUI:
                 if (result.success) {
                     isRecording = true;
                     updateUI();
-<<<<<<< HEAD
                     alert('🎯 Recording started! Check your terminal for output. You can now add notes during recording - the step dropdown will update live as you perform actions!');
-=======
-                    alert('🎯 Recording started! Check your terminal for output.');
->>>>>>> 0428ef5094672442bfecded5455e7b84caaeea58
                 } else {
                     alert(`❌ Failed to start recording: ${result.error}`);
                 }
@@ -653,11 +633,8 @@ class SimpleUI:
                 document.getElementById('sessionDetails').innerHTML = '';
                 document.getElementById('deleteBtn').style.display = 'none';
                 document.getElementById('viewTrajectoryBtn').style.display = 'none';
-<<<<<<< HEAD
                 document.getElementById('addNotesBtn').style.display = 'none';
                 document.getElementById('sessionNotesDisplay').style.display = 'none';
-=======
->>>>>>> 0428ef5094672442bfecded5455e7b84caaeea58
                 currentSession = null;
                 return;
             }
@@ -669,13 +646,10 @@ class SimpleUI:
                 showSessionInfo(session);
                 document.getElementById('deleteBtn').style.display = 'inline-block';
                 document.getElementById('viewTrajectoryBtn').style.display = 'inline-block';
-<<<<<<< HEAD
                 document.getElementById('addNotesBtn').style.display = 'inline-block';
                 
                 // Load and display notes for this session
                 await loadSessionNotes(session.name);
-=======
->>>>>>> 0428ef5094672442bfecded5455e7b84caaeea58
             }
         }
         
@@ -717,11 +691,8 @@ class SimpleUI:
                     document.getElementById('sessionDetails').innerHTML = '';
                     document.getElementById('deleteBtn').style.display = 'none';
                     document.getElementById('viewTrajectoryBtn').style.display = 'none';
-<<<<<<< HEAD
                     document.getElementById('addNotesBtn').style.display = 'none';
                     document.getElementById('sessionNotesDisplay').style.display = 'none';
-=======
->>>>>>> 0428ef5094672442bfecded5455e7b84caaeea58
                     currentSession = null;
                     await loadAllSessions(); // Reload sessions after deletion
                 } else {
@@ -1503,7 +1474,7 @@ class SimpleUI:
                 })
             
             # Find the session directory
-            interaction_logs_dir = Path("interaction_logs")
+            interaction_logs_dir = Path("data/interaction_logs")
             session_dir = interaction_logs_dir / session_name
             
             if not session_dir.exists():
@@ -1651,7 +1622,7 @@ class SimpleUI:
             
             # If no session name provided, use the most recent session
             if not session_name:
-                interaction_logs_dir = Path("interaction_logs")
+                interaction_logs_dir = Path("data/interaction_logs")
                 if not interaction_logs_dir.exists():
                     return web.json_response({
                         'success': False,
@@ -1670,7 +1641,7 @@ class SimpleUI:
                 session_name = latest_session_dir.name
             
             # Find the session directory
-            interaction_logs_dir = Path("interaction_logs")
+            interaction_logs_dir = Path("data/interaction_logs")
             session_dir = interaction_logs_dir / session_name
             
             if not session_dir.exists():
@@ -1741,7 +1712,7 @@ class SimpleUI:
             session_name = request.match_info['session_name']
             
             # Find the session directory
-            interaction_logs_dir = Path("interaction_logs")
+            interaction_logs_dir = Path("data/interaction_logs")
             session_dir = interaction_logs_dir / session_name
             
             if not session_dir.exists():
@@ -1776,7 +1747,7 @@ class SimpleUI:
         try:
             from pathlib import Path
             
-            interaction_logs_dir = Path("interaction_logs")
+            interaction_logs_dir = Path("data/interaction_logs")
             if not interaction_logs_dir.exists():
                 return web.json_response({
                     'success': False,
@@ -1815,7 +1786,7 @@ class SimpleUI:
             session_name = request.match_info['session_name']
             
             # Find the session directory
-            interaction_logs_dir = Path("interaction_logs")
+            interaction_logs_dir = Path("data/interaction_logs")
             session_dir = interaction_logs_dir / session_name
             
             if not session_dir.exists():
