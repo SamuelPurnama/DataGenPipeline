@@ -14,6 +14,141 @@ from generate_trajectory import chat_ai_playwright_code
 from config import RESULTS_DIR, ACCOUNTS
 from google_auth import ensure_google_login
 
+def filter_accessibility_tree(tree: Dict[str, Any], url: str = None) -> Dict[str, Any]:
+    """
+    Filter out inbox-like elements and other verbose content from accessibility tree.
+    This reduces token usage and focuses on actionable UI elements.
+    
+    Args:
+        tree: The accessibility tree to filter
+        url: The current page URL to determine site-specific filtering
+    """
+    if not tree or not isinstance(tree, dict):
+        return tree
+    
+    def should_keep_element(element: Dict[str, Any]) -> bool:
+        """Determine if an element should be kept in the filtered tree."""
+        if not isinstance(element, dict):
+            return True
+        
+        # Get element properties
+        tagName = element.get('tagName', '').upper()
+        className = element.get('className', '').lower()
+        name = element.get('name', '').lower()
+        role = element.get('role', '').lower()
+        description = element.get('description', '').lower()
+        
+        # ===== GMAIL INBOX SPECIFIC FILTERING =====
+        # Only apply Gmail-specific filtering if we're on a Gmail URL
+        if url and ('mail.google.com' in url or 'gmail.com' in url):
+            # ALWAYS keep the root element and its direct children
+            if role == "WebArea" or element.get('focused') is True:
+                return True
+            
+            # Keep all navigation and action elements
+            if role in ['button', 'link', 'textbox', 'combobox', 'heading', 'tab', 'toolbar']:
+                return True
+            
+            # Keep elements with important names
+            important_names = ['compose', 'search', 'inbox', 'sent', 'drafts', 'settings', 'support']
+            if any(important in name for important in important_names):
+                return True
+            
+            # Filter out only the most obvious inbox email rows
+            if tagName == "TR" and role == "row" and len(name) > 100:
+                # This is likely an email row with long content
+                return False
+            
+            # Filter out very long text content (likely email bodies)
+            if len(name) > 200:
+                return False
+            
+            # Keep everything else
+            return True
+        
+        # ===== GENERAL INBOX FILTERING =====
+        # Filter out inbox-like elements
+        inbox_keywords = [
+            'inbox', 'email', 'message', 'mail', 'notification', 'alert',
+            'unread', 'read', 'sent', 'draft', 'spam', 'trash',
+            'conversation', 'thread', 'reply', 'forward', 'archive',
+            'mark as read', 'mark as unread', 'delete message',
+            'compose', 'new message', 'send', 'attach', 'cc', 'bcc'
+        ]
+        
+        # Check if element contains inbox-related keywords
+        for keyword in inbox_keywords:
+            if keyword in name or keyword in description:
+                return False
+        
+        # Filter out verbose content areas that are not actionable
+        if role in ['article', 'main', 'contentinfo'] and not element.get('children'):
+            # Keep only if it has actionable children
+            return True
+        
+        # Filter out very long text content (likely email bodies, articles, etc.)
+        if len(name) > 200:  # Very long text content
+            return False
+        
+        # Keep navigation, buttons, inputs, and other actionable elements
+        actionable_roles = [
+            'button', 'link', 'textbox', 'combobox', 'checkbox', 'radio',
+            'tab', 'menuitem', 'option', 'searchbox', 'spinbutton',
+            'slider', 'switch', 'treeitem', 'gridcell', 'cell',
+            'heading', 'listitem', 'menubar', 'toolbar', 'navigation'
+        ]
+        
+        if role in actionable_roles:
+            return True
+        
+        # Keep elements with specific attributes that make them interactive
+        if element.get('focused') or element.get('pressed') or element.get('checked'):
+            return True
+        
+        # Keep elements that are likely to be part of the main interface
+        if 'aria-' in str(element) or 'data-' in str(element):
+            return True
+        
+        # Filter out generic containers with no actionable content
+        if role in ['generic', 'group', 'region'] and not element.get('children'):
+            return False
+        
+        return True
+    
+    def filter_element(element: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """Recursively filter an element and its children."""
+        if not should_keep_element(element):
+            return None
+        
+        # Create a copy of the element
+        filtered_element = element.copy()
+        
+        # Recursively filter children
+        if 'children' in filtered_element and filtered_element['children']:
+            filtered_children = []
+            for child in filtered_element['children']:
+                filtered_child = filter_element(child)
+                if filtered_child is not None:
+                    filtered_children.append(filtered_child)
+            filtered_element['children'] = filtered_children
+        
+        return filtered_element
+    
+    # Apply filtering to the root element
+    filtered_result = filter_element(tree)
+    
+    # Debug: Log filtering results
+    if filtered_result is None:
+        print("⚠️ Warning: filter_element returned None for root element")
+        # Return original tree if filtering removed everything
+        return tree
+    elif isinstance(filtered_result, dict) and not filtered_result.get('children'):
+        print("⚠️ Warning: Root element has no children after filtering")
+        # Return original tree if filtering removed all children
+        return tree
+    
+    return filtered_result
+
 # ========== CONFIGURABLE PARAMETERS ==========
 PHASE = 1
 MAX_RETRIES = 7
@@ -607,7 +742,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                 page.goto(url)
                 
                 # Handle login using the new module
-                # ensure_google_login(page, email, password, url)
+                ensure_google_login(page, email, password, url)
 
                 execution_history = []
                 task_summarizer = []
@@ -692,8 +827,25 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                             break
                     is_del = 'delete' in current_goal.lower()
 
+                    # Filter the accessibility tree for Gmail to remove inbox elements
+                    if url and ('mail.google.com' in url or 'gmail.com' in url):
+                        filtered_tree = filter_accessibility_tree(tree, url)
+                        # If filtering fails, use original tree
+                        if filtered_tree is None or (isinstance(filtered_tree, dict) and not filtered_tree.get('children')):
+                            print("⚠️ Warning: Filtering failed, using original tree")
+                            filtered_tree = tree
+                    else:
+                        # For non-Gmail sites, use original tree
+                        filtered_tree = tree
+                    
+                    # Print the accessibility tree being sent to GPT
+                    print(f"\n📋 Accessibility tree being sent to GPT (URL: {url}):")
+                    print(f"Tree size: {len(str(filtered_tree))} characters")
+                    print(f"Full filtered tree:")
+                    print(json.dumps(filtered_tree, indent=2))
+                    
                     gpt_resp = chat_ai_playwright_code(
-                        accessibility_tree=tree,
+                        accessibility_tree=filtered_tree,
                         previous_steps=execution_history,
                         taskGoal=aug,
                         taskPlan=current_goal,
@@ -789,16 +941,27 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                     json.dump(tree, f, indent=2, ensure_ascii=False)
                                 error_log = str(e)
                                 print(f"📝 Error log: {error_log}")
+                                                                # Filter the accessibility tree for Gmail to remove inbox elements
+                                if url and ('mail.google.com' in url or 'gmail.com' in url):
+                                    filtered_tree = filter_accessibility_tree(tree, url)
+                                    # If filtering fails, use original tree
+                                    if filtered_tree is None or (isinstance(filtered_tree, dict) and not filtered_tree.get('children')):
+                                        print("⚠️ Warning: Filtering failed, using original tree")
+                                        filtered_tree = tree
+                                else:
+                                    # For non-Gmail sites, use original tree
+                                    filtered_tree = tree
+                                                              
                                 gpt_resp = chat_ai_playwright_code(
-                                        accessibility_tree=tree,
-                                    previous_steps=execution_history,
-                                    taskGoal=aug,
-                                    taskPlan=current_goal,
-                                    image_path=screenshot,
-                                    failed_codes=failed_codes,
-                                    is_deletion_task=is_del,
-                                    url=url,
-                                    error_log=error_log
+                                        accessibility_tree=filtered_tree,
+                                        previous_steps=execution_history,
+                                        taskGoal=aug,
+                                        taskPlan=current_goal,
+                                        image_path=screenshot,
+                                        failed_codes=failed_codes,
+                                        is_deletion_task=is_del,
+                                        url=url,
+                                        error_log=error_log
                                 )
                                 # Update total tokens from retry response
                                 if gpt_resp and "total_tokens" in gpt_resp:

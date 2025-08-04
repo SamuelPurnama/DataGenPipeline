@@ -78,7 +78,7 @@ def generate_instructions_for_account(account, persona, num_instructions):
         page.goto(URL)
         
         # Ensure we're logged in before proceeding
-        # ensure_google_login(page, account["email"], account["password"], URL)
+        ensure_google_login(page, account["email"], account["password"], URL)
             
         # Take screenshot
         screenshot_path = SCREENSHOT_PATH
