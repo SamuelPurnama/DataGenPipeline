@@ -91,7 +91,7 @@ def identify_redundant_steps(
     ] + screenshot_content
     
     response = client.chat.completions.create(
-        model="gpt-4o",
+        model="gpt-4.1",
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_content}
@@ -205,7 +205,7 @@ def verify_step_deletion(
     ] + screenshot_content
     
     response = client.chat.completions.create(
-        model="gpt-4o",
+        model="gpt-4.1",
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_content}

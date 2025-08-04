@@ -2,8 +2,7 @@ import os
 import json
 import shutil
 from typing import List, Dict
-
-RESULTS_DIR = os.path.abspath("results")
+from config import RESULTS_DIR
 
 def delete_failed_trajectories() -> Dict[str, List[str]]:
     """

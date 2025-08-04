@@ -21,9 +21,9 @@ from urllib.parse import urlparse
 class EnhancedInteractionLogger:
     """Enhanced interaction logger with Playwright selectors and screenshots"""
     
-    def __init__(self, output_dir: str = "interaction_logs"):
+    def __init__(self, output_dir: str = "data/interaction_logs"):
         self.output_dir = Path(output_dir)
-        self.output_dir.mkdir(exist_ok=True)
+        self.output_dir.mkdir(parents=True, exist_ok=True)
         
         # Generate UUID for this session
         self.session_id = str(uuid.uuid4())
@@ -347,6 +347,55 @@ class EnhancedInteractionLogger:
             window.interactionLogs = [];
             window.lastInteractionElement = null;
             
+<<<<<<< HEAD
+=======
+            // Function to capture essential element properties
+            function getEssentialElementProperties(element) {
+                const rect = element.getBoundingClientRect();
+                
+                return {
+                    // Core identification
+                    tagName: element.tagName,
+                    elementId: element.id || '',
+                    elementClass: element.className || '',
+                    elementText: element.textContent ? element.textContent.substring(0, 100) : '',
+                    
+                    // Input properties
+                    inputType: element.type || '',
+                    value: element.value || '',
+                    placeholder: element.placeholder || '',
+                    required: element.required || false,
+                    disabled: element.disabled || false,
+                    
+                    // Accessibility
+                    ariaLabel: element.getAttribute('aria-label') || '',
+                    role: element.getAttribute('role') || '',
+                    dataTestid: element.getAttribute('data-testid') || '',
+                    
+                    // Visual state
+                    isVisible: rect.width > 0 && rect.height > 0,
+                    isEnabled: !element.disabled,
+                    isFocused: document.activeElement === element,
+                    
+                    // Bounding box
+                    bbox: {
+                        x: rect.x,
+                        y: rect.y,
+                        width: rect.width,
+                        height: rect.height
+                    },
+                    
+                    // Form context
+                    form: element.form ? element.form.id || '' : '',
+                    name: element.name || '',
+                    
+                    // Validation
+                    validationState: element.validity ? element.validity.valid ? 'valid' : 'invalid' : 'unknown',
+                    errorMessage: element.validationMessage || ''
+                };
+            }
+            
+>>>>>>> 0428ef5094672442bfecded5455e7b84caaeea58
             // Function to get accessibility tree
             function getAccessibilityTree() {
                 const tree = [];
@@ -488,9 +537,13 @@ class EnhancedInteractionLogger:
             window.clickListener = function(e) {
                 const element = e.target;
                 const selectors = generateSelectors(element);
+<<<<<<< HEAD
                 
                 // Get bounding box
                 const rect = element.getBoundingClientRect();
+=======
+                const essentialProperties = getEssentialElementProperties(element);
+>>>>>>> 0428ef5094672442bfecded5455e7b84caaeea58
                 
                 const clickData = {
                     type: 'click',
@@ -504,12 +557,17 @@ class EnhancedInteractionLogger:
                     url: window.location.href,
                     pageTitle: document.title,
                     selectors: selectors,
+<<<<<<< HEAD
                     bbox: {
                         x: rect.x,
                         y: rect.y,
                         width: rect.width,
                         height: rect.height
                     }
+=======
+                    bbox: essentialProperties.bbox,
+                    essentialProperties: essentialProperties
+>>>>>>> 0428ef5094672442bfecded5455e7b84caaeea58
                 };
                 window.interactionLogs.push(clickData);
                 window.lastInteractionElement = element;
@@ -535,7 +593,11 @@ class EnhancedInteractionLogger:
                 }
                 
                 const selectors = generateSelectors(element);
+<<<<<<< HEAD
                 const rect = element.getBoundingClientRect();
+=======
+                const essentialProperties = getEssentialElementProperties(element);
+>>>>>>> 0428ef5094672442bfecded5455e7b84caaeea58
                 
                 const typingData = {
                     type: 'typing_complete',
@@ -547,12 +609,17 @@ class EnhancedInteractionLogger:
                     url: window.location.href,
                     pageTitle: document.title,
                     selectors: selectors,
+<<<<<<< HEAD
                     bbox: {
                         x: rect.x,
                         y: rect.y,
                         width: rect.width,
                         height: rect.height
                     }
+=======
+                    bbox: essentialProperties.bbox,
+                    essentialProperties: essentialProperties
+>>>>>>> 0428ef5094672442bfecded5455e7b84caaeea58
                 };
                 window.interactionLogs.push(typingData);
                 window.lastInteractionElement = element;
@@ -1451,9 +1518,49 @@ class EnhancedInteractionLogger:
         }
         return colors.get(interaction_type, '#888888')  # Gray default
     
-    def _get_best_selector(self, selectors):
-        """Get the best available selector"""
-        # Priority order: testId > role > text > placeholder > id > css
+    def _get_best_selector(self, selectors, element_properties=None):
+        """Get the best available selector using enhanced element properties"""
+        if not element_properties:
+            element_properties = {}
+        
+        # Priority order for robust selectors:
+        # 1. data-testid (most reliable for testing)
+        # 2. aria-label (good for accessibility)
+        # 3. role + text (semantic + descriptive)
+        # 4. id (unique identifier)
+        # 5. placeholder (for input fields)
+        # 6. text content (for buttons/links)
+        # 7. CSS selector (fallback)
+        
+        # Check data-testid first
+        if element_properties.get('data_testid'):
+            return f"getByTestId('{element_properties['data_testid']}')"
+        
+        # Check aria-label
+        if element_properties.get('aria_label'):
+            return f"getByLabel('{element_properties['aria_label']}')"
+        
+        # Check role + text combination
+        if element_properties.get('role') and element_properties.get('text_content'):
+            text = element_properties['text_content'].strip()
+            if text and len(text) < 50:  # Avoid very long text
+                return f"getByRole('{element_properties['role']}', {{ name: '{text}' }})"
+        
+        # Check id
+        if element_properties.get('element_id'):
+            return f"locator('#{element_properties['element_id']}')"
+        
+        # Check placeholder for input fields
+        if element_properties.get('input_type') and element_properties.get('placeholder'):
+            return f"getByPlaceholder('{element_properties['placeholder']}')"
+        
+        # Check text content for buttons/links
+        if element_properties.get('text_content'):
+            text = element_properties['text_content'].strip()
+            if text and len(text) < 50:
+                return f"getByText('{text}')"
+        
+        # Fallback to original selector logic
         if selectors.get('testId'):
             return selectors['testId']
         elif selectors.get('role'):
@@ -1467,53 +1574,229 @@ class EnhancedInteractionLogger:
         elif selectors.get('css'):
             return selectors['css']
         else:
-            return "locator('element')"  # fallback
+            return "locator('element')"  # final fallback
     
     def _create_action_data(self, interaction_data):
         """Create action data in the format expected by trajectory.json"""
         action_type = interaction_data['type']
-        selector = self._get_best_selector(interaction_data.get('selectors', {}))
         
-        # Create action string based on type
+        # Get element properties for enhanced selector logic
+        element_properties = interaction_data.get('essentialProperties', {})
+        selector = self._get_best_selector(interaction_data.get('selectors', {}), element_properties)
+        
+        # Enhanced action creation with better logic and descriptions
         if action_type == 'click':
-            action_str = f"click(bid='{interaction_data.get('elementId', '')}', button='left')"
-            playwright_code = f"page.{selector}.click()"
-            action_description = f"Click the {interaction_data.get('elementText', interaction_data.get('element', ''))} element"
+            # Add wait conditions for better reliability
+            wait_condition = ""
+            if element_properties.get('is_visible') is False:
+                wait_condition = f"\nawait page.waitForSelector('{selector}', {{ state: 'visible' }})"
+            
+            action_str = f"click(bid='{element_properties.get('element_id', '')}', button='left')"
+            playwright_code = f"{wait_condition}\nawait page.{selector}.click()"
+            
+            # Build descriptive action description using text content
+            element_text = element_properties.get('text_content', '').strip()
+            element_id = element_properties.get('element_id', '')
+            aria_label = element_properties.get('aria_label', '')
+            placeholder = element_properties.get('placeholder', '')
+            tag_name = element_properties.get('tag_name', '').lower()
+            
+            # Also check interaction_data for fallbacks
+            interaction_text = interaction_data.get('elementText', '').strip()
+            
+            # Use interaction text as fallback if element text is empty
+            if not element_text and interaction_text:
+                element_text = interaction_text
+            
+            if element_text and len(element_text) < 50:  # Avoid very long text
+                action_description = f"Click the '{element_text}' {tag_name or 'button'}"
+            elif aria_label:
+                action_description = f"Click the {tag_name or 'button'} labeled '{aria_label}'"
+            elif element_id:
+                action_description = f"Click the {tag_name or 'button'} with ID '{element_id}'"
+            elif placeholder:
+                action_description = f"Click the {tag_name or 'input'} with placeholder '{placeholder}'"
+            else:
+                action_description = f"Click the {tag_name or 'element'} element"
             
         elif action_type == 'typing_complete':
-            action_str = f"keyboard_type(text='{interaction_data.get('value', '')}')"
-            playwright_code = f"page.{selector}.fill('{interaction_data.get('value', '')}')"
-            action_description = f"Fill in the {interaction_data.get('elementText', 'input field')} with '{interaction_data.get('value', '')}'"
+            value = element_properties.get('value', interaction_data.get('value', ''))
+            
+            # Add wait and clear for better input handling
+            wait_condition = ""
+            if element_properties.get('is_visible') is False:
+                wait_condition = f"\nawait page.waitForSelector('{selector}', {{ state: 'visible' }})"
+            
+            action_str = f"keyboard_type(text='{value}')"
+            playwright_code = f"{wait_condition}\nawait page.{selector}.clear()\nawait page.{selector}.fill('{value}')"
+            
+            # Build descriptive action description using text content
+            element_text = element_properties.get('text_content', '').strip()
+            placeholder = element_properties.get('placeholder', '')
+            aria_label = element_properties.get('aria_label', '')
+            element_id = element_properties.get('element_id', '')
+            input_type = element_properties.get('input_type', '')
+            
+            # Also check interaction_data for fallbacks
+            interaction_text = interaction_data.get('elementText', '').strip()
+            
+            # Use interaction text as fallback if element text is empty
+            if not element_text and interaction_text:
+                element_text = interaction_text
+            
+            if element_text and len(element_text) < 50:  # Avoid very long text
+                action_description = f"Enter '{value}' in the '{element_text}' {input_type or 'text'} field"
+            elif placeholder:
+                action_description = f"Enter '{value}' in the {input_type or 'text'} field with placeholder '{placeholder}'"
+            elif aria_label:
+                action_description = f"Enter '{value}' in the {input_type or 'text'} field labeled '{aria_label}'"
+            elif element_id:
+                action_description = f"Enter '{value}' in the {input_type or 'text'} field with ID '{element_id}'"
+            else:
+                action_description = f"Enter '{value}' in the {input_type or 'text'} field"
             
         elif action_type == 'enter_pressed':
-            action_str = f"keyboard_type(text='{interaction_data.get('value', '')}')"
-            playwright_code = f"page.{selector}.fill('{interaction_data.get('value', '')}'); page.{selector}.press('Enter')"
-            action_description = f"Fill in the {interaction_data.get('elementText', 'input field')} with '{interaction_data.get('value', '')}' and press Enter"
+            value = element_properties.get('value', interaction_data.get('value', ''))
+            
+            wait_condition = ""
+            if element_properties.get('is_visible') is False:
+                wait_condition = f"\nawait page.waitForSelector('{selector}', {{ state: 'visible' }})"
+            
+            action_str = f"keyboard_type(text='{value}')"
+            playwright_code = f"{wait_condition}\nawait page.{selector}.clear()\nawait page.{selector}.fill('{value}')\nawait page.{selector}.press('Enter')"
+            
+            # Build descriptive action description using text content
+            element_text = element_properties.get('text_content', '').strip()
+            placeholder = element_properties.get('placeholder', '')
+            aria_label = element_properties.get('aria_label', '')
+            element_id = element_properties.get('element_id', '')
+            input_type = element_properties.get('input_type', '')
+            
+            # Also check interaction_data for fallbacks
+            interaction_text = interaction_data.get('elementText', '').strip()
+            
+            # Use interaction text as fallback if element text is empty
+            if not element_text and interaction_text:
+                element_text = interaction_text
+            
+            if element_text and len(element_text) < 50:  # Avoid very long text
+                action_description = f"Enter '{value}' in the '{element_text}' {input_type or 'text'} field and press Enter"
+            elif placeholder:
+                action_description = f"Enter '{value}' in the {input_type or 'text'} field with placeholder '{placeholder}' and press Enter"
+            elif aria_label:
+                action_description = f"Enter '{value}' in the {input_type or 'text'} field labeled '{aria_label}' and press Enter"
+            elif element_id:
+                action_description = f"Enter '{value}' in the {input_type or 'text'} field with ID '{element_id}' and press Enter"
+            else:
+                action_description = f"Enter '{value}' in the {input_type or 'text'} field and press Enter"
             
         elif action_type == 'input':
-            action_str = f"keyboard_type(text='{interaction_data.get('value', '')}')"
-            playwright_code = f"page.{selector}.fill('{interaction_data.get('value', '')}')"
-            action_description = f"Fill in the {interaction_data.get('elementText', 'input field')} with '{interaction_data.get('value', '')}'"
+            value = element_properties.get('value', interaction_data.get('value', ''))
+            
+            wait_condition = ""
+            if element_properties.get('is_visible') is False:
+                wait_condition = f"\nawait page.waitForSelector('{selector}', {{ state: 'visible' }})"
+            
+            action_str = f"keyboard_type(text='{value}')"
+            playwright_code = f"{wait_condition}\nawait page.{selector}.fill('{value}')"
+            
+            # Build descriptive action description using text content
+            element_text = element_properties.get('text_content', '').strip()
+            placeholder = element_properties.get('placeholder', '')
+            aria_label = element_properties.get('aria_label', '')
+            element_id = element_properties.get('element_id', '')
+            input_type = element_properties.get('input_type', '')
+            
+            # Also check interaction_data for fallbacks
+            interaction_text = interaction_data.get('elementText', '').strip()
+            
+            # Use interaction text as fallback if element text is empty
+            if not element_text and interaction_text:
+                element_text = interaction_text
+            
+            if element_text and len(element_text) < 50:  # Avoid very long text
+                action_description = f"Type '{value}' in the '{element_text}' {input_type or 'text'} field"
+            elif placeholder:
+                action_description = f"Type '{value}' in the {input_type or 'text'} field with placeholder '{placeholder}'"
+            elif aria_label:
+                action_description = f"Type '{value}' in the {input_type or 'text'} field labeled '{aria_label}'"
+            elif element_id:
+                action_description = f"Type '{value}' in the {input_type or 'text'} field with ID '{element_id}'"
+            else:
+                action_description = f"Type '{value}' in the {input_type or 'text'} field"
             
         elif action_type == 'form_submit':
-            action_str = f"click(bid='{interaction_data.get('elementId', '')}', button='left')"
-            playwright_code = f"page.{selector}.submit()"
-            action_description = f"Submit the form"
+            wait_condition = ""
+            if element_properties.get('is_visible') is False:
+                wait_condition = f"\nawait page.waitForSelector('{selector}', {{ state: 'visible' }})"
+            
+            action_str = f"click(bid='{element_properties.get('element_id', '')}', button='left')"
+            playwright_code = f"{wait_condition}\nawait page.{selector}.submit()"
+            
+            # Build descriptive action description using text content
+            element_text = element_properties.get('text_content', '').strip()
+            aria_label = element_properties.get('aria_label', '')
+            element_id = element_properties.get('element_id', '')
+            
+            # Also check interaction_data for fallbacks
+            interaction_text = interaction_data.get('elementText', '').strip()
+            
+            # Use interaction text as fallback if element text is empty
+            if not element_text and interaction_text:
+                element_text = interaction_text
+            
+            if element_text and len(element_text) < 50:  # Avoid very long text
+                action_description = f"Submit the form by clicking the '{element_text}' button"
+            elif aria_label:
+                action_description = f"Submit the form by clicking the button labeled '{aria_label}'"
+            elif element_id:
+                action_description = f"Submit the form by clicking the button with ID '{element_id}'"
+            else:
+                action_description = f"Submit the form"
             
         elif action_type == 'hover':
-            action_str = f"hover(bid='{interaction_data.get('elementId', '')}')"
-            playwright_code = f"page.{selector}.hover()"
-            action_description = f"Hover over the {interaction_data.get('elementText', interaction_data.get('element', ''))} element"
+            wait_condition = ""
+            if element_properties.get('is_visible') is False:
+                wait_condition = f"\nawait page.waitForSelector('{selector}', {{ state: 'visible' }})"
+            
+            action_str = f"hover(bid='{element_properties.get('element_id', '')}')"
+            playwright_code = f"{wait_condition}\nawait page.{selector}.hover()"
+            
+            # Build descriptive action description using text content
+            element_text = element_properties.get('text_content', '').strip()
+            aria_label = element_properties.get('aria_label', '')
+            element_id = element_properties.get('element_id', '')
+            tag_name = element_properties.get('tag_name', '').lower()
+            
+            # Also check interaction_data for fallbacks
+            interaction_text = interaction_data.get('elementText', '').strip()
+            
+            # Use interaction text as fallback if element text is empty
+            if not element_text and interaction_text:
+                element_text = interaction_text
+            
+            if element_text and len(element_text) < 50:  # Avoid very long text
+                action_description = f"Hover over the '{element_text}' {tag_name or 'element'}"
+            elif aria_label:
+                action_description = f"Hover over the {tag_name or 'element'} labeled '{aria_label}'"
+            elif element_id:
+                action_description = f"Hover over the {tag_name or 'element'} with ID '{element_id}'"
+            else:
+                action_description = f"Hover over the {tag_name or 'element'} element"
             
         elif action_type == 'scroll':
-            action_str = f"scroll(x={interaction_data.get('scrollX', 0)}, y={interaction_data.get('scrollY', 0)})"
-            playwright_code = f"page.evaluate('window.scrollTo({interaction_data.get('scrollX', 0)}, {interaction_data.get('scrollY', 0)})')"
-            action_description = f"Scroll to position ({interaction_data.get('scrollX', 0)}, {interaction_data.get('scrollY', 0)})"
+            scroll_x = interaction_data.get('scrollX', 0)
+            scroll_y = interaction_data.get('scrollY', 0)
+            action_str = f"scroll(x={scroll_x}, y={scroll_y})"
+            playwright_code = f"await page.evaluate('window.scrollTo({scroll_x}, {scroll_y})')"
+            action_description = f"Scroll to position ({scroll_x}, {scroll_y})"
             
         elif action_type == 'element_scroll':
-            action_str = f"scroll_element(bid='{interaction_data.get('elementId', '')}', x={interaction_data.get('scrollLeft', 0)}, y={interaction_data.get('scrollTop', 0)})"
-            playwright_code = f"page.{selector}.evaluate('el => el.scrollTo({interaction_data.get('scrollLeft', 0)}, {interaction_data.get('scrollTop', 0)})')"
-            action_description = f"Scroll element {interaction_data.get('element', '')} to position ({interaction_data.get('scrollLeft', 0)}, {interaction_data.get('scrollTop', 0)})"
+            scroll_left = interaction_data.get('scrollLeft', 0)
+            scroll_top = interaction_data.get('scrollTop', 0)
+            action_str = f"scroll_element(bid='{element_properties.get('element_id', '')}', x={scroll_left}, y={scroll_top})"
+            playwright_code = f"await page.{selector}.evaluate('el => el.scrollTo({scroll_left}, {scroll_top})')"
+            action_description = f"Scroll element {element_properties.get('tag_name', 'element')} to position ({scroll_left}, {scroll_top})"
             
         elif action_type == 'keyboard_input':
             key_info = interaction_data.get('key', '')
@@ -1525,7 +1808,7 @@ class EnhancedInteractionLogger:
             
             modifier_str = '+' + '+'.join(modifiers) if modifiers else ''
             action_str = f"keyboard_press(key='{key_info}{modifier_str}')"
-            playwright_code = f"page.keyboard.press('{key_info}')"
+            playwright_code = f"await page.keyboard.press('{key_info}')"
             action_description = f"Press keyboard key {key_info}{modifier_str}"
             
         else:
@@ -1533,69 +1816,213 @@ class EnhancedInteractionLogger:
             playwright_code = f"// {action_type} action"
             action_description = f"Perform {action_type} action"
         
-        # Create action output structure
+        # Create enhanced thought description using element properties
+        def create_enhanced_thought(action_type, element_properties, value=""):
+            """Create a more descriptive thought based on element properties with better fallbacks"""
+            # Get element properties with better fallbacks
+            element_text = element_properties.get('text_content', '').strip()
+            aria_label = element_properties.get('aria_label', '').strip()
+            placeholder = element_properties.get('placeholder', '').strip()
+            element_id = element_properties.get('element_id', '').strip()
+            tag_name = element_properties.get('tag_name', '').lower().strip()
+            input_type = element_properties.get('input_type', '').strip()
+            
+            # Also check interaction_data for fallbacks
+            interaction_text = interaction_data.get('elementText', '').strip()
+            interaction_id = interaction_data.get('elementId', '').strip()
+            interaction_class = interaction_data.get('elementClass', '').strip()
+            
+            # Use interaction data as fallback if element properties are empty
+            if not element_text and interaction_text:
+                element_text = interaction_text
+            if not element_id and interaction_id:
+                element_id = interaction_id
+            
+            # Determine the best descriptive element name
+            element_name = ""
+            if element_text and len(element_text) < 50:  # Avoid very long text
+                element_name = f"'{element_text}'"
+            elif aria_label and len(aria_label) < 50:
+                element_name = f"labeled '{aria_label}'"
+            elif element_id:
+                element_name = f"with ID '{element_id}'"
+            elif placeholder and len(placeholder) < 50:
+                element_name = f"with placeholder '{placeholder}'"
+            elif interaction_class:
+                element_name = f"with class '{interaction_class.split()[0]}'"  # Use first class
+            elif tag_name:
+                element_name = f"{tag_name}"
+            else:
+                element_name = "element"
+            
+            # Create action-specific thoughts with better context
+            if action_type == 'click':
+                if element_name.startswith("'"):
+                    return f"I need to click the {element_name} {tag_name or 'button'} to proceed with the task."
+                elif element_name.startswith("labeled"):
+                    return f"I need to click the {tag_name or 'button'} {element_name} to continue."
+                elif element_name.startswith("with ID"):
+                    return f"I need to click the {tag_name or 'button'} {element_name} to proceed."
+                elif element_name.startswith("with placeholder"):
+                    return f"I need to click the {tag_name or 'input'} {element_name} to continue."
+                elif element_name.startswith("with class"):
+                    return f"I need to click the {element_name} to proceed with the task."
+                else:
+                    return f"I need to click the {element_name} to proceed with the task."
+                    
+            elif action_type in ['typing_complete', 'enter_pressed', 'input']:
+                # For input actions, focus on the field type and purpose
+                field_type = input_type if input_type else "text"
+                field_purpose = ""
+                
+                if placeholder:
+                    field_purpose = f" with placeholder '{placeholder}'"
+                elif aria_label:
+                    field_purpose = f" labeled '{aria_label}'"
+                elif element_id:
+                    field_purpose = f" with ID '{element_id}'"
+                elif interaction_class:
+                    field_purpose = f" with class '{interaction_class.split()[0]}'"
+                
+                if value:
+                    return f"I need to enter '{value}' in the {field_type} field{field_purpose} to provide the required information."
+                else:
+                    return f"I need to interact with the {field_type} field{field_purpose} to complete the form."
+                    
+            elif action_type == 'hover':
+                if element_name.startswith("'"):
+                    return f"I need to hover over the {element_name} {tag_name or 'element'} to see additional options or information."
+                elif element_name.startswith("labeled"):
+                    return f"I need to hover over the {tag_name or 'element'} {element_name} to reveal more details."
+                elif element_name.startswith("with ID"):
+                    return f"I need to hover over the {tag_name or 'element'} {element_name} to access additional functionality."
+                else:
+                    return f"I need to hover over the {element_name} to see more options."
+                    
+            elif action_type in ['scroll', 'element_scroll']:
+                return f"I need to scroll to navigate through the content and find the relevant information."
+                
+            elif action_type == 'form_submit':
+                if element_name.startswith("'"):
+                    return f"I need to submit the form by clicking the {element_name} button to complete the process."
+                elif element_name.startswith("labeled"):
+                    return f"I need to submit the form by clicking the button {element_name} to finalize the action."
+                elif element_name.startswith("with ID"):
+                    return f"I need to submit the form by clicking the button {element_name} to complete the submission."
+                else:
+                    return f"I need to submit the form to complete the current task."
+                    
+            else:
+                return f"I need to perform the {action_type} action to continue with the task."
+        
+        # Create action output structure with enhanced thoughts
         if action_type == 'click':
             action_output = {
-                "thought": f"I need to {action_description.lower()}.",
+                "thought": create_enhanced_thought('click', element_properties),
                 "action": {
-                    "bid": interaction_data.get('elementId', ''),
+                    "bid": element_properties.get('element_id', ''),
                     "button": "left",
                     "click_type": "single",
                     "bbox": [
-                        interaction_data.get('bbox', {}).get('x', 0),
-                        interaction_data.get('bbox', {}).get('y', 0),
-                        interaction_data.get('bbox', {}).get('width', 0),
-                        interaction_data.get('bbox', {}).get('height', 0)
-                    ] if interaction_data.get('bbox') else None,
-                    "class": interaction_data.get('elementClass', ''),
-                    "id": interaction_data.get('elementId', ''),
-                    "type": interaction_data.get('element', ''),
-                    "ariaLabel": None,
-                    "role": None,
-                    "value": interaction_data.get('value', ''),
+                        element_properties.get('bounding_box', {}).get('x', 0),
+                        element_properties.get('bounding_box', {}).get('y', 0),
+                        element_properties.get('bounding_box', {}).get('width', 0),
+                        element_properties.get('bounding_box', {}).get('height', 0)
+                    ] if element_properties.get('bounding_box') else None,
+                    "class": element_properties.get('element_class', ''),
+                    "id": element_properties.get('element_id', ''),
+                    "type": element_properties.get('tag_name', ''),
+                    "ariaLabel": element_properties.get('aria_label', ''),
+                    "role": element_properties.get('role', ''),
+                    "value": element_properties.get('value', ''),
                     "node_properties": {
-                        "role": interaction_data.get('selectors', {}).get('role', '').replace("getByRole('", "").replace("')", "").split("', {")[0] if interaction_data.get('selectors', {}).get('role') else None,
-                        "value": interaction_data.get('elementText', '')
+                        "role": element_properties.get('role', ''),
+                        "value": element_properties.get('text_content', '')
                     }
                 },
                 "action_name": "click"
             }
         elif action_type in ['typing_complete', 'enter_pressed', 'input']:
-            # For typing actions, only include the text field
+            value = element_properties.get('value', interaction_data.get('value', ''))
             action_output = {
-                "thought": f"I need to {action_description.lower()}.",
+                "thought": create_enhanced_thought(action_type, element_properties, value),
                 "action": {
-                    "text": interaction_data.get('value', '')
+                    "text": value
                 },
                 "action_name": "keyboard_type"
             }
         elif action_type == 'hover':
-            # For hover actions
             action_output = {
-                "thought": f"I need to {action_description.lower()}.",
+                "thought": create_enhanced_thought('hover', element_properties),
                 "action": {
-                    "text": interaction_data.get('value', '')
+                    "text": element_properties.get('value', '')
                 },
                 "action_name": "hover"
             }
         elif action_type in ['scroll', 'element_scroll']:
-            # For scroll actions
             action_output = {
-                "thought": f"I need to {action_description.lower()}.",
+                "thought": create_enhanced_thought('scroll', element_properties),
                 "action": {
-                    "text": interaction_data.get('value', '')
+                    "text": element_properties.get('value', '')
                 },
                 "action_name": "scroll"
             }
-        else:
-            # For other actions
+        elif action_type == 'form_submit':
             action_output = {
-                "thought": f"I need to {action_description.lower()}.",
+                "thought": create_enhanced_thought('form_submit', element_properties),
                 "action": {
-                    "text": interaction_data.get('value', '')
+                    "text": element_properties.get('value', '')
+                },
+                "action_name": "form_submit"
+            }
+        else:
+            action_output = {
+                "thought": create_enhanced_thought(action_type, element_properties),
+                "action": {
+                    "text": element_properties.get('value', '')
                 },
                 "action_name": action_type
             }
+        
+        # Capture essential element properties for LLM context
+        # Use essentialProperties from JavaScript if available, otherwise fallback to basic data
+        essential_props = interaction_data.get("essentialProperties", {})
+        
+        element_properties = {
+            # Core identification
+            "tag_name": essential_props.get("tagName", interaction_data.get("element", "")).upper(),
+            "element_id": essential_props.get("elementId", interaction_data.get("elementId", "")),
+            "element_class": essential_props.get("elementClass", interaction_data.get("elementClass", "")),
+            "text_content": essential_props.get("elementText", interaction_data.get("elementText", "")),
+            
+            # Input properties (for form elements)
+            "input_type": essential_props.get("inputType", interaction_data.get("inputType", "")),
+            "value": essential_props.get("value", interaction_data.get("value", "")),
+            "placeholder": essential_props.get("placeholder", interaction_data.get("placeholder", "")),
+            "required": essential_props.get("required", interaction_data.get("required", False)),
+            "disabled": essential_props.get("disabled", interaction_data.get("disabled", False)),
+            
+            # Accessibility (for robust targeting)
+            "aria_label": essential_props.get("ariaLabel", interaction_data.get("ariaLabel", "")),
+            "role": essential_props.get("role", interaction_data.get("role", "")),
+            "data_testid": essential_props.get("dataTestid", interaction_data.get("dataTestid", "")),
+            
+            # Visual state (for wait conditions)
+            "is_visible": essential_props.get("isVisible", True),
+            "is_enabled": essential_props.get("isEnabled", not interaction_data.get("disabled", False)),
+            "is_focused": essential_props.get("isFocused", False),
+            
+            # Bounding box (for coordinates)
+            "bounding_box": essential_props.get("bbox", interaction_data.get("bbox")) if essential_props.get("bbox") else None,
+            
+            # Form context (for form interactions)
+            "form_id": essential_props.get("form", interaction_data.get("form", "")),
+            "name": essential_props.get("name", interaction_data.get("name", "")),
+            
+            # Validation (for error handling)
+            "validation_state": essential_props.get("validationState", "valid"),
+            "error_message": essential_props.get("errorMessage", interaction_data.get("errorMessage", ""))
+        }
         
         return {
             "action_str": action_str,
@@ -1679,16 +2106,45 @@ class EnhancedInteractionLogger:
         with open(trajectory_json, 'w') as f:
             json.dump(self.trajectory_data, f, indent=2)
         
-        # Save codeSummary.json with array of Playwright codes
-        code_summary_json = self.session_dir / "codeSummary.json"
+        # Save stepSummary.json with both Playwright codes and steps
+        step_summary_json = self.session_dir / "stepSummary.json"
         playwright_codes = []
+        steps = []
+        
         for step_data in self.trajectory_data.values():
-            playwright_code = step_data.get('action', {}).get('playwright_code', '')
+            action_data = step_data.get('action', {})
+            playwright_code = action_data.get('playwright_code', '')
+            action_description = action_data.get('action_description', '')
+            
             if playwright_code:
                 playwright_codes.append(playwright_code)
+            if action_description:
+                steps.append(action_description)
         
-        with open(code_summary_json, 'w') as f:
-            json.dump(playwright_codes, f, indent=2)
+        # Extract URL from the first step if available
+        url = ""
+        if self.trajectory_data:
+            first_step = next(iter(self.trajectory_data.values()))
+            url = first_step.get('other_obs', {}).get('url', '')
+        
+        # Create the new JSON structure
+        step_summary = {
+            "goal": "",
+            "url": url,
+            "playwright_codes": playwright_codes,
+            "steps": steps,
+            "total_steps": len(playwright_codes),
+            "session_info": {
+                "session_id": self.session_id,
+                "session_name": self.session_name,
+                "start_time": datetime.fromtimestamp(self.start_time).isoformat() if self.start_time else None,
+                "end_time": datetime.now().isoformat(),
+                "duration_seconds": duration
+            }
+        }
+        
+        with open(step_summary_json, 'w') as f:
+            json.dump(step_summary, f, indent=2)
         
         # Save metadata.json
         metadata_json = self.session_dir / "metadata.json"
@@ -1712,7 +2168,7 @@ class EnhancedInteractionLogger:
             json.dump(metadata, f, indent=2)
         
         print(f"💾 Saved trajectory to: {self.session_dir}")
-        print(f"💻 Saved codeSummary.json with {len(playwright_codes)} Playwright commands")
+        print(f"💻 Saved stepSummary.json with {len(playwright_codes)} Playwright commands and {len(steps)} steps")
         
         # Generate HTML report
         await self._generate_html_report()
@@ -2232,7 +2688,7 @@ async def main():
     parser = argparse.ArgumentParser(description="Enhanced interaction logger")
     parser.add_argument("--url", default="https://mail.google.com/", 
                        help="URL to start logging on")
-    parser.add_argument("--output-dir", default="interaction_logs",
+    parser.add_argument("--output-dir", default="data/interaction_logs",
                        help="Directory to save interaction logs")
     
     args = parser.parse_args()

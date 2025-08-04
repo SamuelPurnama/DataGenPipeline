@@ -2,7 +2,7 @@ import os
 import json
 from collections import Counter
 
-RESULTS_DIR = os.path.abspath("results")
+RESULTS_DIR = os.path.abspath("data/results")
 role_counter = Counter()
 
 def count_roles():
