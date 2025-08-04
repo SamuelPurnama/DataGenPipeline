@@ -90,6 +90,90 @@ def create_trajectory_file(dirs: Dict[str, str]) -> None:
     with open(trajectory_path, 'w', encoding='utf-8') as f:
         json.dump({}, f, indent=2, ensure_ascii=False)
 
+def create_error_log_file(dirs: Dict[str, str]) -> None:
+    """Create an empty error_log.json file with initial structure."""
+    error_log_path = os.path.join(dirs['root'], 'error_log.json')
+    with open(error_log_path, 'w', encoding='utf-8') as f:
+        json.dump({"playwright_errors": []}, f, indent=2, ensure_ascii=False)
+
+def update_playwright_error_log(dirs: Dict[str, str], step_idx: int, description: str, attempted_code: str, 
+                               error_message: str, successful_code: str = None, thought: str = None, 
+                               current_goal: str = None, all_failed_attempts: list = None) -> None:
+    """Update error_log.json with Playwright execution error information and solution."""
+    error_log_path = os.path.join(dirs['root'], 'error_log.json')
+    
+    try:
+        with open(error_log_path, 'r', encoding='utf-8') as f:
+            error_log = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        error_log = {"playwright_errors": []}
+    
+    # Check if we already have an error entry for this step
+    existing_error = None
+    for error in error_log["playwright_errors"]:
+        if error.get("step_index") == step_idx:
+            existing_error = error
+            break
+    
+    if existing_error:
+        # Update existing error entry
+        if all_failed_attempts:
+            # This is a successful solution - update with solution and all attempts
+            existing_error["successful_playwright_code"] = successful_code
+            existing_error["attempted_codes"] = all_failed_attempts
+            existing_error["final_error_message"] = error_message
+        else:
+            # This is another failed attempt - add to attempted_codes
+            if "attempted_codes" not in existing_error:
+                existing_error["attempted_codes"] = []
+            
+            attempt_entry = {
+                "attempt_number": len(existing_error["attempted_codes"]) + 1,
+                "code": attempted_code,
+                "error_message": error_message,
+                "thought": thought,
+                "description": description
+            }
+            existing_error["attempted_codes"].append(attempt_entry)
+    else:
+        # Create new error entry
+        error_entry = {
+            "step_index": step_idx,
+            "timestamp": datetime.now().isoformat(),
+            "current_goal": current_goal,
+            "attempted_codes": []
+        }
+        
+        # Add constant fields to main body if they don't change
+        if description:
+            error_entry["description"] = description
+        if thought:
+            error_entry["thought"] = thought
+        
+        # Add first attempt
+        attempt_entry = {
+            "attempt_number": 1,
+            "code": attempted_code,
+            "error_message": error_message
+        }
+        
+        # Add varying fields to attempt entry
+        if description and "description" not in error_entry:
+            attempt_entry["description"] = description
+        if thought and "thought" not in error_entry:
+            attempt_entry["thought"] = thought
+            
+        error_entry["attempted_codes"].append(attempt_entry)
+        
+        # If this is immediately successful, add the solution
+        if successful_code:
+            error_entry["successful_playwright_code"] = successful_code
+        
+        error_log["playwright_errors"].append(error_entry)
+    
+    with open(error_log_path, 'w', encoding='utf-8') as f:
+        json.dump(error_log, f, indent=2, ensure_ascii=False)
+
 def get_element_properties(page, locator_code):
     """Get detailed properties of an element using Playwright locator."""
     try:
@@ -638,6 +722,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                 eps_name = f"calendar_{uuid.uuid4()}"
                 dirs = create_episode_directory(RESULTS_DIR, eps_name)
                 create_trajectory_file(dirs)  # Create empty trajectory.json
+                create_error_log_file(dirs)   # Create empty error_log.json
 
                 print(f"\n🔄 Instruction {idx + 1}/{total}")
                 print(f"👤 {persona}")
@@ -659,8 +744,6 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         print("=" * 50)
                     else:
                         print("ℹ️ No relevant past trajectories found")
-                else:
-                    print("🚫 Trajectory context search disabled")
 
                 # Navigate to URL for this instruction
                 page.goto(url)
@@ -811,6 +894,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         current_goal = gpt_resp["updated_goal"]
 
                     failed_codes = []
+                    failed_attempts_details = []  # Track detailed info about each failed attempt
                     retry = 0
                     description = gpt_resp["description"] if gpt_resp else ""
                     code = gpt_resp.get("code", "") if gpt_resp else ""
@@ -848,12 +932,48 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 user_message_file=os.path.join(dirs['user_message'], f"user_message_{step_idx+1:03d}.txt"),
                                 llm_output=gpt_resp
                             )
+                            # Log successful solution with all failed attempts history
+                            if retry > 0:
+                                update_playwright_error_log(
+                                    dirs=dirs,
+                                    step_idx=step_idx,
+                                    description=description,
+                                    attempted_code="",  # Not needed for successful solution
+                                    error_message="Previous attempts failed",
+                                    successful_code=code,
+                                    thought=gpt_resp.get('thought', '') if gpt_resp else '',
+                                    current_goal=current_goal,
+                                    all_failed_attempts=failed_attempts_details
+                                )
                             success = True
                         except Exception as e:
                             retry += 1
                             if code not in failed_codes:
                                 failed_codes.append(code)
+                            
+                            # Track detailed info about this failed attempt
+                            failed_attempt_details = {
+                                "attempt_number": retry,
+                                "code": code,
+                                "error_message": str(e),
+                                "thought": gpt_resp.get('thought', '') if gpt_resp else '',
+                                "description": description
+                            }
+                            failed_attempts_details.append(failed_attempt_details)
+                            
                             print(f"⚠️ Attempt {retry} failed: {e}")
+                            
+                            # Log the individual Playwright execution error
+                            update_playwright_error_log(
+                                dirs=dirs,
+                                step_idx=step_idx,
+                                description=description,
+                                attempted_code=code,
+                                error_message=str(e),
+                                thought=gpt_resp.get('thought', '') if gpt_resp else '',
+                                current_goal=current_goal
+                            )
+                            
                             if retry < MAX_RETRIES:
                                 print("🔄 Retrying GPT for new code...")
                                 page.screenshot(path=screenshot)
@@ -861,7 +981,6 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 with open(axtree_file, 'w', encoding='utf-8') as f:
                                     json.dump(tree, f, indent=2, ensure_ascii=False)
                                 error_log = str(e)
-                                print(f"📝 Error log: {error_log}")
                                 gpt_resp = chat_ai_playwright_code(
                                         accessibility_tree=tree,
                                     previous_steps=execution_history,
@@ -901,6 +1020,16 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 code = gpt_resp.get("code", "") if gpt_resp else ""
                             else:
                                 print(f"❌ All {MAX_RETRIES} retries failed.")
+                                # Log final Playwright failure
+                                update_playwright_error_log(
+                                    dirs=dirs,
+                                    step_idx=step_idx,
+                                    description=description,
+                                    attempted_code=code,
+                                    error_message=f"All {MAX_RETRIES} retries failed",
+                                    thought=gpt_resp.get('thought', '') if gpt_resp else '',
+                                    current_goal=current_goal
+                                )
                                 runtime = time.time() - start_time
                                 metadata = create_metadata(
                                     persona, url, orig, aug, None,  # Pass None for final_instruction

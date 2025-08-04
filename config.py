@@ -15,8 +15,8 @@ ACCOUNTS = [
         "email": "kukukud4@gmail.com",
         "password": "samJP535",
         "user_data_dir": "sam2",
-        "start_idx": 0,
-        "end_idx": 1
+        "start_idx": 2,
+        "end_idx": 3
     },
     # {
     #     "email": "testeracc482@gmail.com",

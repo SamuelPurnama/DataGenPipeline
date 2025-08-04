@@ -32,7 +32,8 @@ class GraphRAGClient(KnowledgeBaseClient):
             self.uri = os.getenv("NEO4J_URI")
             self.user = os.getenv("NEO4J_USERNAME")
             self.password = os.getenv("NEO4J_PASSWORD")
-            self.group_id = "web_trajectories"
+            # Search across both trajectory groups
+            self.group_ids = ["web_trajectories", "web_interaction_logs"]
             self.api_key = os.getenv("OPENAI_API_KEY")
             
             if not all([self.uri, self.user, self.password, self.api_key]):
@@ -119,23 +120,26 @@ class GraphRAGClient(KnowledgeBaseClient):
             # Use Graphiti's search with enhanced configuration
             results = await self.graphiti.search_(
                 query=query,
-                group_ids=[self.group_id],
+                group_ids=self.group_ids,  # Search across both groups
                 config=self._get_enhanced_search_config()
             )
             
-            # Filter for trajectory nodes
-            trajectory_nodes = [
-                node for node in results.nodes
-                if getattr(node, "labels", None) and "Trajectory" in node.labels
-            ]
+            # Filter for trajectory nodes and track their group
+            trajectory_nodes = []
+            for node in results.nodes:
+                if getattr(node, "labels", None) and "Trajectory" in node.labels:
+                    # Determine which group this node belongs to
+                    group_id = getattr(node, "group_id", "unknown")
+                    trajectory_nodes.append((node, group_id))
             
             # Extract trajectory data
             direct_results = []
-            for node in trajectory_nodes[:max_results]:
+            for node, group_id in trajectory_nodes[:max_results]:
                 trajectory_data = self._extract_trajectory_data(node)
                 if trajectory_data:
                     trajectory_data["search_layer"] = "direct"
                     trajectory_data["relevance_score"] = getattr(node, "score", 0.5)
+                    trajectory_data["group_id"] = group_id  # Track which group it came from
                     direct_results.append(trajectory_data)
             
             return direct_results
@@ -249,21 +253,24 @@ class GraphRAGClient(KnowledgeBaseClient):
             # Search for trajectories with this task type
             results = await self.graphiti.search_(
                 query=task_type,
-                group_ids=[self.group_id],
+                group_ids=self.group_ids,  # Search across both groups
                 config=self._get_enhanced_search_config()
             )
             
-            # Filter for trajectory nodes
-            trajectory_nodes = [
-                node for node in results.nodes
-                if getattr(node, "labels", None) and "Trajectory" in node.labels
-            ]
+            # Filter for trajectory nodes and track their group
+            trajectory_nodes = []
+            for node in results.nodes:
+                if getattr(node, "labels", None) and "Trajectory" in node.labels:
+                    # Determine which group this node belongs to
+                    group_id = getattr(node, "group_id", "unknown")
+                    trajectory_nodes.append((node, group_id))
             
             # Extract trajectory data
             trajectories = []
-            for node in trajectory_nodes[:max_results]:
+            for node, group_id in trajectory_nodes[:max_results]:
                 trajectory_data = self._extract_trajectory_data(node)
                 if trajectory_data:
+                    trajectory_data["group_id"] = group_id  # Track which group it came from
                     trajectories.append(trajectory_data)
             
             return trajectories
@@ -341,9 +348,14 @@ class GraphRAGClient(KnowledgeBaseClient):
             if direct_results:
                 context_parts.append("--- DIRECT SEMANTIC MATCHES ---")
                 for i, result in enumerate(direct_results, 1):
-                    context_parts.append(f"Trajectory {i}: {result['goal']}")
+                    group_id = result.get("group_id", "unknown")
+                    context_parts.append(f"Trajectory {i} (from {group_id}): {result['goal']}")
                     context_parts.append(f"Steps: {result['steps']}")
-                    context_parts.append(f"Codes: {result['codes']}")
+                    # Only include codes for web_trajectories group (interaction logs are step-focused)
+                    if group_id != "web_interaction_logs":
+                        context_parts.append(f"Codes: {result['codes']}")
+                    else:
+                        logger.debug(f"📝 Filtering out codes for {group_id} trajectory (step-focused context)")
                     context_parts.append("")
             
             # Format task type matches
@@ -354,9 +366,14 @@ class GraphRAGClient(KnowledgeBaseClient):
                 context_parts.append("")
                 
                 for i, result in enumerate(task_type_results, 1):
-                    context_parts.append(f"Example {i}: {result['goal']}")
+                    group_id = result.get("group_id", "unknown")
+                    context_parts.append(f"Example {i} (from {group_id}): {result['goal']}")
                     context_parts.append(f"Steps: {result['steps']}")
-                    context_parts.append(f"Codes: {result['codes']}")
+                    # Only include codes for web_trajectories group (interaction logs are step-focused)
+                    if group_id != "web_interaction_logs":
+                        context_parts.append(f"Codes: {result['codes']}")
+                    else:
+                        logger.debug(f"📝 Filtering out codes for {group_id} trajectory (step-focused context)")
                     context_parts.append("")
             
             context_parts.append("=== END ENHANCED CONTEXT ===")
@@ -417,7 +434,7 @@ class GraphRAGClient(KnowledgeBaseClient):
                     source=EpisodeType.text,
                     source_description=f"Web trajectory from {trajectory_folder.name}",
                     reference_time=datetime.now(timezone.utc),
-                    group_id=self.group_id,
+                    group_id=self.group_ids[0],  # Use first group for adding trajectories
                     entity_types=WEB_TRAJECTORY_ENTITY_TYPES
                 )
                 
