@@ -140,7 +140,7 @@ def chat_ai_playwright_code(accessibility_tree=None, previous_steps=None, taskGo
                         "content": [
                             {
                                 "type": "text",
-                                "text": f"Task goal: {taskGoal}\nCurrent plan: {taskPlan}\nPrevious steps(The playwright codes here are generated, take them with a grain of salt.): {json.dumps(previous_steps, indent=2)}{trajectory_context}\n\nAccessibility tree: {json.dumps(accessibility_tree, indent=2)}\n\nError log: {error_log if error_log else 'No errors'}"
+                                "text": f"Task goal: {taskGoal}\nCurrent plan: {taskPlan}\nPrevious trajectories for reference: {json.dumps(previous_steps, indent=2)}\nPrevious steps:{trajectory_context}\n\nAccessibility tree: {json.dumps(accessibility_tree, indent=2)}\n\nError log: {error_log if error_log else 'No errors'}"
                             },
                             {
                                 "type": "image_url",

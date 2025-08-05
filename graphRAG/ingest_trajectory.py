@@ -13,17 +13,14 @@ Usage:
 
 import json
 import os
-import asyncio
 import sys
 from pathlib import Path
 from datetime import datetime, timezone
 from typing import Dict, List, Any, Optional, Tuple
-from graphiti_core import Graphiti
-from graphiti_core.nodes import EpisodeType
 from dotenv import load_dotenv
 
 # Import our custom entity types
-from graphRAG.trajectory_entity_types import WEB_TRAJECTORY_ENTITY_TYPES
+from trajectory_entity_types import WEB_TRAJECTORY_ENTITY_TYPES
 
 # Load environment variables
 load_dotenv()
@@ -42,6 +39,12 @@ class TrajectoryParser:
             from config import RESULTS_DIR
             results_path = RESULTS_DIR
         self.results_path = Path(results_path)
+    
+    def truncate_error_message(self, error_message: str) -> str:
+        """Truncate error message at '\nCall log:\n' to prevent it from being too long."""
+        if "\nCall log:\n" in error_message:
+            return error_message.split("\nCall log:\n")[0] + "\nCall log:\n [truncated]"
+        return error_message
     
     def parse_trajectory_json(self, trajectory_path: Path) -> Tuple[List[str], List[str], str]:
         """Parse trajectory.json to extract steps and code"""
@@ -138,6 +141,108 @@ TRAJECTORY_ID: {trajectory_folder.name}
         
         return episode_text.strip()
     
+    def process_error_log(self, error_log_path: Path) -> List[Dict]:
+        """Extract error information from error_log.json file."""
+        if not error_log_path.exists():
+            return []
+        
+        try:
+            with open(error_log_path, 'r', encoding='utf-8') as f:
+                error_data = json.load(f)
+            
+            errors = []
+            for error in error_data.get("playwright_errors", []):
+                # Convert attempted_codes to proper format
+                attempted_codes = []
+                for attempt in error.get("attempted_codes", []):
+                    # Truncate error message if it contains call log
+                    error_message = self.truncate_error_message(attempt.get("error_message", ""))
+                    attempted_codes.append({
+                        "attempt_number": attempt.get("attempt_number"),
+                        "code": attempt.get("code"),
+                        "error_message": error_message,
+                        "description": attempt.get("description")
+                    })
+                
+                error_entity = {
+                    "current_goal": error.get("current_goal"),
+                    "description": error.get("description"),
+                    "thought": error.get("thought"),
+                    "successful_code": error.get("successful_playwright_code"),
+                    "timestamp": error.get("timestamp"),
+                    "step_index": error.get("step_index"),
+                    "attempted_codes": attempted_codes
+                }
+                errors.append(error_entity)
+            
+            return errors
+            
+        except Exception as e:
+            print(f"Error processing error log {error_log_path}: {e}")
+            return []
+    
+    def create_error_episode_text(self, trajectory_folder: Path) -> str:
+        """Create structured episode text from error log data."""
+        error_log_path = trajectory_folder / "error_log.json"
+        
+        if not error_log_path.exists():
+            return ""
+        
+        errors = self.process_error_log(error_log_path)
+        
+        if not errors:
+            return ""
+        
+        # Create structured episode text for errors
+        episode_text = f"""
+Error Analysis Data from Trajectory: {trajectory_folder.name}
+
+TOTAL_ERRORS: {len(errors)}
+
+ERROR_DETAILS:
+"""
+        
+        for i, error in enumerate(errors, 1):
+            episode_text += f"""
+ERROR_{i}:
+- Step Index: {error.get('step_index', 'Unknown')}
+- Current Goal: {error.get('current_goal', 'Unknown')}
+- Description: {error.get('description', 'Unknown')}
+- Thought: {error.get('thought', 'Unknown')}
+- Timestamp: {error.get('timestamp', 'Unknown')}
+- Successful Code: {error.get('successful_code', 'None')}
+- Attempted Codes: {len(error.get('attempted_codes', []))} attempts
+
+ATTEMPTED_CODES:
+"""
+            
+            for attempt in error.get('attempted_codes', []):
+                episode_text += f"""
+  Attempt {attempt.get('attempt_number', 'Unknown')}:
+  - Code: {attempt.get('code', 'Unknown')}
+  - Error Message: {attempt.get('error_message', 'Unknown')}
+  - Description: {attempt.get('description', 'Unknown')}
+"""
+        
+        return episode_text.strip()
+    
+    def create_combined_episode_text(self, trajectory_folder: Path) -> str:
+        """Create combined episode text with both trajectory and error data"""
+        
+        # Get trajectory episode text
+        trajectory_text = self.create_trajectory_episode_text(trajectory_folder)
+        
+        # Get error episode text
+        error_text = self.create_error_episode_text(trajectory_folder)
+        
+        # Combine them
+        if error_text:
+            combined_text = f"{trajectory_text}\n\n{'='*50}\n\n{error_text}"
+        else:
+            combined_text = trajectory_text
+        
+        return combined_text
+    
     def discover_trajectories(self) -> List[Path]:
         """Discover all trajectory folders directly in results directory"""
         trajectory_folders = []
@@ -174,28 +279,17 @@ TRAJECTORY_ID: {trajectory_folder.name}
         print(f"\n📋 Preview for: {trajectory_folder.name}")
         print("=" * 60)
         
-        episode_text = self.create_trajectory_episode_text(trajectory_folder)
+        episode_text = self.create_combined_episode_text(trajectory_folder)
         print(episode_text)
     
-    async def ingest_trajectories(self, limit: Optional[int] = None):
-        """Ingest all discovered trajectories into Graphiti"""
+    def ingest_trajectories(self, limit: Optional[int] = None):
+        """Ingest all discovered trajectories using KnowledgeBaseClient"""
         
-        # Initialize Graphiti
-        neo4j_uri = os.getenv("NEO4J_URI")
-        neo4j_user = os.getenv("NEO4J_USERNAME")
-        neo4j_password = os.getenv("NEO4J_PASSWORD")
-        
-        if not all([neo4j_uri, neo4j_user, neo4j_password]):
-            print("\n❌ Missing Neo4j environment variables!")
-            print("Please create a .env file in the pipeline_2 directory with:")
-            print("NEO4J_URI=your-neo4j-uri")
-            print("NEO4J_USER=neo4j") 
-            print("NEO4J_PASSWORD=your-password")
-            raise ValueError("Missing required Neo4j environment variables")
-        
-        print("Initializing Graphiti...")
-        graphiti = Graphiti(neo4j_uri, neo4j_user, neo4j_password)
-        await graphiti.build_indices_and_constraints()
+        # Import the high-level function
+        import sys
+        import os
+        sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        from utils.knowledge_base_client import add_trajectory_to_kb
         
         try:
             # Discover trajectories
@@ -212,7 +306,7 @@ TRAJECTORY_ID: {trajectory_folder.name}
             
             print(f"\nProcessing {len(trajectory_folders)} trajectories...")
             
-            # Process each trajectory
+            # Process each trajectory using KnowledgeBaseClient
             for i, trajectory_folder in enumerate(trajectory_folders, 1):
                 try:
                     print(f"\n[{i}/{len(trajectory_folders)}] Processing: {trajectory_folder.name}")
@@ -228,68 +322,24 @@ TRAJECTORY_ID: {trajectory_folder.name}
                         print(f"   Success: {metadata.get('success', 'Unknown')}")
                         print(f"   Total steps: {metadata.get('total_steps', 'Unknown')}")
                     
-                    # Create episode text
-                    episode_text = self.create_trajectory_episode_text(trajectory_folder)
+                    # Check if error log exists
+                    error_log_path = trajectory_folder / "error_log.json"
+                    has_errors = error_log_path.exists()
+                    if has_errors:
+                        print(f"🔴 Error log found: {error_log_path.name}")
                     
-                    # ==================== COMPREHENSIVE LOGGING ====================
-                    print(f"\n🔍 === DEBUGGING ENTITY EXTRACTION ===")
-                    print(f"📝 Episode text being sent to LLM:")
-                    print("=" * 80)
-                    print(episode_text)
-                    print("=" * 80)
-                    print(f"📏 Episode text length: {len(episode_text)} characters")
-                    print(f"🏷️  Entity types provided: {list(ENTITY_TYPES.keys())}")
+                    # Use KnowledgeBaseClient to add trajectory
+                    trajectory_data = {
+                        'trajectory_path': str(trajectory_folder)
+                    }
                     
-                    # Add to Graphiti with custom entity types
-                    print(f"\n🚀 Calling graphiti.add_episode()...")
-                    result = await graphiti.add_episode(
-                        name=f"Trajectory: {trajectory_folder.name}",
-                        episode_body=episode_text,
-                        source=EpisodeType.text,
-                        source_description=f"Web trajectory from results folder ({trajectory_folder.parent.name})",
-                        reference_time=datetime.now(timezone.utc),
-                        group_id="web_trajectories",
-                        entity_types=ENTITY_TYPES  # Use our custom entity types
-                    )
+                    print(f"🚀 Calling KnowledgeBaseClient add_trajectory_to_kb()...")
+                    success = add_trajectory_to_kb(trajectory_data, kb_type="graphrag")
                     
-                    print(f"✅ add_episode() completed")
-                    print(f"📊 Raw results: {len(result.nodes)} nodes, {len(result.edges)} edges")
-                    
-                    # Log detailed entity information
-                    print(f"\n📋 DETAILED NODE ANALYSIS:")
-                    entity_names = {}
-                    for i, node in enumerate(result.nodes):
-                        node_name = node.name
-                        if node_name in entity_names:
-                            entity_names[node_name] += 1
-                        else:
-                            entity_names[node_name] = 1
-                        
-                        print(f"  [{i+1}] Name: '{node_name}'")
-                        print(f"      Labels: {node.labels}")
-                        print(f"      Attributes: {list(node.attributes.keys()) if node.attributes else 'None'}")
-                        print(f"      UUID: {node.uuid}")
-                        print()
-                    
-                    # Check for duplicates
-                    print(f"🔄 DUPLICATE ANALYSIS:")
-                    duplicates_found = False
-                    for name, count in entity_names.items():
-                        if count > 1:
-                            print(f"  ⚠️  '{name}' appears {count} times")
-                            duplicates_found = True
-                    
-                    if not duplicates_found:
-                        print(f"  ✅ No duplicate entity names found")
-                    
-                    print(f"🔗 EDGES ANALYSIS:")
-                    for i, edge in enumerate(result.edges):
-                        print(f"  [{i+1}] {edge.fact}")
-                    
-                    print(f"🏁 === END DEBUGGING ===\n")
-                    
-                    # Summary (detailed analysis already shown above)
-                    print(f"✅ SUMMARY: Created {len(result.nodes)} nodes and {len(result.edges)} edges for {trajectory_folder.name}")
+                    if success:
+                        print(f"✅ Successfully processed {trajectory_folder.name}")
+                    else:
+                        print(f"❌ Failed to process {trajectory_folder.name}")
                     
                 except Exception as e:
                     print(f"  ❌ Error processing {trajectory_folder.name}: {e}")
@@ -297,13 +347,13 @@ TRAJECTORY_ID: {trajectory_folder.name}
             
             print(f"\n🎉 Successfully processed {len(trajectory_folders)} trajectories!")
                 
-        finally:
-            await graphiti.close()
+        except Exception as e:
+            print(f"❌ Error in trajectory ingestion: {e}")
 
 
 # ==================== COMMAND LINE FUNCTIONS ====================
 
-async def preview_trajectories():
+def preview_trajectories():
     """Preview trajectory data without ingesting"""
     parser = TrajectoryParser("data/results")
     
@@ -328,19 +378,19 @@ async def preview_trajectories():
         print(f"\n... and {len(trajectories) - 3} more trajectories")
 
 
-async def ingest_sample_trajectories(count: int = 5):
+def ingest_sample_trajectories(count: int = 5):
     """Ingest a sample of trajectories for testing"""
     parser = TrajectoryParser("data/results")
     
     print(f"🧪 Starting sample trajectory ingestion ({count} trajectories)...")
     
     # Ingest limited number of trajectories
-    await parser.ingest_trajectories(limit=count)
+    parser.ingest_trajectories(limit=count)
     
     print("✅ Sample trajectory ingestion completed!")
 
 
-async def ingest_all_trajectories():
+def ingest_all_trajectories():
     """Ingest all trajectories automatically"""
     parser = TrajectoryParser()
     
@@ -355,7 +405,7 @@ async def ingest_all_trajectories():
         return
     
     # Ingest all trajectories
-    await parser.ingest_trajectories(limit=None)
+    parser.ingest_trajectories(limit=None)
     
     print("✅ Trajectory ingestion completed!")
 
@@ -368,12 +418,12 @@ def main():
         mode = sys.argv[1].lower()
         
         if mode == "preview":
-            asyncio.run(preview_trajectories())
+            preview_trajectories()
         elif mode == "sample":
             count = int(sys.argv[2]) if len(sys.argv) > 2 else 5
-            asyncio.run(ingest_sample_trajectories(count))
+            ingest_sample_trajectories(count)
         elif mode == "all":
-            asyncio.run(ingest_all_trajectories())
+            ingest_all_trajectories()
         else:
             print("❌ Invalid mode. Use: preview, sample, or all")
             print_usage()

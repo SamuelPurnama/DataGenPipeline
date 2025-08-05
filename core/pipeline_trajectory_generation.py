@@ -36,7 +36,7 @@ ACTION_TIMEOUT = 20000  # 30 seconds timeout for actions
 MODE = 0
 
 # Knowledge base configuration
-MAX_CONTEXT_LENGTH = int(os.getenv("MAX_CONTEXT_LENGTH", "2000"))  # Maximum context length in characters
+MAX_CONTEXT_LENGTH = int(os.getenv("MAX_CONTEXT_LENGTH", "3000"))  # Maximum context length in characters
 KNOWLEDGE_BASE_TYPE = os.getenv("KNOWLEDGE_BASE_TYPE", "graphrag")  # Type of knowledge base to use
 
 # Directory to store all browser sessions

@@ -70,31 +70,88 @@ class Trajectory(BaseModel):
 
 
 # class TaskType(BaseModel):
-    """Task type entity representing a category of actions or objectives.
+    # """Task type entity representing a category of actions or objectives.
     
-    Represents the type of work or goal being accomplished during a trajectory.
+    # Represents the type of work or goal being accomplished during a trajectory.
+    # """
+    
+    # category: Optional[str] = Field(
+    #     default=None,
+    #     description="Broad category the task belongs to. Example: 'Navigation', 'Search', 'Booking'"
+    # )
+    
+    # complexity: Optional[str] = Field(
+    #     default=None,
+    #     description="Complexity level of the task. Values: 'Low', 'Medium', 'High'"
+    # )
+    
+    # typical_steps: List[str] = Field(
+    #     default_factory=list,
+    #     description="Common steps typically involved in this type of task. "
+    #                "Example: ['Enter search query', 'Review results', 'Select option']"
+    # )
+    
+    # success_indicators: List[str] = Field(
+    #     default_factory=list,
+    #     description="Indicators that show the task was completed successfully. "
+    #                "Example: ['Results displayed', 'Confirmation received', 'Data retrieved']"
+    # )
+
+
+class ErrorAttempt(BaseModel):
+    """Individual attempt within an error, representing a failed code execution."""
+    
+    attempt_number: int = Field(
+        description="The attempt number (1, 2, 3, etc.)"
+    )
+    
+    code: str = Field(
+        description="The Playwright code that was attempted"
+    )
+    
+    error_message: str = Field(
+        description="The error message from the attempt"
+    )
+    
+    description: Optional[str] = Field(
+        default=None,
+        description="Description of what was being attempted"
+    )
+
+
+class Error(BaseModel):
+    """Error entity representing a Playwright execution failure and its resolution.
+    
+    This entity captures information about failed code executions, including
+    all attempted solutions and the final successful code (if any).
     """
     
-    category: Optional[str] = Field(
+    current_goal: Optional[str] = Field(
         default=None,
-        description="Broad category the task belongs to. Example: 'Navigation', 'Search', 'Booking'"
+        description="The goal being pursued when the error occurred"
     )
     
-    complexity: Optional[str] = Field(
+    description: str = Field(
+        description="Description of what was being attempted when the error occurred"
+    )
+    
+    thought: Optional[str] = Field(
         default=None,
-        description="Complexity level of the task. Values: 'Low', 'Medium', 'High'"
+        description="LLM's reasoning for the action that led to the error"
     )
     
-    typical_steps: List[str] = Field(
-        default_factory=list,
-        description="Common steps typically involved in this type of task. "
-                   "Example: ['Enter search query', 'Review results', 'Select option']"
+    successful_code: Optional[str] = Field(
+        default=None,
+        description="The code that eventually worked (if any)"
     )
     
-    success_indicators: List[str] = Field(
-        default_factory=list,
-        description="Indicators that show the task was completed successfully. "
-                   "Example: ['Results displayed', 'Confirmation received', 'Data retrieved']"
+    timestamp: str = Field(
+        description="When the error occurred (ISO format)"
+    )
+    
+    
+    attempted_codes: List[str] = Field(
+        description="List of failed attempts with their details"
     )
 
 
@@ -102,6 +159,8 @@ class Trajectory(BaseModel):
 # This is what gets passed to Graphiti's add_episode method
 WEB_TRAJECTORY_ENTITY_TYPES = {
     'Trajectory': Trajectory,
+    'Error': Error,
+    # 'ErrorAttempt': ErrorAttempt,
 }
 
 
