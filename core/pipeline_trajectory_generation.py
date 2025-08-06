@@ -544,7 +544,6 @@ def create_metadata(persona: str, url: str, orig_instruction: str, aug_instructi
         "goal": orig_instruction,
         "eps_name": eps_name,
         "task": {
-            "task_type": "calendar",
             "steps": steps,
             "instruction": {
                 "high_level": orig_instruction,
@@ -1143,7 +1142,7 @@ def generate_trajectory_html(dirs: Dict[str, str], metadata: Dict[str, Any]) -> 
 </head>
 <body>
     <div class="container">
-        <h1>{metadata['eps_name']} ({metadata['task'].get('task_type','')})</h1>
+        <h1>{metadata['eps_name']} (Task: {metadata.get('goal', 'Unknown').split()[0:3] if metadata.get('goal') else 'Unknown'})</h1>
         <h2>Instructions</h2>
         <table class="instruction-table">
             <tr><th>level</th><th>instruction</th></tr>

@@ -140,9 +140,8 @@ class Error(BaseModel):
         description="LLM's reasoning for the action that led to the error"
     )
     
-    successful_code: Optional[str] = Field(
-        default=None,
-        description="The code that eventually worked (if any)"
+    successful_code: str = Field(
+        description="A string of playwright code that worked to solve the error"
     )
     
     timestamp: str = Field(
@@ -151,7 +150,7 @@ class Error(BaseModel):
     
     
     attempted_codes: List[str] = Field(
-        description="List of failed attempts with their details"
+        description="List of failed attempts in format 'code -> error_message'"
     )
 
 

@@ -43,7 +43,7 @@ class TrajectoryParser:
     def truncate_error_message(self, error_message: str) -> str:
         """Truncate error message at '\nCall log:\n' to prevent it from being too long."""
         if "\nCall log:\n" in error_message:
-            return error_message.split("\nCall log:\n")[0] + "\nCall log:\n [truncated]"
+            return error_message.split("\nCall log:\n")[0]
         return error_message
     
     def parse_trajectory_json(self, trajectory_path: Path) -> Tuple[List[str], List[str], str]:
@@ -103,7 +103,6 @@ class TrajectoryParser:
         
         # Extract key information from metadata
         goal = metadata.get('goal', 'Unknown Goal')
-        task_type = metadata.get('task', {}).get('task_type', 'unknown')
         instructions = metadata.get('task', {}).get('instruction', {})
         start_url = metadata.get('start_url', platform_url)
         success = metadata.get('success', False)
@@ -111,18 +110,13 @@ class TrajectoryParser:
         runtime_sec = metadata.get('runtime_sec', 0)
         gpt_output = metadata.get('gpt_output', '')
         
-        # Format task type
-        task_type_formatted = task_type.replace('_', ' ').title()
-        
-        # Create structured episode text
+        # Create structured episode text (task type will be extracted by Graphiti LLM)
         episode_text = f"""
 Web Trajectory Analysis Data:
 
 GOAL: {goal}
 
 PLATFORM_URL: {start_url or platform_url}
-
-TASK_TYPE: {task_type_formatted}
 
 DETAILED_STEPS:
 {chr(10).join(steps) if steps else 'No detailed steps available'}
@@ -204,7 +198,7 @@ ERROR_DETAILS:
         
         for i, error in enumerate(errors, 1):
             episode_text += f"""
-ERROR_{i}:
+ERROR_{i} (USE THE FIELDS BELOW TO DECLARE THE ERROR ENTITY):
 - Step Index: {error.get('step_index', 'Unknown')}
 - Current Goal: {error.get('current_goal', 'Unknown')}
 - Description: {error.get('description', 'Unknown')}
@@ -217,11 +211,11 @@ ATTEMPTED_CODES:
 """
             
             for attempt in error.get('attempted_codes', []):
+                code = attempt.get('code', 'Unknown')
+                error_message = attempt.get('error_message', 'Unknown')
                 episode_text += f"""
   Attempt {attempt.get('attempt_number', 'Unknown')}:
-  - Code: {attempt.get('code', 'Unknown')}
-  - Error Message: {attempt.get('error_message', 'Unknown')}
-  - Description: {attempt.get('description', 'Unknown')}
+  - {code} -> {error_message}
 """
         
         return episode_text.strip()
@@ -318,7 +312,7 @@ ATTEMPTED_CODES:
                             metadata = json.load(f)
                         print(f"📄 Source metadata:")
                         print(f"   Goal: {metadata.get('goal', 'Unknown')}")
-                        print(f"   Task type: {metadata.get('task', {}).get('task_type', 'Unknown')}")
+                        print(f"   Goal: {metadata.get('goal', 'Unknown')}")
                         print(f"   Success: {metadata.get('success', 'Unknown')}")
                         print(f"   Total steps: {metadata.get('total_steps', 'Unknown')}")
                     

@@ -429,19 +429,20 @@ class GraphRAGClient(KnowledgeBaseClient):
                 print(f"📏 Episode text length: {len(episode_text)} characters")
                 print(f"🏷️  Entity types provided: {list(WEB_TRAJECTORY_ENTITY_TYPES.keys())}")
                 
-                # Add to Graphiti using the same approach as ingest_trajectory.py
-                print(f"\n🚀 Calling graphiti.add_episode()...")
-                result = await self.graphiti.add_episode(
+                # Add to Graphiti using the new split extraction method
+                print(f"\n🚀 Calling graphiti.add_episode_split()...")
+                result = await self.graphiti.add_episode_split(
                     name=f"Trajectory: {trajectory_folder.name}",
                     episode_body=episode_text,
                     source=EpisodeType.text,
                     source_description=f"Web trajectory from {trajectory_folder.name}",
                     reference_time=datetime.now(timezone.utc),
                     group_id=self.group_ids[0],  # Use first group for adding trajectories
-                    entity_types=WEB_TRAJECTORY_ENTITY_TYPES  # Now includes Error entity
+                    entity_types=WEB_TRAJECTORY_ENTITY_TYPES,  # Now includes Error entity
+                    mode="split"  # Use split mode for better accuracy
                 )
                 
-                print(f"✅ add_episode() completed")
+                print(f"✅ add_episode_split() completed")
                 print(f"📊 Raw results: {len(result.nodes)} nodes, {len(result.edges)} edges")
                 
                 # Log detailed entity information
