@@ -4,6 +4,7 @@ Simple UI - Just starts recorderSystem.py with a button click
 """
 
 import asyncio
+import os
 import subprocess
 import sys
 import webbrowser
@@ -1159,7 +1160,8 @@ class SimpleUI:
             print(f"🎯 Starting recorder for URL: {url}")
             
             # Start recorderSystem.py as subprocess
-            cmd = [sys.executable, 'recorderSystem.py', '--url', url]
+            recorder_path = os.path.join(os.path.dirname(__file__), 'recorderSystem.py')
+            cmd = [sys.executable, recorder_path, '--url', url]
             self.recorder_process = subprocess.Popen(
                 cmd,
                 stdout=subprocess.PIPE,

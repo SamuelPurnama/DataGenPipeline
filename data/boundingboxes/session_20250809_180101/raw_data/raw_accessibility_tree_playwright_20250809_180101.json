@@ -1,0 +1,923 @@
+{
+  "role": "WebArea",
+  "name": "Google Calendar - August 2025",
+  "children": [
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "button",
+          "name": "Skip to main content"
+        },
+        {
+          "role": "button",
+          "name": "Keyboard shortcuts"
+        },
+        {
+          "role": "button",
+          "name": "Accessibility Feedback"
+        }
+      ]
+    },
+    {
+      "role": "button",
+      "name": "Main drawer",
+      "expanded": true
+    },
+    {
+      "role": "heading",
+      "name": "Calendar",
+      "level": 1
+    },
+    {
+      "role": "button",
+      "name": "Today, Saturday, August 9"
+    },
+    {
+      "role": "button",
+      "name": "Previous month"
+    },
+    {
+      "role": "button",
+      "name": "Next month"
+    },
+    {
+      "role": "text",
+      "name": "August 2025"
+    },
+    {
+      "role": "button",
+      "name": "Search"
+    },
+    {
+      "role": "button",
+      "name": "Support"
+    },
+    {
+      "role": "button",
+      "name": "Settings menu",
+      "haspopup": "menu"
+    },
+    {
+      "role": "button",
+      "name": "Month",
+      "description": "View switcher menu",
+      "haspopup": "menu"
+    },
+    {
+      "role": "button",
+      "name": "Switch to Calendar",
+      "description": "Switch to Calendar"
+    },
+    {
+      "role": "button",
+      "name": "Switch to Tasks",
+      "description": "Switch to Tasks"
+    },
+    {
+      "role": "button",
+      "name": "Google apps"
+    },
+    {
+      "role": "button",
+      "name": "Google Account: Samuel Perry (samuelperry9973@gmail.com)"
+    },
+    {
+      "role": "button",
+      "name": "Create ",
+      "haspopup": "menu"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "children": [
+        {
+          "role": "heading",
+          "name": "Drawer",
+          "level": 1
+        },
+        {
+          "role": "heading",
+          "name": "Navigation calendar",
+          "level": 2
+        },
+        {
+          "role": "text",
+          "name": "August 2025"
+        },
+        {
+          "role": "button",
+          "name": "Previous month"
+        },
+        {
+          "role": "button",
+          "name": "Next month"
+        },
+        {
+          "role": "text",
+          "name": "Sunday"
+        },
+        {
+          "role": "text",
+          "name": "Monday"
+        },
+        {
+          "role": "text",
+          "name": "Tuesday"
+        },
+        {
+          "role": "text",
+          "name": "Wednesday"
+        },
+        {
+          "role": "text",
+          "name": "Thursday"
+        },
+        {
+          "role": "text",
+          "name": "Friday"
+        },
+        {
+          "role": "text",
+          "name": "Saturday"
+        },
+        {
+          "role": "button",
+          "name": "July 27, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "July 28, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "July 29, Tuesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "July 30, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "July 31, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "1, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "2, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "3, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "4, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "5, Tuesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "6, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "7, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "8, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "9, Saturday, today",
+          "pressed": true
+        },
+        {
+          "role": "button",
+          "name": "10, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "11, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "12, Tuesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "13, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "14, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "15, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "16, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "17, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "18, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "19, Tuesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "20, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "21, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "22, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "23, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "24, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "25, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "26, Tuesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "27, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "28, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "29, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "30, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "31, Sunday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "September 1, Monday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "September 2, Tuesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "September 3, Wednesday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "September 4, Thursday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "September 5, Friday",
+          "pressed": false
+        },
+        {
+          "role": "button",
+          "name": "September 6, Saturday",
+          "pressed": false
+        },
+        {
+          "role": "generic",
+          "name": "",
+          "children": [
+            {
+              "role": "combobox",
+              "name": "Search for people",
+              "autocomplete": "list",
+              "haspopup": "menu"
+            }
+          ]
+        },
+        {
+          "role": "heading",
+          "name": "Calendar list",
+          "level": 2
+        },
+        {
+          "role": "button",
+          "name": "My calendars",
+          "expanded": true
+        },
+        {
+          "role": "checkbox",
+          "name": "Samuel Perry",
+          "checked": true
+        },
+        {
+          "role": "text",
+          "name": "Samuel Perry"
+        },
+        {
+          "role": "checkbox",
+          "name": "Birthdays",
+          "checked": true
+        },
+        {
+          "role": "text",
+          "name": "Birthdays"
+        },
+        {
+          "role": "checkbox",
+          "name": "Book Restoration Deadlines",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Book Restoration Deadlines"
+        },
+        {
+          "role": "checkbox",
+          "name": "Football Matches",
+          "checked": true
+        },
+        {
+          "role": "text",
+          "name": "Football Matches"
+        },
+        {
+          "role": "checkbox",
+          "name": "Tasks",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Tasks"
+        },
+        {
+          "role": "button",
+          "name": "Other calendars",
+          "expanded": true
+        },
+        {
+          "role": "button",
+          "name": "Add other calendars",
+          "haspopup": "menu"
+        },
+        {
+          "role": "checkbox",
+          "name": "Holidays in United States",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Holidays in United States"
+        },
+        {
+          "role": "link",
+          "name": "Terms"
+        },
+        {
+          "role": "text",
+          "name": " – "
+        },
+        {
+          "role": "link",
+          "name": "Privacy"
+        }
+      ]
+    },
+    {
+      "role": "main",
+      "name": "",
+      "description": "August 2025, 18 events",
+      "children": [
+        {
+          "role": "heading",
+          "name": " August 2025, 18 events",
+          "level": 1
+        },
+        {
+          "role": "columnheader",
+          "name": "SUNDAY",
+          "readonly": true
+        },
+        {
+          "role": "columnheader",
+          "name": "MONDAY",
+          "readonly": true
+        },
+        {
+          "role": "columnheader",
+          "name": "TUESDAY",
+          "readonly": true
+        },
+        {
+          "role": "columnheader",
+          "name": "WEDNESDAY",
+          "readonly": true
+        },
+        {
+          "role": "columnheader",
+          "name": "THURSDAY",
+          "readonly": true
+        },
+        {
+          "role": "columnheader",
+          "name": "FRIDAY",
+          "readonly": true
+        },
+        {
+          "role": "columnheader",
+          "name": "SATURDAY",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "1 event, Sunday, July 27",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "1 event, Sunday, July 27",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "12pm to 1pm, Family BBQ, Samuel Perry, Location: Family Home, July 27, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Monday, July 28",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "2 events, Tuesday, July 29",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "2 events, Tuesday, July 29",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "6pm to 7pm, Dinner with Friends, Samuel Perry, Location: Downtown Restaurant, July 29, 2025"
+            },
+            {
+              "role": "button",
+              "name": "7pm to 8pm, Wrexham Match, Samuel Perry, No location, July 29, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "1 event, Wednesday, July 30",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "1 event, Wednesday, July 30",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "5pm to 6pm, Film Premiere, Samuel Perry, Location: Cinema, July 30, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "2 events, Thursday, July 31",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "2 events, Thursday, July 31",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "4pm to 5pm, Weekly Review, Samuel Perry, No location, July 31, 2025"
+            },
+            {
+              "role": "button",
+              "name": "6pm to 7pm, Team Dinner, Samuel Perry, Location: Downtown Restaurant, July 31, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "1 event, Friday, August 1",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "1 event, Friday, August 1",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "7pm to 8pm, Wrexham Fan Club Meeting, Samuel Perry, Location: Clubhouse, August 1, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "1 event, Saturday, August 2",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "1 event, Saturday, August 2",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "5am to 6am, Football Match, Samuel Perry, No location, August 2, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Sunday, August 3",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Monday, August 4",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Tuesday, August 5",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Wednesday, August 6",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "1 event, Thursday, August 7",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "1 event, Thursday, August 7",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "4pm to 5pm, Weekly Review, Samuel Perry, No location, August 7, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Friday, August 8",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "1 event, Saturday, August 9, today",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "1 event, Saturday, August 9, today",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "5am to 6am, Football Match, Samuel Perry, No location, August 9, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Sunday, August 10",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Monday, August 11",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Tuesday, August 12",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Wednesday, August 13",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "1 event, Thursday, August 14",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "1 event, Thursday, August 14",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "4pm to 5pm, Weekly Review, Samuel Perry, No location, August 14, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Friday, August 15",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "1 event, Saturday, August 16",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "1 event, Saturday, August 16",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "5am to 6am, Football Match, Samuel Perry, No location, August 16, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Sunday, August 17",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Monday, August 18",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Tuesday, August 19",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Wednesday, August 20",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "1 event, Thursday, August 21",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "1 event, Thursday, August 21",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "4pm to 5pm, Weekly Review, Samuel Perry, No location, August 21, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Friday, August 22",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "1 event, Saturday, August 23",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "1 event, Saturday, August 23",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "5am to 6am, Football Match, Samuel Perry, No location, August 23, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Sunday, August 24",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Monday, August 25",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Tuesday, August 26",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Wednesday, August 27",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "1 event, Thursday, August 28",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "1 event, Thursday, August 28",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "4pm to 5pm, Weekly Review, Samuel Perry, No location, August 28, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Friday, August 29",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "1 event, Saturday, August 30",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "1 event, Saturday, August 30",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "5am to 6am, Football Match, Samuel Perry, No location, August 30, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Sunday, August 31",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Monday, September 1",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Tuesday, September 2",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Wednesday, September 3",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "1 event, Thursday, September 4",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "1 event, Thursday, September 4",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "4pm to 5pm, Weekly Review, Samuel Perry, No location, September 4, 2025"
+            }
+          ]
+        },
+        {
+          "role": "gridcell",
+          "name": "No events, Friday, September 5",
+          "readonly": true
+        },
+        {
+          "role": "gridcell",
+          "name": "1 event, Saturday, September 6",
+          "readonly": true,
+          "children": [
+            {
+              "role": "heading",
+              "name": "1 event, Saturday, September 6",
+              "level": 2
+            },
+            {
+              "role": "button",
+              "name": "5am to 6am, Football Match, Samuel Perry, No location, September 6, 2025"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "role": "button",
+      "name": "Show side panel",
+      "pressed": true
+    },
+    {
+      "role": "text",
+      "name": "Sorry, there was an error loading Google Tasks."
+    },
+    {
+      "role": "button",
+      "name": "Reload",
+      "description": "Sorry, there was an error loading Google Tasks."
+    },
+    {
+      "role": "button",
+      "name": "Close"
+    },
+    {
+      "role": "text",
+      "name": "Error while loading Google Tasks. Tasks not displayed."
+    },
+    {
+      "role": "text",
+      "name": "No event added or removed"
+    }
+  ]
+}

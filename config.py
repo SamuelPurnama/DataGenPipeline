@@ -3,7 +3,7 @@ PHASE1_NUM_INSTRUCTIONS = 5  # Instructions per persona for phase 1 (initial sta
 PHASE2_NUM_INSTRUCTIONS = 20 # Instructions per persona for phase 2 (modified state)
 
 # Centralized path configuration
-RESULTS_DIR = "data/results"
+RESULTS_DIR = "../data/results"
 BROWSER_SESSIONS_DIR = "data/browser_sessions"
 SAMPLE_DATA_DIR = "data/sample_data"
 
@@ -12,12 +12,12 @@ URL = "https://flights.google.com"
 # Google Accounts Configuration
 ACCOUNTS = [
     {
-        "email": "kukukud4@gmail.com",
-        "password": "samJP535",
-        "user_data_dir": "sam2",
-        "start_idx": 2,
-        "end_idx": 3
-    },
+        "email": "samuelperry9973@gmail.com",
+        "password": "Lalala123",
+        "user_data_dir": "samuelPerry",
+        "start_idx": 0,
+        "end_idx": 1,
+    }
     # {
     #     "email": "testeracc482@gmail.com",
     #     "password": "Lalala123",

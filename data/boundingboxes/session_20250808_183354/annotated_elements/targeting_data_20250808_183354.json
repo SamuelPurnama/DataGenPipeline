@@ -1,0 +1,1298 @@
+[
+  {
+    "annotation_id": 1,
+    "element_info": {
+      "name": "Solutions",
+      "name_raw": "Solutions",
+      "role": "button",
+      "value": "",
+      "tag_name": "summary",
+      "type": "",
+      "id": "",
+      "class_name": "header__nav__group__button ",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null
+    },
+    "bounding_box": {
+      "x": 253,
+      "y": 10,
+      "width": 60,
+      "height": 44,
+      "center_x": 283,
+      "center_y": 32
+    },
+    "playwright_selectors": [
+      {
+        "type": "role_and_name",
+        "selector": "page.get_by_role('button', name='Solutions')",
+        "priority": "high"
+      },
+      {
+        "type": "aria_label",
+        "selector": "page.get_by_label('Solutions')",
+        "priority": "high"
+      },
+      {
+        "type": "css_combined",
+        "selector": "page.locator('summary.header__nav__group__button')",
+        "priority": "medium"
+      },
+      {
+        "type": "coordinates",
+        "selector": "page.mouse.click(283, 32)",
+        "priority": "low"
+      }
+    ],
+    "interaction_suggestions": [
+      "click()",
+      "bounding_box()",
+      "is_enabled()",
+      "focus()",
+      "hover()",
+      "is_visible()",
+      "screenshot()"
+    ]
+  },
+  {
+    "annotation_id": 2,
+    "element_info": {
+      "name": "Products",
+      "name_raw": "Products",
+      "role": "button",
+      "value": "",
+      "tag_name": "summary",
+      "type": "",
+      "id": "",
+      "class_name": "header__nav__group__button --active",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null
+    },
+    "bounding_box": {
+      "x": 349,
+      "y": 10,
+      "width": 59,
+      "height": 44,
+      "center_x": 378,
+      "center_y": 32
+    },
+    "playwright_selectors": [
+      {
+        "type": "role_and_name",
+        "selector": "page.get_by_role('button', name='Products')",
+        "priority": "high"
+      },
+      {
+        "type": "aria_label",
+        "selector": "page.get_by_label('Products')",
+        "priority": "high"
+      },
+      {
+        "type": "css_combined",
+        "selector": "page.locator('summary.header__nav__group__button')",
+        "priority": "medium"
+      },
+      {
+        "type": "coordinates",
+        "selector": "page.mouse.click(378, 32)",
+        "priority": "low"
+      }
+    ],
+    "interaction_suggestions": [
+      "click()",
+      "bounding_box()",
+      "is_enabled()",
+      "focus()",
+      "hover()",
+      "is_visible()",
+      "screenshot()"
+    ]
+  },
+  {
+    "annotation_id": 3,
+    "element_info": {
+      "name": "Industries",
+      "name_raw": "Industries",
+      "role": "button",
+      "value": "",
+      "tag_name": "summary",
+      "type": "",
+      "id": "",
+      "class_name": "header__nav__group__button ",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null
+    },
+    "bounding_box": {
+      "x": 444,
+      "y": 10,
+      "width": 64,
+      "height": 44,
+      "center_x": 476,
+      "center_y": 32
+    },
+    "playwright_selectors": [
+      {
+        "type": "role_and_name",
+        "selector": "page.get_by_role('button', name='Industries')",
+        "priority": "high"
+      },
+      {
+        "type": "aria_label",
+        "selector": "page.get_by_label('Industries')",
+        "priority": "high"
+      },
+      {
+        "type": "css_combined",
+        "selector": "page.locator('summary.header__nav__group__button')",
+        "priority": "medium"
+      },
+      {
+        "type": "coordinates",
+        "selector": "page.mouse.click(476, 32)",
+        "priority": "low"
+      }
+    ],
+    "interaction_suggestions": [
+      "click()",
+      "bounding_box()",
+      "is_enabled()",
+      "focus()",
+      "hover()",
+      "is_visible()",
+      "screenshot()"
+    ]
+  },
+  {
+    "annotation_id": 4,
+    "element_info": {
+      "name": "Resources",
+      "name_raw": "Resources",
+      "role": "button",
+      "value": "",
+      "tag_name": "summary",
+      "type": "",
+      "id": "",
+      "class_name": "header__nav__group__button ",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null
+    },
+    "bounding_box": {
+      "x": 674,
+      "y": 10,
+      "width": 68,
+      "height": 44,
+      "center_x": 708,
+      "center_y": 32
+    },
+    "playwright_selectors": [
+      {
+        "type": "role_and_name",
+        "selector": "page.get_by_role('button', name='Resources')",
+        "priority": "high"
+      },
+      {
+        "type": "aria_label",
+        "selector": "page.get_by_label('Resources')",
+        "priority": "high"
+      },
+      {
+        "type": "css_combined",
+        "selector": "page.locator('summary.header__nav__group__button')",
+        "priority": "medium"
+      },
+      {
+        "type": "coordinates",
+        "selector": "page.mouse.click(708, 32)",
+        "priority": "low"
+      }
+    ],
+    "interaction_suggestions": [
+      "click()",
+      "bounding_box()",
+      "is_enabled()",
+      "focus()",
+      "hover()",
+      "is_visible()",
+      "screenshot()"
+    ]
+  },
+  {
+    "annotation_id": 5,
+    "element_info": {
+      "name": "Spend less time planning and more time doing wi...",
+      "name_raw": "Spend less time planning and more time doing with a shareable calendar that works across Google Workspace.",
+      "role": "text",
+      "value": "",
+      "tag_name": "a",
+      "type": "",
+      "id": "",
+      "class_name": "link header__logo link--image",
+      "href": "https://workspace.google.com/",
+      "disabled": false,
+      "checked": null,
+      "selected": null
+    },
+    "bounding_box": {
+      "x": 24,
+      "y": 19,
+      "width": 195,
+      "height": 27,
+      "center_x": 121,
+      "center_y": 32
+    },
+    "playwright_selectors": [
+      {
+        "type": "role_and_name",
+        "selector": "page.get_by_role('text', name='Spend less time planning and more time doing wi...')",
+        "priority": "high"
+      },
+      {
+        "type": "aria_label",
+        "selector": "page.get_by_label('Spend less time planning and more time doing wi...')",
+        "priority": "high"
+      },
+      {
+        "type": "text",
+        "selector": "page.get_by_text('Spend less time planning and more time doing wi...')",
+        "priority": "medium"
+      },
+      {
+        "type": "css_combined",
+        "selector": "page.locator('a.link')",
+        "priority": "medium"
+      },
+      {
+        "type": "coordinates",
+        "selector": "page.mouse.click(121, 32)",
+        "priority": "low"
+      }
+    ],
+    "interaction_suggestions": [
+      "click()",
+      "bounding_box()",
+      "is_enabled()",
+      "hover()",
+      "is_visible()",
+      "screenshot()"
+    ]
+  },
+  {
+    "annotation_id": 6,
+    "element_info": {
+      "name": "Sharable calendar with Google Workspace.",
+      "name_raw": "Sharable calendar with Google Workspace.",
+      "role": "image",
+      "value": "",
+      "tag_name": "a",
+      "type": "",
+      "id": "",
+      "class_name": "link header__logo link--image",
+      "href": "https://workspace.google.com/",
+      "disabled": false,
+      "checked": null,
+      "selected": null
+    },
+    "bounding_box": {
+      "x": 24,
+      "y": 19,
+      "width": 195,
+      "height": 27,
+      "center_x": 121,
+      "center_y": 32
+    },
+    "playwright_selectors": [
+      {
+        "type": "role_and_name",
+        "selector": "page.get_by_role('image', name='Sharable calendar with Google Workspace.')",
+        "priority": "high"
+      },
+      {
+        "type": "aria_label",
+        "selector": "page.get_by_label('Sharable calendar with Google Workspace.')",
+        "priority": "high"
+      },
+      {
+        "type": "text",
+        "selector": "page.get_by_text('Sharable calendar with Google Workspace.')",
+        "priority": "medium"
+      },
+      {
+        "type": "css_combined",
+        "selector": "page.locator('a.link')",
+        "priority": "medium"
+      },
+      {
+        "type": "coordinates",
+        "selector": "page.mouse.click(121, 32)",
+        "priority": "low"
+      }
+    ],
+    "interaction_suggestions": [
+      "click()",
+      "bounding_box()",
+      "is_enabled()",
+      "hover()",
+      "is_visible()",
+      "screenshot()"
+    ]
+  },
+  {
+    "annotation_id": 7,
+    "element_info": {
+      "name": "Open Tooltip: This feature is available on Goog...",
+      "name_raw": "Open Tooltip: This feature is available on Google Workspace Business and Enterprise plans.",
+      "role": "button",
+      "value": "",
+      "tag_name": "a",
+      "type": "",
+      "id": "",
+      "class_name": "link header__logo link--image",
+      "href": "https://workspace.google.com/",
+      "disabled": false,
+      "checked": null,
+      "selected": null
+    },
+    "bounding_box": {
+      "x": 24,
+      "y": 19,
+      "width": 195,
+      "height": 27,
+      "center_x": 121,
+      "center_y": 32
+    },
+    "playwright_selectors": [
+      {
+        "type": "role_and_name",
+        "selector": "page.get_by_role('button', name='Open Tooltip: This feature is available on Goog...')",
+        "priority": "high"
+      },
+      {
+        "type": "aria_label",
+        "selector": "page.get_by_label('Open Tooltip: This feature is available on Goog...')",
+        "priority": "high"
+      },
+      {
+        "type": "text",
+        "selector": "page.get_by_text('Open Tooltip: This feature is available on Goog...')",
+        "priority": "medium"
+      },
+      {
+        "type": "css_combined",
+        "selector": "page.locator('a.link')",
+        "priority": "medium"
+      },
+      {
+        "type": "coordinates",
+        "selector": "page.mouse.click(121, 32)",
+        "priority": "low"
+      }
+    ],
+    "interaction_suggestions": [
+      "click()",
+      "bounding_box()",
+      "is_enabled()",
+      "focus()",
+      "hover()",
+      "is_visible()",
+      "screenshot()"
+    ]
+  },
+  {
+    "annotation_id": 8,
+    "element_info": {
+      "name": "Open Tooltip: This feature is available on Goog...",
+      "name_raw": "Open Tooltip: This feature is available on Google Workspace Business and Enterprise plans.",
+      "role": "button",
+      "value": "",
+      "tag_name": "a",
+      "type": "",
+      "id": "",
+      "class_name": "link header__logo link--image",
+      "href": "https://workspace.google.com/",
+      "disabled": false,
+      "checked": null,
+      "selected": null
+    },
+    "bounding_box": {
+      "x": 24,
+      "y": 19,
+      "width": 195,
+      "height": 27,
+      "center_x": 121,
+      "center_y": 32
+    },
+    "playwright_selectors": [
+      {
+        "type": "role_and_name",
+        "selector": "page.get_by_role('button', name='Open Tooltip: This feature is available on Goog...')",
+        "priority": "high"
+      },
+      {
+        "type": "aria_label",
+        "selector": "page.get_by_label('Open Tooltip: This feature is available on Goog...')",
+        "priority": "high"
+      },
+      {
+        "type": "text",
+        "selector": "page.get_by_text('Open Tooltip: This feature is available on Goog...')",
+        "priority": "medium"
+      },
+      {
+        "type": "css_combined",
+        "selector": "page.locator('a.link')",
+        "priority": "medium"
+      },
+      {
+        "type": "coordinates",
+        "selector": "page.mouse.click(121, 32)",
+        "priority": "low"
+      }
+    ],
+    "interaction_suggestions": [
+      "click()",
+      "bounding_box()",
+      "is_enabled()",
+      "focus()",
+      "hover()",
+      "is_visible()",
+      "screenshot()"
+    ]
+  },
+  {
+    "annotation_id": 9,
+    "element_info": {
+      "name": "Open Tooltip: This feature is available on Goog...",
+      "name_raw": "Open Tooltip: This feature is available on Google Workspace Business and Enterprise plans.",
+      "role": "button",
+      "value": "",
+      "tag_name": "a",
+      "type": "",
+      "id": "",
+      "class_name": "link header__logo link--image",
+      "href": "https://workspace.google.com/",
+      "disabled": false,
+      "checked": null,
+      "selected": null
+    },
+    "bounding_box": {
+      "x": 24,
+      "y": 19,
+      "width": 195,
+      "height": 27,
+      "center_x": 121,
+      "center_y": 32
+    },
+    "playwright_selectors": [
+      {
+        "type": "role_and_name",
+        "selector": "page.get_by_role('button', name='Open Tooltip: This feature is available on Goog...')",
+        "priority": "high"
+      },
+      {
+        "type": "aria_label",
+        "selector": "page.get_by_label('Open Tooltip: This feature is available on Goog...')",
+        "priority": "high"
+      },
+      {
+        "type": "text",
+        "selector": "page.get_by_text('Open Tooltip: This feature is available on Goog...')",
+        "priority": "medium"
+      },
+      {
+        "type": "css_combined",
+        "selector": "page.locator('a.link')",
+        "priority": "medium"
+      },
+      {
+        "type": "coordinates",
+        "selector": "page.mouse.click(121, 32)",
+        "priority": "low"
+      }
+    ],
+    "interaction_suggestions": [
+      "click()",
+      "bounding_box()",
+      "is_enabled()",
+      "focus()",
+      "hover()",
+      "is_visible()",
+      "screenshot()"
+    ]
+  },
+  {
+    "annotation_id": 10,
+    "element_info": {
+      "name": "Open Tooltip: This feature is available on Goog...",
+      "name_raw": "Open Tooltip: This feature is available on Google Workspace Business and Enterprise plans.",
+      "role": "button",
+      "value": "",
+      "tag_name": "a",
+      "type": "",
+      "id": "",
+      "class_name": "link header__logo link--image",
+      "href": "https://workspace.google.com/",
+      "disabled": false,
+      "checked": null,
+      "selected": null
+    },
+    "bounding_box": {
+      "x": 24,
+      "y": 19,
+      "width": 195,
+      "height": 27,
+      "center_x": 121,
+      "center_y": 32
+    },
+    "playwright_selectors": [
+      {
+        "type": "role_and_name",
+        "selector": "page.get_by_role('button', name='Open Tooltip: This feature is available on Goog...')",
+        "priority": "high"
+      },
+      {
+        "type": "aria_label",
+        "selector": "page.get_by_label('Open Tooltip: This feature is available on Goog...')",
+        "priority": "high"
+      },
+      {
+        "type": "text",
+        "selector": "page.get_by_text('Open Tooltip: This feature is available on Goog...')",
+        "priority": "medium"
+      },
+      {
+        "type": "css_combined",
+        "selector": "page.locator('a.link')",
+        "priority": "medium"
+      },
+      {
+        "type": "coordinates",
+        "selector": "page.mouse.click(121, 32)",
+        "priority": "low"
+      }
+    ],
+    "interaction_suggestions": [
+      "click()",
+      "bounding_box()",
+      "is_enabled()",
+      "focus()",
+      "hover()",
+      "is_visible()",
+      "screenshot()"
+    ]
+  },
+  {
+    "annotation_id": 11,
+    "element_info": {
+      "name": "Open Tooltip: This feature is available on Goog...",
+      "name_raw": "Open Tooltip: This feature is available on Google Workspace Business and Enterprise plans.",
+      "role": "button",
+      "value": "",
+      "tag_name": "a",
+      "type": "",
+      "id": "",
+      "class_name": "link header__logo link--image",
+      "href": "https://workspace.google.com/",
+      "disabled": false,
+      "checked": null,
+      "selected": null
+    },
+    "bounding_box": {
+      "x": 24,
+      "y": 19,
+      "width": 195,
+      "height": 27,
+      "center_x": 121,
+      "center_y": 32
+    },
+    "playwright_selectors": [
+      {
+        "type": "role_and_name",
+        "selector": "page.get_by_role('button', name='Open Tooltip: This feature is available on Goog...')",
+        "priority": "high"
+      },
+      {
+        "type": "aria_label",
+        "selector": "page.get_by_label('Open Tooltip: This feature is available on Goog...')",
+        "priority": "high"
+      },
+      {
+        "type": "text",
+        "selector": "page.get_by_text('Open Tooltip: This feature is available on Goog...')",
+        "priority": "medium"
+      },
+      {
+        "type": "css_combined",
+        "selector": "page.locator('a.link')",
+        "priority": "medium"
+      },
+      {
+        "type": "coordinates",
+        "selector": "page.mouse.click(121, 32)",
+        "priority": "low"
+      }
+    ],
+    "interaction_suggestions": [
+      "click()",
+      "bounding_box()",
+      "is_enabled()",
+      "focus()",
+      "hover()",
+      "is_visible()",
+      "screenshot()"
+    ]
+  },
+  {
+    "annotation_id": 12,
+    "element_info": {
+      "name": "Visit the Google Workspace help center (new tab)",
+      "name_raw": "Visit the Google Workspace help center (new tab)",
+      "role": "link",
+      "value": "",
+      "tag_name": "a",
+      "type": "",
+      "id": "",
+      "class_name": "link header__logo link--image",
+      "href": "https://workspace.google.com/",
+      "disabled": false,
+      "checked": null,
+      "selected": null
+    },
+    "bounding_box": {
+      "x": 24,
+      "y": 19,
+      "width": 195,
+      "height": 27,
+      "center_x": 121,
+      "center_y": 32
+    },
+    "playwright_selectors": [
+      {
+        "type": "role_and_name",
+        "selector": "page.get_by_role('link', name='Visit the Google Workspace help center (new tab)')",
+        "priority": "high"
+      },
+      {
+        "type": "aria_label",
+        "selector": "page.get_by_label('Visit the Google Workspace help center (new tab)')",
+        "priority": "high"
+      },
+      {
+        "type": "text",
+        "selector": "page.get_by_text('Visit the Google Workspace help center (new tab)')",
+        "priority": "medium"
+      },
+      {
+        "type": "css_combined",
+        "selector": "page.locator('a.link')",
+        "priority": "medium"
+      },
+      {
+        "type": "coordinates",
+        "selector": "page.mouse.click(121, 32)",
+        "priority": "low"
+      }
+    ],
+    "interaction_suggestions": [
+      "click()",
+      "bounding_box()",
+      "is_enabled()",
+      "hover()",
+      "is_visible()",
+      "screenshot()"
+    ]
+  },
+  {
+    "annotation_id": 13,
+    "element_info": {
+      "name": "Reach out to the Google Workspace support team ...",
+      "name_raw": "Reach out to the Google Workspace support team (new tab)",
+      "role": "link",
+      "value": "",
+      "tag_name": "a",
+      "type": "",
+      "id": "",
+      "class_name": "link header__logo link--image",
+      "href": "https://workspace.google.com/",
+      "disabled": false,
+      "checked": null,
+      "selected": null
+    },
+    "bounding_box": {
+      "x": 24,
+      "y": 19,
+      "width": 195,
+      "height": 27,
+      "center_x": 121,
+      "center_y": 32
+    },
+    "playwright_selectors": [
+      {
+        "type": "role_and_name",
+        "selector": "page.get_by_role('link', name='Reach out to the Google Workspace support team ...')",
+        "priority": "high"
+      },
+      {
+        "type": "aria_label",
+        "selector": "page.get_by_label('Reach out to the Google Workspace support team ...')",
+        "priority": "high"
+      },
+      {
+        "type": "text",
+        "selector": "page.get_by_text('Reach out to the Google Workspace support team ...')",
+        "priority": "medium"
+      },
+      {
+        "type": "css_combined",
+        "selector": "page.locator('a.link')",
+        "priority": "medium"
+      },
+      {
+        "type": "coordinates",
+        "selector": "page.mouse.click(121, 32)",
+        "priority": "low"
+      }
+    ],
+    "interaction_suggestions": [
+      "click()",
+      "bounding_box()",
+      "is_enabled()",
+      "hover()",
+      "is_visible()",
+      "screenshot()"
+    ]
+  },
+  {
+    "annotation_id": 14,
+    "element_info": {
+      "name": "A row of icons displaying Google Workspace prod...",
+      "name_raw": "A row of icons displaying Google Workspace products.",
+      "role": "image",
+      "value": "",
+      "tag_name": "a",
+      "type": "",
+      "id": "",
+      "class_name": "link header__logo link--image",
+      "href": "https://workspace.google.com/",
+      "disabled": false,
+      "checked": null,
+      "selected": null
+    },
+    "bounding_box": {
+      "x": 24,
+      "y": 19,
+      "width": 195,
+      "height": 27,
+      "center_x": 121,
+      "center_y": 32
+    },
+    "playwright_selectors": [
+      {
+        "type": "role_and_name",
+        "selector": "page.get_by_role('image', name='A row of icons displaying Google Workspace prod...')",
+        "priority": "high"
+      },
+      {
+        "type": "aria_label",
+        "selector": "page.get_by_label('A row of icons displaying Google Workspace prod...')",
+        "priority": "high"
+      },
+      {
+        "type": "text",
+        "selector": "page.get_by_text('A row of icons displaying Google Workspace prod...')",
+        "priority": "medium"
+      },
+      {
+        "type": "css_combined",
+        "selector": "page.locator('a.link')",
+        "priority": "medium"
+      },
+      {
+        "type": "coordinates",
+        "selector": "page.mouse.click(121, 32)",
+        "priority": "low"
+      }
+    ],
+    "interaction_suggestions": [
+      "click()",
+      "bounding_box()",
+      "is_enabled()",
+      "hover()",
+      "is_visible()",
+      "screenshot()"
+    ]
+  },
+  {
+    "annotation_id": 15,
+    "element_info": {
+      "name": "Solutions",
+      "name_raw": "Solutions",
+      "role": "heading",
+      "value": "",
+      "tag_name": "div",
+      "type": "",
+      "id": "",
+      "class_name": "header__nav__group__subsections__container__left__header__title",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null
+    },
+    "bounding_box": {
+      "x": 297,
+      "y": 100,
+      "width": 76,
+      "height": 18,
+      "center_x": 335,
+      "center_y": 109
+    },
+    "playwright_selectors": [
+      {
+        "type": "role_and_name",
+        "selector": "page.get_by_role('heading', name='Solutions')",
+        "priority": "high"
+      },
+      {
+        "type": "aria_label",
+        "selector": "page.get_by_label('Solutions')",
+        "priority": "high"
+      },
+      {
+        "type": "css_combined",
+        "selector": "page.locator('div.header__nav__group__subsections__container__left__header__title')",
+        "priority": "medium"
+      },
+      {
+        "type": "coordinates",
+        "selector": "page.mouse.click(335, 109)",
+        "priority": "low"
+      }
+    ],
+    "interaction_suggestions": [
+      "is_enabled()",
+      "bounding_box()",
+      "is_visible()",
+      "screenshot()"
+    ]
+  },
+  {
+    "annotation_id": 16,
+    "element_info": {
+      "name": "Enterprise",
+      "name_raw": "Enterprise",
+      "role": "link",
+      "value": "",
+      "tag_name": "a",
+      "type": "",
+      "id": "",
+      "class_name": "header__nav__group__subsections__container__left__subsections__subsection__items__item",
+      "href": "https://workspace.google.com/intl/en-US/enterprise/",
+      "disabled": false,
+      "checked": null,
+      "selected": null
+    },
+    "bounding_box": {
+      "x": 467,
+      "y": 235,
+      "width": 73,
+      "height": 103,
+      "center_x": 503,
+      "center_y": 286
+    },
+    "playwright_selectors": [
+      {
+        "type": "role_and_name",
+        "selector": "page.get_by_role('link', name='Enterprise')",
+        "priority": "high"
+      },
+      {
+        "type": "aria_label",
+        "selector": "page.get_by_label('Enterprise')",
+        "priority": "high"
+      },
+      {
+        "type": "text",
+        "selector": "page.get_by_text('Enterprise')",
+        "priority": "medium"
+      },
+      {
+        "type": "css_combined",
+        "selector": "page.locator('a.header__nav__group__subsections__container__left__subsections__subsection__items__item')",
+        "priority": "medium"
+      },
+      {
+        "type": "coordinates",
+        "selector": "page.mouse.click(503, 286)",
+        "priority": "low"
+      }
+    ],
+    "interaction_suggestions": [
+      "click()",
+      "bounding_box()",
+      "is_enabled()",
+      "hover()",
+      "is_visible()",
+      "screenshot()"
+    ]
+  },
+  {
+    "annotation_id": 17,
+    "element_info": {
+      "name": "Resources",
+      "name_raw": "Resources",
+      "role": "heading",
+      "value": "",
+      "tag_name": "div",
+      "type": "",
+      "id": "",
+      "class_name": "header__nav__group__subsections__container__left__header__title",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null
+    },
+    "bounding_box": {
+      "x": 718,
+      "y": 108,
+      "width": 87,
+      "height": 18,
+      "center_x": 761,
+      "center_y": 117
+    },
+    "playwright_selectors": [
+      {
+        "type": "role_and_name",
+        "selector": "page.get_by_role('heading', name='Resources')",
+        "priority": "high"
+      },
+      {
+        "type": "aria_label",
+        "selector": "page.get_by_label('Resources')",
+        "priority": "high"
+      },
+      {
+        "type": "css_combined",
+        "selector": "page.locator('div.header__nav__group__subsections__container__left__header__title')",
+        "priority": "medium"
+      },
+      {
+        "type": "coordinates",
+        "selector": "page.mouse.click(761, 117)",
+        "priority": "low"
+      }
+    ],
+    "interaction_suggestions": [
+      "is_enabled()",
+      "bounding_box()",
+      "is_visible()",
+      "screenshot()"
+    ]
+  },
+  {
+    "annotation_id": 18,
+    "element_info": {
+      "name": "Google Workspace Dashboard",
+      "name_raw": "Google Workspace Dashboard",
+      "role": "link",
+      "value": "",
+      "tag_name": "a",
+      "type": "",
+      "id": "",
+      "class_name": "link header__logo link--image",
+      "href": "https://workspace.google.com/",
+      "disabled": false,
+      "checked": null,
+      "selected": null
+    },
+    "bounding_box": {
+      "x": 24,
+      "y": 19,
+      "width": 195,
+      "height": 27,
+      "center_x": 121,
+      "center_y": 32
+    },
+    "playwright_selectors": [
+      {
+        "type": "role_and_name",
+        "selector": "page.get_by_role('link', name='Google Workspace Dashboard')",
+        "priority": "high"
+      },
+      {
+        "type": "aria_label",
+        "selector": "page.get_by_label('Google Workspace Dashboard')",
+        "priority": "high"
+      },
+      {
+        "type": "text",
+        "selector": "page.get_by_text('Google Workspace Dashboard')",
+        "priority": "medium"
+      },
+      {
+        "type": "css_combined",
+        "selector": "page.locator('a.link')",
+        "priority": "medium"
+      },
+      {
+        "type": "coordinates",
+        "selector": "page.mouse.click(121, 32)",
+        "priority": "low"
+      }
+    ],
+    "interaction_suggestions": [
+      "click()",
+      "bounding_box()",
+      "is_enabled()",
+      "hover()",
+      "is_visible()",
+      "screenshot()"
+    ]
+  },
+  {
+    "annotation_id": 19,
+    "element_info": {
+      "name": "What\\'s New in Google Workspace",
+      "name_raw": "What's New in Google Workspace",
+      "role": "link",
+      "value": "",
+      "tag_name": "a",
+      "type": "",
+      "id": "",
+      "class_name": "link header__logo link--image",
+      "href": "https://workspace.google.com/",
+      "disabled": false,
+      "checked": null,
+      "selected": null
+    },
+    "bounding_box": {
+      "x": 24,
+      "y": 19,
+      "width": 195,
+      "height": 27,
+      "center_x": 121,
+      "center_y": 32
+    },
+    "playwright_selectors": [
+      {
+        "type": "role_and_name",
+        "selector": "page.get_by_role('link', name='What\\'s New in Google Workspace')",
+        "priority": "high"
+      },
+      {
+        "type": "aria_label",
+        "selector": "page.get_by_label('What\\'s New in Google Workspace')",
+        "priority": "high"
+      },
+      {
+        "type": "text",
+        "selector": "page.get_by_text('What\\'s New in Google Workspace')",
+        "priority": "medium"
+      },
+      {
+        "type": "css_combined",
+        "selector": "page.locator('a.link')",
+        "priority": "medium"
+      },
+      {
+        "type": "coordinates",
+        "selector": "page.mouse.click(121, 32)",
+        "priority": "low"
+      }
+    ],
+    "interaction_suggestions": [
+      "click()",
+      "bounding_box()",
+      "is_enabled()",
+      "hover()",
+      "is_visible()",
+      "screenshot()"
+    ]
+  },
+  {
+    "annotation_id": 20,
+    "element_info": {
+      "name": "Find a Google Workspace Partner",
+      "name_raw": "Find a Google Workspace Partner",
+      "role": "link",
+      "value": "",
+      "tag_name": "a",
+      "type": "",
+      "id": "",
+      "class_name": "link header__logo link--image",
+      "href": "https://workspace.google.com/",
+      "disabled": false,
+      "checked": null,
+      "selected": null
+    },
+    "bounding_box": {
+      "x": 24,
+      "y": 19,
+      "width": 195,
+      "height": 27,
+      "center_x": 121,
+      "center_y": 32
+    },
+    "playwright_selectors": [
+      {
+        "type": "role_and_name",
+        "selector": "page.get_by_role('link', name='Find a Google Workspace Partner')",
+        "priority": "high"
+      },
+      {
+        "type": "aria_label",
+        "selector": "page.get_by_label('Find a Google Workspace Partner')",
+        "priority": "high"
+      },
+      {
+        "type": "text",
+        "selector": "page.get_by_text('Find a Google Workspace Partner')",
+        "priority": "medium"
+      },
+      {
+        "type": "css_combined",
+        "selector": "page.locator('a.link')",
+        "priority": "medium"
+      },
+      {
+        "type": "coordinates",
+        "selector": "page.mouse.click(121, 32)",
+        "priority": "low"
+      }
+    ],
+    "interaction_suggestions": [
+      "click()",
+      "bounding_box()",
+      "is_enabled()",
+      "hover()",
+      "is_visible()",
+      "screenshot()"
+    ]
+  },
+  {
+    "annotation_id": 21,
+    "element_info": {
+      "name": "Hi there 👋 What brings you to Google Workspace ...",
+      "name_raw": "Hi there 👋 What brings you to Google Workspace today?",
+      "role": "text",
+      "value": "",
+      "tag_name": "a",
+      "type": "",
+      "id": "",
+      "class_name": "link header__logo link--image",
+      "href": "https://workspace.google.com/",
+      "disabled": false,
+      "checked": null,
+      "selected": null
+    },
+    "bounding_box": {
+      "x": 24,
+      "y": 19,
+      "width": 195,
+      "height": 27,
+      "center_x": 121,
+      "center_y": 32
+    },
+    "playwright_selectors": [
+      {
+        "type": "role_and_name",
+        "selector": "page.get_by_role('text', name='Hi there 👋 What brings you to Google Workspace ...')",
+        "priority": "high"
+      },
+      {
+        "type": "aria_label",
+        "selector": "page.get_by_label('Hi there 👋 What brings you to Google Workspace ...')",
+        "priority": "high"
+      },
+      {
+        "type": "text",
+        "selector": "page.get_by_text('Hi there 👋 What brings you to Google Workspace ...')",
+        "priority": "medium"
+      },
+      {
+        "type": "css_combined",
+        "selector": "page.locator('a.link')",
+        "priority": "medium"
+      },
+      {
+        "type": "coordinates",
+        "selector": "page.mouse.click(121, 32)",
+        "priority": "low"
+      }
+    ],
+    "interaction_suggestions": [
+      "click()",
+      "bounding_box()",
+      "is_enabled()",
+      "hover()",
+      "is_visible()",
+      "screenshot()"
+    ]
+  },
+  {
+    "annotation_id": 22,
+    "element_info": {
+      "name": "Chat with us",
+      "name_raw": "Chat with us",
+      "role": "button",
+      "value": "",
+      "tag_name": "div",
+      "type": "",
+      "id": "cloud-chatbot-container",
+      "class_name": "",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null
+    },
+    "bounding_box": {
+      "x": 1824,
+      "y": 1000,
+      "width": 56,
+      "height": 56,
+      "center_x": 1852,
+      "center_y": 1028
+    },
+    "playwright_selectors": [
+      {
+        "type": "role_and_name",
+        "selector": "page.get_by_role('button', name='Chat with us')",
+        "priority": "high"
+      },
+      {
+        "type": "aria_label",
+        "selector": "page.get_by_label('Chat with us')",
+        "priority": "high"
+      },
+      {
+        "type": "css_id",
+        "selector": "page.locator('#cloud-chatbot-container')",
+        "priority": "high"
+      },
+      {
+        "type": "css_combined",
+        "selector": "page.locator('div')",
+        "priority": "medium"
+      },
+      {
+        "type": "coordinates",
+        "selector": "page.mouse.click(1852, 1028)",
+        "priority": "low"
+      }
+    ],
+    "interaction_suggestions": [
+      "click()",
+      "bounding_box()",
+      "is_enabled()",
+      "focus()",
+      "hover()",
+      "is_visible()",
+      "screenshot()"
+    ]
+  }
+]

@@ -969,7 +969,6 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                             break
                     is_del = 'delete' in current_goal.lower()
 
-<<<<<<< HEAD:pipeline_trajectory_generation.py
                     # Filter the accessibility tree for Gmail to remove inbox elements
                     if url and ('mail.google.com' in url or 'gmail.com' in url):
                         filtered_tree = filter_accessibility_tree(tree, url)
@@ -986,12 +985,10 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                     print(f"Tree size: {len(str(filtered_tree))} characters")
                     print(f"Full filtered tree:")
                     print(json.dumps(filtered_tree, indent=2))
-=======
                     # Prepare context with past trajectories
                     enhanced_context = ""
                     if trajectory_context:
                         enhanced_context = f"\n\n{trajectory_context}\n\n"
->>>>>>> 0428ef5094672442bfecded5455e7b84caaeea58:core/pipeline_trajectory_generation.py
                     
                     gpt_resp = chat_ai_playwright_code(
                         accessibility_tree=filtered_tree,
@@ -1135,7 +1132,6 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 with open(axtree_file, 'w', encoding='utf-8') as f:
                                     json.dump(tree, f, indent=2, ensure_ascii=False)
                                 error_log = str(e)
-<<<<<<< HEAD:pipeline_trajectory_generation.py
                                 print(f"📝 Error log: {error_log}")
                                                                 # Filter the accessibility tree for Gmail to remove inbox elements
                                 if url and ('mail.google.com' in url or 'gmail.com' in url):
@@ -1157,20 +1153,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                         failed_codes=failed_codes,
                                         is_deletion_task=is_del,
                                         url=url,
-                                        error_log=error_log
-=======
-                                gpt_resp = chat_ai_playwright_code(
-                                        accessibility_tree=tree,
-                                    previous_steps=execution_history,
-                                    taskGoal=aug,
-                                    taskPlan=current_goal,
-                                    image_path=screenshot,
-                                    failed_codes=failed_codes,
-                                    is_deletion_task=is_del,
-                                    url=url,
-                                    error_log=error_log,
-                                    trajectory_context=enhanced_context
->>>>>>> 0428ef5094672442bfecded5455e7b84caaeea58:core/pipeline_trajectory_generation.py
+                                        error_log=error_log,
+                                        trajectory_context=enhanced_context
                                 )
                                 # Update total tokens from retry response
                                 if gpt_resp and "total_tokens" in gpt_resp:

@@ -347,8 +347,6 @@ class EnhancedInteractionLogger:
             window.interactionLogs = [];
             window.lastInteractionElement = null;
             
-<<<<<<< HEAD
-=======
             // Function to capture essential element properties
             function getEssentialElementProperties(element) {
                 const rect = element.getBoundingClientRect();
@@ -395,7 +393,6 @@ class EnhancedInteractionLogger:
                 };
             }
             
->>>>>>> 0428ef5094672442bfecded5455e7b84caaeea58
             // Function to get accessibility tree
             function getAccessibilityTree() {
                 const tree = [];
@@ -537,13 +534,7 @@ class EnhancedInteractionLogger:
             window.clickListener = function(e) {
                 const element = e.target;
                 const selectors = generateSelectors(element);
-<<<<<<< HEAD
-                
-                // Get bounding box
-                const rect = element.getBoundingClientRect();
-=======
                 const essentialProperties = getEssentialElementProperties(element);
->>>>>>> 0428ef5094672442bfecded5455e7b84caaeea58
                 
                 const clickData = {
                     type: 'click',
@@ -557,17 +548,8 @@ class EnhancedInteractionLogger:
                     url: window.location.href,
                     pageTitle: document.title,
                     selectors: selectors,
-<<<<<<< HEAD
-                    bbox: {
-                        x: rect.x,
-                        y: rect.y,
-                        width: rect.width,
-                        height: rect.height
-                    }
-=======
                     bbox: essentialProperties.bbox,
                     essentialProperties: essentialProperties
->>>>>>> 0428ef5094672442bfecded5455e7b84caaeea58
                 };
                 window.interactionLogs.push(clickData);
                 window.lastInteractionElement = element;
@@ -593,11 +575,7 @@ class EnhancedInteractionLogger:
                 }
                 
                 const selectors = generateSelectors(element);
-<<<<<<< HEAD
-                const rect = element.getBoundingClientRect();
-=======
                 const essentialProperties = getEssentialElementProperties(element);
->>>>>>> 0428ef5094672442bfecded5455e7b84caaeea58
                 
                 const typingData = {
                     type: 'typing_complete',
@@ -609,17 +587,8 @@ class EnhancedInteractionLogger:
                     url: window.location.href,
                     pageTitle: document.title,
                     selectors: selectors,
-<<<<<<< HEAD
-                    bbox: {
-                        x: rect.x,
-                        y: rect.y,
-                        width: rect.width,
-                        height: rect.height
-                    }
-=======
                     bbox: essentialProperties.bbox,
                     essentialProperties: essentialProperties
->>>>>>> 0428ef5094672442bfecded5455e7b84caaeea58
                 };
                 window.interactionLogs.push(typingData);
                 window.lastInteractionElement = element;
@@ -2022,7 +1991,7 @@ class EnhancedInteractionLogger:
             # Validation (for error handling)
             "validation_state": essential_props.get("validationState", "valid"),
             "error_message": essential_props.get("errorMessage", interaction_data.get("errorMessage", ""))
-        }
+            }
         
         return {
             "action_str": action_str,
