@@ -379,6 +379,29 @@ class GraphRAGClient(KnowledgeBaseClient):
             logger.error(f"❌ Error formatting enhanced context: {e}")
             return "=== ERROR FORMATTING CONTEXT ==="
     
+    def _extract_platform_name_from_url(self, url: str) -> str:
+        """Extract platform name from URL for better trajectory differentiation."""
+        if not url:
+            return "Unknown Platform"
+        
+        # Remove protocol and www
+        clean_url = url.replace("https://", "").replace("http://", "").replace("www.", "")
+        
+        # Extract domain and path
+        url_parts = clean_url.split("/")
+        domain = url_parts[0].lower()
+        path = "/".join(url_parts[1:]).lower() if len(url_parts) > 1 else ""
+        
+        # For Google services, construct the full subdomain
+        if domain == "google.com" and path:
+            # Take the first part of the path and append .google.com
+            first_path_part = path.split("/")[0]
+            if first_path_part:
+                return f"{first_path_part}.google.com"
+        
+        # Return the actual domain name
+        return domain
+
     def _get_enhanced_search_config(self):
         """Get enhanced search configuration for Graphiti."""
         try:
@@ -494,10 +517,15 @@ class GraphRAGClient(KnowledgeBaseClient):
                 steps = trajectory_data.get('steps', [])
                 codes = trajectory_data.get('codes', [])
                 metadata = trajectory_data.get('metadata', {})
+                url = metadata.get('start_url', '')
+                
+                # Extract platform name and append to goal
+                platform_name = self._extract_platform_name_from_url(url)
+                enhanced_goal = f"{goal} in {platform_name}"
                 
                 # Create trajectory node
                 trajectory_node = EntityNode(
-                    name=goal,
+                    name=enhanced_goal,
                     group_id=self.group_id,
                     labels=['Trajectory'],
                     summary=f"Trajectory with {len(steps)} steps",

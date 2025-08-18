@@ -1255,6 +1255,9 @@ class EnhancedInteractionLogger:
                     "action_timestamp": time.time()
                 }
                 
+                # Save trajectory data incrementally for live updates
+                await self._save_trajectory_incrementally()
+                
                 # Print real-time feedback with Playwright selectors and URL
                 url = interaction_data.get('url', 'Unknown URL')
                 print(f"🌐 URL: {url}")
@@ -1988,15 +1991,75 @@ class EnhancedInteractionLogger:
             # Validation (for error handling)
             "validation_state": essential_props.get("validationState", "valid"),
             "error_message": essential_props.get("errorMessage", interaction_data.get("errorMessage", ""))
-        }
+            }
         
         return {
             "action_str": action_str,
             "playwright_code": playwright_code,
             "action_description": action_description,
-            "action_output": action_output,
-            "element_properties": element_properties
+            "action_output": action_output
         }
+    
+    async def _save_trajectory_incrementally(self):
+        """Save trajectory data incrementally for live updates"""
+        try:
+            trajectory_json = self.session_dir / "trajectory.json"
+            with open(trajectory_json, 'w') as f:
+                json.dump(self.trajectory_data, f, indent=2)
+            print(f"📝 Live trajectory update: {len(self.trajectory_data)} steps")
+        except Exception as e:
+            print(f"⚠️ Error saving trajectory incrementally: {e}")
+    
+    def _generate_notes_html(self, notes, is_general=False):
+        """Generate HTML for displaying notes"""
+        if not notes:
+            return ""
+        
+        # Generate unique ID for this notes section
+        import random
+        section_id = f"notes_{random.randint(1000, 9999)}"
+        
+        note_count_text = "(General)" if is_general else f"({len(notes)} note{'s' if len(notes) != 1 else ''})"
+        
+        notes_html = f"""
+                <div class="notes-section">
+                    <h4 onclick="toggleNotes('{section_id}')">
+                        📝 Notes {note_count_text}
+                        <span class="expand-icon" id="icon_{section_id}">▼</span>
+                    </h4>
+                    <div class="notes-container" id="{section_id}">
+"""
+        
+        for note in notes:
+            timestamp = note.get('timestamp', '')
+            note_text = note.get('note', '')
+            
+            # Format timestamp
+            try:
+                from datetime import datetime
+                dt = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
+                formatted_time = dt.strftime('%Y-%m-%d %H:%M:%S')
+            except:
+                formatted_time = timestamp
+            
+            # Escape HTML characters in note text
+            import html
+            escaped_note = html.escape(note_text)
+            
+            note_class = "general-note" if is_general or not note.get('step_id') else ""
+            
+            notes_html += f"""
+                        <div class="note-item {note_class}">
+                            <div class="note-timestamp">{formatted_time}</div>
+                            <div class="note-text">{escaped_note}</div>
+                        </div>
+"""
+        
+        notes_html += """
+                    </div>
+                </div>
+"""
+        return notes_html
     
     async def _save_logs(self):
         """Save all logged interactions to a JSON file"""
@@ -2104,6 +2167,14 @@ class EnhancedInteractionLogger:
                 
             with open(trajectory_file, 'r') as f:
                 trajectory_data = json.load(f)
+            
+            # Read notes data if available
+            notes_file = self.session_dir / "notes.json"
+            notes_data = []
+            if notes_file.exists():
+                with open(notes_file, 'r') as f:
+                    notes_data = json.load(f)
+                print(f"📝 Found {len(notes_data)} notes for HTML report")
             
             # Generate HTML content
             html_content = f"""
@@ -2220,6 +2291,103 @@ class EnhancedInteractionLogger:
         .button:hover {{
             background-color: #0056b3;
         }}
+        .notes-section {{
+            background-color: #f8f9fa;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 6px;
+        }}
+        .notes-section h4 {{
+            margin-top: 0;
+            color: #28a745;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }}
+        .notes-section h4:hover {{
+            color: #1e7e34;
+        }}
+        .notes-container {{
+            max-height: 200px;
+            overflow-y: auto;
+            transition: max-height 0.3s ease;
+            scrollbar-width: thin;
+            scrollbar-color: #28a745 #f8f9fa;
+        }}
+        .notes-container::-webkit-scrollbar {{
+            width: 6px;
+        }}
+        .notes-container::-webkit-scrollbar-track {{
+            background: #f8f9fa;
+            border-radius: 3px;
+        }}
+        .notes-container::-webkit-scrollbar-thumb {{
+            background: #28a745;
+            border-radius: 3px;
+        }}
+        .notes-container::-webkit-scrollbar-thumb:hover {{
+            background: #1e7e34;
+        }}
+        .notes-container.collapsed {{
+            max-height: 0;
+            overflow: hidden;
+        }}
+        .expand-icon {{
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }}
+        .expand-icon.expanded {{
+            transform: rotate(180deg);
+        }}
+        .note-item {{
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-left: 3px solid #28a745;
+        }}
+        .note-item:last-child {{
+            margin-bottom: 0;
+        }}
+        .note-timestamp {{
+            font-size: 12px;
+            color: #6c757d;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }}
+        .note-text {{
+            font-size: 14px;
+            color: #333;
+            line-height: 1.4;
+            margin-bottom: 5px;
+        }}
+        .note-step-info {{
+            background: #e7f3ff;
+            color: #0366d6;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            display: inline-block;
+            margin-top: 5px;
+        }}
+        .general-note {{
+            border-left-color: #17a2b8;
+        }}
+        .general-note .note-step-info {{
+            background: #d1ecf1;
+            color: #0c5460;
+        }}
+        .no-notes {{
+            color: #6c757d;
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+        }}
     </style>
 </head>
 <body>
@@ -2227,6 +2395,7 @@ class EnhancedInteractionLogger:
         <h1>🎯 Trajectory Report</h1>
         <p><strong>Session ID:</strong> {self.session_id}</p>
         <p><strong>Total Steps:</strong> {len(trajectory_data)}</p>
+        <p><strong>Total Notes:</strong> {len(notes_data)}</p>
         <p><strong>Generated:</strong> {time.strftime('%Y-%m-%d %H:%M:%S')}</p>
     </div>
     
@@ -2235,8 +2404,27 @@ class EnhancedInteractionLogger:
         <button class="button" onclick="collapseAll()">Collapse All</button>
         <button class="button" onclick="showImages()">Show Images</button>
         <button class="button" onclick="hideImages()">Hide Images</button>
+        <button class="button" onclick="showNotes()">Show Notes</button>
+        <button class="button" onclick="hideNotes()">Hide Notes</button>
     </div>
 """
+            
+            # Helper function to filter notes for a specific step
+            def get_step_notes(step_id):
+                """Get notes that are attached to a specific step"""
+                step_notes = []
+                for note in notes_data:
+                    if note.get('step_id') == step_id:
+                        step_notes.append(note)
+                return step_notes
+            
+            def get_general_notes():
+                """Get notes that are not attached to any specific step"""
+                general_notes = []
+                for note in notes_data:
+                    if not note.get('step_id'):
+                        general_notes.append(note)
+                return general_notes
             
             # Add each step
             for step_num, step_data in trajectory_data.items():
@@ -2327,6 +2515,24 @@ class EnhancedInteractionLogger:
                     </select>
                     <div id="usermessage-{step_num}" class="json-viewer" style="display: none;"></div>
                 </div>
+                
+                {self._generate_notes_html(get_step_notes(step_num))}
+            </div>
+        </div>
+    </div>
+"""
+            
+            # Add general notes section at the end
+            general_notes = get_general_notes()
+            if general_notes:
+                html_content += f"""
+    <div class="step">
+        <div class="step-header">
+            📝 General Notes (Not Attached to Specific Steps)
+        </div>
+        <div class="content-row">
+            <div class="data-section" style="width: 100%;">
+                {self._generate_notes_html(general_notes, is_general=True)}
             </div>
         </div>
     </div>
@@ -2399,6 +2605,35 @@ class EnhancedInteractionLogger:
             images.forEach(img => {
                 img.style.display = 'none';
             });
+        }
+        
+        function showNotes() {
+            const notes = document.querySelectorAll('.notes-section');
+            notes.forEach(note => {
+                note.style.display = 'block';
+            });
+        }
+        
+        function hideNotes() {
+            const notes = document.querySelectorAll('.notes-section');
+            notes.forEach(note => {
+                note.style.display = 'none';
+            });
+        }
+        
+        function toggleNotes(sectionId) {
+            const container = document.getElementById(sectionId);
+            const icon = document.getElementById(`icon_${sectionId}`);
+            
+            if (container.classList.contains('collapsed')) {
+                container.classList.remove('collapsed');
+                icon.textContent = '▼';
+                icon.classList.add('expanded');
+            } else {
+                container.classList.add('collapsed');
+                icon.textContent = '▶';
+                icon.classList.remove('expanded');
+            }
         }
     </script>
 </body>

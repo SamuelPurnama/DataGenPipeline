@@ -2,7 +2,13 @@ import os
 import json
 from typing import Dict, List, Tuple, Set
 from datetime import datetime
-from config import RESULTS_DIR
+
+# Try to import from config, fallback to default
+try:
+    from config import RESULTS_DIR
+except ImportError:
+    # Fallback if config module not found
+    RESULTS_DIR = "data/results"
 
 # Cost configuration
 COST_PER_1K_TOKENS = 0.003

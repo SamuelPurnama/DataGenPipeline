@@ -4,6 +4,7 @@ Simple UI - Just starts recorderSystem.py with a button click
 """
 
 import asyncio
+import os
 import subprocess
 import sys
 import webbrowser
@@ -262,6 +263,177 @@ class SimpleUI:
             max-height: 50vh;
             overflow-y: auto;
         }
+        
+        /* Note Taking Styles */
+        .note-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .note-section h3 {
+            margin-bottom: 15px;
+            color: #333;
+            text-align: center;
+        }
+        
+        .note-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .step-selector {
+            margin-bottom: 10px;
+        }
+        
+        .step-selector label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .step-selector select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 6px;
+            font-size: 14px;
+            background: white;
+            color: #333;
+        }
+        
+        .step-selector select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .note-input-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .note-input-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .button.note-btn {
+            align-self: flex-start;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            margin: 0;
+        }
+        
+        .note-status {
+            margin-top: 10px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            display: none;
+        }
+        
+        .note-status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        
+        .note-status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        
+        .notes-display {
+            margin-top: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .note-item {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 8px;
+        }
+        
+        .note-timestamp {
+            font-size: 12px;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+        
+        .note-text {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.4;
+        }
+        
+        .note-with-step {
+            border-left: 3px solid #667eea;
+        }
+        
+        .note-step-info {
+            margin-bottom: 8px;
+        }
+        
+        .step-tag {
+            display: inline-block;
+            background: #e7f3ff;
+            color: #0366d6;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid #b8daff;
+        }
+        
+        .button.add-notes {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+        
+        .button.add-notes:hover {
+            transform: translateY(-2px);
+        }
+        
+        .live-indicator {
+            font-size: 12px;
+            font-weight: 600;
+            color: #dc3545;
+            animation: pulse 2s infinite;
+            margin-left: 10px;
+        }
+        
+        .step-count {
+            font-size: 12px;
+            color: #28a745;
+            font-weight: 500;
+            margin-left: 5px;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
     </style>
 </head>
 <body>
@@ -286,11 +458,29 @@ class SimpleUI:
             <span id="statusText">Ready to start recording</span>
         </div>
         
+        <!-- Note Taking Section -->
+        <div id="noteSection" class="note-section" style="display: none;">
+            <h3>📝 Add Notes <span id="liveIndicator" class="live-indicator">🔴 LIVE</span></h3>
+            <div class="note-input-group">
+                <div class="step-selector">
+                    <label for="stepDropdown">Attach to Step (Optional): <span id="stepCount" class="step-count">0 steps</span></label>
+                    <select id="stepDropdown">
+                        <option value="">General note (not attached to any step)</option>
+                        <option value="" disabled>Loading steps...</option>
+                    </select>
+                </div>
+                <textarea id="noteInput" placeholder="Add a note about what you're doing... (Ctrl+Enter to submit)" rows="3"></textarea>
+                <button type="button" class="button note-btn" onclick="addNote()">💾 Add Note</button>
+            </div>
+            <div id="noteStatus" class="note-status"></div>
+        </div>
+        
         <div class="info">
             <strong>How it works:</strong><br>
             • Click "Start Recording" to run <code>python recorderSystem.py --url [your-url]</code><br>
             • Browser will open and start recording<br>
             • All logs, screenshots, and data saved to <code>data/interaction_logs/</code><br>
+            • <strong>Live Notes:</strong> Add notes during recording - step dropdown updates in real-time!<br>
             • Press Ctrl+C in terminal or click "Stop Recording" to stop
         </div>
         
@@ -305,6 +495,8 @@ class SimpleUI:
             <div id="sessionDetails"></div>
             <button type="button" class="button delete" id="deleteBtn" onclick="deleteSession()" style="display: none;">🗑️ Delete Session</button>
             <button type="button" class="button view" id="viewTrajectoryBtn" onclick="viewTrajectory()" style="display: none;">📄 View Trajectory</button>
+            <button type="button" class="button add-notes" id="addNotesBtn" onclick="showAddNotesModal()" style="display: none;">📝 Add Notes</button>
+            <div id="sessionNotesDisplay" class="notes-display" style="display: none;"></div>
         </div>
         
         <!-- Trajectory Modal -->
@@ -316,6 +508,31 @@ class SimpleUI:
                 </div>
                 <div class="modal-body">
                     <pre id="trajectoryContent"></pre>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Add Notes Modal -->
+        <div id="addNotesModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>📝 Add Notes to Session</h3>
+                    <span class="close" onclick="closeAddNotesModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="note-input-group">
+                        <div class="step-selector">
+                            <label for="modalStepDropdown">Attach to Step (Optional):</label>
+                            <select id="modalStepDropdown">
+                                <option value="">General note (not attached to any step)</option>
+                                <option value="" disabled>Loading steps...</option>
+                            </select>
+                        </div>
+                        <textarea id="modalNoteInput" placeholder="Add a note about this session... (Ctrl+Enter to submit)" rows="4"></textarea>
+                        <button type="button" class="button note-btn" onclick="addNoteToSession()">💾 Add Note</button>
+                    </div>
+                    <div id="modalNoteStatus" class="note-status"></div>
+                    <div id="modalSessionNotes" class="notes-display"></div>
                 </div>
             </div>
         </div>
@@ -345,7 +562,7 @@ class SimpleUI:
                 if (result.success) {
                     isRecording = true;
                     updateUI();
-                    alert('🎯 Recording started! Check your terminal for output.');
+                    alert('🎯 Recording started! Check your terminal for output. You can now add notes during recording - the step dropdown will update live as you perform actions!');
                 } else {
                     alert(`❌ Failed to start recording: ${result.error}`);
                 }
@@ -417,6 +634,8 @@ class SimpleUI:
                 document.getElementById('sessionDetails').innerHTML = '';
                 document.getElementById('deleteBtn').style.display = 'none';
                 document.getElementById('viewTrajectoryBtn').style.display = 'none';
+                document.getElementById('addNotesBtn').style.display = 'none';
+                document.getElementById('sessionNotesDisplay').style.display = 'none';
                 currentSession = null;
                 return;
             }
@@ -428,6 +647,10 @@ class SimpleUI:
                 showSessionInfo(session);
                 document.getElementById('deleteBtn').style.display = 'inline-block';
                 document.getElementById('viewTrajectoryBtn').style.display = 'inline-block';
+                document.getElementById('addNotesBtn').style.display = 'inline-block';
+                
+                // Load and display notes for this session
+                await loadSessionNotes(session.name);
             }
         }
         
@@ -469,6 +692,8 @@ class SimpleUI:
                     document.getElementById('sessionDetails').innerHTML = '';
                     document.getElementById('deleteBtn').style.display = 'none';
                     document.getElementById('viewTrajectoryBtn').style.display = 'none';
+                    document.getElementById('addNotesBtn').style.display = 'none';
+                    document.getElementById('sessionNotesDisplay').style.display = 'none';
                     currentSession = null;
                     await loadAllSessions(); // Reload sessions after deletion
                 } else {
@@ -527,9 +752,14 @@ class SimpleUI:
         
         // Close modal when clicking outside
         window.onclick = function(event) {
-            const modal = document.getElementById('trajectoryModal');
-            if (event.target === modal) {
+            const trajectoryModal = document.getElementById('trajectoryModal');
+            const addNotesModal = document.getElementById('addNotesModal');
+            
+            if (event.target === trajectoryModal) {
                 closeTrajectoryModal();
+            }
+            if (event.target === addNotesModal) {
+                closeAddNotesModal();
             }
         }
         
@@ -537,25 +767,340 @@ class SimpleUI:
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeTrajectoryModal();
+                closeAddNotesModal();
             }
         });
+        
+        // Note-taking functions
+        async function addNote() {
+            const noteInput = document.getElementById('noteInput');
+            const stepDropdown = document.getElementById('stepDropdown');
+            const noteText = noteInput.value.trim();
+            const stepId = stepDropdown.value || null;
+            const noteStatus = document.getElementById('noteStatus');
+            
+            if (!noteText) {
+                showNoteStatus('Please enter a note text', 'error');
+                return;
+            }
+            
+            try {
+                const requestData = { note: noteText };
+                if (stepId) {
+                    requestData.stepId = stepId;
+                }
+                
+                const response = await fetch('/api/add-note', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(requestData)
+                });
+                
+                const result = await response.json();
+                if (result.success) {
+                    const stepText = stepId ? ' (attached to step)' : ' (general note)';
+                    showNoteStatus(`✅ Note added to ${result.session_name}${stepText}`, 'success');
+                    noteInput.value = '';
+                    stepDropdown.value = '';
+                } else {
+                    showNoteStatus(`❌ Error: ${result.error}`, 'error');
+                }
+            } catch (error) {
+                showNoteStatus(`❌ Error: ${error.message}`, 'error');
+            }
+        }
+        
+        function showNoteStatus(message, type) {
+            const noteStatus = document.getElementById('noteStatus');
+            noteStatus.textContent = message;
+            noteStatus.className = `note-status ${type}`;
+            
+            // Hide status after 3 seconds
+            setTimeout(() => {
+                noteStatus.style.display = 'none';
+            }, 3000);
+        }
+        
+        function showModalNoteStatus(message, type) {
+            const modalNoteStatus = document.getElementById('modalNoteStatus');
+            modalNoteStatus.textContent = message;
+            modalNoteStatus.className = `note-status ${type}`;
+            
+            // Hide status after 3 seconds
+            setTimeout(() => {
+                modalNoteStatus.style.display = 'none';
+            }, 3000);
+        }
+        
+        async function showAddNotesModal() {
+            if (!currentSession) {
+                alert('No session selected');
+                return;
+            }
+            
+            const modal = document.getElementById('addNotesModal');
+            const modalNoteInput = document.getElementById('modalNoteInput');
+            const modalStepDropdown = document.getElementById('modalStepDropdown');
+            
+            // Clear inputs
+            modalNoteInput.value = '';
+            modalStepDropdown.value = '';
+            
+            // Load trajectory steps for the dropdown
+            const steps = await loadTrajectorySteps(currentSession.name);
+            populateStepDropdown(steps, 'modalStepDropdown');
+            
+            // Load existing notes
+            await loadSessionNotes(currentSession.name);
+            
+            modal.style.display = 'block';
+        }
+        
+        function closeAddNotesModal() {
+            document.getElementById('addNotesModal').style.display = 'none';
+        }
+        
+        async function addNoteToSession() {
+            const modalNoteInput = document.getElementById('modalNoteInput');
+            const modalStepDropdown = document.getElementById('modalStepDropdown');
+            const noteText = modalNoteInput.value.trim();
+            const stepId = modalStepDropdown.value || null;
+            
+            if (!noteText) {
+                showModalNoteStatus('Please enter a note text', 'error');
+                return;
+            }
+            
+            if (!currentSession) {
+                showModalNoteStatus('No session selected', 'error');
+                return;
+            }
+            
+            try {
+                const requestData = { 
+                    note: noteText, 
+                    sessionName: currentSession.name 
+                };
+                if (stepId) {
+                    requestData.stepId = stepId;
+                }
+                
+                const response = await fetch('/api/add-note', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(requestData)
+                });
+                
+                const result = await response.json();
+                if (result.success) {
+                    const stepText = stepId ? ' (attached to step)' : ' (general note)';
+                    showModalNoteStatus(`✅ Note added successfully${stepText}`, 'success');
+                    modalNoteInput.value = '';
+                    modalStepDropdown.value = '';
+                    // Reload notes
+                    await loadSessionNotes(currentSession.name);
+                } else {
+                    showModalNoteStatus(`❌ Error: ${result.error}`, 'error');
+                }
+            } catch (error) {
+                showModalNoteStatus(`❌ Error: ${error.message}`, 'error');
+            }
+        }
+        
+        async function loadSessionNotes(sessionName) {
+            try {
+                const response = await fetch(`/api/notes/${sessionName}`);
+                const result = await response.json();
+                
+                if (result.success) {
+                    displaySessionNotes(result.notes, 'modalSessionNotes');
+                    // Also display in main session view if it's the current session
+                    if (currentSession && currentSession.name === sessionName) {
+                        displaySessionNotes(result.notes, 'sessionNotesDisplay');
+                        // Show the notes display section
+                        document.getElementById('sessionNotesDisplay').style.display = result.notes.length > 0 ? 'block' : 'none';
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading session notes:', error);
+            }
+        }
+        
+        function displaySessionNotes(notes, containerId) {
+            const container = document.getElementById(containerId);
+            
+            if (!notes || notes.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #6c757d; font-style: italic;">No notes yet</p>';
+                return;
+            }
+            
+            const notesHtml = notes.map(note => {
+                const timestamp = new Date(note.timestamp).toLocaleString();
+                
+                let stepInfo = '';
+                if (note.step_id) {
+                    const stepDescription = note.step_description || `Step ${note.step_id}`;
+                    stepInfo = `
+                        <div class="note-step-info">
+                            <span class="step-tag">📍 ${stepDescription}</span>
+                        </div>
+                    `;
+                }
+                
+                return `
+                    <div class="note-item ${note.step_id ? 'note-with-step' : ''}">
+                        <div class="note-timestamp">${timestamp}</div>
+                        ${stepInfo}
+                        <div class="note-text">${escapeHtml(note.note)}</div>
+                    </div>
+                `;
+            }).join('');
+            
+            container.innerHTML = notesHtml;
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        async function loadTrajectorySteps(sessionName) {
+            try {
+                const response = await fetch(`/api/trajectory-steps/${sessionName}`);
+                const result = await response.json();
+                
+                if (result.success) {
+                    return result.steps;
+                } else {
+                    console.error('Error loading trajectory steps:', result.error);
+                    return [];
+                }
+            } catch (error) {
+                console.error('Error loading trajectory steps:', error);
+                return [];
+            }
+        }
+        
+        function populateStepDropdown(steps, dropdownId) {
+            const dropdown = document.getElementById(dropdownId);
+            
+            // Clear existing options except the first one
+            dropdown.innerHTML = '<option value="">General note (not attached to any step)</option>';
+            
+            if (!steps || steps.length === 0) {
+                const option = document.createElement('option');
+                option.value = "";
+                option.textContent = "No trajectory steps found";
+                option.disabled = true;
+                dropdown.appendChild(option);
+                return;
+            }
+            
+            steps.forEach(step => {
+                const option = document.createElement('option');
+                option.value = step.id;
+                option.textContent = step.description;
+                dropdown.appendChild(option);
+            });
+        }
+        
+        let lastStepCount = 0;
+        
+        async function loadCurrentSessionSteps() {
+            try {
+                const response = await fetch('/api/current-session');
+                const result = await response.json();
+                
+                if (result.success && result.session_name) {
+                    const steps = await loadTrajectorySteps(result.session_name);
+                    
+                    // Only update dropdown if step count has changed
+                    if (steps.length !== lastStepCount) {
+                        console.log(`🔄 Live update: ${steps.length} steps available`);
+                        populateStepDropdown(steps, 'stepDropdown');
+                        lastStepCount = steps.length;
+                        
+                        // Update step count display
+                        const stepCountElement = document.getElementById('stepCount');
+                        if (stepCountElement) {
+                            stepCountElement.textContent = `${steps.length} step${steps.length !== 1 ? 's' : ''}`;
+                        }
+                        
+                        // Show a subtle notification that new steps are available
+                        if (steps.length > 0 && isRecording) {
+                            const stepDropdown = document.getElementById('stepDropdown');
+                            if (stepDropdown) {
+                                stepDropdown.style.borderColor = '#28a745';
+                                setTimeout(() => {
+                                    stepDropdown.style.borderColor = '#e1e5e9';
+                                }, 1000);
+                            }
+                            
+                            // Briefly flash the step count
+                            if (stepCountElement) {
+                                stepCountElement.style.color = '#dc3545';
+                                stepCountElement.style.fontWeight = '700';
+                                setTimeout(() => {
+                                    stepCountElement.style.color = '#28a745';
+                                    stepCountElement.style.fontWeight = '500';
+                                }, 800);
+                            }
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading current session steps:', error);
+            }
+        }
         
         function updateUI() {
             const startBtn = document.getElementById('startBtn');
             const stopBtn = document.getElementById('stopBtn');
             const status = document.getElementById('status');
             const statusText = document.getElementById('statusText');
+            const noteSection = document.getElementById('noteSection');
             
             if (isRecording) {
                 startBtn.disabled = true;
                 stopBtn.disabled = false;
                 status.className = 'status running';
                 statusText.textContent = 'Recording in progress...';
+                noteSection.style.display = 'block';
+                
+                // Reset step counter for new session
+                lastStepCount = 0;
+                
+                // Load steps for the current session
+                setTimeout(() => {
+                    loadCurrentSessionSteps();
+                }, 2000); // Wait a bit for the session to be created
+                
+                // Refresh steps periodically while recording (live updates)
+                if (window.stepRefreshInterval) {
+                    clearInterval(window.stepRefreshInterval);
+                }
+                window.stepRefreshInterval = setInterval(() => {
+                    if (isRecording) {
+                        loadCurrentSessionSteps();
+                    }
+                }, 1500); // Refresh every 1.5 seconds for live updates
             } else {
                 startBtn.disabled = false;
                 stopBtn.disabled = true;
                 status.className = 'status stopped';
                 statusText.textContent = 'Ready to start recording';
+                noteSection.style.display = 'none';
+                
+                // Clear step refresh interval when not recording
+                if (window.stepRefreshInterval) {
+                    clearInterval(window.stepRefreshInterval);
+                    window.stepRefreshInterval = null;
+                }
             }
         }
         
@@ -566,6 +1111,21 @@ class SimpleUI:
         });
         
         document.getElementById('stopBtn').addEventListener('click', stopRecording);
+        
+        // Add keyboard support for note input (Ctrl+Enter or Cmd+Enter to submit)
+        document.getElementById('noteInput').addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                e.preventDefault();
+                addNote();
+            }
+        });
+        
+        document.getElementById('modalNoteInput').addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                e.preventDefault();
+                addNoteToSession();
+            }
+        });
         
         // Load sessions when page loads
         window.addEventListener('load', function() {
@@ -600,7 +1160,8 @@ class SimpleUI:
             print(f"🎯 Starting recorder for URL: {url}")
             
             # Start recorderSystem.py as subprocess
-            cmd = [sys.executable, 'recorderSystem.py', '--url', url]
+            recorder_path = os.path.join(os.path.dirname(__file__), 'recorderSystem.py')
+            cmd = [sys.executable, recorder_path, '--url', url]
             self.recorder_process = subprocess.Popen(
                 cmd,
                 stdout=subprocess.PIPE,
@@ -915,7 +1476,7 @@ class SimpleUI:
                 })
             
             # Find the session directory
-            interaction_logs_dir = Path("interaction_logs")
+            interaction_logs_dir = Path("data/interaction_logs")
             session_dir = interaction_logs_dir / session_name
             
             if not session_dir.exists():
@@ -1042,6 +1603,329 @@ class SimpleUI:
         except Exception as e:
             print(f"❌ Error serving screenshot: {e}")
             return web.Response(status=500, text=f"Error serving screenshot: {e}")
+    
+    async def add_note_api(self, request):
+        """API endpoint to add a note to a session"""
+        try:
+            import json
+            from pathlib import Path
+            from datetime import datetime
+            
+            data = await request.json()
+            note_text = data.get('note', '').strip()
+            session_name = data.get('sessionName')
+            step_id = data.get('stepId')  # Optional step ID to attach note to
+            
+            if not note_text:
+                return web.json_response({
+                    'success': False,
+                    'error': 'Note text cannot be empty'
+                })
+            
+            # If no session name provided, use the most recent session
+            if not session_name:
+                interaction_logs_dir = Path("data/interaction_logs")
+                if not interaction_logs_dir.exists():
+                    return web.json_response({
+                        'success': False,
+                        'error': 'No sessions found'
+                    })
+                
+                session_dirs = [d for d in interaction_logs_dir.iterdir() if d.is_dir() and d.name.startswith("session_")]
+                if not session_dirs:
+                    return web.json_response({
+                        'success': False,
+                        'error': 'No sessions found'
+                    })
+                
+                # Get the most recent session
+                latest_session_dir = max(session_dirs, key=lambda x: x.stat().st_mtime)
+                session_name = latest_session_dir.name
+            
+            # Find the session directory
+            interaction_logs_dir = Path("data/interaction_logs")
+            session_dir = interaction_logs_dir / session_name
+            
+            if not session_dir.exists():
+                return web.json_response({
+                    'success': False,
+                    'error': f'Session "{session_name}" not found'
+                })
+            
+            # Load existing notes or create new list
+            notes_file = session_dir / "notes.json"
+            notes = []
+            
+            if notes_file.exists():
+                with open(notes_file, 'r') as f:
+                    notes = json.load(f)
+            
+            # Add new note with timestamp
+            new_note = {
+                'timestamp': datetime.now().isoformat(),
+                'note': note_text
+            }
+            
+            # Add step information if note is attached to a specific step
+            if step_id:
+                new_note['step_id'] = step_id
+                
+                # Try to get step details from trajectory
+                trajectory_file = session_dir / "trajectory.json"
+                if trajectory_file.exists():
+                    with open(trajectory_file, 'r') as f:
+                        trajectory_data = json.load(f)
+                    
+                    if step_id in trajectory_data:
+                        step_data = trajectory_data[step_id]
+                        
+                        # Use helper method to create descriptive step description (without step number)
+                        step_description = self._create_step_description(step_data, None)
+                        new_note['step_description'] = step_description
+            
+            notes.append(new_note)
+            
+            # Save notes back to file
+            with open(notes_file, 'w') as f:
+                json.dump(notes, f, indent=2)
+            
+            print(f"📝 Added note to session {session_name}: {note_text[:50]}...")
+            
+            return web.json_response({
+                'success': True,
+                'message': 'Note added successfully',
+                'session_name': session_name,
+                'note_count': len(notes)
+            })
+            
+        except Exception as e:
+            print(f"❌ Error adding note: {e}")
+            return web.json_response({
+                'success': False,
+                'error': str(e)
+            })
+    
+    async def get_notes_api(self, request):
+        """API endpoint to get all notes for a specific session"""
+        try:
+            import json
+            from pathlib import Path
+            
+            session_name = request.match_info['session_name']
+            
+            # Find the session directory
+            interaction_logs_dir = Path("data/interaction_logs")
+            session_dir = interaction_logs_dir / session_name
+            
+            if not session_dir.exists():
+                return web.json_response({
+                    'success': False,
+                    'error': f'Session "{session_name}" not found'
+                })
+            
+            # Load notes
+            notes_file = session_dir / "notes.json"
+            notes = []
+            
+            if notes_file.exists():
+                with open(notes_file, 'r') as f:
+                    notes = json.load(f)
+            
+            return web.json_response({
+                'success': True,
+                'notes': notes,
+                'session_name': session_name
+            })
+            
+        except Exception as e:
+            print(f"❌ Error getting notes: {e}")
+            return web.json_response({
+                'success': False,
+                'error': str(e)
+            })
+    
+    async def get_current_session_api(self, request):
+        """API endpoint to get the name of the current/most recent session"""
+        try:
+            from pathlib import Path
+            
+            interaction_logs_dir = Path("data/interaction_logs")
+            if not interaction_logs_dir.exists():
+                return web.json_response({
+                    'success': False,
+                    'error': 'No sessions found'
+                })
+            
+            session_dirs = [d for d in interaction_logs_dir.iterdir() if d.is_dir() and d.name.startswith("session_")]
+            if not session_dirs:
+                return web.json_response({
+                    'success': False,
+                    'error': 'No sessions found'
+                })
+            
+            # Get the most recent session
+            latest_session_dir = max(session_dirs, key=lambda x: x.stat().st_mtime)
+            
+            return web.json_response({
+                'success': True,
+                'session_name': latest_session_dir.name,
+                'is_recording': self.recorder_process is not None
+            })
+            
+        except Exception as e:
+            print(f"❌ Error getting current session: {e}")
+            return web.json_response({
+                'success': False,
+                'error': str(e)
+            })
+    
+    async def get_trajectory_steps_api(self, request):
+        """API endpoint to get trajectory steps for a specific session (for dropdown)"""
+        try:
+            import json
+            from pathlib import Path
+            
+            session_name = request.match_info['session_name']
+            
+            # Find the session directory
+            interaction_logs_dir = Path("data/interaction_logs")
+            session_dir = interaction_logs_dir / session_name
+            
+            if not session_dir.exists():
+                return web.json_response({
+                    'success': False,
+                    'error': f'Session "{session_name}" not found'
+                })
+            
+            # Load trajectory data
+            trajectory_file = session_dir / "trajectory.json"
+            if not trajectory_file.exists():
+                return web.json_response({
+                    'success': False,
+                    'error': f'Trajectory.json not found for session "{session_name}"'
+                })
+            
+            with open(trajectory_file, 'r') as f:
+                trajectory_data = json.load(f)
+            
+            # Create simplified step list for dropdown
+            steps = []
+            for step_id, step_data in trajectory_data.items():
+                action_output = step_data.get('action', {}).get('action_output', {})
+                action_name = action_output.get('action_name', 'unknown')
+                
+                # Use helper method to create descriptive step description
+                step_description = self._create_step_description(step_data, step_id)
+                
+                steps.append({
+                    'id': step_id,
+                    'description': step_description,
+                    'action_name': action_name
+                })
+            
+            # Sort steps by ID (assuming they're numbered)
+            try:
+                steps.sort(key=lambda x: int(x['id']))
+            except ValueError:
+                # If step IDs aren't numeric, sort alphabetically
+                steps.sort(key=lambda x: x['id'])
+            
+            return web.json_response({
+                'success': True,
+                'steps': steps,
+                'session_name': session_name
+            })
+            
+        except Exception as e:
+            print(f"❌ Error getting trajectory steps: {e}")
+            return web.json_response({
+                'success': False,
+                'error': str(e)
+            })
+    
+    def _create_step_description(self, step_data, step_id=None):
+        """Create a descriptive step description from trajectory data"""
+        action_output = step_data.get('action', {}).get('action_output', {})
+        action_name = action_output.get('action_name', 'unknown')
+        
+        # Get coordinates from the step data
+        coordinates = step_data.get('coordinates', {})
+        coord_x = coordinates.get('x')
+        coord_y = coordinates.get('y')
+        coordinate_str = f"({coord_x}, {coord_y})" if coord_x and coord_y else ""
+        
+        # Create step description
+        step_description = f"Step {step_id}: " if step_id else ""
+        
+        if action_name == 'click':
+            # For clicks, get element details from action structure
+            action_details = action_output.get('action', {})
+            element_type = action_details.get('type', '')
+            element_class = action_details.get('class', '')
+            element_id = action_details.get('id', '')
+            node_props = action_details.get('node_properties', {})
+            element_text = node_props.get('value', '') if node_props else ''
+            
+            if element_text:
+                step_description += f"Click '{element_text}'"
+                if element_type:
+                    step_description += f" ({element_type})"
+            elif element_id:
+                step_description += f"Click element #{element_id}"
+                if element_type:
+                    step_description += f" ({element_type})"
+            elif element_class:
+                step_description += f"Click .{element_class}"
+                if element_type:
+                    step_description += f" ({element_type})"
+            elif element_type:
+                step_description += f"Click {element_type}"
+                if coordinate_str:
+                    step_description += f" at {coordinate_str}"
+            else:
+                step_description += f"Click at {coordinate_str}" if coordinate_str else "Click"
+                
+        elif action_name == 'keyboard_type':
+            # For typing, get text from action structure
+            action_details = action_output.get('action', {})
+            typed_text = action_details.get('text', '')
+            
+            if typed_text:
+                display_text = typed_text[:30] + "..." if len(typed_text) > 30 else typed_text
+                step_description += f"Type '{display_text}'"
+            else:
+                step_description += "Type text"
+            
+            step_description += " in input field"
+                
+        elif action_name == 'hover':
+            # For hover actions
+            action_details = action_output.get('action', {})
+            hover_text = action_details.get('text', '')
+            
+            if hover_text:
+                step_description += f"Hover over '{hover_text}'"
+            else:
+                step_description += f"Hover at {coordinate_str}" if coordinate_str else "Hover"
+                
+        elif action_name == 'scroll':
+            step_description += "Scroll page"
+            if coordinate_str:
+                step_description += f" at {coordinate_str}"
+                
+        else:
+            # Fallback for other actions
+            action_details = action_output.get('action', {})
+            action_text = action_details.get('text', '')
+            
+            step_description += action_name.replace('_', ' ').title()
+            if action_text:
+                display_text = action_text[:30] + "..." if len(action_text) > 30 else action_text
+                step_description += f" '{display_text}'"
+            elif coordinate_str:
+                step_description += f" at {coordinate_str}"
+        
+        return step_description
 
 async def main():
     """Main function to start the web server"""
@@ -1065,6 +1949,10 @@ async def main():
     app.router.add_get('/api/trajectory/{session_name}', ui.get_trajectory_api) # Added this line
     app.router.add_get('/api/html-report/{session_name}', ui.get_html_report_api) # Added this line
     app.router.add_get('/api/screenshot/{session_name}/{step_num}', ui.get_screenshot_api) # Added this line
+    app.router.add_post('/api/add-note', ui.add_note_api) # Added this line for note-taking
+    app.router.add_get('/api/notes/{session_name}', ui.get_notes_api) # Added this line for getting notes
+    app.router.add_get('/api/current-session', ui.get_current_session_api) # Added this line for current session
+    app.router.add_get('/api/trajectory-steps/{session_name}', ui.get_trajectory_steps_api) # Added this line for trajectory steps
     
     for route in list(app.router.routes()):
         cors.add(route)

@@ -14,6 +14,7 @@ from prompts.generation_prompt import (
     PLAYWRIGHT_CODE_SYSTEM_MSG_FAILED,
     PLAYWRIGHT_CODE_SYSTEM_MSG_CALENDAR,
     PLAYWRIGHT_CODE_SYSTEM_MSG_DELETION_CALENDAR,
+    PLAYWRIGHT_CODE_SYSTEM_MSG,
     PLAYWRIGHT_CODE_SYSTEM_MSG_MAPS,
     PLAYWRIGHT_CODE_SYSTEM_MSG_FLIGHTS,
     PLAYWRIGHT_CODE_SYSTEM_MSG_SCHOLAR,
@@ -38,7 +39,7 @@ def log_token_usage(resp):
 
 
 def clean_code_response(raw_content):
-    """Clean the raw response and return the parsed JSON object."""
+    """Clean the raw response and return the parsed JSON object with robust error handling."""
     raw_content = raw_content.strip()
     
     # Handle null response
@@ -52,13 +53,45 @@ def clean_code_response(raw_content):
         raw_content = raw_content[len("```"):].strip()
     if raw_content.endswith("```"):
         raw_content = raw_content[:-3].strip()
-        
+    
+    # Try to parse the JSON as-is
     try:
-        # Parse and return the entire JSON response
         return json.loads(raw_content)
-    except json.JSONDecodeError:
-        print("Error: Response was not valid JSON")
-        return None
+    except json.JSONDecodeError as e:
+        print(f"⚠️ Initial JSON parsing failed: {e}")
+        
+        # Try to fix common JSON issues
+        try:
+            # Fix common issues: missing quotes, trailing commas, etc.
+            fixed_content = raw_content
+            
+            # Remove trailing commas before closing braces/brackets
+            import re
+            fixed_content = re.sub(r',(\s*[}\]])', r'\1', fixed_content)
+            
+            # Try to fix missing quotes around property names (but be careful)
+            # Only fix if it looks like a property name followed by colon
+            fixed_content = re.sub(r'(\b\w+\b):', r'"\1":', fixed_content)
+            
+            # Try parsing the fixed content
+            return json.loads(fixed_content)
+        except (json.JSONDecodeError, Exception) as e2:
+            print(f"⚠️ JSON repair failed: {e2}")
+            
+            # Try to extract JSON-like content
+            try:
+                # Look for JSON-like structure in the response
+                import re
+                json_match = re.search(r'\{.*\}', raw_content, re.DOTALL)
+                if json_match:
+                    potential_json = json_match.group(0)
+                    return json.loads(potential_json)
+            except Exception as e3:
+                print(f"⚠️ JSON extraction failed: {e3}")
+            
+            print("❌ Response was not valid JSON and could not be repaired")
+            print(f"Raw content: {raw_content}")
+            return None
 
 client = OpenAI(api_key=api_key)
 
@@ -92,7 +125,8 @@ def chat_ai_playwright_code(accessibility_tree=None, previous_steps=None, taskGo
         # Select prompt based on URL
         if url:
             if "calendar.google.com" in url:
-                base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_DELETION_CALENDAR if is_deletion_task else PLAYWRIGHT_CODE_SYSTEM_MSG_CALENDAR
+                # base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_DELETION_CALENDAR if is_deletion_task else PLAYWRIGHT_CODE_SYSTEM_MSG_CALENDAR
+                base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG
                 print("\n🤖 Using CALENDAR prompt" + (" (deletion)" if is_deletion_task else ""))
             elif "maps.google.com" in url:
                 base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_MAPS
@@ -108,11 +142,11 @@ def chat_ai_playwright_code(accessibility_tree=None, previous_steps=None, taskGo
                 print("\n🤖 Using DOCS prompt")
             else:
                 # Default to calendar for backward compatibility
-                base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_CALENDAR
+                base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG
                 print("\n🤖 Using DEFAULT (CALENDAR) prompt")
         else:
             # Default to calendar for backward compatibility
-            base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_CALENDAR
+            base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG
             print("\n🤖 Using DEFAULT (CALENDAR) prompt")
 
     if accessibility_tree is not None and previous_steps is not None and image_path:

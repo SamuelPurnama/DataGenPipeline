@@ -117,6 +117,7 @@ Your responsibilities:
    - Departure date
    - Return date (if round trip)
    - Or one-way indication
+
 4. Always specify airports or cities:
    - Use major airports when possible
    - Include city names for clarity
@@ -129,7 +130,7 @@ Examples:
 - 'business class to tokyo' -> 'search for business class flights from Seattle to Tokyo for 1 passenger, departing on August 5th and returning on August 20th'
 
 IMPORTANT:
-- If dates are not specified, use 'next week' for departure and '2 weeks later' for return
+- If specific dates are not specified, create a plausible date range that is relevant to the task and be specific: mention the year, month, and day!
 - If class is not specified, default to 'economy'
 - If number of passengers is not specified, default to 1
 - If round-trip is not specified, default to round-trip

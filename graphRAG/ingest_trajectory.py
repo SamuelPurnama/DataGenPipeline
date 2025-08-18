@@ -36,8 +36,12 @@ class TrajectoryParser:
     
     def __init__(self, results_path: str = None):
         if results_path is None:
-            from config import RESULTS_DIR
-            results_path = RESULTS_DIR
+            try:
+                from config import RESULTS_DIR
+                results_path = RESULTS_DIR
+            except ImportError:
+                # Fallback if config module not found
+                results_path = "data/results"
         self.results_path = Path(results_path)
     
     def truncate_error_message(self, error_message: str) -> str:
@@ -91,6 +95,29 @@ class TrajectoryParser:
             print(f"Error parsing metadata.json: {e}")
             return {}
     
+    def extract_platform_name_from_url(self, url: str) -> str:
+        """Extract platform name from URL for better trajectory differentiation."""
+        if not url:
+            return "Unknown Platform"
+        
+        # Remove protocol and www
+        clean_url = url.replace("https://", "").replace("http://", "").replace("www.", "")
+        
+        # Extract domain and path
+        url_parts = clean_url.split("/")
+        domain = url_parts[0].lower()
+        path = "/".join(url_parts[1:]).lower() if len(url_parts) > 1 else ""
+        
+        # For Google services, construct the full subdomain
+        if domain == "google.com" and path:
+            # Take the first part of the path and append .google.com
+            first_path_part = path.split("/")[0]
+            if first_path_part:
+                return f"{first_path_part}.google.com"
+        
+        # Return the actual domain name
+        return domain
+
     def create_trajectory_episode_text(self, trajectory_folder: Path) -> str:
         """Create structured episode text from trajectory data"""
         
@@ -110,11 +137,15 @@ class TrajectoryParser:
         runtime_sec = metadata.get('runtime_sec', 0)
         gpt_output = metadata.get('gpt_output', '')
         
+        # Extract platform name and append to goal
+        platform_name = self.extract_platform_name_from_url(start_url or platform_url)
+        enhanced_goal = f"{goal} in {platform_name}"
+        
         # Create structured episode text (task type will be extracted by Graphiti LLM)
         episode_text = f"""
 Web Trajectory Analysis Data:
 
-GOAL: {goal}
+GOAL: {enhanced_goal}
 
 PLATFORM_URL: {start_url or platform_url}
 
@@ -277,13 +308,14 @@ ATTEMPTED_CODES:
         print(episode_text)
     
     def ingest_trajectories(self, limit: Optional[int] = None):
-        """Ingest all discovered trajectories using KnowledgeBaseClient"""
+        """Ingest all discovered trajectories using GraphRAGClient directly"""
         
-        # Import the high-level function
+        # Import GraphRAGClient directly to avoid multiple client creation
         import sys
         import os
         sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-        from utils.knowledge_base_client import add_trajectory_to_kb
+        from graphRAG.graphrag_client import GraphRAGClient
+        import asyncio
         
         try:
             # Discover trajectories
@@ -300,46 +332,60 @@ ATTEMPTED_CODES:
             
             print(f"\nProcessing {len(trajectory_folders)} trajectories...")
             
-            # Process each trajectory using KnowledgeBaseClient
-            for i, trajectory_folder in enumerate(trajectory_folders, 1):
-                try:
-                    print(f"\n[{i}/{len(trajectory_folders)}] Processing: {trajectory_folder.name}")
-                    
-                    # Log source data being processed
-                    metadata_file = trajectory_folder / "metadata.json"
-                    if metadata_file.exists():
-                        with open(metadata_file, 'r') as f:
-                            metadata = json.load(f)
-                        print(f"📄 Source metadata:")
-                        print(f"   Goal: {metadata.get('goal', 'Unknown')}")
-                        print(f"   Goal: {metadata.get('goal', 'Unknown')}")
-                        print(f"   Success: {metadata.get('success', 'Unknown')}")
-                        print(f"   Total steps: {metadata.get('total_steps', 'Unknown')}")
-                    
-                    # Check if error log exists
-                    error_log_path = trajectory_folder / "error_log.json"
-                    has_errors = error_log_path.exists()
-                    if has_errors:
-                        print(f"🔴 Error log found: {error_log_path.name}")
-                    
-                    # Use KnowledgeBaseClient to add trajectory
-                    trajectory_data = {
-                        'trajectory_path': str(trajectory_folder)
-                    }
-                    
-                    print(f"🚀 Calling KnowledgeBaseClient add_trajectory_to_kb()...")
-                    success = add_trajectory_to_kb(trajectory_data, kb_type="graphrag")
-                    
-                    if success:
-                        print(f"✅ Successfully processed {trajectory_folder.name}")
-                    else:
-                        print(f"❌ Failed to process {trajectory_folder.name}")
-                    
-                except Exception as e:
-                    print(f"  ❌ Error processing {trajectory_folder.name}: {e}")
-                    continue
+            # Use a single event loop for the entire process
+            async def process_all_trajectories():
+                # Create a single GraphRAGClient instance to reuse
+                print("🔧 Initializing GraphRAGClient...")
+                graphrag_client = GraphRAGClient()
+                
+                if not await graphrag_client.is_available():
+                    print("❌ GraphRAGClient not available!")
+                    return
+                
+                print("✅ GraphRAGClient initialized successfully")
+                
+                # Process each trajectory using the same client instance
+                for i, trajectory_folder in enumerate(trajectory_folders, 1):
+                    try:
+                        print(f"\n[{i}/{len(trajectory_folders)}] Processing: {trajectory_folder.name}")
+                        
+                        # Log source data being processed
+                        metadata_file = trajectory_folder / "metadata.json"
+                        if metadata_file.exists():
+                            with open(metadata_file, 'r') as f:
+                                metadata = json.load(f)
+                            print(f"📄 Source metadata:")
+                            print(f"   Goal: {metadata.get('goal', 'Unknown')}")
+                            print(f"   Success: {metadata.get('success', 'Unknown')}")
+                            print(f"   Total steps: {metadata.get('total_steps', 'Unknown')}")
+                        
+                        # Check if error log exists
+                        error_log_path = trajectory_folder / "error_log.json"
+                        has_errors = error_log_path.exists()
+                        if has_errors:
+                            print(f"🔴 Error log found: {error_log_path.name}")
+                        
+                        # Use the same GraphRAGClient instance
+                        trajectory_data = {
+                            'trajectory_path': str(trajectory_folder)
+                        }
+                        
+                        print(f"🚀 Calling GraphRAGClient.add_trajectory()...")
+                        success = await graphrag_client.add_trajectory(trajectory_data)
+                        
+                        if success:
+                            print(f"✅ Successfully processed {trajectory_folder.name}")
+                        else:
+                            print(f"❌ Failed to process {trajectory_folder.name}")
+                        
+                    except Exception as e:
+                        print(f"  ❌ Error processing {trajectory_folder.name}: {e}")
+                        continue
+                
+                print(f"\n🎉 Successfully processed {len(trajectory_folders)} trajectories!")
             
-            print(f"\n🎉 Successfully processed {len(trajectory_folders)} trajectories!")
+            # Run the entire async process in a single event loop
+            asyncio.run(process_all_trajectories())
                 
         except Exception as e:
             print(f"❌ Error in trajectory ingestion: {e}")
