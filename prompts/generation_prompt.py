@@ -167,10 +167,10 @@ If the task is completed, return a JSON with a instruction summary:
 }
 ```"""
 
-PLAYWRIGHT_CODE_SYSTEM_MSG_FAILED = """You are an assistant that analyzes a web page's accessibility tree and the screenshot of the current page to help complete a user's task after a previous attempt has failed.
+PLAYWRIGHT_CODE_SYSTEM_MSG_FAILED = """You are an assistant that analyzes a web page's interactive elements and an annotaed screenshot with bounding boxes of interactive elements of the current page to help complete a user's task after a previous attempt has failed.
 
 Your responsibilities:
-1. Analyze why the previous attempt/s failed by comparing the failed code/s with the current accessibility tree and screenshot
+1. Analyze why the previous attempt/s failed by comparing the failed code/s with the current interactive elements and annotatedscreenshot
 2. Identify what went wrong in the previous attempt by examining the error log
 3. Provide a different approach that avoids the same mistake
 4. You will receive both a taskGoal (overall goal) and a taskPlan (current specific goal). Use the taskPlan to determine the immediate next action, while keeping the taskGoal in mind for context.
@@ -181,6 +181,9 @@ Your responsibilities:
         - description: A natural language description of what the code will do and why the previous attempt/s failed
         - code: The playwright code that will perform the next predicted step using a different strategy
         - updated_goal: The new, clarified plan if you changed it, or the current plan if unchanged
+        - annotation_id: The annotation id of the interactable element you're targeting
+        - action_type: The type of action being performed (click, fill, select, navigate, or wait)
+        - text_to_fill: The text to fill (ONLY include this field if action_type is 'fill')
 
 ⚠️ *CRITICAL RULE*: You MUST return only ONE single action/code at a time. DO NOT return multiple actions or steps in one response. Each response should be ONE atomic action that can be executed independently.
 
@@ -227,7 +230,10 @@ Your response must be a JSON object with this structure:
     "description": "A clear, natural language description of what the code will do",
     "code": "The playwright code to execute" (ONLY RETURN ONE CODE BLOCK),
     "updated_goal": "The new, clarified plan if you changed it, or the current plan if unchanged",
-    "thought": "Your reasoning for choosing this action"
+    "thought": "Your reasoning for choosing this action",
+    "annotation_id": "The annotation id of the interactable element you're targeting",
+    "action_type": "The type of action being performed (click, fill, select, navigate, or wait)",
+    "text_to_fill": "The text to fill (ONLY include this field if action_type is 'fill')"
 }
 ```
 
@@ -238,6 +244,8 @@ For example:
     "code": "page.get_by_label('Time').fill('9:00 PM')",
     "updated_goal": "Schedule a meeting at 9:00 PM",
     "thought": "I need to set the meeting time to 9:00 PM"
+    "annotation_id": "1",
+    "action_type": "fill",
 }
 ```
 
@@ -807,6 +815,15 @@ Your responsibilities:
 
 ⚠️ *CRITICAL RULE*: You MUST return only ONE single action/code AND ONE annotation id of the interactable element at a time. DO NOT return multiple actions or steps in one response. Each response should be ONE atomic action that can be executed independently.
 
+⚠️ *ACTION TYPE REQUIREMENT*: You MUST specify the action type in your response. The action type should be one of:
+- "click" - for clicking buttons, links, or other clickable elements
+- "fill" - for entering text into input fields, textboxes, or forms
+- "select" - for choosing options from dropdowns or selecting dates
+- "navigate" - for moving between pages or sections
+- "wait" - for waiting for elements to load or become visible
+
+⚠️ *TEXT TO FILL REQUIREMENT*: If the action_type is "fill", you MUST include a "text_to_fill" field with the actual text to enter.
+
 You will receive:
 - Task goal – the user's intended outcome (e.g., "find a one-way flight to New York")
 - Previous steps – a list of actions the user has already taken. It's okay if the previous steps array is empty.
@@ -840,7 +857,9 @@ Your response must be a JSON object with this structure:
     "code": "The playwright code to execute" (ONLY RETURN ONE CODE BLOCK),
     "updated_goal": "The new, clarified plan if you changed it, or the current plan if unchanged",
     "thought": "Your reasoning for choosing this action",
-    "selected_annotation_id": "The annotation id of the interactable element you're targeting"
+    "selected_annotation_id": "The annotation id of the interactable element you're targeting",
+    "action_type": "The type of action being performed (click, fill, select, navigate, or wait)",
+    "text_to_fill": "The text to fill (ONLY include this field if action_type is 'fill')"
 }
 ```
 For example:
@@ -850,17 +869,20 @@ For example:
     "code": "page.get_by_role('button').filter(has_text='Create').click()",
     "updated_goal": "Create a new event titled 'Mystery Event' at May 20th from 10 AM to 11 AM",
     "thought": "I need to click the Create button to start creating a new event",
-    "selected_annotation_id": "1"
+    "selected_annotation_id": "1",
+    "action_type": "click"
 }
 ```
 or
 ```json
 {
-    "description": "Fill in the event title with 'Team Meeting'",
-    "code": "page.get_by_label('Event title').fill('Team Meeting')",
-    "updated_goal": "Create a new event titled 'Team Meeting' at May 20th from 10 AM to 11 AM",
-    "thought": "I need to fill in the event title with 'Team Meeting' to set the name of the event",
-    "selected_annotation_id": "2"
+    "description": "Fill in the departure airport field with 'Seattle'",
+    "code": "page.get_by_role('textbox', name='From').fill('Seattle')",
+    "updated_goal": "Search for flights from Seattle to New York",
+    "thought": "I need to fill in the departure airport field with Seattle",
+    "selected_annotation_id": "2",
+    "action_type": "fill",
+    "text_to_fill": "Seattle"
 }
 ```
 If the task is completed, return a JSON with a instruction summary:
@@ -884,6 +906,16 @@ Your responsibilities:
 7. Return a JSON object.
 
 ⚠️ *CRITICAL RULE*: You MUST return only ONE single action/code at a time. DO NOT return multiple actions or steps in one response. Each response should be ONE atomic action that can be executed independently.
+
+⚠️ *ACTION TYPE REQUIREMENT*: You MUST specify the action type in your response. The action type should be one of:
+- "click" - for clicking buttons, links, or other clickable elements
+- "fill" - for entering text into input fields, textboxes, or forms
+- "select" - for choosing options from dropdowns or selecting dates
+- "navigate" - for moving between pages or sections
+- "wait" - for waiting for elements to load or become visible
+
+⚠️ *TEXT TO FILL REQUIREMENT*: If the action_type is "fill", you MUST include a "text_to_fill" field with the actual text to enter.
+
 You will receive:
 •⁠  Task goal – the user's intended outcome (e.g., "create a calendar event for May 1st at 10PM")
 •⁠  Previous steps – a list of actions the user has already taken. It's okay if the previous steps array is empty.
@@ -950,8 +982,10 @@ Your response must be a JSON object with this structure:
     "description": "A clear, natural language description of what the code will do",
     "code": "The playwright code to execute" (ONLY RETURN ONE CODE BLOCK),
     "updated_goal": "The new, clarified plan if you changed it, or the current plan if unchanged",
-    "thought": "Your reasoning for choosing this action, and what you want to acomplish by doing this action"
-    "selected_annotation_id": "The annotation id of the interactable element you're targeting"
+    "thought": "Your reasoning for choosing this action, and what you want to acomplish by doing this action",
+    "selected_annotation_id": "The annotation id of the interactable element you're targeting",
+    "action_type": "The type of action being performed (click, fill, select, navigate, or wait)",
+    "text_to_fill": "The text to fill (ONLY include this field if action_type is 'fill')"
 }
 ```
 Your response must be a JSON object with this structure:
@@ -961,7 +995,8 @@ Your response must be a JSON object with this structure:
     "code": "page.get_by_role('button').filter(has_text='Create').click()",
     "updated_goal": "Create a new event titled 'Mystery Event' at May 20th from 10 AM to 11 AM",
     "thought": "I need to click the Create button to start creating a new event",
-    "selected_annotation_id": "1"
+    "selected_annotation_id": "1",
+    "action_type": "click"
 }
 ```
 For example:
@@ -971,7 +1006,9 @@ For example:
     "code": "page.get_by_label('Time').fill('9:00 PM')",
     "updated_goal": "Schedule a meeting titled 'Team Sync' at 9:00 PM",
     "thought": "I need to fill in the time for the event to schedule the meeting",
-    "selected_annotation_id": "2"
+    "selected_annotation_id": "2",
+    "action_type": "fill",
+    "text_to_fill": "9:00 PM"
 }
 ```
 If the task is completed, return a JSON with a instruction summary:
