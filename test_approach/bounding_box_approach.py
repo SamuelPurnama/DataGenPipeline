@@ -125,7 +125,15 @@ class GoogleCalendarBoundingBoxTest:
                 "priority": "medium"
             })
         
-        # Strategy 4: By CSS selector (ID)
+        # Strategy 4: By ID using Playwright's get_by_id
+        if element.get('id'):
+            selectors.append({
+                "type": "get_by_id",
+                "selector": f"page.get_by_id('{element['id']}')",
+                "priority": "high"
+            })
+        
+        # Strategy 5: By CSS selector (ID) - keep as backup
         if element.get('id'):
             selectors.append({
                 "type": "css_id",
@@ -133,7 +141,7 @@ class GoogleCalendarBoundingBoxTest:
                 "priority": "high"
             })
         
-        # Strategy 5: By CSS selector (combined)
+        # Strategy 6: By CSS selector (combined)
         css_parts = []
         if element.get('tagName'):
             css_parts.append(element['tagName'])
@@ -150,7 +158,7 @@ class GoogleCalendarBoundingBoxTest:
                 "priority": "medium"
             })
         
-        # Strategy 6: By XPath (coordinates fallback)
+        # Strategy 7: By XPath (coordinates fallback)
         selectors.append({
             "type": "coordinates",
             "selector": f"page.mouse.click({element.get('x', 0) + element.get('width', 0)//2}, {element.get('y', 0) + element.get('height', 0)//2})",
@@ -222,77 +230,7 @@ class GoogleCalendarBoundingBoxTest:
         
         return list(set(suggestions))  # Remove duplicates
     
-    async def _get_all_interactive_elements_playwright_native(self, page):
-        """Get all interactive elements using Playwright's native methods - most reliable approach"""
-        elements = []
-        
-        # Define roles we want to capture with Playwright's built-in methods
-        interactive_roles = [
-            'button', 'link', 'textbox', 'combobox', 'checkbox', 
-            'radio', 'tab', 'menuitem', 'option', 'searchbox',
-            'slider', 'spinbutton', 'switch', 'listbox'
-        ]
-        
-        for role in interactive_roles:
-            try:
-                print(f"  Searching for {role} elements...")
-                # Get all elements with this role using Playwright's built-in method
-                role_elements = await page.get_by_role(role).all()
-                
-                for element in role_elements:
-                    try:
-                        # Get bounding box BEFORE any action using Playwright's method
-                        bbox = await element.bounding_box()
-                        
-                        # Only include elements that are visible and have valid dimensions
-                        if bbox and bbox['width'] > 0 and bbox['height'] > 0:
-                            # Get element properties using Playwright's methods
-                            name = await element.get_attribute('aria-label') or \
-                                   await element.text_content() or \
-                                   await element.get_attribute('title') or \
-                                   await element.get_attribute('placeholder') or \
-                                   await element.get_attribute('value') or ''
-                            
-                            # Get additional DOM properties
-                            tag_name = await element.evaluate('el => el.tagName.toLowerCase()')
-                            element_id = await element.get_attribute('id') or ''
-                            class_name = await element.get_attribute('class') or ''
-                            href = await element.get_attribute('href') or ''
-                            element_type = await element.get_attribute('type') or ''
-                            disabled = await element.evaluate('el => el.disabled') or False
-                            checked = await element.evaluate('el => el.checked')
-                            selected = await element.evaluate('el => el.selected')
-                            
-                            elements.append({
-                                'name': name.strip()[:200],  # Limit length but be generous
-                                'role': role,  # This comes directly from Playwright role
-                                'value': await element.get_attribute('value') or '',
-                                'x': int(bbox['x']),
-                                'y': int(bbox['y']),
-                                'width': int(bbox['width']),
-                                'height': int(bbox['height']),
-                                'tagName': tag_name,
-                                'type': element_type,
-                                'id': element_id,
-                                'className': class_name,
-                                'href': href,
-                                'disabled': disabled,
-                                'checked': checked,
-                                'selected': selected,
-                                'source': 'playwright_native'  # Mark as native Playwright source
-                            })
-                            
-                    except Exception as e:
-                        # Skip elements that can't be processed (hidden, removed, etc.)
-                        continue
-                        
-            except Exception as e:
-                # Skip roles that don't exist or cause errors
-                print(f"    No {role} elements found or error: {e}")
-                continue
-        
-        print(f"  Playwright-native approach found {len(elements)} elements")
-        return elements
+
     
     def is_already_logged_in(self, page, timeout: int = 5000) -> bool:
         """
@@ -351,444 +289,152 @@ class GoogleCalendarBoundingBoxTest:
             return False
         
     async def get_interactable_elements_from_axtree(self, page):
-        """Get all elements using multiple approaches: Playwright native, accessibility tree, and DOM fallback"""
+        """Get all elements using accessibility tree snapshot - single strategy approach"""
         try:
-            # Step 1: Try Playwright-native approach first (most reliable)
-            print("🎯 Getting elements using Playwright-native approach...")
-            native_elements = await self._get_all_interactive_elements_playwright_native(page)
-            print(f"✅ Found {len(native_elements)} elements using Playwright-native approach")
-            
-            # Step 2: Get the accessibility tree for additional elements (backup approach)
             print("🔍 Getting accessibility tree from Playwright...")
             ax_tree = await page.accessibility.snapshot()
             
-            # Step 3: Extract all elements from the tree
-            all_ax_elements = []
-            if ax_tree:
-                self._extract_all_elements_from_ax_tree(ax_tree, all_ax_elements)
+            if not ax_tree:
+                print("❌ No accessibility tree found")
+                return []
             
-            print(f"📋 Found {len(all_ax_elements)} total elements from accessibility tree")
+            print("📋 Processing accessibility tree elements...")
+            elements_with_boxes = await self._get_bounding_boxes_for_ax_elements(page, ax_tree)
             
-            # Step 4: Get bounding boxes for accessibility tree elements using JavaScript (for comparison)
-            js_elements_with_boxes = await self._get_bounding_boxes_for_ax_elements(page, all_ax_elements)
-            
-            print(f"🔧 Found {len(js_elements_with_boxes)} elements via JavaScript DOM matching")
-            
-            # Step 5: Combine native and accessibility tree elements with deduplication
-            all_elements = native_elements.copy()
-            
-            # Add JavaScript elements that aren't already covered by native approach
-            for js_elem in js_elements_with_boxes:
-                # Check if we already have this element from native approach
-                is_duplicate = False
-                for native_elem in native_elements:
-                    # Consider elements the same if they have similar position and name
-                    if (abs(js_elem['x'] - native_elem['x']) < 5 and 
-                        abs(js_elem['y'] - native_elem['y']) < 5 and
-                        abs(js_elem['width'] - native_elem['width']) < 10 and
-                        abs(js_elem['height'] - native_elem['height']) < 10):
-                        is_duplicate = True
-                        break
-                
-                if not is_duplicate:
-                    all_elements.append(js_elem)
-            
-            print(f"🔀 Combined total: {len(all_elements)} unique elements from all approaches")
-            elements_with_boxes = all_elements
-            
-            # If we didn't find many elements, add a fallback to find all interactive DOM elements
-            if len(elements_with_boxes) < 10:
-                print("Low element count, adding fallback DOM element detection...")
-                fallback_elements = await self._get_all_interactive_dom_elements(page)
-                print(f"Found {len(fallback_elements)} additional elements from DOM fallback")
-                
-                # Merge and deduplicate with priority: Playwright native > Accessibility tree > Fallback DOM
-                all_elements_final = elements_with_boxes + fallback_elements
-                # Smart deduplication: prioritize by source reliability
-                unique_elements = []
-                seen_positions = set()
-                
-                # First pass: Add all Playwright native elements (highest priority)
-                for elem in all_elements_final:
-                    if elem.get('source') == 'playwright_native':
-                        pos = (elem['x'], elem['y'], elem['width'], elem['height'])
-                        if pos not in seen_positions:
-                            unique_elements.append(elem)
-                            seen_positions.add(pos)
-                
-                # Second pass: Add accessibility tree elements not already covered
-                for elem in all_elements_final:
-                    if elem.get('source') == 'playwright_axtree':
-                        pos = (elem['x'], elem['y'], elem['width'], elem['height'])
-                        if pos not in seen_positions:
-                            unique_elements.append(elem)
-                            seen_positions.add(pos)
-                
-                # Third pass: Add fallback elements only if position not already covered
-                for elem in all_elements_final:
-                    if elem.get('source') == 'fallback_dom':
-                        pos = (elem['x'], elem['y'], elem['width'], elem['height'])
-                        if pos not in seen_positions:
-                            unique_elements.append(elem)
-                            seen_positions.add(pos)
-                
-                print(f"Total unique elements after deduplication: {len(unique_elements)}")
-                return unique_elements
-            
+            print(f"✅ Found {len(elements_with_boxes)} elements from accessibility tree")
             return elements_with_boxes
             
         except Exception as e:
             print(f"Error getting accessibility tree: {e}")
             return []
     
-    def _extract_all_elements_from_ax_tree(self, node, elements, depth=0):
-        """Recursively extract ALL potentially interactive elements from accessibility tree nodes"""
-        if not node or depth > 20:  # Prevent infinite recursion
-            return
-            
-        # More permissive criteria for including elements
-        should_include = False
-        
-        # Include if has a role (any role)
-        if node.get('role'):
-            should_include = True
-            
-        # Include if it's focusable
-        if node.get('focusable'):
-            should_include = True
-            
-        # Include if it has interactive properties
-        if (node.get('clickable') or 
-            node.get('checked') is not None or
-            node.get('selected') is not None or
-            node.get('expanded') is not None):
-            should_include = True
-            
-        # Include if it has a name or value (could be interactive)
-        if node.get('name') or node.get('value'):
-            should_include = True
-            
-        if should_include:
-            elements.append({
-                'name': node.get('name', ''),
-                'role': node.get('role', ''),
-                'value': node.get('value', ''),
-                'description': node.get('description', ''),
-                'checked': node.get('checked'),
-                'disabled': node.get('disabled', False),
-                'expanded': node.get('expanded'),
-                'focused': node.get('focused', False),
-                'selected': node.get('selected'),
-                'level': node.get('level'),
-                'valuetext': node.get('valuetext', ''),
-                'orientation': node.get('orientation', ''),
-                'keyshortcuts': node.get('keyshortcuts', ''),
-                'roledescription': node.get('roledescription', ''),
-                'focusable': node.get('focusable', False),
-                'clickable': node.get('clickable', False)
-            })
-        
-        # Recursively process children
-        children = node.get('children', [])
-        for child in children:
-            self._extract_all_elements_from_ax_tree(child, elements, depth + 1)
+
     
-    async def _get_bounding_boxes_for_ax_elements(self, page, ax_elements):
-        """Get bounding boxes for all accessibility elements using JavaScript"""
+    async def _get_bounding_boxes_for_ax_elements(self, page, ax_tree):
+        """Get bounding boxes for all accessibility tree elements using Playwright native methods"""
+        elements_with_boxes = []
         
-        # Convert None values and Python booleans for JavaScript compatibility
-        clean_elements = []
-        for element in ax_elements:
-            clean_element = {}
-            for key, value in element.items():
-                if value is None:
-                    clean_element[key] = ""
-                elif isinstance(value, bool):
-                    clean_element[key] = "true" if value else "false"
-                else:
-                    clean_element[key] = value
-            clean_elements.append(clean_element)
-        
-        # Create a JavaScript function that processes all elements at once
-        import json
-        js_code = f"""
-        () => {{
-            const axElements = {json.dumps(clean_elements)};
-            const elementsWithBoxes = [];
+        def process_node(node):
+            """Recursively process accessibility tree nodes"""
+            if not node:
+                return
             
-            for (let axElement of axElements) {{
-                const name = axElement.name || '';
-                const role = axElement.role || '';
-                const value = axElement.value || '';
-                
-                // Try to find the DOM element
-                let domElement = null;
-                
-                // Strategy 1: Find by exact role and name/text match
-                if (role && name) {{
-                    const roleSelector = `[role="${{role}}"]`;
-                    const candidates = document.querySelectorAll(roleSelector);
-                    
-                    for (let candidate of candidates) {{
-                        const candidateText = (
-                            candidate.getAttribute('aria-label') || 
-                            candidate.getAttribute('title') || 
-                            candidate.textContent?.trim() || 
-                            candidate.getAttribute('placeholder') || 
-                            candidate.value || ''
-                        );
-                        
-                        if (candidateText === name || 
-                            (name.length > 3 && candidateText.includes(name)) ||
-                            (candidateText.length > 3 && name.includes(candidateText))) {{
-                            domElement = candidate;
-                            break;
-                        }}
-                    }}
-                }}
-                
-                // Strategy 2: Find by tag-based selectors if role search failed
-                if (!domElement && name) {{
-                    const tagSelectors = {{
-                        'button': 'button, input[type="button"], input[type="submit"], input[type="reset"], [role="button"]',
-                        'link': 'a[href], [role="link"]',
-                        'textbox': 'input[type="text"], input:not([type]), textarea, [role="textbox"]',
-                        'searchbox': 'input[type="search"], [role="searchbox"]',
-                        'checkbox': 'input[type="checkbox"], [role="checkbox"]',
-                        'radio': 'input[type="radio"], [role="radio"]',
-                        'combobox': 'select, [role="combobox"]',
-                        'option': 'option, [role="option"]',
-                        'tab': '[role="tab"]',
-                        'menuitem': '[role="menuitem"]',
-                        'slider': 'input[type="range"], [role="slider"]',
-                        'spinbutton': 'input[type="number"], [role="spinbutton"]'
-                    }};
-                    
-                    const selector = tagSelectors[role];
-                    if (selector) {{
-                        const candidates = document.querySelectorAll(selector);
-                        for (let candidate of candidates) {{
-                            const candidateText = (
-                                candidate.getAttribute('aria-label') || 
-                                candidate.getAttribute('title') || 
-                                candidate.textContent?.trim() || 
-                                candidate.getAttribute('placeholder') || 
-                                candidate.value || ''
-                            );
+            # Check if this node should be included
+            should_include = (
+                node.get('role') or 
+                node.get('focusable') or 
+                node.get('clickable') or 
+                node.get('checked') is not None or
+                node.get('selected') is not None or
+                node.get('expanded') is not None or
+                node.get('name') or 
+                node.get('value')
+            )
+            
+            if should_include:
+                name = node.get('name', '')
+                role = node.get('role', '')
+                value = node.get('value', '')
+                try:
+                    # Use Playwright's native methods to get elements and bounding boxes
+                    if role and name:
+                        # Try to find element by role and name
+                        try:
+                            element = page.get_by_role(role, name=name)
+                            bbox = element.bounding_box()
                             
-                            if (candidateText === name || 
-                                (name.length > 3 && candidateText.includes(name)) ||
-                                (candidateText.length > 3 && name.includes(candidateText))) {{
-                                domElement = candidate;
-                                break;
-                            }}
-                        }}
-                    }}
-                }}
-                
-                // Strategy 3: Broad search for any potentially interactive element with matching text
-                if (!domElement && name && name.length > 2) {{
-                    const interactiveSelectors = [
-                        'button', 'a', 'input', 'select', 'textarea',
-                        '[onclick]', '[onmousedown]', '[onkeydown]', '[tabindex]',
-                        '[role="button"]', '[role="link"]', '[role="tab"]', '[role="menuitem"]',
-                        '[role="checkbox"]', '[role="radio"]', '[role="option"]',
-                        '[contenteditable="true"]', '[draggable="true"]'
-                    ];
-                    
-                    const allInteractive = document.querySelectorAll(interactiveSelectors.join(', '));
-                    for (let candidate of allInteractive) {{
-                        const candidateText = (
-                            candidate.getAttribute('aria-label') || 
-                            candidate.getAttribute('title') || 
-                            candidate.textContent?.trim() || 
-                            candidate.getAttribute('placeholder') || 
-                            candidate.value || 
-                            candidate.getAttribute('alt') || ''
-                        );
-                        
-                        if (candidateText === name || 
-                            (name.length > 3 && candidateText.includes(name)) ||
-                            (candidateText.length > 3 && name.includes(candidateText))) {{
-                            domElement = candidate;
-                            break;
-                        }}
-                    }}
-                }}
-                
-                if (!domElement) {{
-                    continue;
-                }}
-                
-                const rect = domElement.getBoundingClientRect();
-                const style = window.getComputedStyle(domElement);
-                
-                // Skip elements that are not visible or have zero size
-                if (rect.width <= 2 || rect.height <= 2 || 
-                    style.visibility === 'hidden' || 
-                    style.display === 'none' ||
-                    style.opacity === '0') {{
-                    continue;
-                }}
-                
-                // Only include elements that are within the viewport
-                if (rect.bottom < 0 || rect.top > window.innerHeight || 
-                    rect.right < 0 || rect.left > window.innerWidth) {{
-                    continue;
-                }}
-                
-                elementsWithBoxes.push({{
-                    name: name,
-                    role: role,  // This comes from Playwright accessibility tree
-                    value: value,
-                    x: Math.round(rect.left),
-                    y: Math.round(rect.top),
-                    width: Math.round(rect.width),
-                    height: Math.round(rect.height),
-                    tagName: domElement.tagName.toLowerCase(),
-                    type: domElement.type || '',
-                    href: domElement.href || '',
-                    disabled: domElement.disabled || false,
-                    checked: domElement.checked,
-                    selected: domElement.selected,
-                    id: domElement.id || '',
-                    className: domElement.className || '',
-                    source: 'playwright_axtree'  // Mark as accessibility tree source
-                }});
-            }}
+                            if bbox and bbox['width'] > 2 and bbox['height'] > 2:
+                                # Get additional properties
+                                tag_name = element.evaluate('el => el.tagName.toLowerCase()')
+                                element_id = element.get_attribute('id') or ''
+                                class_name = element.get_attribute('class') or ''
+                                href = element.get_attribute('href') or ''
+                                element_type = element.get_attribute('type') or ''
+                                disabled = element.evaluate('el => el.disabled') or False
+                                checked = element.evaluate('el => el.checked')
+                                selected = element.evaluate('el => el.selected')
+                                
+                                elements_with_boxes.append({
+                                    'name': name,
+                                    'role': role,
+                                    'value': value,
+                                    'x': int(bbox['x']),
+                                    'y': int(bbox['y']),
+                                    'width': int(bbox['width']),
+                                    'height': int(bbox['height']),
+                                    'tagName': tag_name,
+                                    'type': element_type,
+                                    'id': element_id,
+                                    'className': class_name,
+                                    'href': href,
+                                    'disabled': disabled,
+                                    'checked': checked,
+                                    'selected': selected,
+                                    'source': 'accessibility_tree'
+                                })
+                        except:
+                            # If role+name fails, try just by role
+                            try:
+                                elements = page.get_by_role(role).all()
+                                for element in elements:
+                                    try:
+                                        bbox = element.bounding_box()
+                                        if bbox and bbox['width'] > 2 and bbox['height'] > 2:
+                                            # Get element name to check if it matches
+                                            element_name = element.get_attribute('aria-label') or \
+                                                          element.text_content() or \
+                                                          element.get_attribute('title') or \
+                                                          element.get_attribute('placeholder') or \
+                                                          element.get_attribute('value') or ''
+                                            
+                                            if element_name and (name in element_name or element_name in name):
+                                                # Get additional properties
+                                                tag_name = element.evaluate('el => el.tagName.toLowerCase()')
+                                                element_id = element.get_attribute('id') or ''
+                                                class_name = element.get_attribute('class') or ''
+                                                href = element.get_attribute('href') or ''
+                                                element_type = element.get_attribute('type') or ''
+                                                disabled = element.evaluate('el => el.disabled') or False
+                                                checked = element.evaluate('el => el.checked')
+                                                selected = element.evaluate('el => el.selected')
+                                                
+                                                elements_with_boxes.append({
+                                                    'name': name,
+                                                    'role': role,
+                                                    'value': value,
+                                                    'x': int(bbox['x']),
+                                                    'y': int(bbox['y']),
+                                                    'width': int(bbox['width']),
+                                                    'height': int(bbox['height']),
+                                                    'tagName': tag_name,
+                                                    'type': element_type,
+                                                    'id': element_id,
+                                                    'className': class_name,
+                                                    'href': href,
+                                                    'disabled': disabled,
+                                                    'checked': checked,
+                                                    'selected': selected,
+                                                    'source': 'accessibility_tree'
+                                                })
+                                                break
+                                    except:
+                                        continue
+                            except:
+                                pass
+                except Exception as e:
+                    # Skip elements that can't be processed
+                    pass
             
-            return elementsWithBoxes;
-        }}
-        """
+            # Process children recursively
+            children = node.get('children', [])
+            for child in children:
+                process_node(child)
         
-        try:
-            result = await page.evaluate(js_code)
-            return result
-        except Exception as e:
-            print(f"Error getting bounding boxes: {e}")
-            return []
+        # Start processing from the root
+        process_node(ax_tree)
+        return elements_with_boxes
     
-    async def _get_all_interactive_dom_elements(self, page):
-        """Fallback: Find only truly interactive DOM elements"""
-        js_code = """
-        () => {
-            const elements = [];
-            
-            // More selective list - only truly clickable/interactable elements
-            const interactiveSelectors = [
-                'button',
-                'a[href]',
-                'input[type="button"]',
-                'input[type="submit"]',
-                'input[type="reset"]',
-                'input[type="text"]',
-                'input[type="email"]',
-                'input[type="password"]',
-                'input[type="search"]',
-                'input[type="checkbox"]',
-                'input[type="radio"]',
-                'select',
-                'textarea',
-                '[role="button"]',
-                '[role="link"]',
-                '[role="tab"]',
-                '[role="menuitem"]',
-                '[role="checkbox"]',
-                '[role="radio"]',
-                '[role="textbox"]',
-                '[role="searchbox"]',
-                '[role="combobox"]'
-            ];
-            
-            const allInteractive = document.querySelectorAll(interactiveSelectors.join(', '));
-            
-            for (let element of allInteractive) {
-                const rect = element.getBoundingClientRect();
-                const style = window.getComputedStyle(element);
-                
-                // Skip elements that are not visible or have zero size
-                if (rect.width <= 3 || rect.height <= 3 || 
-                    style.visibility === 'hidden' || 
-                    style.display === 'none' ||
-                    style.opacity === '0') {
-                    continue;
-                }
-                
-                // Only include elements that are within the viewport
-                if (rect.bottom < 0 || rect.top > window.innerHeight || 
-                    rect.right < 0 || rect.left > window.innerWidth) {
-                    continue;
-                }
-                
-                // Additional filter: check if element is actually interactive
-                const isActuallyInteractive = (
-                    element.tagName === 'BUTTON' ||
-                    element.tagName === 'A' ||
-                    element.tagName === 'INPUT' ||
-                    element.tagName === 'SELECT' ||
-                    element.tagName === 'TEXTAREA' ||
-                    element.getAttribute('role') === 'button' ||
-                    element.getAttribute('role') === 'link' ||
-                    element.getAttribute('role') === 'tab' ||
-                    element.getAttribute('role') === 'menuitem' ||
-                    element.hasAttribute('onclick') ||
-                    (element.hasAttribute('tabindex') && element.getAttribute('tabindex') !== '-1')
-                );
-                
-                if (!isActuallyInteractive) {
-                    continue;
-                }
-                
-                // Skip tiny elements that are likely decorative
-                if (rect.width < 10 || rect.height < 10) {
-                    continue;
-                }
-                
-                const name = (
-                    element.getAttribute('aria-label') || 
-                    element.getAttribute('title') || 
-                    element.textContent?.trim()?.substring(0, 50) || 
-                    element.getAttribute('placeholder') || 
-                    element.getAttribute('alt') || 
-                    element.value || 
-                    `${element.tagName.toLowerCase()}_element`
-                );
-                
-                // Skip elements with empty or very short names unless they're form inputs
-                if (name.length < 2 && !['input', 'select', 'textarea'].includes(element.tagName.toLowerCase())) {
-                    continue;
-                }
-                
-                elements.push({
-                    name: name,
-                    role: element.getAttribute('role') || element.tagName.toLowerCase(),
-                    value: element.value || '',
-                    x: Math.round(rect.left),
-                    y: Math.round(rect.top),
-                    width: Math.round(rect.width),
-                    height: Math.round(rect.height),
-                    tagName: element.tagName.toLowerCase(),
-                    type: element.type || '',
-                    href: element.href || '',
-                    disabled: element.disabled || false,
-                    checked: element.checked,
-                    selected: element.selected,
-                    id: element.id || '',
-                    className: element.className || '',
-                    source: 'fallback_dom'  // Mark as fallback source
-                });
-            }
-            
-            return elements;
-        }
-        """
-        
-        try:
-            result = await page.evaluate(js_code)
-            return result
-        except Exception as e:
-            print(f"Error getting DOM elements: {e}")
-            return []
+
 
     
     async def get_accessibility_tree_cdp(self, page):
