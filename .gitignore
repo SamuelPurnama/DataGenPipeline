@@ -61,3 +61,5 @@ screenshots/
 # Browser sessions and recorder sessions
 browser_sessions/
 recorder_sessions/
+test_approach/data/
+test_approach/bounding_box_sessions/

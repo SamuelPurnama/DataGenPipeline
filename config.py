@@ -8,24 +8,16 @@ BROWSER_SESSIONS_DIR = "data/browser_sessions"
 SAMPLE_DATA_DIR = "data/sample_data"
 
 URL = "https://flights.google.com"
-
 # Google Accounts Configuration
 ACCOUNTS = [
     {
-        "email": "samuelperry9973@gmail.com",
+        "email": "testeracc482@gmail.com",
         "password": "Lalala123",
-        "user_data_dir": "samuelPerry",
+        "user_data_dir": "test1",
         "start_idx": 0,
-        "end_idx": 1,
-    }
-    # {
-    #     "email": "testeracc482@gmail.com",
-    #     "password": "Lalala123",
-    #     "user_data_dir": "test1",
-    #     "start_idx": 10,
-    #     "end_idx": 20
-    # },
-    # {
+        "end_idx": 1
+    },
+    # 
     #     "email": "testeracc649@gmail.com",
     #     "password": "Lalala123",
     #     "user_data_dir": "test2",

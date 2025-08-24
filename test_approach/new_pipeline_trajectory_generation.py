@@ -162,40 +162,26 @@ def filter_accessibility_tree(tree: Dict[str, Any], url: str = None) -> Dict[str
 
 def get_comprehensive_element_data(page, url: str = None) -> Dict[str, Any]:
     """
-    Get comprehensive element data using accessibility tree snapshot - single strategy approach.
+    Get interactive elements directly using Playwright - simplified approach.
     
     Args:
         page: Playwright page object
         url: Current page URL for context-specific filtering
         
     Returns:
-        Dict containing comprehensive element data and accessibility tree
+        Dict containing interactive elements and targeting data
     """
-    print("🔍 Collecting comprehensive element data...")
+    print("🔍 Collecting interactive elements...")
     
-    # Step 1: Get accessibility tree snapshot
-    ax_tree = page.accessibility.snapshot()
-    
-    if not ax_tree:
-        print("❌ No accessibility tree found")
-        return {
-            "accessibility_tree": {},
-            "interactive_elements": [],
-            "targeting_data": [],
-            "element_count": 0,
-            "collection_timestamp": time.time()
-        }
-    
-    # Step 2: Get all interactive elements directly using Playwright
-    print("  🔍 Getting all interactive elements...")
+    # Get all interactive elements directly using Playwright
     ax_elements = get_all_interactive_elements(page)
     print(f"    Found {len(ax_elements)} interactive elements")
     
-    # Step 3: Create comprehensive targeting data
+    # Create targeting data
     targeting_data = create_comprehensive_targeting_data(ax_elements, url)
     
     return {
-        "accessibility_tree": ax_tree,
+        "accessibility_tree": {},  # Empty for compatibility
         "interactive_elements": ax_elements,
         "targeting_data": targeting_data,
         "element_count": len(ax_elements),
@@ -220,7 +206,7 @@ def get_all_interactive_elements(page) -> list:
         'option', 'menuitemcheckbox', 'menuitemradio', 'listitem',
         'group', 'region', 'dialog', 'alertdialog', 'tooltip'
     ]
-    
+
     # Get elements by each role
     for role in interactive_roles:
         try:
@@ -361,7 +347,7 @@ def try_alternative_selectors(page, original_code: str, comprehensive_data: dict
         selected_id = gpt_resp.get('selected_annotation_id')
         if not selected_id:
             print("⚠️ No selected_annotation_id found, can't try alternative selectors")
-            return False, failed_alternatives
+            return False, failed_alternatives, ""
         
         # Find the element data for this annotation ID
         target_element = None
@@ -372,13 +358,13 @@ def try_alternative_selectors(page, original_code: str, comprehensive_data: dict
         
         if not target_element:
             print(f"⚠️ Element with annotation ID {selected_id} not found in targeting data")
-            return False, failed_alternatives
+            return False, failed_alternatives, ""
         
         # Get alternative selectors
         alternative_selectors = target_element.get('playwright_selectors', [])
         if len(alternative_selectors) == 0:
             print("⚠️ No alternative selectors available")
-            return False, failed_alternatives
+            return False, failed_alternatives, ""
         
         print(f"🎯 Trying alternative selectors for element {selected_id}")
         
@@ -434,11 +420,11 @@ def try_alternative_selectors(page, original_code: str, comprehensive_data: dict
                 continue
         
         print("❌ All alternative selectors failed")
-        return False, failed_alternatives
+        return False, failed_alternatives, ""
         
     except Exception as e:
         print(f"⚠️ Error trying alternative selectors: {e}")
-        return False, failed_alternatives
+        return False, failed_alternatives, ""
 
 def generate_colors(count):
     """Generate distinct colors for bounding boxes"""
