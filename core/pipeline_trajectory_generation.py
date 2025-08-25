@@ -25,6 +25,110 @@ load_dotenv()
 # Knowledge base client for trajectory context
 from utils.knowledge_base_client import get_trajectory_context
 
+def get_all_open_tabs(browser) -> list:
+    """Get information about all currently open tabs, excluding about:blank"""
+    tabs = []
+    try:
+        for page in browser.pages:
+            try:
+                # Skip about:blank tabs
+                if page.url == "about:blank":
+                    continue
+                    
+                try:
+                    tab_info = {
+                        'url': page.url,
+                        'title': page.title(),
+                        'domain': 'google.com' if 'google.com' in page.url.lower() else 'external',
+                        'page': page
+                    }
+                    tabs.append(tab_info)
+                except Exception as e:
+                    print(f"⚠️  Error getting tab info: {e}")
+                    # Skip this tab if we can't get its info
+                    continue
+            except Exception as e:
+                print(f"⚠️  Error accessing tab: {e}")
+                continue
+    except Exception as e:
+        print(f"⚠️  Error accessing browser pages: {e}")
+        return []
+    
+    return tabs
+
+def check_for_new_tabs(browser, previous_tab_count: int, previous_tab_urls: set) -> tuple[bool, list, int]:
+    """
+    Check if new tabs were opened and return info about them.
+    
+    Args:
+        browser: Browser context
+        previous_tab_count: Number of tabs from previous step
+        previous_tab_urls: Set of tab URLs from previous step
+        
+    Returns:
+        tuple: (has_new_tabs, new_tabs, current_tab_count)
+    """
+    current_tabs = get_all_open_tabs(browser)
+    current_tab_count = len(current_tabs)
+    current_tab_urls = {tab['url'] for tab in current_tabs}
+    
+    # Check if we have new tabs
+    if current_tab_count > previous_tab_count:
+        # Find new tabs (URLs that weren't in previous step)
+        new_tab_urls = current_tab_urls - previous_tab_urls
+        new_tabs = [tab for tab in current_tabs if tab['url'] in new_tab_urls]
+        
+        print(f"🆕 New tabs detected! Previous: {previous_tab_count}, Current: {current_tab_count}")
+        print(f"   New tabs: {[tab['domain'] for tab in new_tabs]}")
+        
+        return True, new_tabs, current_tab_count
+    else:
+        return False, [], current_tab_count
+
+def switch_to_new_tab(new_tabs: list, current_page) -> tuple[bool, object]:
+    """
+    Switch to the first new tab and return success status and new page object.
+    
+    Args:
+        new_tabs: List of new tab info dictionaries
+        current_page: Current page object
+        
+    Returns:
+        tuple: (success, new_page_object)
+    """
+    if not new_tabs:
+        return False, current_page
+    
+    try:
+        # Get the first new tab
+        new_tab = new_tabs[0]
+        new_page = new_tab['page']
+        
+        print(f"🔄 Switching to new tab: {new_tab['title']} ({new_tab['domain']})")
+        
+        # Wait for the new tab to be ready
+        print("⏳ Waiting for new tab to stabilize...")
+        new_page.wait_for_timeout(3000)  # 3 second delay
+        
+        # Bring the new tab to front
+        new_page.bring_to_front()
+        
+        # Wait a bit more after bringing to front
+        new_page.wait_for_timeout(2000)  # 2 second additional delay
+        
+        # Verify the tab is accessible
+        try:
+            new_page.wait_for_selector('body', timeout=5000)
+            print(f"✅ Successfully switched to: {new_tab['domain']}")
+            return True, new_page
+        except Exception as e:
+            print(f"⚠️  New tab not ready: {e}")
+            return False, current_page
+            
+    except Exception as e:
+        print(f"❌ Error switching to new tab: {e}")
+        return False, current_page
+
 def filter_accessibility_tree(tree: Dict[str, Any], url: str = None) -> Dict[str, Any]:
     """
     Filter out inbox-like elements and other verbose content from accessibility tree.
@@ -385,7 +489,6 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
     
     # Get current page information
     current_url = page.url
-    page_title = page.title()
     open_pages = page.context.pages
     open_pages_titles = [p.title() for p in open_pages]
     open_pages_urls = [p.url for p in open_pages]
@@ -874,6 +977,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
             page = browser.new_page()
             page.set_default_timeout(ACTION_TIMEOUT)
             
+            # Set up monitoring for this browser session
+            
             for idx, item in enumerate(all_instructions[start_idx:end_idx], start=start_idx):
                 persona = item['persona']
                 url = item['url']
@@ -917,6 +1022,16 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                 should_continue = True
                 start_time = time.time()
                 total_tokens = 0  # Initialize token counter
+                
+                # Track initial URL for reference
+                initial_url = page.url
+                print(f"📍 Starting URL: {initial_url}")
+                
+                # Initialize tab tracking
+                initial_tabs = get_all_open_tabs(browser)
+                previous_tab_count = len(initial_tabs)
+                previous_tab_urls = {tab['url'] for tab in initial_tabs}
+                print(f"📑 Initial tabs: {previous_tab_count}")
 
                 while should_continue:
                     step_idx = len(task_summarizer)
@@ -1121,6 +1236,52 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                     current_goal=current_goal,
                                     all_failed_attempts=failed_attempts_details
                                 )
+                            
+                            # Simple tab switching: after successful execution, check for new tabs
+                            print("🔍 Checking for new tabs after successful action execution...")
+                            print(f"   Previous tab count: {previous_tab_count}")
+                            print(f"   Previous tab URLs: {list(previous_tab_urls)[:3]}...")  # Show first 3 URLs
+                            
+                            has_new_tabs, new_tabs, current_tab_count = check_for_new_tabs(
+                                browser, previous_tab_count, previous_tab_urls
+                            )
+                            
+                            if has_new_tabs:
+                                print(f"🆕 New tabs detected! Switching to new tab and restarting loop...")
+                                print(f"   New tabs: {[tab['domain'] for tab in new_tabs]}")
+                                print(f"   Current tab count: {current_tab_count}")
+                                
+                                # Wait a few seconds for the new tab to stabilize
+                                print("⏳ Waiting 8 seconds for new tab to stabilize...")
+                                time.sleep(8)
+                                
+                                # Switch to the new tab
+                                success, new_page = switch_to_new_tab(new_tabs, page)
+                                
+                                if success:
+                                    # Update our page reference and tracking variables
+                                    page = new_page
+                                    previous_tab_count = current_tab_count
+                                    previous_tab_urls = {tab['url'] for tab in get_all_open_tabs(browser)}
+                                    
+                                    # Update the URL variable so GPT gets the correct context
+                                    url = page.url
+                                    print(f"🌐 Updated URL context to: {url}")
+                                    
+                                    print(f"🚀 Successfully switched to new tab: {page.url}")
+                                    print("🔄 Restarting loop to take screenshot and collect elements on new tab...")
+                                    
+                                    # Mark as successful to exit retry loop
+                                    success = True
+                                    break
+                                else:
+                                    print("⚠️  Failed to switch to new tab, continuing with current page")
+                                    # Update tracking even if switch failed
+                                    previous_tab_count = current_tab_count
+                                    previous_tab_urls = {tab['url'] for tab in get_all_open_tabs(browser)}
+                            else:
+                                print("✅ No new tabs detected, continuing with current page")
+                            
                             success = True
                         except Exception as e:
                             retry += 1

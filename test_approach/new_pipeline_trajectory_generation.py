@@ -162,108 +162,87 @@ def filter_accessibility_tree(tree: Dict[str, Any], url: str = None) -> Dict[str
 
 def get_comprehensive_element_data(page, url: str = None) -> Dict[str, Any]:
     """
-    Get comprehensive element data using multiple approaches: Playwright native, accessibility tree, and DOM fallback.
-    This provides much richer targeting data than just the accessibility tree.
+    Get interactive elements directly using Playwright - simplified approach.
     
     Args:
         page: Playwright page object
         url: Current page URL for context-specific filtering
         
     Returns:
-        Dict containing comprehensive element data and accessibility tree
+        Dict containing interactive elements and targeting data
     """
-    print("🔍 Collecting comprehensive element data...")
+    print("🔍 Collecting interactive elements...")
     
-    # Step 1: Get accessibility tree (original approach)
-    ax_tree = page.accessibility.snapshot()
+    # Get all interactive elements directly using Playwright
+    ax_elements = get_all_interactive_elements(page)
+    print(f"    Found {len(ax_elements)} interactive elements")
     
-    # Step 2: Get interactive elements using Playwright native methods (most reliable)
-    print("  🎯 Getting interactive elements via Playwright native...")
-    native_elements = get_interactive_elements_playwright_native(page)
-    print(f"    Found {len(native_elements)} native interactive elements")
-    
-    # Step 3: Get elements from accessibility tree (like bounding boxes approach)
-    print("  🔍 Getting elements from accessibility tree...")
-    ax_elements = get_elements_from_accessibility_tree(ax_tree)
-    # print(f"    Found {len(ax_elements)} accessibility tree elements")
-    
-    # Step 4: Get additional DOM elements as fallback
-    print("  🔧 Getting additional DOM elements...")
-    dom_elements = get_interactive_dom_elements(page)
-    # print(f"    Found {len(dom_elements)} DOM elements")
-    
-    # Step 5: Combine and deduplicate elements (prioritize accessibility tree names)
-    all_elements = combine_and_deduplicate_elements_with_ax_priority(native_elements, ax_elements, dom_elements)
-    # print(f"  ✅ Total unique elements: {len(all_elements)}")
-    
-    # Step 6: Create comprehensive targeting data
-    targeting_data = create_comprehensive_targeting_data(all_elements, url)
+    # Create targeting data
+    targeting_data = create_comprehensive_targeting_data(ax_elements, url)
     
     return {
-        "accessibility_tree": ax_tree,
-        "interactive_elements": all_elements,
+        "accessibility_tree": {},  # Empty for compatibility
+        "interactive_elements": ax_elements,
         "targeting_data": targeting_data,
-        "element_count": len(all_elements),
+        "element_count": len(ax_elements),
         "collection_timestamp": time.time()
     }
 
 
 
-def get_interactive_elements_playwright_native(page) -> list:
-    """Get interactive elements using Playwright's native methods - most reliable approach"""
+
+
+
+
+def get_all_interactive_elements(page) -> list:
+    """Get all interactive elements directly using Playwright - simple and fast"""
     elements = []
     
-    # Define roles we want to capture with Playwright's built-in methods
+    # List of interactive roles to look for
     interactive_roles = [
-        'button', 'link', 'textbox', 'combobox', 'checkbox', 
-        'radio', 'tab', 'menuitem', 'option', 'searchbox',
-        'slider', 'spinbutton', 'switch', 'listbox'
+        'button', 'link', 'textbox', 'checkbox', 'radio', 'combobox',
+        'listbox', 'menuitem', 'tab', 'slider', 'spinbutton', 'searchbox',
+        'switch', 'menubar', 'toolbar', 'tree', 'grid', 'table',
+        'option', 'menuitemcheckbox', 'menuitemradio', 'listitem',
+        'group', 'region', 'dialog', 'alertdialog', 'tooltip'
     ]
-    
+
+    # Get elements by each role
     for role in interactive_roles:
         try:
-            print(f"  Searching for {role} elements...")
-            # Get all elements with this role using Playwright's built-in method
             role_elements = page.get_by_role(role).all()
-            
             for element in role_elements:
                 try:
-                    # Get bounding box BEFORE any action using Playwright's method
                     bbox = element.bounding_box()
-                    
-                    # Only include elements that are visible and have valid dimensions
-                    if bbox and bbox['width'] > 0 and bbox['height'] > 0:
-                        # Get name directly from Playwright accessibility tree
-                        name = ''
-                        try:
-                            # Get the accessibility tree and find this element's name
-                            ax_tree = page.accessibility.snapshot()
-                            # Find element by role in accessibility tree
-                            for node in ax_tree.get('children', []):
-                                if node.get('role') == role:
-                                    name = node.get('name', '')
-                                    break
-                        except:
-                            # Fallback to DOM attributes if accessibility tree fails
-                            name = element.get_attribute('aria-label') or \
-                                   element.text_content() or \
-                                   element.get_attribute('title') or \
-                                   element.get_attribute('placeholder') or \
-                                   element.get_attribute('value') or ''
+                    if bbox and bbox['width'] > 2 and bbox['height'] > 2:
+                        # Get element properties
+                        name = element.get_attribute('aria-label') or \
+                               element.text_content() or \
+                               element.get_attribute('title') or \
+                               element.get_attribute('placeholder') or \
+                               element.get_attribute('value') or ''
                         
-                        # Get additional DOM properties
-                        tag_name = element.evaluate("el => el.tagName.toLowerCase()")
+                        tag_name = element.evaluate('el => el.tagName.toLowerCase()')
                         element_id = element.get_attribute('id') or ''
                         class_name = element.get_attribute('class') or ''
                         href = element.get_attribute('href') or ''
                         element_type = element.get_attribute('type') or ''
-                        disabled = element.evaluate("el => el.disabled") or False
-                        checked = element.evaluate("el => el.checked")
-                        selected = element.evaluate("el => el.selected")
+                        disabled = element.evaluate('el => el.disabled') or False
+                        checked = element.evaluate('el => el.checked')
+                        selected = element.evaluate('el => el.selected')
                         
-                        elements.append({
-                            'name': name,
-                            'role': role,  # This comes directly from Playwright role
+                        # Create clean Playwright selector without action (action will be determined by GPT's action_type)
+                        playwright_selector = None
+                        if element_id:
+                            playwright_selector = f"page.locator('#{element_id}')"
+                        elif name.strip():
+                            playwright_selector = f'page.get_by_text("{name.strip()}")'
+                        else:
+                            playwright_selector = f'page.get_by_role("{role}")'
+                        
+                        element_data = {
+                            'name': name.strip() if name else '',
+                            'role': role,
                             'value': element.get_attribute('value') or '',
                             'x': int(bbox['x']),
                             'y': int(bbox['y']),
@@ -277,205 +256,19 @@ def get_interactive_elements_playwright_native(page) -> list:
                             'disabled': disabled,
                             'checked': checked,
                             'selected': selected,
-                            'source': 'playwright_native'  # Mark as native Playwright source
-                        })
-                        
-                except Exception as e:
-                    # Skip elements that can't be processed (hidden, removed, etc.)
+                            'source': 'playwright_direct',
+                            'hasBoundingBox': True,
+                            'playwright_selector': playwright_selector
+                        }
+                        elements.append(element_data)
+                except:
                     continue
-                    
-        except Exception as e:
-            # Skip roles that don't exist or cause errors
-            print(f"    No {role} elements found or error: {e}")
+        except:
             continue
     
-    print(f"  Playwright-native approach found {len(elements)} elements")
     return elements
 
-def get_interactive_dom_elements(page) -> list:
-    """Fallback: Find additional interactive DOM elements"""
-    js_code = """
-    () => {
-        const elements = [];
-        
-        // More selective list - only truly clickable/interactable elements
-        const interactiveSelectors = [
-            'button',
-            'a[href]',
-            'input[type="button"]',
-            'input[type="submit"]',
-            'input[type="reset"]',
-            'input[type="text"]',
-            'input[type="email"]',
-            'input[type="password"]',
-            'input[type="search"]',
-            'input[type="checkbox"]',
-            'input[type="radio"]',
-            'select',
-            'textarea',
-            '[role="button"]',
-            '[role="link"]',
-            '[role="tab"]',
-            '[role="menuitem"]',
-            '[role="checkbox"]',
-            '[role="radio"]',
-            '[role="textbox"]',
-            '[role="searchbox"]',
-            '[role="combobox"]',
-            '[onclick]',
-            '[tabindex]:not([tabindex="-1"])'
-        ];
-        
-        const allInteractive = document.querySelectorAll(interactiveSelectors.join(', '));
-        
-        for (let element of allInteractive) {
-            const rect = element.getBoundingClientRect();
-            const style = window.getComputedStyle(element);
-            
-            // Skip elements that are not visible or have zero size
-            if (rect.width <= 3 || rect.height <= 3 || 
-                style.visibility === 'hidden' || 
-                style.display === 'none' ||
-                style.opacity === '0') {
-                continue;
-            }
-            
-            // Only include elements that are within the viewport
-            if (rect.bottom < 0 || rect.top > window.innerHeight || 
-                rect.right < 0 || rect.left > window.innerWidth) {
-                continue;
-            }
-            
-            // Skip tiny elements that are likely decorative
-            if (rect.width < 10 || rect.height < 10) {
-                continue;
-            }
-            
-            const name = (
-                element.getAttribute('aria-label') || 
-                element.getAttribute('title') || 
-                element.textContent?.trim()?.substring(0, 50) || 
-                element.getAttribute('placeholder') || 
-                element.getAttribute('alt') || 
-                element.value || 
-                `${element.tagName.toLowerCase()}_element`
-            );
-            
-            // Skip elements with empty or very short names unless they're form inputs
-            if (name.length < 2 && !['input', 'select', 'textarea'].includes(element.tagName.toLowerCase())) {
-                continue;
-            }
-            
-            elements.push({
-                name: name,
-                role: element.getAttribute('role') || element.tagName.toLowerCase(),
-                value: element.value || '',
-                x: Math.round(rect.left),
-                y: Math.round(rect.top),
-                width: Math.round(rect.width),
-                height: Math.round(rect.height),
-                tagName: element.tagName.toLowerCase(),
-                type: element.type || '',
-                href: element.href || '',
-                disabled: element.disabled || false,
-                checked: element.checked,
-                selected: element.selected,
-                id: element.id || '',
-                className: element.className || '',
-                source: 'fallback_dom'  // Mark as fallback source
-            });
-        }
-        
-        return elements;
-    }
-    """
-    
-    try:
-        result = page.evaluate(js_code)
-        return result
-    except Exception as e:
-        print(f"⚠️ Error getting DOM elements: {e}")
-        return []
 
-def get_elements_from_accessibility_tree(ax_tree: dict) -> list:
-    """Extract interactive elements from accessibility tree (like bounding boxes approach)"""
-    elements = []
-    
-    def extract_elements_from_node(node, depth=0):
-        if not node or depth > 20:  # Prevent infinite recursion
-            return
-            
-        # Check if this node should be included
-        should_include = False
-        
-        # Include if has a role (any role)
-        if node.get('role'):
-            should_include = True
-            
-        # Include if it's a text node with meaningful content
-        elif node.get('name') and len(node.get('name', '').strip()) > 0:
-            should_include = True
-            
-        if should_include:
-            # Get bounding box if available
-            bbox = node.get('boundingBox', {})
-            if bbox and bbox.get('width', 0) > 0 and bbox.get('height', 0) > 0:
-                element_data = {
-                    'name': node.get('name', ''),  # This comes from accessibility tree!
-                    'role': node.get('role', ''),
-                    'value': node.get('value', ''),
-                    'tagName': node.get('tagName', ''),
-                    'type': node.get('type', ''),
-                    'id': node.get('id', ''),
-                    'className': node.get('className', ''),
-                    'href': node.get('href', ''),
-                    'disabled': node.get('disabled', False),
-                    'checked': node.get('checked'),
-                    'selected': node.get('selected'),
-                    'x': int(bbox.get('x', 0)),
-                    'y': int(bbox.get('y', 0)),
-                    'width': int(bbox.get('width', 0)),
-                    'height': int(bbox.get('height', 0)),
-                    'source': 'accessibility_tree'  # Mark as from accessibility tree
-                }
-                elements.append(element_data)
-        
-        # Recursively process children
-        if node.get('children'):
-            for child in node['children']:
-                extract_elements_from_node(child, depth + 1)
-    
-    # Start extraction from root
-    extract_elements_from_node(ax_tree)
-    return elements
-
-def combine_and_deduplicate_elements_with_ax_priority(native_elements: list, ax_elements: list, dom_elements: list) -> list:
-    """Combine elements with priority: Accessibility Tree > Playwright Native > DOM Fallback"""
-    all_elements = []
-    seen_positions = set()
-    
-    # First pass: Add accessibility tree elements (highest priority for names)
-    for elem in ax_elements:
-        pos = (elem['x'], elem['y'], elem['width'], elem['height'])
-        if pos not in seen_positions:
-            all_elements.append(elem)
-            seen_positions.add(pos)
-    
-    # Second pass: Add Playwright native elements not already covered
-    for elem in native_elements:
-        pos = (elem['x'], elem['y'], elem['width'], elem['height'])
-        if pos not in seen_positions:
-            all_elements.append(elem)
-            seen_positions.add(pos)
-    
-    # Third pass: Add DOM fallback elements only if position not already covered
-    for elem in dom_elements:
-        pos = (elem['x'], elem['y'], elem['width'], elem['height'])
-        if pos not in seen_positions:
-            all_elements.append(elem)
-            seen_positions.add(pos)
-    
-    return all_elements
 
 def create_comprehensive_targeting_data(elements: list, url: str = None) -> list:
     """Create comprehensive targeting data for elements with multiple strategies"""
@@ -541,11 +334,11 @@ def clean_text_for_selector(text: str) -> str:
     
     return cleaned
 
-def try_alternative_selectors(page, original_code: str, comprehensive_data: dict, gpt_resp: dict) -> tuple[bool, list]:
+def try_alternative_selectors(page, original_code: str, comprehensive_data: dict, gpt_resp: dict) -> tuple[bool, list, str]:
     """
     Try alternative Playwright selectors when the primary one fails.
     Simple approach: loop through selectors array (skip first) and try exec() one by one.
-    Returns: (success, failed_alternatives)
+    Returns: (success, failed_alternatives, successful_selector_code)
     """
     failed_alternatives = []
     
@@ -554,7 +347,7 @@ def try_alternative_selectors(page, original_code: str, comprehensive_data: dict
         selected_id = gpt_resp.get('selected_annotation_id')
         if not selected_id:
             print("⚠️ No selected_annotation_id found, can't try alternative selectors")
-            return False, failed_alternatives
+            return False, failed_alternatives, ""
         
         # Find the element data for this annotation ID
         target_element = None
@@ -565,13 +358,13 @@ def try_alternative_selectors(page, original_code: str, comprehensive_data: dict
         
         if not target_element:
             print(f"⚠️ Element with annotation ID {selected_id} not found in targeting data")
-            return False, failed_alternatives
+            return False, failed_alternatives, ""
         
         # Get alternative selectors
         alternative_selectors = target_element.get('playwright_selectors', [])
         if len(alternative_selectors) == 0:
             print("⚠️ No alternative selectors available")
-            return False, failed_alternatives
+            return False, failed_alternatives, ""
         
         print(f"🎯 Trying alternative selectors for element {selected_id}")
         
@@ -583,17 +376,43 @@ def try_alternative_selectors(page, original_code: str, comprehensive_data: dict
             if not selector_code:
                 continue
             
-            # Just use the alternative selector as-is, no need to reconstruct the action
-            # The selector should already be complete (e.g., "page.get_by_role('button', name='10').click()")
-            action_code = selector_code
+            # Construct the action based on the action type from GPT's response
+            # Check if the selector already includes an action (like coordinates or mouse actions)
+            action_type = gpt_resp.get('action_type', 'click')  # Default to click if not specified
+            
+            # Check if selector already includes an action
+            if 'page.mouse.click' in selector_code or 'page.keyboard.' in selector_code:
+                # Selector already includes the action, use as-is
+                if action_type == 'fill':
+                    text_to_fill = gpt_resp.get('text_to_fill', 'TEXT_TO_FILL')
+                    action_code = f"{selector_code}; page.keyboard.type('{text_to_fill}')"
+                else:
+                    action_code = selector_code
+            else:
+                # Selector is clean, add the appropriate action
+                if action_type == 'click':
+                    action_code = f"{selector_code}.click()"
+                elif action_type == 'fill':
+                    # For fill actions, use the text_to_fill from GPT's response if available
+                    text_to_fill = gpt_resp.get('text_to_fill', 'TEXT_TO_FILL')
+                    action_code = f"{selector_code}.fill('{text_to_fill}')"
+                elif action_type == 'select':
+                    action_code = f"{selector_code}.select_option('OPTION_TO_SELECT')"
+                elif action_type == 'navigate':
+                    action_code = f"{selector_code}.click()"  # Navigate usually involves clicking
+                elif action_type == 'wait':
+                    action_code = f"{selector_code}.wait_for()"  # Wait for element to be visible
+                else:
+                    # Default to click for unknown action types
+                    action_code = f"{selector_code}.click()"
             
             print(f"  🔄 Trying alternative {i}: {selector_type} - {action_code}")
             
             try:
-                # Execute the alternative selector
+                # Execute the alternative selector with the constructed action
                 exec(action_code)
                 print(f"  ✅ Alternative selector succeeded: {selector_type}")
-                return True, failed_alternatives
+                return True, failed_alternatives, action_code
                 
             except Exception as alt_e:
                 print(f"  ❌ Alternative {i} failed: {alt_e}")
@@ -601,11 +420,11 @@ def try_alternative_selectors(page, original_code: str, comprehensive_data: dict
                 continue
         
         print("❌ All alternative selectors failed")
-        return False, failed_alternatives
+        return False, failed_alternatives, ""
         
     except Exception as e:
         print(f"⚠️ Error trying alternative selectors: {e}")
-        return False, failed_alternatives
+        return False, failed_alternatives, ""
 
 def generate_colors(count):
     """Generate distinct colors for bounding boxes"""
@@ -754,14 +573,22 @@ def generate_playwright_selectors(element: dict) -> list:
     """Generate multiple Playwright selector strategies for an element"""
     selectors = []
     
-    # Strategy 1: By coordinates (highest priority - most reliable)
+    # Strategy 1: By ID (highest priority - most reliable)
+    if element.get('id'):
+        selectors.append({
+            "type": "id",
+            "selector": f"page.locator('#{element['id']}')",
+            "priority": "high"
+        })
+    
+    # Strategy 2: By coordinates (mouse click) - second priority
     selectors.append({
         "type": "coordinates",
         "selector": f"page.mouse.click({element.get('x', 0) + element.get('width', 0)//2}, {element.get('y', 0) + element.get('height', 0)//2})",
         "priority": "high"
     })
     
-    # Strategy 2: By role and name
+    # Strategy 3: By role and name
     if element.get('role') and element.get('name'):
         selectors.append({
             "type": "role_name",
@@ -769,7 +596,7 @@ def generate_playwright_selectors(element: dict) -> list:
             "priority": "high"
         })
     
-    # Strategy 3: By label
+    # Strategy 4: By label
     if element.get('name'):
         selectors.append({
             "type": "label",
@@ -777,20 +604,12 @@ def generate_playwright_selectors(element: dict) -> list:
             "priority": "high"
         })
     
-    # Strategy 4: By text content
+    # Strategy 5: By text content
     if element.get('name'):
         selectors.append({
             "type": "text",
             "selector": f"page.get_by_text('{element['name']}')",
             "priority": "medium"
-        })
-    
-    # Strategy 5: By ID
-    if element.get('id'):
-        selectors.append({
-            "type": "id",
-            "selector": f"page.locator('#{element['id']}')",
-            "priority": "high"
         })
     
     # Strategy 6: By CSS class combination
@@ -858,9 +677,9 @@ def suggest_interactions(element: dict) -> list:
 
 # ========== CONFIGURABLE PARAMETERS ==========
 PHASE = 1
-MAX_RETRIES = 7
+MAX_RETRIES = 2
 MAX_STEPS = 25  # Maximum number of steps before failing
-ACTION_TIMEOUT = 20000  # 30 seconds timeout for actions
+ACTION_TIMEOUT = 10000  # 10 seconds timeout for actions
 # Execution Modes:
 # 0 - Automatic Mode: Processes all instructions without manual intervention
 # 1 - Interactive Mode: Requires Enter press after each instruction for manual review
@@ -885,6 +704,116 @@ def extract_role_and_name_from_code(action_code):
     role = role_match.group(1) if role_match else None
     name = name_match.group(1) if name_match else None
     return role, name
+
+
+
+
+
+def get_all_open_tabs(browser) -> list:
+    """Get information about all currently open tabs, excluding about:blank"""
+    tabs = []
+    try:
+        for page in browser.pages:
+            try:
+                # Skip about:blank tabs
+                if page.url == "about:blank":
+                    continue
+                    
+                try:
+                    tab_info = {
+                        'url': page.url,
+                        'title': page.title(),
+                        'domain': 'google.com' if 'google.com' in page.url.lower() else 'external',
+                        'page': page
+                    }
+                    tabs.append(tab_info)
+                except Exception as e:
+                    print(f"⚠️  Error getting tab info: {e}")
+                    # Skip this tab if we can't get its info
+                    continue
+            except Exception as e:
+                print(f"⚠️  Error accessing tab: {e}")
+                continue
+    except Exception as e:
+        print(f"⚠️  Error accessing browser pages: {e}")
+        return []
+    
+    return tabs
+
+def check_for_new_tabs(browser, previous_tab_count: int, previous_tab_urls: set) -> tuple[bool, list, int]:
+    """
+    Check if new tabs were opened and return info about them.
+    
+    Args:
+        browser: Browser context
+        previous_tab_count: Number of tabs from previous step
+        previous_tab_urls: Set of tab URLs from previous step
+        
+    Returns:
+        tuple: (has_new_tabs, new_tabs, current_tab_count)
+    """
+    current_tabs = get_all_open_tabs(browser)
+    current_tab_count = len(current_tabs)
+    current_tab_urls = {tab['url'] for tab in current_tabs}
+    
+    # Check if we have new tabs
+    if current_tab_count > previous_tab_count:
+        # Find new tabs (URLs that weren't in previous step)
+        new_tab_urls = current_tab_urls - previous_tab_urls
+        new_tabs = [tab for tab in current_tabs if tab['url'] in new_tab_urls]
+        
+        print(f"🆕 New tabs detected! Previous: {previous_tab_count}, Current: {current_tab_count}")
+        print(f"   New tabs: {[tab['domain'] for tab in new_tabs]}")
+        
+        return True, new_tabs, current_tab_count
+    else:
+        return False, [], current_tab_count
+
+def switch_to_new_tab(new_tabs: list, current_page) -> tuple[bool, object]:
+    """
+    Switch to the first new tab and return success status and new page object.
+    
+    Args:
+        new_tabs: List of new tab info dictionaries
+        current_page: Current page object
+        
+    Returns:
+        tuple: (success, new_page_object)
+    """
+    if not new_tabs:
+        return False, current_page
+    
+    try:
+        # Get the first new tab
+        new_tab = new_tabs[0]
+        new_page = new_tab['page']
+        
+        print(f"🔄 Switching to new tab: {new_tab['title']} ({new_tab['domain']})")
+        
+        # Wait for the new tab to be ready
+        print("⏳ Waiting for new tab to stabilize...")
+        new_page.wait_for_timeout(3000)  # 3 second delay
+        
+        # Bring the new tab to front
+        new_page.bring_to_front()
+        
+        # Wait a bit more after bringing to front
+        new_page.wait_for_timeout(2000)  # 2 second additional delay
+        
+        # Verify the tab is accessible
+        try:
+            new_page.wait_for_selector('body', timeout=5000)
+            print(f"✅ Successfully switched to: {new_tab['domain']}")
+            return True, new_page
+        except Exception as e:
+            print(f"⚠️  New tab not ready: {e}")
+            return False, current_page
+            
+    except Exception as e:
+        print(f"❌ Error switching to new tab: {e}")
+        return False, current_page
+
+
 
 def fetch_trajectory_nodes(
     instruction: str,
@@ -1046,7 +975,7 @@ def get_element_properties(page, locator_code):
         print(f"Locator code: {locator_code}")
     return None
 
-def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtree: str, action_code: str, action_description: str, page, user_message_file: str = None, llm_output=None, targeting_data_file: str = None) -> None:
+def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtree: str, action_code: str, action_description: str, page, user_message_file: str = None, llm_output=None, targeting_data_file: str = None, element_summary: str = None, annotation_id: str = None) -> None:
     """Update trajectory.json with a new step."""
     trajectory_path = os.path.join(dirs['root'], 'trajectory.json')
     try:
@@ -1055,12 +984,31 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
     except (FileNotFoundError, json.JSONDecodeError):
         trajectory = {}
     
-    # Get current page information
-    current_url = page.url
-    page_title = page.title()
-    open_pages = page.context.pages
-    open_pages_titles = [p.title() for p in open_pages]
-    open_pages_urls = [p.url for p in open_pages]
+    # Get current page information with safety checks
+    try:
+        current_url = page.url if hasattr(page, 'url') else "Unknown"
+        page_title = page.title() if hasattr(page, 'title') else "Unknown"
+        open_pages = page.context.pages if hasattr(page, 'context') else []
+        open_pages_titles = [p.title() for p in open_pages] if open_pages else []
+        open_pages_urls = [p.url for p in open_pages] if open_pages else []
+    except Exception as e:
+        print(f"⚠️  Error getting page info in update_trajectory: {e}")
+        current_url = "Error getting URL"
+        page_title = "Error getting title"
+        open_pages_titles = []
+        open_pages_urls = []
+    
+    # Load targeting data and find element by annotation ID if available
+    element_data = None
+    if targeting_data_file and annotation_id and os.path.exists(targeting_data_file):
+        try:
+            with open(targeting_data_file, 'r', encoding='utf-8') as f:
+                targeting_data = json.load(f)
+            
+            # Find element by annotation_id
+            element_data = next((elem for elem in targeting_data if str(elem.get('annotation_id', '')) == str(annotation_id)), None)
+        except Exception as e:
+            print(f"⚠️ Error loading targeting data: {e}")
     
     # Extract action type and locator from the code
     action_type = None
@@ -1084,40 +1032,22 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
     elif ".click()" in action_code:
         action_type = "click"
         locator_code = action_code.split(".click()")[0]
-        element_info = page.evaluate("""() => {
-            const lastClicked = document.activeElement;
-            if (!lastClicked) return null;
-            const rect = lastClicked.getBoundingClientRect();
-            return {
-                bbox: {
-                    x: rect.x,
-                    y: rect.y,
-                    width: rect.width,
-                    height: rect.height
-                },
-                class: lastClicked.className,
-                id: lastClicked.id,
-                type: lastClicked.tagName.toLowerCase(),
-                ariaLabel: lastClicked.getAttribute('aria-label'),
-                role: lastClicked.getAttribute('role'),
-                value: lastClicked.value
-            };
-        }""")
-        if element_info:
-            # Extract role and name from Playwright code if possible
-            role, name = extract_role_and_name_from_code(action_code)
-            if not role:
-                role = element_info.get('role', '')
-            if not name:
-                name = element_info.get('value', '')
-            # Try to get a meaningful name for the button from Playwright code first
-            button_name = extract_button_name_from_code(action_code)
-            if not button_name:
-                button_name = name or element_info.get('ariaLabel') or element_info.get('id') or ''
+        
+        # Use targeting data if available, otherwise fall back to page evaluation
+        if element_data:
+            # Get role and name directly from targeting data
+            role = element_data.get('element_info', {}).get('role', '')
+            name = element_data.get('element_info', {}).get('name', '')
+            
+            # Get button name from targeting data
+            button_name = name or element_data.get('element_info', {}).get('id', '')
+            
             if button_name:
                 thought = f'I need to click the "{button_name}" button.'
             else:
                 thought = 'I need to click a button.'
+            
+            bbox = element_data.get('bounding_box', {})
             action_output = {
                 "thought": thought,
                 "action": {
@@ -1125,49 +1055,116 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
                     "button": "left",
                     "click_type": "single",
                     "bbox": [
-                        element_info['bbox']['x'],
-                        element_info['bbox']['y'],
-                        element_info['bbox']['width'],
-                        element_info['bbox']['height']
+                        bbox.get('x', 0),
+                        bbox.get('y', 0),
+                        bbox.get('width', 0),
+                        bbox.get('height', 0)
                     ],
-                    "class": element_info.get('class', ''),
-                    "id": element_info.get('id', ''),
-                    "type": element_info.get('type', ''),
-                    "ariaLabel": element_info.get('ariaLabel', ''),
-                    "role": element_info.get('role', ''),
-                    "value": element_info.get('value', ''),
+                    "class": element_data.get('element_info', {}).get('class_name', ''),
+                    "id": element_data.get('element_info', {}).get('id', ''),
+                    "type": element_data.get('element_info', {}).get('tag_name', ''),
+                    "ariaLabel": element_data.get('element_info', {}).get('name', ''),
+                    "role": element_data.get('element_info', {}).get('role', ''),
+                    "value": element_data.get('element_info', {}).get('value', ''),
                     "node_properties": {
                         "role": role,
                         "value": name
                     }
                 },
-                "action_name": "click"
+                "action_name": "click",
+                "annotation_id": annotation_id
             }
+        else:
+            # Fallback to page evaluation if no targeting data available
+            try:
+                element_info = page.evaluate("""() => {
+                    const lastClicked = document.activeElement;
+                    if (!lastClicked) return null;
+                    const rect = lastClicked.getBoundingClientRect();
+                    return {
+                        bbox: {
+                            x: rect.x,
+                            y: rect.y,
+                            width: rect.width,
+                            height: rect.height
+                        },
+                        class: lastClicked.className,
+                        id: lastClicked.id,
+                        type: lastClicked.tagName.toLowerCase(),
+                        ariaLabel: lastClicked.getAttribute('aria-label'),
+                        role: lastClicked.getAttribute('role'),
+                        value: lastClicked.value
+                    };
+                }""")
+            except Exception as e:
+                print(f"⚠️  Error evaluating page in update_trajectory (click): {e}")
+                element_info = None
+            if element_info:
+                # Get role and name directly from page evaluation
+                role = element_info.get('role', '')
+                name = element_info.get('value', '')
+                
+                # Get button name from page evaluation
+                button_name = name or element_info.get('ariaLabel') or element_info.get('id') or ''
+                if button_name:
+                    thought = f'I need to click the "{button_name}" button.'
+                else:
+                    thought = 'I need to click a button.'
+                action_output = {
+                    "thought": thought,
+                    "action": {
+                        "bid": "",
+                        "button": "left",
+                        "click_type": "single",
+                        "bbox": [
+                            element_info['bbox']['x'],
+                            element_info['bbox']['y'],
+                            element_info['bbox']['width'],
+                            element_info['bbox']['height']
+                        ],
+                        "class": element_info.get('class', ''),
+                        "id": element_info.get('id', ''),
+                        "type": element_info.get('type', ''),
+                        "ariaLabel": element_info.get('ariaLabel', ''),
+                        "role": element_info.get('role', ''),
+                        "value": element_info.get('value', ''),
+                        "node_properties": {
+                            "role": role,
+                            "value": name
+                        }
+                    },
+                    "action_name": "click",
+                    "annotation_id": annotation_id
+                }
     elif ".fill(" in action_code:
         action_type = "type"
         parts = action_code.split(".fill(")
         locator_code = parts[0]
         text = parts[1].split(")")[0].strip('"\'')
         # Get the last focused input element
-        element_info = page.evaluate("""() => {
-            const lastFocused = document.activeElement;
-            if (!lastFocused) return null;
-            const rect = lastFocused.getBoundingClientRect();
-            return {
-                bbox: {
-                    x: rect.x,
-                    y: rect.y,
-                    width: rect.width,
-                    height: rect.height
-                },
-                class: lastFocused.className,
-                id: lastFocused.id,
-                type: lastFocused.tagName.toLowerCase(),
-                ariaLabel: lastFocused.getAttribute('aria-label'),
-                role: lastFocused.getAttribute('role'),
-                value: lastFocused.value
-            };
-        }""")
+        try:
+            element_info = page.evaluate("""() => {
+                const lastFocused = document.activeElement;
+                if (!lastFocused) return null;
+                const rect = lastFocused.getBoundingClientRect();
+                return {
+                    bbox: {
+                        x: rect.x,
+                        y: rect.y,
+                        width: rect.width,
+                        height: rect.height
+                    },
+                    class: lastFocused.className,
+                    id: lastFocused.id,
+                    type: lastFocused.tagName.toLowerCase(),
+                    ariaLabel: lastFocused.getAttribute('aria-label'),
+                    role: lastFocused.getAttribute('role'),
+                    value: lastFocused.value
+                };
+            }""")
+        except Exception as e:
+            print(f"⚠️  Error evaluating page in update_trajectory (fill): {e}")
+            element_info = None
         if element_info:
             action_output = {
                 "thought": thought,
@@ -1176,28 +1173,240 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
                 },
                 "action_name": "keyboard_type"
             }
+    elif ".click()" in action_code and ".type(" in action_code:
+        # Handle combined click + type (common in fallback scenarios)
+        action_type = "type"
+        parts = action_code.split(".click()")
+        locator_code = parts[0]
+        
+        # Extract text to type
+        text = action_code.split(".type(")[1].split(")")[0].strip('"\'')
+        
+        # Use targeting data if available, otherwise fall back to page evaluation
+        if element_data:
+            bbox = element_data.get('bounding_box', {})
+            action_output = {
+                "thought": f'I need to click and type "{text}" into the input field.',
+                "action": {
+                    "bid": "",
+                    "button": "left",
+                    "click_type": "single",
+                    "bbox": [
+                        bbox.get('x', 0),
+                        bbox.get('y', 0),
+                        bbox.get('width', 0),
+                        bbox.get('height', 0)
+                    ],
+                    "class": element_data.get('element_info', {}).get('class_name', ''),
+                    "id": element_data.get('element_info', {}).get('id', ''),
+                    "type": element_data.get('element_info', {}).get('tag_name', ''),
+                    "ariaLabel": element_data.get('element_info', {}).get('name', ''),
+                    "role": element_data.get('element_info', {}).get('role', ''),
+                    "value": element_data.get('element_info', {}).get('value', ''),
+                    "text": text,
+                    "node_properties": {
+                        "role": element_data.get('element_info', {}).get('role', ''),
+                        "value": text
+                    }
+                },
+                "action_name": "type",
+                "annotation_id": annotation_id
+            }
+        else:
+            # Fallback to page evaluation if no targeting data available
+            try:
+                element_info = page.evaluate("""() => {
+                    const lastClicked = document.activeElement;
+                    if (!lastClicked) return null;
+                    const rect = lastClicked.getBoundingClientRect();
+                    return {
+                        bbox: {
+                            x: rect.x,
+                            y: rect.y,
+                            width: rect.width,
+                            height: rect.height
+                        },
+                        class: lastClicked.className,
+                        id: lastClicked.id,
+                        type: lastClicked.tagName.toLowerCase(),
+                        ariaLabel: lastClicked.getAttribute('aria-label'),
+                        role: lastClicked.getAttribute('role'),
+                        value: lastClicked.value
+                    };
+                }""")
+            except Exception as e:
+                print(f"⚠️  Error evaluating page in update_trajectory (fill): {e}")
+                element_info = None
+            if element_info:
+                action_output = {
+                    "thought": f'I need to click and type "{text}" into the input field.',
+                    "action": {
+                        "bid": "",
+                        "button": "left",
+                        "click_type": "single",
+                        "bbox": [
+                            element_info['bbox']['x'],
+                            element_info['bbox']['y'],
+                            element_info['bbox']['width'],
+                            element_info['bbox']['height']
+                        ],
+                        "class": element_info.get('class', ''),
+                        "id": element_info.get('id', ''),
+                        "type": element_info.get('type', ''),
+                        "ariaLabel": element_info.get('ariaLabel', ''),
+                        "role": element_info.get('role', ''),
+                        "value": element_info.get('value', ''),
+                        "text": text,
+                        "node_properties": {
+                            "role": element_info.get('role', ''),
+                            "value": text
+                        }
+                    },
+                    "action_name": "type",
+                    "annotation_id": annotation_id
+                }
+    elif "page.mouse.click(" in action_code:
+        action_type = "click"
+        
+        # Extract coordinates from the mouse click
+        coords_match = re.search(r'page\.mouse\.click\((\d+),\s*(\d+)\)', action_code)
+        if coords_match:
+            x, y = int(coords_match.group(1)), int(coords_match.group(2))
+            
+            # Use targeting data if available, otherwise fall back to page evaluation
+            if element_data:
+                # Get role and name directly from targeting data
+                role = element_data.get('element_info', {}).get('role', '')
+                name = element_data.get('element_info', {}).get('name', '')
+                
+                # Get button name from targeting data
+                button_name = name or element_data.get('element_info', {}).get('id', '')
+                
+                if button_name:
+                    thought = f'I need to click the "{button_name}" button.'
+                else:
+                    thought = 'I need to click a button.'
+                
+                bbox = element_data.get('bounding_box', {})
+                action_output = {
+                    "thought": thought,
+                    "action": {
+                        "bid": "",
+                        "button": "left",
+                        "click_type": "single",
+                        "bbox": [
+                            bbox.get('x', 0),
+                            bbox.get('y', 0),
+                            bbox.get('width', 0),
+                            bbox.get('height', 0)
+                        ],
+                        "class": element_data.get('element_info', {}).get('class_name', ''),
+                        "id": element_data.get('element_info', {}).get('id', ''),
+                        "type": element_data.get('element_info', {}).get('tag_name', ''),
+                        "ariaLabel": element_data.get('element_info', {}).get('name', ''),
+                        "role": element_data.get('element_info', {}).get('role', ''),
+                        "value": element_data.get('element_info', {}).get('value', ''),
+                        "coordinates": [x, y],
+                        "node_properties": {
+                            "role": role,
+                            "value": name
+                        }
+                    },
+                    "action_name": "click",
+                    "annotation_id": annotation_id
+                }
+            else:
+                # Fallback to page evaluation if no targeting data available
+                try:
+                    element_info = page.evaluate("""() => {
+                        const elementAtPoint = document.elementFromPoint(arguments[0], arguments[1]);
+                        if (!elementAtPoint) return null;
+                        const rect = elementAtPoint.getBoundingClientRect();
+                        return {
+                            bbox: {
+                                x: rect.x,
+                                y: rect.y,
+                                width: rect.width,
+                                height: rect.height
+                            },
+                            class: elementAtPoint.className,
+                            id: elementAtPoint.id,
+                            type: elementAtPoint.tagName.toLowerCase(),
+                            ariaLabel: elementAtPoint.getAttribute('aria-label'),
+                            role: elementAtPoint.getAttribute('role'),
+                            value: elementAtPoint.value
+                        };
+                    }""", x, y)
+                except Exception as e:
+                    print(f"⚠️  Error evaluating page in update_trajectory (mouse click): {e}")
+                    element_info = None
+                
+                if element_info:
+                    # Get role and name directly from page evaluation
+                    role = element_info.get('role', '')
+                    name = element_info.get('value', '')
+                    
+                    # Get button name from page evaluation
+                    button_name = name or element_info.get('ariaLabel') or element_info.get('id', '')
+                    
+                    if button_name:
+                        thought = f'I need to click the "{button_name}" button.'
+                    else:
+                        thought = 'I need to click a button.'
+                    
+                    action_output = {
+                        "thought": thought,
+                        "action": {
+                            "bid": "",
+                            "button": "left",
+                            "click_type": "single",
+                            "bbox": [
+                                element_info['bbox']['x'],
+                                element_info['bbox']['y'],
+                                element_info['bbox']['width'],
+                                element_info['bbox']['height']
+                            ],
+                            "class": element_info.get('class', ''),
+                            "id": element_info.get('id', ''),
+                            "type": element_info.get('type', ''),
+                            "ariaLabel": element_info.get('ariaLabel', ''),
+                            "role": element_info.get('role', ''),
+                            "value": element_info.get('value', ''),
+                            "coordinates": [x, y],
+                            "node_properties": {
+                                "role": role,
+                                "value": name
+                            }
+                        },
+                        "action_name": "click",
+                        "annotation_id": annotation_id
+                    }
     elif ".dblclick()" in action_code:
         action_type = "dblclick"
         locator_code = action_code.split(".dblclick()")[0]
-        element_info = page.evaluate("""() => {
-            const lastClicked = document.activeElement;
-            if (!lastClicked) return null;
-            const rect = lastClicked.getBoundingClientRect();
-            return {
-                bbox: {
-                    x: rect.x,
-                    y: rect.y,
-                    width: rect.width,
-                    height: rect.height
-                },
-                class: lastClicked.className,
-                id: lastClicked.id,
-                type: lastClicked.tagName.toLowerCase(),
-                ariaLabel: lastClicked.getAttribute('aria-label'),
-                role: lastClicked.getAttribute('role'),
-                value: lastClicked.value
-            };
-        }""")
+        try:
+            element_info = page.evaluate("""() => {
+                const lastClicked = document.activeElement;
+                if (!lastClicked) return null;
+                const rect = lastClicked.getBoundingClientRect();
+                return {
+                    bbox: {
+                        x: rect.x,
+                        y: rect.y,
+                        width: rect.width,
+                        height: rect.height
+                    },
+                    class: lastClicked.className,
+                    id: lastClicked.id,
+                    type: lastClicked.tagName.toLowerCase(),
+                    ariaLabel: lastClicked.getAttribute('aria-label'),
+                    role: lastClicked.getAttribute('role'),
+                    value: lastClicked.value
+                };
+            }""")
+        except Exception as e:
+            print(f"⚠️  Error evaluating page in update_trajectory (dblclick): {e}")
+            element_info = None
         if element_info:
             action_output = {
                 "thought": thought,
@@ -1228,25 +1437,29 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
     elif ".paste(" in action_code:
         action_type = "paste"
         locator_code = action_code.split(".paste(")[0]
-        element_info = page.evaluate("""() => {
-            const lastFocused = document.activeElement;
-            if (!lastFocused) return null;
-            const rect = lastFocused.getBoundingClientRect();
-            return {
-                bbox: {
-                    x: rect.x,
-                    y: rect.y,
-                    width: rect.width,
-                    height: rect.height
-                },
-                class: lastFocused.className,
-                id: lastFocused.id,
-                type: lastFocused.tagName.toLowerCase(),
-                ariaLabel: lastFocused.getAttribute('aria-label'),
-                role: lastFocused.getAttribute('role'),
-                value: lastFocused.value
-            };
-        }""")
+        try:
+            element_info = page.evaluate("""() => {
+                const lastFocused = document.activeElement;
+                if (!lastFocused) return null;
+                const rect = lastFocused.getBoundingClientRect();
+                return {
+                    bbox: {
+                        x: rect.x,
+                        y: rect.y,
+                        width: rect.width,
+                        height: rect.height
+                    },
+                    class: lastFocused.className,
+                    id: lastFocused.id,
+                    type: lastFocused.tagName.toLowerCase(),
+                    ariaLabel: lastFocused.getAttribute('aria-label'),
+                    role: lastFocused.getAttribute('role'),
+                    value: lastFocused.value
+                };
+            }""")
+        except Exception as e:
+            print(f"⚠️  Error evaluating page in update_trajectory (paste): {e}")
+            element_info = None
         if element_info:
             action_output = {
                 "thought": thought,
@@ -1268,25 +1481,29 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
     elif "page.keyboard.press" in action_code:
         action_type = "keypress"
         key = action_code.split("page.keyboard.press(")[1].split(")")[0].strip('"\'')
-        element_info = page.evaluate("""() => {
-            const lastFocused = document.activeElement;
-            if (!lastFocused) return null;
-            const rect = lastFocused.getBoundingClientRect();
-            return {
-                bbox: {
-                    x: rect.x,
-                    y: rect.y,
-                    width: rect.width,
-                    height: rect.height
-                },
-                class: lastFocused.className,
-                id: lastFocused.id,
-                type: lastFocused.tagName.toLowerCase(),
-                ariaLabel: lastFocused.getAttribute('aria-label'),
-                role: lastFocused.getAttribute('role'),
-                value: lastFocused.value
-            };
-        }""")
+        try:
+            element_info = page.evaluate("""() => {
+                const lastFocused = document.activeElement;
+                if (!lastFocused) return null;
+                const rect = lastFocused.getBoundingClientRect();
+                return {
+                    bbox: {
+                        x: rect.x,
+                        y: rect.y,
+                        width: rect.width,
+                        height: rect.height
+                    },
+                    class: lastFocused.className,
+                    id: lastFocused.id,
+                    type: lastFocused.tagName.toLowerCase(),
+                    ariaLabel: lastFocused.getAttribute('aria-label'),
+                    role: lastFocused.getAttribute('role'),
+                    value: lastFocused.value
+                };
+            }""")
+        except Exception as e:
+            print(f"⚠️  Error evaluating page in update_trajectory (keyboard.press): {e}")
+            element_info = None
         if element_info:
             action_output = {
                 "thought": thought,
@@ -1495,7 +1712,14 @@ def write_user_message(user_message_file: str, goal: str, execution_history: lis
     else:
         user_message_content.append("  None")
     user_message_content.append("")
-    user_message_content.append(f"Current Page: {page.title()} ({page.url})\n")
+    # Safety check for page object
+    try:
+        page_title = page.title() if hasattr(page, 'title') else "Unknown"
+        page_url = page.url if hasattr(page, 'url') else "Unknown"
+        user_message_content.append(f"Current Page: {page_title} ({page_url})\n")
+    except Exception as e:
+        print(f"⚠️  Error getting page info: {e}")
+        user_message_content.append("Current Page: Unknown (Error getting page info)\n")
     user_message_content.append("AX Tree:")
     user_message_content.append(json.dumps(tree, indent=2, ensure_ascii=False))
     user_message_content.append("")
@@ -1548,6 +1772,9 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
             page = browser.new_page()
             page.set_default_timeout(ACTION_TIMEOUT)
             
+            # Set up monitoring for this browser session
+
+            
             for idx, item in enumerate(all_instructions[start_idx:end_idx], start=start_idx):
                 persona = item['persona']
                 url = item['url']
@@ -1591,10 +1818,19 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                 should_continue = True
                 start_time = time.time()
                 total_tokens = 0  # Initialize token counter
+                
+                # Track initial URL for reference
+                initial_url = page.url
+                print(f"📍 Starting URL: {initial_url}")
+                
+                # Initialize tab tracking
+                initial_tabs = get_all_open_tabs(browser)
+                previous_tab_count = len(initial_tabs)
+                previous_tab_urls = {tab['url'] for tab in initial_tabs}
+                print(f"📑 Initial tabs: {previous_tab_count}")
 
                 while should_continue:
                     step_idx = len(task_summarizer)
-
                     if step_idx >= MAX_STEPS:
                         print(f"❌ Maximum number of steps ({MAX_STEPS}) exceeded.")
                         runtime = time.time() - start_time
@@ -1710,16 +1946,34 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                     if trajectory_context:
                         enhanced_context = f"\n\n{trajectory_context}\n\n"
                     
-                    # Create minimal element summary for GPT (just annotation ID, role, name)
+                    # Create structured JSON element summary for GPT
                     element_summary = ""
                     if comprehensive_data and 'targeting_data' in comprehensive_data:
-                        element_summary = "\n\nAvailable Interactive Elements:\n"
+                        # Create structured data for GPT
+                        elements_data = []
                         for elem in comprehensive_data['targeting_data']:
                             annotation_id = elem.get('annotation_id', '?')
                             role = elem.get('element_info', {}).get('role', 'unknown')
                             name = elem.get('element_info', {}).get('name', 'unnamed')
-                            element_summary += f"  {annotation_id}. {role}: {name}\n"
-                        element_summary += "\n"
+                            elements_data.append({
+                                "annotation_id": str(annotation_id),
+                                "role": role,
+                                "name": name
+                            })
+                        
+                        # Convert to JSON string
+                        element_summary = f"\n\nAvailable Interactive Elements:\n{json.dumps(elements_data, indent=2)}\n\n"
+                    
+                    # Save the minimal summary that gets sent to GPT for debugging
+                    gpt_summary_file = os.path.join(dirs['root'], f'gpt_summary_step_{step_idx}.txt')
+                    with open(gpt_summary_file, 'w', encoding='utf-8') as f:
+                        f.write(f"Step: {step_idx}\n")
+                        f.write(f"Current Goal: {current_goal}\n")
+                        f.write(f"URL: {url}\n")
+                        f.write(f"Task Goal: {aug}\n")
+                        f.write(f"Trajectory Context: {enhanced_context}\n")
+                        f.write(f"Element Summary Sent to GPT:\n{element_summary}")
+                    print(f"📝 Saved GPT summary for debugging: {gpt_summary_file}")
                     
                     gpt_resp = chat_ai_playwright_code(
                         previous_steps=execution_history,
@@ -1806,7 +2060,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 # For non-Playwright code, execute normally
                                 exec(code)
                             
-                            # Only save files and document steps if the execution was successful
+                            # ALWAYS record the successful step first (regardless of new tabs)
                             execution_history.append({'step': description, 'code': code})
                             task_summarizer.append({'step': description, 'code': code, 'axtree': tree})
                             # Save axtree to file only after successful execution
@@ -1823,35 +2077,154 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 page=page,
                                 user_message_file=os.path.join(dirs['user_message'], f"user_message_{step_idx+1:03d}.txt"),
                                 llm_output=gpt_resp,
-                                targeting_data_file=targeting_data_file
+                                targeting_data_file=targeting_data_file,
+                                annotation_id=gpt_resp.get('selected_annotation_id') if gpt_resp else None
                             )
-                            # Log successful solution with all failed attempts history
-                            if retry > 0:
-                                update_playwright_error_log(
-                                    dirs=dirs,
-                                    step_idx=step_idx,
-                                    description=description,
-                                    attempted_code="",  # Not needed for successful solution
-                                    error_message="Previous attempts failed",
-                                    successful_code=code,
-                                    thought=gpt_resp.get('thought', '') if gpt_resp else '',
-                                    current_goal=current_goal,
-                                    all_failed_attempts=failed_attempts_details
-                                )
-                            success = True
+                            
+                            # Simple tab switching: after successful execution, check for new tabs
+                            print("🔍 Checking for new tabs after successful action execution...")
+                            print(f"   Previous tab count: {previous_tab_count}")
+                            print(f"   Previous tab URLs: {list(previous_tab_urls)[:3]}...")  # Show first 3 URLs
+                            
+                            has_new_tabs, new_tabs, current_tab_count = check_for_new_tabs(
+                                browser, previous_tab_count, previous_tab_urls
+                            )
+                            
+                            if has_new_tabs:
+                                print(f"🆕 New tabs detected! Switching to new tab and restarting loop...")
+                                print(f"   New tabs: {[tab['domain'] for tab in new_tabs]}")
+                                print(f"   Current tab count: {current_tab_count}")
+                                
+                                # Wait a few seconds for the new tab to stabilize
+                                print("⏳ Waiting 8 seconds for new tab to stabilize...")
+                                time.sleep(8)
+                                
+                                # Switch to the new tab
+                                success, new_page = switch_to_new_tab(new_tabs, page)
+                                
+                                if success:
+                                    # Update our page reference and tracking variables
+                                    page = new_page
+                                    previous_tab_count = current_tab_count
+                                    previous_tab_urls = {tab['url'] for tab in get_all_open_tabs(browser)}
+                                    
+                                    # Update the URL variable so GPT gets the correct context
+                                    url = page.url
+                                    print(f"🌐 Updated URL context to: {url}")
+                                    
+                                    print(f"🚀 Successfully switched to new tab: {page.url}")
+                                    print("🔄 Restarting loop to take screenshot and collect elements on new tab...")
+                                    
+                                    # Mark as successful to exit retry loop
+                                    success = True
+                                    break
+                                else:
+                                    print("⚠️  Failed to switch to new tab, continuing with current page")
+                                    # Update tracking even if switch failed
+                                    previous_tab_count = current_tab_count
+                                    previous_tab_urls = {tab['url'] for tab in get_all_open_tabs(browser)}
+                            else:
+                                print("✅ No new tabs detected, continuing with current page")
+                                # Only record the step if we didn't switch to a new tab
+                                # Log successful solution with all failed attempts history
+                                if retry > 0:
+                                    update_playwright_error_log(
+                                        dirs=dirs,
+                                        step_idx=step_idx,
+                                        description=description,
+                                        attempted_code="",  # Not needed for successful solution
+                                        error_message="Previous attempts failed",
+                                        successful_code=code,
+                                        thought=gpt_resp.get('thought', '') if gpt_resp else '',
+                                        current_goal=current_goal,
+                                        all_failed_attempts=failed_attempts_details
+                                    )
+                                success = True
                         except Exception as e:
                             print(f"⚠️ Attempt {retry + 1} failed: {e}")
+                            
+
                             
                             # Try alternative selectors from targeting data if this is a Playwright error
                             if "page." in code and retry == 0:
                                 print("🔄 Trying alternative Playwright selectors...")
-                                success, failed_alternatives = try_alternative_selectors(
+                                success, failed_alternatives, successful_fallback_code = try_alternative_selectors(
                                     page, code, comprehensive_data, gpt_resp
                                 )
                                 
                                 if success:
                                     print("✅ Alternative selector succeeded!")
-                                    break
+                                    print(f"🔄 Fallback code that worked: {successful_fallback_code}")
+                                    # Use the successful fallback code instead of the original GPT code
+                                    working_code = successful_fallback_code
+                                    
+
+                                    
+                                    # Simple tab switching: after successful alternative execution, check for new tabs
+                                    print("🔍 Checking for new tabs after successful alternative action execution...")
+                                    print(f"   Previous tab count: {previous_tab_count}")
+                                    print(f"   Previous tab URLs: {list(previous_tab_urls)[:3]}...")  # Show first 3 URLs
+                                    
+                                    has_new_tabs, new_tabs, current_tab_count = check_for_new_tabs(
+                                        browser, previous_tab_count, previous_tab_urls
+                                    )
+                                    
+                                    if has_new_tabs:
+                                        print(f"🆕 New tabs detected! Switching to new tab and restarting loop...")
+                                        print(f"   New tabs: {[tab['domain'] for tab in new_tabs]}")
+                                        print(f"   Current tab count: {current_tab_count}")
+                                        
+                                        # Wait a few seconds for the new tab to stabilize
+                                        print("⏳ Waiting 5 seconds for new tab to stabilize...")
+                                        time.sleep(5)
+                                        
+                                        # Switch to the new tab
+                                        success, new_page = switch_to_new_tab(new_tabs, page)
+                                        
+                                        if success:
+                                            # Update our page reference and tracking variables
+                                            page = new_page
+                                            previous_tab_count = current_tab_count
+                                            previous_tab_urls = {tab['url'] for tab in get_all_open_tabs(browser)}
+                                            
+                                            # Update the URL variable so GPT gets the correct context
+                                            url = page.url
+                                            print(f"🌐 Updated URL context to: {url}")
+                                            
+                                            print(f"🚀 Successfully switched to new tab: {page.url}")
+                                            print("🔄 Restarting loop to take screenshot and collect elements on new tab...")
+                                            
+                                            # Mark as successful to exit retry loop
+                                            success = True
+                                            break
+                                        else:
+                                            print("⚠️  Failed to switch to new tab, continuing with current page")
+                                            # Update tracking even if switch failed
+                                            previous_tab_count = current_tab_count
+                                            previous_tab_urls = {tab['url'] for tab in get_all_open_tabs(browser)}
+                                    else:
+                                        # Only record the step if we didn't switch to a new tab
+                                        execution_history.append({'step': description, 'code': working_code, 'note': 'fallback_selector_used'})
+                                        task_summarizer.append({'step': description, 'code': working_code, 'axtree': tree})
+                                        # Save axtree to file after successful alternative execution
+                                        with open(axtree_file, 'w', encoding='utf-8') as f:
+                                            json.dump(tree, f, indent=2, ensure_ascii=False)
+                                        # Update trajectory.json with the successful alternative step
+                                        update_trajectory(
+                                            dirs=dirs,
+                                            step_idx=step_idx,
+                                            screenshot=screenshot,
+                                            axtree=axtree_file,
+                                            action_code=working_code,
+                                            action_description=description,
+                                            page=page,
+                                            user_message_file=os.path.join(dirs['user_message'], f"user_message_{step_idx+1:03d}.txt"),
+                                            llm_output=gpt_resp,
+                                            targeting_data_file=targeting_data_file,
+                                            annotation_id=gpt_resp.get('selected_annotation_id') if gpt_resp else None
+                                        )
+                                        success = True
+                                        break
                                 else:
                                     # Add all failed alternatives to failed_codes so GPT knows not to try them
                                     print(f"📝 Adding {len(failed_alternatives)} failed alternatives to failed_codes")
@@ -2029,7 +2402,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
         finally:
             # Close page and browser at the very end
             if MODE == 1:
-                    input("🔚 Press Enter to continue...")
+                input("🔚 Press Enter to continue...")
             page.close()
             browser.close()
 
@@ -2053,9 +2426,13 @@ def main():
     chrome_exec = os.getenv("CHROME_EXECUTABLE_PATH")
     phase = PHASE
     
-    # Run accounts sequentially
-    for account in ACCOUNTS:
-        run_for_account(account, chrome_exec, phase, search_context=True)
+    with ThreadPoolExecutor(max_workers=len(ACCOUNTS)) as executor:
+        futures = [
+            executor.submit(run_for_account, account, chrome_exec, phase, search_context=False)
+            for account in ACCOUNTS
+        ]
+        for future in futures:
+            future.result()  # Wait for all to finish
 
 def generate_trajectory_html(dirs: Dict[str, str], metadata: Dict[str, Any]) -> None:
     """Generate an HTML visualization of the trajectory."""
@@ -2168,8 +2545,8 @@ def generate_trajectory_html(dirs: Dict[str, str], metadata: Dict[str, Any]) -> 
                 <div>
                     <div class="step-details-label">Thought</div>
                     <div>{thought}</div>
-                    <div class="step-details-label">Action</div>
-                    <div>{action_str}</div>
+                    <div class="step-details-label">Action Code</div>
+                    <div><pre>{llm_output_str}</pre></div>
                     <div class="step-details-label">Action Description</div>
                     <div>{action_description}</div>
                     <button class="collapsible">System Message</button>
