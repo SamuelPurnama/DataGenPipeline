@@ -12,7 +12,7 @@ import requests
 
 from prompts.generation_prompt import (
     PLAYWRIGHT_CODE_SYSTEM_MSG_FAILED,
-    PLAYWRIGHT_CODE_SYSTEM_MSG_CALENDAR,
+    PLAYWRIGHT_CODE_SYSTEM_MSG_TAB_CHANGE_FLIGHTS,
     PLAYWRIGHT_CODE_SYSTEM_MSG_DELETION_CALENDAR,
     PLAYWRIGHT_CODE_SYSTEM_MSG_MAPS,
     PLAYWRIGHT_CODE_SYSTEM_MSG_FLIGHTS,
@@ -86,38 +86,56 @@ def chat_ai_playwright_code(previous_steps=None, taskGoal=None, taskPlan=None, i
         error_log: The error log for the current task
     """
     # Base system message
+    print(f"\n{'='*60}")
+    print("🎯 SELECTING SYSTEM PROMPT FOR GPT CALL")
+    print(f"{'='*60}")
+    
     if failed_codes and len(failed_codes) > 0:
             base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_FAILED
-            print("\n🤖 Using FAILED ATTEMPT prompt")
+            print("🤖 SELECTED: FAILED ATTEMPT prompt")
+            print("📝 Reason: Previous attempts failed, using retry prompt")
     else:
         # Select prompt based on URL
         if url:
+            print(f"🌐 Current URL: {url}")
             if "mail.google.com" in url or "gmail.com" in url:
                 base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_GMAIL
-                print("\n🤖 Using GMAIL prompt")
+                print("🤖 SELECTED: GMAIL prompt")
+                print("📝 Reason: Detected Gmail/Google Mail URL")
             elif "calendar.google.com" in url:
                 base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_DELETION_CALENDAR if is_deletion_task else PLAYWRIGHT_CODE_SYSTEM_MSG_CALENDAR
-                print("\n🤖 Using CALENDAR prompt" + (" (deletion)" if is_deletion_task else ""))
+                prompt_type = "DELETION CALENDAR" if is_deletion_task else "CALENDAR"
+                print(f"🤖 SELECTED: {prompt_type} prompt")
+                print(f"📝 Reason: Detected Google Calendar URL (deletion task: {is_deletion_task})")
             elif "maps.google.com" in url:
                 base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_MAPS
-                print("\n🤖 Using MAPS prompt")
+                print("🤖 SELECTED: MAPS prompt")
+                print("📝 Reason: Detected Google Maps URL")
             elif "flights.google.com" in url or "google.com/travel/flights" in url:
                 base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_FLIGHTS
-                print("\n🤖 Using FLIGHTS prompt")
+                print("🤖 SELECTED: FLIGHTS prompt")
+                print("📝 Reason: Detected Google Flights URL")
             elif "scholar.google.com" in url:
                 base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_SCHOLAR
-                print("\n🤖 Using SCHOLAR prompt")
+                print("🤖 SELECTED: SCHOLAR prompt")
+                print("📝 Reason: Detected Google Scholar URL")
             elif "docs.google.com" in url:
                 base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_DOCS
-                print("\n🤖 Using DOCS prompt")
+                print("🤖 SELECTED: DOCS prompt")
+                print("📝 Reason: Detected Google Docs URL")
             else:
                 # Default to calendar for backward compatibility
-                base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_CALENDAR
-                print("\n🤖 Using DEFAULT (CALENDAR) prompt")
+                base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_TAB_CHANGE_FLIGHTS
+                print("🤖 SELECTED: DEFAULT (CALENDAR) prompt")
+                print(f"📝 Reason: Unknown URL pattern, using fallback prompt")
         else:
             # Default to calendar for backward compatibility
-            base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_CALENDAR
-            print("\n🤖 Using DEFAULT (CALENDAR) prompt")
+            base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_TAB_CHANGE_FLIGHTS
+            print("🤖 SELECTED: DEFAULT (TAB CHANGE FLIGHTS)) prompt")
+            print("📝 Reason: No URL provided, using fallback prompt")
+    
+    print(f"✅ System prompt selected successfully")
+    print(f"{'='*60}")
 
     if previous_steps is not None and image_path:
         try:
