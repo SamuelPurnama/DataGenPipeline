@@ -25,6 +25,11 @@ from trajectory_entity_types import WEB_TRAJECTORY_ENTITY_TYPES
 # Load environment variables
 load_dotenv()
 
+# Toggle: disable creating/ingesting error nodes
+# - Set env var DISABLE_ERROR_NODES=true|1 to disable
+# - Or pass CLI flag --no-errors
+DISABLE_ERROR_NODES = True
+
 
 # ==================== CUSTOM ENTITY TYPES ====================
 # Entity types are now imported from trajectory_entity_types.py
@@ -168,6 +173,9 @@ TRAJECTORY_ID: {trajectory_folder.name}
     
     def process_error_log(self, error_log_path: Path) -> List[Dict]:
         """Extract error information from error_log.json file."""
+        # Respect global toggle
+        if DISABLE_ERROR_NODES:
+            return []
         if not error_log_path.exists():
             return []
         
@@ -208,6 +216,9 @@ TRAJECTORY_ID: {trajectory_folder.name}
     
     def create_error_episode_text(self, trajectory_folder: Path) -> str:
         """Create structured episode text from error log data."""
+        # Respect global toggle
+        if DISABLE_ERROR_NODES:
+            return ""
         error_log_path = trajectory_folder / "error_log.json"
         
         if not error_log_path.exists():

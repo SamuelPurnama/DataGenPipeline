@@ -34,6 +34,7 @@ def generate_instructions(
             f"Based on your persona and the image of the current state of the page, generate a list of {num_instructions} distinct instructions that you might give to an assistant for tasks in this website. "
             f"These instructions must be feasible given the current page state and does not involve modifying/deleting content that is not currently present. "
             f"Vary the complexity of the instructions."
+            f"Use a date at least 3 weeks from September 2025."
             f"Return just the list of instructions, no other, no need for quotations, in english."
             f"Example, (but do not include these in your output): "
             f"- Can you search for cheap 1-week roundtrip flight options from Seattle at October under $150 with flight duration less than 3 hours"

@@ -3,7 +3,7 @@ PHASE1_NUM_INSTRUCTIONS = 10  # Instructions per persona for phase 1 (initial st
 PHASE2_NUM_INSTRUCTIONS = 20 # Instructions per persona for phase 2 (modified state)
 
 # Centralized path configuration
-RESULTS_DIR = "../data/results"
+RESULTS_DIR = "data/results"
 BROWSER_SESSIONS_DIR = "data/browser_sessions"
 SAMPLE_DATA_DIR = "data/sample_data"
 
@@ -18,13 +18,13 @@ ACCOUNTS = [
     #     "start_idx": 6,
     #     "end_idx": 8
     # },
-    {
-        "email": "testeracc482@gmail.com",
-        "password": "Lalala123",
-        "user_data_dir": "test1",
-        "start_idx": 0,
-        "end_idx": 10
-    },
+    # {
+    #     "email": "testeracc482@gmail.com",
+    #     "password": "Lalala123",
+    #     "user_data_dir": "test1",
+    #     "start_idx": 1,
+    #     "end_idx": 10
+    # },
     {
         "email": "testeracc649@gmail.com",
         "password": "Lalala123",
