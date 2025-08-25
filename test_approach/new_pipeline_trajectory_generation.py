@@ -705,6 +705,116 @@ def extract_role_and_name_from_code(action_code):
     name = name_match.group(1) if name_match else None
     return role, name
 
+
+
+
+
+def get_all_open_tabs(browser) -> list:
+    """Get information about all currently open tabs, excluding about:blank"""
+    tabs = []
+    try:
+        for page in browser.pages:
+            try:
+                # Skip about:blank tabs
+                if page.url == "about:blank":
+                    continue
+                    
+                try:
+                    tab_info = {
+                        'url': page.url,
+                        'title': page.title(),
+                        'domain': 'google.com' if 'google.com' in page.url.lower() else 'external',
+                        'page': page
+                    }
+                    tabs.append(tab_info)
+                except Exception as e:
+                    print(f"⚠️  Error getting tab info: {e}")
+                    # Skip this tab if we can't get its info
+                    continue
+            except Exception as e:
+                print(f"⚠️  Error accessing tab: {e}")
+                continue
+    except Exception as e:
+        print(f"⚠️  Error accessing browser pages: {e}")
+        return []
+    
+    return tabs
+
+def check_for_new_tabs(browser, previous_tab_count: int, previous_tab_urls: set) -> tuple[bool, list, int]:
+    """
+    Check if new tabs were opened and return info about them.
+    
+    Args:
+        browser: Browser context
+        previous_tab_count: Number of tabs from previous step
+        previous_tab_urls: Set of tab URLs from previous step
+        
+    Returns:
+        tuple: (has_new_tabs, new_tabs, current_tab_count)
+    """
+    current_tabs = get_all_open_tabs(browser)
+    current_tab_count = len(current_tabs)
+    current_tab_urls = {tab['url'] for tab in current_tabs}
+    
+    # Check if we have new tabs
+    if current_tab_count > previous_tab_count:
+        # Find new tabs (URLs that weren't in previous step)
+        new_tab_urls = current_tab_urls - previous_tab_urls
+        new_tabs = [tab for tab in current_tabs if tab['url'] in new_tab_urls]
+        
+        print(f"🆕 New tabs detected! Previous: {previous_tab_count}, Current: {current_tab_count}")
+        print(f"   New tabs: {[tab['domain'] for tab in new_tabs]}")
+        
+        return True, new_tabs, current_tab_count
+    else:
+        return False, [], current_tab_count
+
+def switch_to_new_tab(new_tabs: list, current_page) -> tuple[bool, object]:
+    """
+    Switch to the first new tab and return success status and new page object.
+    
+    Args:
+        new_tabs: List of new tab info dictionaries
+        current_page: Current page object
+        
+    Returns:
+        tuple: (success, new_page_object)
+    """
+    if not new_tabs:
+        return False, current_page
+    
+    try:
+        # Get the first new tab
+        new_tab = new_tabs[0]
+        new_page = new_tab['page']
+        
+        print(f"🔄 Switching to new tab: {new_tab['title']} ({new_tab['domain']})")
+        
+        # Wait for the new tab to be ready
+        print("⏳ Waiting for new tab to stabilize...")
+        new_page.wait_for_timeout(3000)  # 3 second delay
+        
+        # Bring the new tab to front
+        new_page.bring_to_front()
+        
+        # Wait a bit more after bringing to front
+        new_page.wait_for_timeout(2000)  # 2 second additional delay
+        
+        # Verify the tab is accessible
+        try:
+            new_page.wait_for_selector('body', timeout=5000)
+            print(f"✅ Successfully switched to: {new_tab['domain']}")
+            return True, new_page
+        except Exception as e:
+            print(f"⚠️  New tab not ready: {e}")
+            return False, current_page
+            
+    except Exception as e:
+        print(f"❌ Error switching to new tab: {e}")
+        return False, current_page
+
+
+
 def fetch_trajectory_nodes(
     instruction: str,
     max_results: int = 3,
@@ -874,12 +984,19 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
     except (FileNotFoundError, json.JSONDecodeError):
         trajectory = {}
     
-    # Get current page information
-    current_url = page.url
-    page_title = page.title()
-    open_pages = page.context.pages
-    open_pages_titles = [p.title() for p in open_pages]
-    open_pages_urls = [p.url for p in open_pages]
+    # Get current page information with safety checks
+    try:
+        current_url = page.url if hasattr(page, 'url') else "Unknown"
+        page_title = page.title() if hasattr(page, 'title') else "Unknown"
+        open_pages = page.context.pages if hasattr(page, 'context') else []
+        open_pages_titles = [p.title() for p in open_pages] if open_pages else []
+        open_pages_urls = [p.url for p in open_pages] if open_pages else []
+    except Exception as e:
+        print(f"⚠️  Error getting page info in update_trajectory: {e}")
+        current_url = "Error getting URL"
+        page_title = "Error getting title"
+        open_pages_titles = []
+        open_pages_urls = []
     
     # Load targeting data and find element by annotation ID if available
     element_data = None
@@ -959,25 +1076,29 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
             }
         else:
             # Fallback to page evaluation if no targeting data available
-            element_info = page.evaluate("""() => {
-                const lastClicked = document.activeElement;
-                if (!lastClicked) return null;
-                const rect = lastClicked.getBoundingClientRect();
-                return {
-                    bbox: {
-                        x: rect.x,
-                        y: rect.y,
-                        width: rect.width,
-                        height: rect.height
-                    },
-                    class: lastClicked.className,
-                    id: lastClicked.id,
-                    type: lastClicked.tagName.toLowerCase(),
-                    ariaLabel: lastClicked.getAttribute('aria-label'),
-                    role: lastClicked.getAttribute('role'),
-                    value: lastClicked.value
-                };
-            }""")
+            try:
+                element_info = page.evaluate("""() => {
+                    const lastClicked = document.activeElement;
+                    if (!lastClicked) return null;
+                    const rect = lastClicked.getBoundingClientRect();
+                    return {
+                        bbox: {
+                            x: rect.x,
+                            y: rect.y,
+                            width: rect.width,
+                            height: rect.height
+                        },
+                        class: lastClicked.className,
+                        id: lastClicked.id,
+                        type: lastClicked.tagName.toLowerCase(),
+                        ariaLabel: lastClicked.getAttribute('aria-label'),
+                        role: lastClicked.getAttribute('role'),
+                        value: lastClicked.value
+                    };
+                }""")
+            except Exception as e:
+                print(f"⚠️  Error evaluating page in update_trajectory (click): {e}")
+                element_info = None
             if element_info:
                 # Get role and name directly from page evaluation
                 role = element_info.get('role', '')
@@ -1021,25 +1142,29 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
         locator_code = parts[0]
         text = parts[1].split(")")[0].strip('"\'')
         # Get the last focused input element
-        element_info = page.evaluate("""() => {
-            const lastFocused = document.activeElement;
-            if (!lastFocused) return null;
-            const rect = lastFocused.getBoundingClientRect();
-            return {
-                bbox: {
-                    x: rect.x,
-                    y: rect.y,
-                    width: rect.width,
-                    height: rect.height
-                },
-                class: lastFocused.className,
-                id: lastFocused.id,
-                type: lastFocused.tagName.toLowerCase(),
-                ariaLabel: lastFocused.getAttribute('aria-label'),
-                role: lastFocused.getAttribute('role'),
-                value: lastFocused.value
-            };
-        }""")
+        try:
+            element_info = page.evaluate("""() => {
+                const lastFocused = document.activeElement;
+                if (!lastFocused) return null;
+                const rect = lastFocused.getBoundingClientRect();
+                return {
+                    bbox: {
+                        x: rect.x,
+                        y: rect.y,
+                        width: rect.width,
+                        height: rect.height
+                    },
+                    class: lastFocused.className,
+                    id: lastFocused.id,
+                    type: lastFocused.tagName.toLowerCase(),
+                    ariaLabel: lastFocused.getAttribute('aria-label'),
+                    role: lastFocused.getAttribute('role'),
+                    value: lastFocused.value
+                };
+            }""")
+        except Exception as e:
+            print(f"⚠️  Error evaluating page in update_trajectory (fill): {e}")
+            element_info = None
         if element_info:
             action_output = {
                 "thought": thought,
@@ -1089,25 +1214,29 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
             }
         else:
             # Fallback to page evaluation if no targeting data available
-            element_info = page.evaluate("""() => {
-                const lastClicked = document.activeElement;
-                if (!lastClicked) return null;
-                const rect = lastClicked.getBoundingClientRect();
-                return {
-                    bbox: {
-                        x: rect.x,
-                        y: rect.y,
-                        width: rect.width,
-                        height: rect.height
-                    },
-                    class: lastClicked.className,
-                    id: lastClicked.id,
-                    type: lastClicked.tagName.toLowerCase(),
-                    ariaLabel: lastClicked.getAttribute('aria-label'),
-                    role: lastClicked.getAttribute('role'),
-                    value: lastClicked.value
-                };
-            }""")
+            try:
+                element_info = page.evaluate("""() => {
+                    const lastClicked = document.activeElement;
+                    if (!lastClicked) return null;
+                    const rect = lastClicked.getBoundingClientRect();
+                    return {
+                        bbox: {
+                            x: rect.x,
+                            y: rect.y,
+                            width: rect.width,
+                            height: rect.height
+                        },
+                        class: lastClicked.className,
+                        id: lastClicked.id,
+                        type: lastClicked.tagName.toLowerCase(),
+                        ariaLabel: lastClicked.getAttribute('aria-label'),
+                        role: lastClicked.getAttribute('role'),
+                        value: lastClicked.value
+                    };
+                }""")
+            except Exception as e:
+                print(f"⚠️  Error evaluating page in update_trajectory (fill): {e}")
+                element_info = None
             if element_info:
                 action_output = {
                     "thought": f'I need to click and type "{text}" into the input field.',
@@ -1188,25 +1317,29 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
                 }
             else:
                 # Fallback to page evaluation if no targeting data available
-                element_info = page.evaluate("""() => {
-                    const elementAtPoint = document.elementFromPoint(arguments[0], arguments[1]);
-                    if (!elementAtPoint) return null;
-                    const rect = elementAtPoint.getBoundingClientRect();
-                    return {
-                        bbox: {
-                            x: rect.x,
-                            y: rect.y,
-                            width: rect.width,
-                            height: rect.height
-                        },
-                        class: elementAtPoint.className,
-                        id: elementAtPoint.id,
-                        type: elementAtPoint.tagName.toLowerCase(),
-                        ariaLabel: elementAtPoint.getAttribute('aria-label'),
-                        role: elementAtPoint.getAttribute('role'),
-                        value: elementAtPoint.value
-                    };
-                }""", x, y)
+                try:
+                    element_info = page.evaluate("""() => {
+                        const elementAtPoint = document.elementFromPoint(arguments[0], arguments[1]);
+                        if (!elementAtPoint) return null;
+                        const rect = elementAtPoint.getBoundingClientRect();
+                        return {
+                            bbox: {
+                                x: rect.x,
+                                y: rect.y,
+                                width: rect.width,
+                                height: rect.height
+                            },
+                            class: elementAtPoint.className,
+                            id: elementAtPoint.id,
+                            type: elementAtPoint.tagName.toLowerCase(),
+                            ariaLabel: elementAtPoint.getAttribute('aria-label'),
+                            role: elementAtPoint.getAttribute('role'),
+                            value: elementAtPoint.value
+                        };
+                    }""", x, y)
+                except Exception as e:
+                    print(f"⚠️  Error evaluating page in update_trajectory (mouse click): {e}")
+                    element_info = None
                 
                 if element_info:
                     # Get role and name directly from page evaluation
@@ -1251,25 +1384,29 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
     elif ".dblclick()" in action_code:
         action_type = "dblclick"
         locator_code = action_code.split(".dblclick()")[0]
-        element_info = page.evaluate("""() => {
-            const lastClicked = document.activeElement;
-            if (!lastClicked) return null;
-            const rect = lastClicked.getBoundingClientRect();
-            return {
-                bbox: {
-                    x: rect.x,
-                    y: rect.y,
-                    width: rect.width,
-                    height: rect.height
-                },
-                class: lastClicked.className,
-                id: lastClicked.id,
-                type: lastClicked.tagName.toLowerCase(),
-                ariaLabel: lastClicked.getAttribute('aria-label'),
-                role: lastClicked.getAttribute('role'),
-                value: lastClicked.value
-            };
-        }""")
+        try:
+            element_info = page.evaluate("""() => {
+                const lastClicked = document.activeElement;
+                if (!lastClicked) return null;
+                const rect = lastClicked.getBoundingClientRect();
+                return {
+                    bbox: {
+                        x: rect.x,
+                        y: rect.y,
+                        width: rect.width,
+                        height: rect.height
+                    },
+                    class: lastClicked.className,
+                    id: lastClicked.id,
+                    type: lastClicked.tagName.toLowerCase(),
+                    ariaLabel: lastClicked.getAttribute('aria-label'),
+                    role: lastClicked.getAttribute('role'),
+                    value: lastClicked.value
+                };
+            }""")
+        except Exception as e:
+            print(f"⚠️  Error evaluating page in update_trajectory (dblclick): {e}")
+            element_info = None
         if element_info:
             action_output = {
                 "thought": thought,
@@ -1300,25 +1437,29 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
     elif ".paste(" in action_code:
         action_type = "paste"
         locator_code = action_code.split(".paste(")[0]
-        element_info = page.evaluate("""() => {
-            const lastFocused = document.activeElement;
-            if (!lastFocused) return null;
-            const rect = lastFocused.getBoundingClientRect();
-            return {
-                bbox: {
-                    x: rect.x,
-                    y: rect.y,
-                    width: rect.width,
-                    height: rect.height
-                },
-                class: lastFocused.className,
-                id: lastFocused.id,
-                type: lastFocused.tagName.toLowerCase(),
-                ariaLabel: lastFocused.getAttribute('aria-label'),
-                role: lastFocused.getAttribute('role'),
-                value: lastFocused.value
-            };
-        }""")
+        try:
+            element_info = page.evaluate("""() => {
+                const lastFocused = document.activeElement;
+                if (!lastFocused) return null;
+                const rect = lastFocused.getBoundingClientRect();
+                return {
+                    bbox: {
+                        x: rect.x,
+                        y: rect.y,
+                        width: rect.width,
+                        height: rect.height
+                    },
+                    class: lastFocused.className,
+                    id: lastFocused.id,
+                    type: lastFocused.tagName.toLowerCase(),
+                    ariaLabel: lastFocused.getAttribute('aria-label'),
+                    role: lastFocused.getAttribute('role'),
+                    value: lastFocused.value
+                };
+            }""")
+        except Exception as e:
+            print(f"⚠️  Error evaluating page in update_trajectory (paste): {e}")
+            element_info = None
         if element_info:
             action_output = {
                 "thought": thought,
@@ -1340,25 +1481,29 @@ def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtr
     elif "page.keyboard.press" in action_code:
         action_type = "keypress"
         key = action_code.split("page.keyboard.press(")[1].split(")")[0].strip('"\'')
-        element_info = page.evaluate("""() => {
-            const lastFocused = document.activeElement;
-            if (!lastFocused) return null;
-            const rect = lastFocused.getBoundingClientRect();
-            return {
-                bbox: {
-                    x: rect.x,
-                    y: rect.y,
-                    width: rect.width,
-                    height: rect.height
-                },
-                class: lastFocused.className,
-                id: lastFocused.id,
-                type: lastFocused.tagName.toLowerCase(),
-                ariaLabel: lastFocused.getAttribute('aria-label'),
-                role: lastFocused.getAttribute('role'),
-                value: lastFocused.value
-            };
-        }""")
+        try:
+            element_info = page.evaluate("""() => {
+                const lastFocused = document.activeElement;
+                if (!lastFocused) return null;
+                const rect = lastFocused.getBoundingClientRect();
+                return {
+                    bbox: {
+                        x: rect.x,
+                        y: rect.y,
+                        width: rect.width,
+                        height: rect.height
+                    },
+                    class: lastFocused.className,
+                    id: lastFocused.id,
+                    type: lastFocused.tagName.toLowerCase(),
+                    ariaLabel: lastFocused.getAttribute('aria-label'),
+                    role: lastFocused.getAttribute('role'),
+                    value: lastFocused.value
+                };
+            }""")
+        except Exception as e:
+            print(f"⚠️  Error evaluating page in update_trajectory (keyboard.press): {e}")
+            element_info = None
         if element_info:
             action_output = {
                 "thought": thought,
@@ -1567,7 +1712,14 @@ def write_user_message(user_message_file: str, goal: str, execution_history: lis
     else:
         user_message_content.append("  None")
     user_message_content.append("")
-    user_message_content.append(f"Current Page: {page.title()} ({page.url})\n")
+    # Safety check for page object
+    try:
+        page_title = page.title() if hasattr(page, 'title') else "Unknown"
+        page_url = page.url if hasattr(page, 'url') else "Unknown"
+        user_message_content.append(f"Current Page: {page_title} ({page_url})\n")
+    except Exception as e:
+        print(f"⚠️  Error getting page info: {e}")
+        user_message_content.append("Current Page: Unknown (Error getting page info)\n")
     user_message_content.append("AX Tree:")
     user_message_content.append(json.dumps(tree, indent=2, ensure_ascii=False))
     user_message_content.append("")
@@ -1620,6 +1772,9 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
             page = browser.new_page()
             page.set_default_timeout(ACTION_TIMEOUT)
             
+            # Set up monitoring for this browser session
+
+            
             for idx, item in enumerate(all_instructions[start_idx:end_idx], start=start_idx):
                 persona = item['persona']
                 url = item['url']
@@ -1663,10 +1818,19 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                 should_continue = True
                 start_time = time.time()
                 total_tokens = 0  # Initialize token counter
+                
+                # Track initial URL for reference
+                initial_url = page.url
+                print(f"📍 Starting URL: {initial_url}")
+                
+                # Initialize tab tracking
+                initial_tabs = get_all_open_tabs(browser)
+                previous_tab_count = len(initial_tabs)
+                previous_tab_urls = {tab['url'] for tab in initial_tabs}
+                print(f"📑 Initial tabs: {previous_tab_count}")
 
                 while should_continue:
                     step_idx = len(task_summarizer)
-
                     if step_idx >= MAX_STEPS:
                         print(f"❌ Maximum number of steps ({MAX_STEPS}) exceeded.")
                         runtime = time.time() - start_time
@@ -1896,7 +2060,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 # For non-Playwright code, execute normally
                                 exec(code)
                             
-                            # Only save files and document steps if the execution was successful
+                            # ALWAYS record the successful step first (regardless of new tabs)
                             execution_history.append({'step': description, 'code': code})
                             task_summarizer.append({'step': description, 'code': code, 'axtree': tree})
                             # Save axtree to file only after successful execution
@@ -1916,22 +2080,70 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 targeting_data_file=targeting_data_file,
                                 annotation_id=gpt_resp.get('selected_annotation_id') if gpt_resp else None
                             )
-                            # Log successful solution with all failed attempts history
-                            if retry > 0:
-                                update_playwright_error_log(
-                                    dirs=dirs,
-                                    step_idx=step_idx,
-                                    description=description,
-                                    attempted_code="",  # Not needed for successful solution
-                                    error_message="Previous attempts failed",
-                                    successful_code=code,
-                                    thought=gpt_resp.get('thought', '') if gpt_resp else '',
-                                    current_goal=current_goal,
-                                    all_failed_attempts=failed_attempts_details
-                                )
-                            success = True
+                            
+                            # Simple tab switching: after successful execution, check for new tabs
+                            print("🔍 Checking for new tabs after successful action execution...")
+                            print(f"   Previous tab count: {previous_tab_count}")
+                            print(f"   Previous tab URLs: {list(previous_tab_urls)[:3]}...")  # Show first 3 URLs
+                            
+                            has_new_tabs, new_tabs, current_tab_count = check_for_new_tabs(
+                                browser, previous_tab_count, previous_tab_urls
+                            )
+                            
+                            if has_new_tabs:
+                                print(f"🆕 New tabs detected! Switching to new tab and restarting loop...")
+                                print(f"   New tabs: {[tab['domain'] for tab in new_tabs]}")
+                                print(f"   Current tab count: {current_tab_count}")
+                                
+                                # Wait a few seconds for the new tab to stabilize
+                                print("⏳ Waiting 8 seconds for new tab to stabilize...")
+                                time.sleep(8)
+                                
+                                # Switch to the new tab
+                                success, new_page = switch_to_new_tab(new_tabs, page)
+                                
+                                if success:
+                                    # Update our page reference and tracking variables
+                                    page = new_page
+                                    previous_tab_count = current_tab_count
+                                    previous_tab_urls = {tab['url'] for tab in get_all_open_tabs(browser)}
+                                    
+                                    # Update the URL variable so GPT gets the correct context
+                                    url = page.url
+                                    print(f"🌐 Updated URL context to: {url}")
+                                    
+                                    print(f"🚀 Successfully switched to new tab: {page.url}")
+                                    print("🔄 Restarting loop to take screenshot and collect elements on new tab...")
+                                    
+                                    # Mark as successful to exit retry loop
+                                    success = True
+                                    break
+                                else:
+                                    print("⚠️  Failed to switch to new tab, continuing with current page")
+                                    # Update tracking even if switch failed
+                                    previous_tab_count = current_tab_count
+                                    previous_tab_urls = {tab['url'] for tab in get_all_open_tabs(browser)}
+                            else:
+                                print("✅ No new tabs detected, continuing with current page")
+                                # Only record the step if we didn't switch to a new tab
+                                # Log successful solution with all failed attempts history
+                                if retry > 0:
+                                    update_playwright_error_log(
+                                        dirs=dirs,
+                                        step_idx=step_idx,
+                                        description=description,
+                                        attempted_code="",  # Not needed for successful solution
+                                        error_message="Previous attempts failed",
+                                        successful_code=code,
+                                        thought=gpt_resp.get('thought', '') if gpt_resp else '',
+                                        current_goal=current_goal,
+                                        all_failed_attempts=failed_attempts_details
+                                    )
+                                success = True
                         except Exception as e:
                             print(f"⚠️ Attempt {retry + 1} failed: {e}")
+                            
+
                             
                             # Try alternative selectors from targeting data if this is a Playwright error
                             if "page." in code and retry == 0:
@@ -1946,27 +2158,73 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                     # Use the successful fallback code instead of the original GPT code
                                     working_code = successful_fallback_code
                                     
-                                    execution_history.append({'step': description, 'code': working_code, 'note': 'fallback_selector_used'})
-                                    task_summarizer.append({'step': description, 'code': working_code, 'axtree': tree})
-                                    # Save axtree to file after successful alternative execution
-                                    with open(axtree_file, 'w', encoding='utf-8') as f:
-                                        json.dump(tree, f, indent=2, ensure_ascii=False)
-                                    # Update trajectory.json with the successful alternative step
-                                    update_trajectory(
-                                        dirs=dirs,
-                                        step_idx=step_idx,
-                                        screenshot=screenshot,
-                                        axtree=axtree_file,
-                                        action_code=working_code,
-                                        action_description=description,
-                                        page=page,
-                                        user_message_file=os.path.join(dirs['user_message'], f"user_message_{step_idx+1:03d}.txt"),
-                                        llm_output=gpt_resp,
-                                        targeting_data_file=targeting_data_file,
-                                        annotation_id=gpt_resp.get('selected_annotation_id') if gpt_resp else None
+
+                                    
+                                    # Simple tab switching: after successful alternative execution, check for new tabs
+                                    print("🔍 Checking for new tabs after successful alternative action execution...")
+                                    print(f"   Previous tab count: {previous_tab_count}")
+                                    print(f"   Previous tab URLs: {list(previous_tab_urls)[:3]}...")  # Show first 3 URLs
+                                    
+                                    has_new_tabs, new_tabs, current_tab_count = check_for_new_tabs(
+                                        browser, previous_tab_count, previous_tab_urls
                                     )
-                                    success = True
-                                    break
+                                    
+                                    if has_new_tabs:
+                                        print(f"🆕 New tabs detected! Switching to new tab and restarting loop...")
+                                        print(f"   New tabs: {[tab['domain'] for tab in new_tabs]}")
+                                        print(f"   Current tab count: {current_tab_count}")
+                                        
+                                        # Wait a few seconds for the new tab to stabilize
+                                        print("⏳ Waiting 5 seconds for new tab to stabilize...")
+                                        time.sleep(5)
+                                        
+                                        # Switch to the new tab
+                                        success, new_page = switch_to_new_tab(new_tabs, page)
+                                        
+                                        if success:
+                                            # Update our page reference and tracking variables
+                                            page = new_page
+                                            previous_tab_count = current_tab_count
+                                            previous_tab_urls = {tab['url'] for tab in get_all_open_tabs(browser)}
+                                            
+                                            # Update the URL variable so GPT gets the correct context
+                                            url = page.url
+                                            print(f"🌐 Updated URL context to: {url}")
+                                            
+                                            print(f"🚀 Successfully switched to new tab: {page.url}")
+                                            print("🔄 Restarting loop to take screenshot and collect elements on new tab...")
+                                            
+                                            # Mark as successful to exit retry loop
+                                            success = True
+                                            break
+                                        else:
+                                            print("⚠️  Failed to switch to new tab, continuing with current page")
+                                            # Update tracking even if switch failed
+                                            previous_tab_count = current_tab_count
+                                            previous_tab_urls = {tab['url'] for tab in get_all_open_tabs(browser)}
+                                    else:
+                                        # Only record the step if we didn't switch to a new tab
+                                        execution_history.append({'step': description, 'code': working_code, 'note': 'fallback_selector_used'})
+                                        task_summarizer.append({'step': description, 'code': working_code, 'axtree': tree})
+                                        # Save axtree to file after successful alternative execution
+                                        with open(axtree_file, 'w', encoding='utf-8') as f:
+                                            json.dump(tree, f, indent=2, ensure_ascii=False)
+                                        # Update trajectory.json with the successful alternative step
+                                        update_trajectory(
+                                            dirs=dirs,
+                                            step_idx=step_idx,
+                                            screenshot=screenshot,
+                                            axtree=axtree_file,
+                                            action_code=working_code,
+                                            action_description=description,
+                                            page=page,
+                                            user_message_file=os.path.join(dirs['user_message'], f"user_message_{step_idx+1:03d}.txt"),
+                                            llm_output=gpt_resp,
+                                            targeting_data_file=targeting_data_file,
+                                            annotation_id=gpt_resp.get('selected_annotation_id') if gpt_resp else None
+                                        )
+                                        success = True
+                                        break
                                 else:
                                     # Add all failed alternatives to failed_codes so GPT knows not to try them
                                     print(f"📝 Adding {len(failed_alternatives)} failed alternatives to failed_codes")
@@ -2144,7 +2402,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
         finally:
             # Close page and browser at the very end
             if MODE == 1:
-                    input("🔚 Press Enter to continue...")
+                input("🔚 Press Enter to continue...")
             page.close()
             browser.close()
 
