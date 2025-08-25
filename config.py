@@ -3,7 +3,7 @@ PHASE1_NUM_INSTRUCTIONS = 10  # Instructions per persona for phase 1 (initial st
 PHASE2_NUM_INSTRUCTIONS = 20 # Instructions per persona for phase 2 (modified state)
 
 # Centralized path configuration
-RESULTS_DIR = "data/results"
+RESULTS_DIR = "../data/results"
 BROWSER_SESSIONS_DIR = "data/browser_sessions"
 SAMPLE_DATA_DIR = "data/sample_data"
 

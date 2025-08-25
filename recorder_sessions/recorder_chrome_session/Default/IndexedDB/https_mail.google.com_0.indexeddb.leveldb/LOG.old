@@ -1,0 +1,6 @@
+2025/07/28-15:42:04.884 3ebe2a6 Reusing MANIFEST /Users/jovewinston/Documents/DataGenPipeline/recorder_sessions/recorder_chrome_session/Default/IndexedDB/https_mail.google.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/07/28-15:42:04.884 3ebe2a6 Recovering log #27
+2025/07/28-15:42:04.889 3ebe2a6 Reusing old log /Users/jovewinston/Documents/DataGenPipeline/recorder_sessions/recorder_chrome_session/Default/IndexedDB/https_mail.google.com_0.indexeddb.leveldb/000027.log 
+2025/07/28-15:42:05.756 3ebe2a8 Level-0 table #33: started
+2025/07/28-15:42:05.773 3ebe2a8 Level-0 table #33: 3128517 bytes OK
+2025/07/28-15:42:05.775 3ebe2a8 Delete type=0 #27

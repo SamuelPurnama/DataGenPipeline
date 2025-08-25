@@ -19,6 +19,7 @@ from prompts.generation_prompt import (
     PLAYWRIGHT_CODE_SYSTEM_MSG_FLIGHTS,
     PLAYWRIGHT_CODE_SYSTEM_MSG_SCHOLAR,
     PLAYWRIGHT_CODE_SYSTEM_MSG_DOCS,
+    PLAYWRIGHT_CODE_SYSTEM_MSG_GMAIL,
 )
 
 load_dotenv()
@@ -124,9 +125,11 @@ def chat_ai_playwright_code(accessibility_tree=None, previous_steps=None, taskGo
     else:
         # Select prompt based on URL
         if url:
-            if "calendar.google.com" in url:
-                # base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_DELETION_CALENDAR if is_deletion_task else PLAYWRIGHT_CODE_SYSTEM_MSG_CALENDAR
-                base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG
+            if "mail.google.com" in url or "gmail.com" in url:
+                base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_GMAIL
+                print("\n🤖 Using GMAIL prompt")
+            elif "calendar.google.com" in url:
+                base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_DELETION_CALENDAR if is_deletion_task else PLAYWRIGHT_CODE_SYSTEM_MSG_CALENDAR
                 print("\n🤖 Using CALENDAR prompt" + (" (deletion)" if is_deletion_task else ""))
             elif "maps.google.com" in url:
                 base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_MAPS
