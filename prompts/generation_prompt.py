@@ -828,8 +828,11 @@ You will receive:
 - Task goal – the user's intended outcome (e.g., "find a one-way flight to New York")
 - Previous steps – a list of actions the user has already taken. It's okay if the previous steps array is empty.
 - Targeting Data (interactable elements with annotation ids) – a list of role-name objects describing all visible and interactive elements on the page
-- Screenshot of the current page (with bounding boxes to indicate the interactable elements corresponding to the annotation ids)
+- Annoted screenshot of the current page (with bounding boxes to indicate the interactable elements corresponding to the annotation ids)
+- Clean screenshot of the current page (without bounding boxes)
 
+IMPORTANT: IF U SEE THE IMAGE OR ELEMENTS THAT IS NOT A GOOGLE FLIGHTS PAGE, EXAMPLE: IS AN ALASKA AIRLINES PAGE, DELTA AIRLINES PAGE, FRONTIER AIRLINES PAGE, OR ANY OTHER AIRLINES, YOU SHOULD RETURN A TASK SUMMARY. BASICALLY IF IT'S NOT A GOOGLE FLIGHT WEBSITE, YOU SHOULD RETURN A TASK SUMMARY.
+IMPORTANT: You should look at the annotated screenshot thoroughly and make sure you pick the elements with annotation ids that are visible on the page, not those that are hidden (even if they have bounding boxes).
 Return Value:
 You are NOT limited to just using `page.get_by_role(...)`.
 You MAY use:
@@ -843,8 +846,10 @@ You MAY use:
 - Do NOT guess airport or city names. Try selecting and clicking on the options present in the web page. If the goal doesn't mention it, assume realistic defaults (e.g., SFO, JFK).
 - When filling the "Departure" and "Return" fields, do not press enter to chose the date, try clicking dates present in the calendar and choose the dates that fit the goal or the cheapest flight.
 - If the user wants to book, do not complete the booking. Stop after navigating to the payment screen or review page.ogle flights anymore (if it's a airline booking page like Alaska Airlines, Delta Airlines, etc.), you should STOP and return a task summary.
-IMPORTANT: If you see the page is not go
-
+- IMPORTANT: Make sure you pick the CORRECT DATE. When a date selector is present, and the month in the instruciton is not in view, click the next button until you see the month in the instruciton. (ex. if the instruction is to book a flight for June 10th, and the June is not in view, click the next button until you see June in the calendar date selector.)
+- The annotated screenshot is the one with bounding boxes to indicate the interactable elements corresponding to the annotation ids. Please use this for your analysis to identify the correct element to interact with.
+- The clean screenshot is the one without bounding boxes.
+- When selecting annotation ids, make sure to look at the annotated screenshot first to locate that elemenet with the annotation id, and make sure it's a visible element on the annotated screenshot, if not, choose another annotation id.
 Examples of clarifying vague goals:
 - Goal: "Search for flights to Paris"
   → updated_goal: "Search for one-way economy flights from Seattle to Paris on June 10th"
@@ -1360,7 +1365,7 @@ You MAY use:
 - Usually if you see the page is not google flights anymore (if it's a airline booking page like Alaska Airlines, Delta Airlines, etc.), you should STOP and return a task summary.
 
 
-IMPORTANT: IF U SEE THE IMAGE OR ELEMENTS IS AN ALASKA AIRLINES, DELTA AIRLINES, ETC., YOU SHOULD STOP AND RETURN A TASK SUMMARY. BASICALLY IF IT'S NOT A GOOGLE FLIGHT WEBSITE, YOU SHOULD STOP AND RETURN A TASK SUMMARY.
+THIS IS SO SO IMPORTANT: IF U SEE THE IMAGE OR ELEMENTS THAT IS NOT A GOOGLE FLIGHTS PAGE, EXAMPLE: IS AN ALASKA AIRLINES PAGE, DELTA AIRLINES PAGE, FRONTIER AIRLINES PAGE, OR ANY OTHER AIRLINES, YOU SHOULD STOP AND RETURN A TASK SUMMARY. BASICALLY IF IT'S NOT A GOOGLE FLIGHT WEBSITE, YOU SHOULD STOP AND RETURN A TASK SUMMARY.
 Examples of clarifying vague goals:
 - Goal: "Search for flights to Paris"
   → updated_goal: "Search for one-way economy flights from Seattle to Paris on June 10th"

@@ -3,7 +3,7 @@ from doctr.models import ocr_predictor
 
 model = ocr_predictor(pretrained=True)
 # PDF
-image = DocumentFile.from_images("testMapImage2.png")
+image = DocumentFile.from_images("testImage2.png")
 # Analyze
 result = model(image)
 result.show()

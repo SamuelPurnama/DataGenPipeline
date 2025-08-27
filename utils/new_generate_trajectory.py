@@ -71,19 +71,21 @@ class TaskStep:
 
 task_summarizer = []
 
-def chat_ai_playwright_code(previous_steps=None, taskGoal=None, taskPlan=None, image_path=None, failed_codes=None, is_deletion_task=False, url=None, error_log=None, trajectory_context="", targeting_data=""):
+def chat_ai_playwright_code(previous_steps=None, taskGoal=None, taskPlan=None, image_path=None, annotated_image_path=None, failed_codes=None, is_deletion_task=False, url=None, error_log=None, trajectory_context="", targeting_data=""):
     """Get Playwright code directly from GPT to execute the next step.
     
     Args:
-        accessibility_tree: The accessibility tree of the current page
         previous_steps: List of previous steps taken
         taskGoal: The overall goal of the task (augmented instruction)
         taskPlan: The current specific goal/plan to execute
-        image_path: Path to the screenshot of the current page
+        image_path: Path to the clean screenshot of the current page
+        annotated_image_path: Path to the annotated screenshot with bounding boxes
         failed_codes: List of previously failed code attempts
         is_deletion_task: Whether this is a deletion task
         url: The URL of the current page
         error_log: The error log for the current task
+        trajectory_context: Context from previous trajectories
+        targeting_data: Summary of interactive elements
     """
     # Base system message
     print(f"\n{'='*60}")
@@ -139,7 +141,15 @@ def chat_ai_playwright_code(previous_steps=None, taskGoal=None, taskPlan=None, i
 
     if previous_steps is not None and image_path:
         try:
-            # Resize and encode image
+            # Prepare content array for GPT
+            content = [
+                {
+                    "type": "text",
+                    "text": f"Task goal: {taskGoal}\nCurrent plan: {taskPlan}\nPrevious steps(The playwright codes here are generated, take them with a grain of salt.): {json.dumps(previous_steps, indent=2)}{trajectory_context}\n\nInteractive elements: {targeting_data}\n\nError log: {error_log if error_log else 'No errors'}"
+                }
+            ]
+            
+            # Add clean screenshot
             with Image.open(image_path) as img:
                 if img.width > 512:
                     aspect_ratio = img.height / img.width
@@ -148,7 +158,39 @@ def chat_ai_playwright_code(previous_steps=None, taskGoal=None, taskPlan=None, i
                 
                 buffer = BytesIO()
                 img.save(buffer, format="PNG", optimize=True)
-                resized_image = base64.b64encode(buffer.getvalue()).decode("utf-8")
+                clean_image = base64.b64encode(buffer.getvalue()).decode("utf-8")
+            
+            content.append({
+                "type": "image_url",
+                "image_url": {
+                    "url": f"data:image/png;base64,{clean_image}"
+                }
+            })
+            
+            # Add annotated screenshot if available
+            if annotated_image_path and os.path.exists(annotated_image_path):
+                with Image.open(annotated_image_path) as img:
+                    if img.width > 512:
+                        aspect_ratio = img.height / img.width
+                        new_height = int(512 * aspect_ratio)
+                        img = img.resize((512, new_height), Image.LANCZOS)
+                    
+                    buffer = BytesIO()
+                    img.save(buffer, format="PNG", optimize=True)
+                    annotated_image = base64.b64encode(buffer.getvalue()).decode("utf-8")
+                
+                content.append({
+                    "type": "image_url",
+                    "image_url": {
+                        "url": f"data:image/png;base64,{annotated_image}"
+                    }
+                })
+                
+                # Add text explaining the annotated image
+                content.append({
+                    "type": "text",
+                    "text": "\nThe second image shows the same page with bounding boxes around interactive elements. Each element has a number annotation that corresponds to the interactive elements list above."
+                })
 
             response = client.chat.completions.create(
                 model="gpt-4.1",
@@ -157,20 +199,9 @@ def chat_ai_playwright_code(previous_steps=None, taskGoal=None, taskPlan=None, i
                         "role": "system",
                         "content": base_system_message 
                     },
-                                                {
-                                "role": "user",
-                                "content": [
-                                    {
-                                        "type": "text",
-                                        "text": f"Task goal: {taskGoal}\nCurrent plan: {taskPlan}\nPrevious steps(The playwright codes here are generated, take them with a grain of salt.): {json.dumps(previous_steps, indent=2)}{trajectory_context}\n\nInteractive elements: {targeting_data}\n\nError log: {error_log if error_log else 'No errors'}"
-                                    },
-                            {
-                                "type": "image_url",
-                                "image_url": {
-                                    "url": f"data:image/png;base64,{resized_image}"
-                                }
-                            }
-                        ]
+                    {
+                        "role": "user",
+                        "content": content
                     }
                 ]
             )
