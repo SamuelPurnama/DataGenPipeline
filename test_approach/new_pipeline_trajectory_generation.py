@@ -214,7 +214,107 @@ def get_all_interactive_elements(page) -> list:
             for element in role_elements:
                 try:
                     bbox = element.bounding_box()
-                    if bbox and bbox['width'] > 2 and bbox['height'] > 2:
+                    # Filter out elements with negative coordinates or very small dimensions
+                    # if bbox and bbox['width'] > 2 and bbox['height'] > 2 and bbox['x'] >= 0 and bbox['y'] >= 0:
+                    if bbox and bbox['width'] > 8 and bbox['height'] > 8 and bbox['x'] >= 0 and bbox['y'] >= 0:
+                        # Check if element is truly visible and not transparent/covered
+                        try:
+                            if not element.is_visible():
+                                continue
+                            
+                            # Additional check: ensure element has actual visual presence and is in viewport
+                            is_visually_visible = element.evaluate('''
+                                (el) => {
+                                    const style = window.getComputedStyle(el);
+                                    const rect = el.getBoundingClientRect();
+                                    const viewport = {
+                                        width: window.innerWidth,
+                                        height: window.innerHeight
+                                    };
+                                    
+                                    // Check if element has no dimensions
+                                    if (rect.width === 0 || rect.height === 0) return false;
+                                    
+                                    // Check if element is transparent
+                                    if (parseFloat(style.opacity) === 0) return false;
+                                    
+                                    // Check if element is hidden by CSS
+                                    if (style.display === 'none' || style.visibility === 'hidden') return false;
+                                    
+                                    // Check if element is hidden by CSS animations or transitions
+                                    if (style.animationName !== 'none' && style.animationPlayState === 'paused') return false;
+                                    if (style.transitionDuration !== '0s' && style.transitionProperty !== 'none') {
+                                        // If element is in transition, check if it's actually visible
+                                        if (parseFloat(style.opacity) < 0.1) return false;
+                                    }
+                                    
+                                    // Check if element is positioned off-screen or partially hidden
+                                    if (rect.right < 0 || rect.bottom < 0 || rect.left > viewport.width || rect.top > viewport.height) return false;
+                                    
+                                    // Check if element is completely outside the viewport (more strict)
+                                    if (rect.left >= viewport.width || rect.top >= viewport.height) return false;
+                                    
+                                    // Check if element is too small to be meaningful (less than 8x8 pixels)
+                                    if (rect.width < 8 || rect.height < 8) return false;
+                                    
+                                    // Check if element is covered by another element (z-index issues)
+                                    const elementAtPoint = document.elementFromPoint(
+                                        rect.left + rect.width / 2,
+                                        rect.top + rect.height / 2
+                                    );
+                                    if (!elementAtPoint || !el.contains(elementAtPoint)) return false;
+                                    
+                                    // Additional check: ensure element is not clipped by overflow
+                                    const parent = el.parentElement;
+                                    if (parent) {
+                                        const parentStyle = window.getComputedStyle(parent);
+                                        if (parentStyle.overflow === 'hidden' || parentStyle.overflow === 'scroll') {
+                                            const parentRect = parent.getBoundingClientRect();
+                                            if (rect.left < parentRect.left || rect.top < parentRect.top || 
+                                                rect.right > parentRect.right || rect.bottom > parentRect.bottom) {
+                                                return false;
+                                            }
+                                        }
+                                    }
+                                    
+                                    // Check if element has no meaningful content (text, images, or interactive properties)
+                                    const hasText = el.textContent && el.textContent.trim().length > 0;
+                                    const hasImage = el.querySelector('img') || el.tagName === 'IMG';
+                                    const hasInteractiveAttr = el.getAttribute('onclick') || el.getAttribute('href') || el.getAttribute('role') || el.tagName === 'BUTTON' || el.tagName === 'INPUT' || el.tagName === 'A';
+                                    const hasBackground = style.backgroundImage !== 'none' || style.backgroundColor !== 'rgba(0, 0, 0, 0)';
+                                    
+                                    // Element must have at least one of these to be considered visible
+                                    if (!hasText && !hasImage && !hasInteractiveAttr && !hasBackground) return false;
+                                    
+                                    // Final check: ensure element is actually in the current scroll viewport
+                                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                                    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+                                    const viewportTop = scrollTop;
+                                    const viewportBottom = scrollTop + viewport.height;
+                                    const viewportLeft = scrollLeft;
+                                    const viewportRight = scrollLeft + viewport.width;
+                                    
+                                    if (rect.top > viewportBottom || rect.bottom < viewportTop || 
+                                        rect.left > viewportRight || rect.right < viewportLeft) {
+                                        return false;
+                                    }
+                                    
+                                    // Check if element is actually clickable/interactive in current state
+                                    const isClickable = el.offsetParent !== null && 
+                                                       !el.disabled && 
+                                                       el.style.pointerEvents !== 'none' &&
+                                                       el.style.userSelect !== 'none';
+                                    
+                                    if (!isClickable) return false;
+                                    
+                                    return true;
+                                }
+                            ''')
+                            
+                            if not is_visually_visible:
+                                continue
+                        except:
+                            continue
                         # Get element properties
                         name = element.get_attribute('aria-label') or \
                                element.text_content() or \
@@ -239,6 +339,8 @@ def get_all_interactive_elements(page) -> list:
                             playwright_selector = f'page.get_by_text("{name.strip()}")'
                         else:
                             playwright_selector = f'page.get_by_role("{role}")'
+                        
+
                         
                         element_data = {
                             'name': name.strip() if name else '',
@@ -532,27 +634,27 @@ def annotate_screenshot_with_bounding_boxes(screenshot_path: str, targeting_data
                 outline=color
             )
             
-            # Draw label text
+            # Draw label text (white for better visibility)
             draw.text(
                 (label_x + 2, label_y + 2),
                 label,
-                fill='black',
+                fill='white',
                 font=font
             )
             
-            # Draw click coordinate marker (center point of the element)
-            click_x = x + width // 2
-            click_y = y + height // 2
+            # # Draw click coordinate marker (center point of the element)
+            # click_x = x + width // 2
+            # click_y = y + height // 2
             
-            # Draw a small circle at the click coordinates
-            circle_radius = 3
-            draw.ellipse(
-                [click_x - circle_radius, click_y - circle_radius, 
-                 click_x + circle_radius, click_y + circle_radius],
-                fill='yellow',
-                outline='black',
-                width=1
-            )
+            # # Draw a small circle at the click coordinates
+            # circle_radius = 3
+            # draw.ellipse(
+            #     [click_x - circle_radius, click_y - circle_radius, 
+            #      click_x + circle_radius, click_y + circle_radius],
+            #     fill='yellow',
+            #     outline='black',
+            #     width=1
+            # )
             
 
         
@@ -840,7 +942,8 @@ def create_episode_directory(base_dir: str, eps_name: str) -> Dict[str, str]:
         'images': os.path.join(eps_dir, 'images'),
         'annotated_images': os.path.join(eps_dir, 'annotated_images'),
         'user_message': os.path.join(eps_dir, 'user_message'),
-        'targeting_data': os.path.join(eps_dir, 'targeting_data')
+        'targeting_data': os.path.join(eps_dir, 'targeting_data'),
+        'gpt_summaries': os.path.join(eps_dir, 'gpt_summaries')
     }
     for dir_path in dirs.values():
         os.makedirs(dir_path, exist_ok=True)
@@ -1965,7 +2068,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         element_summary = f"\n\nAvailable Interactive Elements:\n{json.dumps(elements_data, indent=2)}\n\n"
                     
                     # Save the minimal summary that gets sent to GPT for debugging
-                    gpt_summary_file = os.path.join(dirs['root'], f'gpt_summary_step_{step_idx}.txt')
+                    gpt_summary_file = os.path.join(dirs['gpt_summaries'], f'gpt_summary_step_{step_idx}.txt')
                     with open(gpt_summary_file, 'w', encoding='utf-8') as f:
                         f.write(f"Step: {step_idx}\n")
                         f.write(f"Current Goal: {current_goal}\n")
@@ -1979,7 +2082,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         previous_steps=execution_history,
                         taskGoal=aug,
                         taskPlan=current_goal,
-                        image_path=annotated_path,  # Use annotated screenshot for GPT
+                        image_path=screenshot,  # Pass only the clean screenshot
                         failed_codes=[],
                         is_deletion_task=is_del,
                         url=url,
@@ -2316,7 +2419,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                         previous_steps=execution_history,
                                         taskGoal=aug,
                                         taskPlan=current_goal,
-                                        image_path=annotated_path,  # Use annotated screenshot for retry
+                                        image_path=screenshot,  # Pass only the clean screenshot
                                         failed_codes=failed_codes,
                                         is_deletion_task=is_del,
                                         url=url,
@@ -2479,6 +2582,7 @@ def generate_trajectory_html(dirs: Dict[str, str], metadata: Dict[str, Any]) -> 
 <body>
     <div class="container">
         <h1>{metadata['eps_name']} ({metadata['task'].get('task_type','')})</h1>
+        <p><strong>GPT Summaries:</strong> <a href="gpt_summaries/">View all GPT summary files</a></p>
         <h2>Instructions</h2>
         <table class="instruction-table">
             <tr><th>level</th><th>instruction</th></tr>
