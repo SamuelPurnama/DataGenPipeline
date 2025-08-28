@@ -215,17 +215,22 @@ def get_all_interactive_elements(page) -> list:
                 try:
                     bbox = element.bounding_box()
                     # Filter out elements with negative coordinates or very small dimensions
-                    if bbox and bbox['width'] > 2 and bbox['height'] > 2 and bbox['x'] >= 0 and bbox['y'] >= 0:
+                    # if bbox and bbox['width'] > 2 and bbox['height'] > 2 and bbox['x'] >= 0 and bbox['y'] >= 0:
+                    if bbox and bbox['width'] > 8 and bbox['height'] > 8 and bbox['x'] >= 0 and bbox['y'] >= 0:
                         # Check if element is truly visible and not transparent/covered
                         try:
                             if not element.is_visible():
                                 continue
                             
-                            # Additional check: ensure element has actual visual presence
+                            # Additional check: ensure element has actual visual presence and is in viewport
                             is_visually_visible = element.evaluate('''
                                 (el) => {
                                     const style = window.getComputedStyle(el);
                                     const rect = el.getBoundingClientRect();
+                                    const viewport = {
+                                        width: window.innerWidth,
+                                        height: window.innerHeight
+                                    };
                                     
                                     // Check if element has no dimensions
                                     if (rect.width === 0 || rect.height === 0) return false;
@@ -236,8 +241,41 @@ def get_all_interactive_elements(page) -> list:
                                     // Check if element is hidden by CSS
                                     if (style.display === 'none' || style.visibility === 'hidden') return false;
                                     
-                                    // Check if element is positioned off-screen
-                                    if (rect.right < 0 || rect.bottom < 0 || rect.left > window.innerWidth || rect.top > window.innerHeight) return false;
+                                    // Check if element is hidden by CSS animations or transitions
+                                    if (style.animationName !== 'none' && style.animationPlayState === 'paused') return false;
+                                    if (style.transitionDuration !== '0s' && style.transitionProperty !== 'none') {
+                                        // If element is in transition, check if it's actually visible
+                                        if (parseFloat(style.opacity) < 0.1) return false;
+                                    }
+                                    
+                                    // Check if element is positioned off-screen or partially hidden
+                                    if (rect.right < 0 || rect.bottom < 0 || rect.left > viewport.width || rect.top > viewport.height) return false;
+                                    
+                                    // Check if element is completely outside the viewport (more strict)
+                                    if (rect.left >= viewport.width || rect.top >= viewport.height) return false;
+                                    
+                                    // Check if element is too small to be meaningful (less than 8x8 pixels)
+                                    if (rect.width < 8 || rect.height < 8) return false;
+                                    
+                                    // Check if element is covered by another element (z-index issues)
+                                    const elementAtPoint = document.elementFromPoint(
+                                        rect.left + rect.width / 2,
+                                        rect.top + rect.height / 2
+                                    );
+                                    if (!elementAtPoint || !el.contains(elementAtPoint)) return false;
+                                    
+                                    // Additional check: ensure element is not clipped by overflow
+                                    const parent = el.parentElement;
+                                    if (parent) {
+                                        const parentStyle = window.getComputedStyle(parent);
+                                        if (parentStyle.overflow === 'hidden' || parentStyle.overflow === 'scroll') {
+                                            const parentRect = parent.getBoundingClientRect();
+                                            if (rect.left < parentRect.left || rect.top < parentRect.top || 
+                                                rect.right > parentRect.right || rect.bottom > parentRect.bottom) {
+                                                return false;
+                                            }
+                                        }
+                                    }
                                     
                                     // Check if element has no meaningful content (text, images, or interactive properties)
                                     const hasText = el.textContent && el.textContent.trim().length > 0;
@@ -247,6 +285,27 @@ def get_all_interactive_elements(page) -> list:
                                     
                                     // Element must have at least one of these to be considered visible
                                     if (!hasText && !hasImage && !hasInteractiveAttr && !hasBackground) return false;
+                                    
+                                    // Final check: ensure element is actually in the current scroll viewport
+                                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                                    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+                                    const viewportTop = scrollTop;
+                                    const viewportBottom = scrollTop + viewport.height;
+                                    const viewportLeft = scrollLeft;
+                                    const viewportRight = scrollLeft + viewport.width;
+                                    
+                                    if (rect.top > viewportBottom || rect.bottom < viewportTop || 
+                                        rect.left > viewportRight || rect.right < viewportLeft) {
+                                        return false;
+                                    }
+                                    
+                                    // Check if element is actually clickable/interactive in current state
+                                    const isClickable = el.offsetParent !== null && 
+                                                       !el.disabled && 
+                                                       el.style.pointerEvents !== 'none' &&
+                                                       el.style.userSelect !== 'none';
+                                    
+                                    if (!isClickable) return false;
                                     
                                     return true;
                                 }
@@ -2023,8 +2082,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         previous_steps=execution_history,
                         taskGoal=aug,
                         taskPlan=current_goal,
-                        image_path=screenshot,  # Pass the clean screenshot
-                        annotated_image_path=annotated_path,  # Also pass the annotated version
+                        image_path=screenshot,  # Pass only the clean screenshot
                         failed_codes=[],
                         is_deletion_task=is_del,
                         url=url,
@@ -2361,8 +2419,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                         previous_steps=execution_history,
                                         taskGoal=aug,
                                         taskPlan=current_goal,
-                                        image_path=screenshot,  # Pass the clean screenshot
-                                        annotated_image_path=annotated_path,  # Also pass the annotated version
+                                        image_path=screenshot,  # Pass only the clean screenshot
                                         failed_codes=failed_codes,
                                         is_deletion_task=is_del,
                                         url=url,

@@ -71,7 +71,7 @@ class TaskStep:
 
 task_summarizer = []
 
-def chat_ai_playwright_code(previous_steps=None, taskGoal=None, taskPlan=None, image_path=None, annotated_image_path=None, failed_codes=None, is_deletion_task=False, url=None, error_log=None, trajectory_context="", targeting_data=""):
+def chat_ai_playwright_code(previous_steps=None, taskGoal=None, taskPlan=None, image_path=None, failed_codes=None, is_deletion_task=False, url=None, error_log=None, trajectory_context="", targeting_data=""):
     """Get Playwright code directly from GPT to execute the next step.
     
     Args:
@@ -79,7 +79,6 @@ def chat_ai_playwright_code(previous_steps=None, taskGoal=None, taskPlan=None, i
         taskGoal: The overall goal of the task (augmented instruction)
         taskPlan: The current specific goal/plan to execute
         image_path: Path to the clean screenshot of the current page
-        annotated_image_path: Path to the annotated screenshot with bounding boxes
         failed_codes: List of previously failed code attempts
         is_deletion_task: Whether this is a deletion task
         url: The URL of the current page
@@ -167,30 +166,7 @@ def chat_ai_playwright_code(previous_steps=None, taskGoal=None, taskPlan=None, i
                 }
             })
             
-            # Add annotated screenshot if available
-            if annotated_image_path and os.path.exists(annotated_image_path):
-                with Image.open(annotated_image_path) as img:
-                    if img.width > 512:
-                        aspect_ratio = img.height / img.width
-                        new_height = int(512 * aspect_ratio)
-                        img = img.resize((512, new_height), Image.LANCZOS)
-                    
-                    buffer = BytesIO()
-                    img.save(buffer, format="PNG", optimize=True)
-                    annotated_image = base64.b64encode(buffer.getvalue()).decode("utf-8")
-                
-                content.append({
-                    "type": "image_url",
-                    "image_url": {
-                        "url": f"data:image/png;base64,{annotated_image}"
-                    }
-                })
-                
-                # Add text explaining the annotated image
-                content.append({
-                    "type": "text",
-                    "text": "\nThe second image shows the same page with bounding boxes around interactive elements. Each element has a number annotation that corresponds to the interactive elements list above."
-                })
+            
 
             response = client.chat.completions.create(
                 model="gpt-4.1",
