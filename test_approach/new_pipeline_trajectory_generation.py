@@ -25,140 +25,7 @@ load_dotenv()
 # Knowledge base client for trajectory context
 from utils.knowledge_base_client import get_trajectory_context
 
-def filter_accessibility_tree(tree: Dict[str, Any], url: str = None) -> Dict[str, Any]:
-    """
-    Filter out inbox-like elements and other verbose content from accessibility tree.
-    This reduces token usage and focuses on actionable UI elements.
-    
-    Args:
-        tree: The accessibility tree to filter
-        url: The current page URL to determine site-specific filtering
-    """
-    if not tree or not isinstance(tree, dict):
-        return tree
-    
-    def should_keep_element(element: Dict[str, Any]) -> bool:
-        """Determine if an element should be kept in the filtered tree."""
-        if not isinstance(element, dict):
-            return True
-        
-        # Get element properties
-        tagName = element.get('tagName', '').upper()
-        className = element.get('className', '').lower()
-        name = element.get('name', '').lower()
-        role = element.get('role', '').lower()
-        description = element.get('description', '').lower()
-        
-        # ===== GMAIL INBOX SPECIFIC FILTERING =====
-        # Only apply Gmail-specific filtering if we're on a Gmail URL
-        if url and ('mail.google.com' in url or 'gmail.com' in url):
-            # ALWAYS keep the root element and its direct children
-            if role == "WebArea" or element.get('focused') is True:
-                return True
-            
-            # Keep all navigation and action elements
-            if role in ['button', 'link', 'textbox', 'combobox', 'heading', 'tab', 'toolbar']:
-                return True
-            
-            # Keep elements with important names
-            important_names = ['compose', 'search', 'inbox', 'sent', 'drafts', 'settings', 'support']
-            if any(important in name for important in important_names):
-                return True
-            
-            # Filter out only the most obvious inbox email rows
-            if tagName == "TR" and role == "row" and len(name) > 100:
-                # This is likely an email row with long content
-                return False
-            
-            # Filter out very long text content (likely email bodies)
-            if len(name) > 200:
-                return False
-            
-            # Keep everything else
-            return True
-        
-        # ===== GENERAL INBOX FILTERING =====
-        # Filter out inbox-like elements
-        inbox_keywords = [
-            'inbox', 'email', 'message', 'mail', 'notification', 'alert',
-            'unread', 'read', 'sent', 'draft', 'spam', 'trash',
-            'conversation', 'thread', 'reply', 'forward', 'archive',
-            'mark as read', 'mark as unread', 'delete message',
-            'compose', 'new message', 'send', 'attach', 'cc', 'bcc'
-        ]
-        
-        # Check if element contains inbox-related keywords
-        for keyword in inbox_keywords:
-            if keyword in name or keyword in description:
-                return False
-        
-        # Filter out verbose content areas that are not actionable
-        if role in ['article', 'main', 'contentinfo'] and not element.get('children'):
-            # Keep only if it has actionable children
-            return True
-        
-        # Filter out very long text content (likely email bodies, articles, etc.)
-        if len(name) > 200:  # Very long text content
-            return False
-        
-        # Keep navigation, buttons, inputs, and other actionable elements
-        actionable_roles = [
-            'button', 'link', 'textbox', 'combobox', 'checkbox', 'radio',
-            'tab', 'menuitem', 'option', 'searchbox', 'spinbutton',
-            'slider', 'switch', 'treeitem', 'gridcell', 'cell',
-            'heading', 'listitem', 'menubar', 'toolbar', 'navigation'
-        ]
-        
-        if role in actionable_roles:
-            return True
-        
-        # Keep elements with specific attributes that make them interactive
-        if element.get('focused') or element.get('pressed') or element.get('checked'):
-            return True
-        
-        # Keep elements that are likely to be part of the main interface
-        if 'aria-' in str(element) or 'data-' in str(element):
-            return True
-        
-        # Filter out generic containers with no actionable content
-        if role in ['generic', 'group', 'region'] and not element.get('children'):
-            return False
-        
-        return True
-    
-    def filter_element(element: Dict[str, Any]) -> Optional[Dict[str, Any]]:
-        """Recursively filter an element and its children."""
-        if not should_keep_element(element):
-            return None
-        
-        # Create a copy of the element
-        filtered_element = element.copy()
-        
-        # Recursively filter children
-        if 'children' in filtered_element and filtered_element['children']:
-            filtered_children = []
-            for child in filtered_element['children']:
-                filtered_child = filter_element(child)
-                if filtered_child is not None:
-                    filtered_children.append(filtered_child)
-            filtered_element['children'] = filtered_children
-        
-        return filtered_element
-    
-    # Apply filtering to the root element
-    filtered_result = filter_element(tree)
-    
-    # Debug: Log filtering results
-    if filtered_result is None:
-        print("⚠️ Warning: filter_element returned None for root element")
-        # Return original tree if filtering removed everything
-        return tree
-    elif isinstance(filtered_result, dict) and not filtered_result.get('children'):
-        print("⚠️ Warning: Root element has no children after filtering")
-        # Return original tree if filtering removed all children
-        return tree
-    
-    return filtered_result
+
 
 def get_comprehensive_element_data(page, url: str = None) -> Dict[str, Any]:
     """
@@ -181,12 +48,34 @@ def get_comprehensive_element_data(page, url: str = None) -> Dict[str, Any]:
     targeting_data = create_comprehensive_targeting_data(ax_elements, url)
     
     return {
-        "accessibility_tree": {},  # Empty for compatibility
         "interactive_elements": ax_elements,
         "targeting_data": targeting_data,
         "element_count": len(ax_elements),
         "collection_timestamp": time.time()
     }
+
+def create_simplified_element_summary(targeting_data: list) -> list:
+    """
+    Create simplified element data with just annotation_id, role, and name.
+    This is what gets sent to GPT and saved in axtree files.
+    
+    Args:
+        targeting_data: Full targeting data from comprehensive element collection
+        
+    Returns:
+        List of simplified element objects
+    """
+    elements_data = []
+    for elem in targeting_data:
+        annotation_id = elem.get('annotation_id', '?')
+        role = elem.get('element_info', {}).get('role', 'unknown')
+        name = elem.get('element_info', {}).get('name', 'unnamed')
+        elements_data.append({
+            "annotation_id": str(annotation_id),
+            "role": role,
+            "name": name
+        })
+    return elements_data
 
 
 
@@ -424,7 +313,6 @@ def clean_text_for_selector(text: str) -> str:
     
     # Only collapse multiple spaces if there are 3+ consecutive spaces
     # This preserves intentional double spaces but removes excessive whitespace
-    import re
     cleaned = re.sub(r' {3,}', ' ', cleaned)
     
     # Escape single quotes for selector strings
@@ -577,7 +465,6 @@ def annotate_screenshot_with_bounding_boxes(screenshot_path: str, targeting_data
     """
     try:
         from PIL import Image, ImageDraw, ImageFont
-        import os
         
         # Open the screenshot
         img = Image.open(screenshot_path)
@@ -794,18 +681,7 @@ KNOWLEDGE_BASE_TYPE = os.getenv("KNOWLEDGE_BASE_TYPE", "graphrag")  # Type of kn
 # Directory to store all browser sessions
 os.makedirs(BROWSER_SESSIONS_DIR, exist_ok=True)
 
-def extract_button_name_from_code(action_code):
-    match = re.search(r"name=['\"]([^'\"]+)['\"]", action_code)
-    if match:
-        return match.group(1)
-    return None
 
-def extract_role_and_name_from_code(action_code):
-    role_match = re.search(r"get_by_role\(['\"]([^'\"]+)['\"]", action_code)
-    name_match = re.search(r"name=['\"]([^'\"]+)['\"]", action_code)
-    role = role_match.group(1) if role_match else None
-    name = name_match.group(1) if name_match else None
-    return role, name
 
 
 
@@ -1039,44 +915,7 @@ def update_playwright_error_log(dirs: Dict[str, str], step_idx: int, description
     with open(error_log_path, 'w', encoding='utf-8') as f:
         json.dump(error_log, f, indent=2, ensure_ascii=False)
 
-def get_element_properties(page, locator_code):
-    """Get detailed properties of an element using Playwright locator."""
-    try:
-        # Handle different locator types
-        if "get_by_role" in locator_code:
-            # Extract role and name from get_by_role('role', name='name')
-            role = locator_code.split("get_by_role('")[1].split("'")[0]
-            name = locator_code.split("name='")[1].split("'")[0] if "name='" in locator_code else None
-            element = page.get_by_role(role, name=name)
-        elif "get_by_label" in locator_code:
-            label = locator_code.split("get_by_label('")[1].split("'")[0]
-            element = page.get_by_label(label)
-        elif "get_by_placeholder" in locator_code:
-            placeholder = locator_code.split("get_by_placeholder('")[1].split("'")[0]
-            element = page.get_by_placeholder(placeholder)
-        elif "get_by_text" in locator_code:
-            text = locator_code.split("get_by_text('")[1].split("'")[0]
-            element = page.get_by_text(text)
-        else:
-            # Fallback to locator
-            element = page.locator(locator_code)
 
-        if element:
-            bbox = element.bounding_box()
-            return {
-                "bbox": bbox,
-                "class": element.get_attribute("class"),
-                "id": element.get_attribute("id"),
-                "type": element.evaluate("el => el.tagName.toLowerCase()"),
-                "ariaLabel": element.get_attribute("aria-label"),
-                "role": element.get_attribute("role"),
-                "value": element.get_attribute("value"),
-                "timestamp": int(time.time() * 1000)
-            }
-    except Exception as e:
-        print(f"⚠️ Error getting element properties: {e}")
-        print(f"Locator code: {locator_code}")
-    return None
 
 def update_trajectory(dirs: Dict[str, str], step_idx: int, screenshot: str, axtree: str, action_code: str, action_description: str, page, user_message_file: str = None, llm_output=None, targeting_data_file: str = None, element_summary: str = None, annotation_id: str = None) -> None:
     """Update trajectory.json with a new step."""
@@ -1719,90 +1558,9 @@ def create_metadata(persona: str, url: str, orig_instruction: str, aug_instructi
         "phase": PHASE
     }
 
-def is_already_logged_in(page, timeout: int = 5000) -> bool:
-    """
-    Check if the user is already logged into Google.
-    
-    Args:
-        page: Playwright page object
-        timeout: Timeout in milliseconds for the check
-        
-    Returns:
-        bool: True if already logged in, False otherwise
-    """
-    try:
-        # Check for Google Account button or profile picture
-        return page.locator('[aria-label*="Google Account"]').count() > 0 or \
-               page.locator('img[alt*="Google Account"]').count() > 0
-    except Exception:
-        return False
 
-def handle_google_login(page, email: str, password: str, timeout: int = 30000) -> bool:
-    """
-    Handle Google login process automatically.
-    
-    Args:
-        page: Playwright page object
-        email: Google account email
-        password: Google account password
-        timeout: Timeout in milliseconds for each step
-        
-    Returns:
-        bool: True if login was successful, False otherwise
-    """
-    try:
-        # If the "Sign in" button is present (landing page), click it
-        if page.locator('text=Sign in').count() > 0:
-            print("🔵 'Sign in' button detected on landing page. Clicking it...")
-            page.click('text=Sign in')
-            page.wait_for_timeout(1000)  # Wait for the login page to load
 
-        # First check if already logged in
-        if is_already_logged_in(page):
-            print("✅ Already logged in to Google")
-            return True
 
-        # Handle 'Choose an account' screen if present
-        if page.locator('text=Choose an account').count() > 0:
-            print("🔄 'Choose an account' screen detected. Always clicking 'Use another account'.")
-            page.click('text=Use another account')
-            # Wait a moment for the next screen to load
-            page.wait_for_timeout(1000)
-
-        # Wait for the email input field
-        page.wait_for_selector('input[type="email"]', timeout=timeout)
-        page.fill('input[type="email"]', email)
-        page.click('button:has-text("Next")')
-        
-        # Wait for password input
-        page.wait_for_selector('input[type="password"]', timeout=timeout)
-        page.fill('input[type="password"]', password)
-        page.click('button:has-text("Next")')
-        
-        # Wait for either successful login or error
-        try:
-            # Wait for successful login indicators
-            page.wait_for_selector('[aria-label*="Google Account"]', timeout=timeout)
-            return True
-        except TimeoutError:
-            # Check for error messages
-            error_selectors = [
-                'text="Wrong password"',
-                'text="Couldn\'t find your Google Account"',
-                'text="This account doesn\'t exist"'
-            ]
-            for selector in error_selectors:
-                if page.locator(selector).count() > 0:
-                    print(f"❌ Login failed: {page.locator(selector).text_content()}")
-                    return False
-            
-            # If no specific error found but login didn't complete
-            print("❌ Login failed: Unknown error")
-            return False
-            
-    except Exception as e:
-        print(f"❌ Login error: {str(e)}")
-        return False
 
 def write_user_message(user_message_file: str, goal: str, execution_history: list, page, tree, failed_codes: list = None):
     """Write a user message file with goal, previous actions, current page, ax tree, and error codes."""
@@ -1962,12 +1720,15 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         print(f"🔍 Collecting comprehensive element data for step {step_idx+1}...")
                         comprehensive_data = get_comprehensive_element_data(page, url)
                         
-                        # Extract the accessibility tree for backward compatibility
-                        tree = comprehensive_data["accessibility_tree"]
+                        # Create simplified element data for axtree file and GPT
+                        elements_data = create_simplified_element_summary(comprehensive_data['targeting_data'])
                         
-                        # Save the accessibility tree
+                        # Use simplified data as the "tree"
+                        tree = elements_data
+                        
+                        # Save simplified element data to axtree file (just annotation_id, role, name)
                         with open(axtree_file, 'w', encoding='utf-8') as f:
-                            json.dump(tree, f, indent=2, ensure_ascii=False)
+                            json.dump(elements_data, f, indent=2, ensure_ascii=False)
                         
                         # Save only the targeting data (not the entire comprehensive_data)
                         with open(targeting_data_file, 'w', encoding='utf-8') as f:
@@ -2032,16 +1793,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                             break
                     is_del = 'delete' in current_goal.lower()
 
-                    # Filter the accessibility tree for Gmail to remove inbox elements
-                    if url and ('mail.google.com' in url or 'gmail.com' in url):
-                        filtered_tree = filter_accessibility_tree(tree, url)
-                        # If filtering fails, use original tree
-                        if filtered_tree is None or (isinstance(filtered_tree, dict) and not filtered_tree.get('children')):
-                            # print("⚠️ Warning: Filtering failed, using original tree")
-                            filtered_tree = tree
-                    else:
-                        # For non-Gmail sites, use original tree
-                        filtered_tree = tree
+                    # Use the targeting data as the tree (no filtering needed)
+                    filtered_tree = tree
                     
 
                     # Prepare context with past trajectories
@@ -2052,17 +1805,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                     # Create structured JSON element summary for GPT
                     element_summary = ""
                     if comprehensive_data and 'targeting_data' in comprehensive_data:
-                        # Create structured data for GPT
-                        elements_data = []
-                        for elem in comprehensive_data['targeting_data']:
-                            annotation_id = elem.get('annotation_id', '?')
-                            role = elem.get('element_info', {}).get('role', 'unknown')
-                            name = elem.get('element_info', {}).get('name', 'unnamed')
-                            elements_data.append({
-                                "annotation_id": str(annotation_id),
-                                "role": role,
-                                "name": name
-                            })
+                        # Use the function to create simplified element data
+                        elements_data = create_simplified_element_summary(comprehensive_data['targeting_data'])
                         
                         # Convert to JSON string
                         element_summary = f"\n\nAvailable Interactive Elements:\n{json.dumps(elements_data, indent=2)}\n\n"
@@ -2367,11 +2111,16 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 # Get comprehensive element data for retry
                                 print(f"🔍 Collecting comprehensive element data for retry {retry + 1}...")
                                 comprehensive_data = get_comprehensive_element_data(page, url)
-                                tree = comprehensive_data["accessibility_tree"]
                                 
-                                # Save the accessibility tree
+                                # Create simplified element data for axtree file and GPT
+                                elements_data = create_simplified_element_summary(comprehensive_data['targeting_data'])
+                                
+                                # Use simplified data as the "tree"
+                                tree = elements_data
+                                
+                                # Save simplified element data to axtree file for retry
                                 with open(axtree_file, 'w', encoding='utf-8') as f:
-                                    json.dump(tree, f, indent=2, ensure_ascii=False)
+                                    json.dump(elements_data, f, indent=2, ensure_ascii=False)
                                 
                                 # Save the comprehensive targeting data
                                 with open(targeting_data_file, 'w', encoding='utf-8') as f:
@@ -2388,16 +2137,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 error_log = str(e)
                                 print(f"📝 Error log: {error_log}")
                                 
-                                # Filter the accessibility tree for Gmail to remove inbox elements
-                                if url and ('mail.google.com' in url or 'gmail.com' in url):
-                                    filtered_tree = filter_accessibility_tree(tree, url)
-                                    # If filtering fails, use original tree
-                                    if filtered_tree is None or (isinstance(filtered_tree, dict) and not filtered_tree.get('children')):
-                                        # print("⚠️ Warning: Filtering failed, using original tree")
-                                        filtered_tree = tree
-                                else:
-                                    # For non-Gmail sites, use original tree
-                                    filtered_tree = tree
+                                # Use the targeting data as the tree (no filtering needed)
+                                filtered_tree = tree
                                 
                                 # Prepare context with past trajectories for retry
                                 enhanced_context = ""
