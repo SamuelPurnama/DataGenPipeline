@@ -1,0 +1,3944 @@
+{
+  "interactive_elements": [
+    {
+      "name": "Main menu",
+      "role": "button",
+      "value": "",
+      "x": 12,
+      "y": 8,
+      "width": 48,
+      "height": 48,
+      "tagName": "div",
+      "type": "",
+      "id": "",
+      "className": "gb_Nc",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.get_by_text(\"Main menu\")"
+    },
+    {
+      "name": "Change appearance",
+      "role": "button",
+      "value": "",
+      "x": 1136,
+      "y": 16,
+      "width": 32,
+      "height": 32,
+      "tagName": "button",
+      "type": "",
+      "id": "",
+      "className": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe LQeN7 nJawce",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.get_by_text(\"Change appearance\")"
+    },
+    {
+      "name": "Google apps",
+      "role": "button",
+      "value": "",
+      "x": 1178,
+      "y": 12,
+      "width": 40,
+      "height": 40,
+      "tagName": "a",
+      "type": "",
+      "id": "",
+      "className": "gb_B",
+      "href": "https://www.google.com/intl/en/about/products",
+      "disabled": false,
+      "checked": null,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.get_by_text(\"Google apps\")"
+    },
+    {
+      "name": "Google Account: tester482  \n(testeracc482@gmail.com)",
+      "role": "button",
+      "value": "",
+      "x": 1226,
+      "y": 12,
+      "width": 40,
+      "height": 40,
+      "tagName": "a",
+      "type": "",
+      "id": "",
+      "className": "gb_B gb_Za gb_0",
+      "href": "https://accounts.google.com/SignOutOptions?hl=en&continue=https://www.google.com/travel/flights&ec=GBRAlQM",
+      "disabled": false,
+      "checked": null,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.get_by_text(\"Google Account: tester482  \n(testeracc482@gmail.com)\")"
+    },
+    {
+      "name": "1 passenger, change number of passengers.",
+      "role": "button",
+      "value": "",
+      "x": 301,
+      "y": 400,
+      "width": 80,
+      "height": 36,
+      "tagName": "button",
+      "type": "",
+      "id": "",
+      "className": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-Bz112c-UbuQg VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe LQeN7 okSQSd xH2dp VmOqfd aKzZ8d",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.get_by_text(\"1 passenger, change number of passengers.\")"
+    },
+    {
+      "name": "Explore destinations",
+      "role": "button",
+      "value": "",
+      "x": 585,
+      "y": 526,
+      "width": 109,
+      "height": 40,
+      "tagName": "button",
+      "type": "",
+      "id": "",
+      "className": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc nCP5yc AjY5Oe LQeN7 TUT4y zlyfOd",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.get_by_text(\"Explore destinations\")"
+    },
+    {
+      "name": "More information on suggested flights.",
+      "role": "button",
+      "value": "",
+      "x": 554,
+      "y": 601,
+      "width": 20,
+      "height": 16,
+      "tagName": "span",
+      "type": "",
+      "id": "",
+      "className": "WTCYAb",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.get_by_text(\"More information on suggested flights.\")"
+    },
+    {
+      "name": "Google",
+      "role": "link",
+      "value": "",
+      "x": 64,
+      "y": 22,
+      "width": 74,
+      "height": 24,
+      "tagName": "a",
+      "type": "",
+      "id": "",
+      "className": "gb_7d gb_Hc gb_ae",
+      "href": "/",
+      "disabled": false,
+      "checked": null,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.get_by_text(\"Google\")"
+    },
+    {
+      "name": "Travel",
+      "role": "link",
+      "value": "",
+      "x": 172,
+      "y": 12,
+      "width": 95,
+      "height": 40,
+      "tagName": "button",
+      "type": "",
+      "id": "12",
+      "className": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-INsAgc VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc VfPpkd-LgbsSe-OWXEXe-dgl2Hf Rj2Mlf OLiIxf PDpWxe LQeN7 e1Tapf pcHWuc",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.locator('#12')"
+    },
+    {
+      "name": "Explore",
+      "role": "link",
+      "value": "",
+      "x": 273,
+      "y": 12,
+      "width": 105,
+      "height": 40,
+      "tagName": "button",
+      "type": "",
+      "id": "18",
+      "className": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-INsAgc VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc VfPpkd-LgbsSe-OWXEXe-dgl2Hf Rj2Mlf OLiIxf PDpWxe LQeN7 e1Tapf pcHWuc",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.locator('#18')"
+    },
+    {
+      "name": "Flights",
+      "role": "link",
+      "value": "",
+      "x": 384,
+      "y": 12,
+      "width": 98,
+      "height": 40,
+      "tagName": "button",
+      "type": "",
+      "id": "7",
+      "className": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-INsAgc VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc VfPpkd-LgbsSe-OWXEXe-dgl2Hf Rj2Mlf OLiIxf PDpWxe LQeN7 e1Tapf qs41qe pcHWuc",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.locator('#7')"
+    },
+    {
+      "name": "Hotels",
+      "role": "link",
+      "value": "",
+      "x": 489,
+      "y": 12,
+      "width": 98,
+      "height": 40,
+      "tagName": "button",
+      "type": "",
+      "id": "8",
+      "className": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-INsAgc VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc VfPpkd-LgbsSe-OWXEXe-dgl2Hf Rj2Mlf OLiIxf PDpWxe LQeN7 e1Tapf pcHWuc",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.locator('#8')"
+    },
+    {
+      "name": "Vacation rentals",
+      "role": "link",
+      "value": "",
+      "x": 593,
+      "y": 12,
+      "width": 162,
+      "height": 40,
+      "tagName": "button",
+      "type": "",
+      "id": "14",
+      "className": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-INsAgc VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc VfPpkd-LgbsSe-OWXEXe-dgl2Hf Rj2Mlf OLiIxf PDpWxe LQeN7 e1Tapf pcHWuc",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.locator('#14')"
+    },
+    {
+      "name": "Departure",
+      "role": "textbox",
+      "value": "",
+      "x": 796,
+      "y": 445,
+      "width": 138,
+      "height": 54,
+      "tagName": "input",
+      "type": "text",
+      "id": "",
+      "className": "TP4Lpb eoY5cb j0Ppje",
+      "href": "",
+      "disabled": false,
+      "checked": false,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.get_by_text(\"Departure\")"
+    },
+    {
+      "name": "Return",
+      "role": "textbox",
+      "value": "",
+      "x": 965,
+      "y": 445,
+      "width": 138,
+      "height": 54,
+      "tagName": "input",
+      "type": "text",
+      "id": "",
+      "className": "TP4Lpb eoY5cb j0Ppje",
+      "href": "",
+      "disabled": false,
+      "checked": false,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.get_by_text(\"Return\")"
+    },
+    {
+      "name": "Round trip",
+      "role": "combobox",
+      "value": "",
+      "x": 160,
+      "y": 400,
+      "width": 137,
+      "height": 36,
+      "tagName": "div",
+      "type": "",
+      "id": "",
+      "className": "VfPpkd-TkwUic",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.get_by_text(\"Round trip\")"
+    },
+    {
+      "name": "Economy",
+      "role": "combobox",
+      "value": "",
+      "x": 385,
+      "y": 400,
+      "width": 102,
+      "height": 36,
+      "tagName": "div",
+      "type": "",
+      "id": "",
+      "className": "VfPpkd-TkwUic",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.get_by_text(\"Economy\")"
+    },
+    {
+      "name": "Where from?",
+      "role": "combobox",
+      "value": "Seattle",
+      "x": 160,
+      "y": 444,
+      "width": 282,
+      "height": 56,
+      "tagName": "input",
+      "type": "text",
+      "id": "",
+      "className": "II2One j0Ppje zmMKJ LbIaRd",
+      "href": "",
+      "disabled": false,
+      "checked": false,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.get_by_text(\"Where from?\")"
+    },
+    {
+      "name": "Where to?",
+      "role": "combobox",
+      "value": "",
+      "x": 450,
+      "y": 444,
+      "width": 282,
+      "height": 56,
+      "tagName": "input",
+      "type": "text",
+      "id": "",
+      "className": "II2One j0Ppje zmMKJ LbIaRd",
+      "href": "",
+      "disabled": false,
+      "checked": false,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.get_by_text(\"Where to?\")"
+    },
+    {
+      "name": "Seattle",
+      "role": "tab",
+      "value": "",
+      "x": 146,
+      "y": 641,
+      "width": 73,
+      "height": 34,
+      "tagName": "button",
+      "type": "",
+      "id": "",
+      "className": "zYNwsd g1POOc zlyfOd Dz5L5",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.get_by_text(\"Seattle\")"
+    },
+    {
+      "name": "Portland",
+      "role": "tab",
+      "value": "",
+      "x": 229,
+      "y": 641,
+      "width": 83,
+      "height": 34,
+      "tagName": "button",
+      "type": "",
+      "id": "",
+      "className": "zYNwsd g1POOc zlyfOd",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.get_by_text(\"Portland\")"
+    },
+    {
+      "name": "Everett",
+      "role": "tab",
+      "value": "",
+      "x": 322,
+      "y": 641,
+      "width": 74,
+      "height": 34,
+      "tagName": "button",
+      "type": "",
+      "id": "",
+      "className": "zYNwsd g1POOc zlyfOd",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.get_by_text(\"Everett\")"
+    },
+    {
+      "name": "Bellingham",
+      "role": "tab",
+      "value": "",
+      "x": 407,
+      "y": 641,
+      "width": 100,
+      "height": 34,
+      "tagName": "button",
+      "type": "",
+      "id": "",
+      "className": "zYNwsd g1POOc zlyfOd",
+      "href": "",
+      "disabled": false,
+      "checked": null,
+      "selected": null,
+      "source": "playwright_direct",
+      "hasBoundingBox": true,
+      "playwright_selector": "page.get_by_text(\"Bellingham\")"
+    }
+  ],
+  "targeting_data": [
+    {
+      "annotation_id": 0,
+      "element_info": {
+        "name": "Main menu",
+        "name_raw": "Main menu",
+        "role": "button",
+        "value": "",
+        "tag_name": "div",
+        "type": "",
+        "id": "",
+        "class_name": "gb_Nc",
+        "href": "",
+        "disabled": false,
+        "checked": null,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 12,
+        "y": 8,
+        "width": 48,
+        "height": 48,
+        "center_x": 36,
+        "center_y": 32
+      },
+      "playwright_selectors": [
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(36, 32)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('button', name='Main menu')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('Main menu')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('Main menu')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('div.gb_Nc')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "click()",
+        "hover()",
+        "focus()"
+      ]
+    },
+    {
+      "annotation_id": 1,
+      "element_info": {
+        "name": "Change appearance",
+        "name_raw": "Change appearance",
+        "role": "button",
+        "value": "",
+        "tag_name": "button",
+        "type": "",
+        "id": "",
+        "class_name": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe LQeN7 nJawce",
+        "href": "",
+        "disabled": false,
+        "checked": null,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 1136,
+        "y": 16,
+        "width": 32,
+        "height": 32,
+        "center_x": 1152,
+        "center_y": 32
+      },
+      "playwright_selectors": [
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(1152, 32)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('button', name='Change appearance')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('Change appearance')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('Change appearance')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('button.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-k8QpJ.VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "click()",
+        "hover()",
+        "focus()"
+      ]
+    },
+    {
+      "annotation_id": 2,
+      "element_info": {
+        "name": "Google apps",
+        "name_raw": "Google apps",
+        "role": "button",
+        "value": "",
+        "tag_name": "a",
+        "type": "",
+        "id": "",
+        "class_name": "gb_B",
+        "href": "https://www.google.com/intl/en/about/products",
+        "disabled": false,
+        "checked": null,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 1178,
+        "y": 12,
+        "width": 40,
+        "height": 40,
+        "center_x": 1198,
+        "center_y": 32
+      },
+      "playwright_selectors": [
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(1198, 32)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('button', name='Google apps')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('Google apps')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('Google apps')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('a.gb_B')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "click()",
+        "click(button='middle')",
+        "hover()",
+        "focus()"
+      ]
+    },
+    {
+      "annotation_id": 3,
+      "element_info": {
+        "name": "Google Account: tester482 (testeracc482@gmail.com)",
+        "name_raw": "Google Account: tester482  \n(testeracc482@gmail.com)",
+        "role": "button",
+        "value": "",
+        "tag_name": "a",
+        "type": "",
+        "id": "",
+        "class_name": "gb_B gb_Za gb_0",
+        "href": "https://accounts.google.com/SignOutOptions?hl=en&continue=https://www.google.com/travel/flights&ec=GBRAlQM",
+        "disabled": false,
+        "checked": null,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 1226,
+        "y": 12,
+        "width": 40,
+        "height": 40,
+        "center_x": 1246,
+        "center_y": 32
+      },
+      "playwright_selectors": [
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(1246, 32)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('button', name='Google Account: tester482  \n(testeracc482@gmail.com)')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('Google Account: tester482  \n(testeracc482@gmail.com)')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('Google Account: tester482  \n(testeracc482@gmail.com)')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('a.gb_B.gb_Za.gb_0')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "click()",
+        "click(button='middle')",
+        "hover()",
+        "focus()"
+      ]
+    },
+    {
+      "annotation_id": 4,
+      "element_info": {
+        "name": "1 passenger, change number of passengers.",
+        "name_raw": "1 passenger, change number of passengers.",
+        "role": "button",
+        "value": "",
+        "tag_name": "button",
+        "type": "",
+        "id": "",
+        "class_name": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-Bz112c-UbuQg VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe LQeN7 okSQSd xH2dp VmOqfd aKzZ8d",
+        "href": "",
+        "disabled": false,
+        "checked": null,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 301,
+        "y": 400,
+        "width": 80,
+        "height": 36,
+        "center_x": 341,
+        "center_y": 418
+      },
+      "playwright_selectors": [
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(341, 418)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('button', name='1 passenger, change number of passengers.')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('1 passenger, change number of passengers.')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('1 passenger, change number of passengers.')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('button.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-k8QpJ.VfPpkd-LgbsSe-OWXEXe-Bz112c-UbuQg')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "click()",
+        "hover()",
+        "focus()"
+      ]
+    },
+    {
+      "annotation_id": 5,
+      "element_info": {
+        "name": "Explore destinations",
+        "name_raw": "Explore destinations",
+        "role": "button",
+        "value": "",
+        "tag_name": "button",
+        "type": "",
+        "id": "",
+        "class_name": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc nCP5yc AjY5Oe LQeN7 TUT4y zlyfOd",
+        "href": "",
+        "disabled": false,
+        "checked": null,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 585,
+        "y": 526,
+        "width": 109,
+        "height": 40,
+        "center_x": 639,
+        "center_y": 546
+      },
+      "playwright_selectors": [
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(639, 546)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('button', name='Explore destinations')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('Explore destinations')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('Explore destinations')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('button.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-k8QpJ.VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "click()",
+        "hover()",
+        "focus()"
+      ]
+    },
+    {
+      "annotation_id": 6,
+      "element_info": {
+        "name": "More information on suggested flights.",
+        "name_raw": "More information on suggested flights.",
+        "role": "button",
+        "value": "",
+        "tag_name": "span",
+        "type": "",
+        "id": "",
+        "class_name": "WTCYAb",
+        "href": "",
+        "disabled": false,
+        "checked": null,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 554,
+        "y": 601,
+        "width": 20,
+        "height": 16,
+        "center_x": 564,
+        "center_y": 609
+      },
+      "playwright_selectors": [
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(564, 609)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('button', name='More information on suggested flights.')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('More information on suggested flights.')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('More information on suggested flights.')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('span.WTCYAb')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "click()",
+        "hover()",
+        "focus()"
+      ]
+    },
+    {
+      "annotation_id": 7,
+      "element_info": {
+        "name": "Google",
+        "name_raw": "Google",
+        "role": "link",
+        "value": "",
+        "tag_name": "a",
+        "type": "",
+        "id": "",
+        "class_name": "gb_7d gb_Hc gb_ae",
+        "href": "/",
+        "disabled": false,
+        "checked": null,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 64,
+        "y": 22,
+        "width": 74,
+        "height": 24,
+        "center_x": 101,
+        "center_y": 34
+      },
+      "playwright_selectors": [
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(101, 34)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('link', name='Google')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('Google')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('Google')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('a.gb_7d.gb_Hc.gb_ae')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "click()",
+        "click(button='middle')",
+        "hover()"
+      ]
+    },
+    {
+      "annotation_id": 8,
+      "element_info": {
+        "name": "Travel",
+        "name_raw": "Travel",
+        "role": "link",
+        "value": "",
+        "tag_name": "button",
+        "type": "",
+        "id": "12",
+        "class_name": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-INsAgc VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc VfPpkd-LgbsSe-OWXEXe-dgl2Hf Rj2Mlf OLiIxf PDpWxe LQeN7 e1Tapf pcHWuc",
+        "href": "",
+        "disabled": false,
+        "checked": null,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 172,
+        "y": 12,
+        "width": 95,
+        "height": 40,
+        "center_x": 219,
+        "center_y": 32
+      },
+      "playwright_selectors": [
+        {
+          "type": "id",
+          "selector": "page.locator('#12')",
+          "priority": "high"
+        },
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(219, 32)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('link', name='Travel')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('Travel')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('Travel')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('button#12.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-INsAgc.VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "click()",
+        "click(button='middle')",
+        "hover()",
+        "focus()"
+      ]
+    },
+    {
+      "annotation_id": 9,
+      "element_info": {
+        "name": "Explore",
+        "name_raw": "Explore",
+        "role": "link",
+        "value": "",
+        "tag_name": "button",
+        "type": "",
+        "id": "18",
+        "class_name": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-INsAgc VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc VfPpkd-LgbsSe-OWXEXe-dgl2Hf Rj2Mlf OLiIxf PDpWxe LQeN7 e1Tapf pcHWuc",
+        "href": "",
+        "disabled": false,
+        "checked": null,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 273,
+        "y": 12,
+        "width": 105,
+        "height": 40,
+        "center_x": 325,
+        "center_y": 32
+      },
+      "playwright_selectors": [
+        {
+          "type": "id",
+          "selector": "page.locator('#18')",
+          "priority": "high"
+        },
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(325, 32)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('link', name='Explore')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('Explore')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('Explore')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('button#18.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-INsAgc.VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "click()",
+        "click(button='middle')",
+        "hover()",
+        "focus()"
+      ]
+    },
+    {
+      "annotation_id": 10,
+      "element_info": {
+        "name": "Flights",
+        "name_raw": "Flights",
+        "role": "link",
+        "value": "",
+        "tag_name": "button",
+        "type": "",
+        "id": "7",
+        "class_name": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-INsAgc VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc VfPpkd-LgbsSe-OWXEXe-dgl2Hf Rj2Mlf OLiIxf PDpWxe LQeN7 e1Tapf qs41qe pcHWuc",
+        "href": "",
+        "disabled": false,
+        "checked": null,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 384,
+        "y": 12,
+        "width": 98,
+        "height": 40,
+        "center_x": 433,
+        "center_y": 32
+      },
+      "playwright_selectors": [
+        {
+          "type": "id",
+          "selector": "page.locator('#7')",
+          "priority": "high"
+        },
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(433, 32)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('link', name='Flights')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('Flights')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('Flights')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('button#7.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-INsAgc.VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "click()",
+        "click(button='middle')",
+        "hover()",
+        "focus()"
+      ]
+    },
+    {
+      "annotation_id": 11,
+      "element_info": {
+        "name": "Hotels",
+        "name_raw": "Hotels",
+        "role": "link",
+        "value": "",
+        "tag_name": "button",
+        "type": "",
+        "id": "8",
+        "class_name": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-INsAgc VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc VfPpkd-LgbsSe-OWXEXe-dgl2Hf Rj2Mlf OLiIxf PDpWxe LQeN7 e1Tapf pcHWuc",
+        "href": "",
+        "disabled": false,
+        "checked": null,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 489,
+        "y": 12,
+        "width": 98,
+        "height": 40,
+        "center_x": 538,
+        "center_y": 32
+      },
+      "playwright_selectors": [
+        {
+          "type": "id",
+          "selector": "page.locator('#8')",
+          "priority": "high"
+        },
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(538, 32)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('link', name='Hotels')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('Hotels')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('Hotels')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('button#8.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-INsAgc.VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "click()",
+        "click(button='middle')",
+        "hover()",
+        "focus()"
+      ]
+    },
+    {
+      "annotation_id": 12,
+      "element_info": {
+        "name": "Vacation rentals",
+        "name_raw": "Vacation rentals",
+        "role": "link",
+        "value": "",
+        "tag_name": "button",
+        "type": "",
+        "id": "14",
+        "class_name": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-INsAgc VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc VfPpkd-LgbsSe-OWXEXe-dgl2Hf Rj2Mlf OLiIxf PDpWxe LQeN7 e1Tapf pcHWuc",
+        "href": "",
+        "disabled": false,
+        "checked": null,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 593,
+        "y": 12,
+        "width": 162,
+        "height": 40,
+        "center_x": 674,
+        "center_y": 32
+      },
+      "playwright_selectors": [
+        {
+          "type": "id",
+          "selector": "page.locator('#14')",
+          "priority": "high"
+        },
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(674, 32)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('link', name='Vacation rentals')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('Vacation rentals')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('Vacation rentals')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('button#14.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-INsAgc.VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "click()",
+        "click(button='middle')",
+        "hover()",
+        "focus()"
+      ]
+    },
+    {
+      "annotation_id": 13,
+      "element_info": {
+        "name": "Departure",
+        "name_raw": "Departure",
+        "role": "textbox",
+        "value": "",
+        "tag_name": "input",
+        "type": "text",
+        "id": "",
+        "class_name": "TP4Lpb eoY5cb j0Ppje",
+        "href": "",
+        "disabled": false,
+        "checked": false,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 796,
+        "y": 445,
+        "width": 138,
+        "height": 54,
+        "center_x": 865,
+        "center_y": 472
+      },
+      "playwright_selectors": [
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(865, 472)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('textbox', name='Departure')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('Departure')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('Departure')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('input.TP4Lpb.eoY5cb.j0Ppje')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "fill('text')",
+        "type('text')",
+        "clear()",
+        "focus()"
+      ]
+    },
+    {
+      "annotation_id": 14,
+      "element_info": {
+        "name": "Return",
+        "name_raw": "Return",
+        "role": "textbox",
+        "value": "",
+        "tag_name": "input",
+        "type": "text",
+        "id": "",
+        "class_name": "TP4Lpb eoY5cb j0Ppje",
+        "href": "",
+        "disabled": false,
+        "checked": false,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 965,
+        "y": 445,
+        "width": 138,
+        "height": 54,
+        "center_x": 1034,
+        "center_y": 472
+      },
+      "playwright_selectors": [
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(1034, 472)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('textbox', name='Return')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('Return')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('Return')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('input.TP4Lpb.eoY5cb.j0Ppje')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "fill('text')",
+        "type('text')",
+        "clear()",
+        "focus()"
+      ]
+    },
+    {
+      "annotation_id": 15,
+      "element_info": {
+        "name": "Round trip",
+        "name_raw": "Round trip",
+        "role": "combobox",
+        "value": "",
+        "tag_name": "div",
+        "type": "",
+        "id": "",
+        "class_name": "VfPpkd-TkwUic",
+        "href": "",
+        "disabled": false,
+        "checked": null,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 160,
+        "y": 400,
+        "width": 137,
+        "height": 36,
+        "center_x": 228,
+        "center_y": 418
+      },
+      "playwright_selectors": [
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(228, 418)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('combobox', name='Round trip')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('Round trip')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('Round trip')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('div.VfPpkd-TkwUic')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "select_option('value')",
+        "select_option(label='label')",
+        "focus()"
+      ]
+    },
+    {
+      "annotation_id": 16,
+      "element_info": {
+        "name": "Economy",
+        "name_raw": "Economy",
+        "role": "combobox",
+        "value": "",
+        "tag_name": "div",
+        "type": "",
+        "id": "",
+        "class_name": "VfPpkd-TkwUic",
+        "href": "",
+        "disabled": false,
+        "checked": null,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 385,
+        "y": 400,
+        "width": 102,
+        "height": 36,
+        "center_x": 436,
+        "center_y": 418
+      },
+      "playwright_selectors": [
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(436, 418)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('combobox', name='Economy')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('Economy')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('Economy')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('div.VfPpkd-TkwUic')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "select_option('value')",
+        "select_option(label='label')",
+        "focus()"
+      ]
+    },
+    {
+      "annotation_id": 17,
+      "element_info": {
+        "name": "Where from?",
+        "name_raw": "Where from?",
+        "role": "combobox",
+        "value": "Seattle",
+        "tag_name": "input",
+        "type": "text",
+        "id": "",
+        "class_name": "II2One j0Ppje zmMKJ LbIaRd",
+        "href": "",
+        "disabled": false,
+        "checked": false,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 160,
+        "y": 444,
+        "width": 282,
+        "height": 56,
+        "center_x": 301,
+        "center_y": 472
+      },
+      "playwright_selectors": [
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(301, 472)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('combobox', name='Where from?')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('Where from?')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('Where from?')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('input.II2One.j0Ppje.zmMKJ')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "fill('text')",
+        "type('text')",
+        "clear()",
+        "focus()"
+      ]
+    },
+    {
+      "annotation_id": 18,
+      "element_info": {
+        "name": "Where to?",
+        "name_raw": "Where to?",
+        "role": "combobox",
+        "value": "",
+        "tag_name": "input",
+        "type": "text",
+        "id": "",
+        "class_name": "II2One j0Ppje zmMKJ LbIaRd",
+        "href": "",
+        "disabled": false,
+        "checked": false,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 450,
+        "y": 444,
+        "width": 282,
+        "height": 56,
+        "center_x": 591,
+        "center_y": 472
+      },
+      "playwright_selectors": [
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(591, 472)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('combobox', name='Where to?')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('Where to?')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('Where to?')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('input.II2One.j0Ppje.zmMKJ')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "fill('text')",
+        "type('text')",
+        "clear()",
+        "focus()"
+      ]
+    },
+    {
+      "annotation_id": 19,
+      "element_info": {
+        "name": "Seattle",
+        "name_raw": "Seattle",
+        "role": "tab",
+        "value": "",
+        "tag_name": "button",
+        "type": "",
+        "id": "",
+        "class_name": "zYNwsd g1POOc zlyfOd Dz5L5",
+        "href": "",
+        "disabled": false,
+        "checked": null,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 146,
+        "y": 641,
+        "width": 73,
+        "height": 34,
+        "center_x": 182,
+        "center_y": 658
+      },
+      "playwright_selectors": [
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(182, 658)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('tab', name='Seattle')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('Seattle')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('Seattle')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('button.zYNwsd.g1POOc.zlyfOd')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "click()",
+        "hover()",
+        "focus()"
+      ]
+    },
+    {
+      "annotation_id": 20,
+      "element_info": {
+        "name": "Portland",
+        "name_raw": "Portland",
+        "role": "tab",
+        "value": "",
+        "tag_name": "button",
+        "type": "",
+        "id": "",
+        "class_name": "zYNwsd g1POOc zlyfOd",
+        "href": "",
+        "disabled": false,
+        "checked": null,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 229,
+        "y": 641,
+        "width": 83,
+        "height": 34,
+        "center_x": 270,
+        "center_y": 658
+      },
+      "playwright_selectors": [
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(270, 658)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('tab', name='Portland')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('Portland')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('Portland')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('button.zYNwsd.g1POOc.zlyfOd')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "click()",
+        "hover()",
+        "focus()"
+      ]
+    },
+    {
+      "annotation_id": 21,
+      "element_info": {
+        "name": "Everett",
+        "name_raw": "Everett",
+        "role": "tab",
+        "value": "",
+        "tag_name": "button",
+        "type": "",
+        "id": "",
+        "class_name": "zYNwsd g1POOc zlyfOd",
+        "href": "",
+        "disabled": false,
+        "checked": null,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 322,
+        "y": 641,
+        "width": 74,
+        "height": 34,
+        "center_x": 359,
+        "center_y": 658
+      },
+      "playwright_selectors": [
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(359, 658)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('tab', name='Everett')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('Everett')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('Everett')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('button.zYNwsd.g1POOc.zlyfOd')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "click()",
+        "hover()",
+        "focus()"
+      ]
+    },
+    {
+      "annotation_id": 22,
+      "element_info": {
+        "name": "Bellingham",
+        "name_raw": "Bellingham",
+        "role": "tab",
+        "value": "",
+        "tag_name": "button",
+        "type": "",
+        "id": "",
+        "class_name": "zYNwsd g1POOc zlyfOd",
+        "href": "",
+        "disabled": false,
+        "checked": null,
+        "selected": null
+      },
+      "bounding_box": {
+        "x": 407,
+        "y": 641,
+        "width": 100,
+        "height": 34,
+        "center_x": 457,
+        "center_y": 658
+      },
+      "playwright_selectors": [
+        {
+          "type": "coordinates",
+          "selector": "page.mouse.click(457, 658)",
+          "priority": "high"
+        },
+        {
+          "type": "role_name",
+          "selector": "page.get_by_role('tab', name='Bellingham')",
+          "priority": "high"
+        },
+        {
+          "type": "label",
+          "selector": "page.get_by_label('Bellingham')",
+          "priority": "high"
+        },
+        {
+          "type": "text",
+          "selector": "page.get_by_text('Bellingham')",
+          "priority": "medium"
+        },
+        {
+          "type": "css_combined",
+          "selector": "page.locator('button.zYNwsd.g1POOc.zlyfOd')",
+          "priority": "medium"
+        }
+      ],
+      "interaction_suggestions": [
+        "click()",
+        "hover()",
+        "focus()"
+      ]
+    }
+  ],
+  "element_count": 23,
+  "collection_timestamp": 1756786966.320816,
+  "navigable_elements": {
+    "dropdowns": [
+      {
+        "text": "",
+        "tag": "input",
+        "id": null,
+        "class": "II2One j0Ppje zmMKJ LbIaRd",
+        "href": null,
+        "role": "combobox",
+        "aria_haspopup": "true",
+        "aria_expanded": "false",
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 160,
+          "y": 444,
+          "width": 282,
+          "height": 56
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: input with text '...'"
+        },
+        "type": "dropdown",
+        "reason": "aria-haspopup=\"true\""
+      },
+      {
+        "text": "",
+        "tag": "input",
+        "id": null,
+        "class": "II2One j0Ppje zmMKJ LbIaRd",
+        "href": null,
+        "role": "combobox",
+        "aria_haspopup": "true",
+        "aria_expanded": "false",
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 450,
+          "y": 444,
+          "width": 282,
+          "height": 56
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: input with text '...'"
+        },
+        "type": "dropdown",
+        "reason": "aria-haspopup=\"true\""
+      },
+      {
+        "text": "",
+        "tag": "span",
+        "id": null,
+        "class": "WTCYAb",
+        "href": null,
+        "role": "button",
+        "aria_haspopup": "true",
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 554.8671875,
+          "y": 601,
+          "width": 20,
+          "height": 16.5
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: span with text '...'"
+        },
+        "type": "dropdown",
+        "reason": "aria-haspopup=\"true\""
+      }
+    ],
+    "navigation_links": [
+      {
+        "text": "",
+        "tag": "a",
+        "id": null,
+        "class": "gb_7d gb_Hc gb_ae",
+        "href": "/",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 64,
+          "y": 22,
+          "width": 74,
+          "height": 24
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text '...'"
+        },
+        "type": "navigation_link",
+        "destination": "/"
+      },
+      {
+        "text": "",
+        "tag": "a",
+        "id": null,
+        "class": "gb_B",
+        "href": "https://www.google.com/intl/en/about/products",
+        "role": "button",
+        "aria_haspopup": null,
+        "aria_expanded": "false",
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 1178,
+          "y": 12,
+          "width": 40,
+          "height": 40
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text '...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/intl/en/about/products"
+      },
+      {
+        "text": "",
+        "tag": "a",
+        "id": null,
+        "class": "gb_B gb_Za gb_0",
+        "href": "https://accounts.google.com/SignOutOptions?hl=en&continue=https://www.google.com/travel/flights&ec=GBRAlQM",
+        "role": "button",
+        "aria_haspopup": null,
+        "aria_expanded": "false",
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 1226,
+          "y": 12,
+          "width": 40,
+          "height": 40
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text '...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://accounts.google.com/SignOutOptions?hl=en&continue=https://www.google.com/travel/flights&ec=GBRAlQM"
+      },
+      {
+        "text": "New York",
+        "tag": "a",
+        "id": null,
+        "class": "mIYSFd viL7ke",
+        "href": "https://www.google.com/travel/flights/flights-to-new-york.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 146,
+          "y": 1972.5,
+          "width": 132,
+          "height": 100
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'New York...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-to-new-york.html"
+      },
+      {
+        "text": "Washington",
+        "tag": "a",
+        "id": null,
+        "class": "mIYSFd viL7ke",
+        "href": "https://www.google.com/travel/flights/flights-to-washington.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 288.5,
+          "y": 1972.5,
+          "width": 132,
+          "height": 100
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Washington...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-to-washington.html"
+      },
+      {
+        "text": "Chicago",
+        "tag": "a",
+        "id": null,
+        "class": "mIYSFd viL7ke",
+        "href": "https://www.google.com/travel/flights/flights-to-chicago.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 431,
+          "y": 1972.5,
+          "width": 132,
+          "height": 100
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Chicago...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-to-chicago.html"
+      },
+      {
+        "text": "Boston",
+        "tag": "a",
+        "id": null,
+        "class": "mIYSFd viL7ke",
+        "href": "https://www.google.com/travel/flights/flights-to-boston.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 573.5,
+          "y": 1972.5,
+          "width": 132,
+          "height": 100
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Boston...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-to-boston.html"
+      },
+      {
+        "text": "Orlando",
+        "tag": "a",
+        "id": null,
+        "class": "mIYSFd viL7ke",
+        "href": "https://www.google.com/travel/flights/flights-to-orlando.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 716,
+          "y": 1972.5,
+          "width": 132,
+          "height": 100
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Orlando...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-to-orlando.html"
+      },
+      {
+        "text": "Dallas",
+        "tag": "a",
+        "id": null,
+        "class": "mIYSFd viL7ke",
+        "href": "https://www.google.com/travel/flights/flights-to-dallas.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 858.5,
+          "y": 1972.5,
+          "width": 132,
+          "height": 100
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Dallas...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-to-dallas.html"
+      },
+      {
+        "text": "Atlanta",
+        "tag": "a",
+        "id": null,
+        "class": "mIYSFd viL7ke",
+        "href": "https://www.google.com/travel/flights/flights-to-atlanta.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 1001,
+          "y": 1972.5,
+          "width": 132,
+          "height": 100
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Atlanta...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-to-atlanta.html"
+      },
+      {
+        "text": "Nashville",
+        "tag": "a",
+        "id": null,
+        "class": "mIYSFd viL7ke",
+        "href": "https://www.google.com/travel/flights/flights-to-nashville.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 1143.5,
+          "y": 1972.5,
+          "width": 132,
+          "height": 100
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Nashville...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-to-nashville.html"
+      },
+      {
+        "text": "Tampa",
+        "tag": "a",
+        "id": null,
+        "class": "mIYSFd viL7ke",
+        "href": "https://www.google.com/travel/flights/flights-to-tampa.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 1286,
+          "y": 1972.5,
+          "width": 132,
+          "height": 100
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Tampa...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-to-tampa.html"
+      },
+      {
+        "text": "Las Vegas",
+        "tag": "a",
+        "id": null,
+        "class": "mIYSFd viL7ke",
+        "href": "https://www.google.com/travel/flights/flights-to-las-vegas.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 1428.5,
+          "y": 1972.5,
+          "width": 132,
+          "height": 100
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Las Vegas...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-to-las-vegas.html"
+      },
+      {
+        "text": "Houston",
+        "tag": "a",
+        "id": null,
+        "class": "mIYSFd viL7ke",
+        "href": "https://www.google.com/travel/flights/flights-to-houston.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 1571,
+          "y": 1972.5,
+          "width": 132,
+          "height": 100
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Houston...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-to-houston.html"
+      },
+      {
+        "text": "Austin",
+        "tag": "a",
+        "id": null,
+        "class": "mIYSFd viL7ke",
+        "href": "https://www.google.com/travel/flights/flights-to-austin.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 1713.5,
+          "y": 1972.5,
+          "width": 132,
+          "height": 100
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Austin...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-to-austin.html"
+      },
+      {
+        "text": "Phoenix",
+        "tag": "a",
+        "id": null,
+        "class": "mIYSFd viL7ke",
+        "href": "https://www.google.com/travel/flights/flights-to-phoenix.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 1856,
+          "y": 1972.5,
+          "width": 132,
+          "height": 100
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Phoenix...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-to-phoenix.html"
+      },
+      {
+        "text": "Los Angeles",
+        "tag": "a",
+        "id": null,
+        "class": "mIYSFd viL7ke",
+        "href": "https://www.google.com/travel/flights/flights-to-los-angeles.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 1998.5,
+          "y": 1972.5,
+          "width": 132,
+          "height": 100
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Los Angeles...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-to-los-angeles.html"
+      },
+      {
+        "text": "Miami",
+        "tag": "a",
+        "id": null,
+        "class": "mIYSFd viL7ke",
+        "href": "https://www.google.com/travel/flights/flights-to-miami.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 2141,
+          "y": 1972.5,
+          "width": 132,
+          "height": 100
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Miami...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-to-miami.html"
+      },
+      {
+        "text": "San Diego",
+        "tag": "a",
+        "id": null,
+        "class": "mIYSFd viL7ke",
+        "href": "https://www.google.com/travel/flights/flights-to-san-diego.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 2283.5,
+          "y": 1972.5,
+          "width": 132,
+          "height": 100
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'San Diego...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-to-san-diego.html"
+      },
+      {
+        "text": "Philadelphia",
+        "tag": "a",
+        "id": null,
+        "class": "mIYSFd viL7ke",
+        "href": "https://www.google.com/travel/flights/flights-to-philadelphia.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 2426,
+          "y": 1972.5,
+          "width": 132,
+          "height": 100
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Philadelphia...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-to-philadelphia.html"
+      },
+      {
+        "text": "Charlotte",
+        "tag": "a",
+        "id": null,
+        "class": "mIYSFd viL7ke",
+        "href": "https://www.google.com/travel/flights/flights-to-charlotte.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 2568.5,
+          "y": 1972.5,
+          "width": 132,
+          "height": 100
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Charlotte...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-to-charlotte.html"
+      },
+      {
+        "text": "Raleigh",
+        "tag": "a",
+        "id": null,
+        "class": "mIYSFd viL7ke",
+        "href": "https://www.google.com/travel/flights/flights-to-raleigh.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 2711,
+          "y": 1972.5,
+          "width": 132,
+          "height": 100
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Raleigh...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-to-raleigh.html"
+      },
+      {
+        "text": "Detroit",
+        "tag": "a",
+        "id": null,
+        "class": "mIYSFd viL7ke",
+        "href": "https://www.google.com/travel/flights/flights-to-detroit.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 2853.5,
+          "y": 1972.5,
+          "width": 132,
+          "height": 100
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Detroit...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-to-detroit.html"
+      },
+      {
+        "text": "Flights from New York to London",
+        "tag": "a",
+        "id": null,
+        "class": "fUfRtd mIYSFd",
+        "href": "https://www.google.com/travel/flights/flights-from-new-york-to-london.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 144,
+          "y": 2466.5,
+          "width": 322.6640625,
+          "height": 20
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Flights from New York to London...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-from-new-york-to-london.html"
+      },
+      {
+        "text": "Flights from New York to Paris",
+        "tag": "a",
+        "id": null,
+        "class": "fUfRtd mIYSFd",
+        "href": "https://www.google.com/travel/flights/flights-from-new-york-to-paris.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 478.6640625,
+          "y": 2466.5,
+          "width": 322.6640625,
+          "height": 20
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Flights from New York to Paris...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-from-new-york-to-paris.html"
+      },
+      {
+        "text": "Flights from London to Paris",
+        "tag": "a",
+        "id": null,
+        "class": "fUfRtd mIYSFd",
+        "href": "https://www.google.com/travel/flights/flights-from-london-to-paris.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 813.328125,
+          "y": 2466.5,
+          "width": 322.6640625,
+          "height": 20
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Flights from London to Paris...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-from-london-to-paris.html"
+      },
+      {
+        "text": "Flights from New York to Rome",
+        "tag": "a",
+        "id": null,
+        "class": "fUfRtd mIYSFd",
+        "href": "https://www.google.com/travel/flights/flights-from-new-york-to-rome.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 144,
+          "y": 2498.5,
+          "width": 322.6640625,
+          "height": 20
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Flights from New York to Rome...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-from-new-york-to-rome.html"
+      },
+      {
+        "text": "Flights from Montreal to Paris",
+        "tag": "a",
+        "id": null,
+        "class": "fUfRtd mIYSFd",
+        "href": "https://www.google.com/travel/flights/flights-from-montreal-to-paris.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 478.6640625,
+          "y": 2498.5,
+          "width": 322.6640625,
+          "height": 20
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Flights from Montreal to Paris...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-from-montreal-to-paris.html"
+      },
+      {
+        "text": "Flights from London to Milan",
+        "tag": "a",
+        "id": null,
+        "class": "fUfRtd mIYSFd",
+        "href": "https://www.google.com/travel/flights/flights-from-london-to-milan.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 813.328125,
+          "y": 2498.5,
+          "width": 322.6640625,
+          "height": 20
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Flights from London to Milan...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-from-london-to-milan.html"
+      },
+      {
+        "text": "Flights from Toronto to London",
+        "tag": "a",
+        "id": null,
+        "class": "fUfRtd mIYSFd",
+        "href": "https://www.google.com/travel/flights/flights-from-toronto-to-london.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 144,
+          "y": 2530.5,
+          "width": 322.6640625,
+          "height": 20
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Flights from Toronto to London...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-from-toronto-to-london.html"
+      },
+      {
+        "text": "Flights from New York to Milan",
+        "tag": "a",
+        "id": null,
+        "class": "fUfRtd mIYSFd",
+        "href": "https://www.google.com/travel/flights/flights-from-new-york-to-milan.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 478.6640625,
+          "y": 2530.5,
+          "width": 322.6640625,
+          "height": 20
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Flights from New York to Milan...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-from-new-york-to-milan.html"
+      },
+      {
+        "text": "Flights from London to Dubai",
+        "tag": "a",
+        "id": null,
+        "class": "fUfRtd mIYSFd",
+        "href": "https://www.google.com/travel/flights/flights-from-london-to-dubai.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 813.328125,
+          "y": 2530.5,
+          "width": 322.6640625,
+          "height": 20
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Flights from London to Dubai...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-from-london-to-dubai.html"
+      },
+      {
+        "text": "Flights from London to Tokyo",
+        "tag": "a",
+        "id": null,
+        "class": "fUfRtd mIYSFd",
+        "href": "https://www.google.com/travel/flights/flights-from-london-to-tokyo.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 144,
+          "y": 2562.5,
+          "width": 322.6640625,
+          "height": 20
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Flights from London to Tokyo...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-from-london-to-tokyo.html"
+      },
+      {
+        "text": "Flights from Madrid to Rome",
+        "tag": "a",
+        "id": null,
+        "class": "fUfRtd mIYSFd",
+        "href": "https://www.google.com/travel/flights/flights-from-madrid-to-rome.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 478.6640625,
+          "y": 2562.5,
+          "width": 322.6640625,
+          "height": 20
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Flights from Madrid to Rome...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-from-madrid-to-rome.html"
+      },
+      {
+        "text": "Flights from London to Delhi",
+        "tag": "a",
+        "id": null,
+        "class": "fUfRtd mIYSFd",
+        "href": "https://www.google.com/travel/flights/flights-from-london-to-delhi.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 813.328125,
+          "y": 2562.5,
+          "width": 322.6640625,
+          "height": 20
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Flights from London to Delhi...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-from-london-to-delhi.html"
+      },
+      {
+        "text": "Flights from New York to Los Angeles",
+        "tag": "a",
+        "id": null,
+        "class": "fUfRtd mIYSFd",
+        "href": "https://www.google.com/travel/flights/flights-from-new-york-to-los-angeles.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 144,
+          "y": 2594.5,
+          "width": 322.6640625,
+          "height": 20
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Flights from New York to Los Angeles...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-from-new-york-to-los-angeles.html"
+      },
+      {
+        "text": "Flights from Paris to Marrakech",
+        "tag": "a",
+        "id": null,
+        "class": "fUfRtd mIYSFd",
+        "href": "https://www.google.com/travel/flights/flights-from-paris-to-marrakesh.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 478.6640625,
+          "y": 2594.5,
+          "width": 322.6640625,
+          "height": 20
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Flights from Paris to Marrakech...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-from-paris-to-marrakesh.html"
+      },
+      {
+        "text": "Flights from Sao Paulo to London",
+        "tag": "a",
+        "id": null,
+        "class": "fUfRtd mIYSFd",
+        "href": "https://www.google.com/travel/flights/flights-from-sao-paulo-to-london.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 813.328125,
+          "y": 2594.5,
+          "width": 322.6640625,
+          "height": 20
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Flights from Sao Paulo to London...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-from-sao-paulo-to-london.html"
+      },
+      {
+        "text": "Flights from London to Istanbul",
+        "tag": "a",
+        "id": null,
+        "class": "fUfRtd mIYSFd",
+        "href": "https://www.google.com/travel/flights/flights-from-london-to-istanbul.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 144,
+          "y": 2626.5,
+          "width": 322.6640625,
+          "height": 20
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Flights from London to Istanbul...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-from-london-to-istanbul.html"
+      },
+      {
+        "text": "Flights from Paris to Bangkok",
+        "tag": "a",
+        "id": null,
+        "class": "fUfRtd mIYSFd",
+        "href": "https://www.google.com/travel/flights/flights-from-paris-to-bangkok.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 478.6640625,
+          "y": 2626.5,
+          "width": 322.6640625,
+          "height": 20
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Flights from Paris to Bangkok...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-from-paris-to-bangkok.html"
+      },
+      {
+        "text": "Flights from New York to Orlando",
+        "tag": "a",
+        "id": null,
+        "class": "fUfRtd mIYSFd",
+        "href": "https://www.google.com/travel/flights/flights-from-new-york-to-orlando.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 813.328125,
+          "y": 2626.5,
+          "width": 322.6640625,
+          "height": 20
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Flights from New York to Orlando...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-from-new-york-to-orlando.html"
+      },
+      {
+        "text": "Flights from London to Berlin",
+        "tag": "a",
+        "id": null,
+        "class": "fUfRtd mIYSFd",
+        "href": "https://www.google.com/travel/flights/flights-from-london-to-berlin.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 144,
+          "y": 2658.5,
+          "width": 322.6640625,
+          "height": 20
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Flights from London to Berlin...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-from-london-to-berlin.html"
+      },
+      {
+        "text": "Flights from Chicago to Paris",
+        "tag": "a",
+        "id": null,
+        "class": "fUfRtd mIYSFd",
+        "href": "https://www.google.com/travel/flights/flights-from-chicago-to-paris.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 478.6640625,
+          "y": 2658.5,
+          "width": 322.6640625,
+          "height": 20
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Flights from Chicago to Paris...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-from-chicago-to-paris.html"
+      },
+      {
+        "text": "Flights from Melbourne to London",
+        "tag": "a",
+        "id": null,
+        "class": "fUfRtd mIYSFd",
+        "href": "https://www.google.com/travel/flights/flights-from-melbourne-to-london.html",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 813.328125,
+          "y": 2658.5,
+          "width": 322.6640625,
+          "height": 20
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Flights from Melbourne to London...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/travel/flights/flights-from-melbourne-to-london.html"
+      },
+      {
+        "text": "Learn more",
+        "tag": "a",
+        "id": null,
+        "class": "m3Nltf",
+        "href": "https://www.google.com/googlefinance/disclaimer?hl=en-US&gl=US",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 851.5703125,
+          "y": 2829,
+          "width": 72.828125,
+          "height": 16.5
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Learn more...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://www.google.com/googlefinance/disclaimer?hl=en-US&gl=US"
+      },
+      {
+        "text": "About",
+        "tag": "a",
+        "id": null,
+        "class": "EdI4ib",
+        "href": "https://about.google/?hl=en-US",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 393.8671875,
+          "y": 2879.5,
+          "width": 58.28125,
+          "height": 32
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'About...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://about.google/?hl=en-US"
+      },
+      {
+        "text": "Privacy",
+        "tag": "a",
+        "id": null,
+        "class": "EdI4ib",
+        "href": "https://policies.google.com/privacy?hl=en-US",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 452.1484375,
+          "y": 2879.5,
+          "width": 66.6328125,
+          "height": 32
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Privacy...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://policies.google.com/privacy?hl=en-US"
+      },
+      {
+        "text": "Terms",
+        "tag": "a",
+        "id": null,
+        "class": "EdI4ib",
+        "href": "https://policies.google.com/terms?hl=en-US",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 518.78125,
+          "y": 2879.5,
+          "width": 60.3515625,
+          "height": 32
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Terms...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://policies.google.com/terms?hl=en-US"
+      },
+      {
+        "text": "Join user studies",
+        "tag": "a",
+        "id": null,
+        "class": "EdI4ib",
+        "href": "https://google.qualtrics.com/jfe/form/SV_3NMIMtX0F2zkakR?reserved%3D1%26utm_source%3DFooter%2520link%26utm_medium%3Down_web%26%20utm_campaign%3DQ2%26productTag%3D0%26campaignDate%3DApril2020%26referral_code%3DUXbJ377133&Q_Language=en-US",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 579.1328125,
+          "y": 2879.5,
+          "width": 129.78125,
+          "height": 32
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Join user studies...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://google.qualtrics.com/jfe/form/SV_3NMIMtX0F2zkakR?reserved%3D1%26utm_source%3DFooter%2520link%26utm_medium%3Down_web%26%20utm_campaign%3DQ2%26productTag%3D0%26campaignDate%3DApril2020%26referral_code%3DUXbJ377133&Q_Language=en-US"
+      },
+      {
+        "text": "Help Center",
+        "tag": "a",
+        "id": null,
+        "class": "EdI4ib",
+        "href": "https://support.google.com/travel/?hl=en-US#topic=2475360",
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": null,
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 790.7578125,
+          "y": 2879.5,
+          "width": 95.3671875,
+          "height": 32
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text 'Help Center...'"
+        },
+        "type": "navigation_link",
+        "destination": "https://support.google.com/travel/?hl=en-US#topic=2475360"
+      }
+    ],
+    "expandable_elements": [
+      {
+        "text": "",
+        "tag": "div",
+        "id": null,
+        "class": "gb_Nc",
+        "href": null,
+        "role": "button",
+        "aria_haspopup": null,
+        "aria_expanded": "false",
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 12,
+          "y": 8,
+          "width": 48,
+          "height": 48
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: div with text '...'"
+        },
+        "type": "expandable",
+        "current_state": "false"
+      },
+      {
+        "text": "",
+        "tag": "button",
+        "id": null,
+        "class": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe LQeN7 nJawce",
+        "href": null,
+        "role": null,
+        "aria_haspopup": "menu",
+        "aria_expanded": "false",
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 1136,
+          "y": 16,
+          "width": 32,
+          "height": 32
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: button with text '...'"
+        },
+        "type": "expandable",
+        "current_state": "false"
+      },
+      {
+        "text": "",
+        "tag": "a",
+        "id": null,
+        "class": "gb_B",
+        "href": "https://www.google.com/intl/en/about/products",
+        "role": "button",
+        "aria_haspopup": null,
+        "aria_expanded": "false",
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 1178,
+          "y": 12,
+          "width": 40,
+          "height": 40
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text '...'"
+        },
+        "type": "expandable",
+        "current_state": "false"
+      },
+      {
+        "text": "",
+        "tag": "a",
+        "id": null,
+        "class": "gb_B gb_Za gb_0",
+        "href": "https://accounts.google.com/SignOutOptions?hl=en&continue=https://www.google.com/travel/flights&ec=GBRAlQM",
+        "role": "button",
+        "aria_haspopup": null,
+        "aria_expanded": "false",
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 1226,
+          "y": 12,
+          "width": 40,
+          "height": 40
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: a with text '...'"
+        },
+        "type": "expandable",
+        "current_state": "false"
+      },
+      {
+        "text": "Round trip",
+        "tag": "div",
+        "id": null,
+        "class": "VfPpkd-TkwUic",
+        "href": null,
+        "role": "combobox",
+        "aria_haspopup": "listbox",
+        "aria_expanded": "false",
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 160,
+          "y": 400,
+          "width": 137.3359375,
+          "height": 36
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: div with text 'Round trip...'"
+        },
+        "type": "expandable",
+        "current_state": "false"
+      },
+      {
+        "text": "Economy",
+        "tag": "div",
+        "id": null,
+        "class": "VfPpkd-TkwUic",
+        "href": null,
+        "role": "combobox",
+        "aria_haspopup": "listbox",
+        "aria_expanded": "false",
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 385.40625,
+          "y": 400,
+          "width": 102.6796875,
+          "height": 36
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: div with text 'Economy...'"
+        },
+        "type": "expandable",
+        "current_state": "false"
+      },
+      {
+        "text": "",
+        "tag": "input",
+        "id": null,
+        "class": "II2One j0Ppje zmMKJ LbIaRd",
+        "href": null,
+        "role": "combobox",
+        "aria_haspopup": "true",
+        "aria_expanded": "false",
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 160,
+          "y": 444,
+          "width": 282,
+          "height": 56
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: input with text '...'"
+        },
+        "type": "expandable",
+        "current_state": "false"
+      },
+      {
+        "text": "",
+        "tag": "input",
+        "id": null,
+        "class": "II2One j0Ppje zmMKJ LbIaRd",
+        "href": null,
+        "role": "combobox",
+        "aria_haspopup": "true",
+        "aria_expanded": "false",
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 450,
+          "y": 444,
+          "width": 282,
+          "height": 56
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: input with text '...'"
+        },
+        "type": "expandable",
+        "current_state": "false"
+      },
+      {
+        "text": "",
+        "tag": "button",
+        "id": null,
+        "class": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe LQeN7 nJawce OTelKf XPGpHc mAozAc",
+        "href": null,
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": "false",
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 1092,
+          "y": 2142.5,
+          "width": 40,
+          "height": 40
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: button with text '...'"
+        },
+        "type": "expandable",
+        "current_state": "false"
+      },
+      {
+        "text": "",
+        "tag": "button",
+        "id": null,
+        "class": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe LQeN7 nJawce OTelKf XPGpHc mAozAc",
+        "href": null,
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": "false",
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 1092,
+          "y": 2191.5,
+          "width": 40,
+          "height": 40
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: button with text '...'"
+        },
+        "type": "expandable",
+        "current_state": "false"
+      },
+      {
+        "text": "",
+        "tag": "button",
+        "id": null,
+        "class": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe LQeN7 nJawce OTelKf XPGpHc mAozAc",
+        "href": null,
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": "false",
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 1092,
+          "y": 2240.5,
+          "width": 40,
+          "height": 40
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: button with text '...'"
+        },
+        "type": "expandable",
+        "current_state": "false"
+      },
+      {
+        "text": "",
+        "tag": "button",
+        "id": null,
+        "class": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe LQeN7 nJawce OTelKf XPGpHc mAozAc",
+        "href": null,
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": "false",
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 1092,
+          "y": 2289.5,
+          "width": 40,
+          "height": 40
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: button with text '...'"
+        },
+        "type": "expandable",
+        "current_state": "false"
+      },
+      {
+        "text": "",
+        "tag": "button",
+        "id": null,
+        "class": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe LQeN7 nJawce OTelKf XPGpHc mAozAc",
+        "href": null,
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": "false",
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 1092,
+          "y": 2338.5,
+          "width": 40,
+          "height": 40
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: button with text '...'"
+        },
+        "type": "expandable",
+        "current_state": "false"
+      },
+      {
+        "text": "",
+        "tag": "button",
+        "id": null,
+        "class": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe LQeN7 nJawce OTelKf XPGpHc mAozAc",
+        "href": null,
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": "false",
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 576,
+          "y": 2964.5,
+          "width": 40,
+          "height": 40
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: button with text '...'"
+        },
+        "type": "expandable",
+        "current_state": "false"
+      },
+      {
+        "text": "",
+        "tag": "button",
+        "id": null,
+        "class": "VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe LQeN7 nJawce OTelKf XPGpHc mAozAc",
+        "href": null,
+        "role": null,
+        "aria_haspopup": null,
+        "aria_expanded": "false",
+        "data_toggle": null,
+        "data_target": null,
+        "onclick": null,
+        "bbox": {
+          "x": 756.8828125,
+          "y": 2964.5,
+          "width": 40,
+          "height": 40
+        },
+        "selector_info": {
+          "type": "playwright_element",
+          "description": "Playwright element: button with text '...'"
+        },
+        "type": "expandable",
+        "current_state": "false"
+      }
+    ],
+    "modal_triggers": [],
+    "tab_elements": [],
+    "accordion_elements": []
+  },
+  "url_changes": {
+    "current_page": "https://flights.google.com",
+    "navigation": [
+      {
+        "element": "Link",
+        "destination": "https://flights.google.com/"
+      },
+      {
+        "element": "Link",
+        "destination": "https://flights.google.com/"
+      },
+      {
+        "element": "Feedback",
+        "destination": "https://flights.google.com/./#0"
+      },
+      {
+        "element": "Flights from New York",
+        "destination": "https://flights.google.com/travel/flights/flights-from-new-york.html"
+      },
+      {
+        "element": "Flights from Washington",
+        "destination": "https://flights.google.com/travel/flights/flights-from-washington.html"
+      },
+      {
+        "element": "Flights from Chicago",
+        "destination": "https://flights.google.com/travel/flights/flights-from-chicago.html"
+      },
+      {
+        "element": "Flights from Los Angeles",
+        "destination": "https://flights.google.com/travel/flights/flights-from-los-angeles.html"
+      },
+      {
+        "element": "Flights from Houston",
+        "destination": "https://flights.google.com/travel/flights/flights-from-houston.html"
+      },
+      {
+        "element": "Flights from Dallas",
+        "destination": "https://flights.google.com/travel/flights/flights-from-dallas.html"
+      },
+      {
+        "element": "Flights from Chicago to Denver",
+        "destination": "https://flights.google.com/travel/flights/flights-from-chicago-to-denver.html"
+      },
+      {
+        "element": "Flights from Denver to Chicago",
+        "destination": "https://flights.google.com/travel/flights/flights-from-denver-to-chicago.html"
+      },
+      {
+        "element": "Flights from Washington to Chicago",
+        "destination": "https://flights.google.com/travel/flights/flights-from-washington-to-chicago.html"
+      },
+      {
+        "element": "Flights from Denver to Houston",
+        "destination": "https://flights.google.com/travel/flights/flights-from-denver-to-houston.html"
+      },
+      {
+        "element": "Flights from Phoenix to Dallas",
+        "destination": "https://flights.google.com/travel/flights/flights-from-phoenix-to-dallas.html"
+      },
+      {
+        "element": "Flights from Dallas to Phoenix",
+        "destination": "https://flights.google.com/travel/flights/flights-from-dallas-to-phoenix.html"
+      },
+      {
+        "element": "Flights from Chicago to Washington",
+        "destination": "https://flights.google.com/travel/flights/flights-from-chicago-to-washington.html"
+      },
+      {
+        "element": "Flights from Houston to Chicago",
+        "destination": "https://flights.google.com/travel/flights/flights-from-houston-to-chicago.html"
+      },
+      {
+        "element": "Flights from Houston to Denver",
+        "destination": "https://flights.google.com/travel/flights/flights-from-houston-to-denver.html"
+      },
+      {
+        "element": "Flights from Chicago to Houston",
+        "destination": "https://flights.google.com/travel/flights/flights-from-chicago-to-houston.html"
+      },
+      {
+        "element": "Flights from Dallas to Chicago",
+        "destination": "https://flights.google.com/travel/flights/flights-from-dallas-to-chicago.html"
+      },
+      {
+        "element": "Flights from Chicago to Phoenix",
+        "destination": "https://flights.google.com/travel/flights/flights-from-chicago-to-phoenix.html"
+      },
+      {
+        "element": "Flights to Washington",
+        "destination": "https://flights.google.com/travel/flights/flights-to-washington.html"
+      },
+      {
+        "element": "Flights to Chicago",
+        "destination": "https://flights.google.com/travel/flights/flights-to-chicago.html"
+      },
+      {
+        "element": "Flights to New York",
+        "destination": "https://flights.google.com/travel/flights/flights-to-new-york.html"
+      },
+      {
+        "element": "Flights to Dallas",
+        "destination": "https://flights.google.com/travel/flights/flights-to-dallas.html"
+      },
+      {
+        "element": "Flights to Houston",
+        "destination": "https://flights.google.com/travel/flights/flights-to-houston.html"
+      },
+      {
+        "element": "Flights to Las Vegas",
+        "destination": "https://flights.google.com/travel/flights/flights-to-las-vegas.html"
+      },
+      {
+        "element": "Flights to United States",
+        "destination": "https://flights.google.com/travel/flights/region/flights-to-united-states.html"
+      },
+      {
+        "element": "Flights to Mexico",
+        "destination": "https://flights.google.com/travel/flights/region/flights-to-mexico.html"
+      },
+      {
+        "element": "Flights to Japan",
+        "destination": "https://flights.google.com/travel/flights/region/flights-to-japan.html"
+      },
+      {
+        "element": "Flights to Canada",
+        "destination": "https://flights.google.com/travel/flights/region/flights-to-canada.html"
+      },
+      {
+        "element": "Flights to China",
+        "destination": "https://flights.google.com/travel/flights/region/flights-to-china.html"
+      },
+      {
+        "element": "Flights to Brazil",
+        "destination": "https://flights.google.com/travel/flights/region/flights-to-brazil.html"
+      },
+      {
+        "element": "Accessibility feedback",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Text contains 'access'"
+      },
+      {
+        "element": "Travel",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Text contains 'travel'"
+      },
+      {
+        "element": "Explore",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Text contains 'explore'"
+      },
+      {
+        "element": "Explore",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Text contains 'explore'"
+      },
+      {
+        "element": "Explore destinations",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Text contains 'explore'"
+      },
+      {
+        "element": "Find the cheapest days to fly\nThe Date grid and Price graph make it easy to find the best flight deals",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Text contains 'find'"
+      },
+      {
+        "element": "New York",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Washington",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Chicago",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Boston",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Orlando",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Dallas",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Atlanta",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Nashville",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Tampa",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Las Vegas",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Houston",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Austin",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Phoenix",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Los Angeles",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Miami",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "San Diego",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Philadelphia",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Charlotte",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Raleigh",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Detroit",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Flights from New York to London",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Flights from New York to Paris",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Flights from London to Paris",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Flights from New York to Rome",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Flights from Montreal to Paris",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Flights from London to Milan",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Flights from Toronto to London",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Flights from New York to Milan",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Flights from London to Dubai",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Flights from London to Tokyo",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Flights from Madrid to Rome",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Flights from London to Delhi",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Flights from New York to Los Angeles",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Flights from Paris to Marrakech",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Flights from Sao Paulo to London",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Flights from London to Istanbul",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Flights from Paris to Bangkok",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Flights from New York to Orlando",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Flights from London to Berlin",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Flights from Chicago to Paris",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "Flights from Melbourne to London",
+        "destination": "Unknown (likely navigation)",
+        "hint": "Data attribute: server"
+      },
+      {
+        "element": "ARIA Navigation",
+        "destination": "Unknown (ARIA suggests navigation)",
+        "hint": "ARIA label: Main menu"
+      },
+      {
+        "element": "ARIA Navigation",
+        "destination": "Unknown (ARIA suggests navigation)",
+        "hint": "ARIA label: Google Account: tester482  \n(testeracc482@gmail.com)"
+      },
+      {
+        "element": "ARIA Navigation",
+        "destination": "Unknown (ARIA suggests navigation)",
+        "hint": "ARIA label: Explore more destinations from Seattle"
+      },
+      {
+        "element": "ARIA Navigation",
+        "destination": "Unknown (ARIA suggests navigation)",
+        "hint": "ARIA label: Show answer How can I find last-minute flight deals?"
+      },
+      {
+        "element": "ARIA Navigation",
+        "destination": "Unknown (ARIA suggests navigation)",
+        "hint": "ARIA label: Show answer How can I find cheap flights for a weekend getaway?"
+      },
+      {
+        "element": "ARIA Navigation",
+        "destination": "Unknown (ARIA suggests navigation)",
+        "hint": "ARIA label: Show answer How can I find flight deals if my travel plans are flexible?"
+      },
+      {
+        "element": "ARIA Navigation",
+        "destination": "Unknown (ARIA suggests navigation)",
+        "hint": "ARIA label: Show answer How can I find cheap flights to anywhere?"
+      },
+      {
+        "element": "About",
+        "destination": "Unknown (ARIA suggests navigation)",
+        "hint": "ARIA label: About Google Travel"
+      },
+      {
+        "element": "ARIA Navigation",
+        "destination": "Unknown (ARIA suggests navigation)",
+        "hint": "ARIA label: Explore flights"
+      }
+    ]
+  },
+  "annotated_screenshot": "navigable_elements_A_business_strategist_who_recognizes_the_potential_business_advantages_of_investing_in_a_new_data_infrastructure.png"
+}

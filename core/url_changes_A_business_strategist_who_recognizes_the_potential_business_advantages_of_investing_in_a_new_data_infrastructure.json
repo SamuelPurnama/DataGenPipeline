@@ -1,0 +1,417 @@
+{
+  "current_page": "https://flights.google.com",
+  "navigation": [
+    {
+      "element": "Link",
+      "destination": "https://flights.google.com/"
+    },
+    {
+      "element": "Link",
+      "destination": "https://flights.google.com/"
+    },
+    {
+      "element": "Feedback",
+      "destination": "https://flights.google.com/./#0"
+    },
+    {
+      "element": "Flights from New York",
+      "destination": "https://flights.google.com/travel/flights/flights-from-new-york.html"
+    },
+    {
+      "element": "Flights from Washington",
+      "destination": "https://flights.google.com/travel/flights/flights-from-washington.html"
+    },
+    {
+      "element": "Flights from Chicago",
+      "destination": "https://flights.google.com/travel/flights/flights-from-chicago.html"
+    },
+    {
+      "element": "Flights from Los Angeles",
+      "destination": "https://flights.google.com/travel/flights/flights-from-los-angeles.html"
+    },
+    {
+      "element": "Flights from Houston",
+      "destination": "https://flights.google.com/travel/flights/flights-from-houston.html"
+    },
+    {
+      "element": "Flights from Dallas",
+      "destination": "https://flights.google.com/travel/flights/flights-from-dallas.html"
+    },
+    {
+      "element": "Flights from Chicago to Denver",
+      "destination": "https://flights.google.com/travel/flights/flights-from-chicago-to-denver.html"
+    },
+    {
+      "element": "Flights from Denver to Chicago",
+      "destination": "https://flights.google.com/travel/flights/flights-from-denver-to-chicago.html"
+    },
+    {
+      "element": "Flights from Washington to Chicago",
+      "destination": "https://flights.google.com/travel/flights/flights-from-washington-to-chicago.html"
+    },
+    {
+      "element": "Flights from Denver to Houston",
+      "destination": "https://flights.google.com/travel/flights/flights-from-denver-to-houston.html"
+    },
+    {
+      "element": "Flights from Phoenix to Dallas",
+      "destination": "https://flights.google.com/travel/flights/flights-from-phoenix-to-dallas.html"
+    },
+    {
+      "element": "Flights from Dallas to Phoenix",
+      "destination": "https://flights.google.com/travel/flights/flights-from-dallas-to-phoenix.html"
+    },
+    {
+      "element": "Flights from Chicago to Washington",
+      "destination": "https://flights.google.com/travel/flights/flights-from-chicago-to-washington.html"
+    },
+    {
+      "element": "Flights from Houston to Chicago",
+      "destination": "https://flights.google.com/travel/flights/flights-from-houston-to-chicago.html"
+    },
+    {
+      "element": "Flights from Houston to Denver",
+      "destination": "https://flights.google.com/travel/flights/flights-from-houston-to-denver.html"
+    },
+    {
+      "element": "Flights from Chicago to Houston",
+      "destination": "https://flights.google.com/travel/flights/flights-from-chicago-to-houston.html"
+    },
+    {
+      "element": "Flights from Dallas to Chicago",
+      "destination": "https://flights.google.com/travel/flights/flights-from-dallas-to-chicago.html"
+    },
+    {
+      "element": "Flights from Chicago to Phoenix",
+      "destination": "https://flights.google.com/travel/flights/flights-from-chicago-to-phoenix.html"
+    },
+    {
+      "element": "Flights to Washington",
+      "destination": "https://flights.google.com/travel/flights/flights-to-washington.html"
+    },
+    {
+      "element": "Flights to Chicago",
+      "destination": "https://flights.google.com/travel/flights/flights-to-chicago.html"
+    },
+    {
+      "element": "Flights to New York",
+      "destination": "https://flights.google.com/travel/flights/flights-to-new-york.html"
+    },
+    {
+      "element": "Flights to Dallas",
+      "destination": "https://flights.google.com/travel/flights/flights-to-dallas.html"
+    },
+    {
+      "element": "Flights to Houston",
+      "destination": "https://flights.google.com/travel/flights/flights-to-houston.html"
+    },
+    {
+      "element": "Flights to Las Vegas",
+      "destination": "https://flights.google.com/travel/flights/flights-to-las-vegas.html"
+    },
+    {
+      "element": "Flights to United States",
+      "destination": "https://flights.google.com/travel/flights/region/flights-to-united-states.html"
+    },
+    {
+      "element": "Flights to Mexico",
+      "destination": "https://flights.google.com/travel/flights/region/flights-to-mexico.html"
+    },
+    {
+      "element": "Flights to Japan",
+      "destination": "https://flights.google.com/travel/flights/region/flights-to-japan.html"
+    },
+    {
+      "element": "Flights to Canada",
+      "destination": "https://flights.google.com/travel/flights/region/flights-to-canada.html"
+    },
+    {
+      "element": "Flights to China",
+      "destination": "https://flights.google.com/travel/flights/region/flights-to-china.html"
+    },
+    {
+      "element": "Flights to Brazil",
+      "destination": "https://flights.google.com/travel/flights/region/flights-to-brazil.html"
+    },
+    {
+      "element": "Accessibility feedback",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Text contains 'access'"
+    },
+    {
+      "element": "Travel",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Text contains 'travel'"
+    },
+    {
+      "element": "Explore",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Text contains 'explore'"
+    },
+    {
+      "element": "Explore",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Text contains 'explore'"
+    },
+    {
+      "element": "Explore destinations",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Text contains 'explore'"
+    },
+    {
+      "element": "Find the cheapest days to fly\nThe Date grid and Price graph make it easy to find the best flight deals",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Text contains 'find'"
+    },
+    {
+      "element": "New York",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Washington",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Chicago",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Boston",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Orlando",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Dallas",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Atlanta",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Nashville",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Tampa",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Las Vegas",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Houston",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Austin",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Phoenix",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Los Angeles",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Miami",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "San Diego",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Philadelphia",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Charlotte",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Raleigh",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Detroit",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Flights from New York to London",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Flights from New York to Paris",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Flights from London to Paris",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Flights from New York to Rome",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Flights from Montreal to Paris",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Flights from London to Milan",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Flights from Toronto to London",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Flights from New York to Milan",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Flights from London to Dubai",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Flights from London to Tokyo",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Flights from Madrid to Rome",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Flights from London to Delhi",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Flights from New York to Los Angeles",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Flights from Paris to Marrakech",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Flights from Sao Paulo to London",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Flights from London to Istanbul",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Flights from Paris to Bangkok",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Flights from New York to Orlando",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Flights from London to Berlin",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Flights from Chicago to Paris",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "Flights from Melbourne to London",
+      "destination": "Unknown (likely navigation)",
+      "hint": "Data attribute: server"
+    },
+    {
+      "element": "ARIA Navigation",
+      "destination": "Unknown (ARIA suggests navigation)",
+      "hint": "ARIA label: Main menu"
+    },
+    {
+      "element": "ARIA Navigation",
+      "destination": "Unknown (ARIA suggests navigation)",
+      "hint": "ARIA label: Google Account: tester482  \n(testeracc482@gmail.com)"
+    },
+    {
+      "element": "ARIA Navigation",
+      "destination": "Unknown (ARIA suggests navigation)",
+      "hint": "ARIA label: Explore more destinations from Seattle"
+    },
+    {
+      "element": "ARIA Navigation",
+      "destination": "Unknown (ARIA suggests navigation)",
+      "hint": "ARIA label: Show answer How can I find last-minute flight deals?"
+    },
+    {
+      "element": "ARIA Navigation",
+      "destination": "Unknown (ARIA suggests navigation)",
+      "hint": "ARIA label: Show answer How can I find cheap flights for a weekend getaway?"
+    },
+    {
+      "element": "ARIA Navigation",
+      "destination": "Unknown (ARIA suggests navigation)",
+      "hint": "ARIA label: Show answer How can I find flight deals if my travel plans are flexible?"
+    },
+    {
+      "element": "ARIA Navigation",
+      "destination": "Unknown (ARIA suggests navigation)",
+      "hint": "ARIA label: Show answer How can I find cheap flights to anywhere?"
+    },
+    {
+      "element": "About",
+      "destination": "Unknown (ARIA suggests navigation)",
+      "hint": "ARIA label: About Google Travel"
+    },
+    {
+      "element": "ARIA Navigation",
+      "destination": "Unknown (ARIA suggests navigation)",
+      "hint": "ARIA label: Explore flights"
+    }
+  ]
+}

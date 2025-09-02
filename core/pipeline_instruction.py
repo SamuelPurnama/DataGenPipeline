@@ -589,7 +589,7 @@ from config import (
 chrome_executable_path = os.getenv("CHROME_EXECUTABLE_PATH")
 PERSONAHUB_DATA_PATH = "persona.jsonl"  # Path to PersonaHub data file
 SCREENSHOT_PATH = "screenshot.png"
-PHASE = 2
+PHASE = 1
 
 # Directory to store all browser sessions
 os.makedirs(BROWSER_SESSIONS_DIR, exist_ok=True)
