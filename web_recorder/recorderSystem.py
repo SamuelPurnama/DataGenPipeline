@@ -1349,8 +1349,8 @@ class EnhancedInteractionLogger:
                 type='png'  # Use PNG for faster encoding
             )
             
-            # Add screenshot path to interaction data
-            interaction_data['screenshot'] = str(screenshot_path)
+            # Add screenshot path to interaction data (relative path starting with ./images/)
+            interaction_data['screenshot'] = f"./images/screenshot_{self.step_counter:03d}.png"
             
             print(f"📸 Screenshot saved: {screenshot_path.name}")
             
@@ -1578,15 +1578,25 @@ class EnhancedInteractionLogger:
                 element_text = interaction_text
             
             if element_text and len(element_text) < 50:  # Avoid very long text
-                action_description = f"Click the '{element_text}' {tag_name or 'button'}"
+                action_description = f"Click '{element_text}'"
             elif aria_label:
-                action_description = f"Click the {tag_name or 'button'} labeled '{aria_label}'"
+                action_description = f"Click '{aria_label}'"
             elif element_id:
-                action_description = f"Click the {tag_name or 'button'} with ID '{element_id}'"
+                action_description = f"Click element with ID '{element_id}'"
             elif placeholder:
-                action_description = f"Click the {tag_name or 'input'} with placeholder '{placeholder}'"
+                action_description = f"Click input with placeholder '{placeholder}'"
             else:
-                action_description = f"Click the {tag_name or 'element'} element"
+                # Better fallback descriptions
+                if tag_name and tag_name != 'element':
+                    action_description = f"Click {tag_name}"
+                else:
+                    # Use coordinates if available for better description
+                    coord_x = interaction_data.get('x')
+                    coord_y = interaction_data.get('y')
+                    if coord_x is not None and coord_y is not None:
+                        action_description = f"Click at position ({coord_x}, {coord_y})"
+                    else:
+                        action_description = "Click element"
             
         elif action_type == 'typing_complete':
             value = element_properties.get('value', interaction_data.get('value', ''))
@@ -1614,15 +1624,15 @@ class EnhancedInteractionLogger:
                 element_text = interaction_text
             
             if element_text and len(element_text) < 50:  # Avoid very long text
-                action_description = f"Enter '{value}' in the '{element_text}' {input_type or 'text'} field"
+                action_description = f"Type '{value}' in '{element_text}'"
             elif placeholder:
-                action_description = f"Enter '{value}' in the {input_type or 'text'} field with placeholder '{placeholder}'"
+                action_description = f"Type '{value}' in field with placeholder '{placeholder}'"
             elif aria_label:
-                action_description = f"Enter '{value}' in the {input_type or 'text'} field labeled '{aria_label}'"
+                action_description = f"Type '{value}' in '{aria_label}'"
             elif element_id:
-                action_description = f"Enter '{value}' in the {input_type or 'text'} field with ID '{element_id}'"
+                action_description = f"Type '{value}' in field with ID '{element_id}'"
             else:
-                action_description = f"Enter '{value}' in the {input_type or 'text'} field"
+                action_description = f"Type '{value}' in text field"
             
         elif action_type == 'enter_pressed':
             value = element_properties.get('value', interaction_data.get('value', ''))
@@ -1649,15 +1659,15 @@ class EnhancedInteractionLogger:
                 element_text = interaction_text
             
             if element_text and len(element_text) < 50:  # Avoid very long text
-                action_description = f"Enter '{value}' in the '{element_text}' {input_type or 'text'} field and press Enter"
+                action_description = f"Type '{value}' in '{element_text}' and press Enter"
             elif placeholder:
-                action_description = f"Enter '{value}' in the {input_type or 'text'} field with placeholder '{placeholder}' and press Enter"
+                action_description = f"Type '{value}' in field with placeholder '{placeholder}' and press Enter"
             elif aria_label:
-                action_description = f"Enter '{value}' in the {input_type or 'text'} field labeled '{aria_label}' and press Enter"
+                action_description = f"Type '{value}' in '{aria_label}' and press Enter"
             elif element_id:
-                action_description = f"Enter '{value}' in the {input_type or 'text'} field with ID '{element_id}' and press Enter"
+                action_description = f"Type '{value}' in field with ID '{element_id}' and press Enter"
             else:
-                action_description = f"Enter '{value}' in the {input_type or 'text'} field and press Enter"
+                action_description = f"Type '{value}' in text field and press Enter"
             
         elif action_type == 'input':
             value = element_properties.get('value', interaction_data.get('value', ''))
@@ -1684,15 +1694,15 @@ class EnhancedInteractionLogger:
                 element_text = interaction_text
             
             if element_text and len(element_text) < 50:  # Avoid very long text
-                action_description = f"Type '{value}' in the '{element_text}' {input_type or 'text'} field"
+                action_description = f"Type '{value}' in '{element_text}'"
             elif placeholder:
-                action_description = f"Type '{value}' in the {input_type or 'text'} field with placeholder '{placeholder}'"
+                action_description = f"Type '{value}' in field with placeholder '{placeholder}'"
             elif aria_label:
-                action_description = f"Type '{value}' in the {input_type or 'text'} field labeled '{aria_label}'"
+                action_description = f"Type '{value}' in '{aria_label}'"
             elif element_id:
-                action_description = f"Type '{value}' in the {input_type or 'text'} field with ID '{element_id}'"
+                action_description = f"Type '{value}' in field with ID '{element_id}'"
             else:
-                action_description = f"Type '{value}' in the {input_type or 'text'} field"
+                action_description = f"Type '{value}' in text field"
             
         elif action_type == 'form_submit':
             wait_condition = ""
@@ -1715,13 +1725,13 @@ class EnhancedInteractionLogger:
                 element_text = interaction_text
             
             if element_text and len(element_text) < 50:  # Avoid very long text
-                action_description = f"Submit the form by clicking the '{element_text}' button"
+                action_description = f"Submit form using '{element_text}' button"
             elif aria_label:
-                action_description = f"Submit the form by clicking the button labeled '{aria_label}'"
+                action_description = f"Submit form using '{aria_label}' button"
             elif element_id:
-                action_description = f"Submit the form by clicking the button with ID '{element_id}'"
+                action_description = f"Submit form using button with ID '{element_id}'"
             else:
-                action_description = f"Submit the form"
+                action_description = f"Submit form"
             
         elif action_type == 'hover':
             wait_condition = ""
@@ -1745,13 +1755,23 @@ class EnhancedInteractionLogger:
                 element_text = interaction_text
             
             if element_text and len(element_text) < 50:  # Avoid very long text
-                action_description = f"Hover over the '{element_text}' {tag_name or 'element'}"
+                action_description = f"Hover over '{element_text}'"
             elif aria_label:
-                action_description = f"Hover over the {tag_name or 'element'} labeled '{aria_label}'"
+                action_description = f"Hover over '{aria_label}'"
             elif element_id:
-                action_description = f"Hover over the {tag_name or 'element'} with ID '{element_id}'"
+                action_description = f"Hover over element with ID '{element_id}'"
             else:
-                action_description = f"Hover over the {tag_name or 'element'} element"
+                # Better fallback descriptions
+                if tag_name and tag_name != 'element':
+                    action_description = f"Hover over {tag_name}"
+                else:
+                    # Use coordinates if available for better description
+                    coord_x = interaction_data.get('x')
+                    coord_y = interaction_data.get('y')
+                    if coord_x is not None and coord_y is not None:
+                        action_description = f"Hover at position ({coord_x}, {coord_y})"
+                    else:
+                        action_description = "Hover over element"
             
         elif action_type == 'scroll':
             scroll_x = interaction_data.get('scrollX', 0)
@@ -2466,7 +2486,7 @@ class EnhancedInteractionLogger:
         <div class="content-row">
             <div class="image-section">
                 <h4>📸 Screenshot</h4>
-                {f'<img src="/api/screenshot/{self.session_name}/{step_num.zfill(3)}" alt="Screenshot {step_num}" class="screenshot">' if screenshot_exists else '<p style="color: #999;">Screenshot not available</p>'}
+                {f'<img src="./images/screenshot_{step_num.zfill(3)}.png" alt="Screenshot {step_num}" class="screenshot">' if screenshot_exists else '<p style="color: #999;">Screenshot not available</p>'}
             </div>
             
             <div class="data-section">

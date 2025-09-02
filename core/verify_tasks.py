@@ -163,7 +163,7 @@ def verify_all_trajectories():
     results = []
     total_tokens = 0
     
-    # Get all calendar directories
+    # Get all calendar directoriesx
     calendar_dirs = [d for d in os.listdir(RESULTS_DIR) if os.path.isdir(os.path.join(RESULTS_DIR, d))]
     
     # Limit number of trajectories if MAX_TRAJECTORIES is set

@@ -270,9 +270,9 @@ def generate_html_report(stats: Dict, tasks_data: List[Dict], incomplete_data: L
                 <p>Total Tasks: {stats['phase_stats'][phase]['total']}</p>
                 <p>Successful: {stats['phase_stats'][phase]['success']}</p>
                 <p>Failed: {stats['phase_stats'][phase]['failed']}</p>
-                <p>Success Rate: {(stats['phase_stats'][phase]['success'] / stats['phase_stats'][phase]['total'] * 100) if stats['phase_stats'][phase]['total'] > 0 else 0:.1f}%</p>
+                <p>Success Rate: {f"{(stats['phase_stats'][phase]['success'] / stats['phase_stats'][phase]['total'] * 100):.1f}" if stats['phase_stats'][phase]['total'] > 0 else "0.0"}%</p>
                 <div class="progress-bar">
-                    <div class="progress-fill" style="width: {(stats['phase_stats'][phase]['success'] / stats['phase_stats'][phase]['total'] * 100) if stats['phase_stats'][phase]['total'] > 0 else 0}%"></div>
+                    <div class="progress-fill" style="width: {f"{(stats['phase_stats'][phase]['success'] / stats['phase_stats'][phase]['total'] * 100):.1f}" if stats['phase_stats'][phase]['total'] > 0 else "0.0"}%"></div>
                 </div>
             </div>
             """ for phase in ['phase1', 'phase2'])}

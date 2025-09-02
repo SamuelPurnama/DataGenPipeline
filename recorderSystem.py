@@ -343,51 +343,111 @@ class EnhancedInteractionLogger:
             if (window.loggingCleanup) {
                 window.loggingCleanup();
             }
-            
+
+            window.loggingCleanup = function() {
+                // Remove click listeners
+                if (window.clickListener) {
+                    document.removeEventListener('click', window.clickListener);
+                }
+                if (window.clickTypingListener) {
+                    document.removeEventListener('click', window.clickTypingListener);
+                }
+                // Remove keydown listeners  
+                if (window.keydownListener) {
+                    document.removeEventListener('keydown', window.keydownListener);
+                }
+                if (window.debugKeydownListener) {
+                    document.removeEventListener('keydown', window.debugKeydownListener);
+                }
+                if (window.typingKeydownListener) {
+                    document.removeEventListener('keydown', window.typingKeydownListener);
+                }
+                // Remove input listeners
+                if (window.inputListener) {
+                    document.removeEventListener('input', window.inputListener);
+                }
+                // Remove submit listeners
+                if (window.submitListener) {
+                    document.removeEventListener('submit', window.submitListener);
+                }
+                // Remove scroll listeners
+                if (window.scrollListener) {
+                    document.removeEventListener('scroll', window.scrollListener);
+                }
+                if (window.elementScrollListener) {
+                    const allElements = document.querySelectorAll('*');
+                    allElements.forEach(element => {
+                        element.removeEventListener('scroll', window.elementScrollListener);
+                    });
+                }
+                // Remove hover listeners
+                if (window.hoverListener) {
+                    document.removeEventListener('pointermove', window.hoverListener);
+                }
+                // Remove popstate listeners
+                if (window.popstateListener) {
+                    window.removeEventListener('popstate', window.popstateListener);
+                }
+                // Remove beforeunload listeners
+                if (window.beforeunloadListener) {
+                    window.removeEventListener('beforeunload', window.beforeunloadListener);
+                }
+                // Remove load listeners
+                if (window.loadListener) {
+                    window.removeEventListener('load', window.loadListener);
+                }
+                // Reset all listener variables to undefined
+                window.clickListener = undefined;
+                window.clickTypingListener = undefined;
+                window.keydownListener = undefined;
+                window.debugKeydownListener = undefined;
+                window.typingKeydownListener = undefined;
+                window.inputListener = undefined;
+                window.submitListener = undefined;
+                window.scrollListener = undefined;
+                window.elementScrollListener = undefined;
+                window.hoverListener = undefined;
+                window.popstateListener = undefined;
+                window.beforeunloadListener = undefined;
+                window.loadListener = undefined;
+                window.loggingInitialized = false;
+                console.log('Cleanup completed');
+            };
+
             window.interactionLogs = [];
             window.lastInteractionElement = null;
-            
+
+            // --- Suppress navigation logging for 300ms after a click ---
+            let lastClickTime = 0;
+            let clickSuppressWindow = 300; // ms
+
             // Function to capture essential element properties
             function getEssentialElementProperties(element) {
                 const rect = element.getBoundingClientRect();
-                
                 return {
-                    // Core identification
                     tagName: element.tagName,
                     elementId: element.id || '',
                     elementClass: element.className || '',
                     elementText: element.textContent ? element.textContent.substring(0, 100) : '',
-                    
-                    // Input properties
                     inputType: element.type || '',
                     value: element.value || '',
                     placeholder: element.placeholder || '',
                     required: element.required || false,
                     disabled: element.disabled || false,
-                    
-                    // Accessibility
                     ariaLabel: element.getAttribute('aria-label') || '',
                     role: element.getAttribute('role') || '',
                     dataTestid: element.getAttribute('data-testid') || '',
-                    
-                    // Visual state
                     isVisible: rect.width > 0 && rect.height > 0,
                     isEnabled: !element.disabled,
                     isFocused: document.activeElement === element,
-                    
-                    // Bounding box
                     bbox: {
                         x: rect.x,
                         y: rect.y,
                         width: rect.width,
                         height: rect.height
                     },
-                    
-                    // Form context
                     form: element.form ? element.form.id || '' : '',
                     name: element.name || '',
-                    
-                    // Validation
                     validationState: element.validity ? element.validity.valid ? 'valid' : 'invalid' : 'unknown',
                     errorMessage: element.validationMessage || ''
                 };
@@ -532,10 +592,10 @@ class EnhancedInteractionLogger:
             
             // Track clicks
             window.clickListener = function(e) {
+                lastClickTime = Date.now(); // Set lastClickTime for navigation suppression
                 const element = e.target;
                 const selectors = generateSelectors(element);
                 const essentialProperties = getEssentialElementProperties(element);
-                
                 const clickData = {
                     type: 'click',
                     timestamp: new Date().toISOString(),
@@ -554,7 +614,6 @@ class EnhancedInteractionLogger:
                 window.interactionLogs.push(clickData);
                 window.lastInteractionElement = element;
                 console.log('INTERACTION_LOG:', JSON.stringify(clickData));
-                
                 // Also log accessibility tree (smart detection)
                 const axtree = getAppropriateAccessibilityTree();
                 console.log('AXTREE_LOG:', JSON.stringify(axtree));
@@ -792,85 +851,26 @@ class EnhancedInteractionLogger:
             };
             document.addEventListener('submit', window.submitListener);
             
-            // Track navigation events
+            // Track navigation events (DISABLED: do not log navigation events to Python)
             let lastUrl = window.location.href;
             let lastTitle = document.title;
-            
-            // Monitor for URL changes
             const observer = new MutationObserver(function(mutations) {
                 const currentUrl = window.location.href;
                 const currentTitle = document.title;
-                
+                const now = Date.now();
+                if (now - lastClickTime < clickSuppressWindow) {
+                    // Suppress navigation logging if within 300ms of a click
+                    return;
+                }
                 if (currentUrl !== lastUrl || currentTitle !== lastTitle) {
-                    const navigationData = {
-                        type: 'navigation',
-                        timestamp: new Date().toISOString(),
-                        previousUrl: lastUrl,
-                        currentUrl: currentUrl,
-                        previousTitle: lastTitle,
-                        currentTitle: currentTitle,
-                        url: currentUrl,
-                        pageTitle: currentTitle,
-                        selectors: {
-                            css: 'locator("body")'
-                        },
-                        bbox: {
-                            x: 0,
-                            y: 0,
-                            width: window.innerWidth,
-                            height: window.innerHeight
-                        }
-                    };
-                    window.interactionLogs.push(navigationData);
-                    console.log('INTERACTION_LOG:', JSON.stringify(navigationData));
-                    
-                    // Also log accessibility tree (smart detection)
-                    const axtree = getAppropriateAccessibilityTree();
-                    console.log('AXTREE_LOG:', JSON.stringify(axtree));
-                    
+                    // Navigation detected, but do NOT log or push navigation events
                     lastUrl = currentUrl;
                     lastTitle = currentTitle;
                 }
             });
-            
-            // Start observing
             observer.observe(document.body, {
                 childList: true,
                 subtree: true
-            });
-            
-            // Also listen for popstate events (back/forward navigation)
-            window.addEventListener('popstate', function(e) {
-                const currentUrl = window.location.href;
-                const currentTitle = document.title;
-                
-                const navigationData = {
-                    type: 'navigation',
-                    timestamp: new Date().toISOString(),
-                    navigationType: 'popstate',
-                    currentUrl: currentUrl,
-                    currentTitle: currentTitle,
-                    url: currentUrl,
-                    pageTitle: currentTitle,
-                    selectors: {
-                        css: 'locator("body")'
-                    },
-                    bbox: {
-                        x: 0,
-                        y: 0,
-                        width: window.innerWidth,
-                        height: window.innerHeight
-                    }
-                };
-                window.interactionLogs.push(navigationData);
-                console.log('INTERACTION_LOG:', JSON.stringify(navigationData));
-                
-                // Also log accessibility tree (smart detection)
-                const axtree = getAppropriateAccessibilityTree();
-                console.log('AXTREE_LOG:', JSON.stringify(axtree));
-                
-                lastUrl = currentUrl;
-                lastTitle = currentTitle;
             });
             
             // Detect page unload (when JavaScript will be killed)
@@ -1194,6 +1194,8 @@ class EnhancedInteractionLogger:
                 return
                 
             if msg.text.startswith('INTERACTION_LOG:'):
+                print("🔵 PYTHON RECEIVED:", msg.text)
+
                 # Extract the JSON data from the console message
                 json_str = msg.text.replace('INTERACTION_LOG:', '').strip()
                 interaction_data = json.loads(json_str)
@@ -1202,7 +1204,7 @@ class EnhancedInteractionLogger:
                 if interaction_data['type'] == 'page_load':
                     return
                 
-                # Deduplication: Skip duplicate interactions within 500ms
+                # DEDUPLICATION LOGIC TEMPORARILY DISABLED - capturing all interactions
                 current_time = time.time()
                 interaction_key = f"{interaction_data['type']}_{interaction_data.get('url', '')}_{interaction_data.get('element', '')}"
                 
@@ -1214,6 +1216,7 @@ class EnhancedInteractionLogger:
                 self.last_interaction_time = current_time
                 
                 self.interactions.append(interaction_data)
+                
                 
                 # Increment step counter FIRST, before taking screenshot
                 self.step_counter += 1
@@ -1349,8 +1352,8 @@ class EnhancedInteractionLogger:
                 type='png'  # Use PNG for faster encoding
             )
             
-            # Add screenshot path to interaction data
-            interaction_data['screenshot'] = str(screenshot_path)
+            # Add screenshot path to interaction data (relative path starting with ./images/)
+            interaction_data['screenshot'] = f"./images/screenshot_{self.step_counter:03d}.png"
             
             print(f"📸 Screenshot saved: {screenshot_path.name}")
             
@@ -1548,36 +1551,49 @@ class EnhancedInteractionLogger:
     def _create_action_data(self, interaction_data):
         """Create action data in the format expected by trajectory.json"""
         action_type = interaction_data['type']
-        
-        # Get element properties for enhanced selector logic
         element_properties = interaction_data.get('essentialProperties', {})
         selector = self._get_best_selector(interaction_data.get('selectors', {}), element_properties)
-        
-        # Enhanced action creation with better logic and descriptions
+
         if action_type == 'click':
-            # Add wait conditions for better reliability
             wait_condition = ""
             if element_properties.get('is_visible') is False:
                 wait_condition = f"\nawait page.waitForSelector('{selector}', {{ state: 'visible' }})"
-            
-            action_str = f"click(bid='{element_properties.get('element_id', '')}', button='left')"
             playwright_code = f"{wait_condition}\nawait page.{selector}.click()"
-            
-            # Build descriptive action description using text content
+            action_str = playwright_code.strip()
             element_text = element_properties.get('text_content', '').strip()
             element_id = element_properties.get('element_id', '')
             aria_label = element_properties.get('aria_label', '')
             placeholder = element_properties.get('placeholder', '')
             tag_name = element_properties.get('tag_name', '').lower()
-            
-            # Also check interaction_data for fallbacks
             interaction_text = interaction_data.get('elementText', '').strip()
-            
-            # Use interaction text as fallback if element text is empty
             if not element_text and interaction_text:
                 element_text = interaction_text
-            
-            if element_text and len(element_text) < 50:  # Avoid very long text
+            # Improved: Handle getByText and getByRole selectors for description
+            if selector.startswith("locator('") and selector.endswith("')"):
+                selector_str = selector[9:-2]
+                if tag_name and tag_name != 'element':
+                    action_description = f"Click {tag_name} with selector '{selector_str}'"
+                else:
+                    action_description = f"Click element with selector '{selector_str}'"
+            elif selector.startswith("getByText('") and selector.endswith("')"):
+                text_val = selector[11:-2]
+                action_description = f"Click the '{text_val}' button"
+            elif selector.startswith("getByRole('"):
+                # Try to extract role and name
+                try:
+                    role_part = selector[10:].split("'", 1)[0]
+                    name_part = ''
+                    if '{ name:' in selector:
+                        name_start = selector.index("{ name:") + 8
+                        name_end = selector.index("'", name_start + 1)
+                        name_part = selector[name_start:name_end]
+                    if name_part:
+                        action_description = f"Click the '{name_part}' {role_part}"
+                    else:
+                        action_description = f"Click the {role_part}"
+                except Exception:
+                    action_description = f"Click the {tag_name or 'element'} element"
+            elif element_text and len(element_text) < 50:
                 action_description = f"Click the '{element_text}' {tag_name or 'button'}"
             elif aria_label:
                 action_description = f"Click the {tag_name or 'button'} labeled '{aria_label}'"
@@ -1587,33 +1603,22 @@ class EnhancedInteractionLogger:
                 action_description = f"Click the {tag_name or 'input'} with placeholder '{placeholder}'"
             else:
                 action_description = f"Click the {tag_name or 'element'} element"
-            
         elif action_type == 'typing_complete':
             value = element_properties.get('value', interaction_data.get('value', ''))
-            
-            # Add wait and clear for better input handling
             wait_condition = ""
             if element_properties.get('is_visible') is False:
                 wait_condition = f"\nawait page.waitForSelector('{selector}', {{ state: 'visible' }})"
-            
-            action_str = f"keyboard_type(text='{value}')"
             playwright_code = f"{wait_condition}\nawait page.{selector}.clear()\nawait page.{selector}.fill('{value}')"
-            
-            # Build descriptive action description using text content
+            action_str = playwright_code.strip()
             element_text = element_properties.get('text_content', '').strip()
             placeholder = element_properties.get('placeholder', '')
             aria_label = element_properties.get('aria_label', '')
             element_id = element_properties.get('element_id', '')
             input_type = element_properties.get('input_type', '')
-            
-            # Also check interaction_data for fallbacks
             interaction_text = interaction_data.get('elementText', '').strip()
-            
-            # Use interaction text as fallback if element text is empty
             if not element_text and interaction_text:
                 element_text = interaction_text
-            
-            if element_text and len(element_text) < 50:  # Avoid very long text
+            if element_text and len(element_text) < 50:
                 action_description = f"Enter '{value}' in the '{element_text}' {input_type or 'text'} field"
             elif placeholder:
                 action_description = f"Enter '{value}' in the {input_type or 'text'} field with placeholder '{placeholder}'"
@@ -1623,32 +1628,22 @@ class EnhancedInteractionLogger:
                 action_description = f"Enter '{value}' in the {input_type or 'text'} field with ID '{element_id}'"
             else:
                 action_description = f"Enter '{value}' in the {input_type or 'text'} field"
-            
         elif action_type == 'enter_pressed':
             value = element_properties.get('value', interaction_data.get('value', ''))
-            
             wait_condition = ""
             if element_properties.get('is_visible') is False:
                 wait_condition = f"\nawait page.waitForSelector('{selector}', {{ state: 'visible' }})"
-            
-            action_str = f"keyboard_type(text='{value}')"
             playwright_code = f"{wait_condition}\nawait page.{selector}.clear()\nawait page.{selector}.fill('{value}')\nawait page.{selector}.press('Enter')"
-            
-            # Build descriptive action description using text content
+            action_str = playwright_code.strip()
             element_text = element_properties.get('text_content', '').strip()
             placeholder = element_properties.get('placeholder', '')
             aria_label = element_properties.get('aria_label', '')
             element_id = element_properties.get('element_id', '')
             input_type = element_properties.get('input_type', '')
-            
-            # Also check interaction_data for fallbacks
             interaction_text = interaction_data.get('elementText', '').strip()
-            
-            # Use interaction text as fallback if element text is empty
             if not element_text and interaction_text:
                 element_text = interaction_text
-            
-            if element_text and len(element_text) < 50:  # Avoid very long text
+            if element_text and len(element_text) < 50:
                 action_description = f"Enter '{value}' in the '{element_text}' {input_type or 'text'} field and press Enter"
             elif placeholder:
                 action_description = f"Enter '{value}' in the {input_type or 'text'} field with placeholder '{placeholder}' and press Enter"
@@ -1658,32 +1653,22 @@ class EnhancedInteractionLogger:
                 action_description = f"Enter '{value}' in the {input_type or 'text'} field with ID '{element_id}' and press Enter"
             else:
                 action_description = f"Enter '{value}' in the {input_type or 'text'} field and press Enter"
-            
         elif action_type == 'input':
             value = element_properties.get('value', interaction_data.get('value', ''))
-            
             wait_condition = ""
             if element_properties.get('is_visible') is False:
                 wait_condition = f"\nawait page.waitForSelector('{selector}', {{ state: 'visible' }})"
-            
-            action_str = f"keyboard_type(text='{value}')"
             playwright_code = f"{wait_condition}\nawait page.{selector}.fill('{value}')"
-            
-            # Build descriptive action description using text content
+            action_str = playwright_code.strip()
             element_text = element_properties.get('text_content', '').strip()
             placeholder = element_properties.get('placeholder', '')
             aria_label = element_properties.get('aria_label', '')
             element_id = element_properties.get('element_id', '')
             input_type = element_properties.get('input_type', '')
-            
-            # Also check interaction_data for fallbacks
             interaction_text = interaction_data.get('elementText', '').strip()
-            
-            # Use interaction text as fallback if element text is empty
             if not element_text and interaction_text:
                 element_text = interaction_text
-            
-            if element_text and len(element_text) < 50:  # Avoid very long text
+            if element_text and len(element_text) < 50:
                 action_description = f"Type '{value}' in the '{element_text}' {input_type or 'text'} field"
             elif placeholder:
                 action_description = f"Type '{value}' in the {input_type or 'text'} field with placeholder '{placeholder}'"
@@ -1693,28 +1678,19 @@ class EnhancedInteractionLogger:
                 action_description = f"Type '{value}' in the {input_type or 'text'} field with ID '{element_id}'"
             else:
                 action_description = f"Type '{value}' in the {input_type or 'text'} field"
-            
         elif action_type == 'form_submit':
             wait_condition = ""
             if element_properties.get('is_visible') is False:
                 wait_condition = f"\nawait page.waitForSelector('{selector}', {{ state: 'visible' }})"
-            
-            action_str = f"click(bid='{element_properties.get('element_id', '')}', button='left')"
             playwright_code = f"{wait_condition}\nawait page.{selector}.submit()"
-            
-            # Build descriptive action description using text content
+            action_str = playwright_code.strip()
             element_text = element_properties.get('text_content', '').strip()
             aria_label = element_properties.get('aria_label', '')
             element_id = element_properties.get('element_id', '')
-            
-            # Also check interaction_data for fallbacks
             interaction_text = interaction_data.get('elementText', '').strip()
-            
-            # Use interaction text as fallback if element text is empty
             if not element_text and interaction_text:
                 element_text = interaction_text
-            
-            if element_text and len(element_text) < 50:  # Avoid very long text
+            if element_text and len(element_text) < 50:
                 action_description = f"Submit the form by clicking the '{element_text}' button"
             elif aria_label:
                 action_description = f"Submit the form by clicking the button labeled '{aria_label}'"
@@ -1722,29 +1698,20 @@ class EnhancedInteractionLogger:
                 action_description = f"Submit the form by clicking the button with ID '{element_id}'"
             else:
                 action_description = f"Submit the form"
-            
         elif action_type == 'hover':
             wait_condition = ""
             if element_properties.get('is_visible') is False:
                 wait_condition = f"\nawait page.waitForSelector('{selector}', {{ state: 'visible' }})"
-            
-            action_str = f"hover(bid='{element_properties.get('element_id', '')}')"
             playwright_code = f"{wait_condition}\nawait page.{selector}.hover()"
-            
-            # Build descriptive action description using text content
+            action_str = playwright_code.strip()
             element_text = element_properties.get('text_content', '').strip()
             aria_label = element_properties.get('aria_label', '')
             element_id = element_properties.get('element_id', '')
             tag_name = element_properties.get('tag_name', '').lower()
-            
-            # Also check interaction_data for fallbacks
             interaction_text = interaction_data.get('elementText', '').strip()
-            
-            # Use interaction text as fallback if element text is empty
             if not element_text and interaction_text:
                 element_text = interaction_text
-            
-            if element_text and len(element_text) < 50:  # Avoid very long text
+            if element_text and len(element_text) < 50:
                 action_description = f"Hover over the '{element_text}' {tag_name or 'element'}"
             elif aria_label:
                 action_description = f"Hover over the {tag_name or 'element'} labeled '{aria_label}'"
@@ -1752,21 +1719,18 @@ class EnhancedInteractionLogger:
                 action_description = f"Hover over the {tag_name or 'element'} with ID '{element_id}'"
             else:
                 action_description = f"Hover over the {tag_name or 'element'} element"
-            
         elif action_type == 'scroll':
             scroll_x = interaction_data.get('scrollX', 0)
             scroll_y = interaction_data.get('scrollY', 0)
-            action_str = f"scroll(x={scroll_x}, y={scroll_y})"
             playwright_code = f"await page.evaluate('window.scrollTo({scroll_x}, {scroll_y})')"
+            action_str = playwright_code.strip()
             action_description = f"Scroll to position ({scroll_x}, {scroll_y})"
-            
         elif action_type == 'element_scroll':
             scroll_left = interaction_data.get('scrollLeft', 0)
             scroll_top = interaction_data.get('scrollTop', 0)
-            action_str = f"scroll_element(bid='{element_properties.get('element_id', '')}', x={scroll_left}, y={scroll_top})"
             playwright_code = f"await page.{selector}.evaluate('el => el.scrollTo({scroll_left}, {scroll_top})')"
+            action_str = playwright_code.strip()
             action_description = f"Scroll element {element_properties.get('tag_name', 'element')} to position ({scroll_left}, {scroll_top})"
-            
         elif action_type == 'keyboard_input':
             key_info = interaction_data.get('key', '')
             modifiers = []
@@ -1774,17 +1738,15 @@ class EnhancedInteractionLogger:
             if interaction_data.get('altKey'): modifiers.append('Alt')
             if interaction_data.get('shiftKey'): modifiers.append('Shift')
             if interaction_data.get('metaKey'): modifiers.append('Meta')
-            
             modifier_str = '+' + '+'.join(modifiers) if modifiers else ''
-            action_str = f"keyboard_press(key='{key_info}{modifier_str}')"
             playwright_code = f"await page.keyboard.press('{key_info}')"
+            action_str = playwright_code.strip()
             action_description = f"Press keyboard key {key_info}{modifier_str}"
-            
         else:
-            action_str = f"action(type='{action_type}')"
             playwright_code = f"// {action_type} action"
+            action_str = playwright_code.strip()
             action_description = f"Perform {action_type} action"
-        
+
         # Create enhanced thought description using element properties
         def create_enhanced_thought(action_type, element_properties, value=""):
             """Create a more descriptive thought based on element properties with better fallbacks"""
@@ -2436,7 +2398,7 @@ class EnhancedInteractionLogger:
                 
                 # Get action info
                 action_name = action_data.get('action_output', {}).get('action_name', 'unknown')
-                action_str = action_data.get('action_str', '')
+                action_str = action_data.get('action_description', '')
                 playwright_code = action_data.get('playwright_code', '')
                 thought = action_data.get('thought', '')
                 
@@ -2456,19 +2418,21 @@ class EnhancedInteractionLogger:
                 # Check if files exist
                 screenshot_exists = Path(screenshot_path).exists() if screenshot_path else False
                 axtree_exists = Path(axtree_path).exists() if axtree_path else False
-                
+
+                # Fix relative paths for axtree and user message
+                axtree_rel_path = f"./axtree/axtree_{step_num.zfill(3)}.txt" if axtree_exists else ''
+                user_message_rel_path = f"./user_message/user_message_{step_num.zfill(3)}.txt" if user_message_path else ''
+
                 html_content += f"""
     <div class="step">
         <div class="step-header">
             Step {step_num} - {action_name.upper()}
         </div>
-        
         <div class="content-row">
             <div class="image-section">
                 <h4>📸 Screenshot</h4>
-                {f'<img src="/api/screenshot/{self.session_name}/{step_num.zfill(3)}" alt="Screenshot {step_num}" class="screenshot">' if screenshot_exists else '<p style="color: #999;">Screenshot not available</p>'}
+                {f'<img src="./images/screenshot_{step_num.zfill(3)}.png" alt="Screenshot {step_num}" class="screenshot">' if screenshot_exists else '<p style="color: #999;">Screenshot not available</p>'}
             </div>
-            
             <div class="data-section">
                 <div class="action-info">
                     <h4>🎯 Action Details</h4>
@@ -2476,46 +2440,35 @@ class EnhancedInteractionLogger:
                     <p><strong>Action:</strong> {action_str}</p>
                     <p><strong>Playwright:</strong> {playwright_code}</p>
                     {f'<p><strong>Thought:</strong> {thought}</p>' if thought else ''}
-                    
                     {f'<p><strong>Element ID:</strong> {action_details.get("id", "N/A")}</p>' if action_details.get("id") else ''}
-                    
                     {f'<p><strong>Element Class:</strong> {action_details.get("class", "N/A")}</p>' if action_details.get("class") else ''}
-                    
                     {f'<p><strong>Element Type:</strong> {action_details.get("type", "N/A")}</p>' if action_details.get("type") else ''}
-                    
                     {f'<p><strong>Coordinates:</strong> ({coord_x}, {coord_y})</p>' if coord_x is not None and coord_y is not None else ''}
-                    
                     {f'<p><strong>Bounding Box:</strong> x={bbox[0] if len(bbox) > 0 else "N/A"}, y={bbox[1] if len(bbox) > 1 else "N/A"}, width={bbox[2] if len(bbox) > 2 else "N/A"}, height={bbox[3] if len(bbox) > 3 else "N/A"}</p>' if bbox else ''}
-                    
                     {f'<p><strong>Role:</strong> {action_details.get("node_properties", {}).get("role", "N/A")}</p>' if action_details.get("node_properties", {}).get("role") else ''}
-                    
                     {f'<p><strong>Value:</strong> {action_details.get("node_properties", {}).get("value", "N/A")}</p>' if action_details.get("node_properties", {}).get("value") else ''}
                 </div>
-                
                 <div class="url-info">
                     <h4>🌐 Page Info</h4>
                     <p><strong>URL:</strong> {url}</p>
                     <p><strong>Titles:</strong> {', '.join(page_titles)}</p>
                 </div>
-                
                 <div class="data-box">
                     <h4>📄 Axtree Data</h4>
                     <select class="dropdown" onchange="showAxtree('{step_num}', this.value)">
                         <option value="">Select axtree file...</option>
-                        {f'<option value="{axtree_path}">axtree_{step_num.zfill(3)}.txt</option>' if axtree_exists else ''}
+                        {f'<option value="{axtree_rel_path}">axtree_{step_num.zfill(3)}.txt</option>' if axtree_exists else ''}
                     </select>
                     <div id="axtree-{step_num}" class="json-viewer" style="display: none;"></div>
                 </div>
-                
                 <div class="data-box">
                     <h4>📋 User Message</h4>
                     <select class="dropdown" onchange="showUserMessage('{step_num}', this.value)">
                         <option value="">Select user message file...</option>
-                        {f'<option value="{user_message_path}">user_message_{step_num.zfill(3)}.txt</option>' if user_message_path else ''}
+                        {f'<option value="{user_message_rel_path}">user_message_{step_num.zfill(3)}.txt</option>' if user_message_path else ''}
                     </select>
                     <div id="usermessage-{step_num}" class="json-viewer" style="display: none;"></div>
                 </div>
-                
                 {self._generate_notes_html(get_step_notes(step_num))}
             </div>
         </div>
