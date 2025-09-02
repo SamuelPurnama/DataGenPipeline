@@ -14,6 +14,7 @@ from prompts.generation_prompt import (
     PLAYWRIGHT_CODE_SYSTEM_MSG_FAILED,
     PLAYWRIGHT_CODE_SYSTEM_MSG_TAB_CHANGE_FLIGHTS,
     PLAYWRIGHT_CODE_SYSTEM_MSG_DELETION_CALENDAR,
+    PLAYWRIGHT_CODE_SYSTEM_MSG,
     PLAYWRIGHT_CODE_SYSTEM_MSG_MAPS,
     PLAYWRIGHT_CODE_SYSTEM_MSG_FLIGHTS,
     PLAYWRIGHT_CODE_SYSTEM_MSG_SCHOLAR,
@@ -39,7 +40,7 @@ def log_token_usage(resp):
 
 
 def clean_code_response(raw_content):
-    """Clean the raw response and return the parsed JSON object."""
+    """Clean the raw response and return the parsed JSON object with robust error handling."""
     raw_content = raw_content.strip()
     
     # Handle null response
@@ -53,13 +54,45 @@ def clean_code_response(raw_content):
         raw_content = raw_content[len("```"):].strip()
     if raw_content.endswith("```"):
         raw_content = raw_content[:-3].strip()
-        
+    
+    # Try to parse the JSON as-is
     try:
-        # Parse and return the entire JSON response
         return json.loads(raw_content)
-    except json.JSONDecodeError:
-        print("Error: Response was not valid JSON")
-        return None
+    except json.JSONDecodeError as e:
+        print(f"⚠️ Initial JSON parsing failed: {e}")
+        
+        # Try to fix common JSON issues
+        try:
+            # Fix common issues: missing quotes, trailing commas, etc.
+            fixed_content = raw_content
+            
+            # Remove trailing commas before closing braces/brackets
+            import re
+            fixed_content = re.sub(r',(\s*[}\]])', r'\1', fixed_content)
+            
+            # Try to fix missing quotes around property names (but be careful)
+            # Only fix if it looks like a property name followed by colon
+            fixed_content = re.sub(r'(\b\w+\b):', r'"\1":', fixed_content)
+            
+            # Try parsing the fixed content
+            return json.loads(fixed_content)
+        except (json.JSONDecodeError, Exception) as e2:
+            print(f"⚠️ JSON repair failed: {e2}")
+            
+            # Try to extract JSON-like content
+            try:
+                # Look for JSON-like structure in the response
+                import re
+                json_match = re.search(r'\{.*\}', raw_content, re.DOTALL)
+                if json_match:
+                    potential_json = json_match.group(0)
+                    return json.loads(potential_json)
+            except Exception as e3:
+                print(f"⚠️ JSON extraction failed: {e3}")
+            
+            print("❌ Response was not valid JSON and could not be repaired")
+            print(f"Raw content: {raw_content}")
+            return None
 
 client = OpenAI(api_key=api_key)
 
@@ -112,12 +145,21 @@ def chat_ai_playwright_code(accessibility_tree=None, previous_steps=None, taskGo
                 print("\n🤖 Using DOCS prompt")
             else:
                 # Default to calendar for backward compatibility
+<<<<<<< HEAD
+                base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG
+                print("\n🤖 Using DEFAULT (CALENDAR) prompt")
+        else:
+            # Default to calendar for backward compatibility
+            base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG
+            print("\n🤖 Using DEFAULT (CALENDAR) prompt")
+=======
                 base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_TAB_CHANGE_FLIGHTS
                 print("\n🤖 Using FALLBACK (FLIGHTS TAB CHANGE) prompt")
         else:
             # Default to calendar for backward compatibility
             base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_TAB_CHANGE_FLIGHTS
             print("\n🤖 Using FALLBACK (FLIGHTS TAB CHANGE) prompt")
+>>>>>>> origin/main
 
     if accessibility_tree is not None and previous_steps is not None and image_path:
         try:
@@ -144,7 +186,7 @@ def chat_ai_playwright_code(accessibility_tree=None, previous_steps=None, taskGo
                         "content": [
                             {
                                 "type": "text",
-                                "text": f"Task goal: {taskGoal}\nCurrent plan: {taskPlan}\nPrevious steps(The playwright codes here are generated, take them with a grain of salt.): {json.dumps(previous_steps, indent=2)}{trajectory_context}\n\nAccessibility tree: {json.dumps(accessibility_tree, indent=2)}\n\nError log: {error_log if error_log else 'No errors'}"
+                                "text": f"Task goal: {taskGoal}\nCurrent plan: {taskPlan}\nPrevious trajectories for reference: {json.dumps(previous_steps, indent=2)}\nPrevious steps:{trajectory_context}\n\nAccessibility tree: {json.dumps(accessibility_tree, indent=2)}\n\nError log: {error_log if error_log else 'No errors'}"
                             },
                             {
                                 "type": "image_url",

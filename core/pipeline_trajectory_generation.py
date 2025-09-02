@@ -267,7 +267,7 @@ def filter_accessibility_tree(tree: Dict[str, Any], url: str = None) -> Dict[str
 # ========== CONFIGURABLE PARAMETERS ==========
 PHASE = 1
 MAX_RETRIES = 7
-MAX_STEPS = 25  # Maximum number of steps before failing
+MAX_STEPS = 40  # Maximum number of steps before failing
 ACTION_TIMEOUT = 20000  # 30 seconds timeout for actions
 # Execution Modes:
 # 0 - Automatic Mode: Processes all instructions without manual intervention
@@ -275,11 +275,34 @@ ACTION_TIMEOUT = 20000  # 30 seconds timeout for actions
 MODE = 0
 
 # Knowledge base configuration
-MAX_CONTEXT_LENGTH = int(os.getenv("MAX_CONTEXT_LENGTH", "2000"))  # Maximum context length in characters
+MAX_CONTEXT_LENGTH = int(os.getenv("MAX_CONTEXT_LENGTH", "4000"))  # Maximum context length in characters
 KNOWLEDGE_BASE_TYPE = os.getenv("KNOWLEDGE_BASE_TYPE", "graphrag")  # Type of knowledge base to use
 
 # Directory to store all browser sessions
 os.makedirs(BROWSER_SESSIONS_DIR, exist_ok=True)
+
+def extract_platform_name_from_url(url: str) -> str:
+    """Extract platform name from URL for better trajectory differentiation."""
+    if not url:
+        return "Unknown Platform"
+    
+    # Remove protocol and www
+    clean_url = url.replace("https://", "").replace("http://", "").replace("www.", "")
+    
+    # Extract domain and path
+    url_parts = clean_url.split("/")
+    domain = url_parts[0].lower()
+    path = "/".join(url_parts[1:]).lower() if len(url_parts) > 1 else ""
+    
+    # For Google services, construct the full subdomain
+    if domain == "google.com" and path:
+        # Take the first part of the path and append .google.com
+        first_path_part = path.split("/")[0]
+        if first_path_part:
+            return f"{first_path_part}.google.com"
+    
+    # Return the actual domain name
+    return domain
 
 def extract_button_name_from_code(action_code):
     match = re.search(r"name=['\"]([^'\"]+)['\"]", action_code)
@@ -296,15 +319,18 @@ def extract_role_and_name_from_code(action_code):
 
 def fetch_trajectory_nodes(
     instruction: str,
-    max_results: int = 3,
+    url: str,
+    max_results: int = 1,
     max_context_length: int = 3000
 ) -> str:
     """
     Fetch relevant past trajectory nodes from vector database and extract steps/codes for LLM context.
     Uses modular vector database client that supports multiple database types.
     """
+    platform_name = extract_platform_name_from_url(url)
+    enhanced_query = f"{instruction} in {platform_name}"
     return get_trajectory_context(
-        query=instruction,
+        query=enhanced_query,
         max_results=max_results,
         max_context_length=max_context_length,
         kb_type=KNOWLEDGE_BASE_TYPE
@@ -782,7 +808,6 @@ def create_metadata(persona: str, url: str, orig_instruction: str, aug_instructi
         "goal": orig_instruction,
         "eps_name": eps_name,
         "task": {
-            "task_type": "calendar",
             "steps": steps,
             "instruction": {
                 "high_level": orig_instruction,
@@ -975,7 +1000,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                 trajectory_context = ""
                 if search_context:
                     print("🔍 Fetching relevant past trajectories...")
-                    trajectory_context = fetch_trajectory_nodes(aug, max_results=3, max_context_length=MAX_CONTEXT_LENGTH)
+                    trajectory_context = fetch_trajectory_nodes(aug, url, max_results=3, max_context_length=MAX_CONTEXT_LENGTH)
                     if trajectory_context:
                         print("✅ Found relevant past trajectories")
                         print("📄 Full trajectory context:")
@@ -1419,9 +1444,13 @@ def main():
     chrome_exec = os.getenv("CHROME_EXECUTABLE_PATH")
     phase = PHASE
     
-    # Run accounts sequentially
-    for account in ACCOUNTS:
-        run_for_account(account, chrome_exec, phase, search_context=True)
+    with ThreadPoolExecutor(max_workers=len(ACCOUNTS)) as executor:
+        futures = [
+            executor.submit(run_for_account, account, chrome_exec, phase, search_context=True)
+            for account in ACCOUNTS
+        ]
+        for future in futures:
+            future.result()  # Wait for all to finish
 
 def generate_trajectory_html(dirs: Dict[str, str], metadata: Dict[str, Any]) -> None:
     """Generate an HTML visualization of the trajectory."""
@@ -1434,6 +1463,11 @@ def generate_trajectory_html(dirs: Dict[str, str], metadata: Dict[str, Any]) -> 
     except (FileNotFoundError, json.JSONDecodeError):
         print("❌ Error loading trajectory.json")
         return
+    
+    # Get the final screenshot number
+    final_step_num = len(trajectory) + 1
+    final_screenshot_path = os.path.join('images', f'screenshot_{final_step_num:03d}.png')
+    final_screenshot_exists = os.path.exists(os.path.join(dirs['root'], 'images', f'screenshot_{final_step_num:03d}.png'))
 
     # Instruction Table
     instructions = metadata['task']['instruction']
@@ -1467,7 +1501,7 @@ def generate_trajectory_html(dirs: Dict[str, str], metadata: Dict[str, Any]) -> 
 </head>
 <body>
     <div class="container">
-        <h1>{metadata['eps_name']} ({metadata['task'].get('task_type','')})</h1>
+        <h1>{metadata['eps_name']} (Task: {metadata.get('goal', 'Unknown').split()[0:3] if metadata.get('goal') else 'Unknown'})</h1>
         <h2>Instructions</h2>
         <table class="instruction-table">
             <tr><th>level</th><th>instruction</th></tr>
@@ -1535,6 +1569,57 @@ def generate_trajectory_html(dirs: Dict[str, str], metadata: Dict[str, Any]) -> 
                     <div class="content"><pre>{element_output}</pre></div>
                     <button class="collapsible">LLM Output</button>
                     <div class="content"><pre>{llm_output_str}</pre></div>
+                </div>
+            </div>
+        </div>
+        """
+
+    # Add final screenshot section if it exists
+    if final_screenshot_exists:
+        html_content += f"""
+        <div class="step">
+            <div class="step-header">
+                <span class="step-number">Final State</span>
+            </div>
+            <div class="step-content">
+                <div>
+                    <img src="{final_screenshot_path}" alt="Final State Screenshot" class="screenshot">
+                </div>
+                <div>
+                    <div class="step-details-label">Task Status</div>
+                    <div>✅ Task completed successfully</div>
+                    <div class="step-details-label">Total Steps</div>
+                    <div>{len(trajectory)} steps executed</div>
+                    <div class="step-details-label">Runtime</div>
+                    <div>{metadata.get('runtime_sec', 0):.2f} seconds</div>
+                    <div class="step-details-label">Total Tokens</div>
+                    <div>{metadata.get('total_tokens', 0)} tokens used</div>
+                </div>
+            </div>
+        </div>
+        """
+    else:
+        html_content += f"""
+        <div class="step">
+            <div class="step-header">
+                <span class="step-number">Final State</span>
+            </div>
+            <div class="step-content">
+                <div>
+                    <div style="padding: 20px; text-align: center; color: #666; border: 2px dashed #ddd; border-radius: 4px;">
+                        Final screenshot not available<br>
+                        (screenshot_{final_step_num:03d}.png)
+                    </div>
+                </div>
+                <div>
+                    <div class="step-details-label">Task Status</div>
+                    <div>❌ Task may not have completed</div>
+                    <div class="step-details-label">Total Steps</div>
+                    <div>{len(trajectory)} steps executed</div>
+                    <div class="step-details-label">Runtime</div>
+                    <div>{metadata.get('runtime_sec', 0):.2f} seconds</div>
+                    <div class="step-details-label">Total Tokens</div>
+                    <div>{metadata.get('total_tokens', 0)} tokens used</div>
                 </div>
             </div>
         </div>

@@ -114,6 +114,29 @@ class InteractionLogParser:
             
         return formatted_steps, formatted_codes, goal, url
     
+    def extract_platform_name_from_url(self, url: str) -> str:
+        """Extract platform name from URL for better trajectory differentiation."""
+        if not url:
+            return "Unknown Platform"
+        
+        # Remove protocol and www
+        clean_url = url.replace("https://", "").replace("http://", "").replace("www.", "")
+        
+        # Extract domain and path
+        url_parts = clean_url.split("/")
+        domain = url_parts[0].lower()
+        path = "/".join(url_parts[1:]).lower() if len(url_parts) > 1 else ""
+        
+        # For Google services, construct the full subdomain
+        if domain == "google.com" and path:
+            # Take the first part of the path and append .google.com
+            first_path_part = path.split("/")[0]
+            if first_path_part:
+                return f"{first_path_part}.google.com"
+        
+        # Return the actual domain name
+        return domain
+
     def parse_metadata_json(self, metadata_path: Path) -> Dict[str, Any]:
         """Parse metadata.json to extract interaction log metadata"""
         try:
@@ -152,12 +175,16 @@ class InteractionLogParser:
         interaction_types = metadata.get('interaction_types', {})
         screenshots_count = metadata.get('screenshots_count', 0)
         
+        # Extract platform name and append to goal
+        platform_name = self.extract_platform_name_from_url(platform_url)
+        enhanced_goal = f"{goal} in {platform_name}" if goal else f"Web interaction session in {platform_name}"
+        
         # Create structured episode text
         episode_text = f"""
 Web Interaction Log Analysis Data:
 
 USER_GOAL:
-{goal if goal else 'No specific goal recorded'}
+{enhanced_goal}
 
 SESSION_INFO:
 - Session ID: {session_id}

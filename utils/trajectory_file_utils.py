@@ -893,6 +893,41 @@ def generate_trajectory_html(dirs: Dict[str, str], metadata: Dict[str, Any]) -> 
             annotated_filename = f"annotated_screenshot_{step_num_int:03d}.png"
             annotated_screenshot_path = os.path.join('annotated_images', annotated_filename)
         
+        # Load targeting data and find selected element information
+        selected_element_info = ""
+        annotation_id = action_output.get('annotation_id') if isinstance(action_output, dict) else None
+        
+        if targeting_data_path and annotation_id:
+            try:
+                targeting_data_full_path = os.path.join(dirs['root'], targeting_data_path)
+                if os.path.exists(targeting_data_full_path):
+                    with open(targeting_data_full_path, 'r', encoding='utf-8') as f:
+                        targeting_data = json.load(f)
+                    
+                    # Find the selected element by annotation ID
+                    selected_element = None
+                    for element in targeting_data:
+                        if str(element.get('annotation_id', '')) == str(annotation_id):
+                            selected_element = element
+                            break
+                    
+                    if selected_element:
+                        element_info = selected_element.get('element_info', {})
+                        bounding_box = selected_element.get('bounding_box', {})
+                        
+                        selected_element_info = f"""
+                        <div class="step-details-label">Selected Element (ID: {annotation_id})</div>
+                        <div>
+                            <strong>Name:</strong> {html.escape(element_info.get('name', 'N/A'))}<br>
+                            <strong>Role:</strong> {html.escape(element_info.get('role', 'N/A'))}<br>
+                            <strong>Type:</strong> {html.escape(element_info.get('tag_name', 'N/A'))}<br>
+                            <strong>Bounding Box:</strong> x={bounding_box.get('x', 0)}, y={bounding_box.get('y', 0)}, width={bounding_box.get('width', 0)}, height={bounding_box.get('height', 0)}<br>
+                            <strong>Center:</strong> ({bounding_box.get('center_x', 0)}, {bounding_box.get('center_y', 0)})
+                        </div>
+                        """
+            except Exception as e:
+                selected_element_info = f"<div class='step-details-label'>Selected Element Info</div><div>Error loading targeting data: {str(e)}</div>"
+        
         html_content += f"""
         <div class="step">
             <div class="step-header">
@@ -910,6 +945,7 @@ def generate_trajectory_html(dirs: Dict[str, str], metadata: Dict[str, Any]) -> 
                     <div><pre>{llm_output_str}</pre></div>
                     <div class="step-details-label">Action Description</div>
                     <div>{action_description}</div>
+                    {selected_element_info}
                     <button class="collapsible">System Message</button>
                     <div class="content"><pre>{system_message}</pre></div>
                     <button class="collapsible">User Message</button>
@@ -918,6 +954,42 @@ def generate_trajectory_html(dirs: Dict[str, str], metadata: Dict[str, Any]) -> 
                     <div class="content"><pre>{element_output}</pre></div>
                     <button class="collapsible">LLM Output</button>
                     <div class="content"><pre>{llm_output_str}</pre></div>
+                </div>
+            </div>
+        </div>
+        """
+
+    # Add final image section
+    if trajectory:
+        # Get the last step number to find the final screenshot
+        last_step_num = max(int(step_num) for step_num in trajectory.keys())
+        final_screenshot_path = os.path.join('images', f'screenshot_{last_step_num:03d}.png')
+        final_annotated_path = os.path.join('annotated_images', f'annotated_screenshot_{last_step_num:03d}.png')
+        
+        # Check if final annotated screenshot exists
+        final_annotated_exists = os.path.exists(os.path.join(dirs['root'], final_annotated_path))
+        
+        html_content += f"""
+        <h2>Final Result</h2>
+        <div class="step">
+            <div class="step-header">
+                <span class="step-number">Final State</span>
+            </div>
+            <div class="step-content">
+                <div>
+                    <img src="{final_screenshot_path}" alt="Final Screenshot" class="screenshot">
+                    {f'<br><br><strong>Annotated Final State:</strong><br><img src="{final_annotated_path}" alt="Final Annotated Screenshot" class="screenshot">' if final_annotated_exists else ''}
+                </div>
+                <div>
+                    <div class="step-details-label">Task Status</div>
+                    <div>{'✅ Completed Successfully' if metadata.get('success', False) else '❌ Failed or Incomplete'}</div>
+                    <div class="step-details-label">Total Steps</div>
+                    <div>{metadata.get('total_steps', 0)}</div>
+                    <div class="step-details-label">Runtime</div>
+                    <div>{metadata.get('runtime_sec', 0):.2f} seconds</div>
+                    <div class="step-details-label">Total Tokens Used</div>
+                    <div>{metadata.get('total_tokens', 0)}</div>
+                    {f'<div class="step-details-label">GPT Output</div><div>{html.escape(metadata.get("gpt_output", ""))}</div>' if metadata.get("gpt_output") else ''}
                 </div>
             </div>
         </div>
@@ -943,6 +1015,9 @@ def generate_trajectory_html(dirs: Dict[str, str], metadata: Dict[str, Any]) -> 
     </script>
 </body>
 </html>"""
+
+    with open(html_path, 'w', encoding='utf-8') as f:
+        f.write(html_content)
 
     with open(html_path, 'w', encoding='utf-8') as f:
         f.write(html_content)

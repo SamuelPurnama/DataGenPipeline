@@ -8,6 +8,10 @@ Uses Graphiti for trajectory search and context retrieval.
 import os
 import logging
 from pathlib import Path
+import sys
+import os
+# Add parent directory to path for imports
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils.knowledge_base_client import KnowledgeBaseClient
 
 logger = logging.getLogger(__name__)
@@ -80,7 +84,7 @@ class GraphRAGClient(KnowledgeBaseClient):
             
             # Layer 1: Direct Trajectory Search
             print("📊 Layer 1: Performing direct trajectory search...")
-            direct_results = await self._layer1_direct_search(query, max_results)
+            direct_results = await self._layer1_direct_search(query, 5)
             print(f"✅ Layer 1 found {len(direct_results)} direct matches:")
             for i, result in enumerate(direct_results, 1):
                 goal = result.get('goal', 'Unknown')
@@ -88,7 +92,7 @@ class GraphRAGClient(KnowledgeBaseClient):
             
             # Layer 2: Task Type Search
             print("📊 Layer 2: Performing task type search...")
-            task_type_results = await self._layer2_task_type_search(query, max_results)
+            task_type_results = await self._layer2_task_type_search(query, 5)
             print(f"✅ Layer 2 found {len(task_type_results)} task type matches:")
             for i, result in enumerate(task_type_results, 1):
                 goal = result.get('goal', 'Unknown')
@@ -338,45 +342,30 @@ class GraphRAGClient(KnowledgeBaseClient):
     def _format_enhanced_context(self, results: list, max_context_length: int) -> str:
         """Format search results into enhanced context."""
         try:
-            context_parts = ["=== ENHANCED TRAJECTORY CONTEXT ==="]
+            context_parts = ["Previous trajectories and solution steps that worked:"]
             
-            # Group results by search layer
-            direct_results = [r for r in results if r.get("search_layer") == "direct"]
-            task_type_results = [r for r in results if r.get("search_layer") == "task_type"]
+            # Combine all results and number them sequentially
+            all_results = []
+            for result in results:
+                all_results.append(result)
             
-            # Format direct matches
-            if direct_results:
-                context_parts.append("--- DIRECT SEMANTIC MATCHES ---")
-                for i, result in enumerate(direct_results, 1):
-                    group_id = result.get("group_id", "unknown")
-                    context_parts.append(f"Trajectory {i} (from {group_id}): {result['goal']}")
-                    context_parts.append(f"Steps: {result['steps']}")
-                    # Only include codes for web_trajectories group (interaction logs are step-focused)
-                    if group_id != "web_interaction_logs":
-                        context_parts.append(f"Codes: {result['codes']}")
-                    else:
-                        logger.debug(f"📝 Filtering out codes for {group_id} trajectory (step-focused context)")
-                    context_parts.append("")
-            
-            # Format task type matches
-            if task_type_results:
-                context_parts.append("--- TASK TYPE MATCHES ---")
-                task_type = task_type_results[0].get("derived_task_type", "Unknown Task")
-                context_parts.append(f"Derived Task Type: {task_type}")
-                context_parts.append("")
+            # Format all results in a simple numbered list
+            for i, result in enumerate(all_results, 1):
+                goal = result.get('goal', 'Unknown goal')
+                steps = result.get('steps', [])
+                codes = result.get('codes', [])
+                group_id = result.get("group_id", "unknown")
                 
-                for i, result in enumerate(task_type_results, 1):
-                    group_id = result.get("group_id", "unknown")
-                    context_parts.append(f"Example {i} (from {group_id}): {result['goal']}")
-                    context_parts.append(f"Steps: {result['steps']}")
-                    # Only include codes for web_trajectories group (interaction logs are step-focused)
-                    if group_id != "web_interaction_logs":
-                        context_parts.append(f"Codes: {result['codes']}")
-                    else:
-                        logger.debug(f"📝 Filtering out codes for {group_id} trajectory (step-focused context)")
-                    context_parts.append("")
+                context_parts.append(f"{i}. Instruction: {goal}")
+                context_parts.append(f"Steps: {steps}")
+                
+                # Include codes for web_trajectories group, skip for interaction logs
+                if group_id != "web_interaction_logs" and codes:
+                    context_parts.append(f"Codes: {codes}")
+                
+                context_parts.append("")
             
-            context_parts.append("=== END ENHANCED CONTEXT ===")
+            context_parts.append("You can use these as reference to determine your next step.")
             full_context = "\n".join(context_parts)
             
             # Truncate if too long
@@ -390,6 +379,29 @@ class GraphRAGClient(KnowledgeBaseClient):
             logger.error(f"❌ Error formatting enhanced context: {e}")
             return "=== ERROR FORMATTING CONTEXT ==="
     
+    def _extract_platform_name_from_url(self, url: str) -> str:
+        """Extract platform name from URL for better trajectory differentiation."""
+        if not url:
+            return "Unknown Platform"
+        
+        # Remove protocol and www
+        clean_url = url.replace("https://", "").replace("http://", "").replace("www.", "")
+        
+        # Extract domain and path
+        url_parts = clean_url.split("/")
+        domain = url_parts[0].lower()
+        path = "/".join(url_parts[1:]).lower() if len(url_parts) > 1 else ""
+        
+        # For Google services, construct the full subdomain
+        if domain == "google.com" and path:
+            # Take the first part of the path and append .google.com
+            first_path_part = path.split("/")[0]
+            if first_path_part:
+                return f"{first_path_part}.google.com"
+        
+        # Return the actual domain name
+        return domain
+
     def _get_enhanced_search_config(self):
         """Get enhanced search configuration for Graphiti."""
         try:
@@ -423,20 +435,74 @@ class GraphRAGClient(KnowledgeBaseClient):
                     logger.error(f"❌ Trajectory folder does not exist: {trajectory_path}")
                     return False
                 
-                # Create parser and episode text
+                # Create parser and combined episode text with error data
                 parser = TrajectoryParser()
-                episode_text = parser.create_trajectory_episode_text(trajectory_folder)
+                episode_text = parser.create_combined_episode_text(trajectory_folder)
                 
-                # Add to Graphiti using the same approach as ingest_trajectory.py
-                result = await self.graphiti.add_episode(
+                # Check if error log exists
+                error_log_path = trajectory_folder / "error_log.json"
+                has_errors = error_log_path.exists()
+                
+                # ==================== COMPREHENSIVE LOGGING ====================
+                print(f"\n🔍 === DEBUGGING ENTITY EXTRACTION ===")
+                print(f"📝 Episode text being sent to LLM:")
+                print("=" * 80)
+                print(episode_text)
+                print("=" * 80)
+                print(f"📏 Episode text length: {len(episode_text)} characters")
+                print(f"🏷️  Entity types provided: {list(WEB_TRAJECTORY_ENTITY_TYPES.keys())}")
+                
+                # Add to Graphiti using the new split extraction method
+                print(f"\n🚀 Calling graphiti.add_episode_split()...")
+                result = await self.graphiti.add_episode_split(
                     name=f"Trajectory: {trajectory_folder.name}",
                     episode_body=episode_text,
                     source=EpisodeType.text,
                     source_description=f"Web trajectory from {trajectory_folder.name}",
                     reference_time=datetime.now(timezone.utc),
                     group_id=self.group_ids[0],  # Use first group for adding trajectories
-                    entity_types=WEB_TRAJECTORY_ENTITY_TYPES
+                    entity_types=WEB_TRAJECTORY_ENTITY_TYPES,  # Now includes Error entity
+                    mode="split"  # Use split mode for better accuracy
                 )
+                
+                print(f"✅ add_episode_split() completed")
+                print(f"📊 Raw results: {len(result.nodes)} nodes, {len(result.edges)} edges")
+                
+                # Log detailed entity information
+                print(f"\n📋 DETAILED NODE ANALYSIS:")
+                entity_names = {}
+                for i, node in enumerate(result.nodes):
+                    node_name = node.name
+                    if node_name in entity_names:
+                        entity_names[node_name] += 1
+                    else:
+                        entity_names[node_name] = 1
+                    
+                    print(f"  [{i+1}] Name: '{node_name}'")
+                    print(f"      Labels: {node.labels}")
+                    print(f"      Attributes: {list(node.attributes.keys()) if node.attributes else 'None'}")
+                    print(f"      UUID: {node.uuid}")
+                    print()
+                
+                # Check for duplicates
+                print(f"🔄 DUPLICATE ANALYSIS:")
+                duplicates_found = False
+                for name, count in entity_names.items():
+                    if count > 1:
+                        print(f"  ⚠️  '{name}' appears {count} times")
+                        duplicates_found = True
+                
+                if not duplicates_found:
+                    print(f"  ✅ No duplicate entity names found")
+                
+                print(f"🔗 EDGES ANALYSIS:")
+                for i, edge in enumerate(result.edges):
+                    print(f"  [{i+1}] {edge.fact}")
+                
+                print(f"🏁 === END DEBUGGING ===\n")
+                
+                # Summary (detailed analysis already shown above)
+                print(f"✅ SUMMARY: Created {len(result.nodes)} nodes and {len(result.edges)} edges for {trajectory_folder.name}")
                 
                 logger.info(f"✅ Successfully added trajectory to GraphRAG: {trajectory_folder.name}")
                 logger.info(f"📊 Created {len(result.nodes)} nodes and {len(result.edges)} edges")
@@ -451,10 +517,15 @@ class GraphRAGClient(KnowledgeBaseClient):
                 steps = trajectory_data.get('steps', [])
                 codes = trajectory_data.get('codes', [])
                 metadata = trajectory_data.get('metadata', {})
+                url = metadata.get('start_url', '')
+                
+                # Extract platform name and append to goal
+                platform_name = self._extract_platform_name_from_url(url)
+                enhanced_goal = f"{goal} in {platform_name}"
                 
                 # Create trajectory node
                 trajectory_node = EntityNode(
-                    name=goal,
+                    name=enhanced_goal,
                     group_id=self.group_id,
                     labels=['Trajectory'],
                     summary=f"Trajectory with {len(steps)} steps",
