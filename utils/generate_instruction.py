@@ -34,12 +34,16 @@ def generate_instructions(
             f"Based on your persona and the image of the current state of the page, generate a list of {num_instructions} distinct instructions that you might give to an assistant for tasks in this website. "
             f"These instructions must be feasible given the current page state and does not involve modifying/deleting content that is not currently present. "
             f"Vary the complexity of the instructions."
+            f"Use a date at least 3 weeks from September 2025."
+            f"You may vary the destination and the 'where from' field, do not always use Seattle."
+            f"You should add complexity and varietey through filters, constraints, or sorting options."
             f"Return just the list of instructions, no other, no need for quotations, in english."
             f"Example, (but do not include these in your output): "
-            f"- Show me the the fastest bus route to the nearest starbucks (google maps)"
-            f"- Create a calendar event for a meeting with John on May 12th, 10AM (google calendar)"
-            f"- Book me the cheapest flight from Seattle to San Francisco on May 30th at 10AM (google flights)"
-            f"- Search for the newest papers on synthetic data generation (google scholar)"
+            f"- Can you search for cheap 1-week roundtrip flight options from Austin at October under $150 with flight duration less than 3 hours"
+            f"- Find the cheapest direct one-way flights from Seoul to Tokyo on October that arrives before 1 pm local time."
+            f"- Search for the cheapest direct round-trip economy class flights from Seattle to Orlando for 1 passenger, departing and returning on dates next month."
+            f"- Find the cheapest one week roundtrip flight form San Francisco to Honolulu for 2 people around December."
+            f"- Search for the cheapest one-way Delta air premium economy class flight from Seattle to London for 1 passenger, departing on the 10th of October."
         )
     else:
         prompt = (

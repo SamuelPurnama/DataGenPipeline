@@ -115,7 +115,7 @@ class KnowledgeBaseManager:
 
 
 # High-level convenience functions for pipeline usage
-def get_trajectory_context(query: str, max_results: int = 3, max_context_length: int = 3000, kb_type: str = "graphrag") -> str:
+def get_trajectory_context(query: str, max_results: int = 3, max_context_length: int = 4000, kb_type: str = "graphrag") -> str:
     """Get trajectory context from the specified knowledge base."""
     try:
         # Dynamically import and create the appropriate client
