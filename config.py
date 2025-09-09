@@ -34,7 +34,7 @@ MAX_INSTRUCTIONS_TO_PROCESS = 10       # Maximum number of instructions to proce
 # - When True: Uses first NUM_ACCOUNTS_TO_USE accounts and calculates indexes automatically
 # - When False: Uses manual start_idx/end_idx values specified in ACCOUNTS list
 AUTO_INDEXING = True                   # Set to True for automatic index calculation, False for manual
-NUM_ACCOUNTS_TO_USE = 2                # Number of accounts to use (only used when AUTO_INDEXING = True)
+NUM_ACCOUNTS_TO_USE = 4                # Number of accounts to use (only used when AUTO_INDEXING = True)
 
 # How auto-indexing works:
 # - Total instructions = TOTAL_PERSONAS × (PHASE1_INSTRUCTIONS_PER_PERSONA or PHASE2_INSTRUCTIONS_PER_PERSONA)

@@ -13,13 +13,14 @@ from urllib.parse import urlparse
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from utils.new_generate_trajectory import chat_ai_playwright_code
-from config import RESULTS_DIR, ACCOUNTS, BROWSER_SESSIONS_DIR
+from config import RESULTS_DIR, ACCOUNTS, BROWSER_SESSIONS_DIR, TOTAL_PERSONAS, PHASE1_INSTRUCTIONS_PER_PERSONA, PHASE2_INSTRUCTIONS_PER_PERSONA
 from utils.google_auth import ensure_google_login
 from utils.trajectory_file_utils import (
     create_episode_directory, create_trajectory_file, create_error_log_file,
     update_playwright_error_log, update_trajectory, create_metadata,
     write_user_message, generate_trajectory_html, get_site_name_from_url
 )
+from utils.progress_tracker import ProgressTracker
 from utils.element_utils import (
     get_comprehensive_element_data, create_simplified_element_summary,
     try_alternative_selectors, annotate_screenshot_with_bounding_boxes,
@@ -77,7 +78,7 @@ def fetch_trajectory_nodes(
         kb_type=KNOWLEDGE_BASE_TYPE
     )
     
-def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_idx, email: Optional[str] = None, password: Optional[str] = None):
+def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_idx, email: Optional[str] = None, password: Optional[str] = None, progress_tracker=None):
         
     phase_file = os.path.join(RESULTS_DIR, f"instructions_phase{phase}.json")
     try:
@@ -137,6 +138,10 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                 print(f"📝 Orig: {orig}")
                 print(f"🔄 Aug: {aug}")
                 print(f"UUID: {eps_name}")
+                
+                # Start tracking this instruction
+                if progress_tracker:
+                    progress_tracker.start_instruction(email, idx, aug, eps_name)
 
                 # Fetch relevant past trajectories for context (if enabled)
                 trajectory_context = ""
@@ -177,6 +182,10 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
 
                 while should_continue:
                     step_idx = len(task_summarizer)
+                    
+                    # Update progress tracker with current step
+                    if progress_tracker:
+                        progress_tracker.update_step(email, step_idx)
                     if step_idx >= MAX_STEPS:
                         print(f"❌ Maximum number of steps ({MAX_STEPS}) exceeded.")
                         runtime = time.time() - start_time
@@ -191,6 +200,10 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                             json.dump(metadata, f, indent=2, ensure_ascii=False)
                         # Generate HTML after metadata is created
                         generate_trajectory_html(dirs, metadata)
+                        
+                        # Mark instruction as failed in progress tracker
+                        if progress_tracker:
+                            progress_tracker.complete_instruction(email, idx, aug, eps_name, success=False, error_message=f"Maximum steps ({MAX_STEPS}) exceeded")
                         should_continue = False
                         break
 
@@ -366,6 +379,10 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         # Generate HTML after metadata is created
                         generate_trajectory_html(dirs, metadata)
                         print("✅ Task completed, metadata saved.")
+                        
+                        # Mark instruction as completed in progress tracker
+                        if progress_tracker:
+                            progress_tracker.complete_instruction(email, idx, aug, eps_name, success=True)
                         break
 
                     if "updated_goal" in gpt_resp:
@@ -702,6 +719,10 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                     json.dump(metadata, f, indent=2, ensure_ascii=False)
                                 # Generate HTML after metadata is created
                                 generate_trajectory_html(dirs, metadata)
+                                
+                                # Mark instruction as failed in progress tracker
+                                if progress_tracker:
+                                    progress_tracker.complete_instruction(email, idx, aug, eps_name, success=False, error_message=f"All {MAX_RETRIES} retries failed")
                                 should_continue = False
                                 break
                                         
@@ -735,7 +756,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
             page.close()
             browser.close()
 
-def run_for_account(account, chrome_path, phase):
+def run_for_account(account, chrome_path, phase, progress_tracker):
     user_data_dir = os.path.join(BROWSER_SESSIONS_DIR, account["user_data_dir"])
     # Only create the directory if it doesn't exist
     if not os.path.exists(user_data_dir):
@@ -748,19 +769,34 @@ def run_for_account(account, chrome_path, phase):
         start_idx=account["start_idx"],
         end_idx=account["end_idx"],
         email=account["email"],
-        password=account["password"]
+        password=account["password"],
+        progress_tracker=progress_tracker
     )
 
 def main():
     chrome_exec = os.getenv("CHROME_EXECUTABLE_PATH")
     
+    # Initialize progress tracker
+    progress_tracker = ProgressTracker(RESULTS_DIR)
+    
+    # Calculate total instructions for progress tracking
+    instructions_per_persona = PHASE2_INSTRUCTIONS_PER_PERSONA if PHASE == 2 else PHASE1_INSTRUCTIONS_PER_PERSONA
+    total_instructions = TOTAL_PERSONAS * instructions_per_persona
+    
+    # Setup progress tracking for all accounts
+    progress_tracker.setup_accounts(ACCOUNTS, total_instructions)
+    print("📊 Progress tracking initialized!")
+    
     with ThreadPoolExecutor(max_workers=len(ACCOUNTS)) as executor:
         futures = [
-            executor.submit(run_for_account, account, chrome_exec, PHASE)
+            executor.submit(run_for_account, account, chrome_exec, PHASE, progress_tracker)
             for account in ACCOUNTS
         ]
         for future in futures:
             future.result()  # Wait for all to finish
+    
+    # Print final progress summary
+    progress_tracker.print_progress_summary()
 
 
 
