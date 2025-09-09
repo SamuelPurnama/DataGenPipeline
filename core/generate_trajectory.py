@@ -7,6 +7,7 @@ import time
 from typing import Optional
 from concurrent.futures import ThreadPoolExecutor
 from dotenv import load_dotenv
+from urllib.parse import urlparse
 
 # Add parent directory to path for imports
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -17,7 +18,7 @@ from utils.google_auth import ensure_google_login
 from utils.trajectory_file_utils import (
     create_episode_directory, create_trajectory_file, create_error_log_file,
     update_playwright_error_log, update_trajectory, create_metadata,
-    write_user_message, generate_trajectory_html
+    write_user_message, generate_trajectory_html, get_site_name_from_url
 )
 from utils.element_utils import (
     get_comprehensive_element_data, create_simplified_element_summary,
@@ -25,14 +26,17 @@ from utils.element_utils import (
     get_all_open_tabs, check_for_new_tabs, switch_to_new_tab
 )
 
-# Load environment variables from .env file
-load_dotenv()
-
 # Knowledge base client for trajectory context
 from utils.knowledge_base_client import get_trajectory_context
 
+# Load environment variables from .env file
+load_dotenv()
+
+
+
 
 # ========== CONFIGURABLE PARAMETERS ==========
+# These parameters are set by the end_to_end_pipeline.py file
 PHASE = 1
 MAX_RETRIES = 2
 MAX_STEPS = 40  # Maximum number of steps before failing
@@ -45,9 +49,16 @@ MODE = 0
 # Knowledge base configuration
 MAX_CONTEXT_LENGTH = int(os.getenv("MAX_CONTEXT_LENGTH", "3000"))  # Maximum context length in characters
 KNOWLEDGE_BASE_TYPE = os.getenv("KNOWLEDGE_BASE_TYPE", "graphrag")  # Type of knowledge base to use
+SEARCH_CONTEXT = False  # Whether to search for relevant past trajectories for context
 
 # Directory to store all browser sessions
 os.makedirs(BROWSER_SESSIONS_DIR, exist_ok=True)
+
+
+def generate_episode_name(url: str) -> str:
+    """Generate a meaningful episode name based on URL and UUID."""
+    site_name = get_site_name_from_url(url)
+    return f"{site_name}_{uuid.uuid4()}"
 
 
 def fetch_trajectory_nodes(
@@ -66,7 +77,8 @@ def fetch_trajectory_nodes(
         kb_type=KNOWLEDGE_BASE_TYPE
     )
     
-def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_idx, email: Optional[str] = None, password: Optional[str] = None, search_context: bool = False):
+def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_idx, email: Optional[str] = None, password: Optional[str] = None):
+        
     phase_file = os.path.join(RESULTS_DIR, f"instructions_phase{phase}.json")
     try:
         with open(phase_file, 'r', encoding='utf-8') as f:
@@ -114,7 +126,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                 url = item['url']
                 orig = item['original_instruction']
                 aug = item['augmented_instruction']
-                eps_name = f"calendar_{uuid.uuid4()}"
+                eps_name = generate_episode_name(url)
                 dirs = create_episode_directory(RESULTS_DIR, eps_name)
                 create_trajectory_file(dirs)  # Create empty trajectory.json
                 create_error_log_file(dirs)   # Create empty error_log.json
@@ -128,7 +140,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
 
                 # Fetch relevant past trajectories for context (if enabled)
                 trajectory_context = ""
-                if search_context:
+                if SEARCH_CONTEXT:
                     print("🔍 Fetching relevant past trajectories...")
                     trajectory_context = fetch_trajectory_nodes(aug, max_results=3, max_context_length=MAX_CONTEXT_LENGTH)
                     if trajectory_context:
@@ -723,11 +735,12 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
             page.close()
             browser.close()
 
-def run_for_account(account, chrome_path, phase, search_context: bool = True):
+def run_for_account(account, chrome_path, phase):
     user_data_dir = os.path.join(BROWSER_SESSIONS_DIR, account["user_data_dir"])
     # Only create the directory if it doesn't exist
     if not os.path.exists(user_data_dir):
         os.makedirs(user_data_dir, exist_ok=True)
+        
     generate_trajectory_loop(
         user_data_dir=user_data_dir,
         chrome_path=chrome_path,
@@ -735,17 +748,15 @@ def run_for_account(account, chrome_path, phase, search_context: bool = True):
         start_idx=account["start_idx"],
         end_idx=account["end_idx"],
         email=account["email"],
-        password=account["password"],
-        search_context=search_context
+        password=account["password"]
     )
 
 def main():
     chrome_exec = os.getenv("CHROME_EXECUTABLE_PATH")
-    phase = PHASE
     
     with ThreadPoolExecutor(max_workers=len(ACCOUNTS)) as executor:
         futures = [
-            executor.submit(run_for_account, account, chrome_exec, phase, search_context=True)
+            executor.submit(run_for_account, account, chrome_exec, PHASE)
             for account in ACCOUNTS
         ]
         for future in futures:
