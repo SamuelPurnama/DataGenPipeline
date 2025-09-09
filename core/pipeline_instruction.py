@@ -577,19 +577,19 @@ def discover_all_url_changes(page, base_url, max_depth=3):
 
 # ========== CONFIGURABLE PARAMETERS ==========
 from config import (
-    PHASE1_NUM_INSTRUCTIONS,
-    PHASE2_NUM_INSTRUCTIONS,
+    PHASE1_INSTRUCTIONS_PER_PERSONA,
+    PHASE2_INSTRUCTIONS_PER_PERSONA,
     RESULTS_DIR,
     URL,
     ACCOUNTS,
-    PERSONAS_PER_ACCOUNT,
+    TOTAL_PERSONAS,
     BROWSER_SESSIONS_DIR
 )
 
+# Import configuration from config.py
+from config import PERSONAHUB_DATA_PATH, SCREENSHOT_PATH, PHASE
+
 chrome_executable_path = os.getenv("CHROME_EXECUTABLE_PATH")
-PERSONAHUB_DATA_PATH = "persona.jsonl"  # Path to PersonaHub data file
-SCREENSHOT_PATH = "screenshot.png"
-PHASE = 2
 
 # Directory to store all browser sessions
 os.makedirs(BROWSER_SESSIONS_DIR, exist_ok=True)
@@ -747,25 +747,25 @@ def main():
     shuffled = dataset.shuffle(seed=random.randint(0, 9999))  # Use a random seed each run
     
     # Calculate total personas needed
-    total_personas = PERSONAS_PER_ACCOUNT * len(ACCOUNTS)
-    personas = shuffled[:total_personas]['persona']
-    num_instructions = PHASE2_NUM_INSTRUCTIONS if PHASE == 2 else PHASE1_NUM_INSTRUCTIONS
+    personas = shuffled[:TOTAL_PERSONAS]['persona']
+    num_instructions = PHASE2_INSTRUCTIONS_PER_PERSONA if PHASE == 2 else PHASE1_INSTRUCTIONS_PER_PERSONA
 
-    print(f"Processing {total_personas} personas total ({PERSONAS_PER_ACCOUNT} per account)")
+    print(f"Processing {TOTAL_PERSONAS} personas total")
 
     if PHASE == 1:
         # Phase 1: Use first account only
         account = ACCOUNTS[0]
-        for persona in tqdm(personas[:PERSONAS_PER_ACCOUNT], desc="Processing personas"):
+        for persona in tqdm(personas, desc="Processing personas"):
             instructions, augmented_instructions = generate_instructions_for_account(
                 account, persona, num_instructions
             )
             write_documentation(persona, URL, instructions, augmented_instructions)
     else:
         # Phase 2: Each account processes its assigned personas
+        personas_per_account = TOTAL_PERSONAS // len(ACCOUNTS)
         for i, account in enumerate(ACCOUNTS):
-            start_idx = i * PERSONAS_PER_ACCOUNT
-            end_idx = start_idx + PERSONAS_PER_ACCOUNT
+            start_idx = i * personas_per_account
+            end_idx = start_idx + personas_per_account
             
             print(f"\nAccount {account['email']} processing personas {start_idx} to {end_idx-1}")
             

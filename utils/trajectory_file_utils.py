@@ -4,6 +4,54 @@ import html
 import time
 from datetime import datetime
 from typing import Dict, Any, List, Optional
+from urllib.parse import urlparse
+
+def get_site_name_from_url(url: str) -> str:
+    """Extract a meaningful site name from URL for folder naming."""
+    try:
+        parsed = urlparse(url)
+        domain = parsed.netloc.lower()
+        
+        # Map common domains to meaningful names
+        domain_mapping = {
+            'flights.google.com': 'flights',
+            'calendar.google.com': 'calendar',
+            'maps.google.com': 'maps',
+            'docs.google.com': 'docs',
+            'gmail.com': 'gmail',
+            'mail.google.com': 'gmail',
+            'scholar.google.com': 'scholar',
+            'drive.google.com': 'drive',
+        }
+        
+        # Debug: print what we're processing
+        print(f"🔍 Processing URL: {url}")
+        print(f"🔍 Extracted domain: {domain}")
+        
+        # Check if we have a mapping for this domain
+        if domain in domain_mapping:
+            result = domain_mapping[domain]
+            print(f"🔍 Found mapping: {domain} -> {result}")
+            return result
+        
+        # If no mapping, extract the main domain name
+        if domain.startswith('www.'):
+            domain = domain[4:]
+        
+        # Split by dots and take the main part
+        parts = domain.split('.')
+        if len(parts) >= 2:
+            result = parts[0]  # e.g., 'google' from 'google.com'
+            print(f"🔍 Extracted from parts: {result}")
+            return result
+        else:
+            print(f"🔍 Using full domain: {domain}")
+            return domain  # fallback to full domain
+        
+    except Exception as e:
+        # If anything goes wrong, return a safe default
+        print(f"🔍 Exception in get_site_name_from_url: {e}")
+        return 'website'
 
 
 def create_episode_directory(base_dir: str, eps_name: str) -> Dict[str, str]:
