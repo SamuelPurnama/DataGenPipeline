@@ -13,7 +13,7 @@ from urllib.parse import urlparse
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from utils.new_generate_trajectory import chat_ai_playwright_code
-from config import RESULTS_DIR, ACCOUNTS, BROWSER_SESSIONS_DIR, TOTAL_PERSONAS, PHASE1_INSTRUCTIONS_PER_PERSONA, PHASE2_INSTRUCTIONS_PER_PERSONA
+from config import RESULTS_DIR, ACCOUNTS, BROWSER_SESSIONS_DIR, TOTAL_PERSONAS, PHASE1_INSTRUCTIONS_PER_PERSONA, PHASE2_INSTRUCTIONS_PER_PERSONA, ENABLE_CONFIDENCE_VALIDATION, ENABLE_POST_ACTION_VALIDATION
 from utils.google_auth import ensure_google_login
 from utils.trajectory_file_utils import (
     create_episode_directory, create_trajectory_file, create_error_log_file,
@@ -29,6 +29,12 @@ from utils.element_utils import (
 
 # Knowledge base client for trajectory context
 from utils.knowledge_base_client import get_trajectory_context
+
+# Confidence validation utilities
+from utils.confidence_validation import process_confidence_validation
+
+# Post-action validation utilities
+from utils.post_action_validation import process_post_action_validation
 
 # Load environment variables from .env file
 load_dotenv()
@@ -340,7 +346,40 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         print(f"Selected Element ID: {gpt_resp['selected_annotation_id']}")
                     if gpt_resp and 'thought' in gpt_resp:
                         print(f"Thought: {gpt_resp['thought']}")
+                    if gpt_resp and 'confidence' in gpt_resp:
+                        print(f"Confidence: {gpt_resp['confidence']}")
                     print(f"Full Response: {json.dumps(gpt_resp, indent=2) if gpt_resp else 'No response'}")
+
+                    # Confidence validation (if enabled)
+                    validation_result = None
+                    if ENABLE_CONFIDENCE_VALIDATION and gpt_resp:
+                        print("\n🔍 Running confidence validation...")
+                        # Load targeting data from the saved file
+                        targeting_data = []
+                        try:
+                            with open(targeting_data_file, 'r', encoding='utf-8') as f:
+                                targeting_data = json.load(f)
+                            print(f"✅ Loaded {len(targeting_data)} targeting data entries for validation")
+                        except Exception as e:
+                            print(f"⚠️ Could not load targeting data for validation: {e}")
+                        
+                        validation_result = process_confidence_validation(
+                            gpt_resp,
+                            screenshot,
+                            targeting_data,
+                            dirs['root'],
+                            step_idx
+                        )
+                        if validation_result and not validation_result.get('validation_skipped'):
+                            print(f"📊 Validation Results:")
+                            print(f"   Overall Confidence: {validation_result.get('overall_confidence', 'N/A')}")
+                            print(f"   Correct Target: {validation_result.get('is_correct_target', 'N/A')}")
+                            print(f"   Code Matches Description: {validation_result.get('code_matches_description', 'N/A')}")
+                            print(f"   Action Appropriate: {validation_result.get('action_appropriate', 'N/A')}")
+                            if validation_result.get('suggestions'):
+                                print(f"   Suggestions: {validation_result.get('suggestions')}")
+                        else:
+                            print("⚠️ Validation skipped or failed")
 
                     # Handle case where GPT response is None
                     if gpt_resp is None:
@@ -409,9 +448,42 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 # For non-Playwright code, execute normally
                                 exec(code)
                             
+                            # Post-action validation (if enabled and action executed successfully)
+                            if ENABLE_POST_ACTION_VALIDATION:
+                                print("\n🔍 Running post-action validation...")
+                                # Take screenshot after action
+                                after_screenshot = os.path.join(dirs['images'], f"after_action_step_{step_idx+1:03d}.png")
+                                page.screenshot(path=after_screenshot)
+                                
+                                # Run post-action validation
+                                post_validation_result = process_post_action_validation(
+                                    before_screenshot_path=screenshot,
+                                    after_screenshot_path=after_screenshot,
+                                    action_description=description,
+                                    output_dir=dirs['root'],
+                                    step_idx=step_idx
+                                )
+                                
+                                if post_validation_result:
+                                    print(f"📊 Post-Action Validation Results:")
+                                    print(f"   Action Successful: {post_validation_result.get('action_successful', 'N/A')}")
+                                    print(f"   Page State Changed: {post_validation_result.get('page_state_changed', 'N/A')}")
+                                    print(f"   Overall Confidence: {post_validation_result.get('overall_confidence', 'N/A')}")
+                                else:
+                                    print("⚠️ Post-action validation failed")
+                            
                             # ALWAYS record the successful step first (regardless of new tabs)
-                            execution_history.append({'step': description, 'code': code})
-                            task_summarizer.append({'step': description, 'code': code, 'axtree': tree})
+                            execution_history.append({
+                                'step': description, 
+                                'code': code, 
+                                'confidence': gpt_resp.get('confidence') if gpt_resp else None
+                            })
+                            task_summarizer.append({
+                                'step': description, 
+                                'code': code, 
+                                'axtree': tree,
+                                'confidence': gpt_resp.get('confidence') if gpt_resp else None
+                            })
                             # Save axtree to file only after successful execution
                             with open(axtree_file, 'w', encoding='utf-8') as f:
                                 json.dump(tree, f, indent=2, ensure_ascii=False)
@@ -486,7 +558,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                         successful_code=code,
                                         thought=gpt_resp.get('thought', '') if gpt_resp else '',
                                         current_goal=current_goal,
-                                        all_failed_attempts=failed_attempts_details
+                                        all_failed_attempts=failed_attempts_details,
+                                        confidence=gpt_resp.get('confidence') if gpt_resp else None
                                     )
                                 success = True
                         except Exception as e:
@@ -553,8 +626,18 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                             previous_tab_urls = {tab['url'] for tab in get_all_open_tabs(browser)}
                                     else:
                                         # Only record the step if we didn't switch to a new tab
-                                        execution_history.append({'step': description, 'code': working_code, 'note': 'fallback_selector_used'})
-                                        task_summarizer.append({'step': description, 'code': working_code, 'axtree': tree})
+                                        execution_history.append({
+                                            'step': description, 
+                                            'code': working_code, 
+                                            'note': 'fallback_selector_used',
+                                            'confidence': gpt_resp.get('confidence') if gpt_resp else None
+                                        })
+                                        task_summarizer.append({
+                                            'step': description, 
+                                            'code': working_code, 
+                                            'axtree': tree,
+                                            'confidence': gpt_resp.get('confidence') if gpt_resp else None
+                                        })
                                         # Save axtree to file after successful alternative execution
                                         with open(axtree_file, 'w', encoding='utf-8') as f:
                                             json.dump(tree, f, indent=2, ensure_ascii=False)
@@ -591,7 +674,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 "code": code,
                                 "error_message": str(e),
                                 "thought": gpt_resp.get('thought', '') if gpt_resp else '',
-                                "description": description
+                                "description": description,
+                                "confidence": gpt_resp.get('confidence') if gpt_resp else None
                             }
                             failed_attempts_details.append(failed_attempt_details)
                             
@@ -603,7 +687,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 attempted_code=code,
                                 error_message=str(e),
                                 thought=gpt_resp.get('thought', '') if gpt_resp else '',
-                                current_goal=current_goal
+                                current_goal=current_goal,
+                                confidence=gpt_resp.get('confidence') if gpt_resp else None
                             )
                             
                             if retry < MAX_RETRIES:
@@ -705,7 +790,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                     attempted_code=code,
                                     error_message=f"All {MAX_RETRIES} retries failed",
                                     thought=gpt_resp.get('thought', '') if gpt_resp else '',
-                                    current_goal=current_goal
+                                    current_goal=current_goal,
+                                    confidence=gpt_resp.get('confidence') if gpt_resp else None
                                 )
                                 runtime = time.time() - start_time
                                 metadata = create_metadata(

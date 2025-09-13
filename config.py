@@ -6,9 +6,9 @@ URL = "https://flights.google.com"
 
 
 # ========== INSTRUCTION GENERATION PARAMETERS ==========
-TOTAL_PERSONAS = 5  # Total number of personas to process
-PHASE1_INSTRUCTIONS_PER_PERSONA = 5  # Instructions per persona for phase 1 (initial state)
-PHASE2_INSTRUCTIONS_PER_PERSONA = 20 # Instructions per persona for phase 2 (modified state)
+TOTAL_PERSONAS = 1  # Total number of personas to process
+PHASE1_INSTRUCTIONS_PER_PERSONA = 1  # Instructions per persona for phase 1 (initial state)
+PHASE2_INSTRUCTIONS_PER_PERSONA = 10 # Instructions per persona for phase 2 (modified state)
 PERSONAHUB_DATA_PATH = "persona.jsonl"  # Path to PersonaHub data file
 SCREENSHOT_PATH = "screenshot.png"      # Path for screenshots
 
@@ -26,15 +26,15 @@ SEARCH_CONTEXT = False                 # Whether to search for relevant past tra
 
 # Trajectory Processing Configuration:
 # AUTO_TRAJECTORY_PROCESSING: Set to True to automatically process all instructions, False for manual control
-AUTO_TRAJECTORY_PROCESSING = True      # Set to True to process all instructions, False for manual control
-MAX_INSTRUCTIONS_TO_PROCESS = 10       # Maximum number of instructions to process (only used when AUTO_TRAJECTORY_PROCESSING = False)
+AUTO_TRAJECTORY_PROCESSING = False      # Set to True to process all instructions, False for manual control
+MAX_INSTRUCTIONS_TO_PROCESS = 1       # Maximum number of instructions to process (only used when AUTO_TRAJECTORY_PROCESSING = False)
 
 # Account Indexing Configuration:
 # AUTO_INDEXING: Set to True to automatically calculate start_idx/end_idx for accounts
 # - When True: Uses first NUM_ACCOUNTS_TO_USE accounts and calculates indexes automatically
 # - When False: Uses manual start_idx/end_idx values specified in ACCOUNTS list
 AUTO_INDEXING = True                   # Set to True for automatic index calculation, False for manual
-NUM_ACCOUNTS_TO_USE = 4                # Number of accounts to use (only used when AUTO_INDEXING = True)
+NUM_ACCOUNTS_TO_USE = 1               # Number of accounts to use (only used when AUTO_INDEXING = True)
 
 # How auto-indexing works:
 # - Total instructions = TOTAL_PERSONAS × (PHASE1_INSTRUCTIONS_PER_PERSONA or PHASE2_INSTRUCTIONS_PER_PERSONA)
@@ -51,6 +51,10 @@ NUM_ACCOUNTS_TO_USE = 4                # Number of accounts to use (only used wh
 MAX_CONTEXT_LENGTH = 3000              # Maximum context length in characters
 KNOWLEDGE_BASE_TYPE = "graphrag"       # Type of knowledge base to use
 
+# ========== CONFIDENCE VALIDATION CONFIGURATION ==========
+ENABLE_CONFIDENCE_VALIDATION = True   # Set to True to enable confidence validation with second GPT call
+ENABLE_POST_ACTION_VALIDATION = True  # Set to True to enable post-action validation comparing before/after states
+
 
 
 
@@ -59,14 +63,11 @@ KNOWLEDGE_BASE_TYPE = "graphrag"       # Type of knowledge base to use
 # Set to True/False to enable/disable each pipeline step
 ENABLE_INSTRUCTION_GENERATION = False   # Step 1: Generate instructions from personas
 ENABLE_TRAJECTORY_GENERATION = True    # Step 2: Generate trajectories using AI automation
-ENABLE_TASK_VERIFICATION = True        # Step 3: Verify and organize completed tasks
+ENABLE_TASK_VERIFICATION = False        # Step 3: Verify and organize completed tasks
 
 # Additional settings
 SKIP_CONFIRMATION = False              # Set to True to skip user confirmation prompts
 VERBOSE_OUTPUT = False                 # Set to True for detailed error output
-
-
-
 
 
 # ========== GOOGLE ACCOUNTS CONFIGURATION ==========
@@ -76,78 +77,78 @@ ACCOUNTS = [
         "password": "samJP535",
         "user_data_dir": "sam2",
         "start_idx": 0,
-        "end_idx": 1
+        "end_idx": 5
     },
     {
         "email": "testeracc482@gmail.com",
         "password": "Lalala123",
         "user_data_dir": "test1",
-        "start_idx": 1,
-        "end_idx": 2
+        "start_idx": 5,
+        "end_idx": 10
     },
     {
         "email": "testeracc649@gmail.com",
         "password": "Lalala123",
         "user_data_dir": "test2",
         "start_idx": 10,
-        "end_idx": 20
+        "end_idx": 15
     },
     {
         "email": "samuelperry9973@gmail.com",
         "password": "Lalala123",
         "user_data_dir": "test3",
-        "start_idx": 20,
-        "end_idx": 30
+        "start_idx": 15,
+        "end_idx": 20
     },
     {
         "email": "diamondjove@gmail.com",
         "password": "Lalala123",
         "user_data_dir": "test4",
-        "start_idx": 30,
-        "end_idx": 40
+        "start_idx": 20,
+        "end_idx": 25
     },
     {
         "email": "daikintanuw@gmail.com",
         "password": "Lalala123",
         "user_data_dir": "test5",
-        "start_idx": 40,
-        "end_idx": 50
+        "start_idx": 25,
+        "end_idx": 30
     },
     {
         "email": "daikintanuwijaya@gmail.com",
         "password": "Lalala123",
         "user_data_dir": "test6",
-        "start_idx": 50,
-        "end_idx": 60
+        "start_idx": 30,
+        "end_idx": 35
     },
     {
         "email": "dalecormick1@gmail.com",
         "password": "Lalala123",
         "user_data_dir": "test7",
-        "start_idx": 60,
-        "end_idx": 70
+        "start_idx": 35,
+        "end_idx": 40
     },
     {
         "email": "suprismth@gmail.com",
         "password": "Lalala123",
         "user_data_dir": "test8",
-        "start_idx": 70,
-        "end_idx": 80
+        "start_idx": 40,
+        "end_idx": 45
     },
     {
         "email": "kintilbirdie@gmail.com",
         "password": "Lalala123",
         "user_data_dir": "test9",
-        "start_idx": 80,
-        "end_idx": 90
+        "start_idx": 45,
+        "end_idx": 50
     },
-    {
-        "email": "asephartenstein@gmail.com",
-        "password": "Lalala123",
-        "user_data_dir": "test10",
-        "start_idx": 90,
-        "end_idx": 100
-    }
+#     {
+#         "email": "asephartenstein@gmail.com",
+#         "password": "Lalala123",
+#         "user_data_dir": "test10",
+#         "start_idx": 90,
+#         "end_idx": 100
+#     }
 ]
 
 # ========== AUTO-INDEXING LOGIC ==========
