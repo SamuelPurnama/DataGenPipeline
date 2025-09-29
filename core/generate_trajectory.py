@@ -118,12 +118,19 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
             user_data_dir=user_data_dir,
             executable_path=chrome_path,
             headless=False,
-            args=["--disable-blink-features=AutomationControlled"]
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--start-fullscreen"
+            ]
         )
         try:
             # Create page once at the start
             page = browser.new_page()
             page.set_default_timeout(ACTION_TIMEOUT)
+            
+            # Set mobile viewport for mobile view detection (optional)
+            # Uncomment the line below to enable mobile viewport
+            # page.set_viewport_size({"width": 375, "height": 667})  # iPhone SE size
             
             # Set up monitoring for this browser session
 
@@ -167,7 +174,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                 page.goto(url)
                 
                 # Handle login using the new module
-                ensure_google_login(page, email, password, url)
+                # ensure_google_login(page, email, password, url)
 
                 execution_history = []
                 task_summarizer = []
@@ -257,7 +264,7 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 page.set_default_timeout(ACTION_TIMEOUT)
                                 page.goto(url)
                                 # Handle login again
-                                ensure_google_login(page, email, password, url)
+                                # ensure_google_login(page, email, password, url)
                                 # Retry the screenshot and tree capture
                                 page.screenshot(path=screenshot)
                                 tree = page.accessibility.snapshot()
@@ -346,8 +353,6 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                         print(f"Selected Element ID: {gpt_resp['selected_annotation_id']}")
                     if gpt_resp and 'thought' in gpt_resp:
                         print(f"Thought: {gpt_resp['thought']}")
-                    if gpt_resp and 'confidence' in gpt_resp:
-                        print(f"Confidence: {gpt_resp['confidence']}")
                     print(f"Full Response: {json.dumps(gpt_resp, indent=2) if gpt_resp else 'No response'}")
 
                     # Confidence validation (if enabled)
@@ -476,13 +481,11 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                             execution_history.append({
                                 'step': description, 
                                 'code': code, 
-                                'confidence': gpt_resp.get('confidence') if gpt_resp else None
                             })
                             task_summarizer.append({
                                 'step': description, 
                                 'code': code, 
                                 'axtree': tree,
-                                'confidence': gpt_resp.get('confidence') if gpt_resp else None
                             })
                             # Save axtree to file only after successful execution
                             with open(axtree_file, 'w', encoding='utf-8') as f:
@@ -512,38 +515,68 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                             )
                             
                             if has_new_tabs:
-                                print(f"🆕 New tabs detected! Switching to new tab and restarting loop...")
+                                # OLD CODE - Switch to new tab (commented out)
+                                # print(f"🆕 New tabs detected! Switching to new tab and restarting loop...")
+                                # print(f"   New tabs: {[tab['domain'] for tab in new_tabs]}")
+                                # print(f"   Current tab count: {current_tab_count}")
+                                # 
+                                # # Wait a few seconds for the new tab to stabilize
+                                # print("⏳ Waiting 8 seconds for new tab to stabilize...")
+                                # time.sleep(8)
+                                # 
+                                # # Switch to the new tab
+                                # success, new_page = switch_to_new_tab(new_tabs, page)
+                                # 
+                                # if success:
+                                #     # Update our page reference and tracking variables
+                                #     page = new_page
+                                #     previous_tab_count = current_tab_count
+                                #     previous_tab_urls = {tab['url'] for tab in get_all_open_tabs(browser)}
+                                #     
+                                #     # Update the URL variable so GPT gets the correct context
+                                #     url = page.url
+                                #     print(f"🌐 Updated URL context to: {url}")
+                                #     
+                                #     print(f"🚀 Successfully switched to new tab: {page.url}")
+                                #     print("🔄 Restarting loop to take screenshot and collect elements on new tab...")
+                                #     
+                                #     # Mark as successful to exit retry loop
+                                #     success = True
+                                #     break
+                                # else:
+                                #     print("⚠️  Failed to switch to new tab, continuing with current page")
+                                #     # Update tracking even if switch failed
+                                #     previous_tab_count = current_tab_count
+                                #     previous_tab_urls = {tab['url'] for tab in get_all_open_tabs(browser)}
+                                
+                                # NEW CODE - End trajectory when new tabs detected
+                                print(f"🆕 New tabs detected! Ending trajectory as requested...")
                                 print(f"   New tabs: {[tab['domain'] for tab in new_tabs]}")
                                 print(f"   Current tab count: {current_tab_count}")
                                 
-                                # Wait a few seconds for the new tab to stabilize
-                                print("⏳ Waiting 8 seconds for new tab to stabilize...")
-                                time.sleep(8)
+                                # End the trajectory when new tabs are detected
+                                runtime = time.time() - start_time
+                                metadata = create_metadata(
+                                    persona, url, orig, aug, "Task completed - new tab opened",
+                                    [step['step'] for step in task_summarizer],
+                                    True, step_idx, runtime, total_tokens, page, eps_name
+                                )
+                                if gpt_resp and "output" in gpt_resp:
+                                    metadata["gpt_output"] = gpt_resp["output"]
+                                with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
+                                    json.dump(metadata, f, indent=2, ensure_ascii=False)
+                                # Generate HTML after metadata is created
+                                generate_trajectory_html(dirs, metadata)
+                                print("✅ Task completed - new tab opened, trajectory ended.")
                                 
-                                # Switch to the new tab
-                                success, new_page = switch_to_new_tab(new_tabs, page)
+                                # Mark instruction as completed in progress tracker
+                                if progress_tracker:
+                                    progress_tracker.complete_instruction(email, idx, aug, eps_name, success=True)
                                 
-                                if success:
-                                    # Update our page reference and tracking variables
-                                    page = new_page
-                                    previous_tab_count = current_tab_count
-                                    previous_tab_urls = {tab['url'] for tab in get_all_open_tabs(browser)}
-                                    
-                                    # Update the URL variable so GPT gets the correct context
-                                    url = page.url
-                                    print(f"🌐 Updated URL context to: {url}")
-                                    
-                                    print(f"🚀 Successfully switched to new tab: {page.url}")
-                                    print("🔄 Restarting loop to take screenshot and collect elements on new tab...")
-                                    
-                                    # Mark as successful to exit retry loop
-                                    success = True
-                                    break
-                                else:
-                                    print("⚠️  Failed to switch to new tab, continuing with current page")
-                                    # Update tracking even if switch failed
-                                    previous_tab_count = current_tab_count
-                                    previous_tab_urls = {tab['url'] for tab in get_all_open_tabs(browser)}
+                                # Mark as successful to exit retry loop and main loop
+                                success = True
+                                should_continue = False
+                                break
                             else:
                                 print("✅ No new tabs detected, continuing with current page")
                                 # Only record the step if we didn't switch to a new tab
@@ -559,7 +592,6 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                         thought=gpt_resp.get('thought', '') if gpt_resp else '',
                                         current_goal=current_goal,
                                         all_failed_attempts=failed_attempts_details,
-                                        confidence=gpt_resp.get('confidence') if gpt_resp else None
                                     )
                                 success = True
                         except Exception as e:
@@ -567,8 +599,8 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                             
 
                             
-                            # Try alternative selectors from targeting data if this is a Playwright error
-                            if "page." in code and retry == 0:
+                            # Try alternative selectors from targeting data if this is a click action that failed
+                            if "page." in code and retry == 0 and gpt_resp.get('action_type') == 'click':
                                 print("🔄 Trying alternative Playwright selectors...")
                                 success, failed_alternatives, successful_fallback_code = try_alternative_selectors(
                                     page, code, comprehensive_data, gpt_resp
@@ -592,51 +624,79 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                     )
                                     
                                     if has_new_tabs:
-                                        print(f"🆕 New tabs detected! Switching to new tab and restarting loop...")
+                                        # OLD CODE - Switch to new tab (commented out)
+                                        # print(f"🆕 New tabs detected! Switching to new tab and restarting loop...")
+                                        # print(f"   New tabs: {[tab['domain'] for tab in new_tabs]}")
+                                        # print(f"   Current tab count: {current_tab_count}")
+                                        # 
+                                        # # Wait a few seconds for the new tab to stabilize
+                                        # print("⏳ Waiting 5 seconds for new tab to stabilize...")
+                                        # time.sleep(5)
+                                        # 
+                                        # # Switch to the new tab
+                                        # success, new_page = switch_to_new_tab(new_tabs, page)
+                                        # 
+                                        # if success:
+                                        #     # Update our page reference and tracking variables
+                                        #     page = new_page
+                                        #     previous_tab_count = current_tab_count
+                                        #     previous_tab_urls = {tab['url'] for tab in get_all_open_tabs(browser)}
+                                        #     
+                                        #     # Update the URL variable so GPT gets the correct context
+                                        #     url = page.url
+                                        #     print(f"🌐 Updated URL context to: {url}")
+                                        #     
+                                        #     print(f"🚀 Successfully switched to new tab: {page.url}")
+                                        #     print("🔄 Restarting loop to take screenshot and collect elements on new tab...")
+                                        #     
+                                        #     # Mark as successful to exit retry loop
+                                        #     success = True
+                                        #     break
+                                        # else:
+                                        #     print("⚠️  Failed to switch to new tab, continuing with current page")
+                                        #     # Update tracking even if switch failed
+                                        #     previous_tab_count = current_tab_count
+                                        #     previous_tab_urls = {tab['url'] for tab in get_all_open_tabs(browser)}
+                                        
+                                        # NEW CODE - End trajectory when new tabs detected
+                                        print(f"🆕 New tabs detected! Ending trajectory as requested...")
                                         print(f"   New tabs: {[tab['domain'] for tab in new_tabs]}")
                                         print(f"   Current tab count: {current_tab_count}")
                                         
-                                        # Wait a few seconds for the new tab to stabilize
-                                        print("⏳ Waiting 5 seconds for new tab to stabilize...")
-                                        time.sleep(5)
+                                        # End the trajectory when new tabs are detected
+                                        runtime = time.time() - start_time
+                                        metadata = create_metadata(
+                                            persona, url, orig, aug, "Task completed - new tab opened",
+                                            [step['step'] for step in task_summarizer],
+                                            True, step_idx, runtime, total_tokens, page, eps_name
+                                        )
+                                        if gpt_resp and "output" in gpt_resp:
+                                            metadata["gpt_output"] = gpt_resp["output"]
+                                        with open(os.path.join(dirs['root'], 'metadata.json'), 'w', encoding='utf-8') as f:
+                                            json.dump(metadata, f, indent=2, ensure_ascii=False)
+                                        # Generate HTML after metadata is created
+                                        generate_trajectory_html(dirs, metadata)
+                                        print("✅ Task completed - new tab opened, trajectory ended.")
                                         
-                                        # Switch to the new tab
-                                        success, new_page = switch_to_new_tab(new_tabs, page)
+                                        # Mark instruction as completed in progress tracker
+                                        if progress_tracker:
+                                            progress_tracker.complete_instruction(email, idx, aug, eps_name, success=True)
                                         
-                                        if success:
-                                            # Update our page reference and tracking variables
-                                            page = new_page
-                                            previous_tab_count = current_tab_count
-                                            previous_tab_urls = {tab['url'] for tab in get_all_open_tabs(browser)}
-                                            
-                                            # Update the URL variable so GPT gets the correct context
-                                            url = page.url
-                                            print(f"🌐 Updated URL context to: {url}")
-                                            
-                                            print(f"🚀 Successfully switched to new tab: {page.url}")
-                                            print("🔄 Restarting loop to take screenshot and collect elements on new tab...")
-                                            
-                                            # Mark as successful to exit retry loop
-                                            success = True
-                                            break
-                                        else:
-                                            print("⚠️  Failed to switch to new tab, continuing with current page")
-                                            # Update tracking even if switch failed
-                                            previous_tab_count = current_tab_count
-                                            previous_tab_urls = {tab['url'] for tab in get_all_open_tabs(browser)}
+                                        # Mark as successful to exit retry loop and main loop
+                                        success = True
+                                        should_continue = False
+                                        break
                                     else:
                                         # Only record the step if we didn't switch to a new tab
                                         execution_history.append({
                                             'step': description, 
                                             'code': working_code, 
                                             'note': 'fallback_selector_used',
-                                            'confidence': gpt_resp.get('confidence') if gpt_resp else None
                                         })
                                         task_summarizer.append({
                                             'step': description, 
                                             'code': working_code, 
                                             'axtree': tree,
-                                            'confidence': gpt_resp.get('confidence') if gpt_resp else None
                                         })
                                         # Save axtree to file after successful alternative execution
                                         with open(axtree_file, 'w', encoding='utf-8') as f:
@@ -675,7 +735,6 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 "error_message": str(e),
                                 "thought": gpt_resp.get('thought', '') if gpt_resp else '',
                                 "description": description,
-                                "confidence": gpt_resp.get('confidence') if gpt_resp else None
                             }
                             failed_attempts_details.append(failed_attempt_details)
                             
@@ -688,7 +747,6 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 error_message=str(e),
                                 thought=gpt_resp.get('thought', '') if gpt_resp else '',
                                 current_goal=current_goal,
-                                confidence=gpt_resp.get('confidence') if gpt_resp else None
                             )
                             
                             if retry < MAX_RETRIES:
@@ -732,16 +790,14 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                 if trajectory_context:
                                     enhanced_context = f"\n\n{trajectory_context}\n\n"
                                 
-                                # Create minimal element summary for GPT retry (just annotation ID, role, name)
+                                # Create element summary for GPT retry using the same function
                                 element_summary = ""
                                 if comprehensive_data and 'targeting_data' in comprehensive_data:
-                                    element_summary = "\n\nAvailable Interactive Elements:\n"
-                                    for elem in comprehensive_data['targeting_data']:
-                                        annotation_id = elem.get('annotation_id', '?')
-                                        role = elem.get('element_info', {}).get('role', 'unknown')
-                                        name = elem.get('element_info', {}).get('name', 'unnamed')
-                                        element_summary += f"  {annotation_id}. {role}: {name}\n"
-                                    element_summary += "\n"
+                                    # Use the function to create simplified element data
+                                    elements_data = create_simplified_element_summary(comprehensive_data['targeting_data'])
+                                    
+                                    # Convert to JSON string (same format as first call)
+                                    element_summary = f"\n\nAvailable Interactive Elements:\n{json.dumps(elements_data, indent=2)}\n\n"
                                 
                                 gpt_resp = chat_ai_playwright_code(
                                         previous_steps=execution_history,
@@ -791,7 +847,6 @@ def generate_trajectory_loop(user_data_dir, chrome_path, phase, start_idx, end_i
                                     error_message=f"All {MAX_RETRIES} retries failed",
                                     thought=gpt_resp.get('thought', '') if gpt_resp else '',
                                     current_goal=current_goal,
-                                    confidence=gpt_resp.get('confidence') if gpt_resp else None
                                 )
                                 runtime = time.time() - start_time
                                 metadata = create_metadata(

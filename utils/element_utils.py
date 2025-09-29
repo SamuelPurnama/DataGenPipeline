@@ -34,7 +34,7 @@ def get_comprehensive_element_data(page, url: str = None) -> Dict[str, Any]:
 
 def create_simplified_element_summary(targeting_data: list) -> list:
     """
-    Create simplified element data with just annotation_id, role, and name.
+    Create simplified element data with annotation_id, role, name, and coordinates.
     This is what gets sent to GPT and saved in axtree files.
     
     Args:
@@ -48,10 +48,18 @@ def create_simplified_element_summary(targeting_data: list) -> list:
         annotation_id = elem.get('annotation_id', '?')
         role = elem.get('element_info', {}).get('role', 'unknown')
         name = elem.get('element_info', {}).get('name', 'unnamed')
+        
+        # Get coordinates from bounding box
+        bbox = elem.get('bounding_box', {})
+        center_x = bbox.get('center_x', '?')
+        center_y = bbox.get('center_y', '?')
+        
         elements_data.append({
             "annotation_id": str(annotation_id),
             "role": role,
-            "name": name
+            "name": name,
+            "x": center_x,
+            "y": center_y
         })
     return elements_data
 
@@ -66,7 +74,7 @@ def get_all_interactive_elements(page) -> list:
         'listbox', 'menuitem', 'tab', 'slider', 'spinbutton', 'searchbox',
         'switch', 'menubar', 'toolbar', 'tree', 'grid', 'table',
         'option', 'menuitemcheckbox', 'menuitemradio', 'listitem',
-        'group', 'region', 'dialog', 'alertdialog', 'tooltip'
+        'group', 'region', 'dialog', 'alertdialog', 'tooltip','gridcell', 'cell', 'row'
     ]
 
     # Get elements by each role

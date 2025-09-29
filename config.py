@@ -2,11 +2,11 @@
 RESULTS_DIR = "data/results"
 BROWSER_SESSIONS_DIR = "data/browser_sessions"
 SAMPLE_DATA_DIR = "data/sample_data"
-URL = "https://flights.google.com"
+URL = "https://viata.ai/event/seattlewaterfront"
 
 
 # ========== INSTRUCTION GENERATION PARAMETERS ==========
-TOTAL_PERSONAS = 1  # Total number of personas to process
+TOTAL_PERSONAS = 86  # Total number of personas to process
 PHASE1_INSTRUCTIONS_PER_PERSONA = 1  # Instructions per persona for phase 1 (initial state)
 PHASE2_INSTRUCTIONS_PER_PERSONA = 10 # Instructions per persona for phase 2 (modified state)
 PERSONAHUB_DATA_PATH = "persona.jsonl"  # Path to PersonaHub data file
@@ -17,7 +17,7 @@ SCREENSHOT_PATH = "screenshot.png"      # Path for screenshots
 PHASE = 1                              # Current phase (1 or 2)
 MAX_RETRIES = 2                        # Maximum retries for failed actions
 MAX_STEPS = 40                         # Maximum number of steps before failing
-ACTION_TIMEOUT = 10000                 # 10 seconds timeout for actions
+ACTION_TIMEOUT = 20000                 # 10 seconds timeout for actions
 # Execution Modes:
 # 0 - Automatic Mode: Processes all instructions without manual intervention
 # 1 - Interactive Mode: Requires Enter press after each instruction for manual review
@@ -27,14 +27,14 @@ SEARCH_CONTEXT = False                 # Whether to search for relevant past tra
 # Trajectory Processing Configuration:
 # AUTO_TRAJECTORY_PROCESSING: Set to True to automatically process all instructions, False for manual control
 AUTO_TRAJECTORY_PROCESSING = False      # Set to True to process all instructions, False for manual control
-MAX_INSTRUCTIONS_TO_PROCESS = 1       # Maximum number of instructions to process (only used when AUTO_TRAJECTORY_PROCESSING = False)
+MAX_INSTRUCTIONS_TO_PROCESS = 86      # Maximum number of instructions to process (only used when AUTO_TRAJECTORY_PROCESSING = False)
 
 # Account Indexing Configuration:
 # AUTO_INDEXING: Set to True to automatically calculate start_idx/end_idx for accounts
 # - When True: Uses first NUM_ACCOUNTS_TO_USE accounts and calculates indexes automatically
 # - When False: Uses manual start_idx/end_idx values specified in ACCOUNTS list
 AUTO_INDEXING = True                   # Set to True for automatic index calculation, False for manual
-NUM_ACCOUNTS_TO_USE = 1               # Number of accounts to use (only used when AUTO_INDEXING = True)
+NUM_ACCOUNTS_TO_USE = 11               # Number of accounts to use (only used when AUTO_INDEXING = True)
 
 # How auto-indexing works:
 # - Total instructions = TOTAL_PERSONAS × (PHASE1_INSTRUCTIONS_PER_PERSONA or PHASE2_INSTRUCTIONS_PER_PERSONA)
@@ -52,8 +52,8 @@ MAX_CONTEXT_LENGTH = 3000              # Maximum context length in characters
 KNOWLEDGE_BASE_TYPE = "graphrag"       # Type of knowledge base to use
 
 # ========== CONFIDENCE VALIDATION CONFIGURATION ==========
-ENABLE_CONFIDENCE_VALIDATION = True   # Set to True to enable confidence validation with second GPT call
-ENABLE_POST_ACTION_VALIDATION = True  # Set to True to enable post-action validation comparing before/after states
+ENABLE_CONFIDENCE_VALIDATION = False   # Set to True to enable confidence validation with second GPT call
+ENABLE_POST_ACTION_VALIDATION = False  # Set to True to enable post-action validation comparing before/after states
 
 
 
@@ -63,7 +63,7 @@ ENABLE_POST_ACTION_VALIDATION = True  # Set to True to enable post-action valida
 # Set to True/False to enable/disable each pipeline step
 ENABLE_INSTRUCTION_GENERATION = False   # Step 1: Generate instructions from personas
 ENABLE_TRAJECTORY_GENERATION = True    # Step 2: Generate trajectories using AI automation
-ENABLE_TASK_VERIFICATION = False        # Step 3: Verify and organize completed tasks
+ENABLE_TASK_VERIFICATION = True        # Step 3: Verify and organize completed tasks
 
 # Additional settings
 SKIP_CONFIRMATION = False              # Set to True to skip user confirmation prompts
@@ -72,7 +72,7 @@ VERBOSE_OUTPUT = False                 # Set to True for detailed error output
 
 # ========== GOOGLE ACCOUNTS CONFIGURATION ==========
 ACCOUNTS = [
-    {
+     {
         "email": "kukukud4@gmail.com",
         "password": "samJP535",
         "user_data_dir": "sam2",
@@ -142,13 +142,13 @@ ACCOUNTS = [
         "start_idx": 45,
         "end_idx": 50
     },
-#     {
-#         "email": "asephartenstein@gmail.com",
-#         "password": "Lalala123",
-#         "user_data_dir": "test10",
-#         "start_idx": 90,
-#         "end_idx": 100
-#     }
+    {
+       "email": "asephartenstein@gmail.com",
+         "password": "Lalala123",
+         "user_data_dir": "test10",
+        "start_idx": 90,
+         "end_idx": 100
+    }
 ]
 
 # ========== AUTO-INDEXING LOGIC ==========

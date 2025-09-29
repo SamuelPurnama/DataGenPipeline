@@ -14,6 +14,7 @@ from prompts.generation_prompt import (
     PLAYWRIGHT_CODE_SYSTEM_MSG_FAILED,
     PLAYWRIGHT_CODE_SYSTEM_MSG_TAB_CHANGE_FLIGHTS,
     PLAYWRIGHT_CODE_SYSTEM_MSG_DELETION_CALENDAR,
+    PLAYWRIGHT_CODE_SYSTEM_MSG_CALENDAR,
     PLAYWRIGHT_CODE_SYSTEM_MSG_MAPS,
     PLAYWRIGHT_CODE_SYSTEM_MSG_FLIGHTS,
     PLAYWRIGHT_CODE_SYSTEM_MSG_SCHOLAR,
@@ -126,7 +127,8 @@ def chat_ai_playwright_code(previous_steps=None, taskGoal=None, taskPlan=None, i
                 print("📝 Reason: Detected Google Docs URL")
             else:
                 # Default to calendar for backward compatibility
-                base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_TAB_CHANGE_FLIGHTS
+                # base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_TAB_CHANGE_FLIGHTS
+                base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_CALENDAR
                 print("🤖 SELECTED: DEFAULT (CALENDAR) prompt")
                 print(f"📝 Reason: Unknown URL pattern, using fallback prompt")
         else:
@@ -141,11 +143,11 @@ def chat_ai_playwright_code(previous_steps=None, taskGoal=None, taskPlan=None, i
     if previous_steps is not None and image_path:
         try:
             # Print previous steps for debugging
-            print(f"\n{'='*60}")
-            print("📋 PREVIOUS STEPS BEING SENT TO GPT:")
-            print(f"{'='*60}")
-            print(json.dumps(previous_steps, indent=2))
-            print(f"{'='*60}")
+            # print(f"\n{'='*60}")
+            # print("📋 PREVIOUS STEPS BEING SENT TO GPT:")
+            # print(f"{'='*60}")
+            # print(json.dumps(previous_steps, indent=2))
+            # print(f"{'='*60}")
             
             # Prepare content array for GPT
             content = [
