@@ -1,7 +1,0 @@
-Interaction: page_unload
-Value: N/A
-Element: N/A
-URL: https://workspace.google.com/intl/en-US/products/calendar/
-Page Title: Shareable Online Calendar and Scheduling - Google Calendar
-Selectors: {}
-Bbox: {}

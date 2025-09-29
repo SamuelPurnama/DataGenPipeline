@@ -145,21 +145,12 @@ def chat_ai_playwright_code(accessibility_tree=None, previous_steps=None, taskGo
                 print("\n🤖 Using DOCS prompt")
             else:
                 # Default to calendar for backward compatibility
-<<<<<<< HEAD
-                base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG
-                print("\n🤖 Using DEFAULT (CALENDAR) prompt")
-        else:
-            # Default to calendar for backward compatibility
-            base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG
-            print("\n🤖 Using DEFAULT (CALENDAR) prompt")
-=======
                 base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_TAB_CHANGE_FLIGHTS
                 print("\n🤖 Using FALLBACK (FLIGHTS TAB CHANGE) prompt")
         else:
             # Default to calendar for backward compatibility
             base_system_message = PLAYWRIGHT_CODE_SYSTEM_MSG_TAB_CHANGE_FLIGHTS
             print("\n🤖 Using FALLBACK (FLIGHTS TAB CHANGE) prompt")
->>>>>>> origin/main
 
     if accessibility_tree is not None and previous_steps is not None and image_path:
         try:
